@@ -1,0 +1,58 @@
+.page {
+    padding: 0 30rpx;
+}
+
+.block {
+}
+
+.block > .title {
+    font-size: 36rpx;
+    line-height: 2;
+}
+
+.block > .title:before {
+    content: '';
+    height: 18rpx;
+    border-left: 10rpx solid #000;
+    margin-right: 10rpx;
+}
+
+.block .list {
+    margin-top: 20rpx;
+}
+
+.block .list .item {
+    background: #fff;
+    border-radius: 10rpx;
+    margin-bottom: 40rpx;
+    box-shadow: 3rpx 10rpx 30rpx #ddd;
+    overflow: hidden;
+}
+
+.block .list .item:last-child {
+    margin-bottom: 0;
+}
+
+.block .item image {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.block .item .info {
+    padding: 20rpx;
+}
+
+.block .item .info .up {
+    display: flex;
+    justify-content: space-between;
+}
+
+.block .item .info .up .org {
+    color: #888;
+}
+
+.block .item .info .desc {
+    margin-top:15rpx;
+    border-top:1rpx dashed #ccc;
+    padding-top:15rpx;
+}

@@ -1,0 +1,40 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="user">
+    <image src="{{work.avatar}}" class="avatar"></image>
+    <view class="nickname">{{work.name}}</view>
+  </view>
+  <view class="work-title">作品名称：{{work.title}}</view>
+  <view class="work-desc">作品描述：{{work.desc}}</view>
+  <view class="pics">
+    <image bindtap="preview" data-index="{{index}}" src="{{item}}" mode="aspectFill" wx:for="{{work.pics}}" wx:key="index"></image>
+  </view>
+
+  <button bindtap="to_bidding" class="btn-vote" wx:if="{{!work.bidding}}">
+    <view>我要</view>
+    <view>竞标</view>
+  </button>
+  <button disabled="{{true}}" class="btn-vote" wx:else>
+    <view>已竞标</view>
+  </button>
+
+  <view class="comment-box">
+    <view class="title">
+      竞标列表
+    </view>
+    <view class="comment" wx:for="{{biddingList}}" wx:key="id">
+      <image src="{{item.avatar}}" class="header"></image>
+      <view class="content">
+        <view class="c-info">
+          <view class="nickname">{{item.nickname}}</view>
+          <view class="date">{{item.created_time}}</view>
+          <view class="text">{{item.desc}}</view>
+        </view>
+      </view>
+      <view class="hr" wx:if="{{index != comment_list.length - 1}}"></view>
+    </view>
+  </view>
+</view>

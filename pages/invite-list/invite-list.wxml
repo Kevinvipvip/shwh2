@@ -1,0 +1,43 @@
+<view class="page">
+  <image src="/images/invite-bg.jpg" class="bg" mode="aspectFill"></image>
+  <view class="main">
+    <image src="/images/fu-icon.png"></image>
+    <view class="white-box">
+      <image src="/images/invite-part1.jpg" class="part1" mode="widthFix"></image>
+      <view class="box-xia">
+        <view class="block">
+          <view class="title">山洞助力</view>
+          <view class="li">
+            <view class="titles">
+              <view class="title-box">
+                <view class="title">「已邀请」</view>
+              </view>
+              <view class="title-box">
+                <view class="title">「福利」</view>
+              </view>
+            </view>
+            <scroll-view scroll-y>
+              <block wx:for="{{invite_list}}" wx:key="id">
+                <view class="left">
+                  <view>{{item.nickname}}</view>
+                </view>
+                <view class="right">
+                  <view>¥{{item.money}}</view>
+                </view>
+              </block>
+            </scroll-view>
+            <view class="shu"></view>
+          </view>
+        </view>
+        <image src="/images/invite-hr.jpg" class="hr" mode="widthFix"></image>
+        <view class="block">
+          <view class="title">活动规则</view>
+          <view class="gui">
+            {{rule}}
+          </view>
+        </view>
+      </view>
+      <navigator url="/pages/user-qrcode/user-qrcode" class="to-qrcode">生成专属图片</navigator>
+    </view>
+  </view>
+</view>

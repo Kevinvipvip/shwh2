@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="block">
+    <view class="two-box">
+      <view bindtap="jump" data-id="{{item.id}}" class="item-half" wx:for="{{worksList}}" wx:key="id">
+        <image src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="texts">
+          <view class="title">{{item.title}}</view>
+          <view class="info-box">
+            <view class="user">
+              <image src="{{item.avatar}}"></image>
+              <view class="nickname">{{item.nickname}}</view>
+            </view>
+            <view class="vote">
+              <view>
+                <icon class="iconfont iconnavicon-tp"/>{{item.vote}}
+              </view>
+              <view wx:if="{{origin == 2}}">
+                <icon class="iconfont iconamazonbiddingsystem" />{{item.bid_num}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无参赛作品
+  </view>
+</view>

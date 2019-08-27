@@ -1,0 +1,137 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page" style="background-image:url('https://www.caves.vip/static/uploads/activity/bg.jpg');">
+  <image src="/images/fu-icon.png" class="top-icon"></image>
+  <view class="white-box">
+    <!-- 如果是博物馆则有这个扫描二维码 -->
+    <view bindtap="scan" class="scan-code" wx:if="{{role == 1}}">
+      <icon class="iconfont iconiconfontscan"/>
+    </view>
+
+    <image src="/images/nine-card-p1.jpg" class="part1" mode="widthFix"></image>
+    <view class="reward-desc">
+      <view class="des">
+        集齐8张文创卡片可得<navigator url="/pages/cul-gift/cul-gift">精美文创礼品</navigator>
+      </view>
+      <view class="des">
+        抽到中间的
+        <image src="https://www.caves.vip/static/uploads/activity/5.jpg"></image>
+        可立得300元现金奖励
+      </view>
+      <view class="des">
+        <view class="comm">注：两个奖励各可获得一次</view>
+      </view>
+    </view>
+    <view class="fan-card-box">
+      <view class="top">
+        <image src="/images/ti-hei.jpg" mode="widthFix"></image>
+        <view class="explain">
+          <view>发布笔记审核通过可得5次抽卡机会</view>
+        </view>
+      </view>
+      <view class="fan-card">
+        <image bindtap="getCard" src="/images/wen.jpg" class="card {{card_class}}"></image>
+        <image src="/images/cheng.png" class="cheng"></image>
+        <view class="number">{{lucky_draw_times}}</view>
+      </view>
+    </view>
+    <view class="nine-card">
+      <view wx:for="{{card_list}}" wx:key="id" class="kuang">
+        <view class="img-box">
+          <image src="{{item.card_amount != 0 ? item.pic : wen_pic}}" id="num{{item.id}}"></image>
+          <view class="amount" wx:if="{{item.card_amount != 0}}">{{item.card_amount}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-box">
+      <button bindtap="show_gif">送给好友</button>
+      <button bindtap="getGiftCard">扫描卡片码</button>
+    </view>
+  </view>
+
+  <!-- 卡片动画 -->
+  <image src="{{ani_src}}" class="card-ani" style="width: {{ani_width}}px; height: {{ani_height}}px; left: {{ani_left}}px; top: {{ani_top}}px;" wx:if="{{ani_show}}"></image>
+
+  <!-- 赠送卡片框 -->
+  <view bindtap="hide_gift" catchtouchmove class="modal" wx:if="{{gift_show}}">
+    <view catchtap class="content">
+      <view class="title">选择要分享的卡片</view>
+      <view class="sub-title">（拥有特定卡片一张以上才可以分享哦）</view>
+      <view class="nine-card">
+        <view wx:for="{{card_list}}" wx:key="id" class="kuang">
+          <view bindtap="choose_card" data-index="{{index}}" class="img-box">
+            <image src="{{item.card_amount > 1 ? item.pic : wen_pic}}" id="num{{item.id}}"></image>
+            <view class="amount" wx:if="{{item.card_amount > 1}}">{{item.card_amount - 1}}</view>
+            <view class="choose" wx:if="{{choose_index === index}}"></view>
+          </view>
+        </view>
+      </view>
+      <button bindtap="createCardCode">生成分享码</button>
+    </view>
+  </view>
+
+  <!-- 卡片码框 -->
+  <view bindtap="hide_code_modal" catchtouchmove class="modal" wx:if="{{code_modal_show}}">
+    <view catchtap class="content">
+      <view class="title">输入卡片码</view>
+      <form bindsubmit="getGiftCard">
+        <input name="card_code" value="{{card_code}}" type="text" placeholder="卡片码" class="code-input" maxlength="32" />
+        <button form-type="submit">获得卡片</button>
+      </form>
+    </view>
+  </view>
+
+  <!-- 获得文创礼品 -->
+  <view bindtap="hide_cul_gift_modal" catchtouchmove class="modal" wx:if="{{get_cul_gift_show}}">
+    <view catchtap class="content">
+      <view class="get-content" wx:if="{{get_gift == 1}}">
+        <view>
+          恭喜您已集齐8张文创卡片！
+        </view>
+        <view>
+          您可去往博物馆领取您的文创礼品
+        </view>
+        <view>
+          在<navigator url="/pages/cul-gift/cul-gift">精美文创礼品</navigator>页查看
+        </view>
+        <view>可去往的博物馆和兑换奖品的二维码</view>
+      </view>
+      <view class="get-content" wx:if="{{get_gift == 2}}">
+        <view>恭喜您获得了山洞卡，获得300元奖金！</view>
+        <view>您可去往<navigator url="/pages/my/my" open-type="switchTab">个人中心</navigator>提现</view></view>
+    </view>
+  </view>
+
+  <!-- 核销框 -->
+  <view bindtap="hide_verify_modal" catchtouchmove class="modal" wx:if="{{verify_show}}">
+    <view catchtap class="content">
+      <view class="title">文创礼品核销</view>
+      <form bindsubmit="culVerify">
+        <textarea name="remark" fixed="true" value="{{remark}}" auto-height maxlength="100" cursor-spacing="50" placeholder="可选备注，最多100字" style="padding: {{textarea_padding}};"/>
+        <button form-type="submit">核销</button>
+      </form>
+    </view>
+  </view>
+
+  <!-- 卡片码二维码 -->
+  <canvas canvas-id="card-qrcode" class="card-qrcode"></canvas>
+  <view bindtap="hide_cardqr_modal" catchtouchmove class="modal" wx:if="{{cardqr_show}}">
+    <view catchtap class="content cardqr-content">
+      <view class="title">朋友可以通过</view>
+      <view class="title">右下“扫描卡片码”扫描二维码获取卡片</view>
+      <image src="{{qrcode_img}}" class="qrcode-img"></image>
+      <button bindtap="save_album">保存</button>
+    </view>
+  </view>
+
+  <view bindtap="hide_set_btn" class="setting-box" wx:if="{{show_set_btn}}">
+    <view class="os-box">
+      <view>
+        请在设置中打开保存图片到相册的权限
+      </view>
+      <button catchtap="hide_set_btn" open-type="openSetting" class="set_btn">打开设置</button>
+    </view>
+  </view>
+</view>

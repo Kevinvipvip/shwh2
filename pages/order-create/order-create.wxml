@@ -1,0 +1,48 @@
+<view class="page">
+  <navigator url="/pages/my-address/my-address?type=1">
+    <view class="address">
+      <view class="address-icon">
+        <icon class="iconfont iconwodedizhi"/>
+      </view>
+      <view class="info" wx:if="{{receiver}}">
+        <view class="top">
+          <view class="nickname">{{receiver}}</view>
+          <view class="tel">{{tel}}</view>
+        </view>
+        <view class="detail">
+          {{address}}
+        </view>
+      </view>
+      <view wx:else class="no-default-add">
+        暂无默认收货地址，请添加
+      </view>
+      <view class="edit">
+        <icon class="iconfont iconyou"/>
+      </view>
+    </view>
+  </navigator>
+  <view class="pro-info">
+    <view class="pro">
+      <image src="{{goods.pics[0]}}"></image>
+      <view class="info">
+        <view class="title">
+          {{goods.name}}
+          <view class="attr">规格：{{goods.use_attr == 1 ? goods.attr_list[attr_index].value : '默认'}}</view>
+        </view>
+        <view class="price">
+          <view>¥{{goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price}}
+            <text>x {{num}}</text>
+          </view>
+          <view class="carriage">运费：¥{{goods.carriage}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="foot">
+    <view class="left">
+      总计：
+      <text>¥{{(goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price) * num + goods.carriage}}</text>
+    </view>
+    <button bindtap="purchase" loading="{{purchase_loading}}" class="pay-btn">支付</button>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+<view>
+  <view class="up-pic">
+    <view class="flex pic-box">
+      <block wx:for="{{pics}}" wx:key="index">
+        <view class="ap-box">
+          <view class="add-pic">
+            <image class="add-pic" src="{{item}}"></image>
+            <view class="img-de" data-deindex="{{index}}" bindtap="imgDelete1">
+              <image class="img" src="/images/close.png"></image>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class="add-pic plus" bindtap="addPic1" wx:if="{{pics.length < 9}}">
+        <icon class="iconfont iconjia"/>
+      </view>
+    </view>
+  </view>
+  <input bindinput="bind_input" data-name="title" placeholder="标题" maxlength="25"/>
+  <textarea bindinput="bind_input" data-name="desc" auto-height maxlength="200" cursor-spacing="50" placeholder="想要记点什么呢..." class="note-content" style="{{plat == 'ios' ? 'margin-left: -10rpx' : ''}}" />
+  <button bindtap="uploadShowWorks" class="pub-btn">发布</button>
+</view>

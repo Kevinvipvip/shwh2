@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="welcome">
+    <view class="title">欢迎来到洞主！</view>
+    <view class="sub-title">请选择您的身份，开启个性化定制</view>
+  </view>
+  <view class="role-box">
+    <navigator url="/pages/apply2/apply2?role=1" class="role role1">
+      <view class="text">博物馆</view>
+      <view class="icon-box">
+        <image src="/icons/home-tab1.png" class="icon" mode="widthFix"></image>
+      </view>
+    </navigator>
+    <navigator url="/pages/apply2/apply2?role=2" class="role role1">
+      <view class="text">文创机构</view>
+      <view class="icon-box">
+        <image src="/icons/home-tab2.png" class="icon" mode="widthFix"></image>
+      </view>
+    </navigator>
+    <navigator url="/pages/apply2/apply2?role=3" class="role role1">
+      <view class="text">设计师</view>
+      <view class="icon-box">
+        <image src="/icons/home-tab3.png" class="icon" mode="widthFix"></image>
+      </view>
+    </navigator>
+    <navigator url="/pages/apply2/apply2?role=4" class="role role1">
+      <view class="text">工厂</view>
+      <view class="icon-box">
+        <image src="/icons/home-tab4.png" class="icon" mode="widthFix"></image>
+      </view>
+    </navigator>
+  </view>
+</view>

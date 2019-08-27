@@ -1,0 +1,54 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="order-status">订单{{order.status_text}}</view>
+  <view class="user-info">
+    <view class="nt">
+      <view class="name">{{order.receiver}}</view>
+      <view class="tel">{{order.tel}}</view>
+    </view>
+    <view class="address">地址：{{order.address}}</view>
+  </view>
+  <view class="order">
+    <view class="bian">
+      <view class="no">订单编号：{{order.pay_order_sn}}</view>
+      <view bindtap="copy" class="copy-btn">复制</view>
+    </view>
+    <view class="time">下单时间：{{order.create_time}}</view>
+  </view>
+  <view class="statistics">
+    <view class="line">
+      <view class="left">商品总额</view>
+      <view class="right"><text class="bi">¥</text>{{order.total_price - order.carriage}}</view>
+    </view>
+    <view class="line">
+      <view class="left">商品数量</view>
+      <view class="right">{{order.amount}}件</view>
+    </view>
+    <view class="line">
+      <view class="left">运费</view>
+      <view class="right"><text class="bi">¥</text>{{order.carriage}}</view>
+    </view>
+    <view class="zong">
+      <view class="label">合计：</view>
+      <view class="price"><text class="bi">¥</text>{{order.total_price}}</view>
+    </view>
+  </view>
+  <view class="goods-list">
+    <view class="pro" wx:for="{{order.child}}">
+      <image src="{{item.cover}}" class="pic" mode="aspectFill"></image>
+      <view class="info">
+        <view class="shang">
+          <view class="title">{{item.goods_name}}</view>
+          <view class="attr">规格：{{item.attr}}</view>
+        </view>
+        <view class="xia">
+          <view class="price">¥{{item.unit_price}}</view>
+          <view class="amount">x{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

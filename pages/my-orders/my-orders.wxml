@@ -1,0 +1,66 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="tab">
+    <view class="tab-item {{status === '' ? 'active' : ''}}" data-status="{{''}}" bindtap="tab_change">全部</view>
+    <view class="tab-item {{status === 0 ? 'active' : ''}}" data-status="{{0}}" bindtap="tab_change">待付款</view>
+    <view class="tab-item {{status === 1 ? 'active' : ''}}" data-status="{{1}}" bindtap="tab_change">待发货</view>
+    <view class="tab-item {{status === 2 ? 'active' : ''}}" data-status="{{2}}" bindtap="tab_change">待收货</view>
+    <view class="tab-item {{status === 3 ? 'active' : ''}}" data-status="{{3}}" bindtap="tab_change">已完成</view>
+  </view>
+  <view class="order-list">
+    <navigator url="/pages/order-detail/order-detail?id={{item.id}}" class="order" wx:for="{{order_list}}" wx:key="id">
+      <view class="order-info">
+        <div class="order-num">订单号：{{item.pay_order_sn}}</div>
+        <view class="status">{{item.status_text}}</view>
+      </view>
+      <view class="pro" wx:for="{{item.child}}" wx:for-item="goods" wx:key="index">
+        <image src="{{goods.cover}}" class="pic" mode="aspectFill"></image>
+        <view class="info">
+          <view class="shang">
+            <view class="title">
+              {{goods.goods_name}}
+              <view class="attr">规格：{{goods.attr}}</view>
+            </view>
+            <view class="right">
+              <view class="price">¥{{goods.unit_price}}</view>
+              <view class="amount">x{{goods.num}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="carriage">运费：¥{{item.carriage}}</view>
+      <view class="count">合计：¥{{item.total_price}}</view>
+      <view class="btn-box">
+        <block wx:if="{{item.status == 0}}">
+          <view catchtap="orderCancel" data-goods="{{item}}" class="normal">取消订单</view>
+          <view catchtap="orderPay" data-goods="{{item}}" class="highlight">付款</view>
+        </block>
+        <block wx:elif="{{item.status == 1}}">
+          <view catchtap="refund_click" data-goods="{{item}}" class="normal">退款</view>
+        </block>
+        <block wx:elif="{{item.status == 2}}">
+          <view catchtap="orderConfirm" data-goods="{{item}}" class="highlight">收货</view>
+        </block>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无订单
+  </view>
+
+  <view bindtap="hide_refund" class="modal" wx:if="{{refund_show}}">
+    <view catchtap="do_nothing" class="content">
+      <view class="title">退款理由</view>
+      <textarea bindinput="bind_input" fixed="true" data-name="reason" value="{{reason}}" auto-height maxlength="50" cursor-spacing="50" placeholder="请输入理由" style="padding: {{textarea_padding}};"/>
+      <button bindtap="refundApply">确定</button>
+    </view>
+  </view>
+</view>

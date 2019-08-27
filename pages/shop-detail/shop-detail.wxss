@@ -1,0 +1,366 @@
+@import '/wxParse/wxParse.wxss';
+
+.page {
+    background: #f6f7f9;
+    padding-bottom: 100rpx;
+}
+
+.top-swiper {
+    height: 600rpx;
+    background: #fff;
+}
+
+.top-swiper swiper-item {
+    display: flex;
+    align-items: center;
+}
+
+.top-swiper image {
+    width: 100%;
+}
+
+.info-box {
+    margin-top: 30rpx;
+    color: #333;
+}
+
+.info-box .pt {
+    padding: 25rpx;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-box .pt .price {
+    color: #fe2043;
+    font-weight: bold;
+    font-size: 35rpx;
+}
+
+.info-box .pt .price .origin-price {
+    color:#888;
+    font-size:28rpx;
+    text-decoration:line-through;
+    margin-left:5rpx;
+}
+
+.info-box .pt .title {
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.info-box .stock-carriage {
+    padding: 0 25rpx 25rpx;
+    background: #fff;
+    display: flex;
+}
+
+.info-box .stock-carriage > view {
+    margin-right: 20rpx;
+}
+
+.info-box .desc {
+    margin-top: 20rpx;
+    background: #fff;
+    padding: 25rpx;
+    font-size: 28rpx;
+}
+
+.title-redtiao::before {
+    content: '';
+    border-left: 5rpx solid #fe2043;
+    margin-right: 10rpx;
+}
+
+.info-box .desc .title {
+    line-height: 1.1;
+    font-weight: bold;
+    font-size: 30rpx;
+    margin-bottom: 25rpx;
+}
+
+.info-box .params {
+    display: none;
+    background: #fff;
+    margin-top: 20rpx;
+    padding: 25rpx;
+}
+
+.info-box .params .title {
+    line-height: 1.1;
+    font-weight: bold;
+    font-size: 30rpx;
+    margin-bottom: 25rpx;
+}
+
+.info-box .params .line {
+    display: flex;
+    line-height: 1.5;
+    margin-bottom: 20rpx;
+    font-size: 26rpx;
+}
+
+.info-box .params .line:last-child {
+    margin-bottom: 0;
+}
+
+.info-box .params .name {
+    color: #9b9b9b;
+    width: 110rpx;
+    flex-shrink: 0;
+}
+
+.info-box .params .value {
+    flex-shrink: 1;
+    margin-left: 25rpx;
+}
+
+.info-box .content {
+    background: #fff;
+    margin-top: 20rpx;
+    padding: 25rpx;
+}
+
+.info-box .content .title {
+    line-height: 1.1;
+    font-weight: bold;
+    font-size: 30rpx;
+    margin-bottom: 25rpx;
+}
+
+.info-box .content .content-wrapper image {
+    max-width: 100%;
+}
+
+.foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    box-shadow: -2rpx 0 3rpx #eee;
+}
+
+.foot .shop-car {
+    width:150rpx;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:#fff;
+    align-items:center;
+    color:#888;
+    padding:5rpx 10rpx 5rpx;
+    box-sizing:border-box;
+    position:relative;
+}
+
+.foot .shop-car .iconfont {
+    font-size:45rpx;
+    padding-bottom: 5rpx;
+}
+
+.foot .shop-car .sub {
+    position:absolute;
+    right:34rpx;
+    top:1rpx;
+    width:32rpx;
+    height:32rpx;
+    color:#fff;
+    border-radius:50%;
+    background:#ff2740;
+    display:flex;
+    font-size:20rpx;
+    align-items:center;
+    justify-content:center;
+    line-height: 1;
+}
+
+.foot .shop-car view {
+}
+
+.foot .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32rpx;
+}
+
+.foot .add {
+    flex-grow: 1;
+    background: #ff7e8d;
+    color: #fff;
+}
+
+.foot .buy {
+    flex-grow: 1;
+    background: #ff2740;
+    color: #fff;
+}
+
+.param-modal {
+    position:fixed;
+    top:0;
+    left:0;
+    box-sizing:border-box;
+    width:100%;
+    height:100vh;
+    background: rgba(0, 0, 0, 0);
+    transition: 0.2s all;
+}
+
+.param-modal.active {
+    background:rgba(0, 0, 0, 0.7);
+}
+
+.param-modal .content {
+    position:absolute;
+    bottom:0;
+    background:#fff;
+    width:100%;
+    overflow:visible;
+    transition: 0.2s all;
+    transform: translateY(100%);
+}
+
+.param-modal.active .content {
+    transform: translateY(0);
+}
+
+.param-modal .content .close {
+    position:absolute;
+    color:#bbb;
+    right:30rpx;
+    top:9rpx;
+    width:50rpx;
+    height:50rpx;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.param-modal .content .close .iconfont {
+    font-size:26rpx;
+}
+
+.param-modal .content .header {
+    display:flex;
+    overflow:visible;
+}
+
+.param-modal .content .header .cover {
+    width:230rpx;
+    height:230rpx;
+    margin-top:-57rpx;
+    margin-left:39rpx;
+    border-radius:10rpx;
+}
+
+.param-modal .content .header .info {
+    flex-grow:1;
+    margin-left:24rpx;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.param-modal .header .info .price {
+    color:#fe2043;
+    font-size:34rpx;
+}
+
+.param-modal .header .info .choose-text {
+    font-size:28rpx;
+    color:#333;
+    margin-top:12rpx;
+}
+
+.param-modal .header .info .stock {
+    font-size: 24rpx;
+    color :#888;
+    margin-top: 13rpx;
+}
+
+.param-modal .param {
+    border-top:1rpx solid #eee;
+    margin:30rpx 0 30rpx 20rpx;
+    padding:20rpx 10rpx 0;
+    font-size:26rpx;
+}
+
+.param-modal .param .param-name {
+    color:#666;
+}
+
+.param-modal .param .param-list {
+    display:flex;
+    margin-top:19rpx;
+    flex-wrap:wrap;
+}
+
+.param-modal .param .param-list > view {
+    font-size:28rpx;
+    background:#f6f6f6;
+    padding:6rpx 24rpx;
+    border-radius:30rpx;
+    border: 1rpx solid #f6f6f6;
+    margin-right:20rpx;
+    box-sizing:border-box;
+    margin-bottom:20rpx;
+}
+
+.param-modal .param .param-list > view.active {
+    color:#fe2043;
+    background:#fff;
+    border:1rpx solid #fe2043;
+}
+
+.param-modal .param .param-list > view.disabled {
+    color: #bbbb;
+}
+
+.param-modal .amount-block {
+    border-top:1rpx solid #eee;
+    margin:30rpx 0 30rpx 20rpx;
+    padding:20rpx 10rpx;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.param-modal .amount-block .label {
+    font-size:30rpx;
+}
+
+.param-modal .amount-block .amount-box {
+    display:flex;
+    align-items:center;
+    color:#666;
+    align-self:flex-end;
+}
+
+.param-modal .amount-block .amount-box .amount {
+    position:relative;
+    top:-2rpx;
+    width:125rpx;
+    text-align:center;
+    color:#000;
+    font-size:34rpx;
+}
+
+.param-modal .amount-block .amount-box .iconfont {
+    font-size:50rpx;
+}
+
+.param-modal .amount-block .amount-box .iconfont.disabled {
+    color: #bbb;
+}
+
+.param-modal .param-buy-btn {
+    background:#fd2941;
+    color:white;
+    border-radius:0;
+    font-size:32rpx;
+    line-height:3.3;
+    margin-top:60rpx;
+}

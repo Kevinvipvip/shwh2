@@ -1,0 +1,205 @@
+.page {
+    background: #f6f7f9;
+    min-height: 100vh;
+    padding-bottom:120rpx;
+    box-sizing: border-box;
+    padding-top: 1rpx;
+}
+
+.car-box {
+}
+
+.car-box .car {
+    display: flex;
+    background: #fff;
+    padding: 15rpx;
+    margin-top: 20rpx;
+}
+
+.car-box .check-box {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    width: 50rpx;
+}
+
+.car-box .check-box icon {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.car-box .check-box .no-check {
+    width: 47rpx;
+    height: 47rpx;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 2rpx solid #bbb;
+    flex-shrink: 0;
+}
+
+.car-box .car image {
+    flex-shrink: 0;
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 10rpx;
+    margin-left: 15rpx;
+}
+
+.car-box .car .info {
+    flex-grow: 1;
+    margin-left: 25rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.car-box .car .info .title {
+    color: #333;
+    font-size: 25rpx;
+    line-height: 1.5;
+}
+
+.car-box .car .info .title .attr {
+    color: #888;
+    margin-top: 10rpx;
+    font-size:24rpx;
+}
+
+.car-box .car .info .price-box {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+.car-box .car .info .price-box .price {
+    color: #fe2043;
+    font-size: 30rpx;
+}
+
+.car-box .car .info .price-box .price .carriage {
+    color:#888;
+    font-size:24rpx;
+    margin-bottom:5rpx;
+}
+
+.car-box .car .info .price-box .price .bi {
+    margin-right: 5rpx;
+}
+
+.car-box .car .info .price-box .amount-box {
+    display:flex;
+    align-items:center;
+    color:#666;
+    align-self:flex-end;
+}
+
+.car-box .car .info .amount-box .amount {
+    position:relative;
+    top:4rpx;
+    width:50rpx;
+    text-align:center;
+    color:#000;
+    font-size:28rpx;
+}
+
+.car-box .car .info .amount-box .iconfont {
+    font-size: 38rpx;
+}
+
+.car-box .car .info .amount-box .iconfont.disabled {
+    color: #bbb;
+}
+
+.no-shop {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40rpx;
+    color: #666;
+}
+
+.no-shop .iconfont {
+    font-size:100rpx;
+}
+
+.no-shop .text {
+    font-size:28rpx;
+    margin-top:23rpx;
+}
+
+.settle {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: -2rpx 0 3rpx #eee;
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    height: 100rpx;
+}
+
+.settle .check-all {
+    display:flex;
+    align-items:center;
+    padding:15rpx 15rpx 15rpx 25rpx;
+}
+
+.settle .check-all icon {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.settle .check-all .no-check {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 1rpx solid #bbb;
+    flex-shrink: 0;
+}
+
+.settle .check-all .all-text {
+    margin-left:15rpx;
+    font-size:30rpx;
+}
+
+.settle .right {
+    display: flex;
+}
+
+.settle .right .price-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 7rpx;
+}
+
+.settle .right .yun-price, .settle .right .total {
+    display:flex;
+    align-items:center;
+    margin-right:12rpx;
+    font-size:26rpx;
+}
+
+.settle .right .total {
+    margin-top: 5rpx;
+}
+
+.settle .right .price {
+    color: #fe2043;
+}
+
+.settle .settle-btn {
+    background:#fe2a41;
+    color:#fff;
+    margin:0;
+    border-radius:0;
+    padding:0;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    font-size:32rpx;
+    width:190rpx;
+    justify-content:center;
+}

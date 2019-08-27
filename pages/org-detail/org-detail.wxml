@@ -1,0 +1,97 @@
+<view class="page">
+  <view class="header">
+    <image src="{{org.cover}}" mode="widthFix"></image>
+    <view class="info">
+      <view class="up">
+        <view class="name">{{org.name}}</view>
+        <view class="org">{{org.org}}</view>
+      </view>
+      <view class="desc">{{org.desc}}</view>
+    </view>
+  </view>
+  <view class="tab">
+    <view class="tab-item {{active_tab == 1 ? 'active' : ''}}" data-tab="{{1}}" bindtap="tab_change">活动</view>
+    <view class="tab-item {{active_tab == 2 ? 'active' : ''}}" data-tab="{{2}}" bindtap="tab_change">笔记</view>
+  </view>
+  <view class="block" wx:if="{{active_tab == 1}}">
+    <view class="list">
+      <navigator url="/pages/req-detail/req-detail?id={{item.id}}" class="item" wx:for="{{req_workList}}" wx:key="id">
+        <image src="{{item.cover}}" mode="widthFix" lazy-load="{{true}}"></image>
+        <view class="info">
+          <view class="title">{{item.title}}</view>
+          <view class="can">
+            <icon class="iconfont iconqunliao"/>{{item.part_num}}人参与
+          </view>
+          <view class="bottom">
+            <view class="time">{{item.start_time}}日 ~ {{item.end_time}}日</view>
+            <view class="attestation">{{item.user_org}}</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="nomore" wx:if="{{req_nomore}}">
+      已经没有更多了哦
+    </view>
+
+    <view class="nodata" wx:if="{{req_nodata}}">
+      暂无活动
+    </view>
+  </view>
+
+  <view class="block note-box" wx:if="{{active_tab == 2}}">
+    <view class="list">
+      <view class="left">
+        <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{left_note_list}}"
+                   wx:key="id">
+          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+          </view>
+          <view class="word">
+            {{item.title}}
+          </view>
+          <view class="xia">
+            <view class="left">
+              <image src="{{item.avatar}}" class="header"></image>
+              {{item.nickname}}
+            </view>
+            <div class="right">
+              <icon class="iconfont iconxin2"/>
+              {{item.like}}
+            </div>
+          </view>
+        </navigator>
+      </view>
+      <view class="right">
+        <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{right_note_list}}"
+                   wx:key="id">
+          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+          </view>
+          <view class="word">
+            {{item.title}}
+          </view>
+          <view class="xia">
+            <view class="left">
+              <image src="{{item.avatar}}" class="header"></image>
+              {{item.nickname}}
+            </view>
+            <div class="right">
+              <icon class="iconfont iconxin2"/>
+              {{item.like}}
+            </div>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+
+    <view class="nomore" wx:if="{{show_nomore}}">
+      已经没有更多了哦
+    </view>
+
+    <view class="nodata" wx:if="{{show_nodata}}">
+      暂无笔记
+    </view>
+  </view>
+</view>

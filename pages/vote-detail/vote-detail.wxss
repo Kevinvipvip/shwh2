@@ -1,0 +1,62 @@
+page {
+}
+
+.page {
+    padding: 0 30rpx 25rpx;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.user .avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+
+.user .nickname {
+    margin-left: 15rpx;
+}
+
+.work-title {
+    margin-top: 20rpx;
+}
+
+.work-desc {
+    margin-top: 20rpx;
+    color: #888;
+}
+
+.pics {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20rpx;
+}
+
+.pics image {
+    width:210rpx;
+    height: 210rpx;
+    margin-right:20rpx;
+    margin-bottom: 20rpx;
+}
+
+.pics image:nth-child(3) {
+    margin-right: 0;
+}
+
+.btn-box {
+    padding-bottom: 50rpx;
+}
+
+.btn-box .btn-vote {
+    width:80%;
+    border-radius:50rpx;
+    font-size:32rpx;
+    background:#ff9f38;
+    margin-top:70rpx;
+    line-height:2.8;
+    color:#fff;
+}

@@ -1,0 +1,88 @@
+.page {
+    color:#333;
+    background:#f5f5f5;
+    box-sizing:border-box;
+    min-height:100vh;
+}
+
+.address-list {
+    padding-left: 25rpx;
+    background:#fff;
+}
+
+.address-list .address {
+    display:flex;
+    align-items:center;
+    border-bottom:1rpx solid #eee;
+    padding:30rpx 25rpx 30rpx 0;
+    justify-content:space-between;
+}
+
+.address-list .address:last-child {
+    border-bottom: 0;
+}
+
+.address-list .address .info {
+    font-size:26rpx;
+    width: 90%;
+}
+
+.address-list .address .info .top {
+    display:flex;
+    justify-content:space-between;
+}
+
+.address-list .address .info .top .nickname {
+    font-size: 28rpx;
+}
+
+.address-list .address .info .top .tel {
+
+}
+
+.address-list .address .info .detail {
+    margin-top:14rpx;
+    line-height:1.5;
+    text-align: justify;
+}
+
+.address-list .address .info .detail .default {
+    display: inline;
+    color: #a83f33;
+}
+
+.address-list .address .edit {
+    margin-left:20rpx;
+    flex-shrink:0;
+}
+
+.address-list .address .edit .iconfont {
+    font-size:38rpx;
+    color:#222;
+}
+
+.add-address {
+    position:absolute;
+    width:100%;
+    bottom:0;
+    display:flex;
+    justify-content:space-around;
+    padding:10px 0;
+    background:#fff;
+    border-top:1rpx solid #ddd;
+}
+
+.add-address button {
+    font-size:30rpx;
+    width:36%;
+}
+
+.add-address .hand {
+    border:1rpx solid #a83f33;
+    color: #a83f33;
+}
+
+.add-address .wx {
+    border: 1rpx solid #51c332;
+    color: #51c332;
+}

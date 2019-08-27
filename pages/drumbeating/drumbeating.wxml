@@ -1,0 +1,8 @@
+<view class="page">
+  <view bindtap="to_act" data-act="{{item}}" class="act" wx:for="{{activity_list}}" wx:key="id">
+    <image src="{{item.cover}}" mode="widthFix" class="cover"></image>
+    <view class="info">
+      <view class="title one-line-ellipsis">{{item.title}}</view>
+    </view>
+  </view>
+</view>

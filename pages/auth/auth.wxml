@@ -1,0 +1,14 @@
+<!-- 作为启动页 -->
+
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="auth-box" wx:if="{{!auth}}">
+  <image src="/images/launch.jpg" mode="aspectFill"></image>
+  <button bindgetuserinfo="auth" open-type="getUserInfo" class="auth-btn"></button>
+</view>
+
+<!--<view class="update">-->
+<!--  <view>系统升级中，请耐心等候{{update_dot}}</view>-->
+<!--</view>-->

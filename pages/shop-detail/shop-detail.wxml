@@ -1,0 +1,109 @@
+<view class="page">
+  <swiper indicator-dots="{{true}}"
+          autoplay="{{true}}"
+          class="top-swiper">
+    <swiper-item wx:for="{{goods.pics}}" wx:key="index">
+      <image src="{{item}}" mode="widthFix"></image>
+    </swiper-item>
+  </swiper>
+  <view class="info-box">
+    <view class="pt">
+      <view class="title">{{goods.name}}</view>
+      <view class="price">
+        ¥{{goods.price}}
+        <text class="origin-price" wx:if="{{goods.price != goods.origin_price}}">¥{{goods.origin_price}}</text>
+      </view>
+    </view>
+
+    <view class="stock-carriage">
+      <view>运费：¥{{goods.carriage}}</view>
+      <view>售出：{{goods.sales}}</view>
+      <view>库存：{{goods.stock}}</view>
+    </view>
+
+    <view class="desc">
+      <view class="title title-redtiao">商品描述</view>
+      <view>
+        {{goods.desc}}
+      </view>
+    </view>
+    <view class="params">
+      <view class="title title-redtiao">规格参数</view>
+      <view class="params-wrapper">
+        <view class="line">
+          <view class="name">商品名称</view>
+          <view class="value">啥啥翡翠亮肤乳</view>
+        </view>
+        <view class="line">
+          <view class="name">容量</view>
+          <view class="value">100ml</view>
+        </view>
+        <view class="line">
+          <view class="name">版本</view>
+          <view class="value">清爽型 日本版</view>
+        </view>
+        <view class="line">
+          <view class="name">是否为特殊用途化妆品</view>
+          <view class="value">否</view>
+        </view>
+        <view class="line">
+          <view class="name">功效</view>
+          <view class="value">提亮肤色</view>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class="title title-redtiao">商品详情</view>
+      <view class="content-wrapper">
+        <import src="../../wxParse/wxParse.wxml"/>
+        <template is="wxParse" data="{{wxParseData:rich_text.nodes}}"/>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot">
+    <view bindtap="to_shop_car" class="shop-car">
+      <icon class="iconfont icongouwuche"></icon>
+      <view>购物车</view>
+    </view>
+    <view bindtap="cartAdd" class="add btn">
+      加入购物车
+    </view>
+    <view bindtap="buy" class="buy btn">
+      立即购买
+    </view>
+  </view>
+
+  <view catchtap="hide" catchtouchmove class="param-modal {{attr_active ? 'active' : ''}}" wx:if="{{attr_show}}">
+    <view catchtap class="content">
+      <view bindtap="hide" class="close">
+        <icon class="iconfont iconcha"/>
+      </view>
+      <view class="header">
+        <image src="{{goods.pics[0]}}" class="cover" mode="aspectFill"></image>
+        <view class="info">
+          <view class="price">¥{{goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price}}</view>
+          <view class="choose-text" wx:if="{{goods.use_attr == 1}}">已选：{{goods.attr_list[attr_index].value}}</view>
+          <view class="stock" wx:if="{{goods.use_attr == 1}}">库存：{{goods.attr_list[attr_index].stock}}</view>
+        </view>
+      </view>
+      <view class="param" wx:if="{{goods.use_attr == 1}}">
+        <view class="param-name">
+          {{goods.attr}}
+        </view>
+        <view class="param-list">
+          <view bindtap="attr_choose" data-index="{{index}}" class="{{attr_index == index ? 'active' : ''}} {{item.stock == 0 ? 'disabled' : ''}}" wx:for="{{goods.attr_list}}" wx:key="id">{{item.value}}</view>
+        </view>
+      </view>
+      <view class="amount-block">
+        <view class="label">购买数量</view>
+        <view class="amount-box">
+          <icon bindtap="sub" data-id="{{item.id}}" data-index="{{index}}" class="iconfont iconjian {{amount == 1 ? 'disabled' : ''}}"/>
+          <view class="amount">{{amount}}</view>
+          <icon bindtap="add" data-id="{{item.id}}" data-index="{{index}}" class="iconfont iconjia2 {{(amount == goods.limit || (goods.use_attr == 1 ? amount == goods.attr_list[attr_index].stock : amount == goods.stock)) ? 'disabled' : ''}}"/>
+        </view>
+      </view>
+      <button bindtap="buy_btn" class="param-buy-btn">{{buy_type == 1 ? '立即购买' : '确定加入'}}</button>
+    </view>
+  </view>
+</view>

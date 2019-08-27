@@ -1,0 +1,44 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="tab">
+    <view class="tab-item {{type == 3 ? 'active' : ''}}" data-type="{{3}}" bindtap="tab_change">全部</view>
+    <view class="tab-item {{type === 1 ? 'active' : ''}}" data-type="{{1}}" bindtap="tab_change">退款中</view>
+    <view class="tab-item {{type === 2 ? 'active' : ''}}" data-type="{{2}}" bindtap="tab_change">已退款</view>
+  </view>
+  <view class="order-list">
+    <view class="order" wx:for="{{order_list}}" wx:key="id">
+      <view class="order-info">
+        <div class="order-num">订单号：{{item.pay_order_sn}}</div>
+        <view class="status">{{item.type_text}}</view>
+      </view>
+      <view class="pro" wx:for="{{item.child}}" wx:for-item="goods" wx:key="goods_id">
+        <image src="{{goods.cover}}" class="pic" mode="aspectFill"></image>
+        <view class="info">
+          <view class="shang">
+            <view class="title">
+              {{goods.goods_name}}
+              <view class="attr">规格：{{goods.attr}}</view>
+            </view>
+            <view class="right">
+              <view class="price">¥{{goods.unit_price}}</view>
+              <view class="amount">x{{goods.num}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="carriage">运费：¥{{item.carriage}}</view>
+      <view class="count">合计：¥{{item.total_price}}</view>
+    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无订单
+  </view>
+</view>

@@ -1,0 +1,18 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="user">
+    <image src="{{work.avatar}}" class="avatar"></image>
+    <view class="nickname">{{work.nickname}}</view>
+  </view>
+  <view class="work-title">作品名称：{{work.title}}</view>
+  <view class="work-desc">作品描述：{{work.desc}}</view>
+  <view class="pics">
+    <image bindtap="preview" data-index="{{index}}" src="{{item}}" mode="aspectFill" wx:for="{{work.pics}}" wx:key="index"></image>
+  </view>
+  <view class="btn-box" wx:if="{{work.type == 2}}">
+    <button bindtap="vote" class="btn-vote">给他投票</button>
+  </view>
+</view>

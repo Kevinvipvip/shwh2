@@ -1,0 +1,172 @@
+.body {
+    padding: 0 35rpx;
+    font-size: 26rpx;
+}
+
+.body > .title {
+    font-size: 34rpx;
+    font-weight: bold;
+    margin-bottom: 30rpx;
+}
+
+.apply-form {
+    display:block;
+}
+
+.placeholder {
+    color: #aaa;
+}
+
+.field-group {
+    border:2rpx solid #ddd;
+    border-radius:15rpx;
+    overflow:hidden;
+    margin-top:28rpx;
+}
+
+.field-group .field-title {
+    font-size:30rpx;
+    font-weight:bold;
+    text-align:center;
+    padding-top:18rpx;
+}
+
+.input-group {
+    background: #fff;
+    position: relative;
+    border-bottom:1rpx solid #eee;
+    padding: 20rpx 0;
+}
+
+.input-group:last-child, .input-group.no-border {
+    border-bottom: none;
+}
+
+.input-group .input-group-label {
+    padding:0;
+    line-height:inherit;
+    width:130rpx;
+    white-space: wrap;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.input-group .input-group-label.require::before {
+    content: '*';
+    color: #f00;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-weight: bold;
+    position: relative;
+    top: 6rpx;
+}
+
+.input-group input {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.input-group textarea {
+    border: 1rpx solid #ddd;
+    width: 90%;
+    min-height: 150rpx;
+    padding: 15rpx;
+    margin-top: 15rpx;
+}
+
+.input-group-list {
+    border-top: 1rpx solid #e9e9e9;
+}
+
+.input-group-list .input-group:last-child:after {
+    display: none;
+}
+
+.flex-grow-1 {
+    margin-left:32rpx;
+    flex-grow:1;
+    margin-right:40rpx;
+}
+
+.btn-box {
+    padding-bottom: 50rpx;
+}
+
+.submit-btn {
+    border-radius:10rpx;
+    color:#fff;
+    font-size:32rpx;
+    border-radius:10rpx;
+    margin-top:30rpx;
+    background:#b83809;
+}
+
+/* 我写的 */
+.input-group-list {
+    background:#fff;
+    border-top: none;
+}
+
+.input-group {
+    display: flex;
+}
+
+/* 默认收货地址 */
+.defualt-address {
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+}
+
+.defualt-address .check-box {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    width: 50rpx;
+    margin-right: 15rpx;
+}
+
+.defualt-address .check-box icon {
+    box-sizing: border-box;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.defualt-address .check-box .no-check {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 2rpx solid #bbb;
+    flex-shrink: 0;
+}
+
+.citys {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.citys picker {
+    flex-grow: 1;
+}
+
+.citys picker .picker {
+    line-height: 50rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.citys .iconyou {
+    flex-shrink: 0;
+    position:relative;
+    top:-5rpx;
+    color:#666;
+    margin-left: 5rpx;
+}

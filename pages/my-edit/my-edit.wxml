@@ -1,0 +1,74 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="form">
+    <view class="input-item">
+      <view class="label">头像</view>
+      <view class="you avatar-you">
+        <view class="upload-box">
+          <view bindtap="img_upload" data-name="avatar" class="img-box">
+            <image src="{{avatar}}" class="img" mode="aspectFill"></image>
+          </view>
+        </view>
+        <image src="/icons/you.png" class="arrow-you"></image>
+      </view>
+    </view>
+    <view bindtap="show_input" data-name="nickname" class="input-item">
+      <view class="label">昵称</view>
+      <view class="you">
+        <view class="value">{{nickname}}</view>
+        <image src="/icons/you.png" class="arrow-you"></image>
+      </view>
+    </view>
+    <view bindtap="show_input" data-name="realname" class="input-item">
+      <view class="label">姓名</view>
+      <view class="you">
+        <view class="value">{{realname || ''}}</view>
+        <image src="/icons/you.png" class="arrow-you"></image>
+      </view>
+    </view>
+    <view class="input-item">
+      <view class="label">性别</view>
+      <view class="you">
+        <picker bindchange="sex_change" value="{{sex}}" range="{{sex_data}}" range-key="name">
+          <view class="value">
+            {{sex == -1 ? '未知' : sex_data[sex].name}}
+          </view>
+        </picker>
+        <image src="/icons/you.png" class="arrow-you"></image>
+      </view>
+    </view>
+    <view bindtap="show_input" data-name="age" class="input-item">
+      <view class="label">年龄</view>
+      <view class="you">
+        <view class="value">{{age}}</view>
+        <image src="/icons/you.png" class="arrow-you"></image>
+      </view>
+    </view>
+    <view bindtap="show_input" data-name="tel" class="input-item">
+      <view class="label">手机号</view>
+      <view class="you">
+        <view class="value">{{tel}}</view>
+        <image src="/icons/you.png" class="arrow-you"></image>
+      </view>
+    </view>
+    <view bindtap="show_input" data-name="desc" class="input-item">
+      <view class="label">个性签名</view>
+      <view class="you">
+        <view class="value">{{desc}}</view>
+        <image src="/icons/you.png" class="arrow-you"></image>
+      </view>
+    </view>
+    <button bindtap="modMyInfo" class="submit">提交</button>
+  </view>
+
+  <view bindtap="hide_input_modal" class="modal" wx:if="{{input_modal}}">
+    <view catchtap class="content">
+      <view class="title">请输入</view>
+      <input bindinput="bind_input" type="{{input_type}}" focus="{{focus}}" maxlength="{{maxlength}}" value="{{input_value}}" bindconfirm="input_done" />
+      <button bindtap="input_done">确定</button>
+    </view>
+  </view>
+</view>

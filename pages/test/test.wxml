@@ -1,0 +1,5 @@
+<view class="page">
+  <canvas canvas-id="myQrcode" style="width: 300rpx; height: 300rpx;"></canvas>
+
+  <image src="{{cc}}" style="width: 300rpx; height: 300rpx;"></image>
+</view>

@@ -1,0 +1,119 @@
+page {
+    padding-top:1rpx;
+    box-sizing: border-box;
+}
+
+.release-btn {
+    position:fixed;
+    top:103rpx;
+    right:27rpx;
+    font-size:26rpx;
+    z-index:1;
+    background:#888;
+    border-radius:50%;
+    opacity:1;
+    width:100rpx;
+    height:100rpx;
+    box-shadow:border-box;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    flex-direction:column;
+    color:white;
+}
+
+.block {
+}
+
+.block > .title {
+    font-size: 36rpx;
+    line-height: 2;
+}
+
+.block > .title:before {
+    content: '';
+    height: 18rpx;
+    border-left: 10rpx solid #000;
+    margin-right: 10rpx;
+}
+
+.block .list {
+    margin-top: 20rpx;
+}
+
+.block .list .item {
+    background:#fff;
+    margin-bottom:59rpx;
+    position:relative;
+    border-bottom:1rpx solid #ddd;
+    overflow: hidden;
+}
+
+.block .list .item:last-child {
+    margin-bottom: 0;
+}
+
+.block .list .item .status {
+    position: absolute;
+    right: 15rpx;
+    top: 15rpx;
+    padding: 8rpx 18rpx;
+    background: #ddd;
+    border-radius: 5rpx;
+}
+
+.block .list .item .no {
+    color: red;
+}
+
+.block .list .item .wait {
+    color: #ff7a09;
+}
+
+.block .list .item .edit {
+    position: absolute;
+    left: 15rpx;
+    top: 15rpx;
+    padding: 8rpx 18rpx;
+    background: #ddd;
+    border-radius: 5rpx;
+    color: #666;
+}
+
+.block .item image {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.block .item .info {
+    padding: 20rpx;
+}
+
+.block .item .info .title {
+    font-size: 34rpx;
+}
+
+.block .item .info .can {
+}
+
+.block .item .info .can .iconfont {
+    font-size:32rpx;
+    color:#444;
+    margin-right:8rpx;
+    vertical-align:-2rpx;
+}
+
+.block .item .info .bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14rpx;
+    color: #888;
+}
+
+.block .item .info .time {
+}
+
+.block .item .info .attestation {
+
+}

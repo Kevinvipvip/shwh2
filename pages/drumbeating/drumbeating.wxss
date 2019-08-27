@@ -1,0 +1,31 @@
+.page {
+    background:#f2f2f2;
+    padding:25rpx;
+    min-height:100vh;
+    box-sizing:border-box;
+}
+
+.act {
+    background:#fff;
+    border-radius:15rpx;
+    overflow:hidden;
+    box-shadow:3rpx 10rpx 30rpx #ddd;
+    margin-bottom:40rpx;
+}
+
+.act .cover {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.act .info {
+    display:flex;
+    padding:20rpx 25rpx;
+    justify-content: center;
+    align-items:center;
+}
+
+.act .info .title {
+    font-size:30rpx;
+    /*font-weight:bold;*/
+}

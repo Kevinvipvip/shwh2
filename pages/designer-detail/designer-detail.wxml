@@ -1,0 +1,79 @@
+<view class="page">
+  <view class="designer">
+    <view class="shang">
+      <image src="{{designer.avatar}}" class="avatar"></image>
+      <view class="info">
+        <view class="nickname">
+          {{designer.nickname}}
+          <icon class="iconfont iconnan" wx:if="{{designer.sex == 1}}" />
+          <icon class="iconfont iconnv" wx:if="{{designer.sex == 2}}" />
+        </view>
+        <view class="follow-box">
+          <view class="follow">粉丝数：{{designer.focus}}</view>
+          <button catchtap="iFocus" data-index="{{index}}" class="{{designer.if_focus ? 'focus' : ''}}" wx:if="{{my_uid != designer.id}}">{{designer.if_focus ? '已关注' : '关注'}}</button>
+        </view>
+      </view>
+    </view>
+    <view class="desc">
+      个人简介：
+      <block wx:if="{{designer.desc}}">
+        {{designer.desc}}
+      </block>
+      <view class="no-desc" wx:else>
+        暂无描述
+      </view>
+    </view>
+  </view>
+  <view class="tab">
+    <view class="tab-item {{active_tab == 1 ? 'active' : ''}}" data-tab="{{1}}" bindtap="tab_change">参赛作品</view>
+    <view class="tab-item {{active_tab == 2 ? 'active' : ''}}" data-tab="{{2}}" bindtap="tab_change">展示作品</view>
+  </view>
+  <view class="block" wx:if="{{active_tab == 1}}">
+    <view class="two-box">
+      <navigator url="/pages/vote-detail/vote-detail?id={{item.id}}" data-id="{{item.id}}" class="item-half" wx:for="{{req_workList}}" wx:key="id">
+        <image src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="texts">
+          <view class="title">{{item.title}}</view>
+          <view class="info-box">
+            <view class="vote">
+              <icon class="iconfont iconnavicon-tp"/>
+              {{item.vote}}
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="nomore" wx:if="{{req_nomore}}">
+      已经没有更多了哦
+    </view>
+
+    <view class="nodata" wx:if="{{req_nodata}}">
+      暂无作品
+    </view>
+  </view>
+
+  <view class="block" wx:if="{{active_tab == 2}}">
+    <view class="two-box">
+      <navigator url="/pages/vote-detail/vote-detail?id={{item.id}}" data-id="{{item.id}}" class="item-half" wx:for="{{show_workList}}" wx:key="id">
+        <image src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="texts">
+          <view class="title">{{item.title}}</view>
+<!--          <view class="info-box">-->
+<!--            <view class="vote">-->
+<!--              <icon class="iconfont iconnavicon-tp"/>{{item.vote}}-->
+<!--            </view>-->
+<!--          </view>-->
+        </view>
+      </navigator>
+    </view>
+
+    <view class="nomore" wx:if="{{show_nomore}}">
+      已经没有更多了哦
+    </view>
+
+    <view class="nodata" wx:if="{{show_nodata}}">
+      暂无作品
+    </view>
+  </view>
+</view>

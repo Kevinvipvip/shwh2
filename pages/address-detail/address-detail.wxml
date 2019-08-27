@@ -1,0 +1,64 @@
+<view class="page">
+  <view class="body" style="height:100vh">
+    <form bindsubmit="addressAdd" class="apply-form">
+      <view class="input-group-list">
+        <view class="flex flex-row input-group">
+          <view class="flex-grow-0 flex-y-center input-group-label">联 系 人</view>
+          <view class="flex-grow-1">
+            <input bindinput="bind_input" data-name="username" value="{{username}}" class="flex-y-center"
+                   placeholder="请输入联系人" placeholderClass="placeholder" maxlength="30"/>
+          </view>
+        </view>
+        <view class="flex flex-row input-group">
+          <view class="flex-grow-0 flex-y-center input-group-label">手机号码</view>
+          <view class="flex-grow-1">
+            <input bindinput="bind_input" type="number" data-name="tel" value="{{tel}}" class="flex-y-center"
+                   placeholder="请输入手机号码" placeholderClass="placeholder" maxlength="11"/>
+          </view>
+        </view>
+        <view class="flex flex-row input-group">
+          <view class="flex-grow-0 flex-y-center input-group-label">选择地区</view>
+          <view class="flex-grow-1 citys">
+            <picker
+                    value="{{citys}}"
+                    mode="region"
+                    bindchange="citys_change">
+              <view class="picker">
+                <view>
+                  {{provincename}} {{cityname}} {{countyname}}
+                </view>
+                <icon class="iconfont iconyou"/>
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="flex flex-row input-group">
+          <view class="flex-grow-0 flex-y-center input-group-label">详细地址</view>
+          <view class="flex-grow-1">
+            <input bindinput="bind_input" data-name="detail" value="{{detail}}" class="flex-y-center"
+                   placeholder="请输入详细地址" placeholderClass="placeholder" maxlength="255"/>
+          </view>
+        </view>
+        <view class="flex flex-row input-group">
+          <view class="flex-grow-0 flex-y-center input-group-label">邮政编码</view>
+          <view class="flex-grow-1">
+            <input bindinput="bind_input" type="number" data-name="postalcode" value="{{postalcode}}" class="flex-y-center"
+                   placeholder="请输入邮政编码" placeholderClass="placeholder" maxlength="6"/>
+          </view>
+        </view>
+        <view class="flex flex-row input-group">
+          <view bindtap="set_default" class="defualt-address">
+            <view class="check-box">
+              <icon type="success" size="25" color="#b83809" wx:if="{{default == 1}}" />
+              <view class="no-check" wx:if="{{default == 0}}"></view>
+            </view>
+            <view>设为默认收货地址</view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-box">
+        <button class="submit-btn" formType="submit" loading="{{release_loading}}">保存</button>
+      </view>
+    </form>
+  </view>
+</view>

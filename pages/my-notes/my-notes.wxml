@@ -1,0 +1,129 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="main" wx:else>
+  <view class="tab">
+    <view class="tab-item {{active_tab == 1 ? 'active' : ''}}" data-tab="{{1}}" bindtap="tab_change">我的笔记</view>
+    <view class="tab-item {{active_tab == 2 ? 'active' : ''}}" data-tab="{{2}}" bindtap="tab_change">收藏笔记</view>
+  </view>
+
+  <block wx:if="{{active_tab == 1}}">
+    <navigator url="/pages/note-publish/note-publish" class="pub-btn">
+      <view>发布</view>
+      <view>笔记</view>
+    </navigator>
+    <view class="list">
+      <view class="left">
+        <view bindtap="to_detail" data-note="{{item}}" class="note" wx:for="{{left_note_list}}"
+                   wx:key="id">
+
+          <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
+          <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
+          <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 1 || item.status == 2}}">编辑</view>
+          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+          </view>
+          <view class="word">
+            {{item.title}}
+          </view>
+          <view class="xia">
+            <view class="left">
+              {{item.nickname}}
+            </view>
+            <div class="right">
+              <icon class="iconfont iconxin2"/>
+              {{item.like}}
+            </div>
+          </view>
+        </view>
+      </view>
+      <view class="right">
+        <view bindtap="to_detail" data-note="{{item}}" class="note" wx:for="{{right_note_list}}"
+                   wx:key="id">
+          <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
+          <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
+          <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 1 || item.status == 2}}">编辑</view>
+          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+          </view>
+          <view class="word">
+            {{item.title}}
+          </view>
+          <view class="xia">
+            <view class="left">
+              {{item.nickname}}
+            </view>
+            <div class="right">
+              <icon class="iconfont iconxin2"/>
+              {{item.like}}
+            </div>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="nomore" wx:if="{{nomore}}">
+      已经没有更多了哦
+    </view>
+
+    <view class="nodata" wx:if="{{nodata}}">
+      暂无笔记
+    </view>
+  </block>
+
+  <block wx:if="{{active_tab == 2}}">
+    <view class="list">
+      <view class="left">
+        <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{c_left_note_list}}"
+                   wx:key="id">
+          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+          </view>
+          <view class="word">
+            {{item.title}}
+          </view>
+          <view class="xia">
+            <view class="left">
+              <image src="{{item.avatar}}" class="header"></image>
+              {{item.nickname}}
+            </view>
+            <div class="right">
+              <icon class="iconfont iconxin2"/>
+              {{item.like}}
+            </div>
+          </view>
+        </navigator>
+      </view>
+      <view class="right">
+        <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{c_right_note_list}}"
+                   wx:key="id">
+          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+          </view>
+          <view class="word">
+            {{item.title}}
+          </view>
+          <view class="xia">
+            <view class="left">
+              <image src="{{item.avatar}}" class="header"></image>
+              {{item.nickname}}
+            </view>
+            <div class="right">
+              <icon class="iconfont iconxin2"/>
+              {{item.like}}
+            </div>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="nomore" wx:if="{{c_nomore}}">
+      已经没有更多了哦
+    </view>
+
+    <view class="nodata" wx:if="{{c_nodata}}">
+      暂无笔记
+    </view>
+  </block>
+</view>

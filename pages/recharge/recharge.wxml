@@ -1,0 +1,47 @@
+<view>
+  <image src="/images/recharge_top.jpg" class="ad" mode="widthFix"></image>
+  <view class="main">
+    <view class="title">充值金额</view>
+    <view class="amount-box">
+      <view bindtap="choose" data-index="{{index}}" class="amount {{index == active_index ? 'active' : ''}}" wx:for="{{vipList}}" wx:key="id">
+        <view class="title">{{item.title}}</view>
+        <view class="price">¥{{item.price}}</view>
+      </view>
+    </view>
+    <view class="explain">
+      <view class="title">充值礼包说明</view>
+      <view class="line">{{vipList[active_index].detail}}</view>
+    </view>
+
+    <view class="info-box">
+      <view class="title">通讯信息（邮寄礼包用）</view>
+<!--      <view class="title-mark">※ 选择地址将自动使用地址中的联系人和手机号码</view>-->
+
+      <navigator url="/pages/my-address/my-address?type=3">
+        <view class="address">
+          <view class="address-icon">
+            <icon class="iconfont iconwodedizhi"/>
+          </view>
+          <view class="info" wx:if="{{name}}">
+            <view class="top">
+              <view class="nickname">{{name}}</view>
+              <view class="tel">{{tel}}</view>
+            </view>
+            <view class="detail">
+              {{address}}
+            </view>
+          </view>
+          <view wx:else class="no-default-add">
+            暂无默认收货地址，请添加
+          </view>
+          <view class="edit">
+            <icon class="iconfont iconyou"/>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class="btn-box">
+      <button bindtap="recharge" class="btn-chong">立即充值</button>
+    </view>
+  </view>
+</view>

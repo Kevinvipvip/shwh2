@@ -1,0 +1,5 @@
+<view>
+  <view class="match">您将要参加<text>{{name}}</text>的竞标，请在下面写上您参加竞标的文本</view>
+  <textarea bindinput="bind_input" data-name="desc" auto-focus="{{true}}" auto-height maxlength="200" cursor-spacing="50" placeholder="竞标文本" class="note-content" style="{{plat == 'ios' ? 'padding: 0;' : ''}}" />
+  <button bindtap="uploadWorks" class="pub-btn">提交</button>
+</view>

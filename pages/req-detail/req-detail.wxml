@@ -1,0 +1,75 @@
+<view>
+  <image src="{{req.cover}}" class="banner" mode="widthFix"></image>
+  <view class="tab">
+    <view class="tab-item {{active_tab == 1 ? 'active' : ''}}" data-tab="{{1}}" bindtap="tab_change">活动背景</view>
+    <view class="tab-item {{active_tab == 2 ? 'active' : ''}}" data-tab="{{2}}" bindtap="tab_change">活动须知</view>
+    <view class="tab-item {{active_tab == 3 ? 'active' : ''}}" data-tab="{{3}}" bindtap="tab_change">活动说明</view>
+  </view>
+  <view class="tab-content" wx:if="{{active_tab == 1}}">
+    <view class="xiang">
+      <view class="title">活动名称</view>
+      <view class="hr"></view>
+      <view class="content">{{req.title}}</view>
+    </view>
+    <view class="xiang">
+      <view class="title">主办单位</view>
+      <view class="hr"></view>
+      <view class="content">{{req.org}}</view>
+    </view>
+    <view class="xiang">
+      <view class="title">征集主题</view>
+      <view class="hr"></view>
+      <view class="content">{{req.theme}}</view>
+    </view>
+  </view>
+  <view class="tab-content" wx:if="{{active_tab == 2}}">
+    <view class="xiang">
+      <view class="title">联系人</view>
+      <view class="hr"></view>
+      <view class="content">{{req.linkman}}</view>
+    </view>
+    <view class="xiang">
+      <view class="title">联系方式</view>
+      <view class="hr"></view>
+      <view class="content">{{req.phone || ''}}</view>
+    </view>
+    <view class="xiang">
+      <view class="title">微信号</view>
+      <view class="hr"></view>
+      <view class="content">{{req.weixin}}</view>
+    </view>
+    <view class="xiang">
+      <view class="title">活动起始时间</view>
+      <view class="hr"></view>
+      <view class="content">{{req.start_time}}日</view>
+    </view>
+    <view class="xiang">
+      <view class="title">截止投稿时间</view>
+      <view class="hr"></view>
+      <view class="content">{{req.deadline}}日</view>
+    </view>
+    <view class="xiang">
+      <view class="title">截止投票时间</view>
+      <view class="hr"></view>
+      <view class="content">{{req.vote_time}}日</view>
+    </view>
+    <view class="xiang">
+      <view class="title">活动结束时间</view>
+      <view class="hr"></view>
+      <view class="content">{{req.end_time}}日</view>
+    </view>
+  </view>
+  <view class="tab-content" wx:if="{{active_tab == 3}}">
+    <view class="xiang">
+      <view class="title">活动说明</view>
+      <view class="hr"></view>
+      <view class="content explain">{{req.explain}}</view>
+    </view>
+  </view>
+
+  <view class="btn-box">
+    <button bindtap="in_match" disabled="{{!req.join_btn}}" class="btn" wx:if="{{!req.bidding_btn}}">参赛</button>
+    <button bindtap="vote" disabled="{{!req.vote_btn}}" class="btn" wx:if="{{!req.bidding_btn}}">投票</button>
+    <button bindtap="bidding" disabled="{{!req.bidding_btn}}" class="btn" wx:if="{{req.bidding_btn}}">竞标</button>
+  </view>
+</view>

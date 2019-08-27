@@ -1,0 +1,30 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="designer-box">
+    <navigator url="/pages/designer-detail/designer-detail?id={{item.id}}" class="designer" wx:for="{{designerList}}" wx:key="id">
+      <image src="{{item.avatar}}" class="avatar"></image>
+      <view class="info">
+        <view class="nickname">
+          {{item.nickname}}
+          <icon class="iconfont iconnan" wx:if="{{item.sex == 1}}" />
+          <icon class="iconfont iconnv" wx:if="{{item.sex == 2}}" />
+        </view>
+        <view class="follow-box">
+          <view class="follow">粉丝数：{{item.focus}}</view>
+          <button catchtap="iFocus" data-index="{{index}}" class="{{item.if_focus ? 'focus' : ''}}" wx:if="{{my_uid != item.id}}">{{item.if_focus ? '已关注' : '关注'}}</button>
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无设计师
+  </view>
+</view>

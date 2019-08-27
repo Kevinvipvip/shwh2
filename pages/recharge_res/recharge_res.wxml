@@ -1,0 +1,18 @@
+<view class="page">
+  <block wx:if="{{res}}">
+    <view class="status-box">
+      <icon type="success" size="70" />
+      <view class="text">充值成功</view>
+      <view class="text">您已充值文创大礼包</view>
+    </view>
+    <button bindtap="succ_jump" class="jump-btn">完成</button>
+  </block>
+  <block wx:else>
+    <view class="status-box">
+      <icon type="warn" size="70" />
+      <view class="text">充值失败</view>
+      <view class="text">充值失败，请重新操作</view>
+    </view>
+    <button bindtap="fail_jump" class="jump-btn">完成</button>
+  </block>
+</view>

@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="address-list">
+    <view class="address" wx:for="{{address_list}}">
+      <view bindtap="choose" data-address="{{item}}" class="info">
+        <view class="top">
+          <view class="nickname">{{item.username}}</view>
+          <view class="tel">{{item.tel}}</view>
+        </view>
+        <view class="detail">
+          <view class="default" wx:if="{{item.default == 1}}">[默认地址] </view>{{item.provincename}} {{item.cityname}} {{item.countyname}} {{item.detail}}
+        </view>
+      </view>
+      <view class="edit">
+        <navigator url="/pages/address-detail/address-detail?id={{item.id}}"><icon class="iconfont iconiconset0136"/></navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-address">
+    <button bindtap="to_addressAdd" class="hand">+ 手动添加</button>
+    <button bindtap="choose_address" class="wx">+ 微信添加</button>
+  </view>
+</view>

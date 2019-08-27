@@ -1,0 +1,71 @@
+.banner {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.tab {
+    background: #fafafa;
+    color: #666;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1rpx solid #eee;
+}
+
+.tab .tab-item {
+    font-size: 30rpx;
+    line-height: 3;
+    padding: 0 5rpx;
+}
+
+.tab .tab-item.active {
+    color: #ff9f38;
+    border-bottom: 4rpx solid #ff9f38;
+}
+
+.tab-content {
+    padding: 30rpx;
+    font-size: 28rpx;
+}
+
+.tab-content .xiang {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.tab-content .xiang .title {
+    background: #72a5cf;
+    color: #fff;
+    padding: 10rpx 20rpx;
+}
+
+.tab-content .xiang .hr {
+    border-bottom: 1rpx solid #72a5cf;
+    width: 100%;
+}
+
+.tab-content .xiang .content {
+    width:100%;
+    padding:15rpx 0 0;
+    margin-bottom:30rpx;
+}
+
+.tab-content .xiang .content.explain {
+    white-space: pre-line;
+}
+
+.btn-box {
+    display:flex;
+    padding-bottom:40rpx;
+    justify-content:space-around;
+}
+
+.btn-box .btn {
+    font-size:28rpx;
+    background:#ff9f38;
+    line-height:2.5;
+    color:#fff;
+    margin:0;
+    width:200rpx;
+}

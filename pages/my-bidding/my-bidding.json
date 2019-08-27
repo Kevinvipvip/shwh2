@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的竞标",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#ffffff",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

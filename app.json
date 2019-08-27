@@ -1,0 +1,97 @@
+{
+  "pages": [
+    "pages/auth/auth",
+    "pages/test/test",
+    "pages/my-address/my-address",
+    "pages/address-detail/address-detail",
+    "pages/nine-card/nine-card",
+    "pages/cul-gift/cul-gift",
+    "pages/user-qrcode/user-qrcode",
+    "pages/invite-list/invite-list",
+    "pages/order-detail/order-detail",
+    "pages/my-orders/my-orders",
+    "pages/shop-car/shop-car",
+    "pages/order-create/order-create",
+    "pages/cart-order-create/cart-order-create",
+    "pages/shop-detail/shop-detail",
+    "pages/shop/shop",
+    "pages/cate-shop/cate-shop",
+    "pages/cate-list/cate-list",
+    "pages/apply/apply",
+    "pages/before-apply/before-apply",
+    "pages/index/index",
+    "pages/vote-list/vote-list",
+    "pages/vote-detail/vote-detail",
+    "pages/take-part-in/take-part-in",
+    "pages/bidding-detail/bidding-detail",
+    "pages/bidding/bidding",
+    "pages/req-detail/req-detail",
+    "pages/recharge/recharge",
+    "pages/recharge_res/recharge_res",
+    "pages/my/my",
+    "pages/my-edit/my-edit",
+    "pages/my-req/my-req",
+    "pages/req-release/req-release",
+    "pages/req-edit/req-edit",
+    "pages/apply2/apply2",
+    "pages/notes/notes",
+    "pages/note-detail/note-detail",
+    "pages/note-comment/note-comment",
+    "pages/note-publish/note-publish",
+    "pages/note-edit/note-edit",
+    "pages/my-notes/my-notes",
+    "pages/my-bidding/my-bidding",
+    "pages/login/login",
+    "pages/req-list/req-list",
+    "pages/org-list/org-list",
+    "pages/org-detail/org-detail",
+    "pages/factory-list/factory-list",
+    "pages/factory-detail/factory-detail",
+    "pages/designer-list/designer-list",
+    "pages/designer-detail/designer-detail",
+    "pages/my-works/my-works",
+    "pages/work-release/work-release",
+    "pages/refund-list/refund-list",
+    "pages/my-role-edit/my-role-edit",
+    "pages/drumbeating/drumbeating"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "山洞",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#555555",
+    "selectedColor": "#ff4544",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "商城",
+        "iconPath": "icons/shop.png",
+        "selectedIconPath": "icons/shop-active.png"
+      },
+      {
+        "pagePath": "pages/notes/notes",
+        "text": "笔记",
+        "iconPath": "icons/note.png",
+        "selectedIconPath": "icons/note-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "icons/my.png",
+        "selectedIconPath": "icons/my-active.png"
+      }
+    ]
+  },
+  "plugins": {},
+  "sitemapLocation": "sitemap.json"
+}

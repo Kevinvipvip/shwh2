@@ -1,0 +1,36 @@
+page {
+    background: #f6fafd;
+}
+
+.page {
+    min-height: 100vh;
+    background: #fff;
+    margin-top: 25rpx;
+}
+
+.status-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60rpx 0;
+    margin:25rpx;
+}
+
+.status-box icon {
+    margin: 25rpx 0;
+}
+
+.status-box .text {
+    font-size: 30rpx;
+    margin-top: 40rpx;
+}
+
+.jump-btn {
+    background:#ff9f38;
+    color:#fff;
+    width:50%;
+    border-radius:50rpx;
+    line-height:2.2;
+    font-size:34rpx;
+    margin-top:16rpx;
+}

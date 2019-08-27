@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="car-box">
+    <view class="car" wx:for="{{cartList}}" wx:key="id">
+      <view bindtap="check" data-index="{{index}}" class="check-box">
+        <icon type="success" color="#fe2043" wx:if="{{item.checked}}" />
+        <view class="no-check" wx:if="{{!item.checked}}"></view>
+      </view>
+      <image src="{{item.cover}}" mode="aspectFill"></image>
+      <view class="info">
+        <view class="title">
+          {{item.name}}
+          <view class="attr">规格：{{item.attr}}</view>
+        </view>
+        <view class="price-box">
+          <view class="price">
+            <view class="carriage">运费：¥{{item.carriage}}</view>
+            <view><text class="bi">¥</text>{{item.total_price}}</view>
+          </view>
+          <view class="amount-box">
+            <icon bindtap="cartDec" data-id="{{item.id}}" data-index="{{index}}" class="iconfont iconjian {{item.num <= 1 ? 'disabled' : ''}}"/>
+            <view class="amount">{{item.num}}</view>
+            <icon bindtap="cartInc" data-id="{{item.id}}" data-index="{{index}}" class="iconfont iconjia2 {{item.num >= item.limit ? 'disabled' : ''}}"/>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="no-shop" wx:if="{{cartList.length == 0}}">
+    <icon class="iconfont icongouwuche"></icon>
+    <view class="text">购物车里啥也没有</view>
+  </view>
+  <view class="settle" wx:if="{{cartList.length > 0}}">
+    <view bindtap="check_all_click" class="check-all">
+      <view class="no-check" wx:if="{{!check_all}}"></view>
+      <icon type="success" color="#fe2043" wx:if="{{check_all}}" />
+      <view class="all-text">全选</view>
+    </view>
+    <view class="right">
+      <view class="price-box">
+        <view class="yun-price">
+          <text>运费：</text>
+          <text class="price">¥{{carriage}}</text>
+        </view>
+        <view class="total">
+          <text>总计：</text>
+          <text class="price">¥{{total}}</text>
+        </view>
+      </view>
+      <button bindtap="to_cart_order" class="settle-btn">结算</button>
+    </view>
+  </view>
+</view>

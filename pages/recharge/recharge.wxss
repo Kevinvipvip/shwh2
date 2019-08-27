@@ -1,0 +1,190 @@
+.ad {
+    width: 100%;
+}
+
+.main {
+    margin-top:25rpx;
+    padding:0 35rpx;
+}
+
+.main > .title {
+    font-size: 32rpx;
+}
+
+.amount-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top:30rpx;
+}
+
+.amount-box .amount {
+    width: 48%;
+    height:140rpx;
+    display:flex;
+    text-align:center;
+    align-items:center;
+    font-size:30rpx;
+    border-radius:20rpx;
+    box-sizing:border-box;
+    border:1rpx solid #ff9f38;
+    justify-content:center;
+    margin-bottom:30rpx;
+    flex-direction: column;
+}
+
+.amount-box .amount.active {
+    background: #ff9f38;
+    color: #fff;
+}
+
+.amount-box .amount .title {
+    font-size: 36rpx;
+    color: #ff790a;
+}
+
+.amount-box .amount.active .title {
+    color: #fff;
+}
+
+.amount-box .amount .price {
+    font-size:28rpx;
+    color:#ff790a;
+    margin-top:6rpx;
+}
+
+.amount-box .amount.active .price {
+    color: #fff;
+}
+
+.explain {
+    color: #999;
+    margin-top: 30rpx;
+    line-height: 1.6;
+}
+
+.explain .title {
+    font-size: 28rpx;
+}
+
+.explain .line {
+    font-size: 25rpx;
+    white-space: pre-line;
+}
+
+.info-box {
+    margin-top:45rpx;
+    font-size:28rpx;
+}
+
+.info-box > .title {
+}
+
+.info-box .title-mark {
+    margin-top: 10rpx;
+    color: #888;
+    font-size: 24rpx;
+    margin-bottom: 18rpx;
+}
+
+.info-box .form-item {
+    border-bottom: 1rpx solid #ddd;
+    margin-bottom: 20rpx;
+}
+
+.info-box .form-item:last-child {
+    border-bottom: 0;
+}
+
+.info-box .under input {
+    flex-grow: 1;
+}
+
+.info-box .under {
+    display: flex;
+    padding-bottom: 15rpx;
+}
+
+.info-box .under button {
+    flex-shrink: 0;
+    line-height: 2;
+    font-size: 24rpx;
+}
+
+.btn-box {
+    padding-bottom: 50rpx;
+}
+
+.btn-chong {
+    width:80%;
+    border-radius:50rpx;
+    font-size:32rpx;
+    background:#ff9f38;
+    margin-top:50rpx;
+    line-height:2.8;
+    color:#fff;
+}
+
+.address {
+    display:flex;
+    align-items:center;
+    padding:30rpx 25rpx;
+    justify-content:space-between;
+    background:#fff;
+}
+
+.address .no-default-add {
+    color: red;
+    flex-grow: 1;
+}
+
+.address .address-icon {
+    margin-right: 20rpx;
+}
+
+.address .address-icon .iconfont {
+    font-size:45rpx;
+}
+
+.address:last-child {
+    border-bottom: 0;
+}
+
+.address .info {
+    font-size:26rpx;
+    width: 90%;
+}
+
+.address .info .top {
+    display:flex;
+    justify-content:space-between;
+}
+
+.address .info .top .nickname {
+    font-size: 28rpx;
+}
+
+.address .info .top .tel {
+
+}
+
+.address .info .detail {
+    margin-top:14rpx;
+    line-height:1.5;
+    text-align: justify;
+}
+
+.address .info .detail .default {
+    display: inline;
+    color: #a83f33;
+}
+
+.address .edit {
+    margin-left:20rpx;
+    flex-shrink:0;
+}
+
+.address .edit .iconfont {
+    font-size:38rpx;
+    color:#222;
+}

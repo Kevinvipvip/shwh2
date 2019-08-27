@@ -1,0 +1,41 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="body" style="height:100vh">
+    <view class="shuoming">
+      ※ 此处是用户在您的个人主页看到的封面和描述
+    </view>
+    <form bindsubmit="modMyRole" class="apply-form">
+      <view class="input-group-list">
+        <view class="flex flex-row input-group">
+          <view class="flex-grow-0 flex-y-center input-group-label require">封面</view>
+          <view class="flex-grow-1">
+            <view class="upload-box">
+              <view bindtap="img_upload" data-name="cover" class="upload" wx:if="{{!cover}}">
+                <icon class="iconfont iconjia"/>
+              </view>
+              <view class="img-box" wx:if="{{cover}}">
+                <image src="{{cover}}" class="img" mode="widthFix"></image>
+                <view class="img-de" bindtap="img_remove" data-name="cover">
+                  <image src="/images/close.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="flex flex-row input-group no-border">
+          <view class="flex-grow-0 flex-y-center input-group-label require">描述</view>
+          <view class="flex-grow-1">
+            <textarea bindinput="bind_input" data-name="desc" auto-height maxlength="200" cursor-spacing="50" placeholder="想要记点什么呢..." class="note-content" style="{{plat == 'ios' ? 'margin-left: -10rpx' : ''}}" value="{{desc}}" />
+          </view>
+        </view>
+      </view>
+      <view class="btn-box">
+        <button class="submit-btn" formType="submit" loading="{{modify_loading}}">提交修改</button>
+      </view>
+    </form>
+  </view>
+</view>

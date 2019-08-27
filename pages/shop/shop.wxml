@@ -1,0 +1,68 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="main">
+  <navigator url="/pages/shop-car/shop-car" class="shop-box" wx:if="{{show_cart_icon}}">
+    <icon class="iconfont icongouwuche"/>
+  </navigator>
+
+  <scroll-view scroll-x class="tab">
+    <view class="tab-item {{active_tab == -1 ? 'active' : ''}}" bindtap="all_goods" data-index="{{index}}">
+      全部
+    </view>
+    <view class="tab-item {{active_tab == index ? 'active' : ''}}" bindtap="tab_change" data-index="{{index}}" wx:for="{{cate_list}}" wx:key="id">
+      {{item.cate_name}}
+    </view>
+    <navigator url="/pages/cate-list/cate-list" class="tab-item">
+      更多
+    </navigator>
+  </scroll-view>
+
+  <view class="list">
+    <view class="left">
+      <view bindtap="to_detail" data-id="{{item.id}}" class="note" wx:for="{{left_shop_list}}"
+            wx:key="id">
+        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+          <image src="{{item.cover}}" lazy-load="{{true}}"></image>
+        </view>
+        <view class="word one-line-ellipsis">
+          {{item.name}}
+        </view>
+        <view class="desc two-line-ellipsis">
+          {{item.desc}}
+        </view>
+        <view class="xia">
+          <view class="price">¥{{item.price}}</view>
+          <view class="origin-price" wx:if="{{item.price != item.origin_price}}">¥{{item.origin_price}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="right">
+      <view bindtap="to_detail" data-id="{{item.id}}" class="note" wx:for="{{right_shop_list}}"
+            wx:key="id">
+        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+          <image src="{{item.cover}}" lazy-load="{{true}}"></image>
+        </view>
+        <view class="word one-line-ellipsis">
+          {{item.name}}
+        </view>
+        <view class="desc two-line-ellipsis">
+          {{item.desc}}
+        </view>
+        <view class="xia">
+          <view class="price">¥{{item.price}}</view>
+          <view class="origin-price" wx:if="{{item.price != item.origin_price}}">¥{{item.origin_price}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无商品
+  </view>
+</view>

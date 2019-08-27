@@ -1,0 +1,185 @@
+.page {
+}
+
+.header {
+    box-sizing:border-box;
+}
+
+.header image {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.header .info {
+    padding: 20rpx;
+}
+
+.header .info .up {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .info .up .org {
+    color: #888;
+}
+
+.header .info .desc {
+    margin-top:15rpx;
+    border-top:1rpx dashed #ccc;
+    padding-top:10rpx;
+}
+
+.tab {
+    color:#666;
+    display:flex;
+    justify-content:space-around;
+    border-bottom:1rpx solid #eee;
+    margin-top:21rpx;
+}
+
+.tab .tab-item {
+    font-size:28rpx;
+    line-height:2.6;
+    padding:0 5rpx;
+}
+
+.tab .tab-item.active {
+    color: #ff9f38;
+}
+
+.block {
+    padding: 20rpx 35rpx;
+}
+
+.block .list {
+    margin-top: 20rpx;
+}
+
+.block .list .item {
+    background:#fff;
+    border-radius:10rpx;
+    margin-bottom:40rpx;
+    box-shadow:3rpx 10rpx 30rpx #ddd;
+    overflow: hidden;
+}
+
+.block .list .item:last-child {
+    margin-bottom: 0;
+}
+
+.block .item image {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.block .item .info {
+    padding: 20rpx;
+}
+
+.block .item .info .title {
+    font-size: 34rpx;
+}
+
+.block .item .info .can {
+}
+
+.block .item .info .can .iconfont {
+    font-size:32rpx;
+    color:#444;
+    margin-right:8rpx;
+    vertical-align:-2rpx;
+}
+
+.block .item .info .bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14rpx;
+    color: #888;
+}
+
+.block .item .info .time {
+}
+
+.block .item .info .attestation {
+
+}
+
+.note-box .list {
+    display: flex;
+    padding: 17rpx 20rpx 20rpx;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 0;
+}
+
+.note-box .list > view {
+    width: 48.5%;
+}
+
+.note-box .list > view .note {
+    border-radius: 10rpx;
+    overflow: hidden;
+    box-shadow:0 2rpx 8rpx 2rpx #e2e3e5;
+    margin-top: 22rpx;
+    background: #fff;
+}
+
+.note-box .list > view .note:first-child {
+    margin-top: 0;
+}
+
+.note-box .list > view .note .img-box {
+    width: 100%;
+    height: 0;
+    position: relative;
+}
+
+.note-box .list > view .note .img-box image {
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.note-box .list > view .note .word {
+    font-size: 24rpx;
+    padding: 10rpx 15rpx;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: 2rpx;
+}
+
+.note-box .list > view .note .xia {
+    display: flex;
+    justify-content: space-between;
+    padding: 10rpx 20rpx 20rpx;
+}
+
+.note-box .list > view .note .xia .left {
+    display: flex;
+    align-items: center;
+    font-size: 22rpx;
+}
+
+.note-box .list > view .note .xia .header {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    margin-right: 9rpx;
+}
+
+.note-box .list > view .note .xia .right {
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+}
+
+.note-box .list > view .note .xia .right .iconfont {
+    margin-right:6rpx;
+    position:relative;
+    top:-7rpx;
+    font-size:28rpx;
+}
