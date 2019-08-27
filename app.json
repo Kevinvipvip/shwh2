@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/auth/auth",
     "pages/test/test",
+    "pages/auth/auth",
     "pages/my-address/my-address",
     "pages/address-detail/address-detail",
     "pages/nine-card/nine-card",

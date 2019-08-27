@@ -71,13 +71,17 @@ App({
     });
   },
   ajax(path, data, succ, err, complete) {
-    let that = this;
+    data = data || {};
+    if (!data.token) {
+      data.token = this.user_data.token;
+    }
+
     wx.request({
       url: path,
       method: 'POST',
       dataType: 'json',
       data: data,
-      success(res) {
+      success: res => {
         if (res.data.code !== 1) {
           if (err) {
             err(res.data);
@@ -87,16 +91,16 @@ App({
               case -5:  // token未传
                 let current_pages = getCurrentPages();
                 let current_page = current_pages[current_pages.length - 1];
-                wx.redirectTo({ url: '/pages/login/login?route=' + encodeURIComponent(current_page.route + that.obj2query(current_page.options)) });
+                wx.redirectTo({ url: '/pages/login/login?route=' + encodeURIComponent(current_page.route + this.obj2query(current_page.options)) });
                 break;
               case 49:
-                  that.toast(res.data.data);
+                this.toast(res.data.data);
                 break;
               default:
                 if (res.data.message) {
-                  that.toast(res.data.message);
+                  this.toast(res.data.message);
                 } else {
-                  that.toast('网络异常');
+                  this.toast('网络异常');
                 }
                 break;
             }
@@ -108,7 +112,7 @@ App({
         }
       },
       fail() {
-        // that.toast('网络异常');
+        // this.toast('网络异常');
       },
       complete() {
         if (complete) {
@@ -249,7 +253,7 @@ App({
   },
   // 获取七牛云上传TOKEN
   getUpToken(callback) {
-    this.ajax(this.my_config.api + 'qiniu/getUpToken', post, res => {
+    this.ajax(this.my_config.api + 'qiniu/getUpToken', null, res => {
       callback(res);
     });
   }

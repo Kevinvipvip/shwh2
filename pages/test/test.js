@@ -1,87 +1,61 @@
-import drawQrcode from '../../utils/weapp.qrcode.min.js';
+const qiniu = require('../../utils/qiniu.min');
 
 const app = getApp();
 
 Page({
   data: {
-    cc: ''
+    qiniu_token: ''
   },
   onLoad() {
-    drawQrcode({
-      width: 150,
-      height: 150,
-      correctLevel: 1,
-      canvasId: 'myQrcode',
-      text: '72e13da254c7b485c9646c2d7d8a1865'
-    });
+    // app.getUpToken(res => {
+    //   this.data.qiniu_token = res.token;
+    //   this.upload();
+    // });
+  },
+  upload() {
+    wx.chooseImage({
+      count: 1, // 最多可以选择的图片张数
+      success: res => {
+        // 上传七牛云
+        let tempFilePaths = res.tempFilePaths;
 
-    var canvas = wx.createCanvasContext('myQrcode');
-    var that = this;
-
-    setTimeout(function () {
-      wx.canvasToTempFilePath({
-        x: 0,
-        y: 0,
-        width: 150,
-        height: 150,
-        destWidth: 150,
-        destHeight: 150,
-        canvasId: 'myQrcode',
-        success: function (res) {
-          console.log(res);
-          that.setData({cc: res.tempFilePath});
-        },
-        fail(res) {
-          console.log(res);
-          // 生成失败
+        qiniu.upload(tempFilePaths[0], 'abcdppp.jpg', 'ERmZoZXo1aO6iU7mLAeCTiPTxDnRxvC1QVNO9-I4:WhQ3vkynHxsuFWLIxdodsTElbxA=:eyJjYWxsYmFja1VybCI6Imh0dHBzOlwvXC9jYXZlcy53Y2lwLm5ldFwvcWluaXVfY2FsbGJhY2sucGhwIiwiY2FsbGJhY2tCb2R5Ijoie1wiZm5hbWVcIjpcInRtcFxcXC8xNTY2ODk0NDA5MTI0MTk2MDA0NTZcIixcImZrZXlcIjpcIjE1NjY4OTQ0MDkxMjQxOTYwMDQ1NlwiLFwiZGVzY1wiOlwiXFx1NjU4N1xcdTRlZjZcXHU2M2NmXFx1OGZmMFwifSIsInNjb3BlIjoiY2F2ZXMiLCJkZWFkbGluZSI6MTU2Njg5ODAwOX0=',null,{
+          useCdnDomain: true,
+          region: 'http://upload-z2.qiniup.com/'
         }
-      })
-    }, 500)
+          );
+      }
+    });
   },
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 图片上传七牛云
    */
-  onReady: function () {
-  },
+  uploadQiniu(tempFilePaths) {
+    let token = this.data.qiniu_token;
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  },
+    console.log(tempFilePaths, token);
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    var that = this;
+    wx.uploadFile({
+      url: 'https://qiniu.wcip.net',
+      name: 'file',
+      filePath: tempFilePaths[0],
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      formData: {
+        token: token,
+      },
+      success: function (res) {
+        let data = JSON.parse(res.data)
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+        console.log('qiniu');
+        console.log(res);
+        // to do ...
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    });
   }
-})
+});
