@@ -1,0 +1,405 @@
+.page {
+  padding: 24rpx;
+  background: #fafafa;
+}
+
+.page-top {
+  text-align: center;
+  line-height: 64rpx;
+}
+
+.page-top .feng-bian {
+  position: relative;
+  margin-left: -14rpx;
+  margin-right: -14rpx;
+  margin-top: -14rpx;
+  z-index: 1;
+}
+
+.page-top .feng-bian image {
+  width: 100%;
+  height: 64rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.page-top .feng-bian text {
+  position: relative;
+  z-index: 1;
+  font-size: 28rpx;
+  color: #2d2e31;
+}
+
+swiper {
+  width: 100%;
+  margin-top: -18rpx;
+  height: 350rpx;
+  position: relative;
+}
+
+swiper .wx-swiper-dots.wx-swiper-dots-horizontal {
+  position: absolute;
+  bottom: 0rpx;
+}
+
+swiper swiper-item {
+  height: 100%;
+}
+
+swiper swiper-item image {
+  width: 100%;
+  height: 100%;
+}
+
+.leng-title {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  font-size: 36rpx;
+}
+
+.leng-title text {
+}
+
+.leng-title .leng {
+  width: 12rpx;
+  height: 12rpx;
+  margin: 0 15rpx;
+  transform: rotate(45deg);
+  background: #000;
+}
+
+.leng-title .more-box {
+  padding: 10rpx 20rpx;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.leng-title .more {
+  width: 21rpx;
+  height: 5rpx;
+  right: 0;
+  vertical-align: bottom;
+}
+
+.more-line {
+  margin-top: 24rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #666;
+  background: #ecebeb;
+}
+
+.activity-box {
+  margin-top: 47rpx;
+}
+
+.activity-list {
+  margin-top: 24rpx;
+}
+
+.activity-list .activity {
+  padding-bottom: 18rpx;
+  border-bottom: 2rpx solid #131b2f12;
+  margin-bottom: 44rpx;
+}
+
+.activity-list .activity .cover {
+  width: 100%;
+  height: 300rpx;
+  vertical-align: bottom;
+}
+
+.activity-list .activity .title {
+  font-size: 32rpx;
+  color: #333;
+  opacity: 0.8;
+  line-height: 48rpx;
+  margin-top: 10rpx;
+}
+
+.activity-list .activity .info {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  line-height: 1;
+  color: #999;
+}
+
+.activity-list .activity .info .people {
+}
+
+.activity-list .activity .info .people .icon {
+  width: 20rpx;
+  height: 23rpx;
+  margin-right: 9rpx;
+}
+
+.activity-list .activity .info .people text {
+}
+
+.activity-list .activity .info .date {
+}
+
+.activity-list .activity .info .date .icon {
+  width: 23rpx;
+  height: 23rpx;
+  margin-right: 9rpx;
+}
+
+.activity-list .activity .info .date text {
+}
+
+.activity-list .activity:last-child {
+  margin-bottom: 0;
+}
+
+.rank-box {
+  margin-top: 47rpx;
+}
+
+.tab-list {
+  margin: 24rpx 0;
+  display: flex;
+}
+
+.tab-list .tab {
+  width: 0;
+  flex-grow: 1;
+  height: 94rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  line-height: 1;
+  background-color: #ecebeb;
+  color: #cccaca;
+}
+
+.tab-list .tab:first-child {
+  border-radius: 4rpx 4rpx 0 0;
+}
+
+.tab-list .tab:last-child {
+  border-radius: 0 0 4rpx 4rpx;
+}
+
+.tab-list .tab.active {
+  color: #333;
+  background: #fff;
+  box-shadow: 0 1rpx 60rpx 0 rgba(237, 235, 235, 0.75);
+}
+
+.work-list {
+}
+
+.work-list .work {
+  background: #fff;
+  display: flex;
+  padding: 20rpx;
+  margin-top: 24rpx;
+  box-shadow: 0 1rpx 27rpx 0 rgba(237, 237, 237, 0.75);
+  border-radius: 4rpx;
+}
+
+.work-list .work .cover {
+  width: 145rpx;
+  height: 190rpx;
+  flex-shrink: 0;
+}
+
+.work-list .work .info {
+  flex-grow: 1;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  width: 0;
+}
+
+.work-list .work .info .diyi {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.work-list .work .info .diyi .title {
+  font-size: 32rpx;
+  color: #666;
+}
+
+.work-list .work .info .diyi .vote {
+}
+
+.work-list .work .info .diyi .vote .icon {
+  width: 30rpx;
+  height: 26rpx;
+  margin-right: 14rpx;
+}
+
+.work-list .work .info .diyi .vote text {
+  display: inline-block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1;
+  width: 65rpx;
+}
+
+.work-list .work .info .desc {
+  margin-top: 14rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.work-list .work .info .xia {
+  margin-top: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.work-list .work .info .xia .left {
+  display: flex;
+  align-items: center;
+}
+
+.work-list .work .info .xia .left image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 14rpx;
+}
+
+.work-list .work .info .xia .left .nickname {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.work-list .work .info .xia .status {
+  color: #666;
+  font-size: 24rpx;
+}
+
+.work-list .work .info .xia .status text {
+}
+
+.work-list .work .info .xia .status .se {
+  color: #ffcc01;
+}
+
+.work-list .work:first-child {
+  margin-top: 0;
+}
+
+.chuang-list {
+}
+
+.chuang-list .chuang {
+  margin-top: 24rpx;
+  background: #fff;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.chuang-list .chuang .tou {
+}
+
+.chuang-list .chuang .tou image {
+  width: 23rpx;
+  height: 26rpx;
+}
+
+.chuang-list .chuang .cover {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.chuang-list .chuang .nickname {
+}
+
+.chuang-list .chuang .title {
+}
+
+.chuang-list .chuang .agree {
+}
+
+.chuang-list .chuang .agree image {
+  width: 22rpx;
+  height: 23rpx;
+}
+
+.chuang-list .chuang .agree text {
+}
+
+.chuang-list .chuang .tou text {
+}
+
+.chuang-list .chuang:first-child {
+  margin-top: 0;
+}
+
+.chou-box {
+}
+
+.chou-box .top {
+}
+
+.chou-box .top .img-box {
+}
+
+.chou-box .top .img-box image {
+}
+
+.chou-box .top .img-box .status {
+}
+
+.chou-box .top .title {
+}
+
+.chou-box .top .info {
+}
+
+.chou-box .top .info .already {
+}
+
+.chou-box .top .info .already .label {
+}
+
+.chou-box .top .info .already .price {
+}
+
+.chou-box .top .info .target {
+}
+
+.chou-box .top .info .part-count {
+}
+
+.chou-list {
+}
+
+.chou-list .chou {
+}
+
+.chou-list .chou:last-child {
+}
+
+.chou-list .chou .info {
+}
+
+.chou-list .chou .info .title {
+}
+
+.chou-list .chou .info .bottom {
+}
+
+.chou-list .chou .info .bottom .already {
+}
+
+.chou-list .chou .info .bottom .part-count {
+}

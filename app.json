@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/index2/index2",
+    "pages/index/index",
     "pages/test/test",
     "pages/auth/auth",
     "pages/my-address/my-address",
@@ -19,7 +21,6 @@
     "pages/cate-list/cate-list",
     "pages/apply/apply",
     "pages/before-apply/before-apply",
-    "pages/index/index",
     "pages/vote-list/vote-list",
     "pages/vote-detail/vote-detail",
     "pages/take-part-in/take-part-in",

@@ -1,0 +1,252 @@
+<view class="page">
+  <view class="page-top">
+    <view class="feng-bian">
+      <image lazy-load src="/images/feng-bian.png"></image>
+      <text>山洞文创新升级，让我们共同期待！</text>
+    </view>
+    <swiper indicator-dots="{{true}}"
+            autoplay="{{true}}"
+            class="top-swiper"
+            indicator-color="#ffefb2"
+            indicator-active-color="#ffda49">
+      <swiper-item wx:for="{{[1, 2, 3]}}" wx:key="index">
+        <image lazy-load src="/images/t-roll1.png"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 投石 -->
+<!--  <view class="activity-box">-->
+<!--    <view class="leng-title">-->
+<!--      <text>投</text>-->
+<!--      <text class="leng"></text>-->
+<!--      <text>石</text>-->
+
+<!--      <view class="more-box">-->
+<!--        <image lazy-load src="/images/more.png" class="more"></image>-->
+<!--      </view>-->
+<!--    </view>-->
+<!--    <view class="activity-list">-->
+<!--      <view class="activity">-->
+<!--        <image lazy-load src="/images/ac1.png" class="cover"></image>-->
+<!--        <view class="title">“海河锦鲤”蓄势待发 带着您的创意作品一起“跃动津城”吧</view>-->
+<!--        <view class="info">-->
+<!--          <view class="people">-->
+<!--            <image lazy-load src="/icons/people.png" class="icon"></image>-->
+<!--            <text>468人</text>-->
+<!--          </view>-->
+<!--          <view class="date">-->
+<!--            <image lazy-load src="/icons/time.png" class="icon"></image>-->
+<!--            <text>2019.08.22-2019.09.27</text>-->
+<!--          </view>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--      <view class="activity">-->
+<!--        <image lazy-load src="/images/ac2.png" class="cover" mode="aspectFill"></image>-->
+<!--        <view class="title">“海河锦鲤”蓄势待发 带着您的创意作品一起“跃动津城”吧</view>-->
+<!--        <view class="info">-->
+<!--          <view class="people">-->
+<!--            <image lazy-load src="/icons/people.png" class="icon"></image>-->
+<!--            <text>468人</text>-->
+<!--          </view>-->
+<!--          <view class="date">-->
+<!--            <image lazy-load src="/icons/time.png" class="icon"></image>-->
+<!--            <text>2019.08.22-2019.09.27</text>-->
+<!--          </view>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--      <view class="activity">-->
+<!--        <image lazy-load src="/images/ac1.png" class="cover"></image>-->
+<!--        <view class="title">“海河锦鲤”蓄势待发 带着您的创意作品一起“跃动津城”吧</view>-->
+<!--        <view class="info">-->
+<!--          <view class="people">-->
+<!--            <image lazy-load src="/icons/people.png" class="icon"></image>-->
+<!--            <text>468人</text>-->
+<!--          </view>-->
+<!--          <view class="date">-->
+<!--            <image lazy-load src="/icons/time.png" class="icon"></image>-->
+<!--            <text>2019.08.22-2019.09.27</text>-->
+<!--          </view>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--    </view>-->
+<!--  </view>-->
+
+  <!-- 回声 -->
+  <view class="rank-box">
+    <view class="leng-title">
+      <text>回</text>
+      <text class="leng"></text>
+      <text>声</text>
+    </view>
+
+    <view class="tab-list">
+      <view bindtap="rank_tap" data-rank="{{1}}" class="tab {{active_rank == 1 ? 'active' : ''}}">作品排行榜</view>
+      <view bindtap="rank_tap" data-rank="{{2}}" class="tab {{active_rank == 2 ? 'active' : ''}}">创意排行榜</view>
+    </view>
+
+    <view class="work-list" wx:if="{{active_rank == 1}}">
+      <view class="work" wx:for="{{[1, 2, 3, 4]}}">
+        <image lazy-load src="/images/t-word-cover.png" class="cover" mode="aspectFill"></image>
+        <view class="info">
+          <view class="diyi">
+            <view class="title">我与鱼的故事</view>
+            <view class="vote">
+              <image lazy-load src="/icons/vote.png" class="icon"></image>
+              <text>500</text>
+            </view>
+          </view>
+          <view class="desc two-line-ellipsis">
+            作品简述作品简述作品简述作品简述作品简述作品简述...
+          </view>
+          <view class="xia">
+            <view class="left">
+              <image lazy-load src="/images/t-header.png" class="header"></image>
+              <text class="nickname">米勒</text>
+            </view>
+            <view class="status">
+              <text>状态：</text>
+              <text class="se">众筹中</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <navigator class="more-line">查看更多</navigator>
+    </view>
+
+    <view class="chuang-list" wx:if="{{active_rank == 2}}">
+      <view class="chuang">
+        <view class="tou">
+          <image lazy-load src="/icons/1st.png"></image>
+        </view>
+        <image lazy-load src="/images/t-header.png" class="cover"></image>
+        <text class="nickname">找小小</text>
+        <text class="title">鲤鱼跃龙门之雨伞</text>
+        <view class="agree">
+          <image lazy-load src="/icons/zan.png"></image>
+          <text>2819</text>
+        </view>
+      </view>
+      <view class="chuang">
+        <view class="tou">
+          <image lazy-load src="/icons/2nd.png"></image>
+        </view>
+        <image lazy-load src="/images/t-header.png" class="cover"></image>
+        <text class="nickname">找小小</text>
+        <text class="title">鲤鱼跃龙门之雨伞</text>
+        <view class="agree">
+          <image lazy-load src="/icons/zan.png"></image>
+          <text>2819</text>
+        </view>
+      </view>
+      <view class="chuang">
+        <view class="tou">
+          <image lazy-load src="/icons/3rd.png"></image>
+        </view>
+        <image lazy-load src="/images/t-header.png" class="cover"></image>
+        <text class="nickname">找小小</text>
+        <text class="title">鲤鱼跃龙门之雨伞</text>
+        <view class="agree">
+          <image lazy-load src="/icons/zan.png"></image>
+          <text>2819</text>
+        </view>
+      </view>
+      <view class="chuang">
+        <view class="tou">
+          <text>04</text>
+        </view>
+        <image lazy-load src="/images/t-header.png" class="cover"></image>
+        <text class="nickname">找小小</text>
+        <text class="title">鲤鱼跃龙门之雨伞</text>
+        <view class="agree">
+          <image lazy-load src="/icons/zan.png"></image>
+          <text>2819</text>
+        </view>
+      </view>
+      <view class="chuang">
+        <view class="tou">
+          <text>05</text>
+        </view>
+        <image lazy-load src="/images/t-header.png" class="cover"></image>
+        <text class="nickname">找小小</text>
+        <text class="title">鲤鱼跃龙门之雨伞</text>
+        <view class="agree">
+          <image lazy-load src="/icons/zan.png"></image>
+          <text>2819</text>
+        </view>
+      </view>
+
+      <navigator class="more-line">查看更多</navigator>
+    </view>
+  </view>
+
+  <!-- 洞天 -->
+  <view class="chou-box">
+    <view class="leng-title">
+      <text>洞</text>
+      <text class="leng"></text>
+      <text>天</text>
+    </view>
+
+    <view class="top">
+      <view class="img-box">
+        <image lazy-load src="/images/t-chou1.png"></image>
+        <view class="status">进行中</view>
+      </view>
+      <view class="title">【众筹】镂空龙玉盘镂空龙玉盘镂空龙玉盘镂空</view>
+      <view class="info">
+        <view class="already">
+          <view class="label">已筹：</view>
+          <view class="price">8W</view>
+        </view>
+        <view class="target">众筹目标：10W</view>
+        <view class="part-count">参与人数140人</view>
+      </view>
+    </view>
+
+    <view class="chou-list">
+      <view class="chou">
+        <image lazy-load src="/images/t-chou2.png"></image>
+        <view class="info">
+          <view class="title">镂空龙玉盘镂龙玉盘镂龙玉盘镂龙玉盘镂</view>
+          <view class="bottom">
+            <view class="already">已筹：1.6W</view>
+            <view class="part-count">参与人数140人</view>
+          </view>
+        </view>
+      </view>
+      <view class="chou">
+        <image lazy-load src="/images/t-chou3.png"></image>
+        <view class="info">
+          <view class="title">镂空龙玉盘镂龙玉盘镂龙玉盘镂龙玉盘镂</view>
+          <view class="bottom">
+            <view class="already">已筹：1.6W</view>
+            <view class="part-count">参与人数140人</view>
+          </view>
+        </view>
+      </view>
+      <view class="chou">
+        <image lazy-load src="/images/t-chou3.png"></image>
+        <view class="info">
+          <view class="title">镂空龙玉盘镂龙玉盘镂龙玉盘镂龙玉盘镂</view>
+          <view class="bottom">
+            <view class="already">已筹：1.6W</view>
+            <view class="part-count">参与人数140人</view>
+          </view>
+        </view>
+      </view>
+      <view class="chou">
+        <image lazy-load src="/images/t-chou2.png"></image>
+        <view class="info">
+          <view class="title">镂空龙玉盘镂龙玉盘镂龙玉盘镂龙玉盘镂</view>
+          <view class="bottom">
+            <view class="already">已筹：1.6W</view>
+            <view class="part-count">参与人数140人</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="more-line">查看更多</view>
+  </view>
+</view>
