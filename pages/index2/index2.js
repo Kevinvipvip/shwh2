@@ -2,12 +2,12 @@ const app = getApp();
 
 Page({
   data: {
-    active_rank: 2
+    active_rank: 1
   },
   onLoad() {
   },
   // 点击排行
   rank_tap(e) {
-    this.setData({active_rank: e.currentTarget.dataset.rank});
+    this.setData({ active_rank: e.currentTarget.dataset.rank });
   }
 });

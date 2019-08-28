@@ -1,5 +1,5 @@
 .page {
-  padding: 24rpx;
+  padding: 24rpx 24rpx 50rpx;
   background: #fafafa;
 }
 
@@ -140,6 +140,7 @@ swiper swiper-item image {
   width: 20rpx;
   height: 23rpx;
   margin-right: 9rpx;
+  vertical-align: bottom;
 }
 
 .activity-list .activity .info .people text {
@@ -152,6 +153,7 @@ swiper swiper-item image {
   width: 23rpx;
   height: 23rpx;
   margin-right: 9rpx;
+  vertical-align: bottom;
 }
 
 .activity-list .activity .info .date text {
@@ -308,33 +310,48 @@ swiper swiper-item image {
 }
 
 .chuang-list .chuang .tou {
+  flex-shrink: 0;
+  width: 50rpx;
+  text-align: center;
 }
 
 .chuang-list .chuang .tou image {
-  width: 23rpx;
-  height: 26rpx;
+  width: 45rpx;
+  height: 50rpx;
 }
 
 .chuang-list .chuang .cover {
   width: 60rpx;
   height: 60rpx;
-}
-
-.chuang-list .chuang .nickname {
+  margin-left: 30rpx;
+  flex-shrink: 0;
 }
 
 .chuang-list .chuang .title {
+  font-size: 28rpx;
+  color: #333;
+  opacity: 0.6;
+  margin-left: 40rpx;
+  flex-grow: 1;
 }
 
 .chuang-list .chuang .agree {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .chuang-list .chuang .agree image {
-  width: 22rpx;
-  height: 23rpx;
+  width: 33rpx;
+  height: 34.5rpx;
+  margin-right: 18rpx;
 }
 
 .chuang-list .chuang .agree text {
+  display: inline-block;
+  width: 75rpx;
+  font-size: 26rpx;
+  color: #999;
 }
 
 .chuang-list .chuang .tou text {
@@ -345,57 +362,114 @@ swiper swiper-item image {
 }
 
 .chou-box {
+  margin-top: 48rpx;
 }
 
 .chou-box .top {
+  margin-top: 24rpx;
+  background: #fff;
 }
 
 .chou-box .top .img-box {
+  position: relative;
 }
 
 .chou-box .top .img-box image {
+  width: 100%;
+  height: 300rpx;
 }
 
 .chou-box .top .img-box .status {
-}
-
-.chou-box .top .title {
+  position: absolute;
+  background: #ff684f;
+  width: 96rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  color: #fff;
+  letter-spacing: 2rpx;
+  top: 22rpx;
+  right: 24rpx;
+  border-radius: 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .chou-box .top .info {
+  padding: 24rpx;
 }
 
-.chou-box .top .info .already {
+.chou-box .top .info .title {
+  line-height: 1;
+  font-size: 32rpx;
+  color: #333;
+  opacity: 0.8;
 }
 
-.chou-box .top .info .already .label {
+.chou-box .top .info .xia {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 39rpx;
+  font-size: 24rpx;
+  color: #666;
 }
 
-.chou-box .top .info .already .price {
+.chou-box .top .info .xia .already {
 }
 
-.chou-box .top .info .target {
+.chou-box .top .info .xia .already .label {
 }
 
-.chou-box .top .info .part-count {
+.chou-box .top .info .xia .already .price {
+  color: #fac801;
+}
+
+.chou-box .top .info .xia .target {
+}
+
+.chou-box .top .info .xia .part-count {
 }
 
 .chou-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .chou-list .chou {
+  width: 340rpx;
+  margin-top: 24rpx;
+  background: #fff;
+  border-radius: 4rpx;
+  box-shadow: 0 1rpx 27rpx 0 rgba(237, 237, 237, 0.75);
+  overflow: hidden;
 }
 
-.chou-list .chou:last-child {
+.chou-list .chou .cover {
+  width: 100%;
+  height: 180rpx;
+}
+
+.chou-list .chou:nth-child(2n) {
+  margin-right: 0;
 }
 
 .chou-list .chou .info {
+  padding: 20rpx;
 }
 
 .chou-list .chou .info .title {
+  color: #333;
+  opacity: 0.8;
+  font-size: 26rpx;
 }
 
 .chou-list .chou .info .bottom {
+  margin-top: 24rpx;
+  font-size: 20rpx;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
 }
 
 .chou-list .chou .info .bottom .already {
