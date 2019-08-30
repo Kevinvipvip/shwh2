@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="form">
+    <view class="form-item">
+      <view class="title">创意标题</view>
+<!--      <input type="text">-->
+    </view>
+    <view class="form-item">
+<!--      <textarea name="" id="" cols="30" rows="10"></textarea>-->
+    </view>
+  </view>
+  <button class="line-btn">发布创意</button>
+</view>

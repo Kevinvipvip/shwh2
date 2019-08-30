@@ -42,8 +42,8 @@
         </view>
       </view>
       <view class="activity">
-        <image lazy-load src="/images/ac2.png" class="cover" mode="aspectFill"></image>
-        <view class="title">“海河锦鲤”蓄势待发 带着您的创意作品一起“跃动津城”吧</view>
+        <image lazy-load src="http://qiniu.wcip.net/upload/tmp/156707878337132400141.png" class="cover" mode="aspectFill"></image>
+        <view class="title">开封铁塔 碰撞出千年文物与创意的火花 投稿征集中！</view>
         <view class="info">
           <view class="people">
             <image lazy-load src="/icons/people.png" class="icon"></image>
@@ -56,8 +56,8 @@
         </view>
       </view>
       <view class="activity">
-        <image lazy-load src="/images/ac1.png" class="cover"></image>
-        <view class="title">“海河锦鲤”蓄势待发 带着您的创意作品一起“跃动津城”吧</view>
+        <image lazy-load src="http://qiniu.wcip.net/upload/tmp/156707879405984600393.png" class="cover"></image>
+        <view class="title">用文创打造一件又一件的精品 让陶瓷发声！</view>
         <view class="info">
           <view class="people">
             <image lazy-load src="/icons/people.png" class="icon"></image>

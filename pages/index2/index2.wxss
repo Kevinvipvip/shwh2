@@ -73,15 +73,15 @@ swiper swiper-item image {
 }
 
 .leng-title .more-box {
-  padding: 10rpx 20rpx;
+  padding: 10rpx 20rpx 5rpx;
   position: absolute;
   bottom: 0;
   right: 0;
 }
 
 .leng-title .more {
-  width: 21rpx;
-  height: 5rpx;
+  width: 36rpx;
+  height: 9rpx;
   right: 0;
   vertical-align: bottom;
 }

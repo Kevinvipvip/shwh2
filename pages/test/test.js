@@ -1,60 +1,49 @@
-const qiniu = require('../../utils/qiniu.min');
+const qiniuUploader = require("../../utils/qiniuUploader");
 
 const app = getApp();
 
 Page({
-  data: {
-    qiniu_token: ''
-  },
-  onLoad() {
-    // app.getUpToken(res => {
-    //   this.data.qiniu_token = res.token;
-    //   this.upload();
-    // });
-  },
-  upload() {
+  didPressChooesImage: function() {
     wx.chooseImage({
-      count: 1, // 最多可以选择的图片张数
-      success: res => {
-        // 上传七牛云
-        let tempFilePaths = res.tempFilePaths;
-
-        qiniu.upload(tempFilePaths[0], 'abcdppp.jpg', 'ERmZoZXo1aO6iU7mLAeCTiPTxDnRxvC1QVNO9-I4:WhQ3vkynHxsuFWLIxdodsTElbxA=:eyJjYWxsYmFja1VybCI6Imh0dHBzOlwvXC9jYXZlcy53Y2lwLm5ldFwvcWluaXVfY2FsbGJhY2sucGhwIiwiY2FsbGJhY2tCb2R5Ijoie1wiZm5hbWVcIjpcInRtcFxcXC8xNTY2ODk0NDA5MTI0MTk2MDA0NTZcIixcImZrZXlcIjpcIjE1NjY4OTQ0MDkxMjQxOTYwMDQ1NlwiLFwiZGVzY1wiOlwiXFx1NjU4N1xcdTRlZjZcXHU2M2NmXFx1OGZmMFwifSIsInNjb3BlIjoiY2F2ZXMiLCJkZWFkbGluZSI6MTU2Njg5ODAwOX0=',null,{
-          useCdnDomain: true,
-          region: 'http://upload-z2.qiniup.com/'
-        }
-          );
-      }
-    });
-  },
-  /**
-   * 图片上传七牛云
-   */
-  uploadQiniu(tempFilePaths) {
-    let token = this.data.qiniu_token;
-
-    console.log(tempFilePaths, token);
-
-    var that = this;
-    wx.uploadFile({
-      url: 'https://qiniu.wcip.net',
-      name: 'file',
-      filePath: tempFilePaths[0],
-      header: {
-        "Content-Type": "multipart/form-data"
-      },
-      formData: {
-        token: token,
-      },
+      count: 1,
       success: function (res) {
-        let data = JSON.parse(res.data)
-
-        console.log('qiniu');
-        console.log(res);
-        // to do ...
-      },
-      fail: function (res) {
-        console.log(res)
+        var filePath = res.tempFilePaths[0];
+        upload({
+          filePath: filePath,
+          options: {
+            key: '',          // 可选
+            region: '',       // 可选(默认为'ECN')
+            domain: '',
+            uptoken: '',      // 以下三选一
+            uptokenURL: '',
+            uptokenFunc: () => {
+              return '[yourTokenString]';
+            },
+            shouldUseQiniuFileName: true // 默认false
+          },
+          before: () => {
+            // 上传前
+            console.log('before upload');
+          },
+          success: (res) => {
+            that.setData({
+              'imageURL': res.imageURL,
+            });
+            console.log('file url is: ' + res.fileUrl);
+          },
+          fail: (err) => {
+            console.log('error:' + err);
+          },
+          progress: (res) => {
+            console.log('上传进度', res.progress)
+            console.log('已经上传的数据长度', res.totalBytesSent)
+            console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+          },
+          complete: (err) => {
+            // 上传结束
+            console.log('upload complete');
+          }
+        });
       }
     });
   }

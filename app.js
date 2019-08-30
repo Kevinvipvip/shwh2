@@ -13,8 +13,10 @@ App({
     });
   },
   my_config: {
-    base_url: 'https://caves.wcip.net',  // 正式
-    api: 'https://caves.wcip.net/api/',  // 正式
+    base_url: 'https://www.caves.vip',  // 正式
+    api: 'https://www.caves.vip/api/',  // 正式
+    // base_url: 'https://caves.wcip.net',  // 正式
+    // api: 'https://caves.wcip.net/api/',  // 正式
     default_img: '/images/default.png',
     reg: { 
       tel: /^1\d{10}$/,

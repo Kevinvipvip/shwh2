@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/index2/index2",
-    "pages/index/index",
-    "pages/test/test",
     "pages/auth/auth",
+    "pages/index2/index2",
+    "pages/chuang-publish/chuang-publish",
+    "pages/test/test",
+    "pages/index/index",
     "pages/my-address/my-address",
     "pages/address-detail/address-detail",
     "pages/nine-card/nine-card",
@@ -54,7 +55,8 @@
     "pages/work-release/work-release",
     "pages/refund-list/refund-list",
     "pages/my-role-edit/my-role-edit",
-    "pages/drumbeating/drumbeating"
+    "pages/drumbeating/drumbeating",
+    "pages/store/store"
   ],
   "window": {
     "backgroundTextStyle": "light",
