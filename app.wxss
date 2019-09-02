@@ -58,6 +58,14 @@ button::after {
     opacity: initial;
 }
 
+.flex {
+    display: flex;
+}
+
+.vh {
+    visibility: hidden;
+}
+
 /* 超出省略 start */
 .one-line-ellipsis {
     overflow: hidden;
@@ -84,3 +92,274 @@ button::after {
     color: transparent;
 }
 /* 隐藏scroll-view滚动条 end */
+
+/* more-line start */
+.more-line {
+    margin-top: 24rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #666;
+    background: #ecebeb;
+}
+/* more-line end */
+
+/* 创意排行榜 start */
+.chuang-rank-list {
+}
+
+.chuang-rank-list .chuang {
+    margin-top: 24rpx;
+    background: #fff;
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.chuang-rank-list .chuang .tou {
+    flex-shrink: 0;
+    width: 50rpx;
+    text-align: center;
+}
+
+.chuang-rank-list .chuang .tou image {
+    width: 45rpx;
+    height: 50rpx;
+}
+
+.chuang-rank-list .chuang .cover {
+    width: 60rpx;
+    height: 60rpx;
+    margin-left: 30rpx;
+    flex-shrink: 0;
+}
+
+.chuang-rank-list .chuang .title {
+    font-size: 28rpx;
+    color: #333;
+    opacity: 0.6;
+    margin-left: 40rpx;
+    flex-grow: 1;
+}
+
+.chuang-rank-list .chuang .agree {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.chuang-rank-list .chuang .agree image {
+    width: 33rpx;
+    height: 34.5rpx;
+    margin-right: 18rpx;
+}
+
+.chuang-rank-list .chuang .agree text {
+    display: inline-block;
+    width: 75rpx;
+    font-size: 26rpx;
+    color: #999;
+}
+
+.chuang-rank-list .chuang .tou text {
+}
+
+.chuang-rank-list .chuang:first-child {
+    margin-top: 0;
+}
+/* 创意排行榜 end */
+
+/* 按钮 start */
+.line-btn {
+    background: #ffcc06;
+    border-radius: 0;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0;
+    font-size: 32rpx;
+    color: #333333;
+    letter-spacing: 1rpx;
+}
+/* 按钮 end */
+
+/* 众筹列表-行 start */
+.chou-box .chou-line {
+    margin-top: 24rpx;
+    background: #fff;
+}
+
+.chou-box .chou-line .img-box {
+    position: relative;
+}
+
+.chou-box .chou-line .img-box image {
+    width: 100%;
+    height: 300rpx;
+}
+
+.chou-box .chou-line .img-box .status {
+    position: absolute;
+    background: #ff684f;
+    width: 96rpx;
+    height: 40rpx;
+    font-size: 24rpx;
+    color: #fff;
+    letter-spacing: 2rpx;
+    top: 22rpx;
+    right: 24rpx;
+    border-radius: 4rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chou-box .chou-line .info {
+    padding: 24rpx;
+}
+
+.chou-box .chou-line .info .title {
+    line-height: 1;
+    font-size: 32rpx;
+    color: #333;
+    opacity: 0.8;
+}
+
+.chou-box .chou-line .info .xia {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 39rpx;
+    font-size: 24rpx;
+    color: #666;
+}
+
+.chou-box .chou-line .info .xia .already {
+}
+
+.chou-box .chou-line .info .xia .already .label {
+}
+
+.chou-box .chou-line .info .xia .already .price {
+    color: #fac801;
+}
+
+.chou-box .chou-line .info .xia .target {
+}
+
+.chou-box .chou-line .info .xia .part-count {
+}
+/* 众筹列表-行 end */
+
+/* form表单1 start */
+.form1 {
+}
+
+.form1 .form-item {
+    margin-bottom: 39rpx;
+}
+
+.form1 .form-item:last-child {
+    margin-bottom: 0;
+}
+
+.form1 .form-item .title {
+    font-size: 34rpx;
+    color: #1b1b1b;
+    margin-bottom: 18rpx;
+}
+
+.form1 .form-item input {
+    background: #ecebeb;
+    padding: 19rpx 25rpx;
+    color: #4d4d4d;
+    font-size: 24rpx;
+    height: auto;
+    line-height: 1;
+}
+
+.form1 .textarea-box {
+    background: #ecebeb;
+}
+
+.form1 .textarea-box textarea {
+    color: #4d4d4d;
+    font-size: 24rpx;
+    line-height: 1.5;
+    min-height: 100rpx;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form1 .textarea-box .count {
+    padding: 0 24rpx 18rpx;
+    color: #ccc;
+    text-align: right;
+    font-size: 24rpx;
+}
+
+.form1 .textarea-box .count text {
+    color: #333;
+}
+/* form表单1 end */
+
+/* 图片上传 start */
+.up-pic {
+    width: 100%;
+    justify-content: center;
+    margin-top: 30rpx;
+}
+
+.pic-box {
+    flex-flow: wrap;
+    justify-content: space-between;
+    padding-right: 30rpx;
+}
+
+.ap-box {
+    position: relative;
+    margin-bottom: 40rpx;
+}
+
+.ap-box:nth-child(3n) {
+    margin-right: 0;
+}
+
+.ap-box:nth-last-child(1), .ap-box:nth-last-child(2), .ap-box:nth-last-child(3) {
+    margin-bottom: 0;
+}
+
+.add-pic {
+    width: 200rpx;
+    height: 200rpx;
+    position: relative;
+    border-radius: 4rpx;
+    box-sizing: border-box;
+    background: #ecebeb;
+}
+
+.add-pic .img {
+    width: 100%;
+    height: 100%;
+}
+
+.add-pic.plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-pic.plus .iconfont {
+    font-size: 70rpx;
+    font-weight: bold;
+}
+
+.img-de {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    position: absolute;
+    right: -10px;
+    top: -11rpx;
+    z-index: 1;
+}
+/* 图片上传 end */

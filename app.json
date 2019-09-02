@@ -1,8 +1,12 @@
 {
   "pages": [
-    "pages/auth/auth",
+    "pages/chuang-detail/chuang-detail",
     "pages/index2/index2",
+    "pages/work-release/work-release",
     "pages/chuang-publish/chuang-publish",
+    "pages/chou-list/chou-list",
+    "pages/chuang-ranking/chuang-ranking",
+    "pages/auth/auth",
     "pages/test/test",
     "pages/index/index",
     "pages/my-address/my-address",
@@ -52,7 +56,6 @@
     "pages/designer-list/designer-list",
     "pages/designer-detail/designer-detail",
     "pages/my-works/my-works",
-    "pages/work-release/work-release",
     "pages/refund-list/refund-list",
     "pages/my-role-edit/my-role-edit",
     "pages/drumbeating/drumbeating",

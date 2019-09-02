@@ -101,7 +101,7 @@ Page({
   set_default() {
     this.setData({ default: this.data.default === 0 ? 1 : 0 });
   },
-  bind_input: function (e) {
+  bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   },
   // 获取地址详情

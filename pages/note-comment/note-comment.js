@@ -29,7 +29,7 @@ Page({
   bind_focus(e) {
     this.setData({input_bottom: e.detail.height});
   },
-  bind_input: function (e) {
+  bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   },
   show_input(e) {

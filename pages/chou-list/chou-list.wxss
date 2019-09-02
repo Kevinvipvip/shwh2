@@ -1,0 +1,19 @@
+.page {
+    background: #fafafa;
+}
+
+.chou-box {
+    padding: 40rpx 24rpx 0;
+}
+
+.chou-box .chou-line {
+    box-shadow: 0 1rpx 27rpx 0 rgba(237, 237, 237, 0.75);
+    border-radius: 4px;
+    background: #fff;
+    margin-bottom: 40rpx;
+    margin-top: 0;
+}
+
+.chou-box .chou-line:last-child {
+    margin-bottom: 0;
+}

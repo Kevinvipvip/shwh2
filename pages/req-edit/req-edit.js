@@ -235,7 +235,7 @@ Page({
     this.data.works.splice(e.currentTarget.dataset.index, 1);
     this.setData({ works: this.data.works });
   },
-  bind_input: function (e) {
+  bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   },
   date_time_change(e) {

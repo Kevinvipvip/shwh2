@@ -1,0 +1,28 @@
+<view class="page">
+  <view class="chou-box">
+    <view class="chou-line" wx:for="{{[1, 2, 3, 4]}}">
+      <view class="img-box">
+        <image lazy-load src="/images/t-chou1.png"></image>
+      </view>
+      <view class="info">
+        <view class="title">【众筹】镂空龙玉盘镂空龙玉盘镂空龙玉盘镂空</view>
+        <view class="xia">
+          <view class="already">
+            <text class="label">已筹：</text>
+            <text class="price">8W</text>
+          </view>
+          <view class="target">众筹目标：10W</view>
+          <view class="part-count">参与人数140人</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
+  </view>
+</view>

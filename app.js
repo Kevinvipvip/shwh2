@@ -13,10 +13,10 @@ App({
     });
   },
   my_config: {
-    base_url: 'https://www.caves.vip',  // 正式
-    api: 'https://www.caves.vip/api/',  // 正式
-    // base_url: 'https://caves.wcip.net',  // 正式
-    // api: 'https://caves.wcip.net/api/',  // 正式
+    // base_url: 'https://www.caves.vip',  // 正式（原）
+    // api: 'https://www.caves.vip/api/',  // 正式（原）
+    base_url: 'https://caves.wcip.net',  // 正式
+    api: 'https://caves.wcip.net/api/',  // 正式
     default_img: '/images/default.png',
     reg: { 
       tel: /^1\d{10}$/,
@@ -258,5 +258,16 @@ App({
     this.ajax(this.my_config.api + 'qiniu/getUpToken', null, res => {
       callback(res);
     });
+  },
+  bind_input(e, page) {
+    page.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
+  },
+  // 创建指定数量元素的数组（flex填充用）
+  null_arr(number, line_number) {
+    let num = (line_number - number % line_number) % line_number;
+
+    let arr = [];
+    arr[num - 1] = null;
+    return arr;
   }
 });

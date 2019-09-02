@@ -101,7 +101,7 @@ Page({
   img_remove(e) {
     this.setData({ [e.currentTarget.dataset.name]: '' });
   },
-  bind_input: function (e) {
+  bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   }
 });

@@ -50,7 +50,7 @@ Page({
     }
   },
   // common start
-  bind_input: function (e) {
+  bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   }
 })

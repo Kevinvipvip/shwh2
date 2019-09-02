@@ -1,26 +1,34 @@
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
+    textarea_padding: '15rpx',
+
     req_title: '',  // 赛事标题
     pics: '',  // 作品图片
     title: '',  // 作品标题
     desc: '',  // 作品描述
-    plat: ''
+    plat: '',
+    flex_pad: []
   },
   onLoad: function () {
     let phone = wx.getSystemInfoSync();
-    this.setData({plat: phone.platform});
+    if (phone.platform === 'ios') {
+      this.setData({ textarea_padding: '0rpx 5rpx' })
+    }
   },
-  // 删除照片 &&
+  // 删除照片
   imgDelete1: function (e) {
     let that = this;
     let index = e.currentTarget.dataset.deindex;
     let pics = this.data.pics;
     pics.splice(index, 1);
-    that.setData({ pics: pics });
+    that.setData({
+      pics: pics,
+      flex_pad: app.null_arr(pics.length + 1, 3)
+    });
   },
-  // 上传图片 &&&
+  // 上传图片
   addPic1: function (e) {
     var pics = this.data.pics;
     var picid = e.currentTarget.dataset.pic;
@@ -56,7 +64,8 @@ Page({
               }
 
               that.setData({
-                pics: pics
+                pics: pics,
+                flex_pad: app.null_arr(pics.length + 1, 3)
               });
             },
             fail: function () {
@@ -108,7 +117,7 @@ Page({
     return img_arr;
   },
   // common start
-  bind_input: function (e) {
+  bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   }
 })

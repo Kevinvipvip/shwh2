@@ -1,0 +1,11 @@
+.page {
+  padding: 40rpx 25rpx;
+  line-height: 1;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.line-btn {
+  margin-top: 80rpx;
+}

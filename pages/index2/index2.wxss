@@ -86,16 +86,6 @@ swiper swiper-item image {
   vertical-align: bottom;
 }
 
-.more-line {
-  margin-top: 24rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  text-align: center;
-  font-size: 24rpx;
-  color: #666;
-  background: #ecebeb;
-}
-
 .activity-box {
   margin-top: 47rpx;
 }
@@ -298,136 +288,8 @@ swiper swiper-item image {
   margin-top: 0;
 }
 
-.chuang-list {
-}
-
-.chuang-list .chuang {
-  margin-top: 24rpx;
-  background: #fff;
-  padding: 20rpx;
-  display: flex;
-  align-items: center;
-}
-
-.chuang-list .chuang .tou {
-  flex-shrink: 0;
-  width: 50rpx;
-  text-align: center;
-}
-
-.chuang-list .chuang .tou image {
-  width: 45rpx;
-  height: 50rpx;
-}
-
-.chuang-list .chuang .cover {
-  width: 60rpx;
-  height: 60rpx;
-  margin-left: 30rpx;
-  flex-shrink: 0;
-}
-
-.chuang-list .chuang .title {
-  font-size: 28rpx;
-  color: #333;
-  opacity: 0.6;
-  margin-left: 40rpx;
-  flex-grow: 1;
-}
-
-.chuang-list .chuang .agree {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.chuang-list .chuang .agree image {
-  width: 33rpx;
-  height: 34.5rpx;
-  margin-right: 18rpx;
-}
-
-.chuang-list .chuang .agree text {
-  display: inline-block;
-  width: 75rpx;
-  font-size: 26rpx;
-  color: #999;
-}
-
-.chuang-list .chuang .tou text {
-}
-
-.chuang-list .chuang:first-child {
-  margin-top: 0;
-}
-
 .chou-box {
   margin-top: 48rpx;
-}
-
-.chou-box .top {
-  margin-top: 24rpx;
-  background: #fff;
-}
-
-.chou-box .top .img-box {
-  position: relative;
-}
-
-.chou-box .top .img-box image {
-  width: 100%;
-  height: 300rpx;
-}
-
-.chou-box .top .img-box .status {
-  position: absolute;
-  background: #ff684f;
-  width: 96rpx;
-  height: 40rpx;
-  font-size: 24rpx;
-  color: #fff;
-  letter-spacing: 2rpx;
-  top: 22rpx;
-  right: 24rpx;
-  border-radius: 4rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.chou-box .top .info {
-  padding: 24rpx;
-}
-
-.chou-box .top .info .title {
-  line-height: 1;
-  font-size: 32rpx;
-  color: #333;
-  opacity: 0.8;
-}
-
-.chou-box .top .info .xia {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 39rpx;
-  font-size: 24rpx;
-  color: #666;
-}
-
-.chou-box .top .info .xia .already {
-}
-
-.chou-box .top .info .xia .already .label {
-}
-
-.chou-box .top .info .xia .already .price {
-  color: #fac801;
-}
-
-.chou-box .top .info .xia .target {
-}
-
-.chou-box .top .info .xia .part-count {
 }
 
 .chou-list {

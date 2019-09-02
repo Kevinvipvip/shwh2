@@ -14,7 +14,7 @@ Page({
 
     this.addressList();
   },
-  bind_input: function (e) {
+  bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   },
   // 选择套餐

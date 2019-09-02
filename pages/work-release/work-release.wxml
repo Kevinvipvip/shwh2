@@ -1,22 +1,41 @@
-<view>
-  <view class="up-pic">
-    <view class="flex pic-box">
-      <block wx:for="{{pics}}" wx:key="index">
-        <view class="ap-box">
-          <view class="add-pic">
-            <image class="add-pic" src="{{item}}"></image>
-            <view class="img-de" data-deindex="{{index}}" bindtap="imgDelete1">
-              <image class="img" src="/images/close.png"></image>
+<view class="page">
+  <view class="form1">
+    <view class="form-item">
+      <view class="title">创意标题</view>
+      <input bindinput="bind_input" data-name="title" value="{{title}}" placeholder="请输入标题" placeholder-class="input-place" maxlength="20"/>
+    </view>
+    <view class="form-item">
+      <view class="title">创意简述</view>
+      <view class="textarea-box">
+        <textarea bindinput="bind_input" fixed="true" data-name="content" value="{{content}}" auto-height maxlength="200" cursor-spacing="50" placeholder="创意内容..." style="padding: {{textarea_padding}};"/>
+        <view class="count">
+          <text>15</text> / 99
+        </view>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="title">作品上传（最多9张）</view>
+      <view class="up-pic">
+        <view class="flex pic-box">
+          <block wx:for="{{pics}}" wx:key="index">
+            <view class="ap-box">
+              <view class="add-pic">
+                <image class="add-pic" src="{{item}}"></image>
+                <view class="img-de" data-deindex="{{index}}" bindtap="imgDelete1">
+                  <image class="img" src="/images/close.png"></image>
+                </view>
+              </view>
             </view>
+          </block>
+          <view class="add-pic plus" bindtap="addPic1" wx:if="{{pics.length < 9}}">
+            <icon class="iconfont iconjia"/>
+          </view>
+          <view class="ap-box vh" wx:for="{{flex_pad}}">
+            <view class="add-pic"></view>
           </view>
         </view>
-      </block>
-      <view class="add-pic plus" bindtap="addPic1" wx:if="{{pics.length < 9}}">
-        <icon class="iconfont iconjia"/>
       </view>
     </view>
   </view>
-  <input bindinput="bind_input" data-name="title" placeholder="标题" maxlength="25"/>
-  <textarea bindinput="bind_input" data-name="desc" auto-height maxlength="200" cursor-spacing="50" placeholder="想要记点什么呢..." class="note-content" style="{{plat == 'ios' ? 'margin-left: -10rpx' : ''}}" />
-  <button bindtap="uploadShowWorks" class="pub-btn">发布</button>
+  <button class="line-btn">投稿</button>
 </view>

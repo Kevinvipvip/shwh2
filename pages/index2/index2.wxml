@@ -114,7 +114,7 @@
       <navigator class="more-line">查看更多</navigator>
     </view>
 
-    <view class="chuang-list" wx:if="{{active_rank == 2}}">
+    <view class="chuang-rank-list" wx:if="{{active_rank == 2}}">
       <view class="chuang">
         <view class="tou">
           <image lazy-load src="/icons/1st.png"></image>
@@ -183,7 +183,7 @@
       <text>天</text>
     </view>
 
-    <view class="top">
+    <view class="chou-line">
       <view class="img-box">
         <image lazy-load src="/images/t-chou1.png"></image>
         <view class="status">进行中</view>
