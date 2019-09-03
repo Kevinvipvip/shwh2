@@ -1,1 +1,8 @@
-<view class="page"></view>
+<view class="page">
+  <image src="/images/ac1.png"></image>
+  <view class="chuang-box">
+    <view class="shang">
+
+    </view>
+  </view>
+</view>
