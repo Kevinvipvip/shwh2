@@ -1,0 +1,166 @@
+<view class="page">
+  <view class="header">
+    <image src="/images/ac1.png" class="banner"></image>
+    <view class="title">“海河锦鲤”蓄势待发 带着您的创意作品一起 “跃动津城”吧！</view>
+    <view class="zhong">
+      <view class="left">
+        <image src="/images/t-header.png"></image>
+        <view class="nickname">天津杨柳青画社</view>
+      </view>
+      <view class="right">
+        <view class="people1">
+          <image src="/images/ren.png"></image>
+          <text>468人</text>
+        </view>
+        <view class="people2">
+          <image src="/images/ren2.png"></image>
+          <text>468人</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="detail">
+    <view class="title-line">
+      <view class="title">活动详情</view>
+      <view class="more">
+        <text>查看更多</text>
+        <image src="/images/you2.png"></image>
+      </view>
+    </view>
+    <view class="desc">
+      康复景观空间空间广阔冷静客观罚款决定书看风景看风景
+      看电视剧加快分解开来的时间康复景观空间空间广阔冷静
+      客观罚款决定书看风景看风景看 。 ...
+    </view>
+  </view>
+
+  <button class="line-btn zhi">作品直投</button>
+
+  <view class="tab-list">
+    <view bindtap="rank_tap" data-rank="{{1}}" class="tab {{active_rank == 1 ? 'active' : ''}}">创意</view>
+    <view bindtap="rank_tap" data-rank="{{2}}" class="tab {{active_rank == 2 ? 'active' : ''}}">作品</view>
+    <view bindtap="rank_tap" data-rank="{{3}}" class="tab {{active_rank == 3 ? 'active' : ''}}">众筹</view>
+  </view>
+
+  <view class="chuang-box" wx:if="{{active_rank == 1}}">
+    <button class="line-btn">我要创意</button>
+    <view class="tap-content-top">
+      <view class="left">TA人创意点</view>
+      <view class="sort">
+        <view class="sort-item {{chuang_sort == 1 ? 'active' : ''}}">默认排行</view>
+        <view class="sort-item {{chuang_sort == 2 ? 'active' : ''}}">热度排行</view>
+      </view>
+    </view>
+    <view class="chuang-list">
+      <view class="chuang" wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="index">
+        <view class="top-line">
+          <view class="left">
+            <view class="header-box">
+              <image src="/images/t-header.png" class="header"></image>
+
+              <block wx:if="{{chuang_sort == 2}}">
+                <image src="/icons/fire1.png" class="fire" wx:if="{{index == 0}}"></image>
+                <image src="/icons/fire2.png" class="fire" wx:if="{{index == 1}}"></image>
+                <image src="/icons/fire3.png" class="fire" wx:if="{{index == 2}}"></image>
+              </block>
+            </view>
+            <view class="nickname">思问</view>
+          </view>
+          <view class="date">2019-08-23 18:42</view>
+        </view>
+        <view class="title-line">
+          <view class="title">康复景观空康复景观空</view>
+          <view class="agree">
+            <image lazy-load src="/icons/zan.png"></image>
+            <text>2819</text>
+          </view>
+        </view>
+        <view class="desc">
+          康复景观空间空间广阔冷静客观罚款决定书看风景风景看电视剧加快分解开来的时间康复景观空间空间广阔冷静客观罚款决定书看风景看风景看 。
+        </view>
+        <button class="tou-btn">投稿</button>
+      </view>
+    </view>
+    <view class="nomore" wx:if="{{chuang_nomore}}">
+      已经没有更多了哦
+    </view>
+
+    <view class="nodata" wx:if="{{chuang_nodata}}">
+      暂无数据
+    </view>
+  </view>
+
+  <view class="work-box">
+    <view class="tap-content-top">
+      <view class="left">TA人创意点</view>
+      <view class="sort">
+        <view class="sort-item {{chuang_sort == 1 ? 'active' : ''}}">默认排行</view>
+        <view class="sort-item {{chuang_sort == 2 ? 'active' : ''}}">热度排行</view>
+      </view>
+    </view>
+    <view class="work-list">
+      <view class="work" wx:for="{{[1, 2, 3, 4]}}" wx:key="index">
+        <view class="line1">
+          <view class="zuo">
+            <image src="/images/t-header.png" class="header"></image>
+            <view class="nickname">nnnn</view>
+          </view>
+          <view class="agree">
+            <image lazy-load src="/icons/zan.png"></image>
+            <text>2819</text>
+          </view>
+        </view>
+        <view class="under">
+          <view class="title">物与物</view>
+          <view class="desc">作品简述作品简述作品简述作品简述作品简述作品简述作品简述</view>
+          <view class="img-box">
+            <image src="/images/t_s_item.png" alt="" lazy-load></image>
+            <image src="/images/t_s_item.png" alt="" lazy-load></image>
+            <image src="/images/t_s_item.png" alt="" lazy-load></image>
+          </view>
+        </view>
+        <view class="chuang-line">
+          <view class="origin">创意来源：龙鳞</view>
+          <view class="支持">创意支持 128</view>
+        </view>
+        <view class="other-line">
+          <view class="factory">
+            <text>工厂接单</text>
+            <text>[数量：132]</text>
+          </view>
+          <view class="agree">
+            <image lazy-load src="/icons/zan.png"></image>
+            <text>2819</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="nomore" wx:if="{{chuang_nomore}}">
+      已经没有更多了哦
+    </view>
+
+    <view class="nodata" wx:if="{{chuang_nodata}}">
+      暂无数据
+    </view>
+  </view>
+
+  <view class="chou-box" wx:if="{{active_rank == 3}}">
+    <view class="chou-line" wx:for="{{[1, 2, 3, 4]}}">
+      <view class="img-box">
+        <image lazy-load src="/images/t-chou1.png"></image>
+      </view>
+      <view class="info">
+        <view class="title">【众筹】镂空龙玉盘镂空龙玉盘镂空龙玉盘镂空</view>
+        <view class="xia">
+          <view class="already">
+            <text class="label">已筹：</text>
+            <text class="price">8W</text>
+          </view>
+          <view class="target">众筹目标：10W</view>
+          <view class="part-count">参与人数140人</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

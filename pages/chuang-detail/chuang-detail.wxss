@@ -1,2 +1,239 @@
 .page {
+    padding-bottom: 98rpx;
+    background: #fafafa;
+}
+
+.ac-box {
+    border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
+}
+
+.ac-box .banner {
+    width: 100%;
+    height: 309rpx;
+    vertical-align: bottom;
+}
+
+.ac-box .title {
+    padding: 20rpx 25rpx;
+    font-size: 32rpx;
+    color: rgba(51, 51, 51, 0.8);
+    line-height: 48rpx;
+}
+
+.chuang-box {
+    padding: 40rpx 25rpx;
+    border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
+}
+
+.chuang-box .line1 {
+    line-height: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.chuang-box .line1 .zuo {
+    display: flex;
+    align-items: center;
+}
+
+.chuang-box .line1 .zuo .qi-star {
+    width: 30rpx;
+    height: 32rpx;
+    margin-right: 25rpx;
+}
+
+.chuang-box .line1 .zuo text {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 34rpx;
+}
+
+.chuang-box .line1 .agree {
+    display: flex;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.chuang-box .line1 .agree image {
+    width: 33rpx;
+    height: 34.5rpx;
+    margin-right: 18rpx;
+}
+
+.chuang-box .line1 .agree text {
+    display: inline-block;
+    width: 75rpx;
+    font-size: 26rpx;
+    color: #999;
+}
+
+.chuang-box .content {
+    margin-top: 14rpx;
+    font-size: 26rpx;
+    line-height: 42rpx;
+    color: rgba(102, 102, 102, 0.8);
+}
+
+.chuang-box .user-box {
+    margin-top: 42rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chuang-box .user-box .left {
+    display: flex;
+    align-items: center;
+}
+
+.chuang-box .user-box .left .header {
+    width: 60rpx;
+    height: 60rpx;
+    border: 2rpx solid #333;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+.chuang-box .user-box .left .er {
+    margin-left: 13rpx;
+    line-height: 1;
+}
+
+.chuang-box .user-box .left .er .nickname {
+    font-size: 26rpx;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.chuang-box .user-box .left .er .date {
+    margin-top: 7rpx;
+    font-size: 24rpx;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.chuang-box .user-box .follow {
+    padding: 0 20rpx;
+    line-height: 47rpx;
+    height: 47rpx;
+    display: flex;
+    text-align: center;
+    background-color: #ffc047;
+    box-shadow: 0 1rpx 35rpx 0 rgba(254, 224, 166, 0.66);
+    border-radius: 23rpx;
+    font-size: 26rpx;
+    color: #fff;
+    margin: 0;
+}
+
+.chuang-box .user-box .follow.followed {
+    background: #dbdbdb;
+    box-shadow: none;
+}
+
+.work-box {
+    padding: 40rpx 24rpx 0;
+}
+
+.work-box .title {
+    line-height: 1;
+    font-size: 32rpx;
+    color: #333;
+    margin-bottom: 24rpx;
+}
+
+.work-box .work {
+    margin-bottom: 24rpx;
+    box-shadow: 0 1rpx 60rpx 0 rgba(237, 237, 237, 0.75);
+    border-radius: 4rpx;
+    background: #fff;
+    padding: 24rpx;
+}
+
+.work-box .work:last-child {
+    margin-bottom: 0;
+}
+
+.work-box .work .line1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.work-box .work .line1 .zuo {
+    display: flex;
+    align-items: center;
+}
+
+.work-box .work .line1 .zuo .header {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+}
+
+.work-box .work .line1 .zuo .nickname {
+    margin-left: 14rpx;
+    line-height: 1;
+    font-size: 26rpx;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.work-box .work .line1 .agree {
+    display: flex;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.work-box .work .line1 .agree image {
+    width: 33rpx;
+    height: 34.5rpx;
+    margin-right: 18rpx;
+}
+
+.work-box .work .line1 .agree text {
+    display: inline-block;
+    width: 75rpx;
+    font-size: 26rpx;
+    color: #999;
+    line-height: 1;
+}
+
+.work-box .work .under {
+    margin-top: 37rpx;
+    line-height: 1;
+}
+
+.work-box .work .under .title {
+    font-size: 32rpx;
+    color: rgba(51, 51, 51, 0.6);
+}
+
+.work-box .work .under .desc {
+    margin-top: 19rpx;
+    font-size: 28rpx;
+    color: rgba(51, 51, 51, 0.6);
+    line-height: 36rpx;
+}
+
+.work-box .work .under .img-box {
+    margin-top: 39rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.work-box .work .under .img-box image {
+    width: 212rpx;
+    height: 212rpx;
+}
+
+.share-btn {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #fff;
+    background: #4dd450;
 }
