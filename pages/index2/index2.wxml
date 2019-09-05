@@ -6,7 +6,7 @@
     </view>
     <swiper indicator-dots="{{true}}"
             autoplay="{{true}}"
-            class="top-swiper"
+            class="tou-swiper"
             indicator-color="#ffefb2"
             indicator-active-color="#ffda49">
       <swiper-item wx:for="{{[1, 2, 3]}}" wx:key="index">

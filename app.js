@@ -18,7 +18,7 @@ App({
     base_url: 'https://caves.wcip.net',  // 正式
     api: 'https://caves.wcip.net/api/',  // 正式
     default_img: '/images/default.png',
-    reg: { 
+    reg: {
       tel: /^1\d{10}$/,
       phone: /\d{3,4}-\d{7,8}/,
       email: /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/,
@@ -199,7 +199,7 @@ App({
   // 如果不存在route，跳转到首页，否则根据是否是tabbar页进行跳转
   redirect_or_switch_or_index(route) {
     if (!route) {
-        wx.switchTab({ url: '/pages/index/index' });
+      wx.switchTab({ url: '/pages/index/index' });
     } else {
       switch (route) {
         case 'pages/index/index':
@@ -269,5 +269,9 @@ App({
     let arr = [];
     arr[num - 1] = null;
     return arr;
+  },
+  // 千分制转换
+  qian_format(number) {
+    return (Number(number).toFixed(2) + "").replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, "$&,")
   }
 });

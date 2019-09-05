@@ -1,0 +1,44 @@
+.page {
+}
+
+.support-list {
+    padding-bottom: 30rpx;
+}
+
+.support {
+    padding: 40rpx 25rpx;
+}
+
+.support:last-child {
+}
+
+.support .title-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.support .title-line .left {
+
+}
+
+.support .title-line .left .quan {
+
+}
+
+.support .title-line .left .quan.active::after {
+}
+
+.support .title-line .yi-zhi {
+}
+
+.support .title {
+}
+
+.support .desc {
+}
+
+.support .img-box {
+}
+
+.support .img-box image {
+}

@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/chou-list/chou-list",
+    "pages/support-options/support-options",
+    "pages/chou-detail/chou-detail",
     "pages/activity-detail/activity-detail",
-    "pages/chuang-detail/chuang-detail",
     "pages/index2/index2",
+    "pages/chuang-detail/chuang-detail",
     "pages/work-release/work-release",
-    "pages/chuang-publish/chuang-publish",
+    "pages/chou-list/chou-list",
     "pages/chuang-ranking/chuang-ranking",
+    "pages/chuang-publish/chuang-publish",
     "pages/auth/auth",
     "pages/test/test",
     "pages/index/index",

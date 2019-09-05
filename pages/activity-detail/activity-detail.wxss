@@ -1,1 +1,326 @@
-.page {}
+.page {
+  background: #fafafa;
+}
+
+.header {
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
+}
+
+.header .banner {
+  width: 100%;
+  height: 309rpx;
+  vertical-align: bottom;
+}
+
+.header .title {
+  padding: 15rpx 25rpx;
+  font-size: 32rpx;
+  color: rgba(51, 51, 51, 0.8);
+  line-height: 48rpx;
+}
+
+.header .zhong {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25rpx;
+  margin-top: 5rpx;
+}
+
+.header .zhong .left {
+  display: flex;
+  align-items: center;
+}
+
+.header .zhong .left .head-pic {
+  display: flex;
+  align-items: center;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.header .zhong .left .nickname {
+  margin-left: 19rpx;
+  color: #666;
+  font-size: 26rpx;
+}
+
+.header .zhong .right {
+  display: flex;
+}
+
+.header .zhong .right .people {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.header .zhong .right .people1 {
+}
+
+.header .zhong .right .people2 {
+}
+
+.header .zhong .right .people1 image {
+  width: 19rpx;
+  height: 25rpx;
+}
+
+.header .zhong .right .people2 image {
+  width: 26rpx;
+  height: 24rpx;
+}
+
+.header .zhong .right .people text {
+  margin-left: 14rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.header .times {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25rpx;
+  margin-bottom: 25rpx;
+}
+
+.header .times .time {
+  display: flex;
+  align-items: center;
+}
+
+.header .times .time image {
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.header .times .time text {
+  margin-left: 13rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.zhi {
+  margin: 40rpx 24rpx 0;
+  background: #1b1b1b;
+  color: #faf8f8;
+}
+
+.data-box {
+  padding: 54rpx 24rpx 10rpx;
+}
+
+.data-box .tab-list {
+  margin: 0;
+}
+
+.chuang-box .line-btn {
+  margin-top: 48rpx;
+}
+
+.tap-content-top {
+  margin-top: 47rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.tap-content-top .left {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.tap-content-top .sort {
+  display: flex;
+}
+
+.tap-content-top .sort .sort-item {
+  margin-left: 14rpx;
+  padding: 8rpx 22rpx;
+  line-height: 1;
+  font-size: 24rpx;
+  background: #e7e7e7;
+  color: #ccc;
+}
+
+.tap-content-top .sort .sort-item.active {
+  background: #fff;
+  color: #333;
+  box-shadow: 0 1rpx 60rpx 0rpx rgba(211, 211, 211, 0.65);
+}
+
+/* 创意 start */
+.chuang-box {
+}
+
+.chuang-list {
+  margin-top: 40rpx;
+}
+
+.chuang-list .chuang {
+  margin-bottom: 24rpx;
+  background-color: #fff;
+  box-shadow: 0 1rpx 60rpx 0 rgba(211, 211, 211, 0.6);
+  border-radius: 4rpx;
+  padding: 20rpx 24rpx;
+}
+
+.chuang-list .chuang:last-child {
+  margin-bottom: 0;
+}
+
+.chuang-list .chuang .top-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chuang-list .chuang .top-line .left {
+  display: flex;
+  align-items: center;
+}
+
+.chuang-list .chuang .top-line .left .header-box {
+  position: relative;
+}
+
+.chuang-list .chuang .top-line .left .header-box .header {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #eee;
+  vertical-align: bottom;
+}
+
+.chuang-list .chuang .top-line .left .header-box .fire {
+  position: absolute;
+  bottom: -1rpx;
+  right: 2rpx;
+  width: 14rpx;
+  height: 22rpx;
+}
+
+.chuang-list .chuang .top-line .left .nickname {
+  font-size: 26rpx;
+  color: #000;
+  opacity: 0.8;
+  margin-left: 15rpx;
+}
+
+.chuang-list .chuang .top-line .date {
+  color: #000;
+  opacity: 0.4;
+  font-size: 24rpx;
+}
+
+.chuang-list .chuang .title-line {
+  margin-top: 39rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.chuang-list .chuang .title-line .title {
+  font-size: 32rpx;
+  color: #333;
+  opacity: 0.8;
+}
+
+.chuang-list .chuang .title-line .agree {
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.chuang-list .chuang .title-line .agree image {
+  width: 33rpx;
+  height: 34.5rpx;
+  margin-right: 18rpx;
+}
+
+.chuang-list .chuang .title-line .agree text {
+  display: inline-block;
+  width: 75rpx;
+  font-size: 25rpx;
+  color: #999;
+}
+
+.chuang-list .chuang .desc {
+  margin-top: 33rpx;
+  line-height: 42rpx;
+  font-size: 26rpx;
+  color: #333;
+  opacity: 0.8;
+}
+
+.chuang-list .chuang .tou-btn {
+  margin: 34rpx auto 10rpx;
+  padding: 0;
+  width: 360rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 4rpx;
+  background: #1b1b1b;
+  font-size: 28rpx;
+  color: #fff;
+}
+/* 创意 end */
+
+/* 作品 start */
+.work-box {
+  padding: 0;
+}
+
+.work-box .work-list {
+  margin-top: 47rpx;
+}
+
+.work .time-ago {
+  font-size: 24rpx;
+  color: #ccc;
+}
+
+.work .chuang-line {
+  line-height: 1;
+  margin-top: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.work .chuang-line .origin {
+  letter-spacing: 1rpx;
+}
+
+.work .chuang-line .c-zhi {
+
+}
+
+.work .other-line {
+  margin-top: 35rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.work .other-line .factory {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.work .other-line .factory text {
+}
+
+.work .other-line .factory .amount {
+  margin-left: 25rpx;
+  color: #333;
+  opacity: 0.7;
+}
+
+.work .other-line .agree {
+
+}
+/* 作品 end */
