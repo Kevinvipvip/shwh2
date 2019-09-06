@@ -3,7 +3,7 @@ const app = getApp()
 Page({
   data: {
     textarea_padding: '15rpx',
-    role: '1',
+    role: '1',  // 1.博物馆 2.设计师 3.工厂
     org: '',
     name: '',
     identity: '',

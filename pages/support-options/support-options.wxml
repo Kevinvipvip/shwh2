@@ -14,13 +14,16 @@
       <view class="title-line">
         <view class="left">
           <view class="quan active"></view>
-          <view class="title">¥196</view>
+          <view class="money">¥196</view>
         </view>
         <view class="yi-zhi">已支持582次</view>
       </view>
       <view class="title">雷锋精神，做好事不留名！</view>
       <view class="desc">您将获得：百搭红锦鲤T恤一件</view>
       <view class="img-box">
+        <image src="/images/t_s_item.png" lazy-load></image>
+        <image src="/images/t_s_item.png" lazy-load></image>
+        <image src="/images/t_s_item.png" lazy-load></image>
         <image src="/images/t_s_item.png" lazy-load></image>
         <image src="/images/t_s_item.png" lazy-load></image>
         <image src="/images/t_s_item.png" lazy-load></image>

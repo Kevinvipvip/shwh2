@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/apply2/apply2",
+    "pages/chou-order-create/chou-order-create",
+    "pages/work-release/work-release",
+    "pages/index2/index2",
     "pages/support-options/support-options",
     "pages/chou-detail/chou-detail",
     "pages/activity-detail/activity-detail",
-    "pages/index2/index2",
     "pages/chuang-detail/chuang-detail",
-    "pages/work-release/work-release",
     "pages/chou-list/chou-list",
     "pages/chuang-ranking/chuang-ranking",
     "pages/chuang-publish/chuang-publish",
@@ -42,7 +44,6 @@
     "pages/my-req/my-req",
     "pages/req-release/req-release",
     "pages/req-edit/req-edit",
-    "pages/apply2/apply2",
     "pages/notes/notes",
     "pages/note-detail/note-detail",
     "pages/note-comment/note-comment",
@@ -65,10 +66,10 @@
     "pages/store/store"
   ],
   "window": {
+    "navigationBarBackgroundColor": "#333333",
+    "navigationBarTextStyle": "white",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "山洞",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "山洞"
   },
   "tabBar": {
     "color": "#555555",

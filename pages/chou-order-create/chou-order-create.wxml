@@ -1,0 +1,67 @@
+<view class="page">
+  <navigator url="/pages/my-address/my-address?type=1">
+    <view class="address-choose">
+      <view class="address-icon">
+        <image src="/icons/address2.png"></image>
+      </view>
+      <view class="info" wx:if="{{tel}}">
+        <view class="top">
+          <view class="nickname">{{receiver}}</view>
+          <view class="tel">{{tel}}</view>
+        </view>
+        <view class="detail">
+          <view class="ad-text">{{address}}</view>
+          <view class="edit">
+            <image src="/icons/you3.png"></image>
+          </view>
+        </view>
+      </view>
+      <view wx:else class="no-default-add">
+        暂无默认收货地址，请添加
+      </view>
+    </view>
+  </navigator>
+
+  <view class="form2">
+    <view class="form-item">
+      <view class="label">支持方式</view>
+      <view class="content">无偿支持</view>
+    </view>
+    <view class="form-item">
+      <view class="label">支付份数</view>
+      <view class="content">
+        <view class="counter">
+          <view class="item jian">
+            <image src="/icons/jian.png"></image>
+          </view>
+          <view class="item count">2</view>
+          <view class="item plus">
+            <image src="/icons/plus.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="label">支持金额</view>
+      <view class="content">
+        <view class="bi-box">
+          <view class="bi">¥</view>
+          <input type="text" />
+        </view>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="label">支付金额</view>
+      <view class="content">¥50</view>
+    </view>
+    <view class="form-item2">
+      <view class="label">填写备注</view>
+      <textarea bindinput="bind_input" fixed="true" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." style="padding: {{textarea_padding}};"/>
+    </view>
+  </view>
+
+  <view class="bottom-btns">
+    <button class="amount">支付总额：¥50</button>
+    <button class="confirm">确认支付</button>
+  </view>
+</view>

@@ -9,31 +9,38 @@
       <view>原因：{{reason}}</view>
     </view>
     <form bindsubmit="apply" class="apply-form" wx:if="{{auth == 0 || auth == 3}}">
-      <block wx:if="{{role != 3}}">
+      <!-- 工厂和博物馆 -->
+      <block wx:if="{{role != 2}}">
         <view class="input-group-list">
           <view class="flex flex-row input-group">
-            <view class="flex-grow-0 flex-y-center input-group-label require">机构名称</view>
+            <view class="flex-grow-0 flex-y-center input-group-label require">机构名称：</view>
             <view class="flex-grow-1">
-              <input bindinput="bind_input" data-name="org" value="{{org}}" class="flex-y-center" placeholder="请输入机构名称"
-                     placeholderClass="placeholder"/>
+              <input bindinput="bind_input" data-name="org" value="{{org}}" class="flex-y-center" placeholder="请输入机构名称" placeholderClass="placeholder"/>
             </view>
           </view>
           <view class="flex flex-row input-group">
-            <view class="flex-grow-0 flex-y-center input-group-label require">法人代表</view>
+            <view class="flex-grow-0 flex-y-center input-group-label require">机构地址：</view>
             <view class="flex-grow-1">
-              <input bindinput="bind_input" data-name="name" value="{{name}}" class="flex-y-center"
-                     placeholder="请输入法人代表" placeholderClass="placeholder"/>
+              <input bindinput="bind_input" data-name="org" value="{{org}}" class="flex-y-center" placeholder="请输入机构地址" placeholderClass="placeholder"/>
+            </view>
+          </view>
+        </view>
+        <view class="input-group-list">
+          <view class="flex flex-row input-group">
+            <view class="flex-grow-0 flex-y-center input-group-label require">法人代表：</view>
+            <view class="flex-grow-1">
+              <input bindinput="bind_input" data-name="name" value="{{name}}" class="flex-y-center" placeholder="请输入法人代表" placeholderClass="placeholder"/>
             </view>
           </view>
           <view class="flex flex-row input-group">
-            <view class="flex-grow-0 flex-y-center input-group-label require">身份证号</view>
+            <view class="flex-grow-0 flex-y-center input-group-label require">身份证号：</view>
             <view class="flex-grow-1">
               <input type="idcard" bindinput="bind_input" data-name="identity" value="{{identity}}"
                      class="flex-y-center" placeholder="请输入身份证号" maxlength="18" placeholderClass="placeholder"/>
             </view>
           </view>
-          <view class="flex flex-row input-group">
-            <view class="flex-grow-0 flex-y-center input-group-label require">封面</view>
+          <view class="flex flex-row input-group input-group2">
+            <view class="flex-grow-0 flex-y-center input-group-label require">上传身份证照片：</view>
             <view class="flex-grow-1">
               <view class="upload-box">
                 <view bindtap="img_upload" data-name="cover" class="upload" wx:if="{{!cover}}">
@@ -126,7 +133,9 @@
           </view>
         </view>
       </block>
-      <block wx:if="{{role == 3}}">
+
+      <!-- 设计师 -->
+      <block wx:if="{{role == 2}}">
         <view class="input-group-list">
           <view class="flex flex-row input-group">
             <view class="flex-grow-0 flex-y-center input-group-label require">姓名</view>
@@ -240,12 +249,14 @@
         <button class="submit-btn" formType="submit" loading="{{apply_loading}}">提交申请</button>
       </view>
     </form>
+
     <view class="in-mp" wx:if="{{auth == 1}}">
       <view class="status-box">
         <icon type="waiting" size="60"/>
         <view class="text">审核中，请耐心等待</view>
       </view>
     </view>
+
     <view class="in-mp" wx:if="{{auth == 2}}">
       <view class="status-box">
         <icon type="success" size="60"/>

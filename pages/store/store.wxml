@@ -3,8 +3,7 @@
   <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入法人手机号" placeholder-class="tel-class" maxlength="11"/>
 
   <!-- textaera -->
-  <textarea bindinput="bind_input" fixed="true" data-name="desc" value="{{desc}}" auto-height maxlength="200"
-            cursor-spacing="50" placeholder="备注内容..." style="padding: {{textarea_padding}};"/>
+  <textarea bindinput="bind_input" fixed="true" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." style="padding: {{textarea_padding}};"/>
 
   <!-- nomore/nodata -->
   <view class="nomore" wx:if="{{nomore}}">

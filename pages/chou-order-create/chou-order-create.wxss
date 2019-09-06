@@ -1,0 +1,134 @@
+.page {
+    background: #fafafa;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 100rpx;
+}
+
+.form2 {
+  margin-top: 41rpx;
+  padding: 0 24rpx;
+}
+
+.form2 .form-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 34rpx;
+  color: #333;
+  margin-bottom: 70rpx;
+}
+
+.form2 .form-item:last-child {
+  margin-bottom: 0;
+}
+
+.form-item .label {
+}
+
+.form-item .content {
+}
+
+.form-item .content .counter {
+  display: flex;
+}
+
+.form-item .content .counter .item {
+  height: 40rpx;
+  border-radius: 4rpx;
+  background: #e6e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-item .content .counter .jian {
+  margin-right: 16rpx;
+  width: 40rpx;
+}
+
+.form-item .content .counter .jian image {
+  width: 18rpx;
+  height: 4rpx;
+}
+
+.form-item .content .counter .count {
+  margin-right: 16rpx;
+  font-size: 26rpx;
+  padding: 0 13rpx;
+  color: #333;
+}
+
+.form-item .content .counter .plus {
+  width: 40rpx;
+}
+
+.form-item .content .counter .plus image {
+  width: 18rpx;
+  height: 18rpx;
+}
+
+.form-item .content .bi-box {
+  display: flex;
+  align-items: center;
+}
+
+.form-item .content .bi-box .bi {
+  font-size: 30rpx;
+  color: #333;
+  margin-right: 15rpx;
+}
+
+.form-item .content .bi-box input {
+  border-radius: 4rpx;
+  border: solid 2rpx #ffa55a;
+  width: 150rpx;
+  font-size: 24rpx;
+  padding: 5rpx 10rpx;
+}
+
+.form-item2 {
+  position: relative;
+}
+
+.form-item2 .label {
+  font-size: 34rpx;
+  color: #333;
+}
+
+.form-item2 textarea {
+  background: #e6e6e6;
+  border-radius: 4rpx;
+  margin-top: 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 150rpx;
+  line-height: 1.5;
+}
+
+.bottom-btns {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+}
+
+.bottom-btns button {
+    width: 0;
+    flex-grow: 1;
+    height: 78rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #333;
+    border-radius: 0;
+    padding: 0;
+}
+
+.bottom-btns .amount {
+    background-color: #ffffff;
+    box-shadow: 0 1rpx 60rpx 0 rgba(230, 230, 230, 0.65);
+}
+
+.bottom-btns .confirm {
+    background: #ffa55a;
+}
