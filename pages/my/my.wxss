@@ -1,131 +1,129 @@
 .page {
-    position: relative;
-    background:#f9f9f9;
+  position: relative;
+  background: #f9f9f9;
 }
 
 .navigation-box {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .navigation {
-    display: flex;
-    align-items: center;
-    position: relative;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
 }
 
 .navigation .title {
-    text-align: center;
-    font-size: 34rpx;
+  text-align: center;
+  font-size: 34rpx;
 }
 
 .navigation .iconfont {
-    position:absolute;
-    left:37rpx;
-    font-size:50rpx;
-    font-weight:bold;
-    top:17rpx;
-    color:#333;
-}
-
-.avatar-bg {
-    background-size:100%;
-    background-position:top;
-    background-repeat:no-repeat;
-    filter:blur(8rpx);
-    top:0;
-    width:100%;
-    position:absolute;
-    opacity:0.6;
-    padding-bottom: 230rpx;
+  position: absolute;
+  left: 37rpx;
+  font-size: 50rpx;
+  font-weight: bold;
+  top: 17rpx;
+  color: #333;
 }
 
 .header {
-    margin:0 40rpx;
-    background:#fff;
-    height:250rpx;
-    position:relative;
-    border-radius:10rpx;
-    display:flex;
-    align-items:center;
+  background: #fff;
+  height: 371rpx;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.header .avatar-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 371rpx;
 }
 
 .header .inner {
-    margin-left:80rpx;
-    display:flex;
-    align-items:center;
-    width:100%;
-    margin-right:30rpx;
+  margin-left: 80rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-right: 30rpx;
+    position: relative;
+    z-index: 1;
 }
 
 .header .avatar {
-    width:125rpx;
-    height:125rpx;
-    border-radius:15rpx;
-    vertical-align:bottom;
-    overflow:hidden;
+  width: 125rpx;
+  height: 125rpx;
+  border-radius: 15rpx;
+  vertical-align: bottom;
+  overflow: hidden;
 }
 
 .header .info {
-    margin-left: 40rpx;
-    flex-grow: 1;
+  margin-left: 40rpx;
+  flex-grow: 1;
 }
 
 .header .info .title {
-    font-size: 34rpx;
-    font-weight: bold;
-    display:flex;
-    align-items:center;
+  font-size: 34rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .header .info .title .iconnan {
-    color: #46bbed;
-    font-size: 32rpx;
-    position:relative;
-    top:-5rpx;
-    margin-left:5rpx;
+  color: #46bbed;
+  font-size: 32rpx;
+  position: relative;
+  top: -5rpx;
+  margin-left: 5rpx;
 }
 
 .header .info .title .iconnv {
-    color: #ff768d;
-    font-size:34rpx;
-    position:relative;
-    top:-5rpx;
-    margin-left:5rpx;
+  color: #ff768d;
+  font-size: 34rpx;
+  position: relative;
+  top: -5rpx;
+  margin-left: 5rpx;
 }
 
 .header .info .vip {
-    position:relative;
-    top:-1rpx;
-    font-size:44rpx;
-    margin-left:15rpx;
-    color:#ff721f;
+  position: relative;
+  top: -1rpx;
+  font-size: 44rpx;
+  margin-left: 15rpx;
+  color: #ff721f;
 }
 
 .header .info .other {
-    margin-top: 20rpx;
-    color: #666;
-    font-size: 24rpx;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 20rpx;
+  color: #666;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header .info .other .iden {
-    background: #a53d23;
-    color:#fff;
-    padding:7rpx 20rpx;
-    display:inline-block;
-    border-radius:10rpx;
-    font-size:24rpx;
+  background: #a53d23;
+  color: #fff;
+  padding: 7rpx 20rpx;
+  display: inline-block;
+  border-radius: 10rpx;
+  font-size: 24rpx;
 }
 
 .header .info .other .balance {
-    display:flex;
-    align-items:center;
-    font-size:26rpx;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
 }
 
 .header .setting-box {
@@ -135,75 +133,75 @@
 }
 
 .menu {
-    background: #fff;
-    margin-top: 25rpx;
-    padding: 0 15rpx;
-    color: #333;
+  background: #fff;
+  margin-top: 25rpx;
+  padding: 0 15rpx;
+  color: #333;
 }
 
 .menu .menu-item {
-    border-bottom: 1rpx solid #ddd;
-    height: 103rpx;
-    padding: 0 20rpx;
-    display: flex;
-    align-items: center;
-    position: relative;
-    background: #fff;
-    color: #333;
+  border-bottom: 1rpx solid #ddd;
+  height: 103rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: #fff;
+  color: #333;
 }
 
 .menu .menu-item:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .menu .menu-item.has {
-    border-bottom: 1rpx solid #ddd;
+  border-bottom: 1rpx solid #ddd;
 }
 
 .menu .menu-item.navigator-hover, .menu .menu-item:active {
-    opacity: 0.8;
-    background: transparent;
+  opacity: 0.8;
+  background: transparent;
 }
 
 .menu .icon-img {
-    font-size: 40rpx;
-    width: 40rpx;
-    height: 40rpx;
+  font-size: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .menu .iconfont {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .menu .iconfont.left {
-  color:#888;
-  font-size:44rpx;
+  color: #888;
+  font-size: 44rpx;
 }
 
 .menu .icon-img {
-    width: 45rpx;
-    height: 45rpx;
+  width: 45rpx;
+  height: 45rpx;
 }
 
 .menu .iconfont.iconyou {
-    font-size:30rpx;
-    position:absolute;
-    right:30rpx;
-    top:0;
-    bottom:0;
-    color:#c1c0c9;
+  font-size: 30rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+  bottom: 0;
+  color: #c1c0c9;
 }
 
 .menu .iconshenqing {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .menu .menu-item text {
-    margin-left: 22rpx;
-    font-size: 34rpx;
-    line-height: 49rpx;
-    color: #303030;
+  margin-left: 22rpx;
+  font-size: 34rpx;
+  line-height: 49rpx;
+  color: #303030;
 }
 
 /*

@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/my/my",
+    "pages/index2/index2",
     "pages/apply2/apply2",
     "pages/chou-order-create/chou-order-create",
     "pages/work-release/work-release",
-    "pages/index2/index2",
     "pages/support-options/support-options",
     "pages/chou-detail/chou-detail",
     "pages/activity-detail/activity-detail",
@@ -39,7 +40,6 @@
     "pages/req-detail/req-detail",
     "pages/recharge/recharge",
     "pages/recharge_res/recharge_res",
-    "pages/my/my",
     "pages/my-edit/my-edit",
     "pages/my-req/my-req",
     "pages/req-release/req-release",
