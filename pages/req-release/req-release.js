@@ -25,8 +25,8 @@ Page({
     weixin: '',
     release_loading: false,
 
-    now_date: utils.date_format('yyyy-MM-dd', new Date()),
-    now_time: utils.date_format('hh:mm', new Date())
+    now_date: utils.date_format(new Date(), 'yyyy-MM-dd'),
+    now_time: utils.date_format(new Date(), 'hh:mm')
   },
   onLoad: function () {
     let phone = wx.getSystemInfoSync();
@@ -107,7 +107,7 @@ Page({
           end_time: data.end_time_date + ' 00:00:00'
         };
 
-        app.ajax(app.my_config.api + 'my/reqRelease', post, () => {
+        app.ajax('my/reqRelease', post, () => {
           this.setData({ release_loading: false });
           wx.showToast({
             title: '发布成功',
@@ -139,7 +139,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage2m',
+            url: 'api/uploadImage2m',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {
@@ -177,7 +177,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage2m',
+            url: 'api/uploadImage2m',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {

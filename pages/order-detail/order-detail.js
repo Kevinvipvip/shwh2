@@ -18,7 +18,7 @@ Page({
       id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'my/orderDetail', post, (res) => {
+    app.ajax('my/orderDetail', post, (res) => {
       app.format_img_arr(res.child, 'cover');
       let amount = 0;
       for (let i = 0; i < res.child.length; i++) {

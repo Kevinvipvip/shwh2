@@ -8,7 +8,12 @@ const select_tab_bar = (page, selected) => {
   }
 };
 
-const date_format = (fmt, date) => {
+const date_format = (date, fmt = 'yyyy.MM.dd') => {
+  // 如果是数字类型
+  if (date % 1 === 0) {
+    date = new Date(date * 1000);
+  }
+
   var o = {
     "M+": date.getMonth() + 1,                 //月份
     "d+": date.getDate(),                    //日
@@ -29,4 +34,4 @@ const date_format = (fmt, date) => {
 module.exports = {
   select_tab_bar,
   date_format
-}
+};

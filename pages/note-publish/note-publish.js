@@ -50,7 +50,7 @@ Page({
         that.upload_images(images, index);
       } else {
         wx.uploadFile({
-          url: app.my_config.api + 'api/uploadImage',
+          url: 'api/uploadImage',
           filePath: images[index].path,
           name: 'file',
           formData: {
@@ -97,7 +97,7 @@ Page({
         height: this.data.imgbox[0].height
       };
 
-      app.ajax(app.my_config.api + 'note/noteRelease', post, () => {
+      app.ajax('note/noteRelease', post, () => {
         app.modal('发布成功，将进入审核，请耐心等待', () => {
           let notes = app.get_page('pages/my-notes/my-notes');
           if (notes) {

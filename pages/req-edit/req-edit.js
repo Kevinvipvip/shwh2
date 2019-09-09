@@ -30,8 +30,8 @@ Page({
     status: 0,
     reason: '',
 
-    now_date: utils.date_format('yyyy-MM-dd', new Date()),
-    now_time: utils.date_format('hh:mm', new Date())
+    now_date: utils.date_format(new Date(), 'yyyy-MM-dd'),
+    now_time: utils.date_format(new Date(), 'hh:mm')
   },
   onLoad(options) {
     this.data.id = options.id;
@@ -52,7 +52,7 @@ Page({
       id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'my/reqDetail', post, (res) => {
+    app.ajax('my/reqDetail', post, (res) => {
       app.format_img(res, 'cover');
       this.setData({
         title: res.title,
@@ -135,7 +135,7 @@ Page({
           end_time: data.end_time_date + ' 00:00:00'
         };
 
-        app.ajax(app.my_config.api + 'my/reqMod', post, () => {
+        app.ajax('my/reqMod', post, () => {
           this.setData({ release_loading: false });
 
           app.modal('编辑成功，将进入审核，请耐心等待', () => {
@@ -170,7 +170,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage2m',
+            url: 'api/uploadImage2m',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {
@@ -208,7 +208,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage2m',
+            url: 'api/uploadImage2m',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {

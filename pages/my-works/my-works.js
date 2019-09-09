@@ -40,7 +40,7 @@ Page({
     let post = {
       token: app.user_data.token
     };
-    app.ajax(app.my_config.api + 'my/getMyReqWorks', post, (res) => {
+    app.ajax('my/getMyReqWorks', post, (res) => {
       if (res.length === 0) {
         if (this.data.req_page === 1) {
           this.setData({ req_nodata: true });
@@ -63,7 +63,7 @@ Page({
     let post = {
       token: app.user_data.token
     };
-    app.ajax(app.my_config.api + 'my/getMyShowWorks', post, (res) => {
+    app.ajax('my/getMyShowWorks', post, (res) => {
       if (res.length === 0) {
         if (this.data.show_page === 1) {
           this.setData({ show_nodata: true });

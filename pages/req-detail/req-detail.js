@@ -19,7 +19,7 @@ Page({
       id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'api/getReqDetail', post, (res) => {
+    app.ajax('api/getReqDetail', post, (res) => {
       if (res.cover) {
         res.cover = app.my_config.base_url + '/' + res.cover;
       } else {
@@ -41,7 +41,7 @@ Page({
       req_id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'api/takePartIn', post, (res) => {
+    app.ajax('api/takePartIn', post, (res) => {
       callback();
     });
   },

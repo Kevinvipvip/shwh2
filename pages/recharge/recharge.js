@@ -26,7 +26,7 @@ Page({
     let post = {
       token: app.user_data.token
     };
-    app.ajax(app.my_config.api + 'api/getVipList', post, (res) => {
+    app.ajax('api/getVipList', post, (res) => {
       this.setData({ vipList: res })
     });
   },
@@ -36,7 +36,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/addressList', post, (res) => {
+    app.ajax('my/addressList', post, (res) => {
       for (let i = 0; i < res.length; i++) {
         if (res[i].default === 1) {
           this.setData({
@@ -84,7 +84,7 @@ Page({
           vip_id: data.vipList[data.active_index].id
         };
 
-        app.ajax(app.my_config.api + 'api/recharge', post, (res) => {
+        app.ajax('api/recharge', post, (res) => {
           this.vipPay(res.order_sn, (res) => {
             this.data.loading = false;
             if (res) {
@@ -113,7 +113,7 @@ Page({
       order_sn: order_sn
     };
 
-    app.ajax(app.my_config.api + 'pay/vipPay', post, (res) => {
+    app.ajax('pay/vipPay', post, (res) => {
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,

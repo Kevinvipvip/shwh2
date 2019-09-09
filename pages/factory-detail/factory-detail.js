@@ -33,7 +33,7 @@ Page({
       token: app.user_data.token,
       uid: this.data.uid
     };
-    app.ajax(app.my_config.api + 'api/factoryDetail', post, (res) => {
+    app.ajax('api/factoryDetail', post, (res) => {
       app.format_img(res, 'cover');
       wx.setNavigationBarTitle({ title: res.org });
       this.setData({ factory: res });
@@ -46,7 +46,7 @@ Page({
       uid: this.data.uid,
       page: this.data.bidding_page
     };
-    app.ajax(app.my_config.api + 'api/factoryBiddingList', post, (res) => {
+    app.ajax('api/factoryBiddingList', post, (res) => {
       if (res.length === 0) {
         if (this.data.bidding_page === 1) {
           this.setData({ bidding_nodata: true });
@@ -79,7 +79,7 @@ Page({
       uid: this.data.uid,
       page: this.data.show_page
     };
-    app.ajax(app.my_config.api + 'api/userNoteList', post, (res) => {
+    app.ajax('api/userNoteList', post, (res) => {
       if (res.list.length === 0) {
         if (this.data.show_page === 1) {
           this.setData({ show_nodata: true });

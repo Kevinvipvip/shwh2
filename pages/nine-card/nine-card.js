@@ -108,7 +108,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'Activity/getCardList', post, (res) => {
+    app.ajax('Activity/getCardList', post, (res) => {
       app.format_img_arr(res.list, 'pic');
       app.format_img_arr(res.list, 'pic_back');
 
@@ -134,7 +134,7 @@ Page({
             let post = {
               token: app.user_data.token
             };
-            app.ajax(app.my_config.api + 'Activity/getCard', post, (card_res) => {
+            app.ajax('Activity/getCard', post, (card_res) => {
               this.setData({
                 card_class: '',
                 ani_src: this.data.card_list[card_res.card_id - 1].pic,
@@ -234,7 +234,7 @@ Page({
       };
 
       let that = this;
-      app.ajax(app.my_config.api + 'Activity/createCardCode', post, (res) => {
+      app.ajax('Activity/createCardCode', post, (res) => {
         drawQrcode({
           width: 150,
           height: 150,
@@ -326,7 +326,7 @@ Page({
         } else {
           post.token = app.user_data.token;
 
-          app.ajax(app.my_config.api + 'Activity/getGiftCard', post, (card_res) => {
+          app.ajax('Activity/getGiftCard', post, (card_res) => {
             that.setData({
               ['card_list[' + (card_res.card_id - 1) + '].card_amount']: that.data.card_list[card_res.card_id - 1].card_amount + 1
             });
@@ -377,7 +377,7 @@ Page({
       post.uid = this.data.uid;
       post.token = app.user_data.token;
 
-      app.ajax(app.my_config.api + 'Activity/culVerify', post, () => {
+      app.ajax('Activity/culVerify', post, () => {
         this.setData({
           verify_show: false,
           remark: '',

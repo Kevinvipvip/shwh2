@@ -1,1 +1,1 @@
-/* pages/store/store.wxss */
+@import '/wxParse/wxParse.wxss';

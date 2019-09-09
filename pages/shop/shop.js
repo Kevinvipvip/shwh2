@@ -81,7 +81,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'shop/topCate', post, (res) => {
+    app.ajax('shop/topCate', post, (res) => {
       for (let i = 0; i < res.length; i++) {
         res[i].icon = app.my_config.base_url + '/' + res[i].icon;
       }
@@ -100,7 +100,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax(app.my_config.api + 'shop/goodsList', post, (res) => {
+    app.ajax('shop/goodsList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -116,9 +116,9 @@ Page({
           });
         }
       } else {
-        for (let i = 0; i < res.length; i++) {
-          res[i].cover = app.my_config.base_url + '/' + res[i].cover;
+        app.format_img(res, 'cover');
 
+        for (let i = 0; i < res.length; i++) {
           if (this.data.left_height <= this.data.right_height) {
             this.data.left_shop_list.push(res[i]);
             this.data.left_height += res[i].height / res[i].width;
@@ -183,7 +183,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'shop/cartList', post, (res) => {
+    app.ajax('shop/cartList', post, (res) => {
       this.setData({show_cart_icon: res.length > 0});
     });
   },

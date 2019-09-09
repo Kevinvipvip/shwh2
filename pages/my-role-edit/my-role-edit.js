@@ -25,7 +25,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/applyInfo', post, (res) => {
+    app.ajax('my/applyInfo', post, (res) => {
       app.format_img(res, 'cover');
       this.setData({
         cover: res.cover,
@@ -53,7 +53,7 @@ Page({
           cover: data.cover.replace(app.my_config.base_url + '/', '')
         };
 
-        app.ajax(app.my_config.api + 'my/modMyRole', post, () => {
+        app.ajax('my/modMyRole', post, () => {
           this.setData({ modify_loading: false });
 
           app.modal('修改成功', () => {
@@ -77,7 +77,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage',
+            url: 'api/uploadImage',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {

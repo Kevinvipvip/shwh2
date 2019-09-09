@@ -24,7 +24,7 @@ Page({
       id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'api/worksDetail', post, (res) => {
+    app.ajax('api/worksDetail', post, (res) => {
       for (let i = 0; i < res.pics.length; i++) {
         if (res.pics[i]) {
           res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
@@ -52,7 +52,7 @@ Page({
             token: app.user_data.token,
             work_id: that.data.id
           };
-          app.ajax(app.my_config.api + 'api/vote', post, (res) => {
+          app.ajax('api/vote', post, (res) => {
             app.modal('投票成功');
           });
         }

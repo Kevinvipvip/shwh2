@@ -129,10 +129,6 @@
     margin-bottom: 25rpx;
 }
 
-.info-box .content .content-wrapper image {
-    max-width: 100%;
-}
-
 .foot {
     position: fixed;
     bottom: 0;

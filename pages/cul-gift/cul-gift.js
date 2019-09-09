@@ -29,7 +29,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'Activity/getMyCul', post, (res) => {
+    app.ajax('Activity/getMyCul', post, (res) => {
       app.format_img(res.cul_gift, 'qrcode');
       app.format_img_arr(res.card_list, 'pic');
       app.format_img_arr(res.card_list, 'pic_back');
@@ -61,7 +61,7 @@ Page({
     let post = {
       token: app.user_data.token
     };
-    app.ajax(app.my_config.api + 'Activity/checkCulStatus', post, (res) => {
+    app.ajax('Activity/checkCulStatus', post, (res) => {
       if (res === 1) {
         this.getMyCul();
         clearInterval(this.data.check_seed);

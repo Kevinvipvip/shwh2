@@ -18,7 +18,7 @@ Page({
       req_id: this.data.req_id
     };
     
-    app.ajax(app.my_config.api + 'api/worksList', post, (res) => {
+    app.ajax('api/worksList', post, (res) => {
       if (res.length === 0) {
         this.setData({nodata: true});
       } else {

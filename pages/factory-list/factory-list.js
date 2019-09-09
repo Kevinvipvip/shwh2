@@ -21,7 +21,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax(app.my_config.api + 'api/factoryList', post, (res) => {
+    app.ajax('api/factoryList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({

@@ -70,7 +70,7 @@ Page({
               method = 'my/addressAdd';
             }
 
-            app.ajax(app.my_config.api + method, post, () => {
+            app.ajax(method, post, () => {
               let my_address = app.get_page('pages/my-address/my-address');
               if (my_address) {
                 my_address.addressList(() => {
@@ -111,7 +111,7 @@ Page({
       id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'my/addressDetail', post, (res) => {
+    app.ajax('my/addressDetail', post, (res) => {
       this.setData({
         username: res.username,
         tel: res.tel,

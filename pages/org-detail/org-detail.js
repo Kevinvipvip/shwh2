@@ -33,7 +33,7 @@ Page({
       token: app.user_data.token,
       uid: this.data.uid
     };
-    app.ajax(app.my_config.api + 'api/orgDetail', post, (res) => {
+    app.ajax('api/orgDetail', post, (res) => {
       app.format_img(res, 'cover');
       wx.setNavigationBarTitle({ title: res.name });
       this.setData({ org: res });
@@ -46,7 +46,7 @@ Page({
       uid: this.data.uid,
       page: this.data.req_page
     };
-    app.ajax(app.my_config.api + 'api/orgReqList', post, (res) => {
+    app.ajax('api/orgReqList', post, (res) => {
       if (res.length === 0) {
         if (this.data.req_page === 1) {
           this.setData({ req_nodata: true });
@@ -71,7 +71,7 @@ Page({
       uid: this.data.uid,
       page: this.data.show_page
     };
-    app.ajax(app.my_config.api + 'api/userNoteList', post, (res) => {
+    app.ajax('api/userNoteList', post, (res) => {
       if (res.list.length === 0) {
         if (this.data.show_page === 1) {
           this.setData({ show_nodata: true });

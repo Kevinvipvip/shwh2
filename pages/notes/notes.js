@@ -53,7 +53,7 @@ Page({
       perPage: 30
     };
 
-    app.ajax(app.my_config.api + 'note/getNoteList', post, (res) => {
+    app.ajax('note/getNoteList', post, (res) => {
       if (res.list.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -173,7 +173,7 @@ Page({
         note = this.data.right_note_list[index];
       }
 
-      app.ajax(app.my_config.api + 'note/iLike', post, (res) => {
+      app.ajax('note/iLike', post, (res) => {
         this.setData({
           [note_str + 'like']: note.like + (res ? 1 : -1),
           [note_str + 'ilike']: res

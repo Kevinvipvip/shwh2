@@ -66,6 +66,12 @@ button::after {
   visibility: hidden;
 }
 
+/* 富文本 start */
+.content-wrapper image {
+  max-width: 100%;
+}
+/* 富文本 end */
+
 /* 超出省略 start */
 .one-line-ellipsis {
   overflow: hidden;

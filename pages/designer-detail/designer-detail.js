@@ -36,7 +36,7 @@ Page({
       token: app.user_data.token,
       uid: this.data.id
     };
-    app.ajax(app.my_config.api + 'api/designerDetail', post, (res) => {
+    app.ajax('api/designerDetail', post, (res) => {
       wx.setNavigationBarTitle({ title: res.nickname });
 
       app.avatar_format(res);
@@ -53,7 +53,7 @@ Page({
         to_uid: this.data.designer.id
       };
 
-      app.ajax(app.my_config.api + 'note/iFocus', post, (res) => {
+      app.ajax('note/iFocus', post, (res) => {
         this.setData({ ['designer.if_focus']: res });
       }, null, () => {
         this.data.focus_loading = false;
@@ -67,7 +67,7 @@ Page({
       uid: this.data.id,
       page: this.data.req_page
     };
-    app.ajax(app.my_config.api + 'api/designerReqWorkList', post, (res) => {
+    app.ajax('api/designerReqWorkList', post, (res) => {
       if (res.length === 0) {
         if (this.data.req_page === 1) {
           this.setData({ req_nodata: true });
@@ -92,7 +92,7 @@ Page({
       uid: this.data.id,
       page: this.data.show_page
     };
-    app.ajax(app.my_config.api + 'api/designerShowWorkList', post, (res) => {
+    app.ajax('api/designerShowWorkList', post, (res) => {
       if (res.length === 0) {
         if (this.data.show_page === 1) {
           this.setData({ show_nodata: true });

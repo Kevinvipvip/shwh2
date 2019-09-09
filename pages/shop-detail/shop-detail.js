@@ -24,7 +24,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'shop/goodsDetail', post, (res) => {
+    app.ajax('shop/goodsDetail', post, (res) => {
       for (let i = 0; i < res.pics.length; i++) {
         res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
       }
@@ -121,7 +121,7 @@ Page({
             post.attr_id = data.goods.attr_list[data.attr_index].id;
           }
 
-          app.ajax(app.my_config.api + 'shop/cartAdd', post, () => {
+          app.ajax('shop/cartAdd', post, () => {
             let set_data = {
               attr_show: false,
               attr_active: false,

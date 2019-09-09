@@ -17,7 +17,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax(app.my_config.api + 'my/myBiddingList', post, (res) => {
+    app.ajax('my/myBiddingList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({

@@ -24,7 +24,7 @@ Page({
       id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'my/getMyNoteDetail', post, (res) => {
+    app.ajax('my/getMyNoteDetail', post, (res) => {
       for (let i = 0; i < res.pics.length; i++) {
         res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
       }
@@ -75,7 +75,7 @@ Page({
         that.upload_images(images, index);
       } else {
         wx.uploadFile({
-          url: app.my_config.api + 'api/uploadImage',
+          url: 'api/uploadImage',
           filePath: images[index].path,
           name: 'file',
           formData: {
@@ -115,7 +115,7 @@ Page({
         pics: this.get_img_arr()
       };
 
-      app.ajax(app.my_config.api + 'my/noteMod', post, () => {
+      app.ajax('my/noteMod', post, () => {
         app.modal('已提交修改，将进入审核，请耐心等待', () => {
           let notes = app.get_page('pages/my-notes/my-notes');
           if (notes) {

@@ -26,7 +26,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax(app.my_config.api + 'api/orgList', post, (res) => {
+    app.ajax('api/orgList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({

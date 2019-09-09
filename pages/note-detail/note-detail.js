@@ -36,7 +36,7 @@ Page({
       id: this.data.note_id
     };
 
-    app.ajax(app.my_config.api + 'note/getNoteDetail', post, (res) => {
+    app.ajax('note/getNoteDetail', post, (res) => {
       res.avatar = res.avatar.indexOf('https') === 0 ? res.avatar : app.my_config.base_url + '/' + res.avatar;
       for (let i = 0; i < res.pics.length; i++) {
         res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
@@ -66,7 +66,7 @@ Page({
       content: this.data.content
     };
 
-    app.ajax(app.my_config.api + 'note/commentAdd', post, (res) => {
+    app.ajax('note/commentAdd', post, (res) => {
       app.toast('评论成功');
       this.setData({content: ''});
       this.getNoteDetail();
@@ -79,7 +79,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'note/ifLike', post, (res) => {
+    app.ajax('note/ifLike', post, (res) => {
       this.setData({like: res});
     });
   },
@@ -93,7 +93,7 @@ Page({
         token: app.user_data.token
       };
 
-      app.ajax(app.my_config.api + 'note/iLike', post, (res) => {
+      app.ajax('note/iLike', post, (res) => {
         this.setData({
           like: res,
           'note.like': this.data.note.like + (res ? 1 : -1)
@@ -110,7 +110,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'note/ifCollect', post, (res) => {
+    app.ajax('note/ifCollect', post, (res) => {
       this.setData({collect: res});
     });
   },
@@ -124,7 +124,7 @@ Page({
         token: app.user_data.token
       };
 
-      app.ajax(app.my_config.api + 'note/iCollect', post, (res) => {
+      app.ajax('note/iCollect', post, (res) => {
         this.setData({collect: res});
       }, null, () => {
         this.data.collect_loading = false;
@@ -138,7 +138,7 @@ Page({
       to_uid: this.data.note.uid
     };
 
-    app.ajax(app.my_config.api + 'note/ifFocus', post, (res) => {
+    app.ajax('note/ifFocus', post, (res) => {
       this.setData({focus: res});
     });
   },
@@ -152,7 +152,7 @@ Page({
         to_uid: this.data.note.uid
       };
 
-      app.ajax(app.my_config.api + 'note/iFocus', post, (res) => {
+      app.ajax('note/iFocus', post, (res) => {
         this.setData({focus: res});
       }, null, () => {
         this.data.focus_loading = false;

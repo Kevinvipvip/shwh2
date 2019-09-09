@@ -1,105 +1,89 @@
 const app = getApp();
-const utils = require('../../utils/utils.js');
 
 Page({
   data: {
-    slideList: [],
-    statusBarHeight: 0,
-    topBarHeight: 0,
-    full_loading: true,
-    activeList: [],
-    loading: false
+    slide_list: [],  // 轮播图
+    req_list: [],  // 需求列表（投石）
+    work_list: [], // 作品排行
+    idea_list: [],  // 创意排行
+    first_funding: {},  // 第一个众筹
+    funding_list: [],  // 众筹列表
+    active_rank: 1
   },
   onLoad() {
-    app.mp_update();
-
-    this.setData({
-      statusBarHeight: app.my_config.statusBarHeight,
-      topBarHeight: app.my_config.topBarHeight
-    });
-
-    this.slideList(() => {
-      this.getActiveList(() => {
-        this.setData({full_loading: false});
-      });
+    this.slideList();
+    this.getReqList();
+    this.worksList();
+    this.ideaList();
+    this.fundingList();
+  },
+  // 获取首页轮播图
+  slideList() {
+    app.ajax('api/slideList', null, (res) => {
+      app.format_img(res);
+      this.setData({slide_list: res});
     });
   },
-  onShow() {
-    // utils.select_tab_bar(this, 0);
+  // 点击排行
+  rank_tap(e) {
+    this.setData({ active_rank: e.currentTarget.dataset.rank });
   },
-  slideList(complete) {
+  // 获取需求列表（投石）
+  getReqList() {
+    app.ajax('api/getReqList', null, res => {
+      app.format_img(res, 'cover');
+      app.time_format(res, 'start_time');
+      app.time_format(res, 'end_time');
+      this.setData({req_list: res});
+    });
+  },
+  // 获取参赛作品列表（作品排行）
+  worksList() {
     let post = {
-      token: app.user_data.token
+      page: 1,
+      perpage: 4,
+      order: 2
     };
 
-    app.ajax(app.my_config.api + 'api/slideList', post, (res) => {
-      for (let i = 0; i < res.length; i++) {
-        if (res[i].pic) {
-          res[i].pic = app.my_config.base_url + '/' + res[i].pic;
-        } else {
-          res[i].pic = app.my_config.default_img;
-        }
-      }
-      this.setData({slideList: res});
-    }, null, () => {
-      if (complete) {
-        complete();
-      }
+    app.ajax('api/worksList', post, res => {
+      app.format_img(res, 'cover');
+      app.avatar_format(res, 'avatar');
+
+      this.setData({work_list: res});
     });
   },
-  onShareAppMessage() {
-    wx.showShareMenu();
-    return { path: app.share_path() };
+  // 创意列表（创意排行）
+  ideaList() {
+    let post = {
+      page: 1,
+      perpage: 7,
+      order: 2
+    };
+
+    app.ajax('api/ideaList', post, res => {
+      app.avatar_format(res, 'avatar');
+
+      this.setData({idea_list: res});
+    });
   },
+  // 众筹列表
+  fundingList() {
+    let post = {
+      page: 1,
+      perpage: 5
+    };
+
+    app.ajax('api/fundingList', post, res => {
+      app.format_img(res, 'cover');
+      app.qian_format(res, 'need_money');
+      app.qian_format(res, 'curr_money');
+
+      this.setData({first_funding: res.shift()});
+      this.setData({funding_list: res});
+    });
+  },
+  // 跳页
   jump(e) {
-    let page = e.currentTarget.dataset.page;
-    if (page) {
-      switch (page) {
-        case 'pages/index/index':
-        case 'pages/notes/notes':
-        case 'pages/my/my':
-          wx.switchTab({ url: '/' + page });
-          break;
-        default:
-          wx.navigateTo({ url: '/' + page })
-          break;
-      }
-    }
-  },
-  getActiveList(complete) {
-    let post = {
-      token: app.user_data.token
-    };
-
-    app.ajax(app.my_config.api + 'api/getActiveList', post, (res) => {
-      app.format_img_arr(res);
-      app.format_img_arr(res, 'cover');
-      for (let i = 0; i < res.length; i++) {
-        res[i].month = /-(\d{1,2})-/.exec(res[i].start_time)[1];
-      }
-      
-      this.setData({activeList: res});
-    }, null, () => {
-      if (complete) {
-        complete();
-      }
-    });
-  },
-  onPullDownRefresh() {
-    if (!this.data.loading) {
-      this.data.loading = true;
-
-      this.data.slideList = [];
-      this.data.activeList = [];
-
-      wx.showNavigationBarLoading();
-      this.slideList(() => {
-        this.getActiveList(() => {
-          this.data.loading = false;
-          wx.hideNavigationBarLoading();
-          wx.stopPullDownRefresh();
-        });
-      });
-    }
+    app.jump(e);
   }
-})
+});

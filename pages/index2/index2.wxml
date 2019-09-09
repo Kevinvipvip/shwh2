@@ -1,249 +1,155 @@
-<view class="page">
-  <view class="page-top">
-    <view class="feng-bian">
-      <image lazy-load src="/images/feng-bian.png"></image>
-      <text>山洞文创新升级，让我们共同期待！</text>
+<view class="full-loading" wx:if="{{full_loading}}">
+</view>
+
+<view>
+  <view class="navigation-box" style="padding-top: {{statusBarHeight}}px;">
+    <view class="navigation" style="height: {{topBarHeight}}px;">
+      <view class="title">洞主</view>
+      <!--<icon class="iconfont iconsearch"/>-->
     </view>
+  </view>
+
+  <view class="page" style="padding-top: {{statusBarHeight + topBarHeight}}px;">
     <swiper indicator-dots="{{true}}"
             autoplay="{{true}}"
-            class="tou-swiper"
-            indicator-color="#ffefb2"
-            indicator-active-color="#ffda49">
-      <swiper-item wx:for="{{[1, 2, 3]}}" wx:key="index">
-        <image lazy-load src="/images/t-roll1.png"></image>
+            class="top-swiper">
+      <swiper-item wx:for="{{slideList}}" wx:key="index">
+        <image bindtap="jump" data-page="{{item.url}}" src="{{item.pic}}" mode="widthFix"></image>
       </swiper-item>
     </swiper>
-  </view>
 
-  <!-- 投石 -->
-  <view class="activity-box">
-    <view class="leng-title">
-      <text>投</text>
-      <text class="leng"></text>
-      <text>石</text>
-
-      <view class="more-box">
-        <image lazy-load src="/images/more.png" class="more"></image>
-      </view>
-    </view>
-    <view class="activity-list">
-      <view class="activity">
-        <image lazy-load src="/images/ac1.png" class="cover"></image>
-        <view class="title">“海河锦鲤”蓄势待发 带着您的创意作品一起“跃动津城”吧</view>
-        <view class="info">
-          <view class="people">
-            <image lazy-load src="/icons/people.png" class="icon"></image>
-            <text>468人</text>
-          </view>
-          <view class="date">
-            <image lazy-load src="/icons/time.png" class="icon"></image>
-            <text>2019.08.22-2019.09.27</text>
-          </view>
-        </view>
-      </view>
-      <view class="activity">
-        <image lazy-load src="http://qiniu.wcip.net/upload/tmp/156707878337132400141.png" class="cover" mode="aspectFill"></image>
-        <view class="title">开封铁塔 碰撞出千年文物与创意的火花 投稿征集中！</view>
-        <view class="info">
-          <view class="people">
-            <image lazy-load src="/icons/people.png" class="icon"></image>
-            <text>468人</text>
-          </view>
-          <view class="date">
-            <image lazy-load src="/icons/time.png" class="icon"></image>
-            <text>2019.08.22-2019.09.27</text>
-          </view>
-        </view>
-      </view>
-      <view class="activity">
-        <image lazy-load src="http://qiniu.wcip.net/upload/tmp/156707879405984600393.png" class="cover"></image>
-        <view class="title">用文创打造一件又一件的精品 让陶瓷发声！</view>
-        <view class="info">
-          <view class="people">
-            <image lazy-load src="/icons/people.png" class="icon"></image>
-            <text>468人</text>
-          </view>
-          <view class="date">
-            <image lazy-load src="/icons/time.png" class="icon"></image>
-            <text>2019.08.22-2019.09.27</text>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-
-  <!-- 回声 -->
-  <view class="rank-box">
-    <view class="leng-title">
-      <text>回</text>
-      <text class="leng"></text>
-      <text>声</text>
+    <view class="menu">
+      <navigator url="/pages/org-list/org-list?role=1">
+        <image src="/icons/home-tab1.png" class="img1" mode="widthFix"></image>
+        <view>博物馆</view>
+      </navigator>
+      <navigator url="/pages/org-list/org-list?role=2">
+        <image src="/icons/home-tab2.png" class="img2" mode="widthFix"></image>
+        <view>文创机构</view>
+      </navigator>
+      <navigator url="/pages/designer-list/designer-list">
+        <image src="/icons/home-tab3.png" class="img3" mode="widthFix"></image>
+        <view>设计师</view>
+      </navigator>
+      <navigator url="/pages/factory-list/factory-list">
+        <image src="/icons/home-tab4.png" class="img4" mode="widthFix"></image>
+        <view>工厂</view>
+      </navigator>
     </view>
 
-    <view class="tab-list">
-      <view bindtap="rank_tap" data-rank="{{1}}" class="tab {{active_rank == 1 ? 'active' : ''}}">作品排行榜</view>
-      <view bindtap="rank_tap" data-rank="{{2}}" class="tab {{active_rank == 2 ? 'active' : ''}}">创意排行榜</view>
-    </view>
+    <navigator url="/pages/req-list/req-list?type=1" class="activity acing">
+      <view class="black">
+        ACTIVE
+      </view>
+      <view class="titles youshang">
+        <view class="title">活动进行中</view>
+        <view class="english">ACTIVITIES IN PROGRESS</view>
+      </view>
+    </navigator>
 
-    <view class="work-list" wx:if="{{active_rank == 1}}">
-      <view class="work" wx:for="{{[1, 2, 3, 4]}}">
-        <image lazy-load src="/images/t-word-cover.png" class="cover" mode="aspectFill"></image>
-        <view class="info">
-          <view class="diyi">
-            <view class="title">我与鱼的故事</view>
-            <view class="vote">
-              <image lazy-load src="/icons/vote.png" class="icon"></image>
-              <text>500</text>
+    <navigator url="/pages/req-list/req-list?type=2" class="activity">
+      <view class="titles zuoshang">
+        <view class="title">活动竞标中</view>
+        <view class="english">ACTIVE COMPETITIVE BIDDING</view>
+      </view>
+      <image src="/images/ac-end.jpg" class="ac-end"></image>
+    </navigator>
+
+    <view class="topics">
+      <image src="/images/ac-theme.jpg" class="top-pic"></image>
+      <view class="list">
+        <view class="item" wx:for="{{activeList}}" wx:key="id">
+          <view class="date-box">
+            <image src="/images/calendar.jpg"></image>
+            <view class="date">{{item.month}}月</view>
+          </view>
+          <navigator url="/pages/req-detail/req-detail?id={{item.id}}">
+            <view class="img-box">
+              <image src="{{item.pic}}" lazy-load="{{true}}" class="cover" mode="aspectFill">
+              </image>
+              <image src="/images/join.png" class="join">
+              </image>
             </view>
-          </view>
-          <view class="desc two-line-ellipsis">
-            作品简述作品简述作品简述作品简述作品简述作品简述...
-          </view>
-          <view class="xia">
-            <view class="left">
-              <image lazy-load src="/images/t-header.png" class="header"></image>
-              <text class="nickname">米勒</text>
+            <view class="info">
+              <view class="title two-line-ellipsis">{{item.title}}</view>
+              <view class="can">
+                <icon class="iconfont iconqunliao"/>
+                {{item.part_num}}人参与
+              </view>
+              <view class="bottom">
+                <view class="time">{{item.start_time}}日 ~ {{item.end_time}}日</view>
+                <view class="attestation">{{item.user_org}}</view>
+              </view>
             </view>
-            <view class="status">
-              <text>状态：</text>
-              <text class="se">众筹中</text>
-            </view>
-          </view>
-        </view>
-      </view>
-      <navigator class="more-line">查看更多</navigator>
-    </view>
-
-    <view class="chuang-rank-list" wx:if="{{active_rank == 2}}">
-      <view class="chuang">
-        <view class="tou">
-          <image lazy-load src="/icons/1st.png"></image>
-        </view>
-        <image lazy-load src="/images/t-header.png" class="cover"></image>
-        <text class="title one-line-ellipsis">鲤鱼跃龙门之雨伞</text>
-        <view class="agree">
-          <image lazy-load src="/icons/zan.png"></image>
-          <text>2819</text>
-        </view>
-      </view>
-      <view class="chuang">
-        <view class="tou">
-          <image lazy-load src="/icons/2nd.png"></image>
-        </view>
-        <image lazy-load src="/images/t-header.png" class="cover"></image>
-        <text class="title">鲤鱼跃龙门之雨伞</text>
-        <view class="agree">
-          <image lazy-load src="/icons/zan.png"></image>
-          <text>2819</text>
-        </view>
-      </view>
-      <view class="chuang">
-        <view class="tou">
-          <image lazy-load src="/icons/3rd.png"></image>
-        </view>
-        <image lazy-load src="/images/t-header.png" class="cover"></image>
-        <text class="title">鲤鱼跃龙门之雨伞</text>
-        <view class="agree">
-          <image lazy-load src="/icons/zan.png"></image>
-          <text>2819</text>
-        </view>
-      </view>
-      <view class="chuang">
-        <view class="tou">
-          <text>04</text>
-        </view>
-        <image lazy-load src="/images/t-header.png" class="cover"></image>
-        <text class="title">鲤鱼跃龙门之雨伞</text>
-        <view class="agree">
-          <image lazy-load src="/icons/zan.png"></image>
-          <text>2819</text>
-        </view>
-      </view>
-      <view class="chuang">
-        <view class="tou">
-          <text>05</text>
-        </view>
-        <image lazy-load src="/images/t-header.png" class="cover"></image>
-        <text class="title">鲤鱼跃龙门之雨伞</text>
-        <view class="agree">
-          <image lazy-load src="/icons/zan.png"></image>
-          <text>2819</text>
-        </view>
-      </view>
-
-      <navigator class="more-line">查看更多</navigator>
-    </view>
-  </view>
-
-  <!-- 洞天 -->
-  <view class="chou-box">
-    <view class="leng-title">
-      <text>洞</text>
-      <text class="leng"></text>
-      <text>天</text>
-    </view>
-
-    <view class="chou-line">
-      <view class="img-box">
-        <image lazy-load src="/images/t-chou1.png"></image>
-        <view class="status">进行中</view>
-      </view>
-      <view class="info">
-        <view class="title">【众筹】镂空龙玉盘镂空龙玉盘镂空龙玉盘镂空</view>
-        <view class="xia">
-          <view class="already">
-            <text class="label">已筹：</text>
-            <text class="price">8W</text>
-          </view>
-          <view class="target">众筹目标：10W</view>
-          <view class="part-count">参与人数140人</view>
+          </navigator>
         </view>
       </view>
     </view>
 
-    <view class="chou-list">
-      <view class="chou">
-        <image lazy-load src="/images/t-chou2.png" class="cover" mode="aspectFill"></image>
-        <view class="info">
-          <view class="title two-line-ellipsis">镂空龙玉盘镂龙玉盘镂龙玉盘镂龙玉盘镂</view>
-          <view class="bottom">
-            <view class="already">已筹：1.6W</view>
-            <view class="part-count">参与人数140人</view>
-          </view>
-        </view>
-      </view>
-      <view class="chou">
-        <image lazy-load src="/images/t-chou3.png" class="cover" mode="aspectFill"></image>
-        <view class="info">
-          <view class="title two-line-ellipsis">镂空龙玉盘镂龙玉盘镂龙玉盘镂龙玉盘镂</view>
-          <view class="bottom">
-            <view class="already">已筹：1.6W</view>
-            <view class="part-count">参与人数140人</view>
-          </view>
-        </view>
-      </view>
-      <view class="chou">
-        <image lazy-load src="/images/t-chou3.png" class="cover" mode="aspectFill"></image>
-        <view class="info">
-          <view class="title two-line-ellipsis">镂空龙玉盘镂龙玉盘镂龙玉盘镂龙玉盘镂</view>
-          <view class="bottom">
-            <view class="already">已筹：1.6W</view>
-            <view class="part-count">参与人数140人</view>
-          </view>
-        </view>
-      </view>
-      <view class="chou">
-        <image lazy-load src="/images/t-chou2.png" class="cover" mode="aspectFill"></image>
-        <view class="info">
-          <view class="title two-line-ellipsis">镂空龙玉盘镂龙玉盘镂龙玉盘镂龙玉盘镂</view>
-          <view class="bottom">
-            <view class="already">已筹：1.6W</view>
-            <view class="part-count">参与人数140人</view>
-          </view>
-        </view>
-      </view>
-    </view>
+    <!--    <view class="block">-->
+    <!--      <view class="title no-left">活动推荐</view>-->
+    <!--      <view class="two-box">-->
+    <!--        <view class="item-half" wx:for="{{[1,1]}}" wx:key="index">-->
+    <!--          <image src="/images/t_feng1.jpg" mode="aspectFill"></image>-->
+    <!--          <view class="texts">-->
+    <!--            <view class="title">2019创意美术会馆四周年画展</view>-->
+    <!--            <view class="icon-box">-->
+    <!--              <view class="zan">-->
+    <!--                <icon class="iconfont iconzan"/>-->
+    <!--                4.5万-->
+    <!--              </view>-->
+    <!--              <view class="re">-->
+    <!--                <icon class="iconfont iconredupaixu"/>-->
+    <!--                2400-->
+    <!--              </view>-->
+    <!--            </view>-->
+    <!--          </view>-->
+    <!--        </view>-->
+    <!--      </view>-->
+    <!--    </view>-->
 
-    <view class="more-line">查看更多</view>
+    <!--    <view class="block">-->
+    <!--      <view class="title no-left">文创</view>-->
+    <!--      <view class="two-box">-->
+    <!--        <view class="item-half" wx:for="{{[1,1]}}" wx:key="index">-->
+    <!--          <image src="/images/t_feng1.jpg" mode="aspectFill"></image>-->
+    <!--          <view class="texts">-->
+    <!--            <view class="title">2019创意美术会馆四周年画展</view>-->
+    <!--            <view class="icon-box">-->
+    <!--              <view class="zan">-->
+    <!--                <icon class="iconfont iconzan"/>-->
+    <!--                4.5万-->
+    <!--              </view>-->
+    <!--              <view class="re">-->
+    <!--                <icon class="iconfont iconredupaixu"/>-->
+    <!--                2400-->
+    <!--              </view>-->
+    <!--            </view>-->
+    <!--          </view>-->
+    <!--        </view>-->
+    <!--      </view>-->
+    <!--    </view>-->
+
+    <!--    <view class="block">-->
+    <!--      <view class="title no-left">工厂</view>-->
+    <!--      <view class="two-box">-->
+    <!--        <view class="item-half" wx:for="{{[1,1]}}" wx:key="index">-->
+    <!--          <image src="/images/t_feng1.jpg" mode="aspectFill"></image>-->
+    <!--          <view class="texts">-->
+    <!--            <view class="title">2019创意美术会馆四周年画展</view>-->
+    <!--            <view class="icon-box">-->
+    <!--              <view class="zan">-->
+    <!--                <icon class="iconfont iconzan"/>-->
+    <!--                4.5万-->
+    <!--              </view>-->
+    <!--              <view class="re">-->
+    <!--                <icon class="iconfont iconredupaixu"/>-->
+    <!--                2400-->
+    <!--              </view>-->
+    <!--            </view>-->
+    <!--          </view>-->
+    <!--        </view>-->
+    <!--      </view>-->
+    <!--    </view>-->
   </view>
 </view>

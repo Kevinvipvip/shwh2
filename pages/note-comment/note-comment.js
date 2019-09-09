@@ -22,7 +22,7 @@ Page({
       note_id: this.data.note_id
     };
 
-    app.ajax(app.my_config.api + 'note/commentList', post, (res) => {
+    app.ajax('note/commentList', post, (res) => {
       this.setData({comment_list: res});
     });
   },
@@ -51,7 +51,7 @@ Page({
       content: this.data.content
     };
 
-    app.ajax(app.my_config.api + 'note/commentAdd', post, () => {
+    app.ajax('note/commentAdd', post, () => {
       app.toast('评论成功');
       this.setData({content: ''});
       this.commentList();

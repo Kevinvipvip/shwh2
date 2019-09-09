@@ -17,7 +17,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'shop/cartList', post, (res) => {
+    app.ajax('shop/cartList', post, (res) => {
       for (let i = 0; i < res.length; i++) {
         res[i].cover = app.my_config.base_url + '/' + res[i].cover;
         res[i].checked = true;  // 开始商品是全选的
@@ -103,7 +103,7 @@ Page({
           cart_id: id
         };
 
-        app.ajax(app.my_config.api + 'shop/cartInc', post, (res) => {
+        app.ajax('shop/cartInc', post, (res) => {
           this.setData({
             ['cartList[' + index + '].num']: res.num,
             ['cartList[' + index + '].total_price']: res.total_price
@@ -131,7 +131,7 @@ Page({
           cart_id: id
         };
 
-        app.ajax(app.my_config.api + 'shop/cartDec', post, (res) => {
+        app.ajax('shop/cartDec', post, (res) => {
           this.setData({
             ['cartList[' + index + '].num']: res.num,
             ['cartList[' + index + '].total_price']: res.total_price

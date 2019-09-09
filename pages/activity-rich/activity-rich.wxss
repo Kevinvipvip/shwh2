@@ -1,0 +1,6 @@
+@import '/wxParse/wxParse.wxss';
+
+.page {
+  background: #fafafa;
+  padding: 30rpx 24rpx;
+}

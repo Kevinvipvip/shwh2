@@ -48,7 +48,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/mydetail', post, (res) => {
+    app.ajax('my/mydetail', post, (res) => {
       res.avatar = res.avatar.indexOf('https') === 0 ? res.avatar : app.my_config.base_url + '/' + res.avatar;
       this.setData({ user: res }, () => {
         if (succ) {
@@ -62,7 +62,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'activity/getQrcode', post, (res) => {
+    app.ajax('activity/getQrcode', post, (res) => {
       res = app.my_config.base_url + '/' + res;
       this.setData({ qrcode: res }, () => {
         if (succ) {

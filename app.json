@@ -1,5 +1,9 @@
 {
   "pages": [
+    "pages/auth/auth",
+    "pages/activity-detail/activity-detail",
+    "pages/activity-rich/activity-rich",
+    "pages/test/test",
     "pages/my/my",
     "pages/index2/index2",
     "pages/apply2/apply2",
@@ -7,13 +11,10 @@
     "pages/work-release/work-release",
     "pages/support-options/support-options",
     "pages/chou-detail/chou-detail",
-    "pages/activity-detail/activity-detail",
     "pages/chuang-detail/chuang-detail",
     "pages/chou-list/chou-list",
     "pages/chuang-ranking/chuang-ranking",
     "pages/chuang-publish/chuang-publish",
-    "pages/auth/auth",
-    "pages/test/test",
     "pages/index/index",
     "pages/my-address/my-address",
     "pages/address-detail/address-detail",
@@ -72,8 +73,8 @@
     "navigationBarTitleText": "山洞"
   },
   "tabBar": {
-    "color": "#555555",
-    "selectedColor": "#ff4544",
+    "color": "#c0c0c0",
+    "selectedColor": "#ffcc01",
     "backgroundColor": "#ffffff",
     "list": [
       {

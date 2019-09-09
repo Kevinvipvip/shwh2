@@ -28,7 +28,7 @@ Page({
       id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'api/worksDetail', post, (res) => {
+    app.ajax('api/worksDetail', post, (res) => {
       for (let i = 0; i < res.pics.length; i++) {
         if (res.pics[i]) {
           res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
@@ -57,7 +57,7 @@ Page({
       work_id: this.data.id
     };
 
-    app.ajax(app.my_config.api + 'api/biddingList', post, (res) => {
+    app.ajax('api/biddingList', post, (res) => {
       for (let i = 0; i < res.length; i++) {
         app.avatar_format(res[i]);
       }

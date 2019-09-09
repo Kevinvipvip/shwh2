@@ -35,7 +35,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/mydetail', post, (res) => {
+    app.ajax('my/mydetail', post, (res) => {
       switch (res.sex) {
         case 0:
           res.sex_text = '未知';
@@ -81,7 +81,7 @@ Page({
     });
   },
   vip_date() {
-    let date_text = utils.date_format('yyyy年MM月dd日到期', new Date(this.data.user.vip_time * 1000));
+    let date_text = utils.date_format(new Date(this.data.user.vip_time * 1000), 'yyyy年MM月dd日到期');
     app.modal('您的vip将于' + date_text);
   }
 })

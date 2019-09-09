@@ -13,7 +13,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'activity/getInviteList', post, (res) => {
+    app.ajax('activity/getInviteList', post, (res) => {
       this.setData({
         rule: res.rule,
         invite_list: res.list

@@ -1,13 +1,14 @@
+const utils = require('utils/utils.js');
+
 App({
-  onLaunch: function () {
-    let that = this;
+  onLaunch() {
     wx.getSystemInfo({
-      success(res) {
-        that.my_config.statusBarHeight = res.statusBarHeight;
+      success: res => {
+        this.my_config.statusBarHeight = res.statusBarHeight;
         if (res.model.indexOf('iPhone') !== -1) {
-          that.my_config.topBarHeight = 44;
+          this.my_config.topBarHeight = 44;
         } else {
-          that.my_config.topBarHeight = 48;
+          this.my_config.topBarHeight = 48;
         }
       }
     });
@@ -17,6 +18,8 @@ App({
     // api: 'https://www.caves.vip/api/',  // 正式（原）
     base_url: 'https://caves.wcip.net',  // 正式
     api: 'https://caves.wcip.net/api/',  // 正式
+    qiniu_base: 'http://qiniu.wcip.net/',
+    // qiniu_base: 'http://pwu6oxfmm.bkt.clouddn.com/',
     default_img: '/images/default.png',
     reg: {
       tel: /^1\d{10}$/,
@@ -79,7 +82,7 @@ App({
     }
 
     wx.request({
-      url: path,
+      url: this.my_config.api + path,
       method: 'POST',
       dataType: 'json',
       data: data,
@@ -155,7 +158,7 @@ App({
         code: code
       };
 
-      this.ajax(this.my_config.api + 'login/login', post, (res) => {
+      this.ajax('login/login', post, (res) => {
         callback(res);
       });
     })
@@ -173,7 +176,7 @@ App({
         if (inviter_id) {
           post.inviter_id = inviter_id;
         }
-        that.ajax(that.my_config.api + 'login/userAuth', post, () => {
+        that.ajax('login/userAuth', post, () => {
           callback(true);
         }, () => {
           callback(false);
@@ -186,7 +189,7 @@ App({
     let post = {
       token: this.user_data.token
     };
-    this.ajax(this.my_config.api + 'login/checkUserAuth', post, (res) => {
+    this.ajax('login/checkUserAuth', post, (res) => {
       callback(res);
     });
   },
@@ -228,34 +231,87 @@ App({
     }
   },
   // 处理图像路径（详情）
-  format_img(obj, img_field = 'pic') {
-    if (obj[img_field]) {
-      obj[img_field] = this.my_config.base_url + '/' + obj[img_field];
+  format_img(obj, img_field = 'pic', type = 1) {
+    if (obj instanceof Array) {
+      for (let i = 0; i < obj.length; i++) {
+        if (obj[i][img_field]) {
+          obj[i][img_field] = this.my_config.qiniu_base + '/' + obj[i][img_field];
+        } else {
+          obj[i][img_field] = this.my_config.default_img;
+        }
+      }
     } else {
-      obj[img_field] = this.my_config.default_img;
+      if (obj[img_field]) {
+        obj[img_field] = this.my_config.qiniu_base + '/' + obj[img_field];
+      } else {
+        obj[img_field] = this.my_config.default_img;
+      }
     }
   },
   // 处理图像路径（列表）
   format_img_arr(list, img_field = 'pic') {
     for (let i = 0; i < list.length; i++) {
       if (list[i][img_field]) {
-        list[i][img_field] = this.my_config.base_url + '/' + list[i][img_field];
+        list[i][img_field] = this.my_config.qiniu_base + '/' + list[i][img_field];
       } else {
         list[i][img_field] = this.my_config.default_img;
       }
     }
   },
   // 头像处理
-  avatar_format(obj) {
-    if (!obj.avatar) {
-      obj.avatar = '';
+  avatar_format(obj, field = 'avatar') {
+    if (obj instanceof Array) {
+      for (let i = 0; i < obj.length; i++) {
+        if (!obj[i][field]) {
+          obj[i][field] = '';
+        } else {
+          obj[i][field] = obj[i][field].indexOf('https') === 0 ? obj[i][field] : this.my_config.base_url + '/' + obj[i][field];
+        }
+      }
     } else {
-      obj.avatar = obj.avatar.indexOf('https') === 0 ? obj.avatar : this.my_config.base_url + '/' + obj.avatar;
+      if (!obj[field]) {
+        obj[field] = '';
+      } else {
+        obj[field] = obj[field].indexOf('https') === 0 ? obj[field] : this.my_config.base_url + '/' + obj[field];
+        // [field]
+      }
+    }
+  },
+  // 时间格式化
+  time_format(obj, field, fmt) {
+    if (obj instanceof Array) {
+      for (let i = 0; i < obj.length; i++) {
+        if (fmt) {
+          obj[i][field] = utils.date_format(obj[i][field], fmt);
+        } else {
+          obj[i][field] = utils.date_format(obj[i][field]);
+        }
+      }
+    } else {
+      if (fmt) {
+        obj[field] = utils.date_format(obj[field], fmt);
+      } else {
+        obj[field] = utils.date_format(obj[field]);
+      }
+    }
+  },
+  // 千分制转换
+  qian_format(obj, field) {
+    let num = 0;
+
+    if (obj instanceof Array) {
+      for (let i = 0; i < obj.length; i++) {
+        num = (Number(obj[i][field]).toFixed(2) + "").replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, "$&,");
+        obj[i][field] = obj[i][field] % 1 === 0 ? num.replace('.00', '') : num;
+      }
+    } else {
+      num = (Number(obj[field]).toFixed(2) + "").replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, "$&,");
+      obj[field] = obj[field] % 1 === 0 ? num.replace('.00', '') : num;
     }
   },
   // 获取七牛云上传TOKEN
   getUpToken(callback) {
-    this.ajax(this.my_config.api + 'qiniu/getUpToken', null, res => {
+    this.ajax('qiniu/getUpToken', null, res => {
       callback(res);
     });
   },
@@ -270,8 +326,26 @@ App({
     arr[num - 1] = null;
     return arr;
   },
-  // 千分制转换
-  qian_format(number) {
-    return (Number(number).toFixed(2) + "").replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, "$&,")
+  // 公共跳页方法
+  jump(e) {
+    let page = e.currentTarget.dataset.page;
+    if (page) {
+      switch (page) {
+        case 'index':
+        case 'shop':
+        case 'notes':
+        case 'my':
+          wx.switchTab({ url: `/pages/${page}/${page}` });
+          break;
+        default:
+          page = page.split('?');
+          if (page[1]) {
+            wx.navigateTo({ url: `/pages/${page[0]}/${page[0]}` });
+          } else {
+            wx.navigateTo({ url: `/pages/${page[0]}/${page[0]}?${page[1]}` });
+          }
+          break;
+      }
+    }
   }
 });

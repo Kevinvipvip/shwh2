@@ -16,7 +16,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'shop/cateList', post, (res) => {
+    app.ajax('shop/cateList', post, (res) => {
       for (let i = 0; i < res.length; i++) {
         res[i].icon = app.my_config.base_url + '/' + res[i].icon;
         for (let j = 0; j < res[i].child.length; j++) {

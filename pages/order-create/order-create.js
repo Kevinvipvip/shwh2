@@ -27,7 +27,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'shop/goodsDetail', post, (res) => {
+    app.ajax('shop/goodsDetail', post, (res) => {
       for (let i = 0; i < res.pics.length; i++) {
         res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
       }
@@ -54,7 +54,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/addressList', post, (res) => {
+    app.ajax('my/addressList', post, (res) => {
       for (let i = 0; i < res.length; i++) {
         if (res[i].default === 1) {
           this.setData({
@@ -107,7 +107,7 @@ Page({
           post.attr_id = this.data.attr_id;
         }
 
-        app.ajax(app.my_config.api + 'shop/purchase', post, (pay_order_sn) => {
+        app.ajax('shop/purchase', post, (pay_order_sn) => {
           this.orderPay(pay_order_sn, (res) => {
             if (res) {
               wx.redirectTo({ url: '/pages/my-orders/my-orders?status=1' });
@@ -130,7 +130,7 @@ Page({
       pay_order_sn: pay_order_sn
     };
 
-    app.ajax(app.my_config.api + 'pay/orderPay', post, (res) => {
+    app.ajax('pay/orderPay', post, (res) => {
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,

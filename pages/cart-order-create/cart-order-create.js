@@ -24,7 +24,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'shop/cartList', post, (res) => {
+    app.ajax('shop/cartList', post, (res) => {
       let cartList = [];
       for (let i = 0; i < res.length; i++) {
         res[i].cover = app.my_config.base_url + '/' + res[i].cover;
@@ -62,7 +62,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/addressList', post, (res) => {
+    app.ajax('my/addressList', post, (res) => {
       for (let i = 0; i < res.length; i++) {
         if (res[i].default === 1) {
           this.setData({
@@ -110,7 +110,7 @@ Page({
           cart_id: this.data.ids
         };
         
-        app.ajax(app.my_config.api + 'shop/cartToPurchase', post, (pay_order_sn) => {
+        app.ajax('shop/cartToPurchase', post, (pay_order_sn) => {
           this.orderPay(pay_order_sn, (res) => {
             // todo 底下这个不知道管不管用？因为下面直接就跳页了
             let shop_page = app.get_page('pages/shop/shop');
@@ -147,7 +147,7 @@ Page({
       pay_order_sn: pay_order_sn
     };
 
-    app.ajax(app.my_config.api + 'pay/orderPay', post, (res) => {
+    app.ajax('pay/orderPay', post, (res) => {
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,

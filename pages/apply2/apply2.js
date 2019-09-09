@@ -136,7 +136,7 @@ Page({
         post.desc = data.desc;
         post.code = data.code;
 
-        app.ajax(app.my_config.api + 'my/apply', post, () => {
+        app.ajax('my/apply', post, () => {
           this.applyStatus(() => {
             this.setData({ apply_loading: false });
           });
@@ -166,7 +166,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage2m',
+            url: 'api/uploadImage2m',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {
@@ -204,7 +204,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage2m',
+            url: 'api/uploadImage2m',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {
@@ -244,7 +244,7 @@ Page({
           tel: this.data.tel
         };
 
-        app.ajax(app.my_config.api + 'my/sendSms', post, (res) => {
+        app.ajax('my/sendSms', post, (res) => {
           app.toast('已发送');
           this.setData({ code_text: this.data.count_down + 's' });
           this.data.code_flag = setInterval(() => {
@@ -279,7 +279,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/applyStatus', post, (res) => {
+    app.ajax('my/applyStatus', post, (res) => {
       this.setData({ auth: res.auth });
       if (callback) {
         callback();
@@ -292,7 +292,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/applyInfo', post, (res) => {
+    app.ajax('my/applyInfo', post, (res) => {
       let data = {
         role: res.role,
         org: res.org,

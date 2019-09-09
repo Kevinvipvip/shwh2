@@ -5,7 +5,6 @@
 <view class="page">
   <view class="header">
     <image src="/images/my-bg.jpg" class="avatar-bg"></image>
-
 <!--    <view class="inner">-->
 <!--      <navigator url="/pages/my-edit/my-edit">-->
 <!--        <image src="{{user.avatar}}" class="avatar"></image>-->
@@ -26,29 +25,68 @@
 <!--    </view>-->
     <view class="inner">
       <view class="header-box">
-        <image src="{{user.avatar}}" class="header"></image>
+        <image src="{{user.avatar}}" class="tou"></image>
         <view class="you">
           <view class="nickname">{{user.nickname}}</view>
           <view class="quan">
-            <image src="xxx" class="vip"></image>
-            <button class="vip-btn">我要成为会员</button>
+            <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>
+            <navigator url="/pages/recharge/recharge" wx:if="{{user.vip != 1}}" class="vip-btn">我要成为会员</navigator>
           </view>
         </view>
-        <view class="mess-box">
-          <image src="xxx"></image>
-        </view>
+<!--        <view class="mess-box">-->
+<!--          <image src="/icons/bell.png"></image>-->
+<!--        </view>-->
       </view>
       <view class="sign-box">
         <view class="sign-progress">
-          <view class="sign active">1</view>
-          <view class="sign active">2</view>
-          <view class="sign active">3</view>
-          <view class="sign">4</view>
-          <view class="sign">5</view>
-          <view class="sign">6</view>
-          <view class="sign">7</view>
+          <view class="sign active">
+            <view class="number">1</view>
+            <view class="today">+1</view>
+          </view>
+          <view class="sign active">
+            <view class="number">2</view>
+            <view class="today">+1</view>
+          </view>
+          <view class="sign active">
+            <view class="number">3</view>
+            <view class="today">+1</view>
+          </view>
+          <view class="sign active last-active today-active">
+            <view class="number">4</view>
+            <view class="today">+5</view>
+          </view>
+          <view class="sign">
+            <view class="number">5</view>
+            <view class="today">+1</view>
+          </view>
+          <view class="sign">
+            <view class="number">6</view>
+            <view class="today">+1</view>
+          </view>
+          <view class="sign">
+            <view class="number">7</view>
+            <view class="today">+1</view>
+          </view>
         </view>
+        <button class="sign-btn">签到</button>
       </view>
+    </view>
+  </view>
+
+  <view class="count-box">
+    <view class="count-item">
+      <view class="number">25</view>
+      <view class="desc">我的关注</view>
+    </view>
+    <view class="shu"></view>
+    <view class="count-item">
+      <view class="number">120</view>
+      <view class="desc">我的笔记</view>
+    </view>
+    <view class="shu"></view>
+    <view class="count-item">
+      <view class="number">996</view>
+      <view class="desc">获得积分</view>
     </view>
   </view>
 

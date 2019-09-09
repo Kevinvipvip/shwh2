@@ -63,7 +63,7 @@ Page({
       post.status = this.data.status;
     }
 
-    app.ajax(app.my_config.api + 'my/orderList', post, (res) => {
+    app.ajax('my/orderList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -161,7 +161,7 @@ Page({
             token: app.user_data.token,
             pay_order_sn: goods.pay_order_sn
           };
-          app.ajax(app.my_config.api + 'my/orderConfirm', post, () => {
+          app.ajax('my/orderConfirm', post, () => {
             wx.navigateTo({ url: '/pages/order-detail/order-detail?id=' + goods.id });
             that.refresh();
           }, null, () => {
@@ -180,7 +180,7 @@ Page({
       pay_order_sn: goods.pay_order_sn
     };
 
-    app.ajax(app.my_config.api + 'pay/orderPay', post, (res) => {
+    app.ajax('pay/orderPay', post, (res) => {
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,
@@ -218,7 +218,7 @@ Page({
             token: app.user_data.token,
             pay_order_sn: goods.pay_order_sn
           };
-          app.ajax(app.my_config.api + 'my/orderCancel', post, () => {
+          app.ajax('my/orderCancel', post, () => {
             app.modal('订单已取消', () => {
               that.refresh();
             });
@@ -250,7 +250,7 @@ Page({
         pay_order_sn: that.data.refund_order_sn,
         reason: that.data.reason
       };
-      app.ajax(app.my_config.api + 'my/refundApply', post, (res) => {
+      app.ajax('my/refundApply', post, (res) => {
         that.setData({
           reason: '',
           refund_show: false

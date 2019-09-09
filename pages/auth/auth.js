@@ -11,40 +11,45 @@ Page({
   },
   onLoad(options) {
     this.data.route = options.route ? decodeURIComponent(options.route) : '';
-    this.data.inviter_id = options.scene || 0;
+    // this.data.inviter_id = options.scene || 0;
+    wx.setStorageSync('inviter_id', options.scene || 0);
 
     app.login((res) => {
       app.user_data.token = res.token;
       app.user_data.uid = res.uid;
-      app.get_auth((res) => {
-        if (res) {
-          app.checkUserAuth((res) => {
-            if (res) {
-              app.redirect_or_switch_or_index(this.data.route);
-            } else {
-              this.setData({
-                auth: false,
-                full_loading: false
-              });
-            }
-          });
-        } else {
-          this.setData({
-            auth: false,
-            full_loading: false
-          });
 
-          app.userAuth(this.data.inviter_id, (res) => {
-            if (res) {
-              app.redirect_or_switch_or_index(this.data.route);
-            } else {
-              app.toast('授权失败，请重新授权');
-            }
-          });
-        }
-      });
+      app.redirect_or_switch_or_index(this.data.route);
+
+      // app.get_auth((res) => {
+      //   if (res) {
+      //     app.checkUserAuth((res) => {
+      //       if (res) {
+      //         app.redirect_or_switch_or_index(this.data.route);
+      //       } else {
+      //         this.setData({
+      //           auth: false,
+      //           full_loading: false
+      //         });
+      //       }
+      //     });
+      //   } else {
+      //     this.setData({
+      //       auth: false,
+      //       full_loading: false
+      //     });
+      //
+      //     app.userAuth(this.data.inviter_id, (res) => {
+      //       if (res) {
+      //         app.redirect_or_switch_or_index(this.data.route);
+      //       } else {
+      //         app.toast('授权失败，请重新授权');
+      //       }
+      //     });
+      //   }
+      // });
     });
 
+    // 升级中
     // setInterval(() => {
     //   let update_dot;
     //   switch (this.data.update_dot) {

@@ -26,7 +26,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax(app.my_config.api + 'api/getReqList', post, (res) => {
+    app.ajax('api/getReqList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({

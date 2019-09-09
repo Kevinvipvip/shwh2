@@ -1,32 +1,32 @@
 <view class="page">
   <!-- 头部 -->
   <view class="header">
-    <image src="/images/ac1.png" class="banner"></image>
-    <view class="title">“海河锦鲤”蓄势待发 带着您的创意作品一起 “跃动津城”吧！</view>
+    <image src="{{req.cover}}" mode="aspectFill" class="banner"></image>
+    <view class="title">{{req.title}}</view>
     <view class="zhong">
       <view class="left">
-        <image src="/images/t-header.png" class="head-pic"></image>
-        <view class="nickname">天津杨柳青画社</view>
+        <image src="{{req.avatar}}" class="head-pic"></image>
+        <view class="nickname">{{req.org}}</view>
       </view>
       <view class="right">
         <view class="people people1">
           <image src="/icons/ren.png"></image>
-          <text>468人</text>
+          <text>{{req.idea_num}}人</text>
         </view>
         <view class="people people2">
           <image src="/icons/ren2.png"></image>
-          <text>468人</text>
+          <text>{{req.works_num}}人</text>
         </view>
       </view>
     </view>
     <view class="times">
       <view class="time left">
         <image src="/icons/time1.png"></image>
-        <text>2019.08.22</text>
+        <text>{{req.start_time}}</text>
       </view>
       <view class="time right">
         <image src="/icons/time2.png"></image>
-        <text>2019.09.27</text>
+        <text>{{req.end_time}}</text>
       </view>
     </view>
   </view>
@@ -35,15 +35,13 @@
   <view class="ac-detail">
     <view class="title-line">
       <view class="title">活动详情</view>
-      <view class="more">
+      <navigator url="/pages/activity-rich/activity-rich?id={{id}}" class="more">
         <text>查看更多</text>
         <image src="/icons/you2.png"></image>
-      </view>
+      </navigator>
     </view>
     <view class="desc">
-      康复景观空间空间广阔冷静客观罚款决定书看风景看风景
-      看电视剧加快分解开来的时间康复景观空间空间广阔冷静
-      客观罚款决定书看风景看风景看 。 ...
+      {{desc || ''}}
     </view>
   </view>
 

@@ -38,7 +38,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/addressList', post, (res) => {
+    app.ajax('my/addressList', post, (res) => {
       this.setData({ address_list: res });
     }, null, () => {
       if (complete) {
@@ -114,7 +114,7 @@ Page({
       default: is_default
     };
 
-    app.ajax(app.my_config.api + 'my/addressAdd', post, () => {
+    app.ajax('my/addressAdd', post, () => {
     }, null, () => {
       if (complete) {
         complete();

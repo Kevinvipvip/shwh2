@@ -23,7 +23,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax(app.my_config.api + 'api/designerList', post, (res) => {
+    app.ajax('api/designerList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -84,7 +84,7 @@ Page({
         to_uid: designer.id
       };
 
-      app.ajax(app.my_config.api + 'note/iFocus', post, (res) => {
+      app.ajax('note/iFocus', post, (res) => {
         this.setData({
           ['designerList[' + index + '].if_focus']: res,
           ['designerList[' + index + '].focus']: res ? designer['focus'] + 1 : designer['focus'] - 1

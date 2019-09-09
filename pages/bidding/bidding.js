@@ -32,7 +32,7 @@ Page({
               desc: that.data.desc
             };
 
-            app.ajax(app.my_config.api + 'api/bidding', post, (res) => {
+            app.ajax('api/bidding', post, (res) => {
               app.modal('已参加竞标', () => {
                 let bidding_detail = app.get_page('pages/bidding-detail/bidding-detail');
                 if (bidding_detail) {

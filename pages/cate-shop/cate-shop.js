@@ -30,7 +30,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax(app.my_config.api + 'shop/goodsList', post, (res) => {
+    app.ajax('shop/goodsList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({

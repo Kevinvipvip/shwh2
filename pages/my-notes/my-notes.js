@@ -53,7 +53,7 @@ Page({
       perPage: 10
     };
 
-    app.ajax(app.my_config.api + 'my/getMyNoteList', post, (res) => {
+    app.ajax('my/getMyNoteList', post, (res) => {
       if (res.list.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -102,7 +102,7 @@ Page({
       perPage: 10
     };
 
-    app.ajax(app.my_config.api + 'my/getMyCollectedNoteList', post, (res) => {
+    app.ajax('my/getMyCollectedNoteList', post, (res) => {
       if (res.list.length === 0) {
         if (this.data.c_page === 1) {
           this.setData({ c_nodata: true });

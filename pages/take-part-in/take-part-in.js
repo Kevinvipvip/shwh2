@@ -42,7 +42,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage2m',
+            url: 'api/uploadImage2m',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {
@@ -91,7 +91,7 @@ Page({
         pics: this.get_img_arr()
       };
       
-      app.ajax(app.my_config.api + 'api/uploadWorks', post, (res) => {
+      app.ajax('api/uploadWorks', post, (res) => {
         app.modal('作品已提交', () => {
           wx.navigateTo({ url: '/pages/vote-list/vote-list?req_id=' + this.data.req_id + '&origin=1' });
         });

@@ -12,4 +12,10 @@
   <view class="nodata" wx:if="{{nodata}}">
     暂无数据
   </view>
+
+  <!-- 富文本 -->
+  <view class="content-wrapper">
+    <import src="../../wxParse/wxParse.wxml"/>
+    <template is="wxParse" data="{{wxParseData:rich_text.nodes}}"/>
+  </view>
 </view>

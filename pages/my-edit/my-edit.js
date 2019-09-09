@@ -41,7 +41,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'my/mydetail', post, (res) => {
+    app.ajax('my/mydetail', post, (res) => {
       this.setData({
         nickname: res.nickname || '',
         realname: res.realname || '',
@@ -90,7 +90,7 @@ Page({
           avatar: data.avatar.indexOf('https://wx.qlogo.cn/') === 0 ? data.avatar : data.avatar.replace(app.my_config.base_url + '/', '')
         };
 
-        app.ajax(app.my_config.api + 'my/modMyInfo', post, () => {
+        app.ajax('my/modMyInfo', post, () => {
           this.setData({ loading: false });
 
           app.modal('修改成功', () => {
@@ -121,7 +121,7 @@ Page({
             mask: true
           });
           wx.uploadFile({
-            url: app.my_config.api + 'api/uploadImage',
+            url: 'api/uploadImage',
             filePath: res.tempFiles[0].path,
             name: 'file',
             formData: {

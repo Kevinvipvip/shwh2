@@ -13,7 +13,7 @@ Page({
       token: app.user_data.token
     };
 
-    app.ajax(app.my_config.api + 'activity/activityList', post, (res) => {
+    app.ajax('activity/activityList', post, (res) => {
       app.format_img_arr(res, 'cover');
       this.setData({ activity_list: res })
     });
