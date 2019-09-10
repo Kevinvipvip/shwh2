@@ -21,4 +21,7 @@
 
   <!-- 列表（含下拉刷新上拉加载） -->
   <view wx:for="{{list}}">{{item.id}}</view>
+
+  <!-- 分享 -->
+  <button open-type="share">分享</button>
 </view>

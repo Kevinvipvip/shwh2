@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "创意详情",
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

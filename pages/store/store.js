@@ -30,7 +30,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax('get_list', post, (res) => {
+    app.ajax('get_list', post, res => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -86,5 +86,10 @@ Page({
         });
       }
     }
+  },
+  // 分享
+  onShareAppMessage() {
+    wx.showShareMenu();
+    return { path: app.share_path() };
   }
 });

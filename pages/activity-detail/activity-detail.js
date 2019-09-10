@@ -142,7 +142,10 @@ Page({
         }
       } else {
         app.avatar_format(res);
-        app.format_img(res, 'cover');
+        for (let i = 0; i < res.length; i++) {
+          app.format_img(res[i].pics);
+          res[i].flex_pad = app.null_arr(res[i].pics.length, 3);
+        }
         app.time_format(res, 'create_time', 'yyyy-MM-dd hh:mm');
 
         this.setData({ work_list: this.data.work_list.concat(res) });
@@ -293,11 +296,19 @@ Page({
         let type = e.currentTarget.dataset.type;
         if (type === 1) {
           // 点击投稿
+          let idea_id = e.currentTarget.dataset.idea_id;
           if (app.user_data.role === 2) {
-            wx.navigateTo({ url: '/pages/work-release/work-release' });
+            if (idea_id) {
+              wx.navigateTo({ url: '/pages/work-release/work-release?req_id=' + this.data.id + '&idea_id=' + idea_id });
+            } else {
+              wx.navigateTo({ url: '/pages/work-release/work-release?req_id=' + this.data.id });
+            }
           } else {
             app.modal('只有认证设计师可以投稿');
           }
+        } else {
+          // 点击创意
+          wx.navigateTo({ url: '/pages/chuang-publish/chuang-publish?req_id=' + this.data.id });
         }
       }, null, () => {
         wx.hideLoading();

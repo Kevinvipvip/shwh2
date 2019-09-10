@@ -17,7 +17,6 @@ Page({
     app.login((res) => {
       app.user_data.token = res.token;
 
-
       app.redirect_or_switch_or_index(this.data.route);
 
       // 用户角色信息保存

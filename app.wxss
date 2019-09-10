@@ -584,11 +584,36 @@ button::after {
   margin-top: 35rpx;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .work-box .work .under .img-box image {
   width: 212rpx;
   height: 212rpx;
+}
+
+.work-box .work .other-line {
+  margin-top: 35rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.work-box .work .other-line .factory {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.work-box .work .other-line .factory text {
+}
+
+.work-box .work .other-line .factory .amount {
+  margin-left: 25rpx;
+  color: #333;
+  opacity: 0.7;
+}
+
+.work-box .work .other-line .agree {
+
 }
 /* 作品列表 end */
 

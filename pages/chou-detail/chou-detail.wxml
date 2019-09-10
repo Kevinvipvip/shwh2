@@ -5,35 +5,35 @@
             class="tou-swiper"
             indicator-color="#ffefb2"
             indicator-active-color="#ffda49">
-      <swiper-item wx:for="{{[1, 2, 3]}}" wx:key="index">
-        <image lazy-load src="/images/t-roll1.png"></image>
+      <swiper-item wx:for="{{funding.works_pics}}" wx:key="index">
+        <image lazy-load src="{{item}}" mode="aspectFill"></image>
       </swiper-item>
     </swiper>
 
     <view class="under-banner">
-      <view class="title">投稿名称投稿名称投稿</view>
+      <view class="title">{{funding.title}}</view>
       <view class="auth-line">
         <view class="left">
-          <image src="/images/t-header.png" class="header"></image>
-          <view class="nickname">九九</view>
+          <image src="{{funding.avatar}}" class="header"></image>
+          <view class="nickname">{{funding.nickname}}</view>
         </view>
-        <view class="zhi-count">964人支持</view>
+        <view class="zhi-count">{{funding.order_num}}人支持</view>
       </view>
       <view class="progress-box">
         <view class="progress">
-          <view class="progress-active" style="width: 67%;"></view>
+          <view class="progress-active" style="width: {{funding.percent}}%;"></view>
         </view>
         <view class="info">
           <view class="already">
-            <view class="bi">¥8,000</view>
-            <view class="desc">已筹 80.0%</view>
+            <view class="bi">¥{{funding.curr_money}}</view>
+            <view class="desc">已筹 {{funding.percent}}%</view>
           </view>
           <view class="target">
-            <view class="bi">¥10,000</view>
+            <view class="bi">¥{{funding.need_money}}</view>
             <view class="desc">目标金额</view>
           </view>
           <view class="remaining">
-            <view class="bi">30天</view>
+            <view class="bi">{{funding.ago_text}}天</view>
             <view class="desc">剩余时间</view>
           </view>
         </view>
@@ -50,15 +50,11 @@
         <image src="/icons/you2.png"></image>
       </view>
     </view>
-    <view class="desc">
-      康复景观空间空间广阔冷静客观罚款决定书看风景看风景
-      看电视剧加快分解开来的时间康复景观空间空间广阔冷静
-      客观罚款决定书看风景看风景看 。 ...
-    </view>
+    <view class="desc">{{funding.desc || ''}}</view>
   </view>
 
   <view class="bottom-btn-box">
-    <button class="share">分享</button>
-    <button class="chou">我要众筹</button>
+    <button open-type="share" class="share">分享</button>
+    <button bindtap="to_support" class="chou">我要众筹</button>
   </view>
 </view>

@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="work-box">
+    <view class="work" wx:key="id">
+      <view class="line1">
+        <view class="zuo">
+          <image src="{{work.avatar}}" class="header"></image>
+          <view class="nickname">{{work.nickname}}</view>
+        </view>
+        <view class="time-ago">
+          <!-- 5天前 -->
+          {{work.create_time}}
+        </view>
+      </view>
+      <view class="under">
+        <view class="title">{{work.title}}</view>
+        <view class="desc">{{work.desc}}</view>
+        <view class="img-box">
+          <image bindtap="preview" data-index="{{index}}" src="{{pic_item}}" wx:for-item="pic_item" wx:for="{{work.pics}}" mode="aspectFill" lazy-load></image>
+          <image class="vh" wx:for="{{work.flex_pad}}"></image>
+        </view>
+      </view>
+      <!--          <view class="chuang-line">-->
+      <!--            <view class="origin">创意来源：龙鳞</view>-->
+      <!--            <view class="c-zhi">创意支持 128</view>-->
+      <!--          </view>-->
+      <view class="other-line">
+        <view class="factory">
+          <text>工厂接单</text>
+          <text class="amount">[数量：{{work.bid_num}}]</text>
+        </view>
+        <view class="agree">
+          <image lazy-load src="/icons/zan.png"></image>
+          <text>{{work.vote}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

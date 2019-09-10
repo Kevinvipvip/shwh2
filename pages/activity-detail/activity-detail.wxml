@@ -41,7 +41,7 @@
       </navigator>
     </view>
     <view class="desc">
-      {{desc || ''}}
+      {{req.desc || ''}}
     </view>
   </view>
 
@@ -60,7 +60,8 @@
 
     <!-- 创意 -->
     <view class="chuang-box" wx:if="{{active_tab == 1}}">
-      <button class="line-btn">我要发创意</button>
+      <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{2}}" class="line-btn" wx:if="{{user_auth == 0}}">我要发创意</button>
+      <navigator url="/pages/chuang-publish/chuang-publish?req_id={{id}}" class="line-btn" wx:else>我要发创意</navigator>
       <view class="tap-content-top">
         <view class="left">TA人创意点</view>
         <view class="sort">
@@ -69,7 +70,7 @@
         </view>
       </view>
       <view class="chuang-list">
-        <view class="chuang" wx:for="{{idea_list}}" wx:key="id">
+        <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{item.id}}" class="chuang" wx:for="{{idea_list}}" wx:key="id">
           <view class="top-line">
             <view class="left">
               <view class="header-box">
@@ -93,8 +94,9 @@
             </view>
           </view>
           <view class="desc">{{item.content}}</view>
-          <button bindtap="to_work_release" data-idea_id="{{item.id}}" class="tou-btn">投稿</button>
-        </view>
+          <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" data-idea_id="{{item.id}}" class="tou-btn" wx:if="{{user_auth == 0}}">投稿</button>
+          <button catchtap="to_work_release" data-idea_id="{{item.id}}" class="tou-btn" wx:else>投稿</button>
+        </navigator>
       </view>
 
       <view class="nomore" wx:if="{{chuang_nomore}}">
@@ -116,7 +118,7 @@
         </view>
       </view>
       <view class="work-list">
-        <view class="work" wx:for="{{work_list}}" wx:key="id">
+        <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
           <view class="line1">
             <view class="zuo">
               <image src="{{item.avatar}}" class="header"></image>
@@ -131,26 +133,25 @@
             <view class="title">{{item.title}}</view>
             <view class="desc">{{item.desc}}</view>
             <view class="img-box">
-              <image src="/images/t_s_item.png" mode="aspectFill" lazy-load></image>
-              <image src="/images/t_s_item.png" mode="aspectFill" lazy-load></image>
-              <image src="/images/t_s_item.png" mode="aspectFill" lazy-load></image>
+              <image src="{{pic_item}}" wx:for-item="pic_item" wx:for="{{item.pics}}" mode="aspectFill" lazy-load></image>
+              <image class="vh" wx:for="{{item.flex_pad}}"></image>
             </view>
           </view>
-          <view class="chuang-line">
-            <view class="origin">创意来源：龙鳞</view>
-            <view class="c-zhi">创意支持 128</view>
-          </view>
+<!--          <view class="chuang-line">-->
+<!--            <view class="origin">创意来源：龙鳞</view>-->
+<!--            <view class="c-zhi">创意支持 128</view>-->
+<!--          </view>-->
           <view class="other-line">
             <view class="factory">
               <text>工厂接单</text>
-              <text class="amount">[数量：132]</text>
+              <text class="amount">[数量：{{item.bid_num}}]</text>
             </view>
             <view class="agree">
               <image lazy-load src="/icons/zan.png"></image>
               <text>{{item.vote}}</text>
             </view>
           </view>
-        </view>
+        </navigator>
       </view>
       <view class="nomore" wx:if="{{chuang_nomore}}">
         已经没有更多了哦

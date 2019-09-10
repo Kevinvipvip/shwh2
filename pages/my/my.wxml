@@ -67,10 +67,10 @@
         <view class="desc">我的关注</view>
       </view>
       <view class="shu"></view>
-      <view class="count-item">
+      <navigator url="/pages/my-notes/my-notes" class="count-item">
         <view class="number">120</view>
         <view class="desc">我的笔记</view>
-      </view>
+      </navigator>
       <view class="shu"></view>
       <view class="count-item">
         <view class="number">996</view>
@@ -110,7 +110,7 @@
   </view>
 
   <view class="menu">
-    <navigator class="menu-item" url="/pages/my-notes/my-notes">
+    <navigator class="menu-item" url="/pages/my-chuang/my-chuang">
       <view class="left-box">
         <view class="icon-box">
           <image src="/icons/menu1.png" class="icon-menu1"></image>
@@ -193,15 +193,15 @@
       <view class="menu-text">收货地址</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
-    <navigator class="menu-item" url="/pages/drumbeating/drumbeating">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu9.png" class="icon-menu9"></image>
-        </view>
-      </view>
-      <view class="menu-text">文创代言</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
+<!--    <navigator class="menu-item" url="/pages/drumbeating/drumbeating">-->
+<!--      <view class="left-box">-->
+<!--        <view class="icon-box">-->
+<!--          <image src="/icons/menu9.png" class="icon-menu9"></image>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--      <view class="menu-text">文创代言</view>-->
+<!--      <image src="/icons/you3.png" class="you"></image>-->
+<!--    </navigator>-->
     <button open-type="contact" show-message-card="true" class="menu-item" url="/pages/my-notes/my-notes">
       <view class="left-box">
         <view class="icon-box">

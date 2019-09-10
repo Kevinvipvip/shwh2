@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "洞天列表",
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

@@ -99,6 +99,7 @@ Page({
 
       wx.showLoading({ mask: true });
       app.ajax('api/uploadWorks', post, () => {
+        wx.redirectTo({ url: '/pages/my-works/my-works' });
       }, null, () => {
         wx.hideLoading();
       });

@@ -1,32 +1,27 @@
 <view class="page">
   <view class="support-list">
-    <view class="support">
-      <view class="title-line">
-        <view class="left">
-          <view class="quan"></view>
-          <view class="money">无偿支持</view>
-        </view>
-        <view class="yi-zhi">已支持582次</view>
-      </view>
-      <view class="title">雷锋精神，做好事不留名！</view>
-    </view>
-    <view class="support">
+<!--    <view class="support">-->
+<!--      <view class="title-line">-->
+<!--        <view class="left">-->
+<!--          <view class="quan"></view>-->
+<!--          <view class="money">无偿支持</view>-->
+<!--        </view>-->
+<!--        <view class="yi-zhi">已支持582次</view>-->
+<!--      </view>-->
+<!--      <view class="title">雷锋精神，做好事不留名！</view>-->
+<!--    </view>-->
+    <view class="support" wx:for="{{goods_list}}" wx:key="id">
       <view class="title-line">
         <view class="left">
           <view class="quan active"></view>
-          <view class="money">¥196</view>
+          <view class="money">¥{{item.price}}</view>
         </view>
-        <view class="yi-zhi">已支持582次</view>
+        <view class="yi-zhi">已支持{{item.sales}}次</view>
       </view>
-      <view class="title">雷锋精神，做好事不留名！</view>
-      <view class="desc">您将获得：百搭红锦鲤T恤一件</view>
+      <view class="title">{{item.title}}</view>
+      <view class="desc">{{item.desc}}</view>
       <view class="img-box">
-        <image src="/images/t_s_item.png" lazy-load></image>
-        <image src="/images/t_s_item.png" lazy-load></image>
-        <image src="/images/t_s_item.png" lazy-load></image>
-        <image src="/images/t_s_item.png" lazy-load></image>
-        <image src="/images/t_s_item.png" lazy-load></image>
-        <image src="/images/t_s_item.png" lazy-load></image>
+        <image bindtap="preview" data-pic_index="{{pic_index}}" data-index="{{index}}" src="{{pic_item}}" wx:for-index="pic_index" wx:for-item="pic_item" wx:for="{{item.pics}}" mode="aspectFill" lazy-load></image>
       </view>
     </view>
   </view>

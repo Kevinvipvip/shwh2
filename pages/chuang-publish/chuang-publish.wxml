@@ -2,17 +2,17 @@
   <view class="form1">
     <view class="form-item">
       <view class="title">创意标题</view>
-      <input bindinput="bind_input" data-name="title" value="{{title}}" placeholder="请输入标题" placeholder-class="input-place" maxlength="20"/>
+      <input bindinput="bind_input" data-name="title" value="{{title}}" placeholder="请输入标题" placeholder-class="input-place" maxlength="10"/>
     </view>
     <view class="form-item">
       <view class="title">创意简述</view>
       <view class="textarea-box">
         <textarea bindinput="bind_input" fixed="true" data-name="content" value="{{content}}" auto-height maxlength="200" cursor-spacing="50" placeholder="创意内容..." style="padding: {{textarea_padding}};"/>
         <view class="count">
-          <text>15</text> / 99
+          <text>{{content_count}}</text> / 200
         </view>
       </view>
     </view>
   </view>
-  <button class="line-btn">发布创意</button>
+  <button bindtap="createIdea" class="line-btn">发布创意</button>
 </view>

@@ -35,7 +35,9 @@ Page({
         }
       } else {
         app.format_img(res, 'cover');
-        app.avatar_format(res, 'avatar');
+        for (let i = 0; i < res.length; i++) {
+          app.format_img(res[i].pics);
+        }
         this.setData({ work_list: this.data.work_list.concat(res) });
       }
       this.data.page++;

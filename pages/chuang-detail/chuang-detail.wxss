@@ -72,6 +72,7 @@
     font-size: 26rpx;
     line-height: 42rpx;
     color: rgba(102, 102, 102, 0.8);
+    white-space: pre-line;
 }
 
 .chuang-box .user-box {

@@ -300,28 +300,4 @@
 .work .chuang-line .c-zhi {
 
 }
-
-.work .other-line {
-  margin-top: 35rpx;
-  display: flex;
-  justify-content: space-between;
-}
-
-.work .other-line .factory {
-  font-size: 24rpx;
-  color: #333;
-}
-
-.work .other-line .factory text {
-}
-
-.work .other-line .factory .amount {
-  margin-left: 25rpx;
-  color: #333;
-  opacity: 0.7;
-}
-
-.work .other-line .agree {
-
-}
 /* 作品 end */

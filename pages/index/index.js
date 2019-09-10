@@ -46,7 +46,10 @@ Page({
     };
 
     app.ajax('api/worksList', post, res => {
-      app.format_img(res, 'cover');
+      for (let i = 0; i < res.length; i++) {
+        app.format_img(res[i].pics);
+      }
+
       app.avatar_format(res, 'avatar');
 
       this.setData({work_list: res});
