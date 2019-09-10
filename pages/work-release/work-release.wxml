@@ -1,18 +1,18 @@
 <view class="page">
-  <view class="notice">
-    提示：XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  <view class="notice" wx:if="{{idea_id != 0}}">
+    提示：创意来自“{{idea.nickname}}”的“{{idea.title}}”
   </view>
   <view class="form1">
     <view class="form-item">
       <view class="title">作品名称</view>
-      <input bindinput="bind_input" data-name="title" value="{{title}}" placeholder="请输入标题" placeholder-class="input-place" maxlength="20"/>
+      <input bindinput="bind_input" data-name="title" value="{{title}}" placeholder="请输入作品名称" placeholder-class="input-place" maxlength="50"/>
     </view>
     <view class="form-item">
       <view class="title">作品简述</view>
       <view class="textarea-box">
-        <textarea bindinput="bind_input" fixed="true" data-name="content" value="{{content}}" auto-height maxlength="200" cursor-spacing="50" placeholder="创意内容..." style="padding: {{textarea_padding}};"/>
+        <textarea bindinput="bind_input" fixed="true" data-name="desc" value="{{desc}}" auto-height maxlength="500" cursor-spacing="50" placeholder="请输入作品简述..." style="padding: {{textarea_padding}};"/>
         <view class="count">
-          <text>15</text> / 99
+          <text>{{desc_count}}</text> / 500
         </view>
       </view>
     </view>
@@ -24,21 +24,21 @@
             <view class="ap-box">
               <view class="add-pic">
                 <image class="add-pic" src="{{item}}"></image>
-                <view class="img-de" data-deindex="{{index}}" bindtap="imgDelete1">
+                <view class="img-de" data-index="{{index}}" bindtap="img_delete">
                   <image class="img" src="/images/close.png"></image>
                 </view>
               </view>
             </view>
           </block>
-          <view class="add-pic plus" bindtap="addPic1" wx:if="{{pics.length < 9}}">
+          <view class="add-pic plus" bindtap="up_pics" wx:if="{{pics.length < 9}}">
             <icon class="iconfont iconjia"/>
           </view>
-          <view class="ap-box vh" wx:for="{{flex_pad}}">
+          <view class="ap-box vh" wx:for="{{flex_pad}}" wx:if="{{pics.length < 9}}">
             <view class="add-pic"></view>
           </view>
         </view>
       </view>
     </view>
   </view>
-  <button class="line-btn">投稿</button>
+  <button bindtap="uploadWorks" class="line-btn">投稿</button>
 </view>

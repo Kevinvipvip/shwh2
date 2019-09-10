@@ -29,4 +29,4 @@ Component({
       wx.switchTab({ url })
     }
   }
-})
+});

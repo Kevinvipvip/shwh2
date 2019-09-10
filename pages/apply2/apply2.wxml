@@ -3,26 +3,24 @@
     <view class="image"></view>
   </view>
 
-  <view class="fail" wx:if="{{auth == 3}}">
+  <view class="fail" wx:if="{{role_check == 3}}">
     <view>※ 审核未通过</view>
     <view>原因：{{reason}}</view>
   </view>
-  <form bindsubmit="apply" class="apply-form" wx:if="{{auth == 0 || auth == 3}}">
+  <form bindsubmit="apply" class="apply-form" wx:if="{{role_check == 0 || role_check == 3}}">
     <!-- 工厂和博物馆 -->
     <block wx:if="{{role != 2}}">
       <view class="input-group-list">
         <view class="flex flex-row input-group">
           <view class="flex-grow-0 flex-y-center input-group-label require">机构名称：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="org" value="{{org}}" class="flex-y-center" placeholder="请输入机构名称"
-                   placeholder-class="placeholder"/>
+            <input bindinput="bind_input" data-name="org" value="{{org}}" class="flex-y-center" placeholder="请输入机构名称" placeholder-class="placeholder"/>
           </view>
         </view>
         <view class="flex flex-row input-group">
           <view class="flex-grow-0 flex-y-center input-group-label require">机构地址：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="org" value="{{org}}" class="flex-y-center" placeholder="请输入机构地址"
-                   placeholder-class="placeholder"/>
+            <input bindinput="bind_input" data-name="address" value="{{address}}" class="flex-y-center" placeholder="请输入机构地址" placeholder-class="placeholder"/>
           </view>
         </view>
       </view>
@@ -31,12 +29,12 @@
           <view class="flex-grow-0 flex-y-center input-group-label require">上传封面（主页图）：</view>
           <view class="flex-grow-1">
             <view class="upload-box">
-              <view bindtap="img_upload" data-name="id_front" class="upload one-pic" wx:if="{{!id_front}}">
+              <view bindtap="img_upload" data-name="cover" class="upload one-pic" wx:if="{{!cover}}">
                 <image src="/icons/big-plus.png"></image>
               </view>
-              <view class="img-box" wx:if="{{id_front}}">
-                <image src="{{id_front}}" mode="widthFix" class="img"></image>
-                <view class="img-de" bindtap="img_remove" data-name="id_front">
+              <view class="img-box one-pic" wx:if="{{cover}}">
+                <image src="{{cover}}" mode="aspectFill" class="img"></image>
+                <view class="img-de" bindtap="img_remove" data-name="cover">
                   <image src="/images/close.png"></image>
                 </view>
               </view>
@@ -46,8 +44,7 @@
         <view class="flex flex-row input-group">
           <view class="flex-grow-0 flex-y-center input-group-label require">法人代表：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="name" value="{{name}}" class="flex-y-center" placeholder="请输入法人代表"
-                   placeholder-class="placeholder"/>
+            <input bindinput="bind_input" data-name="name" value="{{name}}" class="flex-y-center" placeholder="请输入法人代表" placeholder-class="placeholder"/>
           </view>
         </view>
         <view class="flex flex-row input-group">
@@ -62,25 +59,25 @@
           <view class="flex-grow-1">
             <view class="upload-box">
               <view class="front">
-                <view bindtap="img_upload" data-name="cover" class="upload" wx:if="{{!cover}}">
+                <view bindtap="img_upload" data-name="id_front" class="upload" wx:if="{{!id_front}}">
                   <image src="/icons/big-plus.png"></image>
                   <view class="explain">正面照片</view>
                 </view>
-                <view class="img-box" wx:if="{{cover}}">
-                  <image src="{{cover}}" mode="widthFix" class="img"></image>
-                  <view class="img-de" bindtap="img_remove" data-name="cover">
+                <view class="img-box" wx:if="{{id_front}}">
+                  <image src="{{id_front}}" mode="aspectFill" class="img"></image>
+                  <view class="img-de" bindtap="img_remove" data-name="id_front">
                     <image src="/images/close.png"></image>
                   </view>
                 </view>
               </view>
               <view class="back">
-                <view bindtap="img_upload" data-name="cover" class="upload" wx:if="{{!cover}}">
+                <view bindtap="img_upload" data-name="id_back" class="upload" wx:if="{{!id_back}}">
                   <image src="/icons/big-plus.png"></image>
                   <view class="explain">反面照片</view>
                 </view>
-                <view class="img-box" wx:if="{{cover}}">
-                  <image src="{{cover}}" mode="widthFix" class="img"></image>
-                  <view class="img-de" bindtap="img_remove" data-name="cover">
+                <view class="img-box" wx:if="{{id_back}}">
+                  <image src="{{id_back}}" mode="aspectFill" class="img"></image>
+                  <view class="img-de" bindtap="img_remove" data-name="id_back">
                     <image src="/images/close.png"></image>
                   </view>
                 </view>
@@ -92,12 +89,12 @@
           <view class="flex-grow-0 flex-y-center input-group-label require">资质证书：</view>
           <view class="flex-grow-1">
             <view class="upload-box">
-              <view bindtap="img_upload" data-name="id_front" class="upload one-pic" wx:if="{{!id_front}}">
+              <view bindtap="img_upload" data-name="license" class="upload one-pic" wx:if="{{!license}}">
                 <image src="/icons/big-plus.png"></image>
               </view>
-              <view class="img-box" wx:if="{{id_front}}">
-                <image src="{{id_front}}" mode="widthFix" class="img"></image>
-                <view class="img-de" bindtap="img_remove" data-name="id_front">
+              <view class="img-box one-pic" wx:if="{{license}}">
+                <image src="{{license}}" mode="aspectFill" class="img"></image>
+                <view class="img-de" bindtap="img_remove" data-name="license">
                   <image src="/images/close.png"></image>
                 </view>
               </view>
@@ -107,8 +104,15 @@
         <view class="flex flex-row input-group">
           <view class="flex-grow-0 flex-y-center input-group-label">微信号：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" class="flex-y-center"
+            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" type="number" class="flex-y-center"
                    placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="11"/>
+          </view>
+        </view>
+        <view class="flex flex-row input-group" wx:if="{{role == '3'}}">
+          <view class="flex-grow-0 flex-y-center input-group-label require">经营范围：</view>
+          <view class="flex-grow-1">
+            <input bindinput="bind_input" data-name="busine" value="{{busine}}" type="number" class="flex-y-center"
+                   placeholder="请输入经营范围" placeholder-class="placeholder" maxlength="11"/>
           </view>
         </view>
         <view class="flex flex-row input-group">
@@ -136,12 +140,12 @@
           <view class="flex-grow-0 flex-y-center input-group-label require">上传封面（主页图）：</view>
           <view class="flex-grow-1">
             <view class="upload-box">
-              <view bindtap="img_upload" data-name="id_front" class="upload one-pic" wx:if="{{!id_front}}">
+              <view bindtap="img_upload" data-name="cover" class="upload one-pic" wx:if="{{!cover}}">
                 <image src="/icons/big-plus.png"></image>
               </view>
-              <view class="img-box" wx:if="{{id_front}}">
-                <image src="{{id_front}}" mode="widthFix" class="img"></image>
-                <view class="img-de" bindtap="img_remove" data-name="id_front">
+              <view class="img-box one-pic" wx:if="{{cover}}">
+                <image src="{{cover}}" mode="aspectFill" class="img"></image>
+                <view class="img-de" bindtap="img_remove" data-name="cover">
                   <image src="/images/close.png"></image>
                 </view>
               </view>
@@ -167,27 +171,43 @@
           <view class="flex-grow-1">
             <view class="upload-box">
               <view class="front">
-                <view bindtap="img_upload" data-name="cover" class="upload" wx:if="{{!cover}}">
+                <view bindtap="img_upload" data-name="id_front" class="upload" wx:if="{{!id_front}}">
                   <image src="/icons/big-plus.png"></image>
                   <view class="explain">正面照片</view>
                 </view>
-                <view class="img-box" wx:if="{{cover}}">
-                  <image src="{{cover}}" mode="widthFix" class="img"></image>
-                  <view class="img-de" bindtap="img_remove" data-name="cover">
+                <view class="img-box" wx:if="{{id_front}}">
+                  <image src="{{id_front}}" mode="aspectFill" class="img"></image>
+                  <view class="img-de" bindtap="img_remove" data-name="id_front">
                     <image src="/images/close.png"></image>
                   </view>
                 </view>
               </view>
               <view class="back">
-                <view bindtap="img_upload" data-name="cover" class="upload" wx:if="{{!cover}}">
+                <view bindtap="img_upload" data-name="id_back" class="upload" wx:if="{{!id_back}}">
                   <image src="/icons/big-plus.png"></image>
                   <view class="explain">反面照片</view>
                 </view>
-                <view class="img-box" wx:if="{{cover}}">
-                  <image src="{{cover}}" mode="widthFix" class="img"></image>
-                  <view class="img-de" bindtap="img_remove" data-name="cover">
+                <view class="img-box" wx:if="{{id_back}}">
+                  <image src="{{id_back}}" mode="aspectFill" class="img"></image>
+                  <view class="img-de" bindtap="img_remove" data-name="id_back">
                     <image src="/images/close.png"></image>
                   </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="flex flex-row input-group input-group2">
+          <view class="flex-grow-0 flex-y-center input-group-label require">资质证书：</view>
+          <view class="flex-grow-1">
+            <view class="upload-box">
+              <view bindtap="img_upload" data-name="license" class="upload one-pic" wx:if="{{!license}}">
+                <image src="/icons/big-plus.png"></image>
+              </view>
+              <view class="img-box one-pic" wx:if="{{license}}">
+                <image src="{{license}}" mode="aspectFill" class="img"></image>
+                <view class="img-de" bindtap="img_remove" data-name="license">
+                  <image src="/images/close.png"></image>
                 </view>
               </view>
             </view>
@@ -212,7 +232,7 @@
         <view class="flex flex-row input-group">
           <view class="flex-grow-0 flex-y-center input-group-label">微信号：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" class="flex-y-center"
+            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" type="number" class="flex-y-center"
                    placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="11"/>
           </view>
         </view>
@@ -238,14 +258,14 @@
     </view>
   </form>
 
-  <view class="in-mp" wx:if="{{auth == 1}}">
+  <view class="in-mp" wx:if="{{role_check == 1}}">
     <view class="status-box">
       <icon type="waiting" size="60"/>
       <view class="text">审核中，请耐心等待</view>
     </view>
   </view>
 
-  <view class="in-mp" wx:if="{{auth == 2}}">
+  <view class="in-mp" wx:if="{{role_check == 2}}">
     <view class="status-box">
       <icon type="success" size="60"/>
       <view class="text">

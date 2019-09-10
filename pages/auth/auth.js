@@ -16,9 +16,18 @@ Page({
 
     app.login((res) => {
       app.user_data.token = res.token;
-      app.user_data.uid = res.uid;
+
 
       app.redirect_or_switch_or_index(this.data.route);
+
+      // 用户角色信息保存
+      app.ajax('my/mydetail', null, (res) => {
+        app.user_data.uid = res.id;
+        app.user_data.role = res.role_check === 2 ? res.role : 0;
+        app.user_data.user_auth = res.user_auth;
+        
+        console.log(app.user_data);
+      });
 
       // app.get_auth((res) => {
       //   if (res) {
@@ -69,7 +78,7 @@ Page({
     //   this.setData({update_dot: update_dot});
     // }, 500);
   },
-  auth: function (e) {
+  auth(e) {
     if (e.detail.userInfo) {
       wx.showLoading({
         title: '授权中',
@@ -85,4 +94,4 @@ Page({
       });
     }
   }
-})
+});

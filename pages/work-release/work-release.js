@@ -4,120 +4,110 @@ Page({
   data: {
     textarea_padding: '15rpx',
 
-    req_title: '',  // 赛事标题
-    pics: '',  // 作品图片
+    req_id: 0,  // 活动id
     title: '',  // 作品标题
     desc: '',  // 作品描述
-    plat: '',
-    flex_pad: []
+    desc_count: 0,
+    pics: [],  // 作品图片
+    flex_pad: [],
+
+    idea_id: 0,  // 创意id（选填）
+    idea: {}
   },
-  onLoad: function () {
+  onLoad(options) {
     let phone = wx.getSystemInfoSync();
     if (phone.platform === 'ios') {
       this.setData({ textarea_padding: '0rpx 5rpx' })
     }
+
+    this.data.req_id = options.req_id;
+
+    if (options.idea_id) {
+      this.setData({idea_id: options.idea_id});
+      this.ideaDetail();
+    }
+
+    app.qiniu_init();
   },
   // 删除照片
-  imgDelete1: function (e) {
-    let that = this;
-    let index = e.currentTarget.dataset.deindex;
+  img_delete(e) {
+    let index = e.currentTarget.dataset.index;
     let pics = this.data.pics;
     pics.splice(index, 1);
-    that.setData({
+    this.setData({
       pics: pics,
       flex_pad: app.null_arr(pics.length + 1, 3)
     });
   },
   // 上传图片
-  addPic1: function (e) {
-    var pics = this.data.pics;
-    var picid = e.currentTarget.dataset.pic;
-    var that = this;
+  up_pics() {
+    app.choose_img(9 - this.data.pics.length, res => {
+      let up_succ = 0;
 
-    wx.chooseImage({
-      count: 1,
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        if (res.tempFiles[0].size > 2097152) {
-          app.toast('上传的图片不能大于2M');
-        } else {
-          wx.showLoading({
-            title: '上传中',
-            mask: true
+      wx.showLoading({
+        title: '上传中',
+        mask: true
+      });
+
+      for (let i = 0; i < res.length; i++) {
+        let tname = app.qiniu_tname() + res[i].ext;
+        app.qiniu_upload(res[i].path, tname, () => {
+          this.data.pics.push(app.format_img(tname));
+          this.setData({
+            pics: this.data.pics,
+            flex_pad: app.null_arr(this.data.pics.length + 1, 3)
           });
-          wx.uploadFile({
-            url: 'api/uploadImage2m',
-            filePath: res.tempFiles[0].path,
-            name: 'file',
-            formData: {
-              token: app.user_data.token
-            },
-            success(res) {
-              res = JSON.parse(res.data);
+          up_succ++;
 
-              if (pics.length === 0) {
-                pics = [app.my_config.base_url + '/' + res.data.path];
-              } else if (9 > pics.length) {
-                pics = pics.concat(app.my_config.base_url + '/' + res.data.path);
-              } else {
-                pics[picid] = app.my_config.base_url + '/' + res.data.path;
-              }
-
-              that.setData({
-                pics: pics,
-                flex_pad: app.null_arr(pics.length + 1, 3)
-              });
-            },
-            fail: function () {
-              app.toast('上传失败');
-            },
-            complete: function () {
-              wx.hideLoading();
-            }
-          })
-        }
-      }
-    })
-  },
-  // 上传展示作品
-  uploadShowWorks() {
-    if (!this.data.title.trim()) {
-      app.toast('请填写笔记标题');
-    } else if (!this.data.desc.trim()) {
-      app.toast('请填写笔记内容');
-    } else if (this.data.pics.length === 0) {
-      app.toast('请至少上传一张图片');
-    } else {
-      let post = {
-        token: app.user_data.token,
-        title: this.data.title,
-        desc: this.data.desc,
-        pics: this.get_img_arr()
-      };
-      
-      app.ajax('my/uploadShowWorks', post, (res) => {
-        app.modal('作品已提交', () => {
-
-          // 刷新并跳转我的作品列表
-          let my_works_page = app.get_page('pages/my-works/my-works');
-          if (my_works_page) {
-            my_works_page.work_release_reload(() => {
-              wx.navigateBack({ delta: 1 })
-            });
+          if (up_succ === res.length) {
+            wx.hideLoading();
           }
+        }, null, () => {
+          wx.hideLoading();
         });
+      }
+    }, 1048576);
+  },
+  bind_input(e) {
+    app.bind_input(e, this);
+    if (e.currentTarget.dataset.name === 'desc') {
+      this.setData({desc_count: this.data.desc.length});
+    }
+  },
+  // 上传作品
+  uploadWorks() {
+    let data = this.data;
+    if (!data.title.trim()) {
+      app.toast('请输入作品名称');
+    } else if (!data.desc.trim()) {
+      app.toast('请输入作品简述');
+    } else if (data.pics.length === 0) {
+      app.toast('请上传租作品图片');
+    } else {
+      app.format_up_img(data.pics);
+
+      let post = {
+        req_id: data.req_id,
+        title: data.title,
+        desc: data.desc,
+        pics: data.pics
+      };
+
+      if (data.idea_id !== 0) {
+        post.idea_id = data.idea_id;
+      }
+
+      wx.showLoading({ mask: true });
+      app.ajax('api/uploadWorks', post, () => {
+      }, null, () => {
+        wx.hideLoading();
       });
     }
   },
-  get_img_arr() {
-    var img_arr = [];
-    for (let i = 0; i < this.data.pics.length; i++) {
-      img_arr.push(this.data.pics[i].replace(app.my_config.base_url + '/', ''));
-    }
-    return img_arr;
-  },
-  // common start
-  bind_input(e) {
-    this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
+  // 创意详情
+  ideaDetail() {
+    app.ajax('api/ideaDetail', {idea_id: this.data.idea_id}, res => {
+      this.setData({idea: res});
+    });
   }
-})
+});

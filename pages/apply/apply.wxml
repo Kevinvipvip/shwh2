@@ -10,19 +10,19 @@
         <image src="/icons/home-tab1.png" class="icon" mode="widthFix"></image>
       </view>
     </navigator>
+<!--    <navigator url="/pages/apply2/apply2?role=2" class="role role1">-->
+<!--      <view class="text">文创机构</view>-->
+<!--      <view class="icon-box">-->
+<!--        <image src="/icons/home-tab2.png" class="icon" mode="widthFix"></image>-->
+<!--      </view>-->
+<!--    </navigator>-->
     <navigator url="/pages/apply2/apply2?role=2" class="role role1">
-      <view class="text">文创机构</view>
-      <view class="icon-box">
-        <image src="/icons/home-tab2.png" class="icon" mode="widthFix"></image>
-      </view>
-    </navigator>
-    <navigator url="/pages/apply2/apply2?role=3" class="role role1">
       <view class="text">设计师</view>
       <view class="icon-box">
         <image src="/icons/home-tab3.png" class="icon" mode="widthFix"></image>
       </view>
     </navigator>
-    <navigator url="/pages/apply2/apply2?role=4" class="role role1">
+    <navigator url="/pages/apply2/apply2?role=3" class="role role1">
       <view class="text">工厂</view>
       <view class="icon-box">
         <image src="/icons/home-tab4.png" class="icon" mode="widthFix"></image>

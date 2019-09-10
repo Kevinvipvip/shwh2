@@ -57,7 +57,7 @@
       <view bindtap="rank_tap" data-rank="{{2}}" class="tab {{active_rank == 2 ? 'active' : ''}}">创意排行榜</view>
     </view>
 
-    <view class="work-list" wx:if="{{active_rank == 1}}">
+    <view class="work-rank-list" wx:if="{{active_rank == 1}}">
       <view class="work" wx:for="{{work_list}}" wx:key="id">
         <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>
         <view class="info">
@@ -79,7 +79,7 @@
           </view>
         </view>
       </view>
-      <navigator class="more-line">查看更多</navigator>
+      <navigator url="/pages/work-ranking/work-ranking" class="more-line">查看更多</navigator>
     </view>
 
     <view class="chuang-rank-list" wx:if="{{active_rank == 2}}">
@@ -95,7 +95,7 @@
           <text>{{item.vote}}</text>
         </view>
       </view>
-      <navigator class="more-line">查看更多</navigator>
+      <navigator url="/pages/chuang-ranking/chuang-ranking" class="more-line">查看更多</navigator>
     </view>
   </view>
 

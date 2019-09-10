@@ -2,49 +2,40 @@ const app = getApp();
 
 Page({
   data: {
-    status: '',  // 0.审核中 1.通过 2.未通过  空字符串全部
-    work_list: [],
     page: 1,
+    work_list: [],
     nomore: false,
-    nodata: true,
+    nodata: false,
     loading: false
   },
   onLoad() {
-    this.getMyReqWorks();
+    this.worksList();
   },
-  // 切换tab
-  tab_change(e) {
-    this.setData({ status: e.currentTarget.dataset.tab });
-    this.reset();
-    this.getMyReqWorks();
-  },
-  // 获取我的参赛作品
-  getMyReqWorks() {
+  // 作品排行
+  worksList(complete) {
     let post = {
-      status: this.data.status,
       page: this.data.page,
-      perpage: 10
+      perpage: 10,
+      order: 2  // 按投票
     };
 
-    app.ajax('my/getMyReqWorks', post, res => {
+    app.ajax('api/worksList', post, res => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
             work_list: [],
             nodata: true,
-            nomoare: false
+            nomore: false
           })
         } else {
           this.setData({
-            nomoare: true,
+            nomore: true,
             nodata: false
           })
         }
       } else {
-        app.avatar_format(res);
         app.format_img(res, 'cover');
-        app.time_format(res, 'create_time', 'yyyy-MM-dd hh:mm');
-
+        app.avatar_format(res, 'avatar');
         this.setData({ work_list: this.data.work_list.concat(res) });
       }
       this.data.page++;
@@ -67,7 +58,7 @@ Page({
       });
 
       wx.showNavigationBarLoading();
-      this.getMyReqWorks(() => {
+      this.worksList(() => {
         this.data.loading = false;
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
@@ -80,20 +71,11 @@ Page({
       if (!this.data.loading) {
         this.data.loading = true;
         wx.showNavigationBarLoading();
-        this.getMyReqWorks(() => {
+        this.worksList(() => {
           wx.hideNavigationBarLoading();
           this.data.loading = false;
         });
       }
     }
-  },
-  // 重置
-  reset() {
-    this.data.page = 1;
-    this.data.work_list = [];
-    this.setData({
-      nomore: false,
-      nodata: false
-    });
   }
 });

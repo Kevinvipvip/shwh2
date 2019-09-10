@@ -1,4 +1,5 @@
 const utils = require('utils/utils.js');
+const qiniuUploader = require("utils/qiniuUploader");
 
 App({
   onLaunch() {
@@ -33,7 +34,8 @@ App({
   user_data: {
     token: '',
     uid: 0,
-    role: 0
+    role: 0,
+    user_auth: 0  // 0.用户未授权 1.用户已授权
   },
   mp_update() {
     const updateManager = wx.getUpdateManager();
@@ -250,11 +252,17 @@ App({
           }
         }
       }
-    } else {
+    } else if (typeof obj === 'object') {
       if (obj[img_field]) {
         obj[img_field] = this.my_config.qiniu_base + '/' + obj[img_field];
       } else {
         obj[img_field] = this.my_config.default_img;
+      }
+    } else {
+      if (obj) {
+        return this.my_config.qiniu_base + '/' + obj;
+      } else {
+        return this.my_config.default_img;
       }
     }
   },
@@ -285,6 +293,16 @@ App({
         obj[field] = obj[field].indexOf('https') === 0 ? obj[field] : this.my_config.qiniu_base + '/' + obj[field];
         // [field]
       }
+    }
+  },
+  // 格式化上传图片，将http前缀去掉
+  format_up_img(obj) {
+    if (obj instanceof Array) {
+      for (let i = 0; i < obj.length; i++) {
+        obj[i] = obj[i] ? obj[i].replace(this.my_config.qiniu_base + '/', '') : '';
+      }
+    } else {
+      return  obj ? obj.replace(this.my_config.qiniu_base + '/', '') : '';
     }
   },
   // 时间格式化
@@ -360,5 +378,92 @@ App({
   },
   // 将秒数转变成几小时前、几天前的格式，超过30天显示日期
   ago_format(s) {
+    // todo
+  },
+  // 生成随机字符
+  random_string(len) {
+    len = len || 30;
+    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+    var maxPos = $chars.length;
+    var pwd = '';
+    for (let i = 0; i < len; i++) {
+      pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
+  },
+  // 生成七牛云临时文件名
+  qiniu_tname() {
+    return 'tmp/' + this.random_string() + '.';
+  },
+  // 初始化七牛参数
+  qiniu_init() {
+    this.ajax('qiniu/getUpToken', null, res => {
+      var options = {
+        region: 'NCN', // 华北区
+        uptoken: res.token,
+        domain: 'qiniu.wcip.net',
+        shouldUseQiniuFileName: false
+      };
+      qiniuUploader.init(options);
+    });
+  },
+  // 七牛上传
+  qiniu_upload(temp_img, img_name, callback, complete, err) {
+    qiniuUploader.upload(temp_img, res => {
+        callback(true);
+      }, error => {
+        if (err) {
+          err();
+        }
+        console.error('上传七牛云出错: ' + JSON.stringify(error));
+      },
+      {
+        key: img_name,
+        region: 'NCN'
+      },
+      progress => {
+        // 上传中
+      },
+      null,
+      null,
+      () => {
+        if (complete) {
+          complete();
+        }
+      }
+    );
+  },
+  // 选择图片并返回
+  choose_img(count, callback, maxsize = 524288, ext = ['jpg', 'jpeg', 'png', 'gif']) {
+    wx.chooseImage({
+      count: count,
+      sourceType: ['album', 'camera'],
+      success: res => {
+        let over_text;
+        if (maxsize < 1024) {
+          over_text = maxsize + 'B';
+        } else if (maxsize < 1048576) {
+          over_text = Math.floor(maxsize / 1024) + 'KB';
+        } else {
+          over_text = Math.floor(maxsize / 1048576) + 'M';
+        }
+
+        for (let i = 0; i < res.tempFiles.length; i++) {
+          if (res.tempFiles[i].size > maxsize) {
+            this.toast('选择的图片不能大于' + over_text);
+            return callback(false);
+          }
+
+          res.tempFiles[i].ext = res.tempFiles[i].path.substr(res.tempFiles[i].path.lastIndexOf('.') + 1);
+          if (ext.indexOf(res.tempFiles[i].ext) === -1) {
+            this.toast('请上传合法的文件格式');
+            return callback(false);
+          }
+        }
+
+        callback(res.tempFiles);
+      }
+    })
   }
 });

@@ -1,16 +1,3 @@
 <view class="page">
-  <image src="http://qiniu.wcip.net/upload/req/156800117742623000414.jpg"></image>
-  <image src="http://pwu6oxfmm.bkt.clouddn.com/upload/req/156800117742623000414.jpg"></image>
-
-  <button bindtap='didPressChooesImage'>上传图片</button>
-  <view class="image-container">
-    <image class="image" src="{{imageObject.imageURL}}" mode="aspectFit"></image>
-  </view>
-
-  <view class="data">
-    hash: <text>{{imageObject.hash}}\n\n</text>
-    key: <text>{{imageObject.key}}\n\n</text>
-    imageURL: <text>{{imageObject.imageURL}}</text>
-  </view>
-  <button bindtap="didCancelTask">取消任务</button>
+  sdfassdf
 </view>

@@ -1,62 +1,36 @@
-<view>
-  <view class="tab">
-    <view class="tab-item {{active_tab == 1 ? 'active' : ''}}" data-tab="{{1}}" bindtap="tab_change">参赛作品</view>
-    <view class="tab-item {{active_tab == 2 ? 'active' : ''}}" data-tab="{{2}}" bindtap="tab_change">展示作品</view>
+<view class="page">
+  <view class="tab-list2">
+    <view bindtap="tab_change" data-tab="{{''}}" class="tab {{status == '' ? 'active' : ''}}">
+      <view class="tab-text">全部</view>
+    </view>
+    <view bindtap="tab_change" data-tab="{{1}}" class="tab {{status == 1 ? 'active' : ''}}">
+      <view class="tab-text">已发布</view>
+    </view>
+    <view bindtap="tab_change" data-tab="{{2}}" class="tab {{status == 2 ? 'active' : ''}}">
+      <view class="tab-text">待审核</view>
+    </view>
+    <view bindtap="tab_change" data-tab="{{3}}" class="tab {{status == 3 ? 'active' : ''}}">
+      <view class="tab-text">未通过</view>
+    </view>
   </view>
+  <view class="my-works-list">
+    <view class="work" wx:for="{{[1, 2, 3, 4, 5, 6, 7]}}">
+      <view class="status">审核中</view>
+      <view class="modi-btn">修改</view>
 
-  <view class="block" wx:if="{{active_tab == 1}}">
-    <view class="two-box">
-      <navigator url="/pages/vote-detail/vote-detail?id={{item.id}}" data-id="{{item.id}}" class="item-half"
-                 wx:for="{{req_workList}}" wx:key="id">
-        <image src="{{item.cover}}" mode="aspectFill"></image>
-        <view class="texts">
-          <view class="title">{{item.title}}</view>
-          <view class="info-box">
-            <view class="vote">
-              <icon class="iconfont iconnavicon-tp"/>
-              {{item.vote}}
-            </view>
-          </view>
-        </view>
-      </navigator>
-    </view>
-
-    <view class="nomore" wx:if="{{req_nomore}}">
-      已经没有更多了哦
-    </view>
-
-    <view class="nodata" wx:if="{{req_nodata}}">
-      暂无作品
+      <image src="/images/t_s_item.png" class="cover"></image>
+      <view class="info">
+        <view class="title">全球最好的设计</view>
+        <view class="desc">在它身上你可以看到心理学的微光在它身上你可以看到心理学的微光在它身上你...</view>
+      </view>
     </view>
   </view>
 
-  <view class="block" wx:if="{{active_tab == 2}}">
-    <navigator url="/pages/work-release/work-release" class="release-btn">
-      <view>发布</view>
-      <view>作品</view>
-    </navigator>
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
 
-    <view class="two-box">
-      <navigator url="/pages/vote-detail/vote-detail?id={{item.id}}" data-id="{{item.id}}" class="item-half"
-                 wx:for="{{show_workList}}" wx:key="id">
-        <image src="{{item.cover}}" mode="aspectFill"></image>
-        <view class="texts">
-          <view class="title">{{item.title}}</view>
-          <!--<view class="info-box">-->
-          <!--<view class="vote">-->
-          <!--<icon class="iconfont iconnavicon-tp"/>{{item.vote}}-->
-          <!--</view>-->
-          <!--</view>-->
-        </view>
-      </navigator>
-    </view>
-
-    <view class="nomore" wx:if="{{show_nomore}}">
-      已经没有更多了哦
-    </view>
-
-    <view class="nodata" wx:if="{{show_nodata}}">
-      暂无作品
-    </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
   </view>
 </view>

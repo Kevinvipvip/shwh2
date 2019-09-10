@@ -78,6 +78,28 @@
   opacity: 0.9;
 }
 
+.inner .header-box .you .role-text {
+  color: #fff;
+  font-size: 24rpx;
+  margin-top: 15rpx;
+  line-height: 1;
+  border-radius: 4rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.9);
+  display: inline-block;
+  vertical-align: bottom;
+  padding: 8rpx 15rpx;
+}
+
+.inner .header-box .you .nickname button {
+  padding: 0;
+  margin: 0;
+  font-size: 26rpx;
+  width: 150rpx;
+  line-height: 2;
+  background: #ddd;
+  border-radius: 4rpx;
+}
+
 .inner .header-box .you .quan {
   margin-top: 19rpx;
   display: flex;
@@ -213,6 +235,11 @@
   margin: 0;
 }
 
+.tran-bg {
+  background: linear-gradient(to bottom, #fff, #f9f9f9, #fff);
+  padding-bottom: 25rpx;
+}
+
 .count-box {
   margin: 0 24rpx;
   height: 173rpx;
@@ -250,26 +277,158 @@
   letter-spacing: 1rpx;
 }
 
+.order-box {
+  position: relative;
+  margin: 24rpx 24rpx 0;
+  background-color: #fff;
+  box-shadow: 0 1rpx 60rpx 0 rgba(229, 229, 229, 0.75);
+  border-radius: 4rpx;
+  padding: 30rpx 25rpx;
+}
+
+.order-box .all {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 30rpx;
+  top: 28rpx;
+}
+
+.order-box .all .zi {
+  color: #666;
+  font-size: 28rpx;
+  margin-right: 15rpx;
+}
+
+.order-box .all image {
+  width: 14rpx;
+  height: 24rpx;
+  opacity: 0.8;
+}
+
+.order-box .title {
+  font-size: 32rpx;
+  color: #000;
+  letter-spacing: 1rpx;
+  line-height: 1;
+}
+
+.order-box .o-menus {
+  display: flex;
+  margin-top: 32rpx;
+  padding: 0 20rpx 0 6rpx;
+  justify-content: space-between;
+}
+
+.order-box .o-menus .o-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-box .o-menus .o-menu .icon {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.order-box .o-menus .o-menu .explain {
+  margin-top: 30rpx;
+  line-height: 1;
+  font-size: 28rpx;
+  letter-spacing: 1rpx;
+  color: #999;
+}
+
 .menu {
   background: #fff;
-  margin-top: 25rpx;
-  padding: 0 15rpx;
+  padding: 0 24rpx;
   color: #333;
 }
 
 .menu .menu-item {
-  border-bottom: 1rpx solid #ddd;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
   height: 103rpx;
-  padding: 0 20rpx;
   display: flex;
   align-items: center;
   position: relative;
   background: #fff;
   color: #333;
+  padding: 0;
+  line-height: inherit;
+  text-align: left;
 }
 
-.menu .menu-item:last-child {
-  border-bottom: none;
+.menu .menu-item .left-box {
+  width: 80rpx;
+  flex-shrink: 0;
+}
+
+.menu .menu-item .left-box .icon-box image {
+  vertical-align: bottom;
+}
+
+.menu .menu-item .left-box .icon-menu1 {
+  width: 37rpx;
+  height: 44rpx;
+}
+
+.menu .menu-item .left-box .icon-menu2 {
+  width: 47rpx;
+  height: 40rpx;
+}
+
+.menu .menu-item .left-box .icon-menu3 {
+  width: 47rpx;
+  height: 40rpx;
+}
+
+.menu .menu-item .left-box .icon-menu4 {
+  width: 40rpx;
+  height: 37rpx;
+}
+
+.menu .menu-item .left-box .icon-menu5 {
+  width: 48rpx;
+  height: 45rpx;
+}
+
+.menu .menu-item .left-box .icon-menu6 {
+  width: 46rpx;
+  height: 39rpx;
+}
+
+.menu .menu-item .left-box .icon-menu7 {
+  width: 47rpx;
+  height: 34rpx;
+}
+
+.menu .menu-item .left-box .icon-menu8 {
+  width: 47rpx;
+  height: 41rpx;
+}
+
+.menu .menu-item .left-box .icon-menu9 {
+  width: 39rpx;
+  height: 43rpx;
+}
+
+.menu .menu-item .left-box .icon-menu10 {
+  width: 46rpx;
+  height: 36rpx;
+}
+
+.menu .menu-item .menu-text {
+  flex-grow: 1;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.menu .menu-item .you {
+  flex-shrink: 0;
+  width: 14rpx;
+  height: 24rpx;
+  opacity: 0.8;
+  margin-right: 10rpx;
 }
 
 .menu .menu-item.has {

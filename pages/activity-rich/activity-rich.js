@@ -11,7 +11,7 @@ Page({
   },
   // 获取活动详情
   getReqDetail() {
-    app.ajax('api/getReqDetail', {id: this.data.id}, (res) => {
+    app.ajax('api/getReqDetail', {req_id: this.data.id}, (res) => {
       this.setData({req: res});
 
       let rich_text = res.explain;

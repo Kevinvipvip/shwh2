@@ -1,58 +1,15 @@
 <view class="page">
   <view class="chuang-rank-list">
-    <view class="chuang">
+    <view class="chuang" wx:for="{{idea_list}}" wx:key="id">
       <view class="tou">
-        <image lazy-load src="/icons/1st.png"></image>
+        <image lazy-load src="/icons/{{index + 1}}st.png" wx:if="{{index < 3}}"></image>
+        <text wx:else>0{{index + 1}}</text>
       </view>
       <image lazy-load src="/images/t-header.png" class="cover"></image>
-      <text class="title one-line-ellipsis">鲤鱼跃龙门之雨伞</text>
+      <text class="title one-line-ellipsis">{{item.title}}</text>
       <view class="agree">
         <image lazy-load src="/icons/zan.png"></image>
-        <text>2819</text>
-      </view>
-    </view>
-    <view class="chuang">
-      <view class="tou">
-        <image lazy-load src="/icons/2nd.png"></image>
-      </view>
-      <image lazy-load src="/images/t-header.png" class="cover"></image>
-      <text class="title">鲤鱼跃龙门之雨伞</text>
-      <view class="agree">
-        <image lazy-load src="/icons/zan.png"></image>
-        <text>2819</text>
-      </view>
-    </view>
-    <view class="chuang">
-      <view class="tou">
-        <image lazy-load src="/icons/3rd.png"></image>
-      </view>
-      <image lazy-load src="/images/t-header.png" class="cover"></image>
-      <text class="title">鲤鱼跃龙门之雨伞</text>
-      <view class="agree">
-        <image lazy-load src="/icons/zan.png"></image>
-        <text>2819</text>
-      </view>
-    </view>
-    <view class="chuang">
-      <view class="tou">
-        <text>04</text>
-      </view>
-      <image lazy-load src="/images/t-header.png" class="cover"></image>
-      <text class="title">鲤鱼跃龙门之雨伞</text>
-      <view class="agree">
-        <image lazy-load src="/icons/zan.png"></image>
-        <text>2819</text>
-      </view>
-    </view>
-    <view class="chuang">
-      <view class="tou">
-        <text>05</text>
-      </view>
-      <image lazy-load src="/images/t-header.png" class="cover"></image>
-      <text class="title">鲤鱼跃龙门之雨伞</text>
-      <view class="agree">
-        <image lazy-load src="/icons/zan.png"></image>
-        <text>2819</text>
+        <text>{{item.vote}}</text>
       </view>
     </view>
   </view>

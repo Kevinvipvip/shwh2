@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "创意排行榜",
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

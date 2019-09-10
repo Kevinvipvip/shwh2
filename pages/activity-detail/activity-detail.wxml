@@ -46,7 +46,8 @@
   </view>
 
   <!-- 直投按钮 -->
-  <button class="line-btn zhi">作品直投</button>
+  <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" class="line-btn zhi" wx:if="{{user_auth == 0}}">作品直投</button>
+  <button bindtap="to_work_release" class="line-btn zhi" wx:else>作品直投</button>
 
   <!-- 创意/作品/众筹 -->
   <view class="data-box">
@@ -92,7 +93,7 @@
             </view>
           </view>
           <view class="desc">{{item.content}}</view>
-          <button class="tou-btn">投稿</button>
+          <button bindtap="to_work_release" data-idea_id="{{item.id}}" class="tou-btn">投稿</button>
         </view>
       </view>
 

@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="my-chuang-list">
+    <view class="chuang" wx:for="{{[1, 2, 3, 4]}}">
+      <view class="top-line">
+        <view class="title">创意标题创意标题创意</view>
+        <view class="bo">
+          <text class="label">活动方</text>
+          <text class="name">故宫博物馆</text>
+        </view>
+      </view>
+      <view class="desc">
+        创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述。
+      </view>
+      <view class="foot-info">
+        <view class="date">2019-08-27</view>
+        <view class="cai">68人 采纳</view>
+        <view class="zan">6800赞</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
+  </view>
+</view>

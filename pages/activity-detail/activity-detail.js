@@ -5,6 +5,7 @@ Page({
     id: 0,
     req: {},
     active_tab: 1,
+    user_auth: 0,
 
     loading: false,
 
@@ -29,7 +30,11 @@ Page({
     chou_nodata: true,
   },
   onLoad(options) {
-    this.setData({ id: options.id });
+    this.setData({
+      id: options.id,
+      user_auth: app.user_data.user_auth
+    });
+
     this.getReqDetail();
     this.ideaList();
     this.worksList();
@@ -37,7 +42,7 @@ Page({
   },
   // 获取活动详情
   getReqDetail(complete) {
-    app.ajax('api/getReqDetail', { id: this.data.id }, (res) => {
+    app.ajax('api/getReqDetail', { req_id: this.data.id }, (res) => {
       app.format_img(res, 'cover');
       app.avatar_format(res);
       app.time_format(res, 'start_time');
@@ -178,7 +183,7 @@ Page({
         app.time_format(res, 'end_time');
         app.qian_format(res, 'curr_money');
         app.qian_format(res, 'need_money');
-        
+
         console.log(res, 'chou');
 
         this.setData({ funding_list: this.data.funding_list.concat(res) });
@@ -272,6 +277,45 @@ Page({
           chou_nodata: false
         });
         break;
+    }
+  },
+  // 授权
+  auth(e) {
+    if (e.detail.userInfo) {
+      wx.showLoading({
+        title: '授权中',
+        mask: true
+      });
+
+      let inviter_id = wx.getStorageSync('inviter_id');
+
+      app.userAuth(inviter_id, () => {
+        let type = e.currentTarget.dataset.type;
+        if (type === 1) {
+          // 点击投稿
+          if (app.user_data.role === 2) {
+            wx.navigateTo({ url: '/pages/work-release/work-release' });
+          } else {
+            app.modal('只有认证设计师可以投稿');
+          }
+        }
+      }, null, () => {
+        wx.hideLoading();
+      });
+    }
+  },
+  // 去投稿
+  to_work_release(e) {
+    let idea_id = e.currentTarget.dataset.idea_id;
+
+    if (app.user_data.role === 2) {
+      if (idea_id) {
+        wx.navigateTo({ url: '/pages/work-release/work-release?req_id=' + this.data.id + '&idea_id=' + idea_id });
+      } else {
+        wx.navigateTo({ url: '/pages/work-release/work-release?req_id=' + this.data.id });
+      }
+    } else {
+      app.modal('只有认证设计师可以投稿');
     }
   }
 });
