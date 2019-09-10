@@ -6,7 +6,7 @@ page {
 
 .top {
     display:flex;
-    padding:0 25rpx;
+    padding: 20rpx 25rpx 0;
     align-items:center;
     justify-content:space-between;
 }

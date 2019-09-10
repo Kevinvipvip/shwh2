@@ -63,37 +63,35 @@
       <view class="tap-content-top">
         <view class="left">TA人创意点</view>
         <view class="sort">
-          <view class="sort-item {{chuang_sort == 1 ? 'active' : ''}}">默认排行</view>
-          <view class="sort-item {{chuang_sort == 2 ? 'active' : ''}}">热度排行</view>
+          <view bindtap="order_tap" data-type="{{1}}" data-order="{{1}}" class="sort-item {{chuang_order == 1 ? 'active' : ''}}">默认排行</view>
+          <view bindtap="order_tap" data-type="{{1}}" data-order="{{2}}" class="sort-item {{chuang_order == 2 ? 'active' : ''}}">热度排行</view>
         </view>
       </view>
       <view class="chuang-list">
-        <view class="chuang" wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="index">
+        <view class="chuang" wx:for="{{idea_list}}" wx:key="id">
           <view class="top-line">
             <view class="left">
               <view class="header-box">
-                <image src="/images/t-header.png" class="header"></image>
+                <image src="{{item.avatar}}" class="header"></image>
 
-                <block wx:if="{{chuang_sort == 2}}">
+                <block wx:if="{{chuang_order == 2}}">
                   <image src="/icons/fire1.png" class="fire" wx:if="{{index == 0}}"></image>
                   <image src="/icons/fire2.png" class="fire" wx:if="{{index == 1}}"></image>
                   <image src="/icons/fire3.png" class="fire" wx:if="{{index == 2}}"></image>
                 </block>
               </view>
-              <view class="nickname">思问</view>
+              <view class="nickname">{{item.nickname}}</view>
             </view>
-            <view class="date">2019-08-23 18:42</view>
+            <view class="date">{{item.create_time}}</view>
           </view>
           <view class="title-line">
-            <view class="title">康复景观空康复景观空</view>
+            <view class="title">{{item.title}}</view>
             <view class="agree">
               <image lazy-load src="/icons/zan.png"></image>
-              <text>2819</text>
+              <text>{{item.vote}}</text>
             </view>
           </view>
-          <view class="desc">
-            康复景观空间空间广阔冷静客观罚款决定书看风景风景看电视剧加快分解开来的时间康复景观空间空间广阔冷静客观罚款决定书看风景看风景看 。
-          </view>
+          <view class="desc">{{item.content}}</view>
           <button class="tou-btn">投稿</button>
         </view>
       </view>
@@ -112,28 +110,29 @@
       <view class="tap-content-top">
         <view class="left">TA人作品</view>
         <view class="sort">
-          <view class="sort-item {{chuang_sort == 1 ? 'active' : ''}}">默认排行</view>
-          <view class="sort-item {{chuang_sort == 2 ? 'active' : ''}}">热度排行</view>
+          <view bindtap="order_tap" data-type="{{2}}" data-order="{{1}}" class="sort-item {{work_order == 1 ? 'active' : ''}}">默认排行</view>
+          <view bindtap="order_tap" data-type="{{2}}" data-order="{{2}}" class="sort-item {{work_order == 2 ? 'active' : ''}}">热度排行</view>
         </view>
       </view>
       <view class="work-list">
-        <view class="work" wx:for="{{[1, 2, 3, 4]}}" wx:key="index">
+        <view class="work" wx:for="{{work_list}}" wx:key="id">
           <view class="line1">
             <view class="zuo">
-              <image src="/images/t-header.png" class="header"></image>
-              <view class="nickname">nnnn</view>
+              <image src="{{item.avatar}}" class="header"></image>
+              <view class="nickname">{{item.nickname}}</view>
             </view>
             <view class="time-ago">
-              5天前
+              <!-- 5天前 -->
+              {{item.create_time}}
             </view>
           </view>
           <view class="under">
-            <view class="title">物与物</view>
-            <view class="desc">作品简述作品简述作品简述作品简述作品简述作品简述作品简述</view>
+            <view class="title">{{item.title}}</view>
+            <view class="desc">{{item.desc}}</view>
             <view class="img-box">
-              <image src="/images/t_s_item.png" alt="" lazy-load></image>
-              <image src="/images/t_s_item.png" alt="" lazy-load></image>
-              <image src="/images/t_s_item.png" alt="" lazy-load></image>
+              <image src="/images/t_s_item.png" mode="aspectFill" lazy-load></image>
+              <image src="/images/t_s_item.png" mode="aspectFill" lazy-load></image>
+              <image src="/images/t_s_item.png" mode="aspectFill" lazy-load></image>
             </view>
           </view>
           <view class="chuang-line">
@@ -147,7 +146,7 @@
             </view>
             <view class="agree">
               <image lazy-load src="/icons/zan.png"></image>
-              <text>2819</text>
+              <text>{{item.vote}}</text>
             </view>
           </view>
         </view>
@@ -164,19 +163,19 @@
     <!-- 众筹 -->
     <view class="chou-box" wx:if="{{active_tab == 3}}">
       <view class="chou-list">
-        <view class="chou-line" wx:for="{{[1, 2, 3, 4]}}">
+        <view class="chou-line" wx:for="{{funding_list}}" wx:key="id">
           <view class="img-box">
-            <image lazy-load src="/images/t-chou1.png"></image>
+            <image src="{{item.cover}}" mode="aspectFill" lazy-load></image>
           </view>
           <view class="info">
-            <view class="title">【众筹】镂空龙玉盘镂空龙玉盘镂空龙玉盘镂空</view>
+            <view class="title">{{item.title}}</view>
             <view class="xia">
               <view class="already">
                 <text class="label">已筹：</text>
-                <text class="price">8W</text>
+                <text class="price">¥{{item.curr_money}}</text>
               </view>
-              <view class="target">众筹目标：10W</view>
-              <view class="part-count">参与人数140人</view>
+              <view class="target">众筹目标：¥{{item.need_money}}</view>
+              <view class="part-count">参与人数{{item.order_num}}人</view>
             </view>
           </view>
         </view>

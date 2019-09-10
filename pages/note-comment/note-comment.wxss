@@ -6,7 +6,7 @@ page {
 
 .comment {
     display: flex;
-    padding: 0 20rpx 20rpx;
+    padding: 20rpx;
     margin-bottom: 15rpx;
     position: relative;
 }

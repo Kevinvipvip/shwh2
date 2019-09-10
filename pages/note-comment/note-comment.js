@@ -1,4 +1,4 @@
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
@@ -23,6 +23,10 @@ Page({
     };
 
     app.ajax('note/commentList', post, (res) => {
+      app.avatar_format(res);
+      for (let i = 0; i < res.length; i++) {
+        app.avatar_format(res[i].child);
+      }
       this.setData({comment_list: res});
     });
   },
@@ -57,4 +61,4 @@ Page({
       this.commentList();
     });
   }
-})
+});

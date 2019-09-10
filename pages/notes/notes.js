@@ -65,14 +65,18 @@ Page({
           this.setData({ nomore: true });
         }
       } else {
-        for (let i = 0; i < res.list.length; i++) {
-          if (res.list[i].pics[0]) {
-            res.list[i].pics[0] = app.my_config.base_url + '/' + res.list[i].pics[0];
-          } else {
-            res.list[i].pics[0] = app.my_config.default_img;
-          }
+        app.avatar_format(res.list);
 
-          res.list[i].avatar = res.list[i].avatar.indexOf('https') === 0 ? res.list[i].avatar : app.my_config.base_url + '/' + res.list[i].avatar;
+        for (let i = 0; i < res.list.length; i++) {
+          // if (res.list[i].pics[0]) {
+          //   res.list[i].pics[0] = app.my_config.base_url + '/' + res.list[i].pics[0];
+          // } else {
+          //   res.list[i].pics[0] = app.my_config.default_img;
+          // }
+
+          app.format_img(res.list[i].pics);
+
+          // res.list[i].avatar = res.list[i].avatar.indexOf('https') === 0 ? res.list[i].avatar : app.my_config.base_url + '/' + res.list[i].avatar;
 
           if (this.data.left_height <= this.data.right_height) {
             this.data.left_note_list.push(res.list[i]);

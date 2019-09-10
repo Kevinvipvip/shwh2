@@ -9,6 +9,8 @@ const select_tab_bar = (page, selected) => {
 };
 
 const date_format = (date, fmt = 'yyyy.MM.dd') => {
+  date = date || 0;
+
   // 如果是数字类型
   if (date % 1 === 0) {
     date = new Date(date * 1000);

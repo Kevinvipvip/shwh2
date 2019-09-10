@@ -33,14 +33,16 @@ Page({
   getNoteDetail(callback) {
     let post = {
       token: app.user_data.token,
-      id: this.data.note_id
+      note_id: this.data.note_id
     };
 
     app.ajax('note/getNoteDetail', post, (res) => {
-      res.avatar = res.avatar.indexOf('https') === 0 ? res.avatar : app.my_config.base_url + '/' + res.avatar;
-      for (let i = 0; i < res.pics.length; i++) {
-        res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
-      }
+      app.avatar_format(res);
+      app.format_img(res.pics);
+      // res.avatar = res.avatar.indexOf('https') === 0 ? res.avatar : app.my_config.base_url + '/' + res.avatar;
+      // for (let i = 0; i < res.pics.length; i++) {
+      //   res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
+      // }
       this.setData({note: res});
       if (callback) {
         callback();

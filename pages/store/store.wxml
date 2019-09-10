@@ -18,4 +18,7 @@
     <import src="../../wxParse/wxParse.wxml"/>
     <template is="wxParse" data="{{wxParseData:rich_text.nodes}}"/>
   </view>
+
+  <!-- 列表（含下拉刷新上拉加载） -->
+  <view wx:for="{{list}}">{{item.id}}</view>
 </view>

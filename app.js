@@ -231,13 +231,23 @@ App({
     }
   },
   // 处理图像路径（详情）
-  format_img(obj, img_field = 'pic', type = 1) {
+  format_img(obj, img_field = 'pic') {
     if (obj instanceof Array) {
-      for (let i = 0; i < obj.length; i++) {
-        if (obj[i][img_field]) {
-          obj[i][img_field] = this.my_config.qiniu_base + '/' + obj[i][img_field];
-        } else {
-          obj[i][img_field] = this.my_config.default_img;
+      if (typeof obj[0] === 'string') {
+        for (let i = 0; i < obj.length; i++) {
+          if (obj[i]) {
+            obj[i] = this.my_config.qiniu_base + '/' + obj[i];
+          } else {
+            obj[i] = this.my_config.default_img;
+          }
+        }
+      } else {
+        for (let i = 0; i < obj.length; i++) {
+          if (obj[i][img_field]) {
+            obj[i][img_field] = this.my_config.qiniu_base + '/' + obj[i][img_field];
+          } else {
+            obj[i][img_field] = this.my_config.default_img;
+          }
         }
       }
     } else {
@@ -265,14 +275,14 @@ App({
         if (!obj[i][field]) {
           obj[i][field] = '';
         } else {
-          obj[i][field] = obj[i][field].indexOf('https') === 0 ? obj[i][field] : this.my_config.base_url + '/' + obj[i][field];
+          obj[i][field] = obj[i][field].indexOf('https') === 0 ? obj[i][field] : this.my_config.qiniu_base + '/' + obj[i][field];
         }
       }
     } else {
       if (!obj[field]) {
         obj[field] = '';
       } else {
-        obj[field] = obj[field].indexOf('https') === 0 ? obj[field] : this.my_config.base_url + '/' + obj[field];
+        obj[field] = obj[field].indexOf('https') === 0 ? obj[field] : this.my_config.qiniu_base + '/' + obj[field];
         // [field]
       }
     }
@@ -347,5 +357,8 @@ App({
           break;
       }
     }
+  },
+  // 将秒数转变成几小时前、几天前的格式，超过30天显示日期
+  ago_format(s) {
   }
 });

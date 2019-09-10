@@ -75,8 +75,8 @@ Page({
 
     app.ajax('api/fundingList', post, res => {
       app.format_img(res, 'cover');
-      app.qian_format(res, 'need_money');
       app.qian_format(res, 'curr_money');
+      app.qian_format(res, 'need_money');
 
       this.setData({first_funding: res.shift()});
       this.setData({funding_list: res});
