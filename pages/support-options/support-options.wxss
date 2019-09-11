@@ -26,10 +26,10 @@
 
 .support .title-line .left .quan {
   box-sizing: border-box;
-  width: 36rpx;
-  height: 36rpx;
+  width: 38rpx;
+  height: 38rpx;
   border-radius: 50%;
-  border: solid 4rpx #ffa55a;
+  border: solid 5rpx #ffa55a;
   position: relative;
 }
 

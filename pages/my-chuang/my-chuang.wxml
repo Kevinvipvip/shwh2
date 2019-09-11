@@ -1,22 +1,20 @@
 <view class="page">
   <view class="my-chuang-list">
-    <view class="chuang" wx:for="{{[1, 2, 3, 4]}}">
+    <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{item.id}}" class="chuang" wx:for="{{idea_list}}" wx:key="id">
       <view class="top-line">
-        <view class="title">创意标题创意标题创意</view>
+        <view class="title">{{item.title}}</view>
         <view class="bo">
           <text class="label">活动方</text>
-          <text class="name">故宫博物馆</text>
+          <text class="name">{{item.org}}</text>
         </view>
       </view>
-      <view class="desc">
-        创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述创意简述。
-      </view>
+      <view class="desc">{{item.content}}</view>
       <view class="foot-info">
-        <view class="date">2019-08-27</view>
-        <view class="cai">68人 采纳</view>
-        <view class="zan">6800赞</view>
+        <view class="date">{{item.create_time}}</view>
+        <view class="cai">{{item.works_num}}人 采纳</view>
+        <view class="zan">{{item.vote}}赞</view>
       </view>
-    </view>
+    </navigator>
   </view>
 
   <view class="nomore" wx:if="{{nomore}}">

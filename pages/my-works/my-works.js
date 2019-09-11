@@ -6,10 +6,13 @@ Page({
     work_list: [],
     page: 1,
     nomore: false,
-    nodata: true,
+    nodata: false,
     loading: false
   },
-  onLoad() {
+  onLoad(options) {
+    if (options.status) {
+      this.setData({status: parseInt(options.status)});
+    }
     this.getMyReqWorks();
   },
   // 切换tab
@@ -19,7 +22,7 @@ Page({
     this.getMyReqWorks();
   },
   // 获取我的参赛作品
-  getMyReqWorks() {
+  getMyReqWorks(complete) {
     let post = {
       status: this.data.status,
       page: this.data.page,
@@ -32,19 +35,29 @@ Page({
           this.setData({
             work_list: [],
             nodata: true,
-            nomoare: false
+            nomore: false
           })
         } else {
           this.setData({
-            nomoare: true,
+            nomore: true,
             nodata: false
           })
         }
       } else {
-        app.avatar_format(res);
-        app.format_img(res, 'cover');
-        app.time_format(res, 'create_time', 'yyyy-MM-dd hh:mm');
-
+        for (let i = 0; i < res.length; i++) {
+          app.format_img(res[i].pics);
+          switch (res[i].status) {
+            case 0:
+              res[i].status_text = '审核中';
+              break;
+            case 1:
+              res[i].status_text = '已发布';
+              break;
+            case 2:
+              res[i].status_text = '未通过';
+              break;
+          }
+        }
         this.setData({ work_list: this.data.work_list.concat(res) });
       }
       this.data.page++;

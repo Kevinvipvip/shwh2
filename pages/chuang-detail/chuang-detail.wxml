@@ -34,7 +34,7 @@
   <!-- 作品列表 -->
   <view class="work-box">
     <view class="title">作品展示</view>
-    <view class="work" wx:for="{{work_list}}" wx:key="id">
+    <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
       <view class="line1">
         <view class="zuo">
           <image src="{{item.avatar}}" class="header"></image>
@@ -52,7 +52,7 @@
           <image src="{{pic_item}}" wx:for-item="pic_item" wx:for="{{item.pics}}" mode="aspectFill" lazy-load></image>
         </view>
       </view>
-    </view>
+    </navigator>
   </view>
 
   <view class="nomore" wx:if="{{nomore}}">

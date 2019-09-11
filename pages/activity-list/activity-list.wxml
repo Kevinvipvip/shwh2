@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="activity-list">
+    <navigator url="/pages/activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{req_list}}" wx:key="id">
+      <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>
+      <view class="title">{{item.title}}</view>
+      <view class="info">
+        <view class="people">
+          <image lazy-load src="/icons/people.png" class="icon"></image>
+          <text>{{item.works_num + item.idea_num}}人</text>
+        </view>
+        <view class="date">
+          <image lazy-load src="/icons/time.png" class="icon"></image>
+          <text>{{item.start_time}}-{{item.end_time}}</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
+  </view>
+</view>

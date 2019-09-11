@@ -40,7 +40,7 @@
           </view>
           <view class="sign active last-active today-active">
             <view class="number">4</view>
-            <view class="today">+5</view>
+<!--            <view class="today">+5</view>-->
           </view>
           <view class="sign">
             <view class="number">5</view>
@@ -85,22 +85,22 @@
         <image src="/icons/you3.png"></image>
       </navigator>
       <view class="o-menus">
-        <view class="o-menu">
+        <navigator url="/pages/my-orders/my-orders?status=0" class="o-menu">
           <image src="/icons/os1.png" class="icon"></image>
           <view class="explain">待付款</view>
-        </view>
-        <view class="o-menu">
+        </navigator>
+        <navigator url="/pages/my-orders/my-orders?status=1" class="o-menu">
           <image src="/icons/os2.png" class="icon"></image>
           <view class="explain">待发货</view>
-        </view>
-        <view class="o-menu">
+        </navigator>
+        <navigator url="/pages/my-orders/my-orders?status=2" class="o-menu">
           <image src="/icons/os3.png" class="icon"></image>
           <view class="explain">待收货</view>
-        </view>
-        <view class="o-menu">
+        </navigator>
+        <navigator url="/pages/my-orders/my-orders?status=3" class="o-menu">
           <image src="/icons/os4.png" class="icon"></image>
           <view class="explain">已完成</view>
-        </view>
+        </navigator>
         <navigator url="/pages/refund-list/refund-list" class="o-menu">
           <image src="/icons/os5.png" class="icon"></image>
           <view class="explain">售后</view>
@@ -146,7 +146,7 @@
       <view class="menu-text">我的接单</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
-    <navigator class="menu-item" url="/pages/my-notes/my-notes">
+    <navigator class="menu-item" url="/pages/my-chou-orders/my-chou-orders">
       <view class="left-box">
         <view class="icon-box">
           <image src="/icons/menu5.png" class="icon-menu5"></image>
@@ -175,7 +175,7 @@
       <image src="/icons/you3.png" class="you"></image>
     </view>
 
-    <navigator class="menu-item" url="/pages/my-notes/my-notes">
+    <navigator class="menu-item" url="/pages/my-edit/my-edit">
       <view class="left-box">
         <view class="icon-box">
           <image src="/icons/menu7.png" class="icon-menu7"></image>

@@ -10,7 +10,7 @@
     <view class="form-item">
       <view class="title">作品简述</view>
       <view class="textarea-box">
-        <textarea bindinput="bind_input" fixed="true" data-name="desc" value="{{desc}}" auto-height maxlength="500" cursor-spacing="50" placeholder="请输入作品简述..." style="padding: {{textarea_padding}};"/>
+        <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="500" cursor-spacing="50" placeholder="请输入作品简述..." style="padding: {{textarea_padding}};"/>
         <view class="count">
           <text>{{desc_count}}</text> / 500
         </view>

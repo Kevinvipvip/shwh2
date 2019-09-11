@@ -2,7 +2,7 @@ const app = getApp();
 
 Page({
   data: {
-    type: 0,  // 0.我的地址 1.order-create选择地址 2.cart-order-create选择地址
+    type: 0,  // 0.我的地址 1.order-create选择地址 2.cart-order-create选择地址 4.support-options选择地址
     address_list: []
   },
   onLoad: function (options) {
@@ -25,6 +25,9 @@ Page({
           break;
         case 3:
           choose_page = app.get_page('pages/recharge/recharge');
+          break;
+        case 4:
+          choose_page = app.get_page('pages/chou-order-create/chou-order-create');
           break;
       }
       choose_page.choose_address(address.username, address.tel, address.provincename + ' ' + address.cityname + ' ' + address.countyname + ' ' + address.detail, () => {

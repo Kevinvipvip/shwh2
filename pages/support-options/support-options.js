@@ -5,7 +5,8 @@ Page({
     funding_id: 0,
     goods_list: [],
     nomore: false,
-    nodata: true
+    nodata: true,
+    active_index: -2  // -2.初始值 -1.无偿支持
   },
   onLoad(options) {
     this.data.funding_id = options.funding_id;
@@ -23,7 +24,7 @@ Page({
       for (let i = 0; i < res.length; i++) {
         app.format_img(res[i].pics);
       }
-      this.setData({goods_list: res});
+      this.setData({ goods_list: res });
     });
   },
   // 放大商品图
@@ -35,5 +36,16 @@ Page({
       current: this.data.goods_list[index].pics[pic_index],
       urls: this.data.goods_list[index].pics
     });
+  },
+  // 去众筹订单页
+  to_chou_order(e) {
+    let index = e.currentTarget.dataset.index;
+    this.setData({ active_index: index });
+
+    if (index !== -1) {
+      wx.redirectTo({ url: '/pages/chou-order-create/chou-order-create?funding_id=' + this.data.funding_id + '&goods_id=' + this.data.goods_list[index].id });
+    } else {
+      wx.redirectTo({ url: '/pages/chou-order-create/chou-order-create?funding_id=' + this.data.funding_id });
+    }
   }
 });

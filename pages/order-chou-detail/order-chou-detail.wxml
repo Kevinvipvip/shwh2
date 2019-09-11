@@ -1,0 +1,62 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="order-status">订单{{order.status_text}}</view>
+  <view class="user-info" wx:if="{{order.type == 1}}">
+    <view class="nt">
+      <view class="name">{{order.receiver}}</view>
+      <view class="tel">{{order.tel}}</view>
+    </view>
+    <view class="address">地址：{{order.address}}</view>
+  </view>
+  <view class="order">
+    <view class="bian">
+      <view class="no">订单编号：{{order.pay_order_sn}}</view>
+      <view bindtap="copy" class="copy-btn">复制</view>
+    </view>
+    <view class="time">下单时间：{{order.create_time}}</view>
+  </view>
+  <view class="statistics">
+    <view class="line" wx:if="{{order.type == 1}}">
+      <view class="left">商品金额</view>
+      <view class="right"><text class="bi">¥</text>{{order.unit_price}}</view>
+    </view>
+    <view class="line" wx:if="{{order.type == 1}}">
+      <view class="left">商品数量</view>
+      <view class="right">{{order.num}}件</view>
+    </view>
+    <view class="zong">
+      <view class="label" wx:if="{{order.type == 1}}">合计：</view>
+      <view class="label" wx:else>支持金额：</view>
+      <view class="price"><text class="bi">¥</text>{{order.pay_price}}</view>
+    </view>
+  </view>
+  <view class="goods-list">
+    <view class="pro" wx:if="{{order.type == 1}}">
+      <image src="{{order.cover}}" class="pic" mode="aspectFill"></image>
+      <view class="info">
+        <view class="shang">
+          <view class="title">众筹：{{order.funding_title}}</view>
+          <view class="title">商品：{{order.goods_name}}</view>
+        </view>
+        <view class="xia">
+          <view class="price">¥{{order.pay_price}}</view>
+          <view class="amount">x{{order.num}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="pro" wx:else>
+      <image src="{{order.pics[0]}}" class="pic" mode="aspectFill"></image>
+      <view class="info">
+        <view class="shang">
+          <view class="title">众筹：{{order.funding_title}}</view>
+        </view>
+        <view class="xia">
+          <view class="price">¥{{order.pay_price}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

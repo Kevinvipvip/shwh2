@@ -2,6 +2,7 @@
   "pages": [
     "pages/auth/auth",
     "pages/my-works/my-works",
+    "pages/activity-list/activity-list",
     "pages/my-chuang/my-chuang",
     "pages/chuang-ranking/chuang-ranking",
     "pages/work-ranking/work-ranking",
@@ -26,7 +27,9 @@
     "pages/user-qrcode/user-qrcode",
     "pages/invite-list/invite-list",
     "pages/order-detail/order-detail",
+    "pages/order-chou-detail/order-chou-detail",
     "pages/my-orders/my-orders",
+    "pages/my-chou-orders/my-chou-orders",
     "pages/shop-car/shop-car",
     "pages/order-create/order-create",
     "pages/cart-order-create/cart-order-create",
@@ -64,6 +67,7 @@
     "pages/designer-list/designer-list",
     "pages/designer-detail/designer-detail",
     "pages/refund-list/refund-list",
+    "pages/chou-refund-list/chou-refund-list",
     "pages/my-role-edit/my-role-edit",
     "pages/drumbeating/drumbeating",
     "pages/store/store"

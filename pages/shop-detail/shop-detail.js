@@ -25,9 +25,10 @@ Page({
     };
 
     app.ajax('shop/goodsDetail', post, (res) => {
-      for (let i = 0; i < res.pics.length; i++) {
-        res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
-      }
+      // for (let i = 0; i < res.pics.length; i++) {
+      //   res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
+      // }
+      app.format_img(res.pics);
       this.setData({ goods: res });
       let rich_text = res.detail;
       rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');

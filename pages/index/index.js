@@ -8,7 +8,9 @@ Page({
     idea_list: [],  // 创意排行
     first_funding: {},  // 第一个众筹
     funding_list: [],  // 众筹列表
-    active_rank: 1
+    active_rank: 1,
+
+    loading: false
   },
   onLoad() {
     this.slideList();
@@ -18,10 +20,14 @@ Page({
     this.fundingList();
   },
   // 获取首页轮播图
-  slideList() {
+  slideList(complete) {
     app.ajax('api/slideList', null, (res) => {
       app.format_img(res);
-      this.setData({slide_list: res});
+      this.setData({ slide_list: res });
+    }, null, () => {
+      if (complete) {
+        complete();
+      }
     });
   },
   // 点击排行
@@ -34,7 +40,7 @@ Page({
       app.format_img(res, 'cover');
       app.time_format(res, 'start_time');
       app.time_format(res, 'end_time');
-      this.setData({req_list: res});
+      this.setData({ req_list: res });
     });
   },
   // 获取参赛作品列表（作品排行）
@@ -52,7 +58,7 @@ Page({
 
       app.avatar_format(res, 'avatar');
 
-      this.setData({work_list: res});
+      this.setData({ work_list: res });
     });
   },
   // 创意列表（创意排行）
@@ -66,7 +72,7 @@ Page({
     app.ajax('api/ideaList', post, res => {
       app.avatar_format(res, 'avatar');
 
-      this.setData({idea_list: res});
+      this.setData({ idea_list: res });
     });
   },
   // 众筹列表
@@ -81,12 +87,30 @@ Page({
       app.qian_format(res, 'curr_money');
       app.qian_format(res, 'need_money');
 
-      this.setData({first_funding: res.shift()});
-      this.setData({funding_list: res});
+      this.setData({ first_funding: res.shift() });
+      this.setData({ funding_list: res });
     });
   },
   // 跳页
   jump(e) {
     app.jump(e);
+  },
+  // 下拉刷新
+  onPullDownRefresh() {
+    if (!this.data.loading) {
+      this.data.loading = true;
+
+      wx.showNavigationBarLoading();
+      this.slideList(() => {
+        this.data.loading = false;
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+
+        this.getReqList();
+        this.worksList();
+        this.ideaList();
+        this.fundingList();
+      });
+    }
   }
 });

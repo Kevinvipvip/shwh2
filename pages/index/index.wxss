@@ -80,71 +80,8 @@
   margin-top: 47rpx;
 }
 
-.activity-list {
-  margin-top: 24rpx;
-}
-
-.activity-list .activity {
-  padding-bottom: 18rpx;
-  border-bottom: 2rpx solid #131b2f12;
-  margin-bottom: 44rpx;
-}
-
-.activity-list .activity .cover {
-  width: 100%;
-  height: 300rpx;
-  vertical-align: bottom;
-}
-
-.activity-list .activity .title {
-  font-size: 32rpx;
-  color: #333;
-  opacity: 0.8;
-  line-height: 48rpx;
-  margin-top: 10rpx;
-}
-
-.activity-list .activity .info {
-  margin-top: 30rpx;
-  display: flex;
-  justify-content: space-between;
-  font-size: 24rpx;
-  line-height: 1;
-  color: #999;
-}
-
-.activity-list .activity .info .people {
-}
-
-.activity-list .activity .info .people .icon {
-  width: 20rpx;
-  height: 23rpx;
-  margin-right: 9rpx;
-  vertical-align: bottom;
-}
-
-.activity-list .activity .info .people text {
-}
-
-.activity-list .activity .info .date {
-}
-
-.activity-list .activity .info .date .icon {
-  width: 23rpx;
-  height: 23rpx;
-  margin-right: 9rpx;
-  vertical-align: bottom;
-}
-
-.activity-list .activity .info .date text {
-}
-
-.activity-list .activity:last-child {
-  margin-bottom: 0;
-}
-
 .rank-box {
-  margin-top: 47rpx;
+  margin-top: 50rpx;
 }
 
 .chou-box {

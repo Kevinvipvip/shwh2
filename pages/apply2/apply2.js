@@ -168,16 +168,18 @@ Page({
     let field = e.currentTarget.dataset.name;
 
     app.choose_img(1, res => {
-      wx.showLoading({
-        title: '上传中',
-        mask: true
-      });
-      let tname = app.qiniu_tname() + res[0].ext;
-      app.qiniu_upload(res[0].path, tname, () => {
-        this.setData({ [field]: app.format_img(tname) });
-      }, () => {
-        wx.hideLoading();
-      });
+      if (res) {
+        wx.showLoading({
+          title: '上传中',
+          mask: true
+        });
+        let tname = app.qiniu_tname() + res[0].ext;
+        app.qiniu_upload(res[0].path, tname, () => {
+          this.setData({ [field]: app.format_img(tname) });
+        }, () => {
+          wx.hideLoading();
+        });
+      }
     }, 1048576);
   },
   img_remove(e) {
@@ -185,12 +187,14 @@ Page({
   },
   work_upload() {
     app.choose_img(6 - this.data.works.length, res => {
-      for (let i = 0; i < res.length; i++) {
-        let tname = app.qiniu_tname() + res[i].ext;
-        app.qiniu_upload(res[i].path, tname, () => {
-          this.data.works.push(app.format_img(tname));
-          this.setData({ works: this.data.works});
-        });
+      if (res) {
+        for (let i = 0; i < res.length; i++) {
+          let tname = app.qiniu_tname() + res[i].ext;
+          app.qiniu_upload(res[i].path, tname, () => {
+            this.data.works.push(app.format_img(tname));
+            this.setData({ works: this.data.works});
+          });
+        }
       }
     }, 1048576);
   },

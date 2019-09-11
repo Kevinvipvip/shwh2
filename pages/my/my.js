@@ -85,6 +85,8 @@ Page({
       let inviter_id = wx.getStorageSync('inviter_id');
 
       app.userAuth(inviter_id, () => {
+        wx.hideLoading();
+
         let type = e.currentTarget.dataset.type;
         if (type === 1) {
           // 授权登陆
@@ -93,8 +95,6 @@ Page({
           // 点击申请
           this.before_apply();
         }
-      }, null, () => {
-        wx.hideLoading();
       });
     }
   }

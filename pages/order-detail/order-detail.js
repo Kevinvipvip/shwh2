@@ -3,7 +3,7 @@ const app = getApp()
 Page({
   data: {
     full_loading: true,
-    id: 13,
+    id: 0,
     order: {}
   },
   onLoad(options) {

@@ -38,7 +38,9 @@ Page({
 
       wx.showLoading({ mask: true });
       app.ajax('api/createIdea', post, () => {
-        console.log('发布创意成功');
+        app.modal('创意发布成功', () => {
+          wx.redirectTo({ url: '/pages/my-chuang/my-chuang' });
+        });
       }, null, () => {
         wx.hideLoading();
       });

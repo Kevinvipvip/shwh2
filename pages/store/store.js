@@ -52,7 +52,7 @@ Page({
       if (complete) {
         complete()
       }
-    })
+    });
   },
   // 下拉刷新
   onPullDownRefresh() {

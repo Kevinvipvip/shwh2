@@ -26,7 +26,8 @@ App({
       tel: /^1\d{10}$/,
       phone: /\d{3,4}-\d{7,8}/,
       email: /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/,
-      natural: /^([1-9]\d*|0)$/
+      natural: /^([1-9]\d*|0)$/,
+      price: /^([1-9]\d*|0)(\.\d{1,2})?$/
     },
     statusBarHeight: 0,
     topBarHeight: 0
@@ -102,6 +103,10 @@ App({
                 break;
               case 49:
                 this.toast(res.data.data);
+                break;
+              case 63:
+              case 64:
+                this.modal(res.data.message);
                 break;
               default:
                 if (res.data.message) {
@@ -456,6 +461,9 @@ App({
           }
 
           res.tempFiles[i].ext = res.tempFiles[i].path.substr(res.tempFiles[i].path.lastIndexOf('.') + 1);
+          
+          console.log(ext, res.tempFiles[i].ext, ext.indexOf(res.tempFiles[i].ext));
+          
           if (ext.indexOf(res.tempFiles[i].ext) === -1) {
             this.toast('请上传合法的文件格式');
             return callback(false);
@@ -465,5 +473,23 @@ App({
         callback(res.tempFiles);
       }
     })
+  },
+  // 获取默认收货地址
+  get_default_address(callback) {
+    this.ajax('shop/getDefaultAddress', null, res => {
+      let address = {
+        receiver: res.username,
+        tel: res.tel,
+        address: res.provincename + ' ' + res.cityname + ' ' + res.countyname + ' ' + res.detail
+      };
+      callback(address);
+    });
+  },
+  // 简版作品投票
+  vote(obj) {
+
+  },
+  // 简版创意投票
+  ideaVote() {
   }
 });

@@ -1,5 +1,7 @@
 .page {
   background: #fafafa;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .tab-list2 {
@@ -27,7 +29,6 @@
 }
 
 .tab-list2 .tab.active {
-
 }
 
 .tab-list2 .tab.active .tab-text {
@@ -105,4 +106,5 @@
   white-space: normal !important;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  height: 122rpx;
 }

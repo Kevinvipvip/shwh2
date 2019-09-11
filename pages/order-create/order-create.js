@@ -1,4 +1,4 @@
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
@@ -12,7 +12,7 @@ Page({
     address: '',  // 地址
     purchase_loading: false
   },
-  onLoad: function (options) {
+  onLoad(options) {
     this.data.id = parseInt(options.id);
     this.data.attr_id = parseInt(options.attr_id);
     this.setData({num: options.num});
@@ -147,4 +147,4 @@ Page({
       })
     });
   }
-})
+});

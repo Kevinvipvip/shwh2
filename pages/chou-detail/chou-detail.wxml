@@ -21,7 +21,7 @@
       </view>
       <view class="progress-box">
         <view class="progress">
-          <view class="progress-active" style="width: {{funding.percent}}%;"></view>
+          <view class="progress-active" style="width: {{funding.percent > 100 ? 100 : funding.percent}}%;"></view>
         </view>
         <view class="info">
           <view class="already">

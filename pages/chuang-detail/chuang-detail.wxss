@@ -62,7 +62,7 @@
 
 .chuang-box .line1 .agree text {
     display: inline-block;
-    width: 75rpx;
+    /* width: 75rpx; */
     font-size: 25rpx;
     color: #999;
 }

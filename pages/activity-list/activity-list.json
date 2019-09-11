@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "投石列表",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#f8f8f8",
+  "usingComponents": {}
+}

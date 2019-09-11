@@ -1,5 +1,7 @@
 .page {
   background: #fafafa;
+  min-height: 100vh;
+  box-sizing: border-box;
   padding: 40rpx 0;
 }
 
@@ -27,7 +29,7 @@
 }
 
 .my-chuang-list .chuang .top-line .title {
-  font-size: 34rpx;
+  font-size: 32rpx;
   color: #333;
 }
 
@@ -50,6 +52,7 @@
   line-height: 42rpx;
   color: #666;
   text-align: justify;
+  white-space: pre-line;
 }
 
 .my-chuang-list .chuang .foot-info {

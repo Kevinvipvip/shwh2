@@ -42,29 +42,31 @@ Page({
   // 上传图片
   up_pics() {
     app.choose_img(9 - this.data.pics.length, res => {
-      let up_succ = 0;
+      if (res) {
+        let up_succ = 0;
 
-      wx.showLoading({
-        title: '上传中',
-        mask: true
-      });
-
-      for (let i = 0; i < res.length; i++) {
-        let tname = app.qiniu_tname() + res[i].ext;
-        app.qiniu_upload(res[i].path, tname, () => {
-          this.data.pics.push(app.format_img(tname));
-          this.setData({
-            pics: this.data.pics,
-            flex_pad: app.null_arr(this.data.pics.length + 1, 3)
-          });
-          up_succ++;
-
-          if (up_succ === res.length) {
-            wx.hideLoading();
-          }
-        }, null, () => {
-          wx.hideLoading();
+        wx.showLoading({
+          title: '上传中',
+          mask: true
         });
+
+        for (let i = 0; i < res.length; i++) {
+          let tname = app.qiniu_tname() + res[i].ext;
+          app.qiniu_upload(res[i].path, tname, () => {
+            this.data.pics.push(app.format_img(tname));
+            this.setData({
+              pics: this.data.pics,
+              flex_pad: app.null_arr(this.data.pics.length + 1, 3)
+            });
+            up_succ++;
+
+            if (up_succ === res.length) {
+              wx.hideLoading();
+            }
+          }, null, () => {
+            wx.hideLoading();
+          });
+        }
       }
     }, 1048576);
   },
@@ -99,7 +101,9 @@ Page({
 
       wx.showLoading({ mask: true });
       app.ajax('api/uploadWorks', post, () => {
-        wx.redirectTo({ url: '/pages/my-works/my-works' });
+        app.modal('作品发布成功，请等待审核', () => {
+          wx.redirectTo({ url: '/pages/my-works/my-works?status=0' });
+        });
       }, null, () => {
         wx.hideLoading();
       });

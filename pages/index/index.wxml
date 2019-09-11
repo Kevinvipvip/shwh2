@@ -22,9 +22,9 @@
       <text class="leng"></text>
       <text>石</text>
 
-      <view class="more-box">
+      <navigator url="/pages/activity-list/activity-list" class="more-box">
         <image lazy-load src="/images/more.png" class="more"></image>
-      </view>
+      </navigator>
     </view>
     <view class="activity-list">
       <navigator url="/pages/activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{req_list}}" wx:key="id">
@@ -61,11 +61,13 @@
       <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
         <image lazy-load src="{{item.pics[0]}}" class="cover" mode="aspectFill"></image>
         <view class="info">
-          <view class="diyi">
-            <view class="title">{{item.title}}</view>
-          </view>
-          <view class="desc two-line-ellipsis">
-            {{item.desc}}
+          <view class="shang">
+            <view class="diyi">
+              <view class="title">{{item.title}}</view>
+            </view>
+            <view class="desc two-line-ellipsis">
+              {{item.desc}}
+            </view>
           </view>
           <view class="xia">
             <view class="left">
@@ -88,9 +90,9 @@
           <image lazy-load src="/icons/{{index + 1}}st.png" wx:if="{{index < 3}}"></image>
           <text wx:else>0{{index + 1}}</text>
         </view>
-        <image lazy-load src="/images/t-header.png" class="cover"></image>
+        <image lazy-load src="{{item.avatar}}" class="cover"></image>
         <text class="title one-line-ellipsis">{{item.title}}</text>
-        <view class="agree">
+        <view catchtap="ideaVote" data-idea="{{item}}" class="agree">
           <image lazy-load src="/icons/zan.png"></image>
           <text>{{item.vote}}</text>
         </view>
