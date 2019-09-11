@@ -12,8 +12,9 @@
         <image src="/images/qi-star.png" class="qi-star"></image>
         <text>{{idea.title}}</text>
       </view>
-      <view class="agree">
-        <image lazy-load src="/icons/zan.png"></image>
+      <view bindtap="ideaVote" class="agree">
+        <image src="/icons/zan-active.png" wx:if="{{idea.if_vote}}"></image>
+        <image src="/icons/zan.png" wx:else></image>
         <text>{{idea.vote}}</text>
       </view>
     </view>

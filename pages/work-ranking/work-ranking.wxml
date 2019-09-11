@@ -1,6 +1,6 @@
 <view class="page">
   <view class="work-rank-list">
-    <view class="work" wx:for="{{work_list}}" wx:key="id">
+    <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
       <image lazy-load src="{{item.pics[0]}}" class="cover" mode="aspectFill"></image>
       <view class="info">
         <view class="diyi">
@@ -14,13 +14,13 @@
             <image lazy-load src="{{item.avatar}}" class="header"></image>
             <text class="nickname">{{item.nickname}}</text>
           </view>
-          <view class="vote">
+          <view catchtap="worksVote" data-index="{{index}}" class="vote">
             <image lazy-load src="/icons/vote.png" class="icon"></image>
             <text>{{item.vote}}</text>
           </view>
         </view>
       </view>
-    </view>
+    </navigator>
   </view>
 
   <view class="nomore" wx:if="{{nomore}}">

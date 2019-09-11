@@ -46,7 +46,7 @@
       <view class="content">
         <view class="bi-box">
           <view class="bi">¥</view>
-          <input bindinput="bind_input" data-name="pay_price" type="number" value="{{pay_price}}" />
+          <input bindinput="bind_input" data-name="pay_price" type="digit" value="{{pay_price}}" />
         </view>
       </view>
     </view>
@@ -56,7 +56,7 @@
 <!--    </view>-->
     <view class="form-item2">
       <view class="label">填写备注</view>
-      <textarea bindinput="bind_input" fixed="true" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." style="padding: {{textarea_padding}};"/>
+      <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." style="padding: {{textarea_padding}};"/>
     </view>
   </view>
 

@@ -78,35 +78,35 @@
       </view>
     </view>
 
-    <view class="order-box">
-      <view class="title">我的订单</view>
-      <navigator url="/pages/my-orders/my-orders" class="all">
-        <view class="zi">全部</view>
-        <image src="/icons/you3.png"></image>
-      </navigator>
-      <view class="o-menus">
-        <navigator url="/pages/my-orders/my-orders?status=0" class="o-menu">
-          <image src="/icons/os1.png" class="icon"></image>
-          <view class="explain">待付款</view>
-        </navigator>
-        <navigator url="/pages/my-orders/my-orders?status=1" class="o-menu">
-          <image src="/icons/os2.png" class="icon"></image>
-          <view class="explain">待发货</view>
-        </navigator>
-        <navigator url="/pages/my-orders/my-orders?status=2" class="o-menu">
-          <image src="/icons/os3.png" class="icon"></image>
-          <view class="explain">待收货</view>
-        </navigator>
-        <navigator url="/pages/my-orders/my-orders?status=3" class="o-menu">
-          <image src="/icons/os4.png" class="icon"></image>
-          <view class="explain">已完成</view>
-        </navigator>
-        <navigator url="/pages/refund-list/refund-list" class="o-menu">
-          <image src="/icons/os5.png" class="icon"></image>
-          <view class="explain">售后</view>
-        </navigator>
-      </view>
-    </view>
+<!--    <view class="order-box">-->
+<!--      <view class="title">我的订单</view>-->
+<!--      <navigator url="/pages/my-orders/my-orders" class="all">-->
+<!--        <view class="zi">全部</view>-->
+<!--        <image src="/icons/you3.png"></image>-->
+<!--      </navigator>-->
+<!--      <view class="o-menus">-->
+<!--        <navigator url="/pages/my-orders/my-orders?status=0" class="o-menu">-->
+<!--          <image src="/icons/os1.png" class="icon"></image>-->
+<!--          <view class="explain">待付款</view>-->
+<!--        </navigator>-->
+<!--        <navigator url="/pages/my-orders/my-orders?status=1" class="o-menu">-->
+<!--          <image src="/icons/os2.png" class="icon"></image>-->
+<!--          <view class="explain">待发货</view>-->
+<!--        </navigator>-->
+<!--        <navigator url="/pages/my-orders/my-orders?status=2" class="o-menu">-->
+<!--          <image src="/icons/os3.png" class="icon"></image>-->
+<!--          <view class="explain">待收货</view>-->
+<!--        </navigator>-->
+<!--        <navigator url="/pages/my-orders/my-orders?status=3" class="o-menu">-->
+<!--          <image src="/icons/os4.png" class="icon"></image>-->
+<!--          <view class="explain">已完成</view>-->
+<!--        </navigator>-->
+<!--        <navigator url="/pages/refund-list/refund-list" class="o-menu">-->
+<!--          <image src="/icons/os5.png" class="icon"></image>-->
+<!--          <view class="explain">售后</view>-->
+<!--        </navigator>-->
+<!--      </view>-->
+<!--    </view>-->
   </view>
 
   <view class="menu">
@@ -119,7 +119,7 @@
       <view class="menu-text">我的创意</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
-    <navigator class="menu-item" url="/pages/my-req/my-req" wx:if="{{user.role == 1}}">
+    <navigator class="menu-item" url="/pages/my-req/my-req" wx:if="{{user.role_check == 2 && user.role == 1}}">
       <view class="left-box">
         <view class="icon-box">
           <image src="/icons/menu2.png" class="icon-menu2"></image>
@@ -128,7 +128,7 @@
       <view class="menu-text">我的活动</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
-    <navigator class="menu-item" url="/pages/my-works/my-works" wx:if="{{user.role == 2}}">
+    <navigator class="menu-item" url="/pages/my-works/my-works" wx:if="{{user.role_check == 2 && user.role == 2}}">
       <view class="left-box">
         <view class="icon-box">
           <image src="/icons/menu3.png" class="icon-menu3"></image>
@@ -137,7 +137,7 @@
       <view class="menu-text">我的投稿</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
-    <navigator class="menu-item" url="/pages/my-bidding/my-bidding" wx:if="{{user.role == 3}}">
+    <navigator class="menu-item" url="/pages/my-bidding/my-bidding" wx:if="{{user.role_check == 2 && user.role == 3}}">
       <view class="left-box">
         <view class="icon-box">
           <image src="/icons/menu4.png" class="icon-menu4"></image>

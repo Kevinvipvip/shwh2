@@ -1,6 +1,6 @@
 <view class="page">
   <view class="work-box">
-    <view class="work" wx:key="id">
+    <view class="work">
       <view class="line1">
         <view class="zuo">
           <image src="{{work.avatar}}" class="header"></image>
@@ -15,7 +15,7 @@
         <view class="title">{{work.title}}</view>
         <view class="desc">{{work.desc}}</view>
         <view class="img-box">
-          <image bindtap="preview" data-index="{{index}}" src="{{pic_item}}" wx:for-item="pic_item" wx:for="{{work.pics}}" mode="aspectFill" lazy-load></image>
+          <image bindtap="preview" data-index="{{index}}" src="{{item}}" wx:for="{{work.pics}}" mode="aspectFill" lazy-load></image>
           <image class="vh" wx:for="{{work.flex_pad}}"></image>
         </view>
       </view>
@@ -28,9 +28,26 @@
           <text>工厂接单</text>
           <text class="amount">[数量：{{work.bid_num}}]</text>
         </view>
-        <view class="agree">
-          <image lazy-load src="/icons/zan.png"></image>
+        <view bindtap="worksVote" class="agree">
+          <image src="/icons/zan-active.png" wx:if="{{work.if_vote}}"></image>
+          <image src="/icons/zan.png" wx:else></image>
           <text>{{work.vote}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="bidding-box" wx:if="{{role == 3}}">
+      <button bindtap="bidding" class="line-btn" disabled="{{!work.bidding_btn}}" wx:if="{{role == 3}}">接单</button>
+      <view class="form1" wx:if="{{work.bidding_btn}}">
+        <view class="form-item">
+          <view class="textarea-box">
+            <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="100"
+                      cursor-spacing="50" placeholder="接单备注（选填）" style="padding: {{textarea_padding}};"/>
+            <view class="count">
+              <text>{{desc_count}}</text>
+              / 100
+            </view>
+          </view>
         </view>
       </view>
     </view>

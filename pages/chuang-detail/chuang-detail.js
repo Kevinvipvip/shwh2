@@ -101,5 +101,25 @@ Page({
   onShareAppMessage() {
     wx.showShareMenu();
     return { path: app.share_path() };
+  },
+  // 创意投票
+  ideaVote() {
+    let idea = this.data.idea;
+    if (!idea.if_vote) {
+      if (!this.data.loading) {
+        this.data.loading = true;
+        app.ajax('api/ideaVote', { idea_id: idea.id }, res => {
+          if (res) {
+            idea.if_vote = true;
+            idea.vote++;
+            this.setData({ idea });
+          }
+        }, null, () => {
+          this.data.loading = false;
+        });
+      }
+    } else {
+      app.toast('您已为该创意点赞');
+    }
   }
 });

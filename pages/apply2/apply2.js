@@ -273,13 +273,13 @@ Page({
 
       let data = {
         role: res.role + '',
-        org: res.org,
-        address: res.address,
+        org: res.org || '',
+        address: res.address || '',
         name: res.name,
         identity: res.identity,
         tel: res.tel,
         weixin: res.weixin,
-        busine: res.busine,
+        busine: res.busine || '',
         reason: res.reason,
         code: '',
         cover: res.cover,
@@ -288,12 +288,6 @@ Page({
         license: res.license,
         works: res.works
       };
-
-      // if (res.works && res.works.length > 0) {
-      //   for (let i = 0; i < res.works.length; i++) {
-      //     data.works.push(app.my_config.base_url + '/' + res.works[i]);
-      //   }
-      // }
 
       switch (res.role) {
         case 1:

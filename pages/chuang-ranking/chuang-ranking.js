@@ -76,5 +76,26 @@ Page({
         });
       }
     }
+  },
+  // 创意投票
+  ideaVote(e) {
+    let index = e.currentTarget.dataset.index;
+    let idea = this.data.idea_list[index];
+    if (!idea.if_vote) {
+      if (!this.data.loading) {
+        this.data.loading = true;
+        app.ajax('api/ideaVote', { idea_id: idea.id }, res => {
+          if (res) {
+            idea.if_vote = true;
+            idea.vote++;
+            this.setData({ [`idea_list[${index}]`]: idea });
+          }
+        }, null, () => {
+          this.data.loading = false;
+        });
+      }
+    } else {
+      app.toast('您已为该创意点赞');
+    }
   }
 });

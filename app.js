@@ -78,6 +78,17 @@ App({
       }
     });
   },
+  confirm(content, callback) {
+    wx.showModal({
+      title: '提示',
+      content: content,
+      success: res => {
+        if (res.confirm) {
+          callback();
+        }
+      }
+    });
+  },
   ajax(path, data, succ, err, complete) {
     data = data || {};
     if (!data.token) {
@@ -484,12 +495,5 @@ App({
       };
       callback(address);
     });
-  },
-  // 简版作品投票
-  vote(obj) {
-
-  },
-  // 简版创意投票
-  ideaVote() {
   }
 });

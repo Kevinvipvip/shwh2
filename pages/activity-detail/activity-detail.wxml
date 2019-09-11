@@ -88,8 +88,9 @@
           </view>
           <view class="title-line">
             <view class="title">{{item.title}}</view>
-            <view class="agree">
-              <image lazy-load src="/icons/zan.png"></image>
+            <view catchtap="ideaVote" data-index="{{index}}" class="agree">
+              <image src="/icons/zan-active.png" wx:if="{{item.if_vote}}"></image>
+              <image src="/icons/zan.png" wx:else></image>
               <text>{{item.vote}}</text>
             </view>
           </view>
@@ -146,8 +147,9 @@
               <text>工厂接单</text>
               <text class="amount">[数量：{{item.bid_num}}]</text>
             </view>
-            <view class="agree">
-              <image lazy-load src="/icons/zan.png"></image>
+            <view catchtap="worksVote" data-index="{{index}}" class="agree">
+              <image src="/icons/zan-active.png" wx:if="{{item.if_vote}}"></image>
+              <image src="/icons/zan.png" wx:else></image>
               <text>{{item.vote}}</text>
             </view>
           </view>

@@ -45,10 +45,10 @@
   <view class="ac-detail">
     <view class="title-line">
       <view class="title">活动详情</view>
-      <view class="more">
+      <navigator url="/pages/activity-rich/activity-rich?id={{funding.req_id}}" class="more">
         <text>查看更多</text>
         <image src="/icons/you2.png"></image>
-      </view>
+      </navigator>
     </view>
     <view class="desc">{{funding.desc || ''}}</view>
   </view>

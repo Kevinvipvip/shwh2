@@ -27,7 +27,7 @@ Page({
     funding_list: [],
     funding_page: 1,
     chou_nomore: false,
-    chou_nodata: true,
+    chou_nodata: false,
   },
   onLoad(options) {
     this.setData({
@@ -332,6 +332,56 @@ Page({
       }
     } else {
       app.modal('只有认证设计师可以投稿');
+    }
+  },
+  // 作品投票
+  worksVote(e) {
+    let index = e.currentTarget.dataset.index;
+    let work = this.data.work_list[index];
+    if (!work.if_vote) {
+      if (!this.data.loading) {
+        wx.showModal({
+          title: '提示',
+          content: '确定投票？',
+          success: res => {
+            if (res.confirm) {
+              this.data.loading = true;
+              app.ajax('api/worksVote', { work_id: work.id }, res => {
+                if (res) {
+                  work.if_vote = true;
+                  work.vote++;
+                  this.setData({ [`work_list[${index}]`]: work });
+                }
+              }, null, () => {
+                this.data.loading = false;
+              });
+            }
+          }
+        });
+      }
+    } else {
+      app.toast('您已投票给该作品');
+    }
+  },
+  // 创意投票
+  ideaVote(e) {
+    let index = e.currentTarget.dataset.index;
+    let idea = this.data.idea_list[index];
+    if (!idea.if_vote) {
+      if (!this.data.loading) {
+        this.data.loading = true;
+        app.ajax('api/ideaVote', { idea_id: idea.id }, res => {
+          if (res) {
+            idea.if_vote = true;
+            idea.vote++;
+            this.setData({ [`idea_list[${index}]`]: idea });
+          }
+        }, null, () => {
+          this.data.loading = false;
+        });
+      }
+    } else {
+      app.toast('您已为该创意点赞');
     }
   }
 });

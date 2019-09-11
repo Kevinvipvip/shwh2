@@ -79,5 +79,34 @@ Page({
         });
       }
     }
+  },
+  // 作品投票
+  worksVote(e) {
+    let index = e.currentTarget.dataset.index;
+    let work = this.data.work_list[index];
+    if (!work.if_vote) {
+      if (!this.data.loading) {
+        wx.showModal({
+          title: '提示',
+          content: '确定投票？',
+          success: res => {
+            if (res.confirm) {
+              this.data.loading = true;
+              app.ajax('api/worksVote', { work_id: work.id }, res => {
+                if (res) {
+                  work.if_vote = true;
+                  work.vote++;
+                  this.setData({ [`work_list[${index}]`]: work });
+                }
+              }, null, () => {
+                this.data.loading = false;
+              });
+            }
+          }
+        });
+      }
+    } else {
+      app.toast('您已投票给该作品');
+    }
   }
 });

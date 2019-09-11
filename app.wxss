@@ -364,6 +364,10 @@ button::after {
   text-align: center;
 }
 
+.line-btn[disabled]:not([type]) {
+  background: #eee;
+}
+
 /* 按钮 end */
 
 /* 众筹列表-行 start */
