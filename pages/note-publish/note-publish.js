@@ -1,100 +1,88 @@
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
-    imgbox: [],
-    title: '',
-    content: '',
-    plat: ''
+    textarea_padding: '15rpx',
+
+    title: '',  // 笔记标题
+    content: '',  // 笔记内容
+    content_count: 0,
+    pics: [],
+
+    flex_pad: []
   },
-  onLoad: function () {
+  onLoad() {
     let phone = wx.getSystemInfoSync();
-    this.setData({ plat: phone.platform });
+    if (phone.platform === 'ios') {
+      this.setData({ textarea_padding: '0rpx 5rpx' })
+    }
+
+    app.qiniu_init();
   },
-  // 删除照片 &&
-  imgDelete1: function (e) {
+  // 删除图片
+  img_delete(e) {
     let that = this;
     let index = e.currentTarget.dataset.deindex;
-    let imgbox = this.data.imgbox;
-    imgbox.splice(index, 1)
+    let pics = this.data.pics;
+    pics.splice(index, 1);
     that.setData({
-      imgbox: imgbox
+      pics: pics
     });
   },
-  // 上传图片 &&&
-  addPic1: function () {
-    var that = this;
+  // 上传图片
+  up_pics() {
+    app.choose_img(9 - this.data.pics.length, res => {
+      if (res) {
+        let up_succ = 0;
 
-    wx.chooseImage({
-      count: 9 - this.data.imgbox.length,
-      sourceType: ['album', 'camera'],
-      success(res) {
-        that.upload_images(res.tempFiles, 0);
-      }
-    })
-  },
-  upload_images(images, index) {
-    let that = this;
-
-    if (index !== images.length) {
-      if (index === 0) {
         wx.showLoading({
           title: '上传中',
           mask: true
         });
-      }
 
-      if (images[index].size > 524288) {
-        app.toast('上传的图片不能大于512K');
-        index++;
-        that.upload_images(images, index);
-      } else {
-        wx.uploadFile({
-          url: 'api/uploadImage',
-          filePath: images[index].path,
-          name: 'file',
-          formData: {
-            token: app.user_data.token
-          },
-          success(res) {
-            res = JSON.parse(res.data);
-            that.data.imgbox.push({img: app.my_config.base_url + '/' + res.data.path});
-            that.setData({ imgbox: that.data.imgbox });
-          },
-          fail() {
-            app.toast('上传失败');
-          },
-          complete() {
-            index++;
-            that.upload_images(images, index);
-          }
-        })
+        for (let i = 0; i < res.length; i++) {
+          let tname = app.qiniu_tname() + res[i].ext;
+          app.qiniu_upload(res[i].path, tname, () => {
+            this.data.pics.push({pic: app.format_img(tname)});
+            this.setData({
+              pics: this.data.pics,
+              flex_pad: app.null_arr(this.data.pics.length + 1, 3)
+            });
+            up_succ++;
+
+            if (up_succ === res.length) {
+              wx.hideLoading();
+            }
+          }, null, () => {
+            wx.hideLoading();
+          });
+        }
       }
-    } else {
-      wx.hideLoading();
-    }
+    }, 1048576);
   },
   img_load(e) {
     this.setData({
-      ['imgbox[' + e.currentTarget.dataset.index + '].width']: e.detail.width,
-      ['imgbox[' + e.currentTarget.dataset.index + '].height']: e.detail.height
+      ['pics[' + e.currentTarget.dataset.index + '].width']: e.detail.width,
+      ['pics[' + e.currentTarget.dataset.index + '].height']: e.detail.height
     });
   },
   noteRelease() {
-    if (!this.data.title.trim()) {
+    let data = this.data;
+    
+    if (!data.title.trim()) {
       app.toast('请填写笔记标题');
-    } else if (!this.data.content.trim()) {
+    } else if (!data.content.trim()) {
       app.toast('请填写笔记内容');
-    } else if (this.data.imgbox.length == 0) {
+    } else if (data.pics.length === 0) {
       app.toast('请至少上传一张图片');
     } else {
       let post = {
-        title: this.data.title,
-        content: this.data.content,
+        title: data.title,
+        content: data.content,
         token: app.user_data.token,
         pics: this.get_img_arr(),
-        width: this.data.imgbox[0].width,
-        height: this.data.imgbox[0].height
+        width: data.pics[0].width,
+        height: data.pics[0].height
       };
 
       app.ajax('note/noteRelease', post, () => {
@@ -112,13 +100,16 @@ Page({
   },
   get_img_arr() {
     var img_arr = [];
-    for (let i = 0; i < this.data.imgbox.length; i++) {
-      img_arr.push(this.data.imgbox[i].img.replace(app.my_config.base_url + '/', ''));
+    for (let i = 0; i < this.data.pics.length; i++) {
+      img_arr.push(app.format_up_img(this.data.pics[i].pic));
     }
     return img_arr;
   },
   // common start
   bind_input(e) {
-    this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
+    app.bind_input(e, this);
+    if (e.currentTarget.dataset.name === 'content') {
+      this.setData({content_count: this.data.content.length});
+    }
   }
-})
+});

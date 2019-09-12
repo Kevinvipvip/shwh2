@@ -3,27 +3,27 @@ const app = getApp();
 Page({
   data: {
     page: 1,
-    idea_list: [],
+    work_list: [],
     nomore: false,
     nodata: false,
     loading: false
   },
   onLoad() {
-    this.ideaList();
+    this.biddingWorksList();
   },
-  // 创意排行
-  ideaList(complete) {
+  // 作品排行
+  biddingWorksList(complete) {
     let post = {
       page: this.data.page,
       perpage: 10,
       order: 2  // 按投票
     };
 
-    app.ajax('api/ideaList', post, res => {
+    app.ajax('my/biddingWorksList', post, res => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
-            idea_list: [],
+            work_list: [],
             nodata: true,
             nomore: false
           })
@@ -31,11 +31,14 @@ Page({
           this.setData({
             nomore: true,
             nodata: false
-          });
+          })
         }
       } else {
-        app.avatar_format(res, 'avatar');
-        this.setData({ idea_list: this.data.idea_list.concat(res) });
+        app.avatar_format(res);
+        for (let i = 0; i < res.length; i++) {
+          app.format_img(res[i].pics);
+        }
+        this.setData({ work_list: this.data.work_list.concat(res) });
       }
       this.data.page++;
     }, null, () => {
@@ -50,14 +53,14 @@ Page({
       this.data.loading = true;
 
       this.data.page = 1;
-      this.data.idea_list = [];
+      this.data.work_list = [];
       this.setData({
         nomore: false,
         nodata: false
       });
 
       wx.showNavigationBarLoading();
-      this.ideaList(() => {
+      this.biddingWorksList(() => {
         this.data.loading = false;
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
@@ -70,32 +73,40 @@ Page({
       if (!this.data.loading) {
         this.data.loading = true;
         wx.showNavigationBarLoading();
-        this.ideaList(() => {
+        this.biddingWorksList(() => {
           wx.hideNavigationBarLoading();
           this.data.loading = false;
         });
       }
     }
   },
-  // 创意投票
-  ideaVote(e) {
+  // 作品投票
+  worksVote(e) {
     let index = e.currentTarget.dataset.index;
-    let idea = this.data.idea_list[index];
-    if (!idea.if_vote) {
+    let work = this.data.work_list[index];
+    if (!work.if_vote) {
       if (!this.data.loading) {
-        this.data.loading = true;
-        app.ajax('api/ideaVote', { idea_id: idea.id }, res => {
-          if (res) {
-            idea.if_vote = true;
-            idea.vote++;
-            this.setData({ [`idea_list[${index}]`]: idea });
+        wx.showModal({
+          title: '提示',
+          content: '确定投票？',
+          success: res => {
+            if (res.confirm) {
+              this.data.loading = true;
+              app.ajax('api/worksVote', { work_id: work.id }, res => {
+                if (res) {
+                  work.if_vote = true;
+                  work.vote++;
+                  this.setData({ [`work_list[${index}]`]: work });
+                }
+              }, null, () => {
+                this.data.loading = false;
+              });
+            }
           }
-        }, null, () => {
-          this.data.loading = false;
         });
       }
     } else {
-      app.toast('您已为该创意点赞');
+      app.toast('您已投票给该作品');
     }
   }
 });

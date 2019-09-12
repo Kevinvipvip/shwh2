@@ -167,7 +167,7 @@
     <!-- 众筹 -->
     <view class="chou-box" wx:if="{{active_tab == 3}}">
       <view class="chou-list">
-        <view class="chou-line" wx:for="{{funding_list}}" wx:key="id">
+        <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou-line" wx:for="{{funding_list}}" wx:key="id">
           <view class="img-box">
             <image src="{{item.cover}}" mode="aspectFill" lazy-load></image>
           </view>
@@ -182,7 +182,7 @@
               <view class="part-count">参与人数{{item.order_num}}人</view>
             </view>
           </view>
-        </view>
+        </navigator>
       </view>
 
       <view class="nomore" wx:if="{{chou_nomore}}">

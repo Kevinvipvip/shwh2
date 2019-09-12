@@ -179,8 +179,8 @@ page {
 }
 
 .input-box .com-btn {
-    color:#7085d4;
-    flex-shrink:0;
-    margin-left:20rpx;
-    font-size:28rpx;
+    color: #7085d4;
+    flex-shrink: 0;
+    font-size: 28rpx;
+    padding: 10rpx 20rpx;
 }

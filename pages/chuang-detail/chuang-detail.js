@@ -10,12 +10,16 @@ Page({
     work_list: [],
     nomore: false,
     nodata: false,
-    loading: false
+    loading: false,
+
+    uid: 0  // 用户自己的id
   },
   onLoad(options) {
     this.data.idea_id = options.idea_id;
     this.ideaDetail();
     this.worksList();
+
+    this.setData({uid: app.user_data.uid});
   },
   // 创意详情
   ideaDetail() {
@@ -120,6 +124,22 @@ Page({
       }
     } else {
       app.toast('您已为该创意点赞');
+    }
+  },
+  // 关注/取关
+  iFocus() {
+    let idea = this.data.idea;
+    if (!this.data.loading) {
+      this.data.loading = true;
+
+      let post = {
+
+      };
+      app.ajax('note/iFocus', {to_uid: idea.uid}, res => {
+        this.setData({ ['idea.ifocus']: res});
+      }, null, () => {
+        this.data.loading = false;
+      });
     }
   }
 });

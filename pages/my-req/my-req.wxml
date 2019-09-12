@@ -1,41 +1,25 @@
-<view class="full-loading" wx:if="{{full_loading}}">
-  <view class="image"></view>
-</view>
-
 <view class="page">
-  <navigator url="/pages/req-release/req-release" class="release-btn" wx:if="{{release_show}}">
-    <view>发布</view>
-    <view>活动</view>
-  </navigator>
-
-  <view class="block">
-    <view class="list">
-      <view bindtap="to_detail" data-req="{{item}}" url="/pages/req-detail/req-detail?id={{item.id}}" class="item" wx:for="{{reqList}}" wx:key="id">
-
-        <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
-        <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
-        <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
-
-        <image src="{{item.cover}}" mode="widthFix" lazy-load="{{true}}"></image>
-        <view class="info">
-          <view class="title">{{item.title}}</view>
-          <view class="can">
-            <icon class="iconfont iconqunliao"/>{{item.part_num}}人参与
-          </view>
-          <view class="bottom">
-            <view class="time">{{item.start_time}}日 ~ {{item.end_time}}日</view>
-            <view class="attestation">{{item.user_org}}</view>
-          </view>
+  <view class="activity-list">
+    <navigator url="/pages/activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{req_list}}" wx:key="id">
+      <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>
+      <view class="title">{{item.title}}</view>
+      <view class="info">
+        <view class="people">
+          <image lazy-load src="/icons/people.png" class="icon"></image>
+          <text>{{item.works_num + item.idea_num}}人</text>
+        </view>
+        <view class="date">
+          <image lazy-load src="/icons/time.png" class="icon"></image>
+          <text>{{item.start_time}}-{{item.end_time}}</text>
         </view>
       </view>
-    </view>
+    </navigator>
   </view>
 
   <view class="nomore" wx:if="{{nomore}}">
     已经没有更多了哦
   </view>
-
   <view class="nodata" wx:if="{{nodata}}">
-    暂无活动
+    暂无数据
   </view>
 </view>

@@ -47,17 +47,17 @@
         <image src="/icons/you.png" class="arrow-you"></image>
       </view>
     </view>
-    <view bindtap="show_input" data-name="tel" class="input-item">
+    <view data-name="tel" class="input-item">
       <view class="label">手机号</view>
       <view class="you">
         <view class="value">{{tel}}</view>
-        <image src="/icons/you.png" class="arrow-you"></image>
+        <button bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber" class="auth-btn">授权获取手机号</button>
       </view>
     </view>
-    <view bindtap="show_input" data-name="desc" class="input-item">
+    <view bindtap="show_input" data-name="sign" class="input-item">
       <view class="label">个性签名</view>
       <view class="you">
-        <view class="value">{{desc}}</view>
+        <view class="value">{{sign}}</view>
         <image src="/icons/you.png" class="arrow-you"></image>
       </view>
     </view>

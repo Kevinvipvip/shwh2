@@ -35,7 +35,7 @@
   </view>
   <view class="goods-list">
     <view class="pro" wx:if="{{order.type == 1}}">
-      <image src="{{order.cover}}" class="pic" mode="aspectFill"></image>
+      <image src="{{order.pics[0]}}" class="pic" mode="aspectFill"></image>
       <view class="info">
         <view class="shang">
           <view class="title">众筹：{{order.funding_title}}</view>
@@ -48,7 +48,7 @@
       </view>
     </view>
     <view class="pro" wx:else>
-      <image src="{{order.pics[0]}}" class="pic" mode="aspectFill"></image>
+      <image src="{{order.cover}}" class="pic" mode="aspectFill"></image>
       <view class="info">
         <view class="shang">
           <view class="title">众筹：{{order.funding_title}}</view>

@@ -13,29 +13,28 @@ Page({
   },
   myBiddingList(complete) {
     let post = {
-      token: app.user_data.token,
-      page: this.data.page
+      page: this.data.page,
+      perpage: 10
     };
 
-    app.ajax('my/myBiddingList', post, (res) => {
+    app.ajax('my/myBiddingList', post, res => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
             biddingList: [],
-            nodata: true
+            nodata: true,
+            nomore: false
           });
         } else {
-          this.setData({ nomore: true });
+          this.setData({
+            nomore: true,
+            nodata: false
+          });
         }
       } else {
         for (let i = 0; i < res.length; i++) {
-          for (let j = 0; j < res[i].pics.length; j++) {
-            if (res[i].pics[j]) {
-              res[i].pics[j] = app.my_config.base_url + '/' + res[i].pics[j];
-            } else {
-              res[i].pics[j] = app.my_config.default_img;
-            }
-          }
+          app.format_img(res[i].pics);
+          res[i].choose_text = res[i].choose === 1 ? '选中' : '未选中';
         }
         this.setData({ biddingList: this.data.biddingList.concat(res) });
       }
@@ -51,10 +50,12 @@ Page({
       this.data.loading = true;
 
       // 参赛作品
-      this.data.nomore = false;
-      this.data.nodata = false;
       this.data.page = 1;
       this.data.biddingList = [];
+      this.setData({
+        nomore: false,
+        nodata: false
+      });
 
       wx.showNavigationBarLoading();
       this.myBiddingList(() => {
@@ -64,6 +65,7 @@ Page({
       });
     }
   },
+  // 上拉加载
   onReachBottom: function () {
     if (!this.data.nodata && !this.data.nomore) {
       if (!this.data.loading) {
@@ -80,4 +82,4 @@ Page({
   jump(e) {
     wx.navigateTo({ url: '/pages/bidding-detail/bidding-detail?id=' + e.currentTarget.dataset.id });
   }
-})
+});

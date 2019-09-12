@@ -1,7 +1,10 @@
 <view class="page">
   <view class="block">
     <view class="two-box">
-      <navigator url="/pages/bidding-detail/bidding-detail?id={{item.work_id}}" data-id="{{item.id}}" class="item-half" wx:for="{{biddingList}}" wx:key="id">
+      <navigator url="/pages/work-detail/work-detail?id={{item.work_id}}" data-id="{{item.id}}" class="item-half" wx:for="{{biddingList}}" wx:key="id">
+
+        <view class="status">{{item.choose_text}}</view>
+
         <image src="{{item.pics[0]}}" mode="aspectFill"></image>
         <view class="texts">
           <view class="title">{{item.work_title}}</view>
@@ -10,7 +13,12 @@
       </navigator>
     </view>
   </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
   <view class="nodata" wx:if="{{nodata}}">
-    暂无参赛作品
+    暂无数据
   </view>
 </view>

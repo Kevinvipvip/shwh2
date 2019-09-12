@@ -108,5 +108,10 @@ Page({
       nomore: false,
       nodata: false
     });
+  },
+  // 去修改作品
+  to_modify(e) {
+    let work = this.data.work_list[e.currentTarget.dataset.index];
+    wx.navigateTo({ url: '/pages/work-release/work-release?id=' + work.id });
   }
 });

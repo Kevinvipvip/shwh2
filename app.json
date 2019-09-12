@@ -6,6 +6,7 @@
     "pages/my-chuang/my-chuang",
     "pages/chuang-ranking/chuang-ranking",
     "pages/work-ranking/work-ranking",
+    "pages/activity-work-list/activity-work-list",
     "pages/test/test",
     "pages/activity-detail/activity-detail",
     "pages/activity-rich/activity-rich",
@@ -49,6 +50,7 @@
     "pages/recharge_res/recharge_res",
     "pages/my-edit/my-edit",
     "pages/my-req/my-req",
+    "pages/my-req2/my-req2",
     "pages/req-release/req-release",
     "pages/req-edit/req-edit",
     "pages/notes/notes",
@@ -75,7 +77,8 @@
   "window": {
     "navigationBarBackgroundColor": "#333333",
     "navigationBarTextStyle": "white",
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f8f8f8",
     "navigationBarTitleText": "山洞"
   },
   "tabBar": {

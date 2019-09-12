@@ -2,6 +2,7 @@ const app = getApp();
 
 Page({
   data: {
+    id: 0,
     textarea_padding: '15rpx',
 
     req_id: 0,  // 活动id
@@ -27,7 +28,26 @@ Page({
       this.ideaDetail();
     }
 
+    if (options.id) {
+      this.data.id = options.id;
+      this.worksDetail();
+    }
+
     app.qiniu_init();
+  },
+  // 作品详情
+  worksDetail() {
+    app.ajax('api/worksDetail', {id: this.data.id}, res => {
+      app.format_img(res.pics);
+
+      this.setData({
+        title: res.title,
+        desc: res.desc,
+        desc_count: res.desc.length,
+        pics: res.pics,
+        flex_pad: app.null_arr(res.pics.length + 1, 3)
+      });
+    });
   },
   // 删除照片
   img_delete(e) {
@@ -92,19 +112,43 @@ Page({
         req_id: data.req_id,
         title: data.title,
         desc: data.desc,
-        pics: data.pics
+        pics: data.pics,
+        reason: data.reason
       };
+
+      let cmd;
+      if (data.id !== 0) {
+        post.work_id = this.data.id;
+        cmd = 'my/myReqWorksMod';
+      } else {
+        cmd = 'api/uploadWorks';
+      }
 
       if (data.idea_id !== 0) {
         post.idea_id = data.idea_id;
       }
 
       wx.showLoading({ mask: true });
-      app.ajax('api/uploadWorks', post, () => {
-        app.modal('作品发布成功，请等待审核', () => {
-          wx.redirectTo({ url: '/pages/my-works/my-works?status=0' });
-        });
-      }, null, () => {
+      app.ajax(cmd, post, () => {
+        if (data.id !== 0) {
+          // 修改
+          app.modal('修改成功', () => {
+            let page = app.get_page('pages/my-works/my-works');
+            page.reset();
+            page.setData({status: 0});
+            page.getMyReqWorks(() => {
+              wx.navigateBack({ delta: 1 });
+            });
+          });
+        } else {
+          // 发布
+          app.modal('作品发布成功，请等待审核', () => {
+            wx.redirectTo({ url: '/pages/my-works/my-works?status=0' });
+          });
+        }
+      }, err => {
+        app.modal(err.message);
+      }, () => {
         wx.hideLoading();
       });
     }

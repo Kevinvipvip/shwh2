@@ -20,6 +20,23 @@ page {
     margin-bottom: 40rpx;
     box-shadow: 3rpx 10rpx 30rpx #ddd;
     background: #fff;
+    position: relative;
+}
+
+.block .item-half .status {
+    position: absolute;
+    background: #ff684f;
+    width: 96rpx;
+    height: 40rpx;
+    font-size: 24rpx;
+    color: #fff;
+    letter-spacing: 2rpx;
+    top: 22rpx;
+    right: 24rpx;
+    border-radius: 4rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .block .item-half image {

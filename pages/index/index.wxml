@@ -88,7 +88,7 @@
       <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{item.id}}" class="chuang" wx:for="{{idea_list}}" wx:key="id">
         <view class="tou">
           <image lazy-load src="/icons/{{index + 1}}st.png" wx:if="{{index < 3}}"></image>
-          <text wx:else>0{{index + 1}}</text>
+          <text wx:else>{{index < 9 ? '0' + (index + 1) : index + 1}}</text>
         </view>
         <image lazy-load src="{{item.avatar}}" class="cover"></image>
         <text class="title one-line-ellipsis">{{item.title}}</text>

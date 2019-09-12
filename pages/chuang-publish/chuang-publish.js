@@ -41,7 +41,9 @@ Page({
         app.modal('创意发布成功', () => {
           wx.redirectTo({ url: '/pages/my-chuang/my-chuang' });
         });
-      }, null, () => {
+      }, err => {
+        app.modal(err.message);
+      }, () => {
         wx.hideLoading();
       });
     }

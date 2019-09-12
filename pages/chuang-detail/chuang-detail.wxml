@@ -21,14 +21,16 @@
     <view class="content">{{idea.content}}</view>
     <view class="user-box">
       <view class="left">
-        <image src="/images/t-header.png" class="header"></image>
+        <image src="{{idea.avatar}}" class="header"></image>
         <view class="er">
           <view class="nickname">{{idea.nickname}}</view>
           <view class="date">{{idea.create_time}}</view>
         </view>
       </view>
-      <button class="follow">关注</button>
-<!--      <button class="follow followed">已关注</button>-->
+      <view bindtap="iFocus" wx:if="{{uid != idea.uid}}">
+        <button class="follow followed" wx:if="{{idea.ifocus}}">已关注</button>
+        <button class="follow" wx:else>关注</button>
+      </view>
     </view>
   </view>
 

@@ -111,7 +111,7 @@
         <view class="flex flex-row input-group" wx:if="{{role == '3'}}">
           <view class="flex-grow-0 flex-y-center input-group-label require">经营范围：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="busine" value="{{busine}}" type="number" class="flex-y-center"
+            <input bindinput="bind_input" data-name="busine" value="{{busine}}" class="flex-y-center"
                    placeholder="请输入经营范围" placeholder-class="placeholder" maxlength="11"/>
           </view>
         </view>

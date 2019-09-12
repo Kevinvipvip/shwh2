@@ -17,6 +17,11 @@
   line-height: 1.4;
 }
 
+.notice.warning {
+  border-color: red;
+  color: red;
+}
+
 .line-btn {
   margin-top: 80rpx;
   background: #1b1b1b;

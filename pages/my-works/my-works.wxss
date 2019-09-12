@@ -2,6 +2,7 @@
   background: #fafafa;
   min-height: 100vh;
   box-sizing: border-box;
+  padding-bottom: 20rpx;
 }
 
 .tab-list2 {

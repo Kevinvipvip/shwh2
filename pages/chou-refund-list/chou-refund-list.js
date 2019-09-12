@@ -4,7 +4,7 @@ Page({
   data: {
     full_loading: true,
     order_list: [],
-    type: 3,
+    type: '',
     page: 1,
     nomore: false,
     nodata: false,
@@ -14,7 +14,7 @@ Page({
     if (options.type) {
       this.setData({ type: options.type });
     }
-    this.refundList(() => {
+    this.fundingRefundList(() => {
       this.setData({ full_loading: false });
     });
   },
@@ -22,34 +22,33 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
+      this.data.page = 1;
+      this.data.order_list = [];
       this.setData({
         nomore: false,
         nodata: false
       });
-
-      this.data.page = 1;
-      this.data.order_list = [];
 
       wx.showLoading({
         title: '加载中',
         mask: true
       });
       this.setData({ type: e.currentTarget.dataset.type });
-      this.refundList(() => {
+      this.fundingRefundList(() => {
         this.data.loading = false;
         wx.hideLoading();
       });
     }
   },
   // 订单列表
-  refundList(complete) {
+  fundingRefundList(complete) {
     let post = {
       token: app.user_data.token,
       type: this.data.type,
       page: this.data.page
     };
 
-    app.ajax('my/refundList', post, (res) => {
+    app.ajax('my/fundingRefundList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -65,7 +64,8 @@ Page({
         }
       } else {
         for (let i = 0; i < res.length; i++) {
-          app.format_img_arr(res[i].child, 'cover');
+          app.format_img(res[i].pics);
+          app.format_img(res[i], 'cover');
           switch (res[i].refund_apply) {
             case 1:
               res[i].type_text = '退款中';
@@ -90,13 +90,15 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      this.data.nomore = false;
-      this.data.nodata = false;
       this.data.page = 1;
       this.data.order_list = [];
+      this.setData({
+        nomore: false,
+        nodata: false
+      });
 
       wx.showNavigationBarLoading();
-      this.refundList(() => {
+      this.fundingRefundList(() => {
         this.data.loading = false;
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
@@ -109,7 +111,7 @@ Page({
       if (!this.data.loading) {
         this.data.loading = true;
         wx.showNavigationBarLoading();
-        this.refundList(() => {
+        this.fundingRefundList(() => {
           wx.hideNavigationBarLoading();
           this.data.loading = false;
         });

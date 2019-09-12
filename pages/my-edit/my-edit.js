@@ -14,7 +14,7 @@ Page({
     ],
     age: 0,
     tel: '',
-    desc: '',
+    sign: '',
     avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqSIJibzjcxlUuahhmKCQJMB0icG66ia922MR7Bf4YkD4AU0H6zEK8FIsbdrJfGCAhv5g1CL70R5t06g/132',
     loading: false,
     input_modal: false,
@@ -48,7 +48,7 @@ Page({
         sex: res.sex - 1,
         age: res.age,
         tel: res.tel || '',
-        desc: res.desc || '',
+        sign: res.sign || '',
         avatar: res.avatar.indexOf('http') === 0 ? res.avatar : app.my_config.base_url + '/' + res.avatar
       });
     }, null, () => {
@@ -70,10 +70,6 @@ Page({
         app.toast('请选择性别');
       } else if (!app.my_config.reg.natural.test(data.age)) {
         app.toast('请填写正确的年龄');
-      } else if (!data.tel.trim()) {
-        app.toast('请填写手机号');
-      } else if (!app.my_config.reg.tel.test(data.tel)) {
-        app.toast('手机号格式不正确');
       } else if (!data.avatar) {
         app.toast('请上传头像');
       } else {
@@ -85,8 +81,7 @@ Page({
           nickname: data.nickname,
           sex: data.sex_data[data.sex].value,
           age: data.age,
-          tel: data.tel,
-          desc: data.desc,
+          sign: data.sign,
           avatar: data.avatar.indexOf('https://wx.qlogo.cn/') === 0 ? data.avatar : data.avatar.replace(app.my_config.base_url + '/', '')
         };
 
@@ -103,6 +98,8 @@ Page({
               wx.navigateBack({ delta: 1 });
             }
           });
+        }, null, () => {
+          this.setData({ loading: false });
         });
       }
     }
@@ -166,7 +163,7 @@ Page({
         maxlength = 11;
         input_type = 'number';
         break;
-      case 'desc':
+      case 'sign':
         maxlength = 30;
         input_type = 'text';
         break;
@@ -198,5 +195,18 @@ Page({
   },
   hide_input_modal() {
     this.setData({ input_modal: false });
+  },
+  // 获取用户电话号码
+  getPhoneNumber(e) {
+    if (e.detail.encryptedData) {
+      let post = {
+        iv: e.detail.iv,
+        encryptedData: e.detail.encryptedData
+      };
+      app.ajax('login/getPhoneNumber', post, () => {
+        this.mydetail();
+        app.modal('授权成功');
+      });
+    }
   }
 });

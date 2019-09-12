@@ -15,7 +15,8 @@
         <view class="title">{{work.title}}</view>
         <view class="desc">{{work.desc}}</view>
         <view class="img-box">
-          <image bindtap="preview" data-index="{{index}}" src="{{item}}" wx:for="{{work.pics}}" mode="aspectFill" lazy-load></image>
+          <image bindtap="preview" data-index="{{index}}" src="{{item}}" wx:for="{{work.pics}}" mode="aspectFill"
+                 lazy-load></image>
           <image class="vh" wx:for="{{work.flex_pad}}"></image>
         </view>
       </view>
@@ -36,6 +37,7 @@
       </view>
     </view>
 
+    <!-- 接单（工厂角色） -->
     <view class="bidding-box" wx:if="{{role == 3}}">
       <button bindtap="bidding" class="line-btn" disabled="{{!work.bidding_btn}}" wx:if="{{role == 3}}">接单</button>
       <view class="form1" wx:if="{{work.bidding_btn}}">
@@ -49,6 +51,27 @@
             </view>
           </view>
         </view>
+      </view>
+    </view>
+
+    <!-- 接单列表（博物馆） -->
+    <view class="bidding-box2" wx:if="{{role == 1 && uid == work.req_uid}}">
+      <view class="title">接单工厂</view>
+      <view class="bidding-list" wx:if="{{bidding_list.length != 0}}">
+        <view class="bidding" wx:for="{{bidding_list}}" wx:key="id">
+          <view class="header">
+            <view class="left">
+              <image src="{{item.avatar}}" class="head-pic"></image>
+              <view class="org">{{item.org}}</view>
+            </view>
+            <button bindtap="chooseFactory" data-id="{{item.id}}" class="choose-btn" wx:if="{{choose_bindex == -1}}">选定</button>
+            <button class="choose-btn choosed" wx:if="{{choose_bindex != -1 && item.choose == 1}}">已中标</button>
+          </view>
+          <view class="desc">{{item.desc}}</view>
+        </view>
+      </view>
+      <view class="nodata" wx:if="{{bidding_list.length == 0}}">
+        暂无接单
       </view>
     </view>
   </view>
