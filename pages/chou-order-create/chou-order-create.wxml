@@ -46,23 +46,26 @@
       <view class="content">
         <view class="bi-box">
           <view class="bi">¥</view>
-          <input bindinput="bind_input" data-name="pay_price" type="digit" value="{{pay_price}}" />
+          <input bindinput="bind_input" data-name="pay_price" type="digit" value="{{pay_price}}"/>
         </view>
       </view>
     </view>
-<!--    <view class="form-item">-->
-<!--      <view class="label">支付金额</view>-->
-<!--      <view class="content">¥{{goods.price * num}}</view>-->
-<!--    </view>-->
+    <!--    <view class="form-item">-->
+    <!--      <view class="label">支付金额</view>-->
+    <!--      <view class="content">¥{{goods.price * num}}</view>-->
+    <!--    </view>-->
     <view class="form-item2">
       <view class="label">填写备注</view>
-      <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." style="padding: {{textarea_padding}};"/>
+      <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50"
+                placeholder="备注内容..." style="padding: {{textarea_padding}};"/>
     </view>
   </view>
 
-  <view class="bottom-btns">
-    <button class="amount" wx:if="{{goods_id == 0}}">支付金额：¥{{pay_price}}</button>
-    <button class="amount" wx:else>支付金额：¥{{visible_price}}</button>
-    <button bindtap="fundingPurchase" loading="{{sub_loading}}" class="confirm">确认支付</button>
-  </view>
+  <form bindsubmit="fundingPurchase" report-submit>
+    <view class="bottom-btns">
+      <button class="amount" wx:if="{{goods_id == 0}}">支付金额：¥{{pay_price}}</button>
+      <button class="amount" wx:else>支付金额：¥{{visible_price}}</button>
+      <button form-type="submit" loading="{{sub_loading}}" class="confirm">确认支付</button>
+    </view>
+  </form>
 </view>

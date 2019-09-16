@@ -253,7 +253,9 @@ Page({
         });
         wx.navigateTo({ url: '/pages/chou-refund-list/chou-refund-list' });
         this.refresh();
-      }, null, () => {
+      }, err => {
+        app.modal(err.message);
+      }, () => {
         wx.hideLoading();
       });
     }

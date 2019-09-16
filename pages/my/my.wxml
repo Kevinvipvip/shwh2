@@ -7,18 +7,24 @@
     <image src="/images/my-bg.jpg" class="avatar-bg"></image>
     <view class="inner">
       <view class="header-box">
-        <image src="{{user.avatar}}" class="tou" wx:if="{{user.user_auth == 1}}"></image>
-        <image src="/images/default.png" class="tou" wx:else></image>
+        <view class="tou">
+          <image src="{{user.avatar}}" class="hdp" wx:if="{{user.user_auth == 1}}"></image>
+          <image src="/images/default.png" class="tou" wx:else></image>
+
+          <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>
+          <image wx:else src="/icons/zuan-active.png" class="vip"></image>
+        </view>
         <view class="you">
           <view class="nickname" wx:if="{{user.user_auth == 1}}">{{user.nickname}}</view>
           <view class="nickname" wx:else><button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{2}}">授权登陆</button></view>
-          <view class="role-text" wx:if="{{user.role_check == 2}}">我是{{user.role_text}}</view>
-          <view class="quan">
-            <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>
-            <image wx:else src="/icons/zuan-active.png" class="vip"></image>
+          <view class="role-text active" wx:if="{{user.role_check == 2}}">{{user.role_text}}</view>
+          <view class="role-text" wx:else>普通用户</view>
+<!--          <view class="quan">-->
+<!--            <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>-->
+<!--            <image wx:else src="/icons/zuan-active.png" class="vip"></image>-->
 
-            <navigator url="/pages/recharge/recharge" wx:if="{{user.vip != 1}}" class="vip-btn">我要成为会员</navigator>
-          </view>
+<!--            <navigator url="/pages/recharge/recharge" wx:if="{{user.vip != 1}}" class="vip-btn">我要成为会员</navigator>-->
+<!--          </view>-->
         </view>
 <!--        <view class="mess-box">-->
 <!--          <image src="/icons/bell.png"></image>-->
@@ -26,36 +32,36 @@
       </view>
       <view class="sign-box">
         <view class="sign-progress">
-          <view class="sign active">
-            <view class="number">1</view>
-            <view class="today">+1</view>
+          <view class="sign {{item.sign ? 'active' : ''}} {{index == sign_day - 1 ? 'last-active' : ''}}" wx:for="{{sign_list}}">
+            <view class="number">{{index + 1}}</view>
+            <view class="today">{{item.score >= 0 ? '+' : '-'}}{{item.score}}</view>
           </view>
-          <view class="sign active">
-            <view class="number">2</view>
-            <view class="today">+1</view>
-          </view>
-          <view class="sign active">
-            <view class="number">3</view>
-            <view class="today">+1</view>
-          </view>
-          <view class="sign active last-active today-active">
-            <view class="number">4</view>
-<!--            <view class="today">+5</view>-->
-          </view>
-          <view class="sign">
-            <view class="number">5</view>
-            <view class="today">+1</view>
-          </view>
-          <view class="sign">
-            <view class="number">6</view>
-            <view class="today">+1</view>
-          </view>
-          <view class="sign">
-            <view class="number">7</view>
-            <view class="today">+1</view>
-          </view>
+<!--          <view class="sign active">-->
+<!--            <view class="number">2</view>-->
+<!--            <view class="today">+1</view>-->
+<!--          </view>-->
+<!--          <view class="sign active">-->
+<!--            <view class="number">3</view>-->
+<!--            <view class="today">+1</view>-->
+<!--          </view>-->
+<!--          <view class="sign active last-active today-active">-->
+<!--            <view class="number">4</view>-->
+<!--            <view class="today">+50积分</view>-->
+<!--          </view>-->
+<!--          <view class="sign">-->
+<!--            <view class="number">5</view>-->
+<!--            <view class="today">+1</view>-->
+<!--          </view>-->
+<!--          <view class="sign">-->
+<!--            <view class="number">6</view>-->
+<!--            <view class="today">+1</view>-->
+<!--          </view>-->
+<!--          <view class="sign">-->
+<!--            <view class="number">7</view>-->
+<!--            <view class="today">+1</view>-->
+<!--          </view>-->
         </view>
-        <button class="sign-btn">签到</button>
+        <button bindtap="userSign" class="sign-btn" disabled="{{sign_today}}">签到</button>
       </view>
     </view>
   </view>
@@ -107,6 +113,10 @@
 <!--        </navigator>-->
 <!--      </view>-->
 <!--    </view>-->
+    <navigator url="/pages/recharge/recharge" class="vip-box">
+      <image src="/images/vip-bg.jpg" class="vip-bg"></image>
+      <view class="text">{{user.vip != 1 ? '立即开通' : '立即续费'}}</view>
+    </navigator>
   </view>
 
   <view class="menu">
@@ -131,7 +141,7 @@
     <navigator class="menu-item" url="/pages/activity-work-list/activity-work-list" wx:if="{{user.role_check == 2 && user.role == 1}}">
       <view class="left-box">
         <view class="icon-box">
-          <image src="/icons/menu2.png" class="icon-menu2"></image>
+          <image src="/icons/menu12.png" class="icon-menu12"></image>
         </view>
       </view>
       <view class="menu-text">活动接单</view>

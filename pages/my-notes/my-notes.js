@@ -225,7 +225,7 @@ Page({
   },
   // 跳转编辑
   to_edit(e) {
-    wx.navigateTo({ url: '/pages/note-edit/note-edit?id=' + e.currentTarget.dataset.id });
+    wx.navigateTo({ url: '/pages/note-publish/note-publish?id=' + e.currentTarget.dataset.id });
   },
   // 跳转详情
   to_detail(e) {

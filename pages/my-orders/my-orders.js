@@ -257,7 +257,9 @@ Page({
         });
         wx.navigateTo({ url: '/pages/refund-list/refund-list' });
         that.refresh();
-      }, null, () => {
+      }, err => {
+        app.modal(err.message);
+      }, () => {
         wx.hideLoading();
       });
     }

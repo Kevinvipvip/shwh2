@@ -2,22 +2,48 @@ const app = getApp();
 
 Page({
   data: {
+    id: 0,
     textarea_padding: '15rpx',
 
     title: '',  // 笔记标题
     content: '',  // 笔记内容
     content_count: 0,
     pics: [],
+    reason: '',
 
     flex_pad: []
   },
-  onLoad() {
+  onLoad(options) {
     let phone = wx.getSystemInfoSync();
     if (phone.platform === 'ios') {
       this.setData({ textarea_padding: '0rpx 5rpx' })
     }
 
+    if (options.id) {
+      this.setData({ id: options.id });
+      this.getNoteDetail();
+    }
+
     app.qiniu_init();
+  },
+  // 笔记详情
+  getNoteDetail() {
+    app.ajax('note/getNoteDetail', { note_id: this.data.id }, res => {
+      app.format_img(res.pics);
+      let pics = [];
+      for (let i = 0; i < res.pics.length; i++) {
+        pics.push({ pic: res.pics[i] });
+      }
+
+      this.setData({
+        title: res.title,
+        content: res.content,
+        content_count: res.content.length,
+        pics: pics,
+        reason: res.reason,
+        flex_pad: app.null_arr(res.pics.length + 1, 3)
+      });
+    });
   },
   // 删除图片
   img_delete(e) {
@@ -26,7 +52,8 @@ Page({
     let pics = this.data.pics;
     pics.splice(index, 1);
     that.setData({
-      pics: pics
+      pics: pics,
+      flex_pad: app.null_arr(pics.length + 1, 3)
     });
   },
   // 上传图片
@@ -43,7 +70,7 @@ Page({
         for (let i = 0; i < res.length; i++) {
           let tname = app.qiniu_tname() + res[i].ext;
           app.qiniu_upload(res[i].path, tname, () => {
-            this.data.pics.push({pic: app.format_img(tname)});
+            this.data.pics.push({ pic: app.format_img(tname) });
             this.setData({
               pics: this.data.pics,
               flex_pad: app.null_arr(this.data.pics.length + 1, 3)
@@ -66,9 +93,10 @@ Page({
       ['pics[' + e.currentTarget.dataset.index + '].height']: e.detail.height
     });
   },
-  noteRelease() {
+  // 发布/编辑笔记
+  noteRelease(e) {
     let data = this.data;
-    
+
     if (!data.title.trim()) {
       app.toast('请填写笔记标题');
     } else if (!data.content.trim()) {
@@ -76,6 +104,8 @@ Page({
     } else if (data.pics.length === 0) {
       app.toast('请至少上传一张图片');
     } else {
+      app.collectFormid(e.detail.formId);
+
       let post = {
         title: data.title,
         content: data.content,
@@ -85,16 +115,41 @@ Page({
         height: data.pics[0].height
       };
 
-      app.ajax('note/noteRelease', post, () => {
-        app.modal('发布成功，将进入审核，请耐心等待', () => {
-          let notes = app.get_page('pages/my-notes/my-notes');
-          if (notes) {
-            notes.refresh();
-            wx.navigateBack({ delta: 1 });
-          } else {
-            wx.redirectTo({ url: '/pages/my-notes/my-notes' });
-          }
-        });
+      let cmd;
+      if (data.id !== 0) {
+        post.id = this.data.id;
+        cmd = 'my/noteMod';
+      } else {
+        cmd = 'note/noteRelease';
+      }
+
+      wx.showLoading({ mask: true });
+      app.ajax(cmd, post, () => {
+        if (data.id !== 0) {
+          app.modal('修改成功', () => {
+            let notes = app.get_page('pages/my-notes/my-notes');
+            if (notes) {
+              notes.refresh();
+              wx.navigateBack({ delta: 1 });
+            } else {
+              wx.redirectTo({ url: '/pages/my-notes/my-notes' });
+            }
+          });
+        } else {
+          app.modal('发布成功，将进入审核，请耐心等待', () => {
+            let notes = app.get_page('pages/my-notes/my-notes');
+            if (notes) {
+              notes.refresh();
+              wx.navigateBack({ delta: 1 });
+            } else {
+              wx.redirectTo({ url: '/pages/my-notes/my-notes' });
+            }
+          });
+        }
+      }, err => {
+        app.modal(err.message);
+      }, () => {
+        wx.hideLoading();
       });
     }
   },
@@ -109,7 +164,7 @@ Page({
   bind_input(e) {
     app.bind_input(e, this);
     if (e.currentTarget.dataset.name === 'content') {
-      this.setData({content_count: this.data.content.length});
+      this.setData({ content_count: this.data.content.length });
     }
   }
 });

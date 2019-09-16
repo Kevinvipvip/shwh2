@@ -8,7 +8,8 @@
             autoplay="{{true}}"
             class="tou-swiper"
             indicator-color="#ffefb2"
-            indicator-active-color="#ffda49">
+            indicator-active-color="#ffda49"
+            circular>
       <swiper-item wx:for="{{slide_list}}" wx:key="id">
         <image src="{{item.pic}}" bindtap="jump" data-page="{{item.url}}" lazy-load></image>
       </swiper-item>

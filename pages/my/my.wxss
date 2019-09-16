@@ -1,6 +1,6 @@
 .page {
   position: relative;
-  background: #f9f9f9;
+  /* background: #f9f9f9; */
 }
 
 .navigation-box {
@@ -64,30 +64,56 @@
   width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
+  position: relative;
+}
+
+.inner .header-box .tou .hdp {
+  position: absolute;
+  width: 160rpx;
+  height: 160rpx;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+}
+
+.inner .header-box .tou .vip {
+  width: 45rpx;
+  height: 30rpx;
+  position: absolute;
+  bottom: 0;
+  right: 7rpx;
 }
 
 .inner .header-box .you {
   flex-grow: 1;
   margin-left: 23rpx;
   line-height: 1;
+  display: flex;
+  align-items: center;
 }
 
 .inner .header-box .you .nickname {
-  font-size: 32rpx;
+  font-size: 38rpx;
   color: #fff;
   opacity: 0.9;
+  line-height: 1;
 }
 
 .inner .header-box .you .role-text {
-  color: #fff;
+  color: #929294;
   font-size: 24rpx;
-  margin-top: 15rpx;
   line-height: 1;
-  border-radius: 4rpx;
-  border: 2rpx solid rgba(255, 255, 255, 0.9);
   display: inline-block;
   vertical-align: bottom;
   padding: 8rpx 15rpx;
+  border-radius: 20rpx;
+  background-image: linear-gradient(90deg, #e2e1e4 0%, #c9c9cb 100%);
+  margin-left: 17rpx;
+}
+
+.inner .header-box .you .role-text.active {
+  background-image: linear-gradient(90deg, #ffd07f 0%, #ffb22c 100%);
+  color: #333;
 }
 
 .inner .header-box .you .nickname button {
@@ -141,7 +167,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 40rpx;
+  margin-top: 55rpx;
 }
 
 .inner .sign-box .sign-progress {
@@ -201,11 +227,7 @@
   background: #fec448;
 }
 
-.inner .sign-box .sign-progress .sign .today {
-  display: none;
-}
-
-.inner .sign-box .sign-progress .sign.today-active .today {
+.inner .sign-box .sign-progress .sign.active .today {
   display: block;
   position: absolute;
   left: 50%;
@@ -213,7 +235,28 @@
   color: #fff;
   bottom: 50rpx;
   transform: translateX(-50%);
+  white-space: nowrap;
 }
+
+/*.inner .sign-box .sign-progress .sign.today-active .today {*/
+
+/*  display: block;*/
+
+/*  position: absolute;*/
+
+/*  left: 50%;*/
+
+/*  margin: auto;*/
+
+/*  color: #fff;*/
+
+/*  bottom: 50rpx;*/
+
+/*  transform: translateX(-50%);*/
+
+/*  white-space: nowrap;*/
+
+/*}*/
 
 .inner .sign-box .sign-progress .sign.active {
   background: #fec448;
@@ -235,15 +278,19 @@
   margin: 0;
 }
 
+.inner .sign-box .sign-btn[disabled] {
+  background: #bbb;
+}
+
 .tran-bg {
-  background: linear-gradient(to bottom, #fff, #f9f9f9, #fff);
-  padding-bottom: 25rpx;
+  /* background: linear-gradient(to bottom, #fff, #f9f9f9, #fff); */
+  padding-bottom: 46rpx;
 }
 
 .count-box {
   margin: 0 24rpx;
-  height: 173rpx;
-  background-color: #fff;
+  height: 134rpx;
+  background-color: #fafafa;
   border-radius: 4rpx;
   display: flex;
   align-items: center;
@@ -265,16 +312,17 @@
 }
 
 .count-box .count-item .number {
-  font-size: 48rpx;
-  color: #000;
+  font-size: 40rpx;
+  color: #333;
   letter-spacing: 2rpx;
 }
 
 .count-box .count-item .desc {
-  margin-top: 31rpx;
+  margin-top: 13rpx;
   font-size: 28rpx;
   color: #999;
   letter-spacing: 1rpx;
+  opacity: 0.9;
 }
 
 .order-box {
@@ -337,6 +385,35 @@
   font-size: 28rpx;
   letter-spacing: 1rpx;
   color: #999;
+}
+
+.vip-box {
+  position: relative;
+  margin: 46rpx 24rpx 0;
+  box-shadow: 0 1rpx 60rpx 0 rgba(229, 229, 229, 0.75);
+  border-radius: 10rpx;
+  height: 110rpx;
+}
+
+.vip-box .vip-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.vip-box .text {
+  position: absolute;
+  z-index: 1;
+  line-height: 110rpx;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 45rpx;
+  font-size: 28rpx;
+  color: #956526;
+  line-height: 110rpx;
 }
 
 .menu {
@@ -420,6 +497,11 @@
 .menu .menu-item .left-box .icon-menu11 {
   width: 44rpx;
   height: 41rpx;
+}
+
+.menu .menu-item .left-box .icon-menu12 {
+  width: 48rpx;
+  height: 54rpx;
 }
 
 .menu .menu-item .menu-text {

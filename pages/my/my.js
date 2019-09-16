@@ -4,13 +4,18 @@ const utils = require('../../utils/utils.js');
 Page({
   data: {
     full_loading: true,
-    user: {}
+    user: {},
+
+    sign_list: [],
+    sign_day: 0,
+    sign_today: false
   },
   onLoad() {
     this.setData({
       statusBarHeight: app.my_config.statusBarHeight,
       topBarHeight: app.my_config.topBarHeight
     });
+    this.checkSign();
   },
   onShow() {
     this.mydetail(() => {
@@ -69,6 +74,7 @@ Page({
       wx.hideLoading();
       wx.stopPullDownRefresh();
     });
+    this.checkSign();
   },
   vip_date() {
     let date_text = utils.date_format(new Date(this.data.user.vip_time * 1000), 'yyyy年MM月dd日到期');
@@ -97,5 +103,47 @@ Page({
         }
       });
     }
+  },
+  // 检测签到状态
+  checkSign() {
+    app.ajax('my/checkSign', null, res => {
+      res.list.reverse();
+      let sign_list = [];
+      for (let i = 0; i < 7; i++) {
+        if (res.list[i]) {
+          sign_list.push({
+            score: res.list[i].score,
+            sign: true
+          });
+        } else {
+          sign_list.push({
+            score: 0,
+            sign: false
+          });
+        }
+      }
+      this.setData({
+        sign_list: sign_list,
+        sign_day: res.days,
+        sign_today: res.today
+      })
+      // this.sign
+    });
+  },
+  // 用户签到
+  userSign() {
+    app.ajax('my/userSign', null, res => {
+      app.modal('签到成功', () => {
+        this.data.sign_list[this.data.sign_day] = {
+          score: res.days,
+          sign: true
+        };
+        this.setData({
+          sign_list: this.data.sign_list,
+          sign_day: this.data.sign_day + 1,
+          sign_today: true
+        });
+      });
+    });
   }
 });

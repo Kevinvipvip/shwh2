@@ -44,6 +44,7 @@ Page({
   getReqDetail(complete) {
     app.ajax('api/getReqDetail', { req_id: this.data.id }, (res) => {
       app.format_img(res, 'cover');
+      app.format_img(res, 'video_url');
       app.avatar_format(res);
       app.time_format(res, 'start_time');
       app.time_format(res, 'deadline');
@@ -190,8 +191,6 @@ Page({
         app.time_format(res, 'end_time');
         app.qian_format(res, 'curr_money');
         app.qian_format(res, 'need_money');
-
-        console.log(res, 'chou');
 
         this.setData({ funding_list: this.data.funding_list.concat(res) });
       }

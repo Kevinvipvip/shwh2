@@ -38,8 +38,8 @@
     </view>
 
     <!-- 接单（工厂角色） -->
-    <view class="bidding-box" wx:if="{{role == 3}}">
-      <button bindtap="bidding" class="line-btn" disabled="{{!work.bidding_btn}}" wx:if="{{role == 3}}">接单</button>
+    <form bindsubmit="bidding" report-submit class="bidding-box" wx:if="{{role == 3}}">
+      <button form-type="submit" class="line-btn" disabled="{{!work.bidding_btn}}" wx:if="{{role == 3}}">接单</button>
       <view class="form1" wx:if="{{work.bidding_btn}}">
         <view class="form-item">
           <view class="textarea-box">
@@ -52,7 +52,7 @@
           </view>
         </view>
       </view>
-    </view>
+    </form>
 
     <!-- 接单列表（博物馆） -->
     <view class="bidding-box2" wx:if="{{role == 1 && uid == work.req_uid}}">

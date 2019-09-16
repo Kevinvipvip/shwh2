@@ -3,7 +3,7 @@
     提示：创意来自“{{idea.nickname}}”的“{{idea.title}}”
   </view>
   <view class="notice warning" wx:if="{{id != 0}}">
-    驳回原因：{{reason}}
+    驳回原因：{{reason || '未知'}}
   </view>
   <view class="form1">
     <view class="form-item">

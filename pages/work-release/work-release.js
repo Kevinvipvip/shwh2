@@ -11,6 +11,7 @@ Page({
     desc_count: 0,
     pics: [],  // 作品图片
     flex_pad: [],
+    reason: '',
 
     idea_id: 0,  // 创意id（选填）
     idea: {}
@@ -29,7 +30,7 @@ Page({
     }
 
     if (options.id) {
-      this.data.id = options.id;
+      this.setData({ id: options.id });
       this.worksDetail();
     }
 
@@ -45,6 +46,7 @@ Page({
         desc: res.desc,
         desc_count: res.desc.length,
         pics: res.pics,
+        reason: res.reason,
         flex_pad: app.null_arr(res.pics.length + 1, 3)
       });
     });
@@ -96,7 +98,7 @@ Page({
       this.setData({desc_count: this.data.desc.length});
     }
   },
-  // 上传作品
+  // 上传/编辑作品
   uploadWorks() {
     let data = this.data;
     if (!data.title.trim()) {
@@ -112,8 +114,7 @@ Page({
         req_id: data.req_id,
         title: data.title,
         desc: data.desc,
-        pics: data.pics,
-        reason: data.reason
+        pics: data.pics
       };
 
       let cmd;

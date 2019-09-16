@@ -1,9 +1,11 @@
+var WxParse = require('../../wxParse/wxParse.js');
 const app = getApp();
 
 Page({
   data: {
     id: 0,
-    funding: {}
+    funding: {},
+    flex_pad: []
   },
   onLoad(options) {
     this.data.id = options.id;
@@ -20,12 +22,21 @@ Page({
       app.qian_format(res, 'curr_money');
       app.qian_format(res, 'need_money');
 
-      app.format_img(res.works_pics);
       app.avatar_format(res, 'avatar');
+      res.works_pics = res.works_pics.slice(0, 3);
+      app.format_img(res.works_pics);
+      let flex_pad = app.null_arr(res.works_pics.length, 3);
 
       res.ago_text = Math.ceil(res.time_count / 86400);
 
-      this.setData({funding: res});
+      this.setData({
+        funding: res,
+        flex_pad: flex_pad
+      });
+
+      let rich_text = res.req_detail;
+      rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
+      WxParse.wxParse('rich_text', 'html', rich_text, this);
     });
   },
   // 去重置商品页

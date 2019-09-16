@@ -82,8 +82,10 @@ Page({
     }
   },
   // 工厂接单
-  bidding() {
+  bidding(e) {
     if (!this.data.loading) {
+      app.collectFormid(e.detail.formId);
+
       app.confirm('是否接单？', () => {
         this.data.loading = true;
 

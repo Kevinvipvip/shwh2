@@ -114,6 +114,7 @@ page {
     padding: 8rpx 18rpx;
     background: #ddd;
     border-radius: 5rpx;
+    z-index: 1;
 }
 
 .list > view .note .no {
@@ -132,6 +133,7 @@ page {
     background: #ddd;
     border-radius: 5rpx;
     color: #666;
+    z-index: 1;
 }
 
 .list > view .note:first-child {

@@ -82,8 +82,10 @@ Page({
     app.bind_input(e, this);
   },
   // 众筹商品下单
-  fundingPurchase() {
+  fundingPurchase(e) {
     if (!this.data.sub_loading) {
+      app.collectFormid(e.detail.formId);
+
       let data = this.data;
       let valid = false;
       let post;

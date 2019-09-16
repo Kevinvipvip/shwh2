@@ -19,7 +19,7 @@ App({
     // api: 'https://www.caves.vip/api/',  // 正式（原）
     base_url: 'https://caves.wcip.net',  // 正式
     api: 'https://caves.wcip.net/api/',  // 正式
-    qiniu_base: 'http://qiniu.wcip.net/',
+    qiniu_base: 'http://qiniu.wcip.net',
     // qiniu_base: 'http://pwu6oxfmm.bkt.clouddn.com/',
     default_img: '/images/default.png',
     reg: {
@@ -318,7 +318,7 @@ App({
         obj[i] = obj[i] ? obj[i].replace(this.my_config.qiniu_base + '/', '') : '';
       }
     } else {
-      return  obj ? obj.replace(this.my_config.qiniu_base + '/', '') : '';
+      return obj ? obj.replace(this.my_config.qiniu_base + '/', '') : '';
     }
   },
   // 时间格式化
@@ -384,9 +384,9 @@ App({
         default:
           page = page.split('?');
           if (page[1]) {
-            wx.navigateTo({ url: `/pages/${page[0]}/${page[0]}` });
-          } else {
             wx.navigateTo({ url: `/pages/${page[0]}/${page[0]}?${page[1]}` });
+          } else {
+            wx.navigateTo({ url: `/pages/${page[0]}/${page[0]}` });
           }
           break;
       }
@@ -472,9 +472,9 @@ App({
           }
 
           res.tempFiles[i].ext = res.tempFiles[i].path.substr(res.tempFiles[i].path.lastIndexOf('.') + 1);
-          
+
           console.log(ext, res.tempFiles[i].ext, ext.indexOf(res.tempFiles[i].ext));
-          
+
           if (ext.indexOf(res.tempFiles[i].ext) === -1) {
             this.toast('请上传合法的文件格式');
             return callback(false);
@@ -494,6 +494,12 @@ App({
         address: res.provincename + ' ' + res.cityname + ' ' + res.countyname + ' ' + res.detail
       };
       callback(address);
+    });
+  },
+  // 收集formid-collectFormid
+  collectFormid(formid) {
+    this.ajax('message/collectFormid', {formid: formid}, null, () => {
+      // 啥都不干
     });
   }
 });

@@ -782,7 +782,7 @@ button::after {
 
 .ac-detail .desc {
   margin-top: 35rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
   line-height: 36rpx;
   color: rgba(0, 0, 0, 0.6);
   display: -webkit-box;
