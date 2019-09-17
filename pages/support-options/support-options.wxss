@@ -76,16 +76,16 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 20rpx;
+  justify-content: space-between;
 }
 
 .support .img-box image {
   margin-bottom: 24rpx;
-  width: 142rpx;
-  height: 142rpx;
-  margin-right: 24rpx;
+  width: 218rpx;
+  height: 218rpx;
   border-radius: 4rpx;
 }
 
-.support .img-box image:nth-last-child(-n + 4) {
+.support .img-box image:nth-last-child(-n + 3) {
   margin-bottom: 0;
 }

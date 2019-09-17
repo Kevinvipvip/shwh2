@@ -18,10 +18,11 @@
         </view>
         <view class="yi-zhi">已支持{{item.sales}}次</view>
       </view>
-      <view class="title">{{item.title}}</view>
+      <view class="title">{{item.name}}</view>
       <view class="desc">{{item.desc}}</view>
       <view class="img-box">
         <image catchtap="preview" data-pic_index="{{pic_index}}" data-index="{{index}}" src="{{pic_item}}" wx:for-index="pic_index" wx:for-item="pic_item" wx:for="{{item.pics}}" mode="aspectFill" lazy-load></image>
+        <image class="vh" wx:for="{{item.flex_pad}}"></image>
       </view>
     </view>
   </view>

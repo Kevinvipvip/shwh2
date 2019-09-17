@@ -41,6 +41,10 @@
   justify-content: center;
 }
 
+.form-item .content .counter .item.disabled {
+  opacity: 0.6;
+}
+
 .form-item .content .counter .jian {
   margin-right: 16rpx;
   width: 40rpx;
@@ -56,6 +60,8 @@
   font-size: 26rpx;
   padding: 0 13rpx;
   color: #333;
+  text-align: center;
+  width: 100rpx;
 }
 
 .form-item .content .counter .plus {

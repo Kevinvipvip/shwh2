@@ -27,14 +27,14 @@ Page({
       app.format_img(res.works_pics);
       let flex_pad = app.null_arr(res.works_pics.length, 3);
 
-      res.ago_text = Math.ceil(res.time_count / 86400);
+      res.ago_text = res.time_count > 0 ? Math.ceil(res.time_count / 86400) + '天' : '已结束';
 
       this.setData({
         funding: res,
         flex_pad: flex_pad
       });
 
-      let rich_text = res.req_detail;
+      let rich_text = res.content;
       rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
       WxParse.wxParse('rich_text', 'html', rich_text, this);
     });

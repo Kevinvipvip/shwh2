@@ -23,6 +23,7 @@ Page({
     app.ajax('api/fundingGoodsList', post, res => {
       for (let i = 0; i < res.length; i++) {
         app.format_img(res[i].pics);
+        res[i].flex_pad = app.null_arr(res[i].pics.length, 3);
       }
       this.setData({ goods_list: res });
     });

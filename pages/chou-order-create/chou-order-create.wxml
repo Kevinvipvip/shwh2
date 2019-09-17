@@ -31,11 +31,11 @@
       <view class="label">支付份数</view>
       <view class="content">
         <view class="counter">
-          <view bindtap="number_change" data-type="{{1}}" class="item jian">
+          <view bindtap="number_change" data-type="{{1}}" class="item jian {{num == 1 ? 'disabled' : ''}}">
             <image src="/icons/jian.png"></image>
           </view>
-          <view class="item count">{{num}}</view>
-          <view bindtap="number_change" data-type="{{2}}" class="item plus">
+          <input bindinput="bind_input" data-name="num" type="number" class="item count" value="{{num}}" maxlength="4" />
+          <view bindtap="number_change" data-type="{{2}}" class="item plus {{num == 9999 ? 'disabled' : ''}}">
             <image src="/icons/plus.png"></image>
           </view>
         </view>

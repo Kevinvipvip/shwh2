@@ -127,7 +127,6 @@ Page({
         sign_day: res.days,
         sign_today: res.today
       })
-      // this.sign
     });
   },
   // 用户签到
@@ -135,7 +134,7 @@ Page({
     app.ajax('my/userSign', null, res => {
       app.modal('签到成功', () => {
         this.data.sign_list[this.data.sign_day] = {
-          score: res.days,
+          score: res.score,
           sign: true
         };
         this.setData({

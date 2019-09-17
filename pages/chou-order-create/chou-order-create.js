@@ -66,20 +66,23 @@ Page({
     let type = e.currentTarget.dataset.type;
     if (type === 1) {
       // 减
-      if (this.data.num !== 1) {
-        this.setData({ num: this.data.num - 1 });
+      if (this.data.num > 1) {
+        this.setData({ num: parseInt(this.data.num) - 1 });
         this.computed_price();
       }
     } else {
       // 加
-      if (this.data.num !== 99) {
-        this.setData({ num: this.data.num + 1 });
+      if (this.data.num < 9999) {
+        this.setData({ num: parseInt(this.data.num) + 1 });
         this.computed_price();
       }
     }
   },
   bind_input(e) {
     app.bind_input(e, this);
+    if (e.currentTarget.dataset.name === 'num') {
+      this.computed_price();
+    }
   },
   // 众筹商品下单
   fundingPurchase(e) {
@@ -92,9 +95,6 @@ Page({
 
       if (this.data.goods_id === 0) {
         // 无偿
-        
-        console.log(data.pay_price, '无偿');
-        
         if (!data.pay_price) {
           app.toast('请填写支持金额');
         } else if (!app.my_config.reg.price.test(data.pay_price)) {
@@ -111,6 +111,8 @@ Page({
         // 商品
         if (!data.receiver) {
           app.toast('请选择收货地址');
+        } else if (!app.my_config.reg.positive.test(data.num)) {
+          app.toast('请填写正确的数量');
         } else {
           valid = true;
           post = {
@@ -165,5 +167,17 @@ Page({
   // 计算显示金额（金额为商品金额*数量时）
   computed_price() {
     this.setData({ visible_price: Number(this.data.goods.price * this.data.num).toFixed(2) });
+  },
+  // 选择收货地址，在其他页调用
+  choose_address(receiver, tel, address, callback) {
+    this.setData({
+      receiver: receiver,
+      tel: tel,
+      address: address
+    }, () => {
+      if (callback) {
+        callback();
+      }
+    });
   }
 });

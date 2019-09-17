@@ -27,6 +27,7 @@ App({
       phone: /\d{3,4}-\d{7,8}/,
       email: /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/,
       natural: /^([1-9]\d*|0)$/,
+      positive: /^[1-9]\d*$/,
       price: /^([1-9]\d*|0)(\.\d{1,2})?$/
     },
     statusBarHeight: 0,
@@ -498,8 +499,10 @@ App({
   },
   // 收集formid-collectFormid
   collectFormid(formid) {
-    this.ajax('message/collectFormid', {formid: formid}, null, () => {
-      // 啥都不干
-    });
+    if (formid !== 'the formId is a mock one') {
+      this.ajax('message/collectFormid', {formid: formid}, null, () => {
+        // 啥都不干
+      });
+    }
   }
 });

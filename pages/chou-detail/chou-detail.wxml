@@ -34,8 +34,8 @@
             <view class="desc">目标金额</view>
           </view>
           <view class="remaining">
-            <view class="bi">{{funding.ago_text}}天</view>
-            <view class="desc">剩余时间</view>
+            <view class="bi">{{funding.ago_text}}</view>
+            <view class="desc" wx:if="{{time_count > 0 }}">剩余时间</view>
           </view>
         </view>
       </view>
