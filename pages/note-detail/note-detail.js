@@ -21,7 +21,7 @@ Page({
     focus: false,  // 是否关注
     focus_loading: false
   },
-  onLoad: function (options) {
+  onLoad(options) {
     this.data.note_id = options.id;
     this.setData({my_uid: app.user_data.uid});
     this.getNoteDetail(() => {
@@ -62,17 +62,21 @@ Page({
     this.setData({release_focus: false});
   },
   commentAdd() {
-    let post = {
-      token: app.user_data.token,
-      note_id: this.data.note_id,
-      content: this.data.content
-    };
+    if (this.data.content.trim()) {
+      wx.showLoading({ mask: true });
 
-    app.ajax('note/commentAdd', post, (res) => {
-      app.toast('评论成功');
-      this.setData({content: ''});
-      this.getNoteDetail();
-    });
+      let post = {
+        token: app.user_data.token,
+        note_id: this.data.note_id,
+        content: this.data.content
+      };
+
+      app.ajax('note/commentAdd', post, () => {
+        app.toast('评论已发表');
+        this.setData({content: ''});
+        this.getNoteDetail();
+      });
+    }
   },
   // 判断是否点赞
   ifLike() {
@@ -161,4 +165,4 @@ Page({
       });
     }
   }
-})
+});

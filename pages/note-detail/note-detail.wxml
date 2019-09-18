@@ -51,7 +51,7 @@
     </view>
   </view>
   <view class="input-box" wx:if="{{release_focus}}" style="bottom: {{input_bottom}}px;">
-    <input bindinput="bind_input" bindfocus="bind_focus" bindblur="hide_input" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="写评论..." maxlength="100" class="re-input" focus="{{release_focus}}" />
+    <input bindconfirm="commentAdd" bindinput="bind_input" bindfocus="bind_focus" bindblur="hide_input" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="写评论..." maxlength="100" class="re-input" focus="{{release_focus}}" />
     <view bindtap="commentAdd" class="com-btn">发送</view>
   </view>
 </view>

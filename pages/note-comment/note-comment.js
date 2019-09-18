@@ -11,7 +11,7 @@ Page({
     release_focus: false,
     input_bottom: 0
   },
-  onLoad: function (options) {
+  onLoad(options) {
     this.data.note_id = options.note_id;
     this.setData({auth_id: options.auth_id});
     this.commentList();
@@ -48,17 +48,22 @@ Page({
     this.setData({release_focus: false});
   },
   commentAdd() {
-    let post = {
-      token: app.user_data.token,
-      note_id: this.data.note_id,
-      to_cid: this.data.to_cid,
-      content: this.data.content
-    };
+    if (this.data.content.trim()) {
+      wx.showLoading({ mask: true });
 
-    app.ajax('note/commentAdd', post, () => {
-      app.toast('评论成功');
-      this.setData({content: ''});
-      this.commentList();
-    });
+      let post = {
+        token: app.user_data.token,
+        note_id: this.data.note_id,
+        to_cid: this.data.to_cid,
+        content: this.data.content
+      };
+
+      app.ajax('note/commentAdd', post, () => {
+        this.setData({content: ''});
+        this.commentList();
+      }, null, () => {
+        wx.hideLoading();
+      });
+    }
   }
 });

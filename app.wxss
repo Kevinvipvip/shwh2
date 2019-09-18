@@ -66,6 +66,14 @@ button::after {
   visibility: hidden;
 }
 
+.text-plat-ios {
+  padding: 0rpx 5rpx;
+}
+
+.text-plat {
+  padding: 15rpx;
+}
+
 /* 富文本 start */
 
 .content-wrapper image {
@@ -383,7 +391,7 @@ button::after {
 
 .chou-box .chou-line .img-box image {
   width: 100%;
-  height: 300rpx;
+  height: 351rpx;
 }
 
 .chou-box .chou-line .img-box .status {
