@@ -13,7 +13,12 @@ App({
         }
       }
     });
+
+    let phone = wx.getSystemInfoSync();
+    console.log(phone.platform, '平台');
+    this.is_ios = phone.platform === 'ios';
   },
+  is_ios: '',
   my_config: {
     // base_url: 'https://www.caves.vip',  // 正式（原）
     // api: 'https://www.caves.vip/api/',  // 正式（原）
@@ -31,7 +36,7 @@ App({
       price: /^([1-9]\d*|0)(\.\d{1,2})?$/
     },
     statusBarHeight: 0,
-    topBarHeight: 0
+    topBarHeight: 0,
   },
   user_data: {
     token: '',
@@ -65,7 +70,7 @@ App({
       title: String(title),
       icon: icon,
       duration: dura
-    })
+    });
   },
   modal(content, callback) {
     wx.showModal({

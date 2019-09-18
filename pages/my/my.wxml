@@ -8,7 +8,9 @@
     <view class="inner">
       <view class="header-box">
         <view class="tou">
-          <image src="{{user.avatar}}" class="hdp" wx:if="{{user.user_auth == 1}}"></image>
+          <navigator url="/pages/my-edit/my-edit" wx:if="{{user.user_auth == 1}}">
+            <image src="{{user.avatar}}" mode="aspectFill" class="hdp" ></image>
+          </navigator>
           <image src="/images/default.png" class="tou" wx:else></image>
 
           <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>
@@ -79,7 +81,7 @@
       </navigator>
       <view class="shu"></view>
       <view class="count-item">
-        <view class="number">996</view>
+        <view class="number">{{user.score}}</view>
         <view class="desc">获得积分</view>
       </view>
     </view>

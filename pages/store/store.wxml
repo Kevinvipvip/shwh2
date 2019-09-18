@@ -3,7 +3,7 @@
   <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入法人手机号" placeholder-class="tel-class" maxlength="11"/>
 
   <!-- textaera -->
-  <textarea bindinput="bind_input" fixed="true" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." style="padding: {{textarea_padding}};"/>
+  <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
 
   <!-- nomore/nodata -->
   <view class="nomore" wx:if="{{nomore}}">
@@ -24,12 +24,4 @@
 
   <!-- 分享 -->
   <button open-type="share">分享</button>
-
-
-  {
-  "pagePath": "pages/shop/shop",
-  "text": "商城",
-  "iconPath": "icons/shop.png",
-  "selectedIconPath": "icons/shop-active.png"
-  },
 </view>

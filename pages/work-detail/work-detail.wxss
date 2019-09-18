@@ -1,5 +1,5 @@
 .page {
-  background: #fafafa;
+  /*background: #fafafa;*/
   padding-bottom: 20rpx;
   box-sizing: border-box;
   min-height: 100vh;

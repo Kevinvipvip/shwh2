@@ -108,11 +108,10 @@
                    placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="11"/>
           </view>
         </view>
-        <view class="flex flex-row input-group" wx:if="{{role == '3'}}">
+        <view class="flex flex-row input-group input-group2" wx:if="{{role == '3'}}">
           <view class="flex-grow-0 flex-y-center input-group-label require">经营范围：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="busine" value="{{busine}}" class="flex-y-center"
-                   placeholder="请输入经营范围" placeholder-class="placeholder" maxlength="11"/>
+            <textarea bindinput="bind_input" data-name="busine" value="{{busine}}" auto-height maxlength="500" cursor-spacing="50" placeholder="请输入经营范围" class="flex-y-center {{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
           </view>
         </view>
         <view class="flex flex-row input-group">

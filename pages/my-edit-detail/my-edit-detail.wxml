@@ -1,0 +1,34 @@
+<view class="page">
+  <!-- 编辑昵称 -->
+  <view class="edit-box nickname" wx:if="{{field_name == 'nickname'}}">
+    <view class="shang">
+      <view class="edit-text">编辑昵称</view>
+      <button bindtap="save" class="save-btn">保存</button>
+    </view>
+    <view class="input-box">
+      <input bindinput="bind_input" data-name="nickname" value="{{nickname}}" type="text" />
+    </view>
+  </view>
+
+  <!-- 编辑姓名 -->
+  <view class="edit-box realname" wx:if="{{field_name == 'realname'}}">
+    <view class="shang">
+      <view class="edit-text">编辑姓名</view>
+      <button bindtap="save" class="save-btn">保存</button>
+    </view>
+    <view class="input-box">
+      <input bindinput="bind_input" data-name="realname" value="{{realname}}" type="text" />
+    </view>
+  </view>
+
+  <!-- 编辑个人备注 -->
+  <view class="edit-box sign" wx:if="{{field_name == 'sign'}}">
+    <view class="shang">
+      <view class="edit-text">编辑个人备注</view>
+      <button bindtap="save" class="save-btn">保存</button>
+    </view>
+    <view class="input-box">
+      <textarea bindinput="bind_input" data-name="sign" value="{{sign}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." />
+    </view>
+  </view>
+</view>

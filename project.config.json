@@ -48,13 +48,40 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
 					"name": "pages/chou-order-create/chou-order-create",
 					"pathName": "pages/chou-order-create/chou-order-create",
 					"query": "funding_id=1&goods_id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my-edit/my-edit",
+					"pathName": "pages/my-edit/my-edit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/apply2/apply2",
+					"pathName": "pages/apply2/apply2",
+					"query": "role=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my-edit-detail/my-edit-detail",
+					"pathName": "pages/my-edit-detail/my-edit-detail",
+					"query": "role=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my-chou-orders/my-chou-orders",
+					"pathName": "pages/my-chou-orders/my-chou-orders",
 					"scene": null
 				}
 			]

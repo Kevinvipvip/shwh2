@@ -63,11 +63,10 @@
 
 .input-group textarea {
   border: 1rpx solid #ddd;
-  width: 80%;
+  width: 652rpx;
   min-height: 150rpx;
-  padding: 15rpx;
-  margin-top: 15rpx;
-  margin-bottom: 15rpx;
+  margin-top: 24rpx;
+  box-sizing: border-box;
 }
 
 .input-group-list .input-group:last-child:after {

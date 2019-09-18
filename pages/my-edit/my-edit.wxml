@@ -4,29 +4,22 @@
 
 <view class="page">
   <view class="form">
-    <view class="input-item">
-      <view class="label">头像</view>
-      <view class="you avatar-you">
-        <view class="upload-box">
-          <view bindtap="img_upload" data-name="avatar" class="img-box">
-            <image src="{{avatar}}" class="img" mode="aspectFill"></image>
-          </view>
-        </view>
-        <image src="/icons/you.png" class="arrow-you"></image>
-      </view>
+    <view class="header-box">
+      <image bindtap="img_upload" src="{{avatar}}" class="img" mode="aspectFill"></image>
+      <view class="edit-h">点击头像编辑</view>
     </view>
-    <view bindtap="show_input" data-name="nickname" class="input-item">
+    <view bindtap="to_edit" data-name="nickname" class="input-item">
       <view class="label">昵称</view>
       <view class="you">
         <view class="value">{{nickname}}</view>
-        <image src="/icons/you.png" class="arrow-you"></image>
+        <image src="/icons/you3.png" class="arrow-you"></image>
       </view>
     </view>
-    <view bindtap="show_input" data-name="realname" class="input-item">
+    <view bindtap="to_edit" data-name="realname" class="input-item">
       <view class="label">姓名</view>
       <view class="you">
         <view class="value">{{realname || ''}}</view>
-        <image src="/icons/you.png" class="arrow-you"></image>
+        <image src="/icons/you3.png" class="arrow-you"></image>
       </view>
     </view>
     <view class="input-item">
@@ -37,38 +30,25 @@
             {{sex == -1 ? '未知' : sex_data[sex].name}}
           </view>
         </picker>
-        <image src="/icons/you.png" class="arrow-you"></image>
-      </view>
-    </view>
-    <view bindtap="show_input" data-name="age" class="input-item">
-      <view class="label">年龄</view>
-      <view class="you">
-        <view class="value">{{age}}</view>
-        <image src="/icons/you.png" class="arrow-you"></image>
+        <image src="/icons/you3.png" class="arrow-you"></image>
       </view>
     </view>
     <view data-name="tel" class="input-item">
       <view class="label">手机号</view>
       <view class="you">
         <view class="value">{{tel}}</view>
-        <button bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber" class="auth-btn">授权获取手机号</button>
+        <button bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber" class="auth-btn" wx:if="{{!tel}}">授权获取手机号</button>
+        <image src="/icons/you3.png" class="arrow-you vh" wx:else></image>
       </view>
     </view>
-    <view bindtap="show_input" data-name="sign" class="input-item">
-      <view class="label">个性签名</view>
+    <view class="input-item sign">
+      <view class="label">个人备注</view>
       <view class="you">
-        <view class="value">{{sign}}</view>
-        <image src="/icons/you.png" class="arrow-you"></image>
+        <view bindtap="to_edit" data-name="sign" class="sign-box">
+          <view class="content">{{sign}}</view>
+          <image src="/icons/edit.png" class="icon"></image>
+        </view>
       </view>
-    </view>
-    <button bindtap="modMyInfo" class="submit">提交</button>
-  </view>
-
-  <view bindtap="hide_input_modal" class="modal" wx:if="{{input_modal}}">
-    <view catchtap class="content">
-      <view class="title">请输入</view>
-      <input bindinput="bind_input" type="{{input_type}}" focus="{{focus}}" maxlength="{{maxlength}}" value="{{input_value}}" bindconfirm="input_done" />
-      <button bindtap="input_done">确定</button>
     </view>
   </view>
 </view>

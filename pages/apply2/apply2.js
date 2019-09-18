@@ -2,7 +2,6 @@ const app = getApp();
 
 Page({
   data: {
-    textarea_padding: '15rpx',
     role: '1',  // 1.博物馆 2.设计师 3.工厂
     cover: '',  // 封面
     org: '',  // 组织结构（非设计师）
@@ -28,12 +27,11 @@ Page({
     reason: '',
     loading: true,
     apply_loading: false,
+
+    is_ios: ''
   },
   onLoad(options) {
-    let phone = wx.getSystemInfoSync();
-    if (phone.platform === 'ios') {
-      this.setData({ textarea_padding: '0rpx 5rpx' })
-    }
+    this.setData({is_ios: app.is_ios});
 
     let role_text = '';
     switch (options.role) {

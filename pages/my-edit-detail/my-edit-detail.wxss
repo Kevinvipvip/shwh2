@@ -1,0 +1,53 @@
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.edit-box {
+  padding: 24rpx;
+}
+
+.edit-box.nickname {
+}
+
+.edit-box .shang {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-box .shang .edit-text {
+  font-size: 36rpx;
+  color: #333;
+  letter-spacing: 1rpx;
+  line-height: 1;
+}
+
+.edit-box .shang .save-btn {
+  width: 160rpx;
+  height: 70rpx;
+  padding: 0;
+  line-height: 70rpx;
+  border-radius: 4rpx;
+  background: #ffbc47;
+  font-size: 34rpx;
+  letter-spacing: 1rpx;
+  color: #333;
+  margin: 0;
+}
+
+.edit-box .input-box {
+  margin-top: 50rpx;
+  padding-bottom: 35rpx;
+  border-bottom: 2rpx solid #000;
+}
+
+.edit-box .input-box input, .edit-box .input-box textarea {
+  font-size: 34rpx;
+  color: #333;
+  opacity: 0.9;
+}
+
+.edit-box .input-box textarea {
+  width: 100%;
+}

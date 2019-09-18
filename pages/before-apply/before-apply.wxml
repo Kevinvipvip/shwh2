@@ -1,5 +1,5 @@
 <view class="page">
-  <image src="https://www.caves.vip/static/uploads/abc.jpg" mode="widthFix" class="ruzhu">
+  <image src="http://qiniu.wcip.net/public/enter-plat.jpg" mode="widthFix" class="ruzhu">
     <navigator url="/pages/apply/apply"><text>下一步</text></navigator>
   </image>
 </view>
