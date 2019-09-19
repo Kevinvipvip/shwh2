@@ -80,6 +80,7 @@ Page({
         }
       } else {
         app.format_img(res, 'cover');
+        app.time_format(res, 'create_time', 'yyyy-MM-dd hh:mm:ss');
         for (let i = 0; i < res.length; i++) {
           switch (res[i].status) {
             case 0:
@@ -268,5 +269,15 @@ Page({
   // 隐藏退款框
   hide_refund() {
     this.setData({ refund_show: false });
+  },
+  // 去众筹页
+  to_chou_detail(e) {
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/chou-detail/chou-detail?id=' + e.currentTarget.dataset.funding_id });
+    });
+  },
+  // 去订单详情页
+  to_order_detail(e) {
+    wx.navigateTo({ url: '/pages/order-chou-detail/order-chou-detail?id=' + e.currentTarget.dataset.id });
   }
 });

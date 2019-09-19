@@ -8,7 +8,7 @@
 
 .header .banner {
   width: 100%;
-  height: 309rpx;
+  height: 375rpx;
   vertical-align: bottom;
 }
 

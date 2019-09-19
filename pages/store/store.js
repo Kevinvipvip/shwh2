@@ -20,6 +20,12 @@ Page({
     let rich_text = '<p>啊啊啊</p>';
     rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
     WxParse.wxParse('rich_text', 'html', rich_text, this);
+
+    // 跳转
+    wx.switchTab({ url: '/pages/index/index' });
+    wx.navigateTo({ url: '/pages/in-mp2/in-mp2?order_sn=' + res.order_sn });
+    wx.redirectTo({ url: '/pages/in-mp2/in-mp2' });
+    wx.navigateBack({ delta: 2 })
   },
   // 获取列表
   get_list(complete) {

@@ -3,6 +3,94 @@
 </view>
 
 <view class="page">
+  <!-- 地址 -->
+  <view class="address-box">
+    <image src="/icons/address2.png" class="add-icon"></image>
+    <view class="info">
+      <view class="shang">
+        <view class="name">{{order.receiver}}</view>
+        <view class="tel">{{order.tel}}</view>
+      </view>
+      <view class="address-text">{{order.address}}</view>
+    </view>
+  </view>
+
+  <!-- 活动 -->
+  <view class="ac-box">
+    <view class="img-line">
+      <image src="{{order.cover}}" class="cover"></image>
+      <view class="title">{{order.funding_title}}</view>
+    </view>
+    <view class="line-box">
+      <view class="line">
+        <view class="label">支持方式</view>
+        <view class="value">{{order.type == 1 ? '有偿支持' : '无偿支持'}}</view>
+      </view>
+      <view class="line">
+        <view class="label">{{order.type == 1 ? '支付金额' : '支持金额'}}</view>
+        <view class="value">￥{{order.pay_price}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品 -->
+  <view class="work-box" wx:if="{{order.type == 1}}">
+    <view class="title">{{order.goods_name}}</view>
+    <view class="img-box">
+      <image src="{{item}}" mode="aspectFill" wx:for="{{order.pics}}"></image>
+      <image class="vh" wx:for="{{flex_pad}}"></image>
+    </view>
+    <view class="line-box">
+      <view class="line">
+        <view class="label">产品数量</view>
+        <view class="value">{{order.num}}</view>
+      </view>
+      <view class="line">
+        <view class="label">商品单价</view>
+        <view class="value">￥{{order.unit_price}}</view>
+      </view>
+    </view>
+    <view class="btn-box" wx:if="{{order.status != 3}}">
+      <button catchtap="to_chou_detail" class="again">再次购买</button>
+
+      <button catchtap="fundingOrderCancel" class="cancel" wx:if="{{order.status == 0}}">取消订单</button>
+      <button catchtap="orderPay" class="pay" wx:if="{{order.status == 0}}">付款</button>
+      <button catchtap="refund_click" class="cancel" wx:if="{{order.status == 1}}">申请退款</button>
+      <button catchtap="fundingOrderConfirm" class="confirm" wx:if="{{order.status == 2}}">确认收货</button>
+    </view>
+  </view>
+
+  <!-- 物流 -->
+  <view class="logistics-box" wx:if="{{order.type == 1}}">
+    <view class="line">
+      <view class="label">下单时间</view>
+      <view class="value">2019-12-15 12:15:13</view>
+    </view>
+    <view class="line">
+      <view class="label">付款时间</view>
+      <view class="value">2019-12-15 12:15:13</view>
+    </view>
+    <view class="line">
+      <view class="label">发货时间</view>
+      <view class="value">2019-12-15 12:15:13</view>
+    </view>
+    <view class="line">
+      <view class="label">收货时间</view>
+      <view class="value">2019-12-15 12:15:13</view>
+    </view>
+    <view class="line">
+      <view class="label">物流公司</view>
+      <view class="value">韵达快递</view>
+    </view>
+    <view class="line logi">
+      <view class="label">物流单号</view>
+      <view class="value">
+        <view class="num">F156862817185724900733</view>
+        <button>复制订单</button>
+      </view>
+    </view>
+  </view>
+
   <view class="order-status">订单{{order.status_text}}</view>
   <view class="user-info" wx:if="{{order.type == 1}}">
     <view class="nt">
@@ -56,6 +144,17 @@
         <view class="xia">
           <view class="price">¥{{order.pay_price}}</view>
         </view>
+      </view>
+    </view>
+  </view>
+
+  <view bindtap="hide_refund" class="modal" wx:if="{{refund_show}}">
+    <view catchtap="do_nothing" class="content">
+      <view class="title">退款理由</view>
+      <textarea bindinput="bind_input" fixed="true" data-name="reason" value="{{reason}}" auto-height maxlength="50" cursor-spacing="50" placeholder="请输入理由" class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
+      <view class="btn-box">
+        <button bindtap="hide_refund" class="cancel">取消</button>
+        <button bindtap="fundingRefundApply">确定</button>
       </view>
     </view>
   </view>

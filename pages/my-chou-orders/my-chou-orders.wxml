@@ -10,44 +10,44 @@
     <view class="tab-item {{status === 2 ? 'active' : ''}}" data-status="{{2}}" bindtap="tab_change">待收货</view>
     <view class="tab-item {{status === 3 ? 'active' : ''}}" data-status="{{3}}" bindtap="tab_change">已完成</view>
   </view>
+
   <view class="order-list">
-    <navigator url="/pages/order-chou-detail/order-chou-detail?id={{item.id}}" class="order" wx:for="{{order_list}}" wx:key="id">
-      <view class="order-info">
-        <div class="order-num">订单号：{{item.pay_order_sn}}</div>
-        <view class="status" wx:if="{{item.type == 1}}">{{item.status_text}}</view>
-        <view class="status" wx:else>无偿支持</view>
+    <view bindtap="to_order_detail" data-id="{{item.id}}" class="order" wx:for="{{order_list}}" wx:key="id">
+      <view class="status-line">
+        <view class="order-num">订单编号：{{item.pay_order_sn}}</view>
+        <view class="status">{{item.type == 1 ? item.status_text : '无偿支持'}}</view>
       </view>
-      <view class="pro">
-        <image src="{{item.cover}}" class="pic" mode="aspectFill" lazy-load></image>
-        <view class="info">
-          <view class="shang">
-            <view class="title" wx:if="{{item.type == 1}}">
-              {{item.funding_title}}
-            </view>
-            <view class="title" wx:else>
-              无偿支持
-            </view>
-            <view class="right" wx:if="{{item.type == 1}}">
-              <view class="price">¥{{item.unit_price}}</view>
-              <view class="amount">x{{item.num}}</view>
-            </view>
-          </view>
+      <view class="info-box">
+        <view class="ac-line">
+          <image src="/images/t-chou1.png" mode="aspectFill" lazy-load></image>
+          <view class="title two-line-ellipsis">{{item.funding_title}}</view>
+        </view>
+        <view class="info-line" wx:if="{{item.type == 1}}">
+          <view class="label">产品名称</view>
+          <view class="value">{{item.goods_name}}</view>
+        </view>
+        <view class="info-line" wx:if="{{item.type == 1}}">
+          <view class="label">产品数量</view>
+          <view class="value">{{item.num}}</view>
+        </view>
+        <view class="info-line">
+          <view class="label">{{item.type == 1 ? '支付金额' : '支持金额'}}</view>
+          <view class="value">￥{{item.pay_price}}</view>
+        </view>
+        <view class="info-line">
+          <view class="label">下单时间</view>
+          <view class="value date">{{item.create_time}}</view>
+        </view>
+        <view class="btn-box" wx:if="{{item.type == 1 && item.status != 3 || item.type == 2}}">
+          <button catchtap="to_chou_detail" data-funding_id="{{item.funding_id}}" class="again" wx:if="{{item.type == 2}}">再次支持</button>
+
+          <button catchtap="fundingOrderCancel" data-goods="{{item}}" class="cancel" wx:if="{{item.status == 0}}">取消订单</button>
+          <button catchtap="orderPay" data-goods="{{item}}" class="pay" wx:if="{{item.status == 0}}">付款</button>
+          <button catchtap="refund_click" data-goods="{{item}}" class="cancel" wx:if="{{item.status == 1}}">申请退款</button>
+          <button catchtap="fundingOrderConfirm" data-goods="{{item}}" class="confirm" wx:if="{{item.status == 2}}">确认收货</button>
         </view>
       </view>
-      <view class="count">合计：¥{{item.pay_price}}</view>
-      <view class="btn-box">
-        <block wx:if="{{item.status == 0}}">
-          <view catchtap="fundingOrderCancel" data-goods="{{item}}" class="normal">取消订单</view>
-          <view catchtap="orderPay" data-goods="{{item}}" class="highlight">付款</view>
-        </block>
-        <block wx:elif="{{item.status == 1 && item.type == 1}}">
-          <view catchtap="refund_click" data-goods="{{item}}" class="normal">退款</view>
-        </block>
-        <block wx:elif="{{item.status == 2}}">
-          <view catchtap="fundingOrderConfirm" data-goods="{{item}}" class="highlight">收货</view>
-        </block>
-      </view>
-    </navigator>
+    </view>
   </view>
 
   <view class="nomore" wx:if="{{nomore}}">
@@ -62,7 +62,10 @@
     <view catchtap="do_nothing" class="content">
       <view class="title">退款理由</view>
       <textarea bindinput="bind_input" fixed="true" data-name="reason" value="{{reason}}" auto-height maxlength="50" cursor-spacing="50" placeholder="请输入理由" style="padding: {{textarea_padding}};"/>
-      <button bindtap="fundingRefundApply">确定</button>
+      <view class="btn-box">
+        <button bindtap="hide_refund" class="cancel">取消</button>
+        <button bindtap="fundingRefundApply">确定</button>
+      </view>
     </view>
   </view>
 </view>

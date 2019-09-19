@@ -15,7 +15,6 @@ App({
     });
 
     let phone = wx.getSystemInfoSync();
-    console.log(phone.platform, '平台');
     this.is_ios = phone.platform === 'ios';
   },
   is_ios: '',
@@ -508,6 +507,14 @@ App({
       this.ajax('message/collectFormid', {formid: formid}, null, () => {
         // 啥都不干
       });
+    }
+  },
+  // 打开新页面检查，如果已经打开10个页面则提示用户关闭几个页面
+  page_open(callback) {
+    if (getCurrentPages().length < 10) {
+      callback();
+    } else {
+      this.modal('打开页面过多，请您关闭几个页面');
     }
   }
 });

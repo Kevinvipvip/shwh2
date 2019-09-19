@@ -142,6 +142,7 @@ Page({
           sign_day: this.data.sign_day + 1,
           sign_today: true
         });
+        this.mydetail();
       });
     });
   }
