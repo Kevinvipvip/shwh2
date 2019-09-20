@@ -1,271 +1,296 @@
 .page {
-    padding: 0 24rpx 50rpx;
+  padding: 0 24rpx 50rpx;
 }
 
 .address-box {
-    padding: 38rpx 0;
-    border-bottom: 7rpx solid rgba(0, 0, 0, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 38rpx 0;
+  border-bottom: 7rpx solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .address-box .add-icon {
-    width: 46rpx;
-    height: 59rpx;
-    flex-shrink: 0;
+  width: 46rpx;
+  height: 59rpx;
+  flex-shrink: 0;
 }
 
 .address-box .info {
-    line-height: 1;
-    font-size: 30rpx;
-    color: #333;
-    margin-left: 44rpx;
-    flex-grow: 1;
+  line-height: 1;
+  font-size: 30rpx;
+  color: #333;
+  margin-left: 44rpx;
+  flex-grow: 1;
 }
 
 .address-box .info .shang {
-    display: flex;
+  display: flex;
 }
 
 .address-box .info .shang .name {
-
 }
 
 .address-box .info .shang .tel {
-    margin-left: 50rpx;
-    color: #999;
+  margin-left: 50rpx;
+  color: #999;
 }
 
 .address-box .info .address-text {
-    line-height: 1.4;
-    margin-top: 7rpx;
+  line-height: 1.4;
+  margin-top: 7rpx;
 }
 
 .line-box {
-    line-height: 1;
+  line-height: 1;
 }
 
 .line-box .line {
-    margin-bottom: 40rpx;
-    display: flex;
-    justify-content: space-between;
-    font-size: 30rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 30rpx;
+  align-items: center;
+}
+
+.line-box .line.logi {
+  margin-top: -5rpx;
 }
 
 .line-box .line:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .line-box .line .label {
-    color: #666;
+  color: #666;
 }
 
 .line-box .line .value {
-    color: #333;
+  color: #333;
+}
+
+.line-box .line.logi .value {
+  display: flex;
+  align-items: center;
+}
+
+.line-box .line.logi .value .num {
+  margin-right: 15rpx;
+}
+
+.line-box .line.logi .value button {
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 4rpx;
+  padding: 0 22rpx;
+  font-size: 24rpx;
+  color: #333;
+  background: #f0b656;
 }
 
 .ac-box {
-    padding: 40rpx 0 60rpx;
-    border-bottom: 2rpx solid rgba(0, 0, 0, 0.05);
+  padding: 40rpx 0 60rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.05);
 }
 
 .ac-box .img-line {
-    display: flex;
-    align-items: center;
-    margin-bottom: 60rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 60rpx;
 }
 
 .ac-box .img-line .cover {
-    flex-shrink: 0;
-    width: 260rpx;
-    height: 130rpx;
+  flex-shrink: 0;
+  width: 260rpx;
+  height: 130rpx;
 }
 
 .ac-box .img-line .title {
-    flex-grow: 1;
-    margin-left: 29rpx;
-    font-size: 34rpx;
-    color: #333;
-    line-height: 51rpx;
+  flex-grow: 1;
+  margin-left: 29rpx;
+  font-size: 34rpx;
+  color: #333;
+  line-height: 51rpx;
 }
 
 .work-box {
-    padding: 53rpx 0 60rpx;
-    line-height: 1;
-    border-bottom: 7rpx solid rgba(0, 0, 0, 0.05);
+  padding: 53rpx 0 60rpx;
+  line-height: 1;
+  border-bottom: 7rpx solid rgba(0, 0, 0, 0.05);
 }
 
 .work-box .title {
-    font-size: 34rpx;
-    color: #333;
-    line-height: 1.4;
+  font-size: 34rpx;
+  color: #333;
+  line-height: 1.4;
 }
 
 .work-box .img-box {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 60rpx;
 }
 
 .work-box .img-box image {
-    width: 218rpx;
-    height: 218rpx;
-    border-radius: 4rpx;
-    margin-bottom: 24rpx;
+  width: 218rpx;
+  height: 218rpx;
+  border-radius: 4rpx;
+  margin-bottom: 24rpx;
 }
 
 .work-box .img-box image:nth-last-child(-n + 3) {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .work-box .btn-box {
-    display: flex;
-    margin-top: 60rpx;
-    justify-content: flex-end;
+  display: flex;
+  margin-top: 60rpx;
+  justify-content: flex-end;
 }
 
 .work-box .btn-box button {
-    padding: 18rpx 30rpx;
-    line-height: 1;
-    font-size: 26rpx;
-    color: #333;
-    box-sizing: border-box;
-    border: 2rpx solid #333;
-    border-radius: 4rpx;
-    margin: 0 20rpx 0 0;
-    background: #fff;
+  padding: 18rpx 30rpx;
+  line-height: 1;
+  font-size: 26rpx;
+  color: #333;
+  box-sizing: border-box;
+  border: 2rpx solid #333;
+  border-radius: 4rpx;
+  margin: 0 20rpx 0 0;
+  background: #fff;
 }
 
 .work-box .btn-box button:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .work-box .btn-box .pay {
-    color: #ffbf37;
-    border-color: #f39700;
+  color: #ffbf37;
+  border-color: #f39700;
 }
 
 .work-box .btn-box .again {
-    color: #ffbf37;
-    border-color: #f39700;
+  color: #ffbf37;
+  border-color: #f39700;
 }
 
 .work-box .btn-box .confirm {
-    color: #e46600;
-    border-color: #eb6100;
+  color: #e46600;
+  border-color: #eb6100;
 }
 
 .work-box .btn-box .cancel {
 }
 
 .logistics-box {
-    padding: 48rpx 0;
+  padding: 48rpx 0;
 }
 
 .logistics-box .line {
-    display: flex;
-    margin-bottom: 40rpx;
-    font-size: 30rpx;
-    align-items: center;
+  display: flex;
+  margin-bottom: 40rpx;
+  font-size: 30rpx;
+  align-items: center;
 }
 
 .logistics-box .line.logi {
-    margin-top: -5rpx;
+  margin-top: -5rpx;
 }
 
 .logistics-box .line:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .logistics-box .line .label {
-    width: 149rpx;
-    flex-shrink: 0;
-    color: #666;
+  width: 149rpx;
+  flex-shrink: 0;
+  color: #666;
 }
 
 .logistics-box .line .value {
-    color: #999;
-    flex-grow: 1;
+  color: #999;
+  flex-grow: 1;
 }
 
 .logistics-box .line.logi .value {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logistics-box .line.logi .value .num {
 }
 
 .logistics-box .line.logi .value button {
-    height: 60rpx;
-    line-height: 60rpx;
-    border-radius: 4rpx;
-    padding: 0 22rpx;
-    font-size: 24rpx;
-    color: #333;
-    background: #f0b656;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 4rpx;
+  padding: 0 22rpx;
+  font-size: 24rpx;
+  color: #333;
+  background: #f0b656;
 }
 
 /* 退款框 start */
+
 .modal {
-    padding:10rpx;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index:10;
-    height:100vh;
-    box-sizing:border-box;
-    background:rgba(0, 0, 0, 0.7);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items: center;
-    overflow: hidden;
+  padding: 10rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  height: 100vh;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .modal .content {
-    background: #fff;
-    box-sizing: border-box;
-    width: 80%;
-    padding: 30rpx;
-    border-radius: 15rpx;
+  background: #fff;
+  box-sizing: border-box;
+  width: 80%;
+  padding: 30rpx;
+  border-radius: 15rpx;
 }
 
 .modal .content .title {
-    text-align: center;
-    font-size: 30rpx;
+  text-align: center;
+  font-size: 30rpx;
 }
 
 .modal .content textarea {
-    border:1rpx solid #ddd;
-    width:calc(100% - 30rpx);
-    min-height:100rpx;
-    margin-top:23rpx;
+  border: 1rpx solid #ddd;
+  width: calc(100% - 30rpx);
+  min-height: 100rpx;
+  margin-top: 23rpx;
 }
 
 .modal .content .btn-box {
-    display: flex;
-    margin-top: 30rpx;
-    justify-content: flex-end;
+  display: flex;
+  margin-top: 30rpx;
+  justify-content: flex-end;
 }
 
 .modal .content button {
-    border-radius:10rpx;
-    color:#fff;
-    border-radius:10rpx;
-    background:#ff9f38;
-    line-height:2;
-    width:160rpx;
-    margin-right:0;
-    font-size:26rpx;
-    margin-left: 20rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  background: #ff9f38;
+  line-height: 2;
+  width: 160rpx;
+  margin-right: 0;
+  font-size: 26rpx;
+  margin-left: 20rpx;
 }
 
 .modal .content button.cancel {
-    background: #bbb;
+  background: #bbb;
 }
+
 /* 退款框 end */

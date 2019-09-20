@@ -22,6 +22,13 @@
       <view class="title">{{order.funding_title}}</view>
     </view>
     <view class="line-box">
+      <view class="line logi">
+        <view class="label">订单编号</view>
+        <view class="value">
+          <view class="num">{{order.pay_order_sn}}</view>
+          <button bindtap="copy" data-content="{{order.pay_order_sn}}">复制订单</button>
+        </view>
+      </view>
       <view class="line">
         <view class="label">支持方式</view>
         <view class="value">{{order.type == 1 ? '有偿支持' : '无偿支持'}}</view>
@@ -61,93 +68,37 @@
   </view>
 
   <!-- 物流 -->
-  <view class="logistics-box" wx:if="{{order.type == 1}}">
-    <view class="line">
+  <view class="logistics-box">
+    <view class="line" wx:if="{{order.create_time}}">
       <view class="label">下单时间</view>
-      <view class="value">2019-12-15 12:15:13</view>
+      <view class="value">{{order.create_time}}</view>
     </view>
-    <view class="line">
+    <view class="line" wx:if="{{order.pay_time}}">
       <view class="label">付款时间</view>
-      <view class="value">2019-12-15 12:15:13</view>
+      <view class="value">{{order.pay_time}}</view>
     </view>
-    <view class="line">
+    <view class="line" wx:if="{{order.send_time}}">
       <view class="label">发货时间</view>
-      <view class="value">2019-12-15 12:15:13</view>
+      <view class="value">{{order.send_time}}</view>
     </view>
-    <view class="line">
+    <view class="line" wx:if="{{order.finish_time}}">
       <view class="label">收货时间</view>
-      <view class="value">2019-12-15 12:15:13</view>
+      <view class="value">{{order.finish_time}} 12:15:13</view>
     </view>
-    <view class="line">
+    <view class="line" wx:if="{{order.tracking_name}}">
       <view class="label">物流公司</view>
-      <view class="value">韵达快递</view>
+      <view class="value">{{order.tracking_name}}</view>
     </view>
-    <view class="line logi">
+    <view class="line logi" wx:if="{{order.tracking_num}}">
       <view class="label">物流单号</view>
       <view class="value">
-        <view class="num">F156862817185724900733</view>
-        <button>复制订单</button>
+        <view class="num">{{order.tracking_num}}</view>
+        <button bindtap="copy" data-content="{{order.tracking_num}}">复制订单</button>
       </view>
     </view>
   </view>
 
-  <view class="order-status">订单{{order.status_text}}</view>
-  <view class="user-info" wx:if="{{order.type == 1}}">
-    <view class="nt">
-      <view class="name">{{order.receiver}}</view>
-      <view class="tel">{{order.tel}}</view>
-    </view>
-    <view class="address">地址：{{order.address}}</view>
-  </view>
-  <view class="order">
-    <view class="bian">
-      <view class="no">订单编号：{{order.pay_order_sn}}</view>
-      <view bindtap="copy" class="copy-btn">复制</view>
-    </view>
-    <view class="time">下单时间：{{order.create_time}}</view>
-  </view>
-  <view class="statistics">
-    <view class="line" wx:if="{{order.type == 1}}">
-      <view class="left">商品金额</view>
-      <view class="right"><text class="bi">¥</text>{{order.unit_price}}</view>
-    </view>
-    <view class="line" wx:if="{{order.type == 1}}">
-      <view class="left">商品数量</view>
-      <view class="right">{{order.num}}件</view>
-    </view>
-    <view class="zong">
-      <view class="label" wx:if="{{order.type == 1}}">合计：</view>
-      <view class="label" wx:else>支持金额：</view>
-      <view class="price"><text class="bi">¥</text>{{order.pay_price}}</view>
-    </view>
-  </view>
-  <view class="goods-list">
-    <view class="pro" wx:if="{{order.type == 1}}">
-      <image src="{{order.pics[0]}}" class="pic" mode="aspectFill"></image>
-      <view class="info">
-        <view class="shang">
-          <view class="title">众筹：{{order.funding_title}}</view>
-          <view class="title">商品：{{order.goods_name}}</view>
-        </view>
-        <view class="xia">
-          <view class="price">¥{{order.pay_price}}</view>
-          <view class="amount">x{{order.num}}</view>
-        </view>
-      </view>
-    </view>
-    <view class="pro" wx:else>
-      <image src="{{order.cover}}" class="pic" mode="aspectFill"></image>
-      <view class="info">
-        <view class="shang">
-          <view class="title">众筹：{{order.funding_title}}</view>
-        </view>
-        <view class="xia">
-          <view class="price">¥{{order.pay_price}}</view>
-        </view>
-      </view>
-    </view>
-  </view>
-
+  <!-- 退款框 -->
   <view bindtap="hide_refund" class="modal" wx:if="{{refund_show}}">
     <view catchtap="do_nothing" class="content">
       <view class="title">退款理由</view>

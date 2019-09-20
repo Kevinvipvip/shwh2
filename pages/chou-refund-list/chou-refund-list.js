@@ -63,15 +63,15 @@ Page({
           });
         }
       } else {
+        app.format_img(res, 'cover');
         for (let i = 0; i < res.length; i++) {
           app.format_img(res[i].pics);
-          app.format_img(res[i], 'cover');
           switch (res[i].refund_apply) {
             case 1:
-              res[i].type_text = '退款中';
+              res[i].apply_text = '退款中';
               break;
             case 2:
-              res[i].type_text = '已退款';
+              res[i].apply_text = '已退款';
               break;
           }
         }

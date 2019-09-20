@@ -25,7 +25,10 @@ Page({
     wx.switchTab({ url: '/pages/index/index' });
     wx.navigateTo({ url: '/pages/in-mp2/in-mp2?order_sn=' + res.order_sn });
     wx.redirectTo({ url: '/pages/in-mp2/in-mp2' });
-    wx.navigateBack({ delta: 2 })
+    wx.navigateBack({ delta: 2 });
+
+    // 设置标题
+    wx.setNavigationBarTitle({ title: '这个是标题' });
   },
   // 获取列表
   get_list(complete) {

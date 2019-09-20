@@ -23,9 +23,12 @@ Page({
   fundingOrderDetail(complete) {
     app.ajax('my/fundingOrderDetail', { order_id: this.data.id }, (res) => {
       app.format_img(res, 'cover');
-      app.time_format(res, 'create_time', 'yyyy-MM-dd');
-      app.time_format(res, 'pay_time', 'yyyy-MM-dd');
-
+      app.time_format(res, 'create_time', 'yyyy-MM-dd hh:mm:ss');
+      app.time_format(res, 'pay_time', 'yyyy-MM-dd hh:mm:ss');
+      app.time_format(res, 'send_time', 'yyyy-MM-dd hh:mm:ss');
+      app.time_format(res, 'finish_time', 'yyyy-MM-dd hh:mm:ss');
+      app.time_format(res, 'refund_time', 'yyyy-MM-dd hh:mm:ss');
+      
       if (res.type === 1) {
         app.format_img(res.pics);
         this.setData({ flex_pad: app.null_arr(res.pics.length, 3) });
@@ -140,5 +143,29 @@ Page({
   bind_input(e) {
     app.bind_input();
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
+  },
+  // 隐藏退款框
+  hide_refund() {
+    this.setData({ refund_show: false });
+  },
+  // 确认收货
+  fundingOrderConfirm() {
+    wx.showModal({
+      title: '提示',
+      content: '确认收货？',
+      success: res => {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '加载中',
+            mask: true
+          });
+          app.ajax('my/fundingOrderConfirm', {order_id: this.data.id}, () => {
+            this.fundingOrderDetail();
+          }, null, () => {
+            wx.hideLoading();
+          });
+        }
+      }
+    });
   }
 });

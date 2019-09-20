@@ -3,7 +3,7 @@
 </view>
 
 <view class="page">
-  <view class="tab">
+  <view class="order-tab">
     <view class="tab-item {{status === '' ? 'active' : ''}}" data-status="{{''}}" bindtap="tab_change">全部</view>
     <view class="tab-item {{status === 0 ? 'active' : ''}}" data-status="{{0}}" bindtap="tab_change">待付款</view>
     <view class="tab-item {{status === 1 ? 'active' : ''}}" data-status="{{1}}" bindtap="tab_change">待发货</view>
@@ -19,7 +19,7 @@
       </view>
       <view class="info-box">
         <view class="ac-line">
-          <image src="/images/t-chou1.png" mode="aspectFill" lazy-load></image>
+          <image src="{{item.cover}}" mode="aspectFill" lazy-load></image>
           <view class="title two-line-ellipsis">{{item.funding_title}}</view>
         </view>
         <view class="info-line" wx:if="{{item.type == 1}}">
@@ -54,11 +54,12 @@
     已经没有更多了哦
   </view>
 
-  <view class="nodata" wx:if="{{nodata}}">
-    暂无订单
+  <view class="order-nodata" wx:if="{{nodata}}">
+    <image src="/images/no-order.png"></image>
+    <view class="text">暂无订单</view>
   </view>
 
-  <view bindtap="hide_refund" class="modal" wx:if="{{refund_show}}">
+  <view bindtap="hide_refund" class="refund-modal" wx:if="{{refund_show}}">
     <view catchtap="do_nothing" class="content">
       <view class="title">退款理由</view>
       <textarea bindinput="bind_input" fixed="true" data-name="reason" value="{{reason}}" auto-height maxlength="50" cursor-spacing="50" placeholder="请输入理由" style="padding: {{textarea_padding}};"/>
