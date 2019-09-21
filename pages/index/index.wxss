@@ -76,6 +76,41 @@
   vertical-align: bottom;
 }
 
+.kingkong {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 47rpx 0 0;
+  background: #f5f5f5;
+  padding: 40rpx 0;
+  box-shadow: 0 1rpx 60rpx 0 rgba(211, 211, 211, 0.6);
+}
+
+.kingkong navigator {
+  display: block;
+  width: 100rpx;
+  text-align: center;
+}
+
+.kingkong navigator image {
+  vertical-align: bottom;
+}
+
+.kingkong .musemu {
+  width: 96rpx;
+  height: 110rpx;
+}
+
+.kingkong .designer {
+  width: 97rpx;
+  height: 107rpx;
+}
+
+.kingkong .factory {
+  width: 78rpx;
+  height: 109rpx;
+}
+
 .activity-box {
   margin-top: 47rpx;
 }

@@ -1,53 +1,93 @@
 <view class="page">
-  <view class="tab-list">
-    <view bindtap="tab_change" data-tab="{{1}}" class="tab {{type == 1 ? 'active' : ''}}">博物馆</view>
-    <view bindtap="tab_change" data-tab="{{2}}" class="tab {{type == 2 ? 'active' : ''}}">设计师</view>
-    <view bindtap="tab_change" data-tab="{{3}}" class="tab {{type == 3 ? 'active' : ''}}">工厂</view>
+  <view class="tab-list-box">
+    <view class="tab-list">
+      <view bindtap="tab_change" data-tab="{{1}}" class="tab {{type == 1 ? 'active' : ''}}">博物馆</view>
+      <view bindtap="tab_change" data-tab="{{2}}" class="tab {{type == 2 ? 'active' : ''}}">设计师</view>
+      <view bindtap="tab_change" data-tab="{{3}}" class="tab {{type == 3 ? 'active' : ''}}">工厂</view>
+    </view>
   </view>
 
   <view class="list-box">
+    <!-- 博物馆 -->
     <view class="museum-box" wx:if="{{type == 1}}">
       <view class="museum-list">
-        <view class="museum" wx:for="{{[1, 2, 3, 4]}}">
-          <image src="/images/t-chou2.png" class="cover" mode="aspectFill" lazy-load></image>
+        <view bindtap="to_person_page" data-id="{{item.id}}" class="museum" wx:for="{{museum_list}}" wx:key="id">
+          <image src="{{item.cover}}" class="cover" mode="aspectFill" lazy-load></image>
           <view class="info">
             <view class="title-line">
-              <view class="title">天津杨柳青画社天津杨柳青画社天津杨柳青画社天津杨柳青画社</view>
-              <view class="lv">Lv15</view>
+              <view class="title one-line-ellipsis">{{item.org}}</view>
+              <view class="lv">Lv{{item.level}}</view>
             </view>
             <view class="param-line">
-              <view class="param">粉丝10008</view>
-              <view class="param">活动6084</view>
+              <view class="param">粉丝{{item.focus}}</view>
+              <view class="param">活动{{item.req_num}}</view>
             </view>
           </view>
         </view>
       </view>
 
-      <view class="nomore" wx:if="{{nomore}}">
+      <view class="nomore" wx:if="{{museum_nomore}}">
         已经没有更多了哦
       </view>
-      <view class="nodata" wx:if="{{nodata}}">
+      <view class="nodata" wx:if="{{museum_nodata}}">
         暂无数据
       </view>
     </view>
 
+    <!-- 设计师 -->
     <view class="designer-box" wx:if="{{type == 2}}">
       <view class="designer-list">
-        <view class="designer">
-          <image src="/images/t-chou2.png"  mode="aspectFill" lazy-load></image>
+        <view bindtap="to_person_page" data-id="{{item.id}}" class="designer" wx:for="{{designer_list}}" wx:key="id">
           <view class="info">
-            <view class="shang">
+            <image src="{{item.avatar}}" class="avatar" mode="aspectFill" lazy-load></image>
+            <view class="you">
               <view class="nl">
-                <view class="nickname">尤克里里</view>
-                <view class="lv">Lv10</view>
+                <view class="nickname one-line-ellipsis">{{item.nickname}}</view>
+                <view class="lv">Lv{{item.level}}</view>
               </view>
-              <button class="follow-btn">关注</button>
+              <button class="follow-btn {{item.if_focus ? 'followed' : ''}}" catchtap="iFocus" data-index="{{index}}">{{item.if_focus ? '已关注' : '关注'}}</button>
             </view>
-            <view class="params-box">
-              <view class="param">粉丝10008</view>
+          </view>
+          <view class="params-box">
+            <view class="param">粉丝{{item.focus}}</view>
+            <view class="param">创意{{item.idea_num}}</view>
+            <view class="param">作品{{item.works_num}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="nomore" wx:if="{{designer_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{designer_nodata}}">
+        暂无数据
+      </view>
+    </view>
+
+
+    <!-- 工厂 -->
+    <view class="museum-box factory-box" wx:if="{{type == 3}}">
+      <view class="museum-list">
+        <view bindtap="to_person_page" data-id="{{item.id}}" class="museum" wx:for="{{factory_list}}" wx:key="id">
+          <image src="{{item.cover}}" class="cover" mode="aspectFill" lazy-load></image>
+          <view class="info">
+            <view class="title-line">
+              <view class="title one-line-ellipsis">{{item.org}}</view>
+              <view class="lv">Lv{{item.level}}</view>
+            </view>
+            <view class="param-line">
+              <view class="param">粉丝{{item.focus}}</view>
+              <view class="param">活动{{item.bid_num}}</view>
             </view>
           </view>
         </view>
+      </view>
+
+      <view class="nomore" wx:if="{{factory_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{factory_nodata}}">
+        暂无数据
       </view>
     </view>
   </view>

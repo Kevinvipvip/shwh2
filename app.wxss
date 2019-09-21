@@ -361,7 +361,7 @@ button::after {
 /* 按钮 start */
 
 .line-btn {
-  background: #ffcc06;
+  background: #ffcb5c;
   border-radius: 0;
   height: 80rpx;
   line-height: 80rpx;
@@ -453,7 +453,7 @@ button::after {
 }
 
 .form1 .form-item {
-  margin-bottom: 39rpx;
+  margin-bottom: 59rpx;
 }
 
 .form1 .form-item:last-child {
@@ -461,27 +461,33 @@ button::after {
 }
 
 .form1 .form-item .title {
-  font-size: 34rpx;
-  color: #1b1b1b;
-  margin-bottom: 18rpx;
+  font-size: 36rpx;
+  color: #333;
+  margin-bottom: 40rpx;
 }
 
 .form1 .form-item input {
-  background: #ecebeb;
-  padding: 19rpx 25rpx;
+  padding: 20rpx 23rpx;
   color: #4d4d4d;
-  font-size: 24rpx;
+  font-size: 30rpx;
   height: auto;
   line-height: 1;
+  border-radius: 4rpx;
+  border: 2rpx solid #d2d2d2;
+}
+
+.form1 .form-item .input-place, .form1 .textarea-box .input-place {
+  color: #ccc;
 }
 
 .form1 .textarea-box {
-  background: #ecebeb;
+  border: 2rpx solid #d2d2d2;
+  border-radius: 4rpx;
 }
 
 .form1 .textarea-box textarea {
   color: #4d4d4d;
-  font-size: 24rpx;
+  font-size: 30rpx;
   line-height: 1.5;
   min-height: 100rpx;
   width: 100%;
@@ -499,6 +505,51 @@ button::after {
   color: #333;
 }
 
+.form1 .tag-box-wai {
+  line-height: 1;
+}
+
+.form1 .tag-box-wai .tag-box {
+  margin-bottom: 39rpx;
+}
+
+.form1 .tag-box-wai .tag-box:last-child {
+  margin-bottom: 0;
+}
+
+.form1 .tag-box-wai .tag-box .title {
+  text-align: center;
+  font-size: 34rpx;
+  color: #999;
+  margin-bottom: 24rpx;
+}
+
+.form1 .tag-box-wai .tag-box .tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form1 .tag-box-wai .tag-box .tag-list .tag {
+  margin-bottom: 24rpx;
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 4rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  background: rgba(220, 220, 220, 0.2);
+}
+
+.form1 .tag-box-wai .tag-box .tag-list .tag.active {
+  background: #ffcb5c;
+  color: #333;
+}
+
+.form1 .tag-box-wai .tag-box .tag-list .tag:nth-last-child(-n + 5) {
+  margin-bottom: 0;
+}
 /* form表单1 end */
 
 /* 图片上传 start */
@@ -1156,4 +1207,5 @@ button::after {
   font-size: 28rpx;
   margin-top: 15rpx;
 }
+
 /* 订单nodata end */

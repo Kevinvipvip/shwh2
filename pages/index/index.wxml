@@ -16,6 +16,18 @@
     </swiper>
   </view>
 
+  <view class="kingkong">
+    <navigator url="/pages/person-list/person-list?type=1">
+      <image src="/icons/musemu.png" class="musemu"></image>
+    </navigator>
+    <navigator url="/pages/person-list/person-list?type=2">
+      <image src="/icons/designer.png" class="designer"></image>
+    </navigator>
+    <navigator url="/pages/person-list/person-list?type=3">
+      <image src="/icons/factory.png" class="factory"></image>
+    </navigator>
+  </view>
+
   <!-- 投石 -->
   <view class="activity-box">
     <view class="leng-title">

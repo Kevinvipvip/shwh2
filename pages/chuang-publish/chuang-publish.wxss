@@ -1,5 +1,5 @@
 .page {
-  padding: 40rpx 25rpx;
+  padding: 39rpx 24rpx 50rpx;
   line-height: 1;
   position: relative;
   box-sizing: border-box;

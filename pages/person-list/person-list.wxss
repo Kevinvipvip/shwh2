@@ -1,2 +1,210 @@
 .page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 158rpx 24rpx 0;
+  background: #fafafa;
+  line-height: 1;
+}
+
+.tab-list-box {
+  background: #fafafa;
+  padding: 30rpx 24rpx;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.tab-list {
+  margin: 0;
+}
+
+.tab-list.pft {
+  width: 100%;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.list-box {
+}
+
+.museum-box {
+}
+
+.museum-box .museum-list {
+}
+
+.museum {
+  margin-bottom: 40rpx;
+}
+
+.museum:last-child {
+  margin-bottom: 0;
+}
+
+.museum .cover {
+  height: 351rpx;
+  border-radius: 4rpx;
+  width: 100%;
+}
+
+.museum .info {
+  padding: 40rpx 0;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
+}
+
+.museum .info .title-line {
+  display: flex;
+  align-items: center;
+}
+
+.museum .info .title-line .title {
+  font-size: 34rpx;
+  color: #333;
+  letter-spacing: 1rpx;
+}
+
+.museum .info .title-line .lv {
+  flex-shrink: 0;
+  margin-left: 24rpx;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+  height: 34rpx;
+  line-height: 34rpx;
+  padding: 0 12rpx;
+  border: solid 1rpx #666;
+  font-size: 24rpx;
+  color: #666;
+  letter-spacing: 1rpx;
+}
+
+.museum .info .param-line {
+  margin-top: 30rpx;
+  display: flex;
+}
+
+.museum .info .param-line .param {
+  display: flex;
+  align-items: center;
+  margin-right: 39rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.museum .info .param-line .param::before {
+  content: '';
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #ccc;
+  margin-right: 15rpx;
+}
+
+.museum .info .param-line .param:last-child {
+  margin-right: 0;
+}
+
+.designer-box {
+}
+
+.designer-box .designer-list {
+}
+
+.designer {
+  padding-bottom: 39rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
+  margin-bottom: 40rpx;
+}
+
+.designer:last-child {
+  margin-bottom: 0;
+}
+
+.designer .info {
+  display: flex;
+  align-items: center;
+}
+
+.designer .info .avatar {
+  width: 94rpx;
+  height: 94rpx;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.designer .info .you {
+  display: flex;
+  margin-left: 28rpx;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.designer .info .you .nl {
+  flex-grow: 1;
+  width: 0;
+}
+
+.designer .info .you .nl .nickname {
+  font-size: 32rpx;
+  letter-spacing: 1rpx;
+  color: #333;
+}
+
+.designer .info .you .nl .lv {
+  margin-top: 16rpx;
+  color: #666;
+  letter-spacing: 1rpx;
+  font-size: 28rpx;
+}
+
+.designer .info .you .follow-btn {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 141rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fec448;
+  border-radius: 4rpx;
+  padding: 0;
+  color: #333;
+  letter-spacing: 1rpx;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.designer .info .you .follow-btn.followed {
+  background: #dbdbdb;
+  box-shadow: none;
+}
+
+.designer .params-box {
+  margin-top: 23rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 122rpx;
+}
+
+.designer .params-box .param {
+  font-size: 24rpx;
+  letter-spacing: 1rpx;
+  font-weight: bold;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.designer .params-box .param::before {
+  content: '';
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #ccc;
+  margin-right: 15rpx;
+}
+
+.factory-box {
 }
