@@ -24,7 +24,7 @@
     <view class="desc">
       <view class="title title-redtiao">商品描述</view>
       <view>
-        {{goods.desc}}
+        {{goods.desc || '暂无描述'}}
       </view>
     </view>
     <view class="params">

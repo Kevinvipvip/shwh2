@@ -48,60 +48,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": -1,
 			"list": [
 				{
-					"id": -1,
-					"name": "pages/chou-order-create/chou-order-create",
-					"pathName": "pages/chou-order-create/chou-order-create",
-					"query": "funding_id=1&goods_id=2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my-edit/my-edit",
-					"pathName": "pages/my-edit/my-edit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/apply2/apply2",
-					"pathName": "pages/apply2/apply2",
-					"query": "role=3",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my-edit-detail/my-edit-detail",
-					"pathName": "pages/my-edit-detail/my-edit-detail",
-					"query": "role=3",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my-chou-orders/my-chou-orders",
-					"pathName": "pages/my-chou-orders/my-chou-orders",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/order-chou-detail/order-chou-detail",
-					"pathName": "pages/order-chou-detail/order-chou-detail",
-					"query": "id=36",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/person-page/person-page",
+					"id": 0,
+					"name": "他人主页",
 					"pathName": "pages/person-page/person-page",
-					"query": "",
+					"query": "uid=7",
 					"scene": null
 				},
 				{
-					"id": 7,
-					"name": "pages/person-list/person-list",
+					"id": 1,
+					"name": "角色列表",
 					"pathName": "pages/person-list/person-list",
 					"query": "type=1",
 					"scene": null
@@ -111,6 +69,13 @@
 					"name": "发布创意",
 					"pathName": "pages/chuang-publish/chuang-publish",
 					"query": "type=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "设置",
+					"pathName": "pages/setting/setting",
+					"query": "",
 					"scene": null
 				}
 			]

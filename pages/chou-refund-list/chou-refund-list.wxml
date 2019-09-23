@@ -7,7 +7,7 @@
     <view class="tab-item {{type === '' ? 'active' : ''}}" data-type="{{''}}" bindtap="tab_change">全部</view>
     <view class="tab-item {{type === 1 ? 'active' : ''}}" data-type="{{1}}" bindtap="tab_change">退款中</view>
     <view class="tab-item {{type === 2 ? 'active' : ''}}" data-type="{{2}}" bindtap="tab_change">已退款</view>
-    <view class="tab-item {{type === 3 ? 'active' : ''}}" data-type="{{3}}" bindtap="tab_change">拒绝退款</view>
+<!--    <view class="tab-item {{type === 3 ? 'active' : ''}}" data-type="{{3}}" bindtap="tab_change">拒绝退款</view>-->
   </view>
 
   <view class="order-list">

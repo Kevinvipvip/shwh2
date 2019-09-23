@@ -132,14 +132,17 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      let post = {
-
-      };
       app.ajax('note/iFocus', {to_uid: idea.uid}, res => {
         this.setData({ ['idea.ifocus']: res});
       }, null, () => {
         this.data.loading = false;
       });
     }
+  },
+  // 去他人主页
+  to_person() {
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.idea.uid });
+    });
   }
 });

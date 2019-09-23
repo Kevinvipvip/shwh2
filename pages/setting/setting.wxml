@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="menu-box">
+    <navigator url="/pages/my-edit/my-edit" class="menu">
+      <view class="label">修改个人资料</view>
+      <image src="/icons/you3.png" class="you"></image>
+    </navigator>
+    <navigator url="/" class="menu">
+      <view class="label">{{username ? '重置店铺密码' : '初始化店铺'}}</view>
+      <image src="/icons/you3.png" class="you"></image>
+    </navigator>
+    <!--    <view class="menu">-->
+    <!--      <view class="label cache">-->
+    <!--        <view class="content">清除缓存</view>-->
+    <!--        <class class="cache-amount">96.54M</class>-->
+    <!--      </view>-->
+    <!--       <button class="clear">立即清除</button>-->
+    <!--    </view>-->
+  </view>
+</view>

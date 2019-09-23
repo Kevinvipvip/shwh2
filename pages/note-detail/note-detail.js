@@ -164,5 +164,11 @@ Page({
         this.data.focus_loading = false;
       });
     }
+  },
+  // 去他人主页
+  to_person() {
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.note.uid });
+    });
   }
 });

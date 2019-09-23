@@ -1,203 +1,205 @@
 .page {
-    background: #f3f3f3;
-    min-height: 100vh;
-    padding-top: 84rpx;
+  background: #f3f3f3;
+  min-height: 100vh;
+  padding-top: 84rpx;
+  box-sizing: border-box;
 }
 
 .tab {
-    background: #fafafa;
-    color: #666;
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1rpx solid #eee;
-    height: 84rpx;
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
+  background: #fafafa;
+  color: #666;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #eee;
+  height: 84rpx;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
 }
 
 .tab .tab-item {
-    font-size: 27rpx;
-    line-height: 3;
-    padding: 0 5rpx;
+  font-size: 27rpx;
+  line-height: 3;
+  padding: 0 5rpx;
 }
 
 .tab .tab-item.active {
-    color: #ff9f38;
-    border-bottom: 4rpx solid #ff9f38;
+  color: #ff9f38;
+  border-bottom: 4rpx solid #ff9f38;
 }
 
 .order-list {
-    padding: 25rpx 25rpx 0;
+  padding: 25rpx 25rpx 0;
 }
 
 .order {
-    background: #fff;
-    margin-bottom: 25rpx;
-    padding: 15rpx 15rpx 20rpx;
+  background: #fff;
+  margin-bottom: 25rpx;
+  padding: 15rpx 15rpx 20rpx;
 }
 
 .order:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .order-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
 }
 
 .order-info .order-num {
-    color: #666;
-    font-size: 22rpx;
+  color: #666;
+  font-size: 22rpx;
 }
 
 .order-info .status {
-    color: #ff4e13;
+  color: #ff4e13;
 }
 
 .pro {
-    display: flex;
+  display: flex;
 }
 
 .pro + .pro {
-    margin-top:25rpx;
+  margin-top: 25rpx;
 }
 
 .pro .pic {
-    width: 200rpx;
-    height: 200rpx;
-    border-radius: 10rpx;
-    flex-shrink: 0;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  flex-shrink: 0;
 }
 
 .pro .info {
-    flex-grow: 1;
-    margin-left: 15rpx;
-    color: #666;
-    font-size: 22rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  flex-grow: 1;
+  margin-left: 15rpx;
+  color: #666;
+  font-size: 22rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .pro .info .shang {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .pro .info .shang .title {
-    font-size: 26rpx;
-    width: 300rpx;
+  font-size: 26rpx;
+  width: 300rpx;
 }
 
 .pro .info .shang .title .attr {
-    color: #888;
-    margin-top: 10rpx;
-    font-size:24rpx;
+  color: #888;
+  margin-top: 10rpx;
+  font-size: 24rpx;
 }
 
 .pro .info .shang .right {
-
 }
 
 .pro .shang .right .price {
-    text-align: right;
-    font-size: 25rpx;
+  text-align: right;
+  font-size: 25rpx;
 }
 
 .pro .shang .right .amount {
-    text-align: right;
-    color: #bbb;
+  text-align: right;
+  color: #bbb;
 }
 
 .order .carriage {
-    text-align:right;
-    font-size:25rpx;
-    margin-top:10rpx;
-    color:#333;
+  text-align: right;
+  font-size: 25rpx;
+  margin-top: 10rpx;
+  color: #333;
 }
 
 .order .count {
-    color:#333;
-    text-align:right;
-    margin-top:10rpx;
+  color: #333;
+  text-align: right;
+  margin-top: 10rpx;
 }
 
 .order .btn-box {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 17rpx;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 17rpx;
 }
 
 .order .btn-box > view {
-    padding: 10rpx 25rpx;
-    border-radius: 40rpx;
-    font-size: 24rpx;
-    line-height: 1;
-    margin-left:16rpx;
+  padding: 10rpx 25rpx;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+  line-height: 1;
+  margin-left: 16rpx;
 }
 
 .order .btn-box .normal {
-    color: #666;
-    border: 2rpx solid #888;
+  color: #666;
+  border: 2rpx solid #888;
 }
 
 .order .btn-box .highlight {
-    color:#ff4e13;
-    border:2rpx solid #ff7e22;
+  color: #ff4e13;
+  border: 2rpx solid #ff7e22;
 }
 
 /* 退款框 start */
+
 .modal {
-    padding:10rpx;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index:10;
-    height:100vh;
-    box-sizing:border-box;
-    background:rgba(0, 0, 0, 0.7);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items: center;
-    overflow: hidden;
+  padding: 10rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  height: 100vh;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .modal .content {
-    background: #fff;
-    box-sizing: border-box;
-    width: 80%;
-    padding: 30rpx;
-    border-radius: 15rpx;
+  background: #fff;
+  box-sizing: border-box;
+  width: 80%;
+  padding: 30rpx;
+  border-radius: 15rpx;
 }
 
 .modal .content .title {
-    text-align: center;
-    font-size: 30rpx;
+  text-align: center;
+  font-size: 30rpx;
 }
 
 .modal .content textarea {
-    border:1rpx solid #ddd;
-    width:calc(100% - 30rpx);
-    min-height:100rpx;
-    margin-top:23rpx;
+  border: 1rpx solid #ddd;
+  width: calc(100% - 30rpx);
+  min-height: 100rpx;
+  margin-top: 23rpx;
 }
 
 .modal .content button {
-    border-radius:10rpx;
-    color:#fff;
-    border-radius:10rpx;
-    margin-top:30rpx;
-    background:#ff9f38;
-    line-height:2;
-    width:160rpx;
-    margin-right:0;
-    font-size:26rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  background: #ff9f38;
+  line-height: 2;
+  width: 160rpx;
+  margin-right: 0;
+  font-size: 26rpx;
 }
+
 /* 退款框 end */

@@ -47,5 +47,11 @@ Page({
   onShareAppMessage() {
     wx.showShareMenu();
     return { path: app.share_path() };
+  },
+  // 去他人主页
+  to_person() {
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.funding.uid });
+    });
   }
 });

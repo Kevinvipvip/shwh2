@@ -5,7 +5,7 @@
     <image src="{{req.cover}}" mode="aspectFill" class="banner" wx:else></image>
     <view class="title">{{req.title}}</view>
     <view class="zhong">
-      <view class="left">
+      <view bindtap="to_person" class="left">
         <image src="{{req.avatar}}" class="head-pic"></image>
         <view class="nickname">{{req.org}}</view>
       </view>

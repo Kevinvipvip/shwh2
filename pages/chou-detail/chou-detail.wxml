@@ -14,7 +14,7 @@
     <view class="under-banner">
       <view class="title">{{funding.title}}</view>
       <view class="auth-line">
-        <view class="left">
+        <view bindtap="to_person" class="left">
           <image src="{{funding.avatar}}" class="header"></image>
           <view class="nickname">{{funding.nickname}}</view>
         </view>

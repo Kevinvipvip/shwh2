@@ -4,7 +4,7 @@
 
 <view class="page">
   <!-- 地址 -->
-  <view class="address-box">
+  <view class="address-box" wx:if="{{order.type == 1}}">
     <image src="/icons/address2.png" class="add-icon"></image>
     <view class="info">
       <view class="shang">

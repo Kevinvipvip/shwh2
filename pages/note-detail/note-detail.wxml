@@ -1,6 +1,6 @@
 <view>
   <view class="top">
-    <view class="left">
+    <view bindtap="to_person" class="left">
       <image src="{{note.avatar}}" class="header"></image>
       {{note.nickname}}
     </view>

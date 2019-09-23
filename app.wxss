@@ -272,8 +272,8 @@ button::after {
 }
 
 .work-rank-list .work .info .xia .vote .icon {
-  width: 30rpx;
-  height: 26rpx;
+  width: 33rpx;
+  height: 34.5rpx;
   margin-right: 14rpx;
 }
 
@@ -550,6 +550,7 @@ button::after {
 .form1 .tag-box-wai .tag-box .tag-list .tag:nth-last-child(-n + 5) {
   margin-bottom: 0;
 }
+
 /* form表单1 end */
 
 /* 图片上传 start */

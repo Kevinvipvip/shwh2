@@ -24,8 +24,7 @@ Page({
         app.user_data.uid = res.id;
         app.user_data.role = res.role_check === 2 ? res.role : 0;
         app.user_data.user_auth = res.user_auth;
-        
-        console.log(app.user_data);
+        app.user_data.username = res.username;
       });
 
       // app.get_auth((res) => {

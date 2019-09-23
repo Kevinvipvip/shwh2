@@ -21,8 +21,8 @@ App({
   my_config: {
     // base_url: 'https://www.caves.vip',  // 正式（原）
     // api: 'https://www.caves.vip/api/',  // 正式（原）
-    base_url: 'https://caves.wcip.net',  // 正式
-    api: 'https://caves.wcip.net/api/',  // 正式
+    base_url: 'https://caves.wcip.net', // 正式
+    api: 'https://caves.wcip.net/api/', // 正式
     qiniu_base: 'http://qiniu.wcip.net',
     // qiniu_base: 'http://pwu6oxfmm.bkt.clouddn.com/',
     default_img: '/images/default.png',
@@ -40,26 +40,27 @@ App({
   user_data: {
     token: '',
     uid: 0,
+    username: '',  // 后台账号
     role: 0,
-    user_auth: 0  // 0.用户未授权 1.用户已授权
+    user_auth: 0 // 0.用户未授权 1.用户已授权
   },
   mp_update() {
     const updateManager = wx.getUpdateManager();
-    updateManager.onCheckForUpdate(function (res) {
-      console.log(res.hasUpdate);  // 是否有更新
+    updateManager.onCheckForUpdate(function(res) {
+      console.log(res.hasUpdate); // 是否有更新
     });
-    updateManager.onUpdateReady(function () {
+    updateManager.onUpdateReady(function() {
       wx.showModal({
         title: '更新提示',
         content: '新版本已经准备好，是否马上重启小程序？',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             updateManager.applyUpdate()
           }
         }
       })
     });
-    updateManager.onUpdateFailed(function () {
+    updateManager.onUpdateFailed(function() {
       // 新的版本下载失败
     })
   },
@@ -111,11 +112,13 @@ App({
             err(res.data);
           } else {
             switch (res.data.code) {
-              case -3:  // token失效
-              case -5:  // token未传
+              case -3: // token失效
+              case -5: // token未传
                 let current_pages = getCurrentPages();
                 let current_page = current_pages[current_pages.length - 1];
-                wx.redirectTo({ url: '/pages/login/login?route=' + encodeURIComponent(current_page.route + this.obj2query(current_page.options)) });
+                wx.redirectTo({
+                  url: '/pages/login/login?route=' + encodeURIComponent(current_page.route + this.obj2query(current_page.options))
+                });
                 break;
               case 49:
                 this.toast(res.data.data);
@@ -225,17 +228,23 @@ App({
   // 如果不存在route，跳转到首页，否则根据是否是tabbar页进行跳转
   redirect_or_switch_or_index(route) {
     if (!route) {
-      wx.switchTab({ url: '/pages/index/index' });
+      wx.switchTab({
+        url: '/pages/index/index'
+      });
     } else {
       switch (route) {
         case 'pages/index/index':
         case 'pages/shop/shop':
         case 'pages/notes/notes':
         case 'pages/my/my':
-          wx.switchTab({ url: '/' + route });
+          wx.switchTab({
+            url: '/' + route
+          });
           break;
         default:
-          wx.redirectTo({ url: '/' + route });
+          wx.redirectTo({
+            url: '/' + route
+          });
           break;
       }
     }
@@ -365,7 +374,9 @@ App({
     });
   },
   bind_input(e, page) {
-    page.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
+    page.setData({
+      [e.currentTarget.dataset['name']]: e.detail.value || ''
+    })
   },
   // 创建指定数量元素的数组（flex填充用）
   null_arr(number, line_number) {
@@ -384,14 +395,20 @@ App({
         case 'shop':
         case 'notes':
         case 'my':
-          wx.switchTab({ url: `/pages/${page}/${page}` });
+          wx.switchTab({
+            url: `/pages/${page}/${page}`
+          });
           break;
         default:
           page = page.split('?');
           if (page[1]) {
-            wx.navigateTo({ url: `/pages/${page[0]}/${page[0]}?${page[1]}` });
+            wx.navigateTo({
+              url: `/pages/${page[0]}/${page[0]}?${page[1]}`
+            });
           } else {
-            wx.navigateTo({ url: `/pages/${page[0]}/${page[0]}` });
+            wx.navigateTo({
+              url: `/pages/${page[0]}/${page[0]}`
+            });
           }
           break;
       }
@@ -438,8 +455,7 @@ App({
           err();
         }
         console.error('上传七牛云出错: ' + JSON.stringify(error));
-      },
-      {
+      }, {
         key: img_name,
         region: 'NCN'
       },
@@ -492,7 +508,7 @@ App({
   },
   // 获取默认收货地址
   get_default_address(callback) {
-    this.ajax('shop/getDefaultAddress', null, res => {
+    this.ajax('my/getDefaultAddress', null, res => {
       let address = {
         receiver: res.username,
         tel: res.tel,
@@ -504,7 +520,9 @@ App({
   // 收集formid-collectFormid
   collectFormid(formid) {
     if (formid !== 'the formId is a mock one') {
-      this.ajax('message/collectFormid', {formid: formid}, null, () => {
+      this.ajax('message/collectFormid', {
+        formid: formid
+      }, null, () => {
         // 啥都不干
       });
     }

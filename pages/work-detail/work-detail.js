@@ -2,7 +2,7 @@ const app = getApp();
 
 Page({
   data: {
-    textarea_padding: '15rpx',
+    is_ios: false,
 
     id: 0,
     work: {},
@@ -20,18 +20,13 @@ Page({
     role: 0  // 用户身份
   },
   onLoad(options) {
-    let phone = wx.getSystemInfoSync();
-    if (phone.platform === 'ios') {
-      this.setData({ textarea_padding: '0rpx 5rpx' });
-    }
+    this.setData({is_ios: app.is_ios});
 
     this.data.id = options.id;
     this.worksDetail();
 
     this.setData({role: app.user_data.role});
-    if (app.user_data.role === 1) {
-      this.biddingList();
-    }
+    this.biddingList();
 
     this.setData({uid: app.user_data.uid});
   },
@@ -79,6 +74,19 @@ Page({
       }
     } else {
       app.toast('您已投票给该作品');
+    }
+  },
+  // 关注/取关
+  iFocus() {
+    let work = this.data.work;
+    if (!this.data.loading) {
+      this.data.loading = true;
+
+      app.ajax('note/iFocus', {to_uid: work.uid}, res => {
+        this.setData({ ['work.ifocus']: res});
+      }, null, () => {
+        this.data.loading = false;
+      });
     }
   },
   // 工厂接单
@@ -135,5 +143,11 @@ Page({
         });
       });
     }
+  },
+  // 去他人主页
+  to_person() {
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.work.uid });
+    });
   }
 });

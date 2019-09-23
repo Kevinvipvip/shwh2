@@ -1,50 +1,58 @@
 <view class="page">
-  <view class="work-box">
-    <view class="work">
-      <view class="line1">
-        <view class="zuo">
-          <image src="{{work.avatar}}" class="header"></image>
-          <view class="nickname">{{work.nickname}}</view>
-        </view>
-        <view class="time-ago">
-          <!-- 5天前 -->
-          {{work.create_time}}
-        </view>
-      </view>
-      <view class="under">
-        <view class="title">{{work.title}}</view>
-        <view class="desc">{{work.desc}}</view>
-        <view class="img-box">
-          <image bindtap="preview" data-index="{{index}}" src="{{item}}" wx:for="{{work.pics}}" mode="aspectFill"
-                 lazy-load></image>
-          <image class="vh" wx:for="{{work.flex_pad}}"></image>
+  <view class="work">
+    <view class="title">{{work.title}}</view>
+    <view class="desc">{{work.desc}}</view>
+    <view class="idea-line" wx:if="{{work.idea_title}}">
+      <view class="origin one-line-ellipsis">创意来源：{{work.idea_title}}</view>
+      <view class="support">创意支持：{{work.idea_vote}}</view>
+    </view>
+    <view class="user-line">
+      <view bindtap="to_person" class="avatar-box">
+        <image src="{{work.avatar}}" mode="aspectFill" class="avatar"></image>
+        <view class="na">
+          <view class="nickname one-line-ellipsis">{{work.nickname}}</view>
+          <view class="ago">{{work.create_time}}</view>
         </view>
       </view>
-      <!--          <view class="chuang-line">-->
-      <!--            <view class="origin">创意来源：龙鳞</view>-->
-      <!--            <view class="c-zhi">创意支持 128</view>-->
-      <!--          </view>-->
-      <view class="other-line">
-        <view class="factory">
-          <text>工厂接单</text>
-          <text class="amount">[数量：{{work.bid_num}}]</text>
-        </view>
-        <view bindtap="worksVote" class="agree">
-          <image src="/icons/zan-active.png" wx:if="{{work.if_vote}}"></image>
-          <image src="/icons/zan.png" wx:else></image>
-          <text>{{work.vote}}</text>
-        </view>
+      <view bindtap="iFocus" class="follow-btn {{work.ifocus ? 'followed' : ''}}" wx:if="{{uid != idea.uid}}">{{work.ifocus ? '已关注' : '关注'}}</view>
+    </view>
+    <view class="img-box">
+      <image bindtap="preview" data-index="{{index}}" src="{{item}}" wx:for="{{work.pics}}" mode="aspectFill" lazy-load></image>
+      <image class="vh" wx:for="{{work.flex_pad}}"></image>
+    </view>
+    <view class="num-line">
+      <view class="bid">
+        <view class="label">工厂接单</view>
+        <view class="value">[数量：{{work.bid_num}}]</view>
+      </view>
+      <view bindtap="worksVote" class="work-c">
+        <image src="/icons/zan-active.png" wx:if="{{work.if_vote}}"></image>
+        <image src="/icons/zan.png" wx:else></image>
+        <view class="count">{{work.vote}}</view>
       </view>
     </view>
+  </view>
 
+  <!-- 来源活动 -->
+  <view class="ac-detail">
+    <view class="title-line">
+      <view class="title">来源活动</view>
+      <navigator url="/pages/activity-detail/activity-detail?id={{work.req_id}}" class="more">
+        <text>查看活动</text>
+        <image src="/icons/you2.png"></image>
+      </navigator>
+    </view>
+    <view class="desc">{{work.req_title || ''}}</view>
+  </view>
+
+  <view class="work-box">
     <!-- 接单（工厂角色） -->
     <form bindsubmit="bidding" report-submit class="bidding-box" wx:if="{{role == 3}}">
       <button form-type="submit" class="line-btn" disabled="{{!work.bidding_btn}}" wx:if="{{role == 3}}">接单</button>
       <view class="form1" wx:if="{{work.bidding_btn}}">
         <view class="form-item">
           <view class="textarea-box">
-            <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="100"
-                      cursor-spacing="50" placeholder="接单备注（选填）" style="padding: {{textarea_padding}};"/>
+            <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="100" cursor-spacing="50" placeholder="接单备注（选填）" class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
             <view class="count">
               <text>{{desc_count}}</text>
               / 100
@@ -55,7 +63,7 @@
     </form>
 
     <!-- 接单列表（博物馆） -->
-    <view class="bidding-box2" wx:if="{{role == 1 && uid == work.req_uid}}">
+    <view class="bidding-box2">
       <view class="title">接单工厂</view>
       <view class="bidding-list" wx:if="{{bidding_list.length != 0}}">
         <view class="bidding" wx:for="{{bidding_list}}" wx:key="id">
@@ -64,7 +72,7 @@
               <image src="{{item.avatar}}" class="head-pic"></image>
               <view class="org">{{item.org}}</view>
             </view>
-            <button bindtap="chooseFactory" data-id="{{item.id}}" class="choose-btn" wx:if="{{choose_bindex == -1}}">选定</button>
+            <button bindtap="chooseFactory" data-id="{{item.id}}" class="choose-btn" wx:if="{{choose_bindex == -1 && work.req_uid == uid}}">选定</button>
             <button class="choose-btn choosed" wx:if="{{choose_bindex != -1 && item.choose == 1}}">已中标</button>
           </view>
           <view class="desc">{{item.desc}}</view>

@@ -38,30 +38,6 @@
             <view class="number">{{index + 1}}</view>
             <view class="today">{{item.score >= 0 ? '+' : '-'}}{{item.score}}</view>
           </view>
-<!--          <view class="sign active">-->
-<!--            <view class="number">2</view>-->
-<!--            <view class="today">+1</view>-->
-<!--          </view>-->
-<!--          <view class="sign active">-->
-<!--            <view class="number">3</view>-->
-<!--            <view class="today">+1</view>-->
-<!--          </view>-->
-<!--          <view class="sign active last-active today-active">-->
-<!--            <view class="number">4</view>-->
-<!--            <view class="today">+50积分</view>-->
-<!--          </view>-->
-<!--          <view class="sign">-->
-<!--            <view class="number">5</view>-->
-<!--            <view class="today">+1</view>-->
-<!--          </view>-->
-<!--          <view class="sign">-->
-<!--            <view class="number">6</view>-->
-<!--            <view class="today">+1</view>-->
-<!--          </view>-->
-<!--          <view class="sign">-->
-<!--            <view class="number">7</view>-->
-<!--            <view class="today">+1</view>-->
-<!--          </view>-->
         </view>
         <button bindtap="userSign" class="sign-btn" disabled="{{sign_today}}">签到</button>
       </view>
@@ -86,35 +62,35 @@
       </view>
     </view>
 
-<!--    <view class="order-box">-->
-<!--      <view class="title">我的订单</view>-->
-<!--      <navigator url="/pages/my-orders/my-orders" class="all">-->
-<!--        <view class="zi">全部</view>-->
-<!--        <image src="/icons/you3.png"></image>-->
-<!--      </navigator>-->
-<!--      <view class="o-menus">-->
-<!--        <navigator url="/pages/my-orders/my-orders?status=0" class="o-menu">-->
-<!--          <image src="/icons/os1.png" class="icon"></image>-->
-<!--          <view class="explain">待付款</view>-->
-<!--        </navigator>-->
-<!--        <navigator url="/pages/my-orders/my-orders?status=1" class="o-menu">-->
-<!--          <image src="/icons/os2.png" class="icon"></image>-->
-<!--          <view class="explain">待发货</view>-->
-<!--        </navigator>-->
-<!--        <navigator url="/pages/my-orders/my-orders?status=2" class="o-menu">-->
-<!--          <image src="/icons/os3.png" class="icon"></image>-->
-<!--          <view class="explain">待收货</view>-->
-<!--        </navigator>-->
-<!--        <navigator url="/pages/my-orders/my-orders?status=3" class="o-menu">-->
-<!--          <image src="/icons/os4.png" class="icon"></image>-->
-<!--          <view class="explain">已完成</view>-->
-<!--        </navigator>-->
-<!--        <navigator url="/pages/refund-list/refund-list" class="o-menu">-->
-<!--          <image src="/icons/os5.png" class="icon"></image>-->
-<!--          <view class="explain">售后</view>-->
-<!--        </navigator>-->
-<!--      </view>-->
-<!--    </view>-->
+    <view class="order-box">
+      <view class="title">我的订单</view>
+      <navigator url="/pages/my-orders/my-orders" class="all">
+        <view class="zi">全部</view>
+        <image src="/icons/you3.png"></image>
+      </navigator>
+      <view class="o-menus">
+        <navigator url="/pages/my-orders/my-orders?status=0" class="o-menu">
+          <image src="/icons/os1.png" class="icon"></image>
+          <view class="explain">待付款</view>
+        </navigator>
+        <navigator url="/pages/my-orders/my-orders?status=1" class="o-menu">
+          <image src="/icons/os2.png" class="icon"></image>
+          <view class="explain">待发货</view>
+        </navigator>
+        <navigator url="/pages/my-orders/my-orders?status=2" class="o-menu">
+          <image src="/icons/os3.png" class="icon"></image>
+          <view class="explain">待收货</view>
+        </navigator>
+        <navigator url="/pages/my-orders/my-orders?status=3" class="o-menu">
+          <image src="/icons/os4.png" class="icon"></image>
+          <view class="explain">已完成</view>
+        </navigator>
+        <navigator url="/pages/refund-list/refund-list" class="o-menu">
+          <image src="/icons/os5.png" class="icon"></image>
+          <view class="explain">售后</view>
+        </navigator>
+      </view>
+    </view>
     <navigator url="/pages/recharge/recharge" class="vip-box">
       <image src="/images/vip-bg.jpg" class="vip-bg"></image>
       <view class="text">{{user.vip != 1 ? '立即开通' : '立即续费'}}</view>
@@ -207,15 +183,16 @@
       <image src="/icons/you3.png" class="you"></image>
     </view>
 
-    <navigator class="menu-item" url="/pages/my-edit/my-edit">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu7.png" class="icon-menu7"></image>
-        </view>
-      </view>
-      <view class="menu-text">个人资料</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
+<!--    <navigator class="menu-item" url="/pages/my-edit/my-edit">-->
+<!--      <view class="left-box">-->
+<!--        <view class="icon-box">-->
+<!--          <image src="/icons/menu7.png" class="icon-menu7"></image>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--      <view class="menu-text">个人资料</view>-->
+<!--      <image src="/icons/you3.png" class="you"></image>-->
+<!--    </navigator>-->
+
     <navigator class="menu-item" url="/pages/my-address/my-address">
       <view class="left-box">
         <view class="icon-box">
@@ -225,6 +202,7 @@
       <view class="menu-text">收货地址</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
+
 <!--    <navigator class="menu-item" url="/pages/drumbeating/drumbeating">-->
 <!--      <view class="left-box">-->
 <!--        <view class="icon-box">-->
@@ -234,6 +212,7 @@
 <!--      <view class="menu-text">文创代言</view>-->
 <!--      <image src="/icons/you3.png" class="you"></image>-->
 <!--    </navigator>-->
+
     <button open-type="contact" show-message-card="true" class="menu-item" url="/pages/my-notes/my-notes">
       <view class="left-box">
         <view class="icon-box">
@@ -243,6 +222,16 @@
       <view class="menu-text">在线客服</view>
       <image src="/icons/you3.png" class="you"></image>
     </button>
+
+    <navigator class="menu-item" url="/pages/setting/setting" wx:if="{{user.role_check == 2 && user.role != 0}}">
+      <view class="left-box">
+        <view class="icon-box">
+          <image src="/icons/menu13.png" class="icon-menu13"></image>
+        </view>
+      </view>
+      <view class="menu-text">设置</view>
+      <image src="/icons/you3.png" class="you"></image>
+    </navigator>
   </view>
 
 <!--  <view class="menu menu3">-->

@@ -27,7 +27,7 @@
 .info-box .pt {
     padding: 25rpx;
     background: #fff;
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
 }
@@ -36,6 +36,7 @@
     color: #fe2043;
     font-weight: bold;
     font-size: 35rpx;
+    margin-top: 20rpx;
 }
 
 .info-box .pt .price .origin-price {
@@ -43,6 +44,7 @@
     font-size:28rpx;
     text-decoration:line-through;
     margin-left:5rpx;
+    font-weight: normal;
 }
 
 .info-box .pt .title {

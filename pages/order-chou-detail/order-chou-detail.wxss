@@ -55,6 +55,7 @@
 
 .line-box .line.logi {
   margin-top: -5rpx;
+  margin-bottom: 35rpx;
 }
 
 .line-box .line:last-child {

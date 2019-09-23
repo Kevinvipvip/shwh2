@@ -20,7 +20,7 @@
     </view>
     <view class="content">{{idea.content}}</view>
     <view class="user-box">
-      <view class="left">
+      <view bindtap="to_person" class="left">
         <image src="{{idea.avatar}}" class="header"></image>
         <view class="er">
           <view class="nickname">{{idea.nickname}}</view>
