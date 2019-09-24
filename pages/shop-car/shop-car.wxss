@@ -1,7 +1,7 @@
 .page {
     background: #f6f7f9;
     min-height: 100vh;
-    padding-bottom:120rpx;
+    padding-bottom: 120rpx;
     box-sizing: border-box;
     padding-top: 1rpx;
 }
@@ -10,10 +10,42 @@
 }
 
 .car-box .car {
-    display: flex;
     background: #fff;
     padding: 15rpx;
     margin-top: 20rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.car-box .car > view {
+    position: relative;
+    top: 0;
+}
+
+.car-box .car .car-move {
+    z-index: 5;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    transition: left 0.2s ease-in-out;
+    display: flex;
+}
+
+.car-box .car .del {
+    background: #e64340;
+    width: 180rpx;
+    text-align: center;
+    z-index: 4;
+    right: 0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: 15rpx;
+    font-size: 32rpx;
 }
 
 .car-box .check-box {
@@ -62,13 +94,14 @@
 .car-box .car .info .title .attr {
     color: #888;
     margin-top: 10rpx;
-    font-size:24rpx;
+    font-size: 24rpx;
 }
 
 .car-box .car .info .price-box {
     display: flex;
     justify-content: space-between;
     padding-bottom: 5px;
+    padding-right: 10rpx;
 }
 
 .car-box .car .info .price-box .price {
@@ -77,9 +110,9 @@
 }
 
 .car-box .car .info .price-box .price .carriage {
-    color:#888;
-    font-size:24rpx;
-    margin-bottom:5rpx;
+    color: #888;
+    font-size: 24rpx;
+    margin-bottom: 5rpx;
 }
 
 .car-box .car .info .price-box .price .bi {
@@ -87,19 +120,19 @@
 }
 
 .car-box .car .info .price-box .amount-box {
-    display:flex;
-    align-items:center;
-    color:#666;
-    align-self:flex-end;
+    display: flex;
+    align-items: center;
+    color: #666;
+    align-self: flex-end;
 }
 
 .car-box .car .info .amount-box .amount {
-    position:relative;
-    top:4rpx;
-    width:50rpx;
-    text-align:center;
-    color:#000;
-    font-size:28rpx;
+    position: relative;
+    top: 4rpx;
+    width: 50rpx;
+    text-align: center;
+    color: #000;
+    font-size: 28rpx;
 }
 
 .car-box .car .info .amount-box .iconfont {
@@ -111,21 +144,21 @@
 }
 
 .no-shop {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    padding:40rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40rpx;
     color: #666;
 }
 
 .no-shop .iconfont {
-    font-size:100rpx;
+    font-size: 90rpx;
 }
 
 .no-shop .text {
-    font-size:28rpx;
-    margin-top:23rpx;
+    font-size: 28rpx;
+    margin-top: 23rpx;
 }
 
 .settle {
@@ -140,9 +173,9 @@
 }
 
 .settle .check-all {
-    display:flex;
-    align-items:center;
-    padding:15rpx 15rpx 15rpx 25rpx;
+    display: flex;
+    align-items: center;
+    padding: 15rpx 15rpx 15rpx 25rpx;
 }
 
 .settle .check-all icon {
@@ -160,8 +193,8 @@
 }
 
 .settle .check-all .all-text {
-    margin-left:15rpx;
-    font-size:30rpx;
+    margin-left: 15rpx;
+    font-size: 30rpx;
 }
 
 .settle .right {
@@ -176,10 +209,10 @@
 }
 
 .settle .right .yun-price, .settle .right .total {
-    display:flex;
-    align-items:center;
-    margin-right:12rpx;
-    font-size:26rpx;
+    display: flex;
+    align-items: center;
+    margin-right: 12rpx;
+    font-size: 26rpx;
 }
 
 .settle .right .total {
@@ -191,15 +224,15 @@
 }
 
 .settle .settle-btn {
-    background:#fe2a41;
-    color:#fff;
-    margin:0;
-    border-radius:0;
-    padding:0;
-    line-height:1;
-    display:flex;
-    align-items:center;
-    font-size:32rpx;
-    width:190rpx;
-    justify-content:center;
+    background: #fe2a41;
+    color: #fff;
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    width: 190rpx;
+    justify-content: center;
 }

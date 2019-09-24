@@ -1,3 +1,7 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <!-- input -->
   <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入法人手机号" placeholder-class="tel-class" maxlength="11"/>

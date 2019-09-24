@@ -1,10 +1,11 @@
-page {
+.page {
     background: #f6f7f9;
     box-sizing: border-box;
+    padding-top: 20rpx;
 }
 
 .cate-wrapper {
-    margin-top: 20rpx;
+    /* margin-top: 20rpx; */
     display: flex;
     overflow: visible;
 }

@@ -1,23 +1,27 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <navigator url="/pages/my-address/my-address?type=1">
-    <view class="address">
+    <view class="address-choose">
       <view class="address-icon">
-        <icon class="iconfont iconwodedizhi"/>
+        <image src="/icons/address2.png"></image>
       </view>
-      <view class="info" wx:if="{{receiver}}">
+      <view class="info" wx:if="{{tel}}">
         <view class="top">
           <view class="nickname">{{receiver}}</view>
           <view class="tel">{{tel}}</view>
         </view>
         <view class="detail">
-          {{address}}
+          <view class="ad-text">{{address}}</view>
+          <view class="edit">
+            <image src="/icons/you3.png"></image>
+          </view>
         </view>
       </view>
       <view wx:else class="no-default-add">
         暂无默认收货地址，请添加
-      </view>
-      <view class="edit">
-        <icon class="iconfont iconyou"/>
       </view>
     </view>
   </navigator>

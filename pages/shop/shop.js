@@ -9,14 +9,12 @@ Page({
 
     cate_list: [],
 
-    left_height: 0,
-    right_height: 0,
-    left_shop_list: [],
-    right_shop_list: [],
+    goods_list: [],
     page: 1,
     nomore: false,
     nodata: false,
-    loading: false,
+
+    loading: false
   },
   onLoad() {
     this.topCate(() => {
@@ -31,13 +29,7 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      this.data.left_height = 0;
-      this.data.right_height = 0;
-      this.data.nomore = false;
-      this.data.nodata = false;
-      this.data.page = 1;
-      this.data.left_shop_list = [];
-      this.data.right_shop_list = [];
+      this.reset();
 
       wx.showLoading({
         title: '加载中',
@@ -54,16 +46,7 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      this.setData({
-        nomore: false,
-        nodata: false
-      });
-
-      this.data.left_height = 0;
-      this.data.right_height = 0;
-      this.data.page = 1;
-      this.data.left_shop_list = [];
-      this.data.right_shop_list = [];
+      this.reset();
 
       wx.showLoading({
         title: '加载中',
@@ -95,7 +78,6 @@ Page({
   // 获取商品列表
   goodsList(complete) {
     let post = {
-      token: app.user_data.token,
       pcate_id: this.data.active_tab === -1 ? 0 : this.data.cate_list[this.data.active_tab].id,
       page: this.data.page
     };
@@ -104,34 +86,20 @@ Page({
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
-            left_shop_list: [],
-            right_shop_list: [],
-            nomore: false,
-            nodata: true
+            goods_list: [],
+            nodata: true,
+            nomore: false
           });
         } else {
           this.setData({
-            nomore: true,
-            nodata: false
+            nodata: false,
+            nomore: true
           });
         }
       } else {
         app.format_img(res, 'cover');
 
-        for (let i = 0; i < res.length; i++) {
-          if (this.data.left_height <= this.data.right_height) {
-            this.data.left_shop_list.push(res[i]);
-            this.data.left_height += res[i].height / res[i].width;
-          } else {
-            this.data.right_shop_list.push(res[i]);
-            this.data.right_height += res[i].height / res[i].width;
-          }
-        }
-
-        this.setData({
-          left_shop_list: this.data.left_shop_list,
-          right_shop_list: this.data.right_shop_list
-        });
+        this.setData({ goods_list: this.data.goods_list.concat(res) });
       }
 
       this.data.page++;
@@ -146,13 +114,7 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      this.data.left_height = 0;
-      this.data.right_height = 0;
-      this.data.nomore = false;
-      this.data.nodata = false;
-      this.data.page = 1;
-      this.data.left_shop_list = [];
-      this.data.right_shop_list = [];
+      this.reset();
 
       wx.showNavigationBarLoading();
       this.goodsList(() => {
@@ -177,6 +139,15 @@ Page({
       }
     }
   },
+  // 重置列表
+  reset() {
+    this.data.page = 1;
+    this.data.goods_list = [];
+    this.setData({
+      nomore: false,
+      nodata: false
+    });
+  },
   // 我的购物车，如果有商品则显示icon
   cartList() {
     let post = {
@@ -184,7 +155,7 @@ Page({
     };
 
     app.ajax('shop/cartList', post, (res) => {
-      this.setData({show_cart_icon: res.length > 0});
+      this.setData({ show_cart_icon: res.length > 0 });
     });
   },
   onShareAppMessage(e) {
@@ -196,6 +167,8 @@ Page({
   },
   // 跳转详情
   to_detail(e) {
-    wx.navigateTo({ url: '/pages/shop-detail/shop-detail?id=' + e.currentTarget.dataset.id });
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/shop-detail/shop-detail?id=' + e.currentTarget.dataset.id });
+    });
   }
-})
+});

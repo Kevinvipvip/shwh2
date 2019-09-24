@@ -2,6 +2,8 @@ const app = getApp();
 
 Page({
   data: {
+    full_loading: true,
+
     id: 0,
     num: 0,
     attr_id: 0,
@@ -15,34 +17,38 @@ Page({
   onLoad(options) {
     this.data.id = parseInt(options.id);
     this.data.attr_id = parseInt(options.attr_id);
-    this.setData({num: options.num});
-    this.goodsDetail();
+    this.setData({ num: options.num });
 
+    this.goodsDetail(() => {
+      this.setData({ full_loading: false });
+    });
     this.addressList();
   },
   // 商品详情
-  goodsDetail() {
+  goodsDetail(complete) {
     let post = {
       id: this.data.id,
       token: app.user_data.token
     };
 
     app.ajax('shop/goodsDetail', post, (res) => {
-      for (let i = 0; i < res.pics.length; i++) {
-        res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
-      }
+      app.format_img(res.pics);
       res.carriage = Number(res.carriage);
       res.price = Number(res.price);
       res.vip_price = Number(res.vip_price);
       if (res.use_attr === 1) {
         for (let i = 0; i < res.attr_list.length; i++) {
           if (res.attr_list[i].id === this.data.attr_id) {
-            this.setData({attr_index: i});
+            this.setData({ attr_index: i });
             break;
           }
         }
       }
       this.setData({ goods: res });
+    }, null, () => {
+      if (complete) {
+        complete();
+      }
     });
   },
   bind_input(e) {
@@ -92,7 +98,7 @@ Page({
       } else if (!data.address.trim()) {
         app.toast('请填写收货地址');
       } else {
-        this.setData({purchase_loading: true});
+        this.setData({ purchase_loading: true });
 
         let post = {
           token: app.user_data.token,
@@ -108,7 +114,7 @@ Page({
         }
 
         app.ajax('shop/purchase', post, (pay_order_sn) => {
-          this.orderPay(pay_order_sn, (res) => {
+          this.orderSnPay(pay_order_sn, (res) => {
             if (res) {
               wx.redirectTo({ url: '/pages/my-orders/my-orders?status=1' });
             } else {
@@ -118,19 +124,19 @@ Page({
             }
           });
         }, null, () => {
-          this.setData({purchase_loading: false});
+          this.setData({ purchase_loading: false });
         });
       }
     }
   },
   // 支付
-  orderPay(pay_order_sn, complete) {
+  orderSnPay(pay_order_sn, complete) {
     let post = {
       token: app.user_data.token,
       pay_order_sn: pay_order_sn
     };
 
-    app.ajax('pay/orderPay', post, (res) => {
+    app.ajax('pay/orderSnPay', post, (res) => {
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,
@@ -141,7 +147,7 @@ Page({
           complete(true);
         },
         fail() {
-          app.toast('支付失败');
+          // app.toast('支付失败');
           complete(false);
         }
       })

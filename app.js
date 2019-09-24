@@ -534,5 +534,16 @@ App({
     } else {
       this.modal('打开页面过多，请您关闭几个页面');
     }
+  },
+  // 复制到剪贴板
+  copy(data, callback) {
+    wx.setClipboardData({
+      data: data,
+      success: () => {
+        if (callback) {
+          callback();
+        }
+      }
+    })
   }
 });

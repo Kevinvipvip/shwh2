@@ -1,28 +1,35 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <view class="car-box">
     <view class="car" wx:for="{{cartList}}" wx:key="id">
-      <view bindtap="check" data-index="{{index}}" class="check-box">
-        <icon type="success" color="#fe2043" wx:if="{{item.checked}}" />
-        <view class="no-check" wx:if="{{!item.checked}}"></view>
-      </view>
-      <image src="{{item.cover}}" mode="aspectFill"></image>
-      <view class="info">
-        <view class="title">
-          {{item.name}}
-          <view class="attr">规格：{{item.attr}}</view>
+      <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="car-move">
+        <view bindtap="check" data-index="{{index}}" class="check-box">
+          <icon type="success" color="#fe2043" wx:if="{{item.checked}}" />
+          <view class="no-check" wx:if="{{!item.checked}}"></view>
         </view>
-        <view class="price-box">
-          <view class="price">
-            <view class="carriage">运费：¥{{item.carriage}}</view>
-            <view><text class="bi">¥</text>{{item.total_price}}</view>
+        <image src="{{item.cover}}" mode="aspectFill"></image>
+        <view class="info">
+          <view class="title">
+            {{item.name}}
+            <view class="attr">规格：{{item.attr}}</view>
           </view>
-          <view class="amount-box">
-            <icon bindtap="cartDec" data-id="{{item.id}}" data-index="{{index}}" class="iconfont iconjian {{item.num <= 1 ? 'disabled' : ''}}"/>
-            <view class="amount">{{item.num}}</view>
-            <icon bindtap="cartInc" data-id="{{item.id}}" data-index="{{index}}" class="iconfont iconjia2 {{item.num >= item.limit ? 'disabled' : ''}}"/>
+          <view class="price-box">
+            <view class="price">
+              <view class="carriage">运费：¥{{item.carriage}}</view>
+              <view><text class="bi">¥</text>{{item.total_price}}</view>
+            </view>
+            <view class="amount-box">
+              <icon bindtap="cartDec" data-id="{{item.id}}" data-index="{{index}}" class="iconfont iconjian {{item.num <= 1 ? 'disabled' : ''}}"/>
+              <view class="amount">{{item.num}}</view>
+              <icon bindtap="cartInc" data-id="{{item.id}}" data-index="{{index}}" class="iconfont iconjia2 {{item.num >= item.limit ? 'disabled' : ''}}"/>
+            </view>
           </view>
         </view>
       </view>
+      <view data-index="{{index}}" bindtap="cartDel" class="inner del">删除</view>
     </view>
   </view>
   <view class="no-shop" wx:if="{{cartList.length == 0}}">

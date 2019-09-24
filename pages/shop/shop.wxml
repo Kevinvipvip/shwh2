@@ -2,7 +2,7 @@
   <view class="image"></view>
 </view>
 
-<view class="main">
+<view class="page">
   <navigator url="/pages/shop-car/shop-car" class="shop-box" wx:if="{{show_cart_icon}}">
     <icon class="iconfont icongouwuche"/>
   </navigator>
@@ -19,50 +19,25 @@
     </navigator>
   </scroll-view>
 
-  <view class="list">
-    <view class="left">
-      <view bindtap="to_detail" data-id="{{item.id}}" class="note" wx:for="{{left_shop_list}}"
-            wx:key="id">
-        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.cover}}" lazy-load="{{true}}"></image>
-        </view>
-        <view class="word one-line-ellipsis">
-          {{item.name}}
-        </view>
-        <view class="desc two-line-ellipsis">
-          {{item.desc}}
-        </view>
-        <view class="xia">
-          <view class="price">¥{{item.price}}</view>
-          <view class="origin-price" wx:if="{{item.price != item.origin_price}}">¥{{item.origin_price}}</view>
+  <view class="goods-box">
+    <view class="goods-list">
+      <view bindtap="to_detail" data-id="{{item.id}}" class="goods" wx:for="{{goods_list}}" wx:key="id">
+        <image src="{{item.cover}}" class="cover" mode="aspectFill" lazy-load></image>
+        <view class="info">
+          <view class="title two-line-ellipsis">{{item.name}}</view>
+          <view class="xia">
+            <view class="price">￥{{item.price}}</view>
+            <view class="pay-count">{{item.sales}}人付款</view>
+          </view>
         </view>
       </view>
     </view>
-    <view class="right">
-      <view bindtap="to_detail" data-id="{{item.id}}" class="note" wx:for="{{right_shop_list}}"
-            wx:key="id">
-        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.cover}}" lazy-load="{{true}}"></image>
-        </view>
-        <view class="word one-line-ellipsis">
-          {{item.name}}
-        </view>
-        <view class="desc two-line-ellipsis">
-          {{item.desc}}
-        </view>
-        <view class="xia">
-          <view class="price">¥{{item.price}}</view>
-          <view class="origin-price" wx:if="{{item.price != item.origin_price}}">¥{{item.origin_price}}</view>
-        </view>
-      </view>
+
+    <view class="nomore" wx:if="{{nomore}}">
+      已经没有更多了哦
     </view>
-  </view>
-
-  <view class="nomore" wx:if="{{nomore}}">
-    已经没有更多了哦
-  </view>
-
-  <view class="nodata" wx:if="{{nodata}}">
-    暂无商品
+    <view class="nodata" wx:if="{{nodata}}">
+      暂无商品
+    </view>
   </view>
 </view>

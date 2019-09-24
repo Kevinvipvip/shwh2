@@ -11,8 +11,8 @@ Page({
     address: '',  // 地址
     purchase_loading: false
   },
-  onLoad: function (options) {
-    this.data.ids = options.ids.split(',');
+  onLoad(options) {
+    this.data.ids = decodeURIComponent(options.ids).split(',');
     this.cartList();
 
     this.addressList();
@@ -26,8 +26,8 @@ Page({
 
     app.ajax('shop/cartList', post, (res) => {
       let cartList = [];
+      app.format_img(res, 'cover');
       for (let i = 0; i < res.length; i++) {
-        res[i].cover = app.my_config.base_url + '/' + res[i].cover;
         if (this.data.ids.indexOf(res[i].id + '') !== -1) {
           cartList.push(res[i]);
         }
@@ -111,7 +111,7 @@ Page({
         };
         
         app.ajax('shop/cartToPurchase', post, (pay_order_sn) => {
-          this.orderPay(pay_order_sn, (res) => {
+          this.orderSnPay(pay_order_sn, (res) => {
             // todo 底下这个不知道管不管用？因为下面直接就跳页了
             let shop_page = app.get_page('pages/shop/shop');
             if (shop_page) {
@@ -141,13 +141,13 @@ Page({
     }
   },
   // 支付
-  orderPay(pay_order_sn, complete) {
+  orderSnPay(pay_order_sn, complete) {
     let post = {
       token: app.user_data.token,
       pay_order_sn: pay_order_sn
     };
 
-    app.ajax('pay/orderPay', post, (res) => {
+    app.ajax('pay/orderSnPay', post, (res) => {
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,
@@ -158,10 +158,10 @@ Page({
           complete(true);
         },
         fail() {
-          app.toast('支付失败');
+          // app.toast('支付失败');
           complete(false);
         }
       })
     });
   }
-})
+});

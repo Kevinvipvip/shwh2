@@ -238,7 +238,14 @@
 
 }
 
-.work-box-ta .work-box-ta {
+.work-box-ta .u-video {
+    width: 100%;
+    height: 351rpx;
+    vertical-align: bottom;
+    margin-bottom: 25rpx;
+}
+
+.work-box-ta .work-list-ta {
 
 }
 
@@ -358,65 +365,6 @@
     border-radius: 4rpx;
 }
 /* 接单列表 end */
-
-/* 商品列表 start */
-.goods-box {
-
-}
-
-.goods-box .goods-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.goods {
-    width: 339rpx;
-    margin-bottom: 24rpx;
-    background: #fff;
-    border-radius: 4rpx;
-    box-shadow: 0 1rpx 60rpx 0 rgba(219, 219, 219, 0.75);
-    overflow: hidden;
-}
-
-.goods:nth-last-child(-n + 2) {
-    margin-bottom: 0;
-}
-
-.goods .cover {
-    width: 100%;
-    height: 339rpx;
-    vertical-align: bottom;
-}
-
-.goods .info {
-    padding: 15rpx 11rpx 23rpx;
-}
-
-.goods .info .title {
-    font-size: 32rpx;
-    line-height: 48rpx;
-    color: #333;
-}
-
-.goods .info .xia {
-    margin-top: 31rpx;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.goods .info .xia .price {
-    font-size: 30rpx;
-    color: #333;
-}
-
-.goods .info .xia .pay-count {
-    font-size: 26rpx;
-    color: #999;
-}
-/* 商品列表 end */
 
 /* 排序小框 start */
 .sort {

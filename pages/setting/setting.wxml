@@ -4,7 +4,7 @@
       <view class="label">修改个人资料</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
-    <navigator url="/" class="menu">
+    <navigator url="/pages/" class="menu">
       <view class="label">{{username ? '重置店铺密码' : '初始化店铺'}}</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>

@@ -12,7 +12,7 @@ Page({
 
     refund_show: false,
     reason: '',
-    refund_order_sn: '',
+    refund_id: 0,
 
     textarea_padding: '15rpx'
   },
@@ -156,13 +156,13 @@ Page({
             title: '加载中',
             mask: true
           });
-          let goods = e.currentTarget.dataset.goods;
+          let order = e.currentTarget.dataset.order;
           let post = {
             token: app.user_data.token,
-            pay_order_sn: goods.pay_order_sn
+            pay_order_sn: order.pay_order_sn
           };
           app.ajax('my/orderConfirm', post, () => {
-            wx.navigateTo({ url: '/pages/order-detail/order-detail?id=' + goods.id });
+            wx.navigateTo({ url: '/pages/order-detail/order-detail?id=' + order.id });
             that.refresh();
           }, null, () => {
             wx.hideLoading();
@@ -172,26 +172,21 @@ Page({
     });
   },
   // 支付
-  orderPay(e) {
-    let that = this;
-    let goods = e.currentTarget.dataset.goods;
-    let post = {
-      token: app.user_data.token,
-      pay_order_sn: goods.pay_order_sn
-    };
+  orderIdPay(e) {
+    let order = e.currentTarget.dataset.order;
 
-    app.ajax('pay/orderPay', post, (res) => {
+    app.ajax('pay/orderIdPay', {order_id: [order.id]}, (res) => {
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,
         package: res.package,
         signType: 'MD5',
         paySign: res.paySign,
-        success() {
-          wx.navigateTo({ url: '/pages/order-detail/order-detail?id=' + goods.id });
-          that.refresh();
+        success: () => {
+          wx.navigateTo({ url: '/pages/order-detail/order-detail?id=' + order.id });
+          this.refresh();
         },
-        fail(err) {
+        fail: err => {
           if (err.errMsg.indexOf('fail cancel')) {
             app.toast('取消支付')
           } else {
@@ -203,24 +198,19 @@ Page({
   },
   // 取消订单
   orderCancel(e) {
-    let that = this;
     wx.showModal({
       title: '提示',
       content: '取消订单？',
-      success(res) {
+      success: res => {
         if (res.confirm) {
           wx.showLoading({
             title: '加载中',
             mask: true
           });
-          let goods = e.currentTarget.dataset.goods;
-          let post = {
-            token: app.user_data.token,
-            pay_order_sn: goods.pay_order_sn
-          };
-          app.ajax('my/orderCancel', post, () => {
+          let order = e.currentTarget.dataset.order;
+          app.ajax('my/orderCancel', {order_id: order.id}, () => {
             app.modal('订单已取消', () => {
-              that.refresh();
+              this.refresh();
             });
           }, null, () => {
             wx.hideLoading();
@@ -231,8 +221,8 @@ Page({
   },
   // 点击退款按钮
   refund_click(e) {
-    let goods = e.currentTarget.dataset.goods;
-    this.data.refund_order_sn = goods.pay_order_sn;
+    let order = e.currentTarget.dataset.order;
+    this.data.refund_id = order.id;
     this.setData({ refund_show: true });
   },
   // 申请退款
@@ -246,8 +236,7 @@ Page({
         mask: true
       });
       let post = {
-        token: app.user_data.token,
-        pay_order_sn: that.data.refund_order_sn,
+        order_id: that.data.refund_id,
         reason: that.data.reason
       };
       app.ajax('my/refundApply', post, (res) => {

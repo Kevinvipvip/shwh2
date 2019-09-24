@@ -9,20 +9,15 @@ Page({
   onLoad(options) {
     this.data.id = options.id;
     this.orderDetail(() => {
-      this.setData({full_loading: false});
+      this.setData({ full_loading: false });
     });
   },
   orderDetail(complete) {
-    let post = {
-      token: app.user_data.token,
-      id: this.data.id
-    };
-
-    app.ajax('my/orderDetail', post, (res) => {
+    app.ajax('my/orderDetail', { order_id: this.data.id }, (res) => {
       app.format_img_arr(res.child, 'cover');
       let amount = 0;
       for (let i = 0; i < res.child.length; i++) {
-        amount  += res.child[i].num;
+        amount += res.child[i].num;
       }
       res.amount = amount;
       switch (res.status) {
@@ -39,7 +34,7 @@ Page({
           res.status_text = '已完成';
           break;
       }
-      this.setData({order: res});
+      this.setData({ order: res });
     }, null, () => {
       if (complete) {
         complete();
@@ -55,4 +50,4 @@ Page({
       }
     })
   }
-})
+});

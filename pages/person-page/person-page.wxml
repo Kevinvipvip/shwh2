@@ -92,6 +92,7 @@
 
     <!-- 作品列表 -->
     <view class="work-box-ta" wx:if="{{type == 2}}">
+      <video src="{{video.video_url}}" poster="{{video.poster}}" controls wx:if="{{video.use_video}}" class="u-video" object-fit="cover"></video>
       <view class="sort">
         <view bindtap="order_tap" data-type="{{2}}" data-order="{{1}}" class="sort-item {{work_order == 1 ? 'active' : ''}}">默认排行</view>
         <view bindtap="order_tap" data-type="{{2}}" data-order="{{2}}" class="sort-item {{work_order == 2 ? 'active' : ''}}">热度排行</view>

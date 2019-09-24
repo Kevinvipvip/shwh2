@@ -39,12 +39,8 @@ Page({
   },
   // 获取需求详情（编辑用）
   mydetail(complete) {
-    let post = {
-      token: app.user_data.token
-    };
-
-    app.ajax('my/mydetail', post, (res) => {
-      app.format_img(res, 'avatar');
+    app.ajax('my/mydetail', null, (res) => {
+      app.avatar_format(res, 'avatar');
       this.setData({
         nickname: res.nickname || '',
         realname: res.realname || '',
@@ -67,7 +63,7 @@ Page({
       this.mydetail();
     });
   },
-  img_upload(e) {
+  img_upload() {
     app.choose_img(1, res => {
       if (res) {
         wx.showLoading({ mask: true });

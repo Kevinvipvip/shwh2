@@ -108,6 +108,9 @@ Page({
       } else {
         app.avatar_format(res);
         app.time_format(res, 'create_time', 'yyyy-MM-dd hh:mm');
+        for (let i = 0; i < res.length; i++) {
+          res[i].flex_pad = app.null_arr(res[i].tags_name.length, 5);
+        }
 
         this.setData({ idea_list: this.data.idea_list.concat(res) });
       }

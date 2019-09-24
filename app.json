@@ -2,6 +2,8 @@
   "pages": [
     "pages/auth/auth",
     "pages/person-list/person-list",
+    "pages/setting/setting",
+    "pages/my-shop/my-shop",
     "pages/person-page/person-page",
     "pages/my-edit-detail/my-edit-detail",
     "pages/my-edit/my-edit",

@@ -1,7 +1,8 @@
 <view class="page">
   <!-- 头部 -->
   <view class="header">
-    <video src="{{req.video_url}}" poster="{{req.cover}}" controls wx:if="{{req.use_video}}" class="banner" object-fit="cover"></video>
+    <video src="{{req.video_url}}" poster="{{req.cover}}" controls wx:if="{{req.use_video}}" class="banner"
+           object-fit="cover"></video>
     <image src="{{req.cover}}" mode="aspectFill" class="banner" wx:else></image>
     <view class="title">{{req.title}}</view>
     <view class="zhong">
@@ -20,14 +21,26 @@
         </view>
       </view>
     </view>
-    <view class="times">
-      <view class="time left">
-        <image src="/icons/time1.png"></image>
-        <text>{{req.start_time}}</text>
+    <view class="times-box">
+      <view class="times">
+        <view class="time left">
+          <view class="label">活动开始时间：</view>
+          <view class="value">{{req.start_time}}</view>
+        </view>
+        <view class="time right">
+          <view class="label">投稿截止时间：</view>
+          <view class="value">{{req.deadline}}</view>
+        </view>
       </view>
-      <view class="time right">
-        <image src="/icons/time2.png"></image>
-        <text>{{req.end_time}}</text>
+      <view class="times">
+        <view class="time left">
+          <view class="label">投票截止时间：</view>
+          <view class="value">{{req.vote_time}}</view>
+        </view>
+        <view class="time right">
+          <view class="label">接单截止时间：</view>
+          <view class="value">{{req.end_time}}</view>
+        </view>
       </view>
     </view>
   </view>
@@ -44,9 +57,27 @@
     <view class="desc">{{req.desc || ''}}</view>
   </view>
 
-  <!-- 直投按钮 -->
-  <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" class="line-btn zhi" wx:if="{{user_auth == 0}}">作品直投</button>
-  <button bindtap="to_work_release" class="line-btn zhi" wx:else>作品直投</button>
+  <!-- 按钮组 -->
+  <view class="btn-box">
+    <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{2}}" class="pub pub2" wx:if="{{user_auth == 0}}">
+      <image src="/images/pub1.png"></image>
+    </button>
+    <navigator url="/pages/chuang-publish/chuang-publish?req_id={{id}}" class="pub pub2" wx:else>
+      <image src="/images/pub1.png"></image>
+    </navigator>
+
+    <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" class="pub pub1" wx:if="{{user_auth == 0}}">
+      <image src="/images/pub2.png"></image>
+    </button>
+    <button bindtap="to_work_release" class="pub pub1" wx:else>
+      <image src="/images/pub2.png"></image>
+    </button>
+  </view>
+
+<!--  <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" class="line-btn zhi"-->
+<!--          wx:if="{{user_auth == 0}}">作品直投-->
+<!--  </button>-->
+<!--  <button bindtap="to_work_release" class="line-btn zhi" wx:else>作品直投</button>-->
 
   <!-- 创意/作品/众筹 -->
   <view class="data-box">
@@ -59,17 +90,22 @@
 
     <!-- 创意 -->
     <view class="chuang-box" wx:if="{{active_tab == 1}}">
-      <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{2}}" class="line-btn" wx:if="{{user_auth == 0}}">我要发创意</button>
-      <navigator url="/pages/chuang-publish/chuang-publish?req_id={{id}}" class="line-btn" wx:else>我要发创意</navigator>
+<!--      <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{2}}" class="line-btn" wx:if="{{user_auth == 0}}">我要发创意</button>-->
+<!--      <navigator url="/pages/chuang-publish/chuang-publish?req_id={{id}}" class="line-btn" wx:else>我要发创意</navigator>-->
       <view class="tap-content-top">
         <view class="left">TA人创意点</view>
         <view class="sort">
-          <view bindtap="order_tap" data-type="{{1}}" data-order="{{1}}" class="sort-item {{chuang_order == 1 ? 'active' : ''}}">默认排行</view>
-          <view bindtap="order_tap" data-type="{{1}}" data-order="{{2}}" class="sort-item {{chuang_order == 2 ? 'active' : ''}}">热度排行</view>
+          <view bindtap="order_tap" data-type="{{1}}" data-order="{{1}}"
+                class="sort-item {{chuang_order == 1 ? 'active' : ''}}">默认排行
+          </view>
+          <view bindtap="order_tap" data-type="{{1}}" data-order="{{2}}"
+                class="sort-item {{chuang_order == 2 ? 'active' : ''}}">热度排行
+          </view>
         </view>
       </view>
       <view class="chuang-list">
-        <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{item.id}}" class="chuang" wx:for="{{idea_list}}" wx:key="id">
+        <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{item.id}}" class="chuang" wx:for="{{idea_list}}"
+                   wx:key="id">
           <view class="top-line">
             <view class="left">
               <view class="header-box">
@@ -94,8 +130,16 @@
             </view>
           </view>
           <view class="desc">{{item.content}}</view>
-          <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" data-idea_id="{{item.id}}" class="tou-btn" wx:if="{{user_auth == 0}}">投稿</button>
-          <button catchtap="to_work_release" data-idea_id="{{item.id}}" class="tou-btn" wx:else>投稿</button>
+          <view class="tag-list">
+            <view class="tag" wx:for="{{item.tags_name}}" wx:for-item="tag">{{tag}}</view>
+            <view class="tag vh" wx:for="{{item.flex_pad}}"></view>
+          </view>
+
+          <view class="pub-box">
+            <view class="tou-text">投稿数：{{item.works_num}}次</view>
+            <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" data-idea_id="{{item.id}}" class="tou-btn" wx:if="{{user_auth == 0}}">投稿</button>
+            <button catchtap="to_work_release" data-idea_id="{{item.id}}" class="tou-btn" wx:else>投稿</button>
+          </view>
         </navigator>
       </view>
 
@@ -113,8 +157,12 @@
       <view class="tap-content-top">
         <view class="left">TA人作品</view>
         <view class="sort">
-          <view bindtap="order_tap" data-type="{{2}}" data-order="{{1}}" class="sort-item {{work_order == 1 ? 'active' : ''}}">默认排行</view>
-          <view bindtap="order_tap" data-type="{{2}}" data-order="{{2}}" class="sort-item {{work_order == 2 ? 'active' : ''}}">热度排行</view>
+          <view bindtap="order_tap" data-type="{{2}}" data-order="{{1}}"
+                class="sort-item {{work_order == 1 ? 'active' : ''}}">默认排行
+          </view>
+          <view bindtap="order_tap" data-type="{{2}}" data-order="{{2}}"
+                class="sort-item {{work_order == 2 ? 'active' : ''}}">热度排行
+          </view>
         </view>
       </view>
       <view class="work-list">
@@ -133,14 +181,15 @@
             <view class="title">{{item.title}}</view>
             <view class="desc">{{item.desc}}</view>
             <view class="img-box">
-              <image src="{{pic_item}}" wx:for-item="pic_item" wx:for="{{item.pics}}" mode="aspectFill" lazy-load></image>
+              <image src="{{pic_item}}" wx:for-item="pic_item" wx:for="{{item.pics}}" mode="aspectFill"
+                     lazy-load></image>
               <image class="vh" wx:for="{{item.flex_pad}}"></image>
             </view>
           </view>
-<!--          <view class="chuang-line">-->
-<!--            <view class="origin">创意来源：龙鳞</view>-->
-<!--            <view class="c-zhi">创意支持 128</view>-->
-<!--          </view>-->
+          <!--          <view class="chuang-line">-->
+          <!--            <view class="origin">创意来源：龙鳞</view>-->
+          <!--            <view class="c-zhi">创意支持 128</view>-->
+          <!--          </view>-->
           <view class="other-line">
             <view class="factory">
               <text>工厂接单</text>
@@ -166,7 +215,8 @@
     <!-- 众筹 -->
     <view class="chou-box" wx:if="{{active_tab == 3}}">
       <view class="chou-list">
-        <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou-line" wx:for="{{funding_list}}" wx:key="id">
+        <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou-line" wx:for="{{funding_list}}"
+                   wx:key="id">
           <view class="img-box">
             <image src="{{item.cover}}" mode="aspectFill" lazy-load></image>
           </view>

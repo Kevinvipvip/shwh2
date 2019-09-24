@@ -16,17 +16,17 @@
         <div class="order-num">订单号：{{item.pay_order_sn}}</div>
         <view class="status">{{item.status_text}}</view>
       </view>
-      <view class="pro" wx:for="{{item.child}}" wx:for-item="goods" wx:key="index">
-        <image src="{{goods.cover}}" class="pic" mode="aspectFill"></image>
+      <view class="pro" wx:for="{{item.child}}" wx:for-item="order" wx:key="index">
+        <image src="{{order.cover}}" class="pic" mode="aspectFill"></image>
         <view class="info">
           <view class="shang">
             <view class="title">
-              {{goods.goods_name}}
-              <view class="attr">规格：{{goods.attr}}</view>
+              {{order.goods_name}}
+              <view class="attr">规格：{{order.attr}}</view>
             </view>
             <view class="right">
-              <view class="price">¥{{goods.unit_price}}</view>
-              <view class="amount">x{{goods.num}}</view>
+              <view class="price">¥{{order.unit_price}}</view>
+              <view class="amount">x{{order.num}}</view>
             </view>
           </view>
         </view>
@@ -35,14 +35,14 @@
       <view class="count">合计：¥{{item.total_price}}</view>
       <view class="btn-box">
         <block wx:if="{{item.status == 0}}">
-          <view catchtap="orderCancel" data-goods="{{item}}" class="normal">取消订单</view>
-          <view catchtap="orderPay" data-goods="{{item}}" class="highlight">付款</view>
+          <view catchtap="orderCancel" data-order="{{item}}" class="normal">取消订单</view>
+          <view catchtap="orderIdPay" data-order="{{item}}" class="highlight">付款</view>
         </block>
         <block wx:elif="{{item.status == 1}}">
-          <view catchtap="refund_click" data-goods="{{item}}" class="normal">退款</view>
+          <view catchtap="refund_click" data-order="{{item}}" class="normal">退款</view>
         </block>
         <block wx:elif="{{item.status == 2}}">
-          <view catchtap="orderConfirm" data-goods="{{item}}" class="highlight">收货</view>
+          <view catchtap="orderConfirm" data-order="{{item}}" class="highlight">收货</view>
         </block>
       </view>
     </navigator>

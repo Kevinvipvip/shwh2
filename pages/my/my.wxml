@@ -144,6 +144,16 @@
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
 
+    <navigator class="menu-item" url="/pages/my-shop/my-shop" wx:if="{{user.role_check == 2 && user.role != 0}}">
+      <view class="left-box">
+        <view class="icon-box">
+          <image src="/icons/menu14.png" class="icon-menu14"></image>
+        </view>
+      </view>
+      <view class="menu-text">我的店铺</view>
+      <image src="/icons/you3.png" class="you"></image>
+    </navigator>
+
     <navigator class="menu-item" url="/pages/my-chou-orders/my-chou-orders">
       <view class="left-box">
         <view class="icon-box">
@@ -223,15 +233,15 @@
       <image src="/icons/you3.png" class="you"></image>
     </button>
 
-    <navigator class="menu-item" url="/pages/setting/setting" wx:if="{{user.role_check == 2 && user.role != 0}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu13.png" class="icon-menu13"></image>
-        </view>
-      </view>
-      <view class="menu-text">设置</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
+<!--    <navigator class="menu-item" url="/pages/setting/setting" wx:if="{{user.role_check == 2 && user.role != 0}}">-->
+<!--      <view class="left-box">-->
+<!--        <view class="icon-box">-->
+<!--          <image src="/icons/menu13.png" class="icon-menu13"></image>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--      <view class="menu-text">设置</view>-->
+<!--      <image src="/icons/you3.png" class="you"></image>-->
+<!--    </navigator>-->
   </view>
 
 <!--  <view class="menu menu3">-->

@@ -41,26 +41,28 @@ Page({
     goods_page: 1,
     goods_nomore: false,
     goods_nodata: false,
+
+    video: {}
   },
   onLoad(options) {
     this.data.uid = options.uid;
     this.home(null, () => {
       if (this.data.role !== 0) {
         switch (this.data.role) {
-          case 1:
+          case 1:  // 博物馆
             this.reqList();
             break;
-          case 2:
+          case 2:  // 设计师
+            this.homeVideo();
             this.worksList();
             break;
-          case 3:
+          case 3:  // 工厂
             this.biddingList();
             break;
         }
         this.goodsList();
       }
       this.ideaList();
-
       this.setData({ full_loading: false });
     });
   },
@@ -458,6 +460,14 @@ Page({
           wx.navigateTo({ url: '/pages/shop-detail/shop-detail?id=' + id });
           break;
       }
+    });
+  },
+  // 他人主页视频
+  homeVideo() {
+    app.ajax('home/homeVideo', { uid: this.data.uid }, res => {
+      app.format_img(res, 'poster');
+      app.format_img(res, 'video_url');
+      this.setData({ video: res });
     });
   }
 });

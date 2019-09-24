@@ -1,0 +1,124 @@
+.page {
+    line-height: 1;
+}
+
+.form-box {
+    position: absolute;
+    box-sizing: border-box;
+    width: 640rpx;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 59rpx;
+}
+
+.form-box .title {
+    text-align: center;
+    font-size: 34rpx;
+    color: #000;
+    position: relative;
+}
+
+.form-box .title::after {
+    content: '';
+    width: 40rpx;
+    height: 4rpx;
+    border-radius: 2rpx;
+    background: #fcaa58;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 56rpx;
+    margin: auto;
+}
+
+.form-box .desc {
+    text-align: center;
+    font-size: 28rpx;
+    color: #666;
+    margin-top: 56rpx;
+}
+
+.form-box .form {
+    background: #fff;
+    box-shadow: 0 1rpx 60rpx 0 rgba(219, 219, 219, 0.75);
+    border-radius: 4rpx;
+    padding: 60rpx 24rpx;
+    margin-top: 60rpx;
+}
+
+.form-box .form .form-item {
+    margin-bottom: 47rpx;
+}
+
+.form-box .form .form-item:last-child {
+    margin-bottom: 0;
+}
+
+.form-box .form .form-item label {
+    margin-bottom: 30rpx;
+    font-size: 32rpx;
+    color: #666;
+    display: block;
+}
+
+.form-box .form .form-item input {
+    width: calc(100% - 50rpx);
+    /*box-sizing: border-box;*/
+    padding: 15rpx 25rpx;
+    border-radius: 4rpx;
+    border: 2rpx solid #fec448;
+    font-size: 30rpx;
+    color: #999;
+    /*height: 60rpx;*/
+}
+
+.form-box .form .form-item input[disabled] {
+    background: #eee;
+}
+
+.form-box .confirm {
+    width: 360rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #fcaa58;
+    padding: 0;
+    margin: 140rpx auto 0;
+    border-radius: 4rpx;
+    box-shadow: 0 10rpx 24rpx 0 rgba(254, 196, 72, 0.65);
+    font-size: 32rpx;
+    color: #333;
+}
+
+.form-box .confirm[disabled] {
+    background: #e5e5e5;
+    color: #999999;
+    box-shadow: none;
+}
+
+.form-box .manage {
+    text-align: center;
+    padding: 40rpx 0;
+}
+
+.form-box .manage .title {
+    font-size: 28rpx;
+    color: #666;
+}
+
+.form-box .manage .url {
+    margin-top: 39rpx;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.form-box .manage .copy {
+    margin: 81rpx auto 0;
+    width: 164rpx;
+    height: 60rpx;
+    background: #f5c556;
+    border-radius: 4rpx;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    color: #fff;
+}

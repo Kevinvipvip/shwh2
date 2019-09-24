@@ -17,11 +17,12 @@ Page({
     };
 
     app.ajax('shop/cateList', post, (res) => {
+      app.format_img(res, 'icon');
       for (let i = 0; i < res.length; i++) {
-        res[i].icon = app.my_config.base_url + '/' + res[i].icon;
-        for (let j = 0; j < res[i].child.length; j++) {
-          res[i].child[j].icon = app.my_config.base_url + '/' + res[i].child[j].icon;
-        }
+        app.format_img(res[i].child, 'icon');
+        // for (let j = 0; j < res[i].child.length; j++) {
+        //   res[i].child[j].icon = app.my_config.base_url + '/' + res[i].child[j].icon;
+        // }
       }
       this.setData({cate_list: res})
     });

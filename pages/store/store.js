@@ -3,6 +3,9 @@ const app = getApp();
 
 Page({
   data: {
+    // full-loading
+    full_loading: true,
+
     // textarea
     is_ios: false,
 
@@ -14,8 +17,11 @@ Page({
     loading: false
   },
   onLoad() {
+    // full-loading
+    this.setData({ full_loading: false });
+
     // textarea
-    this.setData({is_ios: app.is_ios});
+    this.setData({ is_ios: app.is_ios });
 
     let rich_text = '<p>啊啊啊</p>';
     rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
@@ -46,8 +52,8 @@ Page({
           })
         } else {
           this.setData({
-            nomore: true,
-            nodata: false
+            nodata: false,
+            nomore: true
           })
         }
       } else {
