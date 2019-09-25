@@ -43,5 +43,7 @@
       </view>
     </view>
   </view>
-  <button bindtap="uploadWorks" class="line-btn">{{id == 0 ? '投稿' : '修改'}}</button>
+  <form bindsubmit="uploadWorks" report-submit>
+    <button form-type="submit" class="line-btn">{{id == 0 ? '投稿' : '修改'}}</button>
+  </form>
 </view>

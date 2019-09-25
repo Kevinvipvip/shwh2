@@ -2,7 +2,7 @@
   background: #fafafa;
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 40rpx 0;
+  padding: 40rpx 0 0;
 }
 
 .my-chuang-list {

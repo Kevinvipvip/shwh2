@@ -20,7 +20,7 @@
 
           <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
           <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
-          <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 1 || item.status == 2}}">编辑</view>
+          <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
           <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
             <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
           </view>

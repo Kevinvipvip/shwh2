@@ -71,9 +71,8 @@ Page({
         let tname = app.qiniu_tname() + res[0].ext;
         app.qiniu_upload(res[0].path, tname, () => {
           app.ajax('my/modAvatar', { avatar: tname }, () => {
-            this.mydetail();
-          }, null, () => {
             wx.hideLoading();
+            this.mydetail();
           });
         }, null, () => {
           wx.hideLoading();

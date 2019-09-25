@@ -41,6 +41,7 @@ App({
     token: '',
     uid: 0,
     username: '',  // 后台账号
+    order_email: '',
     role: 0,
     user_auth: 0 // 0.用户未授权 1.用户已授权
   },
@@ -520,7 +521,7 @@ App({
   // 收集formid-collectFormid
   collectFormid(formid) {
     if (formid !== 'the formId is a mock one') {
-      this.ajax('message/collectFormid', {
+      this.ajax('api/collectFormid', {
         formid: formid
       }, null, () => {
         // 啥都不干
@@ -545,5 +546,15 @@ App({
         }
       }
     })
+  },
+  // 设置全局的 user_data
+  set_user_data() {
+    this.ajax('my/mydetail', null, res => {
+      this.user_data.uid = res.id;
+      this.user_data.role = res.role_check === 2 ? res.role : 0;
+      this.user_data.user_auth = res.user_auth;
+      this.user_data.username = res.username;
+      this.user_data.order_email = res.order_email;
+    });
   }
 });

@@ -1,163 +1,181 @@
 .page {
-    padding: 15rpx 0 90rpx;
-    min-height:100vh;
-    box-sizing:border-box;
+  padding: 15rpx 0 90rpx;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .address {
-    display:flex;
-    align-items:center;
-    padding:30rpx 25rpx;
-    justify-content:space-between;
-    background:#fff;
+  display: flex;
+  align-items: center;
+  padding: 30rpx 25rpx;
+  justify-content: space-between;
+  background: #fff;
 }
 
 .address .no-default-add {
-    color: red;
-    flex-grow: 1;
+  color: red;
+  flex-grow: 1;
 }
 
 .address .address-icon {
-    margin-right: 20rpx;
+  margin-right: 20rpx;
 }
 
 .address .address-icon .iconfont {
-    font-size:45rpx;
+  font-size: 45rpx;
 }
 
 .address:last-child {
-    border-bottom: 0;
+  border-bottom: 0;
 }
 
 .address .info {
-    font-size:26rpx;
-    width: 90%;
+  font-size: 26rpx;
+  width: 90%;
 }
 
 .address .info .top {
-    display:flex;
-    justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .address .info .top .nickname {
-    font-size: 28rpx;
+  font-size: 28rpx;
 }
 
 .address .info .top .tel {
-
 }
 
 .address .info .detail {
-    margin-top:14rpx;
-    line-height:1.5;
-    text-align: justify;
+  margin-top: 14rpx;
+  line-height: 1.5;
+  text-align: justify;
 }
 
 .address .info .detail .default {
-    display: inline;
-    color: #a83f33;
+  display: inline;
+  color: #a83f33;
 }
 
 .address .edit {
-    margin-left:20rpx;
-    flex-shrink:0;
+  margin-left: 20rpx;
+  flex-shrink: 0;
 }
 
 .address .edit .iconfont {
-    font-size:38rpx;
-    color:#222;
+  font-size: 38rpx;
+  color: #222;
 }
 
 .pro-info {
-    margin-top: 20rpx;
+  margin-top: 20rpx;
 }
 
 .pro {
-    padding: 25rpx;
-    display: flex;
-    margin-bottom: 20rpx;
-    background: #fff;
+  padding: 25rpx;
+  display: flex;
+  margin-bottom: 20rpx;
+  background: #fff;
 }
 
 .pro image {
-    width: 200rpx;
-    height: 200rpx;
-    border-radius: 10rpx;
-    flex-shrink: 0;
-    border: 1rpx solid #ddd;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  flex-shrink: 0;
+  border: 1rpx solid #ddd;
 }
 
 .pro .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30rpx;
 }
 
 .pro .info .title {
-    color: #333;
-    font-size: 25rpx;
-    line-height: 1.5;
+  color: #333;
+  font-size: 25rpx;
+  line-height: 1.5;
 }
 
 .pro .info .title .attr {
-    color: #888;
-    margin-top: 10rpx;
-    font-size:24rpx;
+  color: #888;
+  margin-top: 10rpx;
+  font-size: 24rpx;
 }
 
 .pro .info .price {
-    font-size: 29rpx;
-    font-weight: bold;
-    color: #fe2043;
+  font-size: 29rpx;
+  font-weight: bold;
+  color: #fe2043;
 }
 
 .pro .info .price text {
-    margin-left: 15rpx;
-    color: #bbb;
-    font-weight: normal;
+  margin-left: 15rpx;
+  color: #bbb;
+  font-weight: normal;
 }
 
 .pro .info .price .carriage {
-    margin-top:10rpx;
-    color:#888;
-    font-weight:normal;
-    font-size:24rpx;
+  margin-top: 10rpx;
+  color: #888;
+  font-weight: normal;
+  font-size: 24rpx;
 }
 
 .foot {
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .foot .left {
-    padding-left: 35rpx;
-    border-top: 1rpx solid #ddd;
-    font-size: 28rpx;
-    line-height: 3;
-    background: #fff;
-    flex-grow: 1;
+  padding-left: 35rpx;
+  border-top: 1rpx solid #ddd;
+  font-size: 28rpx;
+  line-height: 3;
+  background: #fff;
+  flex-grow: 1;
 }
 
 .foot .left text {
-    color: #fd2941;
-    font-weight: bold;
+  color: #fd2941;
+  font-weight: bold;
 }
 
 .foot .pay-btn {
-    line-height: 1;
-    font-size: 30rpx;
-    margin: 0;
-    padding: 0;
-    background: #fd2941;
-    color: #fff;
-    border-radius: 0;
-    width: 200rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  line-height: 1;
+  font-size: 30rpx;
+  margin: 0;
+  padding: 0;
+  background: #fd2941;
+  color: #fff;
+  border-radius: 0;
+  width: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.foot .pay-btn button {
+  position: absolute;
+  text-align: center;
+  padding: 0;
+  margin: auto;
+  border: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: inherit;
+  border-radius: 0;
 }

@@ -1,3 +1,10 @@
 .page {
-  padding: 20rpx 0;
+  padding-top: 20rpx;
+  background: #fafafa;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.chuang-rank-list .tag-line {
+  margin-top: 24rpx;
 }

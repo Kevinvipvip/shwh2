@@ -47,6 +47,8 @@
       总计：
       <text>¥{{(goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price) * num + goods.carriage}}</text>
     </view>
-    <button bindtap="purchase" loading="{{purchase_loading}}" class="pay-btn">支付</button>
+    <form bindsubmit="purchase" class="pay-btn" report-submit>
+      <button form-type="submit" loading="{{purchase_loading}}">支付</button>
+    </form>
   </view>
 </view>

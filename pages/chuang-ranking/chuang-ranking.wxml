@@ -1,16 +1,21 @@
 <view class="page">
   <view class="chuang-rank-list">
     <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{item.id}}" class="chuang" wx:for="{{idea_list}}" wx:key="id">
-      <view class="tou">
-        <image lazy-load src="/icons/{{index + 1}}st.png" wx:if="{{index < 3}}"></image>
-        <text wx:else>{{index < 9 ? '0' + (index + 1) : index + 1}}</text>
+      <view class="avatar-line">
+        <view class="left">
+          <image lazy-load src="{{item.avatar}}" class="avatar"></image>
+          <view class="nickname">{{item.nickname}}</view>
+        </view>
+        <view catchtap="ideaVote" data-index="{{index}}" class="agree">
+          <image src="/icons/zan-active.png" wx:if="{{item.if_vote}}"></image>
+          <image src="/icons/zan.png" wx:else></image>
+          <text>{{item.vote}}</text>
+        </view>
       </view>
-      <image lazy-load src="/images/t-header.png" class="cover"></image>
-      <text class="title one-line-ellipsis">{{item.title}}</text>
-      <view catchtap="ideaVote" data-index="{{index}}" class="agree">
-        <image src="/icons/zan-active.png" wx:if="{{item.if_vote}}"></image>
-        <image src="/icons/zan.png" wx:else></image>
-        <text>{{item.vote}}</text>
+      <view class="title one-line-ellipsis">{{item.title}}</view>
+      <view class="tag-line" wx:if="{{item.tags_name.length > 0}}">
+        <view class="tag" wx:for="{{item.tags_name}}" wx:for-item="tag">{{tag}}</view>
+        <view class="tag vh" wx:for="{{item.flex_pad}}"></view>
       </view>
     </navigator>
   </view>

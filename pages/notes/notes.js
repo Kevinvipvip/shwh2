@@ -3,6 +3,8 @@ const utils = require('../../utils/utils.js');
 
 Page({
   data: {
+    role: 0,
+
     auth: false,
     full_loading: true,
 
@@ -20,7 +22,8 @@ Page({
     app.get_auth((res) => {
       this.setData({
         auth: Boolean(res),
-        full_loading: false
+        full_loading: false,
+        role: app.user_data.role
       });
       wx.showNavigationBarLoading();
       this.getNoteList(() => {

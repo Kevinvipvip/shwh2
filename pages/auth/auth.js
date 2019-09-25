@@ -20,40 +20,7 @@ Page({
       app.redirect_or_switch_or_index(this.data.route);
 
       // 用户角色信息保存
-      app.ajax('my/mydetail', null, (res) => {
-        app.user_data.uid = res.id;
-        app.user_data.role = res.role_check === 2 ? res.role : 0;
-        app.user_data.user_auth = res.user_auth;
-        app.user_data.username = res.username;
-      });
-
-      // app.get_auth((res) => {
-      //   if (res) {
-      //     app.checkUserAuth((res) => {
-      //       if (res) {
-      //         app.redirect_or_switch_or_index(this.data.route);
-      //       } else {
-      //         this.setData({
-      //           auth: false,
-      //           full_loading: false
-      //         });
-      //       }
-      //     });
-      //   } else {
-      //     this.setData({
-      //       auth: false,
-      //       full_loading: false
-      //     });
-      //
-      //     app.userAuth(this.data.inviter_id, (res) => {
-      //       if (res) {
-      //         app.redirect_or_switch_or_index(this.data.route);
-      //       } else {
-      //         app.toast('授权失败，请重新授权');
-      //       }
-      //     });
-      //   }
-      // });
+      app.set_user_data();
     });
 
     // 升级中

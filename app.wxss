@@ -297,37 +297,36 @@ button::after {
 }
 
 .chuang-rank-list .chuang {
-  margin-top: 24rpx;
   background: #fff;
-  padding: 20rpx;
+  padding: 40rpx 20rpx;
+  margin-bottom: 24rpx;
+}
+
+.chuang-rank-list .chuang:last-child {
+  margin-bottom: 0;
+}
+
+.chuang-rank-list .chuang .avatar-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chuang-rank-list .chuang .avatar-line .left {
   display: flex;
   align-items: center;
 }
 
-.chuang-rank-list .chuang .tou {
-  flex-shrink: 0;
+.chuang-rank-list .chuang .avatar-line .left .avatar {
   width: 50rpx;
-  text-align: center;
-}
-
-.chuang-rank-list .chuang .tou image {
-  width: 45rpx;
   height: 50rpx;
+  border-radius: 50%;
 }
 
-.chuang-rank-list .chuang .cover {
-  width: 60rpx;
-  height: 60rpx;
-  margin-left: 30rpx;
-  flex-shrink: 0;
-}
-
-.chuang-rank-list .chuang .title {
-  font-size: 28rpx;
-  color: #333;
-  opacity: 0.6;
-  margin-left: 40rpx;
-  flex-grow: 1;
+.chuang-rank-list .chuang .avatar-line .left .nickname {
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 14rpx;
 }
 
 .chuang-rank-list .chuang .agree {
@@ -350,13 +349,12 @@ button::after {
   color: #999;
 }
 
-.chuang-rank-list .chuang .tou text {
+.chuang-rank-list .chuang .title {
+  margin-top: 29rpx;
+  font-size: 32rpx;
+  color: #333;
+  opacity: 0.8;
 }
-
-.chuang-rank-list .chuang:first-child {
-  margin-top: 0;
-}
-
 /* 创意排行榜 end */
 
 /* 按钮 start */
@@ -1271,3 +1269,52 @@ button::after {
   color: #999;
 }
 /* 商品列表 end */
+
+/* 标签行 start */
+.tag-line {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  line-height: 1;
+}
+
+.tag-line .tag {
+  width: 0;
+  flex-grow: 1;
+  padding: 10rpx 0;
+  border-radius: 20rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  margin-right: 15rpx;
+}
+
+.tag-line .tag:last-child {
+  margin-right: 0;
+}
+
+.tag-line .tag:nth-child(1) {
+  box-shadow: 0 10rpx 24rpx 0 rgba(245, 197, 86, 0.55);
+  background-color: #f5c556;
+}
+
+.tag-line .tag:nth-child(2) {
+  box-shadow: 0 10rpx 24rpx 0 rgba(252, 170, 88, 0.55);
+  background: #fcaa58;
+}
+
+.tag-line .tag:nth-child(3) {
+  box-shadow: 0 10rpx 24rpx 0 rgba(246, 139, 83, 0.55);
+  background: #f68b53;
+}
+
+.tag-line .tag:nth-child(4) {
+  box-shadow: 0 10rpx 24rpx 0 rgba(246, 139, 83, 0.55);
+  background: #eb715a;
+}
+
+.tag-line .tag:nth-child(5) {
+  box-shadow: 0 10rpx 24rpx 0 rgba(235, 93, 90, 0.55);
+  background: #eb5d5a;
+}
+/* 标签行 end */

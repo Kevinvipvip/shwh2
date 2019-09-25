@@ -119,6 +119,10 @@
   margin-top: 50rpx;
 }
 
+.chuang-rank-list .tag-line {
+  margin-top: 24rpx;
+}
+
 .chou-box {
   margin-top: 48rpx;
 }

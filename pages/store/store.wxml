@@ -28,4 +28,9 @@
 
   <!-- 分享 -->
   <button open-type="share">分享</button>
+
+  <!-- 收集formid -->
+  <form bindsubmit="col_formid" report-submit>
+    <button form-type="submit" class="line-btn">修改</button>
+  </form>
 </view>

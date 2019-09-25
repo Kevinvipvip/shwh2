@@ -4,58 +4,85 @@
   </view>
 
   <!-- 初始化账号密码 -->
-  <view class="form-box" wx:if="{{status == 1}}">
-    <view class="title">首登店铺</view>
-    <view class="desc">为了您的店铺安全  请先给它上把锁</view>
-    <view class="form">
-      <view class="form-item">
-        <label for="username">用户名</label>
-        <input bindinput="bind_input" data-name="username" id="username" type="text" maxlength="10" placeholder="输入用户名" />
-      </view>
-      <view class="form-item">
-        <label for="password">输入密码</label>
-        <input bindinput="bind_input" data-name="password" id="password" type="password" maxlength="20" placeholder="密码最少6位" />
-      </view>
-      <view class="form-item">
-        <label for="repass">重新输入密码</label>
-        <input bindconfirm="setAccount" bindinput="bind_input" data-name="repass" id="repass" type="password" maxlength="20" placeholder="密码最少6位" />
-      </view>
+  <view class="form-box">
+    <view class="form-header" wx:if="{{status == 1 && type == 1}}">
+      <view class="title">首登店铺</view>
+      <view class="desc">为了您的店铺安全  请先给它上把锁</view>
     </view>
-    <button bindtap="setAccount" class="confirm">确认</button>
-  </view>
+    <view class="form-header" wx:if="{{status == 2 && type == 1}}">
+      <view class="title">重置密码</view>
+      <view class="desc">建议您的新密码以简单好记为标准</view>
+    </view>
+    <view class="form-header" wx:if="{{type == 2}}">
+      <view class="title">设置邮箱</view>
+      <view class="desc">客户下订单后会推送消息到邮箱哦</view>
+    </view>
+    <view class="form-header" wx:if="{{type == 3}}">
+      <view class="title">后台地址</view>
+      <view class="desc">开启店铺大门 添置优质商品</view>
+    </view>
 
-  <!-- 初始化/重置密码后 -->
-  <view class="form-box" wx:if="{{status == 2}}">
-    <view class="title">店铺管理</view>
-    <view class="desc">开启店铺大门 添置优质商品</view>
     <view class="form">
-      <view class="manage">
-        <view class="title">您可在下方网址上传您的商品及查看订单</view>
-        <view class="url">{{admin_url}}</view>
-        <button bindtap="copy" class="copy">复制链接</button>
+      <view class="form-tab-list">
+        <view bindtap="tab_change" data-type="{{1}}" class="tab {{type == 1 ? 'active' : ''}}">{{status == 1 ? '初始化店铺' : '重置密码'}}</view>
+        <view bindtap="tab_change" data-type="{{2}}" class="tab {{type == 2 ? 'active' : ''}}">重置邮箱</view>
+        <view bindtap="tab_change" data-type="{{3}}" class="tab {{type == 3 ? 'active' : ''}}">后台</view>
       </view>
-    </view>
-<!--    <button class="confirm" disabled="{{!agree}}">进入店铺</button>-->
-  </view>
 
-  <!-- 重置密码 -->
-  <view class="form-box" wx:if="{{status == 3}}">
-    <view class="title">重置密码</view>
-    <view class="desc">建议您的新密码以简单好记为标准</view>
-    <view class="form">
-      <view class="form-item">
-        <label for="username">用户名</label>
-        <input bindinput="bind_input" data-name="username" value="{{username}}" id="username" type="text" maxlength="10" disabled placeholder="输入用户名" />
+      <!-- 初始化 -->
+      <view class="form-inner" wx:if="{{status == 1 && type == 1}}">
+        <view class="form-item">
+          <label for="username">用户名</label>
+          <input bindinput="bind_input" data-name="username" id="username" type="text" maxlength="10" placeholder="输入用户名" />
+        </view>
+        <view class="form-item">
+          <label for="password">输入密码</label>
+          <input bindinput="bind_input" data-name="password" id="password" type="password" maxlength="20" placeholder="密码最少6位" />
+        </view>
+        <view class="form-item">
+          <label for="repass">确认密码</label>
+          <input bindconfirm="setAccount" bindinput="bind_input" data-name="repass" id="repass" type="password" maxlength="20" placeholder="密码最少6位" />
+        </view>
+
+        <button bindtap="setAccount" class="confirm">确认</button>
       </view>
-      <view class="form-item">
-        <label for="password">输入密码</label>
-        <input bindinput="bind_input" data-name="password" id="password" type="password" maxlength="20" placeholder="密码最少6位" />
+
+      <!-- 重置密码 -->
+      <view class="form-inner" wx:if="{{status == 2 && type == 1}}">
+        <view class="form-item">
+          <label for="username">用户名</label>
+          <input bindinput="bind_input" data-name="username" value="{{username}}" id="username" type="text" maxlength="10" disabled placeholder="输入用户名" />
+        </view>
+        <view class="form-item">
+          <label for="password">输入密码</label>
+          <input bindinput="bind_input" data-name="password" id="password" type="password" maxlength="20" placeholder="密码最少6位" />
+        </view>
+        <view class="form-item">
+          <label for="repass">确认密码</label>
+          <input bindconfirm="setPasswd" bindinput="bind_input" data-name="repass" id="repass" type="password" maxlength="20" placeholder="密码最少6位" />
+        </view>
+        <button bindtap="setPasswd" class="confirm">保存</button>
       </view>
-      <view class="form-item">
-        <label for="repass">重新输入密码</label>
-        <input bindconfirm="setPasswd" bindinput="bind_input" data-name="repass" id="repass" type="password" maxlength="20" placeholder="密码最少6位" />
+
+      <!-- 设置邮箱 -->
+      <view class="form-inner" wx:if="{{type == 2}}">
+        <view class="form-item">
+          <label for="order_email">邮箱</label>
+          <input bindinput="bind_input" data-name="order_email" value="{{order_email}}" id="order_email" type="text" maxlength="50" placeholder="输入邮箱" />
+        </view>
+        <button bindtap="setOrderEmail" class="confirm">保存</button>
+      </view>
+
+      <!-- 后台地址 -->
+      <view class="form-inner" wx:if="{{type == 3}}">
+        <view class="form">
+          <view class="manage">
+            <view class="title">您可在下方网址上传您的商品及查看订单</view>
+            <view class="url">{{admin_url}}</view>
+            <button bindtap="copy" class="copy">复制链接</button>
+          </view>
+        </view>
       </view>
     </view>
-    <button bindtap="setPasswd" class="confirm">保存</button>
   </view>
 </view>

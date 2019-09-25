@@ -90,8 +90,10 @@ Page({
     });
   },
   // 支付
-  orderPay() {
+  orderPay(e) {
     app.ajax('pay/fundingPay', { pay_order_sn: this.data.order.pay_order_sn }, res => {
+      app.collectFormid(e.detail.formId);
+
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,

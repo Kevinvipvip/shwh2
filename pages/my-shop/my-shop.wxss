@@ -1,5 +1,6 @@
 .page {
     line-height: 1;
+    padding-bottom: 40rpx;
 }
 
 .form-box {
@@ -43,8 +44,31 @@
     background: #fff;
     box-shadow: 0 1rpx 60rpx 0 rgba(219, 219, 219, 0.75);
     border-radius: 4rpx;
-    padding: 60rpx 24rpx;
     margin-top: 60rpx;
+}
+
+.form-box .form .form-tab-list {
+    display: flex;
+}
+
+.form-box .form .form-tab-list .tab {
+    width: 0;
+    height: 70rpx;
+    line-height: 70rpx;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 32rpx;
+    color: #ccc;
+    background: #f0f0f0;
+}
+
+.form-box .form .form-tab-list .tab.active {
+    background: #fff;
+    color: #333;
+}
+
+.form-box .form .form-inner {
+    padding: 50rpx 24rpx;
 }
 
 .form-box .form .form-item {
@@ -67,14 +91,19 @@
     /*box-sizing: border-box;*/
     padding: 15rpx 25rpx;
     border-radius: 4rpx;
-    border: 2rpx solid #fec448;
+    border: 2rpx solid #e5e5e5;
     font-size: 30rpx;
     color: #999;
     /*height: 60rpx;*/
 }
 
+.form-box .form .form-item input:focus {
+    /*border-color: #fec448;*/
+}
+
 .form-box .form .form-item input[disabled] {
     background: #eee;
+    border-color: transparent;
 }
 
 .form-box .confirm {
@@ -83,7 +112,7 @@
     line-height: 80rpx;
     background-color: #fcaa58;
     padding: 0;
-    margin: 140rpx auto 0;
+    margin: 40rpx auto 0;
     border-radius: 4rpx;
     box-shadow: 0 10rpx 24rpx 0 rgba(254, 196, 72, 0.65);
     font-size: 32rpx;

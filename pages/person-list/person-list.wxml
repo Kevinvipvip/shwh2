@@ -77,7 +77,7 @@
             </view>
             <view class="param-line">
               <view class="param">粉丝{{item.focus}}</view>
-              <view class="param">活动{{item.bid_num}}</view>
+              <view class="param">接单{{item.bid_num}}</view>
             </view>
           </view>
         </view>

@@ -173,6 +173,8 @@ Page({
   },
   // 支付
   orderIdPay(e) {
+    app.collectFormid(e.detail.formId);
+
     let order = e.currentTarget.dataset.order;
 
     app.ajax('pay/orderIdPay', {order_id: [order.id]}, (res) => {

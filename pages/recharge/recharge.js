@@ -62,7 +62,7 @@ Page({
     });
   },
   // 充值VIP生成订单
-  recharge() {
+  recharge(e) {
     if (!this.data.loading) {
       let data = this.data;
       if (!data.name.trim()) {
@@ -75,6 +75,8 @@ Page({
         app.toast('请填写或选择收货地址')
       } else {
         this.data.loading = true;
+
+        app.collectFormid(e.detail.formId);
 
         let post = {
           token: app.user_data.token,

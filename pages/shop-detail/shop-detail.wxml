@@ -11,7 +11,7 @@
       <view class="title">{{goods.name}}</view>
       <view class="price">
         ¥{{goods.price}}
-        <text class="origin-price" wx:if="{{goods.price != goods.origin_price}}">¥{{goods.origin_price}}</text>
+<!--        <text class="origin-price" wx:if="{{goods.price != goods.origin_price}}">¥{{goods.origin_price}}</text>-->
       </view>
     </view>
 

@@ -6,7 +6,7 @@
       <button bindtap="save" class="save-btn">保存</button>
     </view>
     <view class="input-box">
-      <input bindinput="bind_input" data-name="nickname" value="{{nickname}}" type="text" />
+      <input bindinput="bind_input" data-name="nickname" value="{{nickname}}" type="text" maxlength="16" />
     </view>
   </view>
 
@@ -17,7 +17,7 @@
       <button bindtap="save" class="save-btn">保存</button>
     </view>
     <view class="input-box">
-      <input bindinput="bind_input" data-name="realname" value="{{realname}}" type="text" />
+      <input bindinput="bind_input" data-name="realname" value="{{realname}}" type="text" maxlength="30" />
     </view>
   </view>
 

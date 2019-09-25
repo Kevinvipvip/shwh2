@@ -41,7 +41,9 @@
       </navigator>
     </view>
     <view class="btn-box">
-      <button bindtap="recharge" class="btn-chong">立即充值</button>
+      <form bindsubmit="recharge" report-submit>
+        <button form-type="submit" class="btn-chong">立即充值</button>
+      </form>
     </view>
   </view>
 </view>

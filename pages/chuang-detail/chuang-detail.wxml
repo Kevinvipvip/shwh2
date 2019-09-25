@@ -19,6 +19,10 @@
       </view>
     </view>
     <view class="content">{{idea.content}}</view>
+    <view class="tag-line" wx:if="{{idea.tags_name.length > 0}}">
+      <view class="tag" wx:for="{{idea.tags_name}}" wx:for-item="tag">{{tag}}</view>
+      <view class="tag vh" wx:for="{{idea.flex_pad}}"></view>
+    </view>
     <view class="user-box">
       <view bindtap="to_person" class="left">
         <image src="{{idea.avatar}}" class="header"></image>

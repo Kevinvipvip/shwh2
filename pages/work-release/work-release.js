@@ -99,7 +99,7 @@ Page({
     }
   },
   // 上传/编辑作品
-  uploadWorks() {
+  uploadWorks(e) {
     let data = this.data;
     if (!data.title.trim()) {
       app.toast('请输入作品名称');
@@ -108,6 +108,8 @@ Page({
     } else if (data.pics.length === 0) {
       app.toast('请上传租作品图片');
     } else {
+      app.collectFormid(e.detail.formId);
+
       app.format_up_img(data.pics);
 
       let post = {

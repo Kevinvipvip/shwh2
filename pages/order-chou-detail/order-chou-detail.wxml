@@ -61,7 +61,9 @@
       <button catchtap="to_chou_detail" class="again">再次购买</button>
 
       <button catchtap="fundingOrderCancel" class="cancel" wx:if="{{order.status == 0}}">取消订单</button>
-      <button catchtap="orderPay" class="pay" wx:if="{{order.status == 0}}">付款</button>
+      <form bindsubmit="orderPay" report-submit wx:if="{{order.status == 0}}">
+        <button form-type="submit" class="pay">付款</button>
+      </form>
       <button catchtap="refund_click" class="cancel" wx:if="{{order.status == 1}}">申请退款</button>
       <button catchtap="fundingOrderConfirm" class="confirm" wx:if="{{order.status == 2}}">确认收货</button>
     </view>

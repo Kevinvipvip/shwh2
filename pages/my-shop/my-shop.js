@@ -2,29 +2,36 @@ const app = getApp();
 
 Page({
   data: {
-    status: 1,
-    // protocol_show: false,
-    // agree: false,
+    status: 1,  // 1.没设置过账号 2.设置过账号
+    type: 1,
     full_loading: true,
     admin_url: 'http://caves.wcip.net/user/',
 
     username: '',
     password: '',
     repass: '',
+    order_email: '',
 
     loading: false
   },
   onLoad() {
+    this.setData({
+      username: app.user_data.username || '',
+      order_email: app.user_data.order_email || '',
+    });
+
     if (app.user_data.username) {
       this.setData({
-        username: app.user_data.username || '',
-        status: 3
-      }, () => {
-        this.setData({ full_loading: false });
+        status: 2,
+        full_loading: false
       });
     } else {
       this.setData({ full_loading: false });
     }
+  },
+  // 切换tab
+  tab_change(e) {
+    this.setData({ type: e.currentTarget.dataset.type });
   },
   // 设置账号-密码
   setAccount() {
@@ -48,7 +55,11 @@ Page({
       app.ajax('my/setAccount', post, () => {
         wx.hideLoading();
         app.modal('密码设置完成', () => {
-          this.setData({ status: 2 });
+          this.setData({
+            status: 2,
+            type: 3
+          });
+          app.set_user_data();
         });
       });
     }
@@ -69,8 +80,27 @@ Page({
       app.ajax('my/setPasswd', { password: this.data.password }, () => {
         wx.hideLoading();
         app.modal('新密码已保存', () => {
-          this.setData({ status: 2 });
+          this.setData({ type: 3 });
         });
+        app.set_user_data();
+      });
+    }
+  },
+  // 设置订单通知邮箱
+  setOrderEmail() {
+    let data = this.data;
+
+    if (!data.order_email.trim()) {
+      app.toast('邮箱不能为空');
+    } else if (!app.my_config.reg.email.test(data.order_email)) {
+      app.toast('请输入正确的邮箱');
+    } else {
+      wx.showLoading({ mask: true });
+
+      app.ajax('my/setOrderEmail', { email: this.data.order_email }, () => {
+        wx.hideLoading();
+        app.modal('邮箱已保存');
+        app.set_user_data();
       });
     }
   },

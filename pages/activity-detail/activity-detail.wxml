@@ -130,7 +130,7 @@
             </view>
           </view>
           <view class="desc">{{item.content}}</view>
-          <view class="tag-list">
+          <view class="tag-line" wx:if="{{item.tags_name.length > 0}}">
             <view class="tag" wx:for="{{item.tags_name}}" wx:for-item="tag">{{tag}}</view>
             <view class="tag vh" wx:for="{{item.flex_pad}}"></view>
           </view>

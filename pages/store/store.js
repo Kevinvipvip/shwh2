@@ -3,6 +3,8 @@ const app = getApp();
 
 Page({
   data: {
+    role: 0,  // 1.博物馆 2.设计师 3.工厂
+
     // full-loading
     full_loading: true,
 
@@ -17,6 +19,8 @@ Page({
     loading: false
   },
   onLoad() {
+    this.data.role = app.user_data.role;
+
     // full-loading
     this.setData({ full_loading: false });
 
@@ -106,5 +110,9 @@ Page({
   },
   bind_input(e) {
     app.bind_input(e, this);
+  },
+  // 收集formid
+  col_formid(e) {
+    app.collectFormid(e.detail.formId);
   }
 });

@@ -3,7 +3,7 @@ const app = getApp();
 Page({
   data: {
     id: 0,
-    textarea_padding: '15rpx',
+    is_ios: false,
 
     title: '',  // 笔记标题
     content: '',  // 笔记内容
@@ -11,13 +11,12 @@ Page({
     pics: [],
     reason: '',
 
+    status: 0,  // 0.审核中 1.通过审核 2.未通过 （编辑笔记时用）
+
     flex_pad: []
   },
   onLoad(options) {
-    let phone = wx.getSystemInfoSync();
-    if (phone.platform === 'ios') {
-      this.setData({ textarea_padding: '0rpx 5rpx' })
-    }
+    this.setData({ full_loading: false });
 
     if (options.id) {
       this.setData({ id: options.id });
@@ -41,6 +40,7 @@ Page({
         content_count: res.content.length,
         pics: pics,
         reason: res.reason,
+        status: res.status,
         flex_pad: app.null_arr(res.pics.length + 1, 3)
       });
     });

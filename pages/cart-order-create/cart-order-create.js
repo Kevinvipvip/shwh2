@@ -88,7 +88,7 @@ Page({
     });
   },
   // 下单
-  cartToPurchase() {
+  cartToPurchase(e) {
     if (!this.data.purchase_loading) {
       let data = this.data;
       if (!data.receiver.trim()) {
@@ -100,6 +100,8 @@ Page({
       } else if (!data.address.trim()) {
         app.toast('请填写收货地址');
       } else {
+        app.collectFormid(e.detail.formId);
+
         this.setData({purchase_loading: true});
 
         let post = {

@@ -155,6 +155,10 @@
         <view bindtap="jump" data-id="{{item.id}}" class="chuang" wx:for="{{idea_list}}" wx:key="id">
           <view class="title">{{item.title}}</view>
           <view class="desc">{{item.content}}</view>
+          <view class="tag-line" wx:if="{{item.tags_name.length > 0}}">
+            <view class="tag" wx:for="{{item.tags_name}}" wx:for-item="tag">{{tag}}</view>
+            <view class="tag vh" wx:for="{{item.flex_pad}}"></view>
+          </view>
           <view class="two-attr">
             <view class="attr one-line-ellipsis">来源：{{item.req_title}}</view>
             <view class="attr date">{{item.create_time}}</view>

@@ -28,6 +28,8 @@ Page({
       app.format_img(res, 'cover');
       app.time_format(res, 'create_time', 'yyyy-MM-dd');
 
+      res.flex_pad = app.null_arr(res.tags_name.length, 5);
+
       this.setData({ idea: res });
     });
   },

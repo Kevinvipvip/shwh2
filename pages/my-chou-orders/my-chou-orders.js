@@ -174,6 +174,8 @@ Page({
   },
   // 支付
   orderPay(e) {
+    app.collectFormid(e.detail.formId);
+
     let goods = e.currentTarget.dataset.goods;
     let post = {
       pay_order_sn: goods.pay_order_sn

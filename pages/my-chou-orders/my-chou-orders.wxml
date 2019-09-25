@@ -42,7 +42,9 @@
           <button catchtap="to_chou_detail" data-funding_id="{{item.funding_id}}" class="again" wx:if="{{item.type == 2}}">再次支持</button>
 
           <button catchtap="fundingOrderCancel" data-goods="{{item}}" class="cancel" wx:if="{{item.status == 0}}">取消订单</button>
-          <button catchtap="orderPay" data-goods="{{item}}" class="pay" wx:if="{{item.status == 0}}">付款</button>
+          <form bindsubmit="orderPay" catchtap data-goods="{{item}}" report-submit wx:if="{{item.status == 0}}">
+            <button form-type="submit" class="pay">付款</button>
+          </form>
           <button catchtap="refund_click" data-goods="{{item}}" class="cancel" wx:if="{{item.status == 1}}">申请退款</button>
           <button catchtap="fundingOrderConfirm" data-goods="{{item}}" class="confirm" wx:if="{{item.status == 2}}">确认收货</button>
         </view>

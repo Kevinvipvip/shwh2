@@ -40,6 +40,8 @@
       总计：
       <text>¥{{total}}</text>
     </view>
-    <button bindtap="cartToPurchase" loading="{{purchase_loading}}" class="pay-btn">支付</button>
+    <form bindsubmit="cartToPurchase" class="pay-btn" report-submit>
+      <button form-type="submit" loading="{{purchase_loading}}" >支付</button>
+    </form>
   </view>
 </view>
