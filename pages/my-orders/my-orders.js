@@ -56,7 +56,8 @@ Page({
   orderList(complete) {
     let post = {
       token: app.user_data.token,
-      page: this.data.page
+      page: this.data.page,
+      perpage: 5
     };
 
     if (this.data.status !== '') {
@@ -264,4 +265,4 @@ Page({
   hide_refund() {
     this.setData({ refund_show: false });
   }
-})
+});

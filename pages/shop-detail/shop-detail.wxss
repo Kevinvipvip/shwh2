@@ -8,6 +8,7 @@
 .top-swiper {
     height: 600rpx;
     background: #fff;
+    width: 100%;
 }
 
 .top-swiper swiper-item {

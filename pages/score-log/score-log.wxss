@@ -1,0 +1,44 @@
+.page {
+    line-height: 1;
+}
+
+.score-list {
+    padding: 0 24rpx;
+}
+
+.score-list .score {
+    border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
+    padding: 30rpx 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-list .score:last-child {
+}
+
+.score-list .score .info {
+}
+
+.score-list .score .info .text {
+    font-size: 28rpx;
+    color: #333;
+    letter-spacing: 1rpx;
+}
+
+.score-list .score .info .time {
+    margin-top: 9px;
+    color: #999;
+    font-size: 24rpx;
+    letter-spacing: 1rpx;
+}
+
+.score-list .score .fen {
+    font-size: 28rpx;
+    letter-spacing: 1rpx;
+    font-weight: bold;
+    color: #ffbc47;
+}
+
+.score-list .score .fen.back {
+    color: #333;
+}

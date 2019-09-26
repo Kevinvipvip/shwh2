@@ -1,11 +1,13 @@
 <view class="page">
   <swiper indicator-dots="{{true}}"
           autoplay="{{true}}"
-          class="top-swiper">
+          class="top-swiper"
+          wx:if="{{goods.pics.length > 1}}">
     <swiper-item wx:for="{{goods.pics}}" wx:key="index">
-      <image src="{{item}}" mode="widthFix"></image>
+      <image src="{{item}}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
+  <image src="{{goods.pics[0]}}" class="top-swiper" mode="aspectFit" wx:else></image>
   <view class="info-box">
     <view class="pt">
       <view class="title">{{goods.name}}</view>

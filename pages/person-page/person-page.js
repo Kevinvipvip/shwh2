@@ -473,5 +473,20 @@ Page({
       app.format_img(res, 'video_url');
       this.setData({ video: res });
     });
+  },
+  // 关注/取消关注
+  iFocus() {
+    if (!this.data.loading) {
+      this.data.loading = true;
+
+      let person = this.data.person;
+      app.ajax('note/iFocus', { to_uid: person.id }, res => {
+        person.if_focus = res;
+        res ? person.focus++ : person.focus--;
+        this.setData({ person });
+      }, null, () => {
+        this.data.loading = false;
+      });
+    }
   }
 });

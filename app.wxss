@@ -1246,7 +1246,7 @@ button::after {
 }
 
 .goods .info .title {
-  font-size: 30rpx;
+  font-size: 28rpx;
   line-height: 48rpx;
   color: #333;
   height: 96rpx;

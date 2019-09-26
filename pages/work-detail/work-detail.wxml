@@ -68,7 +68,7 @@
       <view class="bidding-list" wx:if="{{bidding_list.length != 0}}">
         <view class="bidding" wx:for="{{bidding_list}}" wx:key="id">
           <view class="header">
-            <view class="left">
+            <view bindtap="to_person" data-uid="{{item.uid}}" class="left">
               <image src="{{item.avatar}}" class="head-pic"></image>
               <view class="org">{{item.org}}</view>
             </view>

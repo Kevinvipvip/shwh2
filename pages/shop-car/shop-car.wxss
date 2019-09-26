@@ -170,6 +170,7 @@
     justify-content: space-between;
     background: #fff;
     height: 100rpx;
+    z-index: 10;
 }
 
 .settle .check-all {

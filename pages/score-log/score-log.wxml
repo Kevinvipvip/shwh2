@@ -1,0 +1,17 @@
+<view class="page">
+  <view class="score-list">
+    <view class="score" wx:for="{{score_log}}" wx:key="id">
+      <view class="info">
+        <view class="text">{{item.desc}}</view>
+        <view class="time">{{item.create_time}}</view>
+      </view>
+      <view class="fen {{item.score < 0 ? 'back' : ''}}">{{item.score > 0 ? '+' + item.score : item.score}}</view>
+    </view>
+  </view>
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
+  </view>
+</view>

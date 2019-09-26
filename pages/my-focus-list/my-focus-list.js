@@ -26,12 +26,8 @@ Page({
 
     uid: 0
   },
-  onLoad(options) {
-    this.setData({
-      type: parseInt(options.type),
-      uid: app.user_data.uid
-    });
-    this.set_title(this.data.type);
+  onLoad() {
+    this.setData({ uid: app.user_data.uid });
 
     this.bwgList();
     this.designerList();
@@ -43,28 +39,15 @@ Page({
       this.set_title(this.data.type);
     });
   },
-  // 设置tabbar标题
-  set_title(type) {
-    switch (type) {
-      case 1:
-        wx.setNavigationBarTitle({ title: '博物馆列表' });
-        break;
-      case 2:
-        wx.setNavigationBarTitle({ title: '设计师列表' });
-        break;
-      case 3:
-        wx.setNavigationBarTitle({ title: '工厂列表' });
-        break;
-    }
-  },
   // 博物馆列表
   bwgList(complete) {
     let post = {
       page: this.data.museum_page,
-      perpage: 10
+      perpage: 10,
+      type: 1
     };
 
-    app.ajax('api/bwgList', post, res => {
+    app.ajax('my/myFocusList', post, res => {
       if (res.length === 0) {
         if (this.data.museum_page === 1) {
           this.setData({
@@ -94,10 +77,11 @@ Page({
   designerList(complete) {
     let post = {
       page: this.data.designer_page,
-      perpage: 20
+      perpage: 20,
+      type: 2
     };
 
-    app.ajax('api/designerList', post, res => {
+    app.ajax('my/myFocusList', post, res => {
       if (res.length === 0) {
         if (this.data.designer_page === 1) {
           this.setData({
@@ -113,6 +97,9 @@ Page({
         }
       } else {
         app.avatar_format(res, 'avatar');
+        for (let i = 0; i < res.length; i++) {
+          res[i].if_focus = true;
+        }
 
         this.setData({ designer_list: this.data.designer_list.concat(res) });
       }
@@ -127,10 +114,11 @@ Page({
   factoryList(complete) {
     let post = {
       page: this.data.factory_page,
-      perpage: 10
+      perpage: 10,
+      type: 3
     };
 
-    app.ajax('api/factoryList', post, res => {
+    app.ajax('my/myFocusList', post, res => {
       if (res.length === 0) {
         if (this.data.factory_page === 1) {
           this.setData({

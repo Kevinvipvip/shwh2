@@ -16,6 +16,9 @@ Page({
     tel: '',
     sign: '',
     avatar: '',
+    cover: '',
+    role: 0,
+
     loading: false,
     input_modal: false,
 
@@ -48,7 +51,8 @@ Page({
         age: res.age,
         tel: res.tel || '',
         sign: res.sign || '',
-        avatar: res.avatar
+        avatar: res.avatar,
+        role: res.role_check === 2 ? res.role : 0
       });
     }, null, () => {
       if (complete) {

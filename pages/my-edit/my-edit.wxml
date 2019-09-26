@@ -33,7 +33,7 @@
         <image src="/icons/you3.png" class="arrow-you"></image>
       </view>
     </view>
-    <view data-name="tel" class="input-item">
+    <view class="input-item">
       <view class="label">手机号</view>
       <view class="you">
         <view class="value">{{tel}}</view>
@@ -48,6 +48,12 @@
           <view class="content">{{sign}}</view>
           <image src="/icons/edit.png" class="icon"></image>
         </view>
+      </view>
+    </view>
+    <view class="input-item sign" wx:if="{{role != 0}}">
+      <view class="label">个人主页/列表封面</view>
+      <view class="you">
+<!--        <image src=""></image>-->
       </view>
     </view>
   </view>

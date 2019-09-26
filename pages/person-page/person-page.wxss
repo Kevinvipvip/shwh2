@@ -37,6 +37,29 @@
     z-index: 3;
 }
 
+.header .nei .follow-btn {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 141rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: #fec448;
+    border-radius: 4rpx;
+    padding: 0;
+    color: #333;
+    letter-spacing: 1rpx;
+    font-size: 28rpx;
+    margin: 0;
+    position: absolute;
+    right: 40rpx;
+    top: 40rpx;
+}
+
+.header .nei .follow-btn.followed {
+    background: #dbdbdb;
+    box-shadow: none;
+}
+
 .header .info {
     padding: 40rpx;
     text-align: center;

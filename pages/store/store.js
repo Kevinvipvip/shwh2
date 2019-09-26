@@ -15,7 +15,7 @@ Page({
     page: 1,
     list: [],
     nomore: false,
-    nodata: true,
+    nodata: false,
     loading: false
   },
   onLoad() {

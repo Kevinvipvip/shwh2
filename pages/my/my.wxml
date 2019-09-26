@@ -46,20 +46,21 @@
 
   <view class="tran-bg">
     <view class="count-box">
-      <view class="count-item">
-        <view class="number">25</view>
+      <navigator url="/pages/my-focus-list/my-focus-list" class="count-item">
+<!--      <navigator class="count-item">-->
+        <view class="number">{{user.ifocus}}</view>
         <view class="desc">我的关注</view>
-      </view>
+      </navigator>
       <view class="shu"></view>
       <navigator url="/pages/my-notes/my-notes" class="count-item">
         <view class="number">120</view>
         <view class="desc">我的笔记</view>
       </navigator>
       <view class="shu"></view>
-      <view class="count-item">
+      <navigator url="/pages/score-log/score-log" class="count-item">
         <view class="number">{{user.score}}</view>
         <view class="desc">获得积分</view>
-      </view>
+      </navigator>
     </view>
 
     <view class="order-box">

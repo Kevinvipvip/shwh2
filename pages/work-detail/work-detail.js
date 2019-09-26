@@ -20,15 +20,15 @@ Page({
     role: 0  // 用户身份
   },
   onLoad(options) {
-    this.setData({is_ios: app.is_ios});
+    this.setData({ is_ios: app.is_ios });
 
     this.data.id = options.id;
     this.worksDetail();
 
-    this.setData({role: app.user_data.role});
+    this.setData({ role: app.user_data.role });
     this.biddingList();
 
-    this.setData({uid: app.user_data.uid});
+    this.setData({ uid: app.user_data.uid });
   },
   worksDetail() {
     app.ajax('api/worksDetail', { id: this.data.id }, res => {
@@ -82,8 +82,8 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      app.ajax('note/iFocus', {to_uid: work.uid}, res => {
-        this.setData({ ['work.ifocus']: res});
+      app.ajax('note/iFocus', { to_uid: work.uid }, res => {
+        this.setData({ ['work.ifocus']: res });
       }, null, () => {
         this.data.loading = false;
       });
@@ -113,20 +113,20 @@ Page({
   bind_input(e) {
     app.bind_input(e, this);
     if (e.currentTarget.dataset.name === 'desc') {
-      this.setData({desc_count: this.data.desc.length});
+      this.setData({ desc_count: this.data.desc.length });
     }
   },
   // 竞标列表（接单工厂列表）
   biddingList() {
-    app.ajax('api/biddingList', {work_id: this.data.id}, res => {
+    app.ajax('api/biddingList', { work_id: this.data.id }, res => {
       app.avatar_format(res);
       for (let i = 0; i < res.length; i++) {
         if (res[i].choose === 1) {
-          this.setData({choose_bindex: i});
+          this.setData({ choose_bindex: i });
           break;
         }
       }
-      this.setData({bidding_list: res});
+      this.setData({ bidding_list: res });
     });
   },
   // 选择接单工厂
@@ -136,7 +136,7 @@ Page({
         this.data.loading = true;
 
         let id = e.currentTarget.dataset.id;
-        app.ajax('api/chooseFactory', {bidding_id: id}, () => {
+        app.ajax('api/chooseFactory', { bidding_id: id }, () => {
           app.modal('已选择工厂', () => {
             this.biddingList();
           });
@@ -147,7 +147,13 @@ Page({
   // 去他人主页
   to_person() {
     app.page_open(() => {
-      wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.work.uid });
+      let uid = e.currentTarget.dataset.id;
+      if (!uid) {
+        wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.work.uid });
+      } else {
+        wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + uid });
+      }
+
     });
   }
 });
