@@ -25,11 +25,11 @@ page {
 
 .block .item-half .status {
     position: absolute;
-    background: #ff684f;
+    background: #eee;
     width: 96rpx;
     height: 40rpx;
     font-size: 24rpx;
-    color: #fff;
+    color: #bbb;
     letter-spacing: 2rpx;
     top: 22rpx;
     right: 24rpx;
@@ -37,6 +37,11 @@ page {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.block .item-half .status.active {
+    background: #ff684f;
+    color: #fff;
 }
 
 .block .item-half image {

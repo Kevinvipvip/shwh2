@@ -141,6 +141,10 @@
   padding: 40rpx 24rpx 4rpx;
 }
 
+.btn-box.disabled {
+  filter: grayscale(1);
+}
+
 .btn-box .pub {
   border-radius: 4rpx;
   overflow: hidden;

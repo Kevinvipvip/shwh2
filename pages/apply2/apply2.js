@@ -62,7 +62,7 @@ Page({
 
     app.qiniu_init();
   },
-  apply() {
+  apply(e) {
     if (!this.data.apply_loading) {
       let data = this.data, valid = false, post = {};
       if (data.role !== '2') {
@@ -135,6 +135,8 @@ Page({
       }
 
       if (valid) {
+        app.collectFormid(e.detail.formId);
+
         this.setData({ apply_loading: true });
 
         post.role = data.role;

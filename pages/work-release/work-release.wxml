@@ -26,7 +26,7 @@
           <block wx:for="{{pics}}" wx:key="index">
             <view class="ap-box">
               <view class="add-pic">
-                <image class="add-pic" src="{{item}}"></image>
+                <image class="add-pic" src="{{item}}" mode="aspectFill"></image>
                 <view class="img-de" data-index="{{index}}" bindtap="img_delete">
                   <image class="img" src="/images/close.png"></image>
                 </view>

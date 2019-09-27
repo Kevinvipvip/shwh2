@@ -58,7 +58,7 @@
   </view>
 
   <!-- 按钮组 -->
-  <view class="btn-box">
+  <view class="btn-box" wx:if="{{status == 1}}">
     <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{2}}" class="pub pub2" wx:if="{{user_auth == 0}}">
       <image src="/images/pub1.png"></image>
     </button>
@@ -71,6 +71,14 @@
     </button>
     <button bindtap="to_work_release" class="pub pub1" wx:else>
       <image src="/images/pub2.png"></image>
+    </button>
+  </view>
+  <view bindtap="no_vote" class="btn-box disabled" wx:else>
+    <button class="pub pub1">
+      <image src="/images/pub2.png"></image>
+    </button>
+    <button class="pub pub1">
+      <image src="/images/pub1.png"></image>
     </button>
   </view>
 
@@ -137,8 +145,13 @@
 
           <view class="pub-box">
             <view class="tou-text">投稿数：{{item.works_num}}次</view>
-            <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" data-idea_id="{{item.id}}" class="tou-btn" wx:if="{{user_auth == 0}}">投稿</button>
-            <button catchtap="to_work_release" data-idea_id="{{item.id}}" class="tou-btn" wx:else>投稿</button>
+            <view wx:if="{{status == 1}}">
+              <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" data-idea_id="{{item.id}}" class="tou-btn" wx:if="{{user_auth == 0}}">投稿</button>
+              <button catchtap="to_work_release" data-idea_id="{{item.id}}" class="tou-btn" wx:else>投稿</button>
+            </view>
+            <view wx:else>
+              <button catchtap="no_vote" class="tou-btn">投稿</button>
+            </view>
           </view>
         </navigator>
       </view>

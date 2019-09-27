@@ -37,7 +37,7 @@
     z-index: 3;
 }
 
-.header .nei .follow-btn {
+.header .nei .xuan-btn {
     flex-shrink: 0;
     box-sizing: border-box;
     width: 141rpx;
@@ -51,6 +51,14 @@
     font-size: 28rpx;
     margin: 0;
     position: absolute;
+}
+
+.header .nei .xuan-btn.contact {
+    left: 40rpx;
+    top: 40rpx;
+}
+
+.header .nei .follow-btn {
     right: 40rpx;
     top: 40rpx;
 }

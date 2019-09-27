@@ -18,7 +18,7 @@ Page({
       perpage: 10
     };
 
-    app.ajax('api/getReqList', post, res => {
+    app.ajax('my/myReqList', post, res => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({

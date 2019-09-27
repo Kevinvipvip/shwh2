@@ -7,7 +7,7 @@
     <view>※ 审核未通过</view>
     <view>原因：{{reason}}</view>
   </view>
-  <form bindsubmit="apply" class="apply-form" wx:if="{{role_check == 0 || role_check == 3}}">
+  <form bindsubmit="apply" report-submit class="apply-form" wx:if="{{role_check == 0 || role_check == 3}}">
     <!-- 工厂和博物馆 -->
     <block wx:if="{{role != 2}}">
       <view class="input-group-list">
@@ -104,7 +104,7 @@
         <view class="flex flex-row input-group">
           <view class="flex-grow-0 flex-y-center input-group-label">微信号：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" type="number" class="flex-y-center"
+            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" class="flex-y-center"
                    placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="11"/>
           </view>
         </view>
@@ -231,7 +231,7 @@
         <view class="flex flex-row input-group">
           <view class="flex-grow-0 flex-y-center input-group-label">微信号：</view>
           <view class="flex-grow-1">
-            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" type="number" class="flex-y-center"
+            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" class="flex-y-center"
                    placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="11"/>
           </view>
         </view>

@@ -268,7 +268,7 @@ button::after {
 
 .work-rank-list .work .info .xia .vote {
   position: relative;
-  top: 10rpx;
+  padding: 10rpx 0 0 10rpx;
 }
 
 .work-rank-list .work .info .xia .vote .icon {
@@ -776,6 +776,7 @@ button::after {
 }
 
 .work-box .work .other-line .agree {
+  padding: 10rpx 0 0 10rpx;
 }
 
 /* 作品列表 end */

@@ -11,7 +11,9 @@
     <view class="bg2"></view>
 
     <view class="nei">
-      <button class="follow-btn {{person.if_focus ? 'followed' : ''}}" catchtap="iFocus" data-index="{{index}}" wx:if="{{uid != person.id}}"> {{person.if_focus ? '已关注' : '关注'}}</button>
+
+      <button bindtap="phone_call" class="xuan-btn contact" wx:if="{{my_role != 0}}">联系</button>
+      <button class="xuan-btn follow-btn {{person.if_focus ? 'followed' : ''}}" catchtap="iFocus" data-index="{{index}}" wx:if="{{my_uid != uid}}"> {{person.if_focus ? '已关注' : '关注'}}</button>
 
       <view class="info">
         <image src="{{person.avatar}}" class="avatar" mode="aspectFill"></image>
@@ -43,11 +45,11 @@
           <view class="label">创意</view>
         </view>
         <view class="param">
-          <view class="value">{{person.focus}}</view>
+          <view class="value">{{person.ifocus}}</view>
           <view class="label">关注</view>
         </view>
         <view class="param">
-          <view class="value">{{person.ifocus}}</view>
+          <view class="value">{{person.focus}}</view>
           <view class="label">粉丝</view>
         </view>
       </view>

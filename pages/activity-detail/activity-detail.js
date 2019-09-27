@@ -4,6 +4,7 @@ Page({
   data: {
     id: 0,
     req: {},
+    status: 0,  // 0.活动未开始 1.活动开始 2.投票中 3.投票截止 4.接单截止
     active_tab: 1,
     user_auth: 0,
 
@@ -46,6 +47,20 @@ Page({
       app.format_img(res, 'cover');
       app.format_img(res, 'video_url');
       app.avatar_format(res);
+
+      let time_now = Math.round(new Date().getTime() / 1000);
+      if (time_now < res.start_time) {
+        this.setData({status: 0});
+      } else if (time_now < res.deadline) {
+        this.setData({status: 1});
+      } else if (time_now < res.vote_time) {
+        this.setData({status: 2});
+      } else if (time_now < res.end_time) {
+        this.setData({status: 3});
+      } else {
+        this.setData({status: 4});
+      }
+
       app.time_format(res, 'start_time');
       app.time_format(res, 'deadline');
       app.time_format(res, 'vote_time');
@@ -387,9 +402,17 @@ Page({
     }
   },
   // 去他人主页
-  to_person(e) {
+  to_person() {
     app.page_open(() => {
       wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.req.uid });
     });
+  },
+  // 非投票/投稿期间
+  no_vote() {
+    if (this.data.status === 0) {
+      app.modal('活动尚未开始');
+    } else {
+      app.modal('投票/投稿时间已结束');
+    }
   }
 });

@@ -20,7 +20,7 @@
 
       <view catchtap="to_modify" data-index="{{index}}" class="modi-btn" wx:if="{{status == 2}}">修改</view>
 
-      <image src="{{item.pics[0]}}" class="cover"></image>
+      <image src="{{item.pics[0]}}" class="cover" mode="aspectFill"></image>
       <view class="info">
         <view class="title one-line-ellipsis">{{item.title}}</view>
         <view class="desc">{{item.desc}}</view>

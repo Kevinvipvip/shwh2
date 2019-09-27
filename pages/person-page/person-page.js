@@ -42,10 +42,17 @@ Page({
     goods_nomore: false,
     goods_nodata: false,
 
-    video: {}
+    video: {},
+    my_uid: 0,  // 用户自己的uid
+    my_role: 0  // 用户自己的role
   },
   onLoad(options) {
     this.data.uid = options.uid;
+    this.setData({
+      uid: options.uid,
+      my_uid: app.user_data.uid,
+      my_role: app.user_data.role
+    });
     this.home(null, () => {
       if (this.data.role !== 0) {
         switch (this.data.role) {
@@ -325,12 +332,13 @@ Page({
 
       wx.showNavigationBarLoading();
       this.home(() => {
-        this._reach_after();
+        this._refresh_after();
       });
     }
   },
   // 下拉刷新后
   _refresh_after() {
+    this.data.loading = false;
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
 
@@ -488,5 +496,11 @@ Page({
         this.data.loading = false;
       });
     }
+  },
+  // 打电话
+  phone_call() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.person.role_tel
+    })
   }
 });

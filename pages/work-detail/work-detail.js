@@ -103,7 +103,8 @@ Page({
         };
         app.ajax('api/bidding', post, res => {
           this.worksDetail();
-          console.log(res, '接单成功');
+          this.biddingList();
+          app.modal('接单成功');
         }, null, () => {
           this.data.loading = false;
         });
@@ -145,15 +146,14 @@ Page({
     }
   },
   // 去他人主页
-  to_person() {
+  to_person(e) {
     app.page_open(() => {
-      let uid = e.currentTarget.dataset.id;
+      let uid = e.currentTarget.dataset.uid;
       if (!uid) {
         wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.work.uid });
       } else {
         wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + uid });
       }
-
     });
   }
 });

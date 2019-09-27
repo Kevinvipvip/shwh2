@@ -53,7 +53,7 @@
       </navigator>
       <view class="shu"></view>
       <navigator url="/pages/my-notes/my-notes" class="count-item">
-        <view class="number">120</view>
+        <view class="number">{{user.note_num}}</view>
         <view class="desc">我的笔记</view>
       </navigator>
       <view class="shu"></view>

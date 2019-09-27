@@ -16,6 +16,10 @@ App({
 
     let phone = wx.getSystemInfoSync();
     this.is_ios = phone.platform === 'ios';
+
+    wx.onMemoryWarning(res => {
+      console.log('内存不足', res);
+    })
   },
   is_ios: '',
   my_config: {

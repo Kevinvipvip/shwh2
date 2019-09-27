@@ -8,7 +8,7 @@ Page({
     nodata: false,
     nomore: false
   },
-  onLoad: function () {
+  onLoad() {
     this.myBiddingList();
   },
   myBiddingList(complete) {
