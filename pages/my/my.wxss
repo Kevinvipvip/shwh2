@@ -155,12 +155,12 @@
   position: absolute;
   padding: 10rpx;
   right: 0;
-  top: 30rpx;
+  top: 0;
 }
 
 .inner .header-box .mess-box image {
-  width: 32rpx;
-  height: 38rpx;
+  width: 37rpx;
+  height: 44rpx;
 }
 
 .inner .sign-box {

@@ -35,7 +35,7 @@
     background: #fff;
     position: relative;
     border-bottom:1rpx solid #eee;
-    padding: 20rpx 0;
+    padding: 25rpx 0;
 }
 
 .input-group:last-child, .input-group.no-border {
@@ -111,6 +111,7 @@
 .input-group-list {
     background:#fff;
     border-top: none;
+    font-size: 32rpx;
 }
 
 .input-group {

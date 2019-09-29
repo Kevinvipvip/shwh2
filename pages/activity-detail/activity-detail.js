@@ -164,6 +164,7 @@ Page({
         for (let i = 0; i < res.length; i++) {
           app.format_img(res[i].pics);
           if (res[i].pics) {
+            res[i].out3 = res[i].pics.length - 3;
             res[i].pics = res[i].pics.slice(0, 3);
           }
 

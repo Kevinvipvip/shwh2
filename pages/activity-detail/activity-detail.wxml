@@ -194,9 +194,11 @@
             <view class="title">{{item.title}}</view>
             <view class="desc">{{item.desc}}</view>
             <view class="img-box">
-              <image src="{{pic_item}}" wx:for-item="pic_item" wx:for="{{item.pics}}" mode="aspectFill"
-                     lazy-load></image>
-              <image class="vh" wx:for="{{item.flex_pad}}"></image>
+              <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
+                <image src="{{pic_item}}" mode="aspectFill" lazy-load></image>
+                <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
+              </view>
+              <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
             </view>
           </view>
           <!--          <view class="chuang-line">-->

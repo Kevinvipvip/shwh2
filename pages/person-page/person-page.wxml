@@ -106,8 +106,15 @@
           <view class="title one-line-ellipsis">{{item.title}}</view>
           <view class="desc">{{item.desc}}</view>
           <view class="img-list">
-            <image src="{{pic_item}}" mode="aspectFill" lazy-load wx:for="{{item.pics}}" wx:for-item="pic_item"></image>
-            <image class="vh" wx:for="{{item.flex_pad}}"></image>
+            <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
+              <image src="{{pic_item}}" mode="aspectFill" lazy-load></image>
+              <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
+            </view>
+            <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
+
+
+<!--            <image src="{{pic_item}}" mode="aspectFill" lazy-load wx:for="{{item.pics}}" wx:for-item="pic_item"></image>-->
+<!--            <image class="vh" wx:for="{{item.flex_pad}}"></image>-->
           </view>
           <view class="params-box">
             <view class="param">{{item.create_time}}</view>
@@ -135,8 +142,11 @@
           </view>
           <view class="desc two-line-ellipsis">{{item.work_detail}}</view>
           <view class="img-list">
-            <image src="{{pic_item}}" mode="aspectFill" lazy-load wx:for="{{item.pics}}" wx:for-item="pic_item"></image>
-            <image class="vh" wx:for="{{item.flex_pad}}"></image>
+            <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
+              <image src="{{pic_item}}" mode="aspectFill" lazy-load></image>
+              <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
+            </view>
+            <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
           </view>
         </view>
       </view>

@@ -19,7 +19,7 @@ Page({
     this.ideaDetail();
     this.worksList();
 
-    this.setData({uid: app.user_data.uid});
+    this.setData({ uid: app.user_data.uid });
   },
   // 创意详情
   ideaDetail() {
@@ -57,10 +57,13 @@ Page({
         }
       } else {
         for (let i = 0; i < res.length; i++) {
+          res[i].out3 = res[i].pics.length - 3;
+          res[i].pics = res[i].pics.slice(0, 3);
+
           app.format_img(res[i].pics);
         }
         app.avatar_format(res);
-        
+
         this.setData({ work_list: this.data.work_list.concat(res) });
       }
       this.data.page++;
@@ -134,8 +137,8 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      app.ajax('note/iFocus', {to_uid: idea.uid}, res => {
-        this.setData({ ['idea.ifocus']: res});
+      app.ajax('note/iFocus', { to_uid: idea.uid }, res => {
+        this.setData({ ['idea.ifocus']: res });
       }, null, () => {
         this.data.loading = false;
       });
@@ -145,6 +148,12 @@ Page({
   to_person() {
     app.page_open(() => {
       wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.idea.uid });
+    });
+  },
+  // 去活动页
+  to_activity() {
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/activity-detail/activity-detail?id=' + this.data.idea.req_id });
     });
   }
 });

@@ -312,10 +312,32 @@
     justify-content: space-between;
 }
 
-.work .img-list image {
+.work .img-list .img-item {
     width: 202rpx;
     height: 202rpx;
     border-radius: 4rpx;
+    position: relative;
+}
+
+.work .img-list image {
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+    border-radius: 4rpx;
+}
+
+.work .img-list .img-item .out3 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .work .params-box {
@@ -390,10 +412,32 @@
 
 }
 
-.jie .img-list image {
+.jie .img-list .img-item {
     width: 202rpx;
     height: 202rpx;
     border-radius: 4rpx;
+    position: relative;
+}
+
+.jie .img-list .img-item image {
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+    border-radius: 4rpx;
+}
+
+.jie .img-list .img-item .out3 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 /* 接单列表 end */
 

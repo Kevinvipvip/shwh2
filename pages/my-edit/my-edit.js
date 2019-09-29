@@ -12,7 +12,7 @@ Page({
       { name: '男', value: 1 },
       { name: '女', value: 2 }
     ],
-    age: 0,
+    // age: 0,
     tel: '',
     sign: '',
     avatar: '',
@@ -44,14 +44,16 @@ Page({
   mydetail(complete) {
     app.ajax('my/mydetail', null, (res) => {
       app.avatar_format(res, 'avatar');
+      app.format_img(res, 'cover');
       this.setData({
         nickname: res.nickname || '',
         realname: res.realname || '',
         sex: res.sex - 1,
-        age: res.age,
+        // age: res.age,
         tel: res.tel || '',
         sign: res.sign || '',
         avatar: res.avatar,
+        cover: res.cover,
         role: res.role_check === 2 ? res.role : 0
       });
     }, null, () => {
@@ -67,6 +69,7 @@ Page({
       this.mydetail();
     });
   },
+  // 修改头像
   img_upload() {
     app.choose_img(1, res => {
       if (res) {
@@ -82,7 +85,25 @@ Page({
           wx.hideLoading();
         });
       }
-    }, 1048576);
+    }, 102400);
+  },
+  // 修改角色封面
+  modCover() {
+    app.choose_img(1, res => {
+      if (res) {
+        wx.showLoading({ mask: true });
+
+        let tname = app.qiniu_tname() + res[0].ext;
+        app.qiniu_upload(res[0].path, tname, () => {
+          app.ajax('my/modCover', { cover: tname }, () => {
+            wx.hideLoading();
+            this.mydetail();
+          });
+        }, null, () => {
+          wx.hideLoading();
+        });
+      }
+    }, 524288);
   },
   // 获取用户电话号码
   getPhoneNumber(e) {

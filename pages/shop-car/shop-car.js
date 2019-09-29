@@ -166,10 +166,7 @@ Page({
   },
   touchS: function (e) {
     if (e.touches.length === 1) {
-      this.setData({
-        //设置触摸起始点水平方向位置
-        startX: e.touches[0].clientX
-      });
+      this.data.startX = e.touches[0].clientX;
     }
   },
   touchM: function (e) {

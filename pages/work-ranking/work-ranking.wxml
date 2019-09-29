@@ -15,7 +15,8 @@
             <text class="nickname">{{item.nickname}}</text>
           </view>
           <view catchtap="worksVote" data-index="{{index}}" class="vote">
-            <image lazy-load src="/icons/vote.png" class="icon"></image>
+            <image src="/icons/zan-active.png" class="icon" wx:if="{{item.if_vote}}"></image>
+            <image src="/icons/zan.png" class="icon" wx:else></image>
             <text>{{item.vote}}</text>
           </view>
         </view>

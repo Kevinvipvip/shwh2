@@ -195,7 +195,9 @@ Page({
         }
       } else {
         for (let i = 0; i < res.length; i++) {
+          res[i].out3 = res[i].pics.length - 3;
           res[i].pics = res[i].pics.slice(0, 3);
+
           app.format_img(res[i].pics);
           res[i].flex_pad = app.null_arr(res[i].pics.length, 3);
         }
@@ -233,7 +235,9 @@ Page({
         }
       } else {
         for (let i = 0; i < res.length; i++) {
+          res[i].out3 = res[i].pics.length - 3;
           res[i].pics = res[i].pics.slice(0, 3);
+
           app.format_img(res[i].pics);
           res[i].flex_pad = app.null_arr(res[i].pics.length, 3);
         }

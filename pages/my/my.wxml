@@ -28,9 +28,9 @@
 <!--            <navigator url="/pages/recharge/recharge" wx:if="{{user.vip != 1}}" class="vip-btn">我要成为会员</navigator>-->
 <!--          </view>-->
         </view>
-<!--        <view class="mess-box">-->
-<!--          <image src="/icons/bell.png"></image>-->
-<!--        </view>-->
+        <view class="mess-box">
+          <image src="/icons/bell.png"></image>
+        </view>
       </view>
       <view class="sign-box">
         <view class="sign-progress">

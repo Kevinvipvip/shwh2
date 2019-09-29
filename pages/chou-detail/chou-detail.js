@@ -23,7 +23,9 @@ Page({
       app.qian_format(res, 'need_money');
 
       app.avatar_format(res, 'avatar');
+      res.out3 = res.works_pics.length - 3;
       res.works_pics = res.works_pics.slice(0, 3);
+
       app.format_img(res.works_pics);
       let flex_pad = app.null_arr(res.works_pics.length, 3);
 

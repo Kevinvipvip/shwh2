@@ -50,10 +50,13 @@
         </view>
       </view>
     </view>
-    <view class="input-item sign" wx:if="{{role != 0}}">
+    <view class="input-item cover" wx:if="{{role != 0}}">
       <view class="label">个人主页/列表封面</view>
       <view class="you">
-<!--        <image src=""></image>-->
+        <view bindtap="modCover" class="cover-box">
+          <image src="{{cover}}" mode="aspectFill"></image>
+          <image src="/icons/edit.png" class="icon"></image>
+        </view>
       </view>
     </view>
   </view>

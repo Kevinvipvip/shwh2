@@ -745,14 +745,35 @@ button::after {
   flex-wrap: wrap;
 }
 
-.work-box .work .under .img-box image {
+.work-box .work .under .img-box .img-item {
   width: 212rpx;
   height: 212rpx;
   margin-bottom: 9rpx;
+  position: relative;
 }
 
-.work-box .work .under .img-box image:nth-last-child(-n + 3) {
+.work-box .work .under .img-box .img-item:nth-last-child(-n + 3) {
   margin-bottom: 0;
+}
+
+.work-box .work .under .img-box .img-item .out3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-box .work .under .img-box .img-item image {
+  width: 100%;
+  height: 100%;
+  vertical-align: bottom;
 }
 
 .work-box .work .other-line {
