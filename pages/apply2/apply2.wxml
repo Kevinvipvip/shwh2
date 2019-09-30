@@ -105,7 +105,7 @@
           <view class="flex-grow-0 flex-y-center input-group-label">微信号：</view>
           <view class="flex-grow-1">
             <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" class="flex-y-center"
-                   placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="11"/>
+                   placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="50"/>
           </view>
         </view>
         <view class="flex flex-row input-group input-group2" wx:if="{{role == '3'}}">
@@ -232,7 +232,7 @@
           <view class="flex-grow-0 flex-y-center input-group-label">微信号：</view>
           <view class="flex-grow-1">
             <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" class="flex-y-center"
-                   placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="11"/>
+                   placeholder="请输入法人微信号" placeholder-class="placeholder" maxlength="50"/>
           </view>
         </view>
         <view class="flex flex-row input-group">

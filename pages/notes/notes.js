@@ -16,7 +16,9 @@ Page({
     page: 1,
     nomore: false,
     nodata: false,
-    loading: false
+    loading: false,
+
+    note_list: []
   },
   onLoad() {
     app.get_auth((res) => {
@@ -53,7 +55,7 @@ Page({
       token: app.user_data.token,
       search: this.data.search.trim(),
       page: this.data.page,
-      perPage: 30
+      perpage: 30
     };
 
     app.ajax('note/getNoteList', post, (res) => {
@@ -70,10 +72,20 @@ Page({
       } else {
         app.avatar_format(res.list);
 
+        // 排序（测试用）
+        // res.list.sort((a, b) => {
+        //   if (a.width < b.width) {
+        //     return 1;
+        //   } else {
+        //     return -1;
+        //   }
+        // });
+
         for (let i = 0; i < res.list.length; i++) {
           app.format_img(res.list[i].pics);
 
-          // res.list[i].avatar = res.list[i].avatar.indexOf('https') === 0 ? res.list[i].avatar : app.my_config.base_url + '/' + res.list[i].avatar;
+          // 测试用
+          // console.log(res.list[i].id, res.list[i].pics[0], res.list[i].width, res.list[i].height);
 
           if (this.data.left_height <= this.data.right_height) {
             this.data.left_note_list.push(res.list[i]);
@@ -143,7 +155,7 @@ Page({
     this.data.right_note_list = [];
     this.getNoteList();
   },
-  onShareAppMessage(e) {
+  onShareAppMessage() {
     wx.showShareMenu({
       withShareTicket: true,
       success: function () {
@@ -184,4 +196,4 @@ Page({
       });
     }
   }
-})
+});

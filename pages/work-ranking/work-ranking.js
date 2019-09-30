@@ -34,6 +34,7 @@ Page({
           })
         }
       } else {
+        app.avatar_format(res, 'avatar');
         app.format_img(res, 'cover');
         for (let i = 0; i < res.length; i++) {
           app.format_img(res[i].pics);

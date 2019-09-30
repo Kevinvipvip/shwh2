@@ -90,7 +90,7 @@ Page({
           });
         }
       }
-    }, 1048576);
+    }, 262144);
   },
   bind_input(e) {
     app.bind_input(e, this);

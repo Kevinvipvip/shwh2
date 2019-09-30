@@ -25,7 +25,7 @@ Page({
   before_apply() {
     switch (this.data.user.role_check) {
       case 0:
-        wx.navigateTo({ url: '/pages/before-apply/before-apply' });
+        wx.navigateTo({ url: '/pages/apply/apply' });
         break;
       case 1:
       case 2:

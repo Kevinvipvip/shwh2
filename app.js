@@ -491,6 +491,8 @@ App({
           over_text = Math.floor(maxsize / 1048576) + 'M';
         }
 
+        console.log(res, '图片');
+
         for (let i = 0; i < res.tempFiles.length; i++) {
           if (res.tempFiles[i].size > maxsize) {
             this.toast('选择的图片不能大于' + over_text);
