@@ -9,16 +9,16 @@ Page({
     loading: false
   },
   onLoad() {
-    this.getReqList();
+    this.getAllReqList();
   },
   // 需求列表（投石）
-  getReqList(complete) {
+  getAllReqList(complete) {
     let post = {
       page: this.data.page,
       perpage: 10
     };
 
-    app.ajax('api/getReqList', post, res => {
+    app.ajax('api/getAllReqList', post, res => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -59,7 +59,7 @@ Page({
       });
 
       wx.showNavigationBarLoading();
-      this.getReqList(() => {
+      this.getAllReqList(() => {
         this.data.loading = false;
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
@@ -72,7 +72,7 @@ Page({
       if (!this.data.loading) {
         this.data.loading = true;
         wx.showNavigationBarLoading();
-        this.getReqList(() => {
+        this.getAllReqList(() => {
           wx.hideNavigationBarLoading();
           this.data.loading = false;
         });
