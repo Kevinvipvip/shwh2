@@ -109,6 +109,6 @@
 
   <view class="bottom-btn-box">
     <button open-type="share" class="share">分享</button>
-    <button bindtap="to_support" class="chou">我要众筹</button>
+    <button bindtap="to_support" class="chou">参与众筹</button>
   </view>
 </view>
