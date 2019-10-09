@@ -99,6 +99,15 @@
   </view>
 
   <view class="menu">
+    <navigator class="menu-item" url="/pages/person-page/person-page?uid={{user.id}}" wx:if="{{user.role_check == 2 && user.role != 0}}">
+      <view class="left-box">
+        <view class="icon-box">
+          <image src="/icons/menu1.png" class="icon-menu1"></image>
+        </view>
+      </view>
+      <view class="menu-text">我的主页</view>
+      <image src="/icons/you3.png" class="you"></image>
+    </navigator>
     <navigator class="menu-item" url="/pages/my-chuang/my-chuang">
       <view class="left-box">
         <view class="icon-box">
