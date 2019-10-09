@@ -145,35 +145,35 @@
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
 
-    <navigator class="menu-item" url="/pages/my-shop/my-shop" wx:if="{{user.role_check == 2 && user.role != 0}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu14.png" class="icon-menu14"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的店铺</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
+<!--    <navigator class="menu-item" url="/pages/my-shop/my-shop" wx:if="{{user.role_check == 2 && user.role != 0}}">-->
+<!--      <view class="left-box">-->
+<!--        <view class="icon-box">-->
+<!--          <image src="/icons/menu14.png" class="icon-menu14"></image>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--      <view class="menu-text">我的店铺</view>-->
+<!--      <image src="/icons/you3.png" class="you"></image>-->
+<!--    </navigator>-->
 
-    <navigator class="menu-item" url="/pages/my-chou-orders/my-chou-orders">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu5.png" class="icon-menu5"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的众筹</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
+<!--    <navigator class="menu-item" url="/pages/my-chou-orders/my-chou-orders">-->
+<!--      <view class="left-box">-->
+<!--        <view class="icon-box">-->
+<!--          <image src="/icons/menu5.png" class="icon-menu5"></image>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--      <view class="menu-text">我的众筹</view>-->
+<!--      <image src="/icons/you3.png" class="you"></image>-->
+<!--    </navigator>-->
 
-    <navigator class="menu-item" url="/pages/chou-refund-list/chou-refund-list">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu11.png" class="icon-menu11"></image>
-        </view>
-      </view>
-      <view class="menu-text">众筹售后</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
+<!--    <navigator class="menu-item" url="/pages/chou-refund-list/chou-refund-list">-->
+<!--      <view class="left-box">-->
+<!--        <view class="icon-box">-->
+<!--          <image src="/icons/menu11.png" class="icon-menu11"></image>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--      <view class="menu-text">众筹售后</view>-->
+<!--      <image src="/icons/you3.png" class="you"></image>-->
+<!--    </navigator>-->
 
     <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" wx:if="{{user.role_check != 2 && user.user_auth == 0}}" class="menu-item">
       <view class="left-box">

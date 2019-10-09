@@ -93,7 +93,7 @@
     <view class="tab-list">
       <view bindtap="tab_change" data-tab="{{1}}" class="tab {{active_tab == 1 ? 'active' : ''}}">创意</view>
       <view bindtap="tab_change" data-tab="{{2}}" class="tab {{active_tab == 2 ? 'active' : ''}}">作品</view>
-      <view bindtap="tab_change" data-tab="{{3}}" class="tab {{active_tab == 3 ? 'active' : ''}}">众筹</view>
+<!--      <view bindtap="tab_change" data-tab="{{3}}" class="tab {{active_tab == 3 ? 'active' : ''}}">众筹</view>-->
     </view>
 
     <!-- 创意 -->
@@ -228,34 +228,34 @@
     </view>
 
     <!-- 众筹 -->
-    <view class="chou-box" wx:if="{{active_tab == 3}}">
-      <view class="chou-list">
-        <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou-line" wx:for="{{funding_list}}"
-                   wx:key="id">
-          <view class="img-box">
-            <image src="{{item.cover}}" mode="aspectFill" lazy-load></image>
-          </view>
-          <view class="info">
-            <view class="title">{{item.title}}</view>
-            <view class="xia">
-              <view class="already">
-                <text class="label">已筹：</text>
-                <text class="price">¥{{item.curr_money}}</text>
-              </view>
-              <view class="target">众筹目标：¥{{item.need_money}}</view>
-              <view class="part-count">参与人数{{item.order_num}}人</view>
-            </view>
-          </view>
-        </navigator>
-      </view>
+<!--    <view class="chou-box" wx:if="{{active_tab == 3}}">-->
+<!--      <view class="chou-list">-->
+<!--        <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou-line" wx:for="{{funding_list}}"-->
+<!--                   wx:key="id">-->
+<!--          <view class="img-box">-->
+<!--            <image src="{{item.cover}}" mode="aspectFill" lazy-load></image>-->
+<!--          </view>-->
+<!--          <view class="info">-->
+<!--            <view class="title">{{item.title}}</view>-->
+<!--            <view class="xia">-->
+<!--              <view class="already">-->
+<!--                <text class="label">已筹：</text>-->
+<!--                <text class="price">¥{{item.curr_money}}</text>-->
+<!--              </view>-->
+<!--              <view class="target">众筹目标：¥{{item.need_money}}</view>-->
+<!--              <view class="part-count">参与人数{{item.order_num}}人</view>-->
+<!--            </view>-->
+<!--          </view>-->
+<!--        </navigator>-->
+<!--      </view>-->
 
-      <view class="nomore" wx:if="{{chou_nomore}}">
-        已经没有更多了哦
-      </view>
+<!--      <view class="nomore" wx:if="{{chou_nomore}}">-->
+<!--        已经没有更多了哦-->
+<!--      </view>-->
 
-      <view class="nodata" wx:if="{{chou_nodata}}">
-        暂无数据
-      </view>
-    </view>
+<!--      <view class="nodata" wx:if="{{chou_nodata}}">-->
+<!--        暂无数据-->
+<!--      </view>-->
+<!--    </view>-->
   </view>
 </view>

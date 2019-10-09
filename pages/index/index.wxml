@@ -122,44 +122,44 @@
   </view>
 
   <!-- 洞天 -->
-  <view class="chou-box">
-    <view class="leng-title">
-      <text>洞</text>
-      <text class="leng"></text>
-      <text>天</text>
-    </view>
+<!--  <view class="chou-box">-->
+<!--    <view class="leng-title">-->
+<!--      <text>洞</text>-->
+<!--      <text class="leng"></text>-->
+<!--      <text>天</text>-->
+<!--    </view>-->
 
-    <navigator url="/pages/chou-detail/chou-detail?id={{first_funding.id}}" class="chou-line">
-      <view class="img-box">
-        <image src="{{first_funding.cover}}" mode="aspectFill" lazy-load></image>
-        <view class="status">进行中</view>
-      </view>
-      <view class="info">
-        <view class="title">{{first_funding.title}}</view>
-        <view class="xia">
-          <view class="already">
-            <text class="label">已筹：</text>
-            <text class="price">¥{{first_funding.curr_money}}</text>
-          </view>
-          <view class="target">众筹目标：¥{{first_funding.need_money}}</view>
-          <view class="part-count">参与人数{{first_funding.order_num}}人</view>
-        </view>
-      </view>
-    </navigator>
+<!--    <navigator url="/pages/chou-detail/chou-detail?id={{first_funding.id}}" class="chou-line">-->
+<!--      <view class="img-box">-->
+<!--        <image src="{{first_funding.cover}}" mode="aspectFill" lazy-load></image>-->
+<!--        <view class="status">进行中</view>-->
+<!--      </view>-->
+<!--      <view class="info">-->
+<!--        <view class="title">{{first_funding.title}}</view>-->
+<!--        <view class="xia">-->
+<!--          <view class="already">-->
+<!--            <text class="label">已筹：</text>-->
+<!--            <text class="price">¥{{first_funding.curr_money}}</text>-->
+<!--          </view>-->
+<!--          <view class="target">众筹目标：¥{{first_funding.need_money}}</view>-->
+<!--          <view class="part-count">参与人数{{first_funding.order_num}}人</view>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--    </navigator>-->
 
-    <view class="chou-list">
-      <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou" wx:for="{{funding_list}}" wx:key="id">
-        <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>
-        <view class="info">
-          <view class="title two-line-ellipsis">{{item.title}}</view>
-          <view class="bottom">
-            <view class="already">已筹：{{item.curr_money}}</view>
-            <view class="part-count">参与人数{{item.order_num}}人</view>
-          </view>
-        </view>
-      </navigator>
-    </view>
+<!--    <view class="chou-list">-->
+<!--      <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou" wx:for="{{funding_list}}" wx:key="id">-->
+<!--        <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>-->
+<!--        <view class="info">-->
+<!--          <view class="title two-line-ellipsis">{{item.title}}</view>-->
+<!--          <view class="bottom">-->
+<!--            <view class="already">已筹：{{item.curr_money}}</view>-->
+<!--            <view class="part-count">参与人数{{item.order_num}}人</view>-->
+<!--          </view>-->
+<!--        </view>-->
+<!--      </navigator>-->
+<!--    </view>-->
 
-    <navigator url="/pages/chou-list/chou-list" class="more-line">查看更多</navigator>
-  </view>
+<!--    <navigator url="/pages/chou-list/chou-list" class="more-line">查看更多</navigator>-->
+<!--  </view>-->
 </view>
