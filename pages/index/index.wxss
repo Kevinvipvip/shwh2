@@ -76,6 +76,23 @@
   vertical-align: bottom;
 }
 
+.h-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 64rpx 0;
+}
+
+.h-title image {
+  width: 193rpx;
+  height: 38rpx;
+}
+
+.h-title .more {
+  font-size: 22rpx;
+  color: #999;
+}
+
 .kingkong {
   display: flex;
   justify-content: space-around;

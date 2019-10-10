@@ -416,6 +416,19 @@
   line-height: 110rpx;
 }
 
+.vip-role-box {
+  position: relative;
+  margin: 46rpx 25rpx 0;
+  box-shadow: 0 1rpx 60rpx 0 rgba(229, 229, 229, 0.75);
+}
+
+.vip-role-box .vip-img {
+  vertical-align: bottom;
+  width: 700rpx;
+  height: 167rpx;
+  border-radius: 10rpx;
+}
+
 .menu {
   background: #fff;
   padding: 0 24rpx;
@@ -512,6 +525,11 @@
 .menu .menu-item .left-box .icon-menu14 {
   width: 45rpx;
   height: 46rpx;
+}
+
+.menu .menu-item .left-box .icon-menu15 {
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .menu .menu-item .menu-text {

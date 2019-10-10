@@ -74,11 +74,11 @@
     </button>
   </view>
   <view bindtap="no_vote" class="btn-box disabled" wx:else>
-    <button class="pub pub1">
-      <image src="/images/pub2.png"></image>
+    <button class="pub pub2">
+      <image src="/images/pub1.png"></image>
     </button>
     <button class="pub pub1">
-      <image src="/images/pub1.png"></image>
+      <image src="/images/pub2.png"></image>
     </button>
   </view>
 

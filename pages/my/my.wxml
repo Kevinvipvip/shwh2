@@ -28,9 +28,9 @@
 <!--            <navigator url="/pages/recharge/recharge" wx:if="{{user.vip != 1}}" class="vip-btn">我要成为会员</navigator>-->
 <!--          </view>-->
         </view>
-        <view class="mess-box">
-          <image src="/icons/bell.png"></image>
-        </view>
+<!--        <view class="mess-box">-->
+<!--          <image src="/icons/bell.png"></image>-->
+<!--        </view>-->
       </view>
       <view class="sign-box">
         <view class="sign-progress">
@@ -92,9 +92,13 @@
         </navigator>
       </view>
     </view>
-    <navigator url="/pages/recharge/recharge" class="vip-box">
-      <image src="/images/vip-bg.jpg" class="vip-bg"></image>
-      <view class="text">{{user.vip != 1 ? '立即开通' : '立即续费'}}</view>
+<!--    <navigator url="/pages/recharge/recharge" class="vip-box">-->
+<!--      <image src="/images/vip-bg.jpg" class="vip-bg"></image>-->
+<!--      <view class="text">{{user.vip != 1 ? '立即开通' : '立即续费'}}</view>-->
+<!--    </navigator>-->
+
+    <navigator url="/pages/role-vip-open/role-vip-open" class="vip-role-box">
+      <image src="/images/role-vip.jpg" class="vip-img"></image>
     </navigator>
   </view>
 
@@ -102,7 +106,7 @@
     <navigator class="menu-item" url="/pages/person-page/person-page?uid={{user.id}}" wx:if="{{user.role_check == 2 && user.role != 0}}">
       <view class="left-box">
         <view class="icon-box">
-          <image src="/icons/menu1.png" class="icon-menu1"></image>
+          <image src="/icons/menu15.png" class="icon-menu15"></image>
         </view>
       </view>
       <view class="menu-text">我的主页</view>

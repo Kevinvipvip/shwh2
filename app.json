@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/auth/auth",
+    "pages/role-vip-open/role-vip-open",
     "pages/my-focus-list/my-focus-list",
     "pages/score-log/score-log",
     "pages/my-bidding/my-bidding",

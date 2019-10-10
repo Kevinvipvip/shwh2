@@ -30,17 +30,22 @@
 
   <!-- 投石 -->
   <view class="activity-box">
-    <view class="leng-title">
-      <text>投</text>
-      <text class="leng"></text>
-      <text>石</text>
-
-      <navigator url="/pages/activity-list/activity-list" class="more-box">
-        <image lazy-load src="/images/more.png" class="more"></image>
-      </navigator>
+    <view class="h-title">
+      <image src="/images/htitle1.png"></image>
+      <navigator url="/pages/activity-list/activity-list" class="more">查看更多</navigator>
     </view>
+    <!--    <view class="leng-title">-->
+    <!--      <text>投</text>-->
+    <!--      <text class="leng"></text>-->
+    <!--      <text>石</text>-->
+
+    <!--      <navigator url="/pages/activity-list/activity-list" class="more-box">-->
+    <!--        <image lazy-load src="/images/more.png" class="more"></image>-->
+    <!--      </navigator>-->
+    <!--    </view>-->
     <view class="activity-list">
-      <navigator url="/pages/activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{req_list}}" wx:key="id">
+      <navigator url="/pages/activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{req_list}}"
+                 wx:key="id">
         <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>
         <view class="title">{{item.title}}</view>
         <view class="info">
@@ -59,11 +64,15 @@
 
   <!-- 回声 -->
   <view class="rank-box">
-    <view class="leng-title">
-      <text>回</text>
-      <text class="leng"></text>
-      <text>声</text>
+    <view class="h-title">
+      <image src="/images/htitle2.png"></image>
+      <!--      <view class="more">查看更多</view>-->
     </view>
+    <!--    <view class="leng-title">-->
+    <!--      <text>回</text>-->
+    <!--      <text class="leng"></text>-->
+    <!--      <text>声</text>-->
+    <!--    </view>-->
 
     <view class="tab-list">
       <view bindtap="rank_tap" data-rank="{{1}}" class="tab {{active_rank == 1 ? 'active' : ''}}">作品排行榜</view>
@@ -99,7 +108,8 @@
     </view>
 
     <view class="chuang-rank-list" wx:if="{{active_rank == 2}}">
-      <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{item.id}}" class="chuang" wx:for="{{idea_list}}" wx:key="id">
+      <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{item.id}}" class="chuang" wx:for="{{idea_list}}"
+                 wx:key="id">
         <view class="avatar-line">
           <view class="left">
             <image lazy-load src="{{item.avatar}}" class="avatar"></image>
@@ -122,44 +132,48 @@
   </view>
 
   <!-- 洞天 -->
-<!--  <view class="chou-box">-->
-<!--    <view class="leng-title">-->
-<!--      <text>洞</text>-->
-<!--      <text class="leng"></text>-->
-<!--      <text>天</text>-->
-<!--    </view>-->
-
-<!--    <navigator url="/pages/chou-detail/chou-detail?id={{first_funding.id}}" class="chou-line">-->
-<!--      <view class="img-box">-->
-<!--        <image src="{{first_funding.cover}}" mode="aspectFill" lazy-load></image>-->
-<!--        <view class="status">进行中</view>-->
-<!--      </view>-->
-<!--      <view class="info">-->
-<!--        <view class="title">{{first_funding.title}}</view>-->
-<!--        <view class="xia">-->
-<!--          <view class="already">-->
-<!--            <text class="label">已筹：</text>-->
-<!--            <text class="price">¥{{first_funding.curr_money}}</text>-->
-<!--          </view>-->
-<!--          <view class="target">众筹目标：¥{{first_funding.need_money}}</view>-->
-<!--          <view class="part-count">参与人数{{first_funding.order_num}}人</view>-->
-<!--        </view>-->
-<!--      </view>-->
-<!--    </navigator>-->
-
-<!--    <view class="chou-list">-->
-<!--      <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou" wx:for="{{funding_list}}" wx:key="id">-->
-<!--        <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>-->
-<!--        <view class="info">-->
-<!--          <view class="title two-line-ellipsis">{{item.title}}</view>-->
-<!--          <view class="bottom">-->
-<!--            <view class="already">已筹：{{item.curr_money}}</view>-->
-<!--            <view class="part-count">参与人数{{item.order_num}}人</view>-->
-<!--          </view>-->
-<!--        </view>-->
-<!--      </navigator>-->
-<!--    </view>-->
-
-<!--    <navigator url="/pages/chou-list/chou-list" class="more-line">查看更多</navigator>-->
+  <!--  <view class="chou-box">-->
+<!--  <view class="h-title">-->
+<!--    <image src="/images/htitle2.png"></image>-->
+<!--    <navigator url="/pages/chou-list/chou-list" class="more">查看更多</navigator>-->
 <!--  </view>-->
+<!--  <view class="leng-title">-->
+<!--    <text>洞</text>-->
+<!--    <text class="leng"></text>-->
+<!--    <text>天</text>-->
+<!--  </view>-->
+
+  <!--    <navigator url="/pages/chou-detail/chou-detail?id={{first_funding.id}}" class="chou-line">-->
+  <!--      <view class="img-box">-->
+  <!--        <image src="{{first_funding.cover}}" mode="aspectFill" lazy-load></image>-->
+  <!--        <view class="status">进行中</view>-->
+  <!--      </view>-->
+  <!--      <view class="info">-->
+  <!--        <view class="title">{{first_funding.title}}</view>-->
+  <!--        <view class="xia">-->
+  <!--          <view class="already">-->
+  <!--            <text class="label">已筹：</text>-->
+  <!--            <text class="price">¥{{first_funding.curr_money}}</text>-->
+  <!--          </view>-->
+  <!--          <view class="target">众筹目标：¥{{first_funding.need_money}}</view>-->
+  <!--          <view class="part-count">参与人数{{first_funding.order_num}}人</view>-->
+  <!--        </view>-->
+  <!--      </view>-->
+  <!--    </navigator>-->
+
+  <!--    <view class="chou-list">-->
+  <!--      <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou" wx:for="{{funding_list}}" wx:key="id">-->
+  <!--        <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>-->
+  <!--        <view class="info">-->
+  <!--          <view class="title two-line-ellipsis">{{item.title}}</view>-->
+  <!--          <view class="bottom">-->
+  <!--            <view class="already">已筹：{{item.curr_money}}</view>-->
+  <!--            <view class="part-count">参与人数{{item.order_num}}人</view>-->
+  <!--          </view>-->
+  <!--        </view>-->
+  <!--      </navigator>-->
+  <!--    </view>-->
+
+  <!--    <navigator url="/pages/chou-list/chou-list" class="more-line">查看更多</navigator>-->
+  <!--  </view>-->
 </view>
