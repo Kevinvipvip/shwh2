@@ -133,15 +133,15 @@
 
   <!-- 洞天 -->
   <!--  <view class="chou-box">-->
-<!--  <view class="h-title">-->
-<!--    <image src="/images/htitle2.png"></image>-->
-<!--    <navigator url="/pages/chou-list/chou-list" class="more">查看更多</navigator>-->
-<!--  </view>-->
-<!--  <view class="leng-title">-->
-<!--    <text>洞</text>-->
-<!--    <text class="leng"></text>-->
-<!--    <text>天</text>-->
-<!--  </view>-->
+  <!--  <view class="h-title">-->
+  <!--    <image src="/images/htitle2.png"></image>-->
+  <!--    <navigator url="/pages/chou-list/chou-list" class="more">查看更多</navigator>-->
+  <!--  </view>-->
+  <!--  <view class="leng-title">-->
+  <!--    <text>洞</text>-->
+  <!--    <text class="leng"></text>-->
+  <!--    <text>天</text>-->
+  <!--  </view>-->
 
   <!--    <navigator url="/pages/chou-detail/chou-detail?id={{first_funding.id}}" class="chou-line">-->
   <!--      <view class="img-box">-->

@@ -13,8 +13,9 @@
           </navigator>
           <image src="/images/default.png" class="tou" wx:else></image>
 
-          <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>
-          <image wx:else src="/icons/zuan-active.png" class="vip"></image>
+<!--          <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>-->
+<!--          <image wx:else src="/icons/zuan-active.png" class="vip"></image>-->
+              <image src="/icons/role-meal{{user.role_level}}.png" wx:if="{{user.role_level != -1}}" class="vip"></image>
         </view>
         <view class="you">
           <view class="nickname" wx:if="{{user.user_auth == 1}}">{{user.nickname}}</view>
@@ -158,15 +159,15 @@
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
 
-<!--    <navigator class="menu-item" url="/pages/my-shop/my-shop" wx:if="{{user.role_check == 2 && user.role != 0}}">-->
-<!--      <view class="left-box">-->
-<!--        <view class="icon-box">-->
-<!--          <image src="/icons/menu14.png" class="icon-menu14"></image>-->
-<!--        </view>-->
-<!--      </view>-->
-<!--      <view class="menu-text">我的店铺</view>-->
-<!--      <image src="/icons/you3.png" class="you"></image>-->
-<!--    </navigator>-->
+    <navigator class="menu-item" url="/pages/my-shop/my-shop" wx:if="{{user.role_check == 2 && user.role != 0}}">
+      <view class="left-box">
+        <view class="icon-box">
+          <image src="/icons/menu14.png" class="icon-menu14"></image>
+        </view>
+      </view>
+      <view class="menu-text">我的店铺</view>
+      <image src="/icons/you3.png" class="you"></image>
+    </navigator>
 
 <!--    <navigator class="menu-item" url="/pages/my-chou-orders/my-chou-orders">-->
 <!--      <view class="left-box">-->

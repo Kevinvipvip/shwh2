@@ -77,8 +77,8 @@
 }
 
 .inner .header-box .tou .vip {
-  width: 45rpx;
-  height: 30rpx;
+  width: 35rpx;
+  height: 46rpx;
   position: absolute;
   bottom: 0;
   right: 7rpx;

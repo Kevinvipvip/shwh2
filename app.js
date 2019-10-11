@@ -132,6 +132,10 @@ App({
               case 64:
                 this.modal(res.data.message);
                 break;
+              case 87:  // 活动已删除
+              case 88:  // 创意已删除
+              case 89:  // 作品已删除
+                break;
               default:
                 if (res.data.message) {
                   this.toast(res.data.message);
@@ -562,5 +566,9 @@ App({
       this.user_data.username = res.username;
       this.user_data.order_email = res.order_email;
     });
+  },
+  // 格式化数字，如果没有小数则返回整数，有小数返回小数
+  num_zheng(num) {
+    return parseInt(num) === parseFloat(num) ? parseInt(num) : parseFloat(num);
   }
 });

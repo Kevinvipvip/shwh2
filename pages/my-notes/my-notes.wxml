@@ -90,7 +90,7 @@
               {{item.nickname}}
             </view>
             <div class="right">
-              <icon class="iconfont iconxin2"/>
+              <icon class="iconfont iconxin1"/>
               {{item.like}}
             </div>
           </view>
@@ -111,7 +111,7 @@
               {{item.nickname}}
             </view>
             <div class="right">
-              <icon class="iconfont iconxin2"/>
+              <icon class="iconfont iconxin1"/>
               {{item.like}}
             </div>
           </view>
