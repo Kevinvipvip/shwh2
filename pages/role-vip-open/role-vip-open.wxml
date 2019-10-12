@@ -52,7 +52,7 @@
 
   <!-- 权益详情 -->
   <view class="qy" wx:if="{{ban != -1 && long != -1}}">
-    <view class="title">标准版会员特权</view>
+    <view class="title"><block wx:if="{{ban == 0}}">标准版</block><block wx:if="{{ban == 1}}">乐享版</block><block wx:if="{{ban == 2}}">智慧版</block>会员特权</view>
     <view class="table">
       <view class="head">
         <view class="or-block"></view>
@@ -97,7 +97,7 @@
           </view>
           <view>
             <image src="/icons/r-cuo.png" wx:if="{{level.service_7 == 0}}"></image>
-            <block wx:else>{{level.service_7}}周</block>
+            <block wx:else>{{level.service_7}}周/{{long == 0 ? '年' : '3年'}}</block>
           </view>
         </view>
       </view>
@@ -106,7 +106,7 @@
         <view class="label">品牌服务</view>
         <view class="te-list">
           <view>形象拍照一组</view>
-          <view>专属视频拍摄制作（3min）</view>
+          <view>专属视频拍摄制作(3min)</view>
           <view>标识设计3稿</view>
         </view>
         <view class="pin-list">

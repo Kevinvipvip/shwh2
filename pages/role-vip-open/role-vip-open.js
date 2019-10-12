@@ -3,8 +3,8 @@ const app = getApp();
 Page({
   data: {
     role: 0,
-    ban: -1,  // -1.未选择 0.标准版 1.乐享版 2.智慧版
-    long: -1,  // -1.未选择 0.一年 1.三年
+    ban: 0,  // -1.未选择 0.标准版 1.乐享版 2.智慧版
+    long: 0,  // -1.未选择 0.一年 1.三年
     level: {},
     level_list: [],
     long_list: []
@@ -19,22 +19,11 @@ Page({
     let long = e.currentTarget.dataset.long;
 
     if (ban !== undefined) {
-      if (this.data.ban === ban) {
-        this.setData({
-          ban: -1,
-          long: -1
-        });
-      } else {
-        this.setData({ ban }, () => {
-          this.setData({ long_list: this.data.level_list.slice(ban * 2, ban * 2 + 2) });
-        });
-      }
+      this.setData({ ban }, () => {
+        this.setData({ long_list: this.data.level_list.slice(ban * 2, ban * 2 + 2) });
+      });
     } else {
-      if (this.data.long === long) {
-        this.setData({ long: -1 });
-      } else {
-        this.setData({ long });
-      }
+      this.setData({ long });
     }
 
     this.setData({ level: this.data.level_list[this.data.ban * 2 + this.data.long] });
@@ -45,7 +34,12 @@ Page({
       for (let i = 0; i < res.length; i++) {
         res[i].price = app.num_zheng(res[i].price);
       }
-      this.setData({ level_list: res });
+      this.setData({ level_list: res }, () => {
+        this.setData({
+          long_list: this.data.level_list.slice(0, 2),
+          level: this.data.level_list[0]
+        });
+      });
     });
   },
   // 工厂购买套餐下单

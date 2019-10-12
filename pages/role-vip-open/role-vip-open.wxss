@@ -162,7 +162,7 @@
 }
 
 .validate-box .buy-btn[disabled] {
-    background: #bbb;
+  background: #bbb;
 }
 
 .qy {
@@ -247,6 +247,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding-left: 60rpx;
   justify-content: center;
 }
 
