@@ -18,7 +18,7 @@
     <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
       <view class="status" wx:if="{{status === ''}}">{{item.status_text}}</view>
 
-      <view catchtap="to_modify" data-index="{{index}}" class="modi-btn" wx:if="{{status == 2}}">修改</view>
+      <view catchtap="to_modify" data-index="{{index}}" class="modi-btn" wx:if="{{item.status == 2}}">修改</view>
 
       <image src="{{item.pics[0]}}" class="cover" mode="aspectFill"></image>
       <view class="info">
