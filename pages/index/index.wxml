@@ -81,7 +81,7 @@
 
     <view class="work-rank-list" wx:if="{{active_rank == 1}}">
       <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
-        <image lazy-load src="{{item.pics[0]}}" class="cover" mode="aspectFill"></image>
+        <image lazy-load src="{{item.pics[0]}}?imageView2/2/w/190" class="cover" mode="aspectFill"></image>
         <view class="info">
           <view class="shang">
             <view class="diyi">

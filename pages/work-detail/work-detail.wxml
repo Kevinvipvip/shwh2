@@ -17,7 +17,7 @@
       <view bindtap="iFocus" class="follow-btn {{work.ifocus ? 'followed' : ''}}" wx:if="{{uid != work.uid}}">{{work.ifocus ? '已关注' : '关注'}}</view>
     </view>
     <view class="img-box">
-      <image bindtap="preview" data-index="{{index}}" src="{{item}}" wx:for="{{work.pics}}" mode="aspectFill" lazy-load></image>
+      <image bindtap="preview" data-index="{{index}}" src="{{item}}?imageView2/2/w/225" wx:for="{{work.pics}}" mode="aspectFill" lazy-load></image>
       <image class="vh" wx:for="{{work.flex_pad}}"></image>
     </view>
     <view class="num-line">

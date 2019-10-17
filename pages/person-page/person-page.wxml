@@ -11,7 +11,6 @@
     <view class="bg2"></view>
 
     <view class="nei">
-
       <button bindtap="phone_call" class="xuan-btn contact" wx:if="{{my_role != 0 && my_uid != uid}}">联系</button>
       <button class="xuan-btn follow-btn {{person.if_focus ? 'followed' : ''}}" catchtap="iFocus" data-index="{{index}}" wx:if="{{my_uid != uid}}"> {{person.if_focus ? '已关注' : '关注'}}</button>
 
@@ -107,7 +106,7 @@
           <view class="desc">{{item.desc}}</view>
           <view class="img-list">
             <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
-              <image src="{{pic_item}}" mode="aspectFill" lazy-load></image>
+              <image src="{{pic_item}}?imageView2/2/w/202" mode="aspectFill" lazy-load></image>
               <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
             </view>
             <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
@@ -143,7 +142,7 @@
           <view class="desc two-line-ellipsis">{{item.work_detail}}</view>
           <view class="img-list">
             <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
-              <image src="{{pic_item}}" mode="aspectFill" lazy-load></image>
+              <image src="{{pic_item}}?imageView2/2/w/202" mode="aspectFill" lazy-load></image>
               <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
             </view>
             <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
@@ -197,7 +196,7 @@
     <view class="goods-box" wx:if="{{type == 5}}">
       <view class="goods-list">
         <view bindtap="jump" data-id="{{item.id}}" class="goods" wx:for="{{goods_list}}" wx:key="id">
-          <image src="{{item.pic}}" class="cover" mode="aspectFill" lazy-load></image>
+          <image src="{{item.pic}}?imageView2/2/w/339" class="cover" mode="aspectFill" lazy-load></image>
           <view class="info">
             <view class="title two-line-ellipsis">{{item.name}}</view>
             <view class="xia">

@@ -17,7 +17,7 @@
         <view class="status">{{item.status_text}}</view>
       </view>
       <view class="pro" wx:for="{{item.child}}" wx:for-item="order" wx:key="index">
-        <image src="{{order.cover}}" class="pic" mode="aspectFill"></image>
+        <image src="{{order.cover}}?imageView2/2/w/200" class="pic" mode="aspectFill"></image>
         <view class="info">
           <view class="shang">
             <view class="title">

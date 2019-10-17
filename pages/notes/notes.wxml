@@ -19,7 +19,7 @@
     <view class="left">
       <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{left_note_list}}" wx:key="id">
         <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.pics[0]}}" mode="aspectFill" lazy-load="{{true}}"></image>
+          <image src="{{item.pics[0]}}?imageView2/2/w/344" mode="aspectFill" lazy-load="{{true}}"></image>
         </view>
         <view class="word">
           {{item.title}}
@@ -39,7 +39,7 @@
     <view class="right">
       <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{right_note_list}}" wx:key="id">
         <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.pics[0]}}" mode="aspectFill" lazy-load="{{true}}"></image>
+          <image src="{{item.pics[0]}}?imageView2/2/w/344" mode="aspectFill" lazy-load="{{true}}"></image>
         </view>
         <view class="word">
           {{item.title}}

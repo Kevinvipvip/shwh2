@@ -104,7 +104,7 @@ Page({
           })
         }
       });
-      wx.setNavigationBarTitle({ title: res.nickname });
+      wx.setNavigationBarTitle({ title: this.data.role == 0 || this.data.role == 2 ? res.nickname : res.org });
       after_succ();
     }, null, () => {
       if (complete) {

@@ -218,11 +218,11 @@
           </view>
         </navigator>
       </view>
-      <view class="nomore" wx:if="{{chuang_nomore}}">
+      <view class="nomore" wx:if="{{work_nomore}}">
         已经没有更多了哦
       </view>
 
-      <view class="nodata" wx:if="{{chuang_nodata}}">
+      <view class="nodata" wx:if="{{work_nodata}}">
         暂无数据
       </view>
     </view>
