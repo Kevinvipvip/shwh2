@@ -10,7 +10,13 @@
   <image src="{{goods.pics[0]}}" class="top-swiper" mode="aspectFit" wx:else></image>
   <view class="info-box">
     <view class="pt">
-      <view class="title">{{goods.name}}</view>
+      <view class="title">
+        <view class="goods-name">{{goods.name}}</view>
+        <button class="share">
+          <image src="/icons/share.png"></image>
+          <view class="text">分享</view>
+        </button>
+      </view>
       <view class="price">
         ¥{{goods.price}}
 <!--        <text class="origin-price" wx:if="{{goods.price != goods.origin_price}}">¥{{goods.origin_price}}</text>-->
@@ -23,12 +29,27 @@
       <view>库存：{{goods.stock}}</view>
     </view>
 
-    <view class="desc">
-      <view class="title title-redtiao">商品描述</view>
-      <view>
-        {{goods.desc || '暂无描述'}}
+<!--    <view class="desc">-->
+<!--      <view class="title title-redtiao">商品描述</view>-->
+<!--      <view>-->
+<!--        {{goods.desc || '暂无描述'}}-->
+<!--      </view>-->
+<!--    </view>-->
+
+    <view bindtap="to_person" class="store">
+      <view class="title title-redtiao">店铺信息</view>
+      <view class="info">
+        <view class="zuo">
+          <image src="{{goods.avatar}}" class="avatar"></image>
+          <view class="org">{{goods.org}}</view>
+        </view>
+        <view class="jin">
+          <view class="text">查看主页</view>
+          <image src="/icons/you3.png"></image>
+        </view>
       </view>
     </view>
+
     <view class="params">
       <view class="title title-redtiao">规格参数</view>
       <view class="params-wrapper">

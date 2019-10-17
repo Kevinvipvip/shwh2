@@ -14,6 +14,8 @@ Page({
     amount: 0  // 购买数量
   },
   onLoad(options) {
+    app.modal(decodeURIComponent(options.q));
+
     this.data.id = options.id;
     this.goodsDetail();
   },
@@ -29,6 +31,7 @@ Page({
       //   res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
       // }
       app.format_img(res.pics);
+      app.avatar_format(res);
       this.setData({ goods: res });
       let rich_text = res.detail;
       rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
@@ -209,5 +212,11 @@ Page({
     } else {
       this.setData({ attr_index: index });
     }
+  },
+  // 去他人主页
+  to_person() {
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.goods.uid });
+    });
   }
-})
+});

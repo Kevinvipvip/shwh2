@@ -42,7 +42,7 @@
       </view>
     </view>
     <view class="input-item sign">
-      <view class="label">个人备注</view>
+      <view class="label">{{role == 0 || role == 2 ? '个人备注' : '公司简介'}}</view>
       <view class="you">
         <view bindtap="to_edit" data-name="sign" class="sign-box">
           <view class="content">{{sign}}</view>

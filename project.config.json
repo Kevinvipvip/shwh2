@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -97,6 +97,13 @@
 					"name": "充值会员（角色）",
 					"pathName": "pages/role-vip-open/role-vip-open",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/shop-detail/shop-detail",
+					"query": "id=19",
 					"scene": null
 				}
 			]
