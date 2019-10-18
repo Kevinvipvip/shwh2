@@ -10,7 +10,12 @@ Page({
     update_dot: '.'
   },
   onLoad(options) {
-    this.data.route = options.route ? decodeURIComponent(options.route) : '';
+    if (options.route) {
+      this.data.route = decodeURIComponent(options.route);
+    } else if (options.q) {
+      this.data.route = this.q_format(options.q);
+    }
+
     // this.data.inviter_id = options.scene || 0;
     wx.setStorageSync('inviter_id', options.scene || 0);
 
@@ -58,5 +63,13 @@ Page({
         }
       });
     }
+  },
+  // 格式化通过二维码扫描进来的链接
+  q_format(q) {
+    q = decodeURIComponent(q);
+    q = q.replace('http://caves.wcip.net/', '').split('?');
+    let page = q[0], search = q[1];
+
+    return  search ? `pages/${page}/${page}?${search}` : `pages/${page}/${page}`;
   }
 });

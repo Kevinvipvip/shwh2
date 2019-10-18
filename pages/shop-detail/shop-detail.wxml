@@ -12,7 +12,7 @@
     <view class="pt">
       <view class="title">
         <view class="goods-name">{{goods.name}}</view>
-        <button class="share">
+        <button bindtap="create_poster" class="share">
           <image src="/icons/share.png"></image>
           <view class="text">分享</view>
         </button>
@@ -128,5 +128,16 @@
       </view>
       <button bindtap="buy_btn" class="param-buy-btn">{{buy_type == 1 ? '立即购买' : '确定加入'}}</button>
     </view>
+  </view>
+
+  <canvas canvas-id="qrcode" class="qrc"></canvas>
+  <canvas canvas-id="poster-canvas" class="poc"></canvas>
+
+  <view class="mask-box" wx:if="{{poster_show}}">
+    <view class="img-box">
+      <image src="{{poster}}" class="poster"></image>
+      <image bindtap="" src="/icons/poster-x.png" class="cancel"></image>
+    </view>
+    <button catchtap="save_poster" class="save-btn">保存</button>
   </view>
 </view>

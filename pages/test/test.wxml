@@ -1,3 +1,4 @@
 <view class="page">
-  sdfassdf
+  <canvas canvas-id="card-qrcode" style="width: 350rpx; height: 350rpx;"></canvas>
+  <image src="{{qrcode_img}}" style="width: 100rpx; height: 100rpx;"></image>
 </view>

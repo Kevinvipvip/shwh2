@@ -144,6 +144,13 @@
   margin-top: 48rpx;
 }
 
+.chou-box .look-forward {
+  padding: 15rpx;
+  background: #eee;
+  font-size: 30rpx;
+  color: #666;
+}
+
 .chou-list {
   display: flex;
   flex-wrap: wrap;

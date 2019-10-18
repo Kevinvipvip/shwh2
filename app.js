@@ -27,7 +27,7 @@ App({
     // api: 'https://www.caves.vip/api/',  // 正式（原）
     base_url: 'https://caves.wcip.net', // 正式
     api: 'https://caves.wcip.net/api/', // 正式
-    qiniu_base: 'http://qiniu.wcip.net',
+    qiniu_base: 'https://qiniu.wcip.net',
     // qiniu_base: 'http://pwu6oxfmm.bkt.clouddn.com/',
     default_img: '/images/default.png',
     reg: {
@@ -51,21 +51,21 @@ App({
   },
   mp_update() {
     const updateManager = wx.getUpdateManager();
-    updateManager.onCheckForUpdate(function(res) {
+    updateManager.onCheckForUpdate(function (res) {
       console.log(res.hasUpdate); // 是否有更新
     });
-    updateManager.onUpdateReady(function() {
+    updateManager.onUpdateReady(function () {
       wx.showModal({
         title: '更新提示',
         content: '新版本已经准备好，是否马上重启小程序？',
-        success: function(res) {
+        success: function (res) {
           if (res.confirm) {
             updateManager.applyUpdate()
           }
         }
       })
     });
-    updateManager.onUpdateFailed(function() {
+    updateManager.onUpdateFailed(function () {
       // 新的版本下载失败
     })
   },
@@ -246,14 +246,10 @@ App({
         case 'pages/shop/shop':
         case 'pages/notes/notes':
         case 'pages/my/my':
-          wx.switchTab({
-            url: '/' + route
-          });
+          wx.switchTab({ url: '/' + route });
           break;
         default:
-          wx.redirectTo({
-            url: '/' + route
-          });
+          wx.redirectTo({ url: '/' + route });
           break;
       }
     }

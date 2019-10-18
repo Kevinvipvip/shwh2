@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/auth/auth",
+    "pages/test/test",
     "pages/role-vip-open/role-vip-open",
     "pages/my-focus-list/my-focus-list",
     "pages/score-log/score-log",
@@ -18,7 +19,6 @@
     "pages/work-ranking/work-ranking",
     "pages/work-detail/work-detail",
     "pages/activity-work-list/activity-work-list",
-    "pages/test/test",
     "pages/activity-detail/activity-detail",
     "pages/activity-rich/activity-rich",
     "pages/my/my",
@@ -107,6 +107,7 @@
       }
     ]
   },
-  "plugins": {},
+  "plugins": {
+  },
   "sitemapLocation": "sitemap.json"
 }

@@ -2,6 +2,8 @@ const app = getApp();
 
 Page({
   data: {
+    full_loading: true,
+
     slide_list: [],  // 轮播图
     req_list: [],  // 需求列表（投石）
     work_list: [], // 作品排行
@@ -13,8 +15,11 @@ Page({
     loading: false
   },
   onLoad() {
-    this.slideList();
-    this.getReqList();
+    this.slideList(() => {
+      this.getReqList(() => {
+        this.setData({full_loading: false});
+      });
+    });
     this.worksList();
     this.ideaList();
     this.fundingList();
@@ -35,12 +40,14 @@ Page({
     this.setData({ active_rank: e.currentTarget.dataset.rank });
   },
   // 获取需求列表（投石）
-  getReqList() {
+  getReqList(complete) {
     app.ajax('api/getReqList', null, res => {
       app.format_img(res, 'cover');
       app.time_format(res, 'start_time');
       app.time_format(res, 'end_time');
       this.setData({ req_list: res });
+    }, null, () => {
+      complete();
     });
   },
   // 获取参赛作品列表（作品排行）

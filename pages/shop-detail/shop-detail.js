@@ -1,3 +1,5 @@
+import drawQrcode from "../../utils/weapp.qrcode.min";
+
 const app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
 
@@ -11,12 +13,23 @@ Page({
     attr_active: false,
     attr_index: 0,  // 选中的参数索引，默认为第一个
     buy_type: 1, // 1.购买 2.购物车
-    amount: 0  // 购买数量
+    amount: 0,  // 购买数量
+
+    poster_show: false,  // 是否显示海报
+    poster: ''  // 海报图片
   },
   onLoad(options) {
-    app.modal(decodeURIComponent(options.q));
-
     this.data.id = options.id;
+
+    // 海报二维码
+    drawQrcode({
+      width: 150,
+      height: 150,
+      correctLevel: 1,
+      canvasId: 'qrcode',
+      text: 'http://caves.wcip.net/shop-detail?id=' + options.id
+    });
+
     this.goodsDetail();
   },
   // 商品详情
@@ -218,5 +231,136 @@ Page({
     app.page_open(() => {
       wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.goods.uid });
     });
+  },
+  // 生成海报
+  create_poster() {
+    wx.showLoading({
+      title: '海报生成中...',
+      mask: true
+    });
+
+    // 获得商品图片
+    let promise1 = new Promise((resolve, reject) => {
+      wx.getImageInfo({
+        src: this.data.goods.pics[0],
+        success: res => {
+          resolve(res);
+        },
+        fail: () => {
+          app.toast('生成失败，请重试');
+        }
+      })
+    });
+
+    // 生成二维码图片
+    let promise2 = new Promise((resolve, reject) => {
+      wx.canvasToTempFilePath({
+        x: 0,
+        y: 0,
+        width: 150,
+        height: 150,
+        destWidth: 150,
+        destHeight: 150,
+        canvasId: 'qrcode',
+        success: res => {
+          resolve(res.tempFilePath);
+        },
+        fail: () => {
+          // 生成失败
+          app.toast('生成失败，请重试');
+        }
+      });
+    });
+
+    Promise.all([
+      promise1, promise2
+    ]).then(p_res => {
+      let goods_pic = p_res[0].path;
+      let qrcode = p_res[1];
+
+      // 创建canvas
+      var canvas = wx.createCanvasContext('poster-canvas');
+
+      // 绘制白色背景
+      canvas.setFillStyle('#ffffff');
+      canvas.rect(0, 0, 457, 817);
+      canvas.fill();
+      canvas.draw();
+
+      // 绘制商品图片
+      canvas.drawImage(goods_pic, 17, 17, 423, 423);
+      canvas.draw(true);
+
+      // 绘制商品名
+      canvas.setFontSize(24);
+      canvas.setFillStyle("#333333");
+      // canvas.setTextAlign('left');
+
+      let str = this.data.goods.name;
+      let str_index = 0;
+      let step = 18;
+      let rest = str.substr(str_index, step);
+      let str_count = 0;
+      while (rest) {
+        canvas.fillText(rest, 17, 481 + str_count * 40, 423);
+        str_index += step;
+        rest = str.substr(str_index, step);
+        str_count++;
+      }
+      canvas.draw(true);
+
+      // 绘制人民币符号
+      canvas.setFontSize(30);
+      canvas.setFillStyle("#ff4141");
+      canvas.fillText('¥', 17, 700, 20);
+      canvas.draw(true);
+
+      // 绘制价格
+      canvas.setFontSize(40);
+      canvas.setFillStyle("#ff4141");
+      canvas.fillText('56.23', 40, 700, 200);
+      canvas.draw(true);
+
+      // 绘制二维码
+      canvas.drawImage(qrcode, 280, 620, 150, 150);
+      canvas.draw(true);
+
+      // 二维码描述
+      canvas.setFontSize(20);
+      canvas.setFillStyle("#999999");
+      canvas.setTextAlign('center');
+      canvas.fillText('扫描或长按小程序码', 355, 800, 150);
+      canvas.draw(true);
+
+      setTimeout(() => {
+        wx.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: 457,
+          height: 817,
+          destWidth: 457,
+          destHeight: 817,
+          canvasId: 'poster-canvas',
+          success: res => {
+            this.setData({
+              poster: res.tempFilePath,
+              poster_show: true
+            });
+            wx.hideLoading()
+          },
+          fail: err => {
+            console.log(err, 'cuowu');
+            // 生成失败
+          }
+        })
+      }, 500);
+    });
+  },
+  // 用
+  hide_poser() {
+    this.setData({poster_show: false});
+  },
+  // 保存海报
+  save_poster() {
   }
 });
