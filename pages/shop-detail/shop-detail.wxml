@@ -136,8 +136,17 @@
   <view class="mask-box" wx:if="{{poster_show}}">
     <view class="img-box">
       <image src="{{poster}}" class="poster"></image>
-      <image bindtap="" src="/icons/poster-x.png" class="cancel"></image>
+      <image bindtap="hide_poser" src="/icons/poster-x.png" class="cancel"></image>
     </view>
     <button catchtap="save_poster" class="save-btn">保存</button>
+  </view>
+
+  <view bindtap="hide_set_btn" class="setting-box" wx:if="{{show_set_btn}}">
+    <view class="os-box">
+      <view>
+        请在设置中打开保存图片到相册的权限
+      </view>
+      <button catchtap="hide_set_btn" open-type="openSetting" class="set_btn">打开设置</button>
+    </view>
   </view>
 </view>
