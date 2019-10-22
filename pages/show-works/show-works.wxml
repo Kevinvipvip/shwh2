@@ -1,0 +1,43 @@
+<view class="page">
+  <navigator url="/pages/note-publish/note-publish" class="pub-round-btn">
+    <view>发布</view>
+    <view>作品</view>
+  </navigator>
+
+  <view class="tab-list2">
+    <view bindtap="tab_change" data-tab="{{''}}" class="tab {{status === '' ? 'active' : ''}}">
+      <view class="tab-text">全部</view>
+    </view>
+    <view bindtap="tab_change" data-tab="{{1}}" class="tab {{status === 1 ? 'active' : ''}}">
+      <view class="tab-text">已发布</view>
+    </view>
+    <view bindtap="tab_change" data-tab="{{0}}" class="tab {{status === 0 ? 'active' : ''}}">
+      <view class="tab-text">待审核</view>
+    </view>
+    <view bindtap="tab_change" data-tab="{{2}}" class="tab {{status === 2 ? 'active' : ''}}">
+      <view class="tab-text">未通过</view>
+    </view>
+  </view>
+
+  <view class="my-works-list">
+    <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
+      <view class="status" wx:if="{{status === ''}}">{{item.status_text}}</view>
+
+      <view catchtap="to_modify" data-index="{{index}}" class="modi-btn" wx:if="{{item.status == 2}}">修改</view>
+
+      <image src="{{item.pics[0]}}?imageView2/2/w/339" class="cover" mode="aspectFill"></image>
+      <view class="info">
+        <view class="title one-line-ellipsis">{{item.title}}</view>
+        <view class="desc">{{item.desc}}</view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
+  </view>
+</view>

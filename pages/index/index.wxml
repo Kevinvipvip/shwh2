@@ -38,15 +38,6 @@
       <image src="/images/htitle1.png"></image>
       <navigator url="/pages/activity-list/activity-list" class="more">查看更多</navigator>
     </view>
-    <!--    <view class="leng-title">-->
-    <!--      <text>投</text>-->
-    <!--      <text class="leng"></text>-->
-    <!--      <text>石</text>-->
-
-    <!--      <navigator url="/pages/activity-list/activity-list" class="more-box">-->
-    <!--        <image lazy-load src="/images/more.png" class="more"></image>-->
-    <!--      </navigator>-->
-    <!--    </view>-->
     <view class="activity-list">
       <navigator url="/pages/activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{req_list}}"
                  wx:key="id">
@@ -70,14 +61,7 @@
   <view class="rank-box">
     <view class="h-title">
       <image src="/images/htitle2.png"></image>
-      <!--      <view class="more">查看更多</view>-->
     </view>
-    <!--    <view class="leng-title">-->
-    <!--      <text>回</text>-->
-    <!--      <text class="leng"></text>-->
-    <!--      <text>声</text>-->
-    <!--    </view>-->
-
     <view class="tab-list">
       <view bindtap="rank_tap" data-rank="{{1}}" class="tab {{active_rank == 1 ? 'active' : ''}}">作品排行榜</view>
       <view bindtap="rank_tap" data-rank="{{2}}" class="tab {{active_rank == 2 ? 'active' : ''}}">创意排行榜</view>

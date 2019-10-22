@@ -42,11 +42,14 @@ Page({
   search_notes() {
     this.data.left_height = 0;
     this.data.right_height = 0;
-    this.data.nomore = false;
-    this.data.nodata = false;
     this.data.page = 1;
     this.data.left_note_list = [];
     this.data.right_note_list = [];
+
+    this.setData({
+      nomore: false,
+      nodata: false
+    });
 
     this.getNoteList();
   },

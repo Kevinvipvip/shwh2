@@ -1,0 +1,111 @@
+.page {
+  background: #fafafa;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 20rpx;
+}
+
+.tab-list2 {
+  display: flex;
+  height: 80rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
+}
+
+.tab-list2 .tab {
+  width: 0;
+  flex-grow: 1;
+  height: 82rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.tab-list2 .tab .tab-text {
+  height: 82rpx;
+  line-height: 82rpx;
+  padding: 0 13rpx;
+  box-sizing: border-box;
+  border-bottom: 4rpx solid transparent;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.tab-list2 .tab.active {
+}
+
+.tab-list2 .tab.active .tab-text {
+  border-bottom-color: #fec448;
+  color: #ffbe34;
+}
+
+.my-works-list {
+  margin-top: 24rpx;
+  padding: 0 24rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.my-works-list .work {
+  width: 339rpx;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+
+.my-works-list .work .status {
+  position: absolute;
+  left: 10rpx;
+  top: 10rpx;
+  padding: 8rpx 15rpx;
+  font-size: 24rpx;
+  background: #ccc;
+  color: #fff;
+  border-radius: 4rpx;
+}
+
+.my-works-list .work .modi-btn {
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  background: #ffcc06;
+  color: #333;
+  font-size: 24rpx;
+  padding: 8rpx 15rpx;
+  border-radius: 4rpx;
+}
+
+.my-works-list .work:nth-last-child(-n + 2) {
+  margin-bottom: 0;
+}
+
+.my-works-list .work .cover {
+  width: 339rpx;
+  height: 339rpx;
+  border-radius: 4rpx;
+  background: #ddd;
+  vertical-align: bottom;
+}
+
+.my-works-list .work .info {
+  padding-top: 30rpx;
+  line-height: 1;
+}
+
+.my-works-list .work .info .title {
+  font-size: 34rpx;
+  color: #333;
+}
+
+.my-works-list .work .info .desc {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #666;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 122rpx;
+}

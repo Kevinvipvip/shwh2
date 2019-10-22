@@ -1394,3 +1394,25 @@ button::after {
   opacity: 0.8;
 }
 /* 打开授权菜单 end */
+
+/* 发布圆按钮 start */
+.pub-round-btn {
+  position: fixed;
+  top: 130rpx;
+  right: 38rpx;
+  font-size: 26rpx;
+  z-index: 1;
+  background: #888;
+  border-radius: 50%;
+  opacity: 1;
+  width: 100rpx;
+  height: 100rpx;
+  box-shadow: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: white;
+}
+/* 发布圆按钮 end */

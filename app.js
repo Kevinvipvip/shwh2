@@ -135,6 +135,9 @@ App({
               case 87:  // 活动已删除
               case 88:  // 创意已删除
               case 89:  // 作品已删除
+                this.modal(res.data.message, () => {
+                  wx.navigateBack({ delta: 1 });
+                });
                 break;
               default:
                 if (res.data.message) {

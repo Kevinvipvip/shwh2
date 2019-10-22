@@ -23,6 +23,13 @@ Page({
     work_nodata: false,
     work_order: 1,  // 1.时间 2.热度
 
+    // 展示作品列表
+    show_list: [],
+    show_page: 1,
+    show_nomore: false,
+    show_nodata: false,
+    show_order: 1,  // 1.时间 2.热度
+
     // 接单列表
     bid_list: [],
     bid_page: 1,
@@ -62,6 +69,7 @@ Page({
           case 2:  // 设计师
             this.homeVideo();
             this.worksList();
+            this.showList();
             break;
           case 3:  // 工厂
             this.biddingList();
@@ -123,12 +131,17 @@ Page({
 
     this.reset(type);
     switch (type) {
-      // 创意
+      // 作品
       case 2:
         this.setData({ work_order: order });
         this.worksList();
         break;
-      // 作品
+      // 展示作品
+      case 6:
+        this.setData({ show_order: order });
+        this.showList();
+        break;
+      // 创意
       case 4:
         this.setData({ idea_order: order });
         this.ideaList();
@@ -205,6 +218,47 @@ Page({
         this.setData({ work_list: this.data.work_list.concat(res) });
       }
       this.data.work_page++;
+    }, null, () => {
+      if (complete) {
+        complete()
+      }
+    });
+  },
+  // 展示作品列表
+  showList(complete) {
+    let post = {
+      uid: this.data.uid,
+      order: this.data.show_order,
+      page: this.data.show_page,
+      perpage: 10
+    };
+
+    app.ajax('home/worksList', post, res => {
+      if (res.length === 0) {
+        if (this.data.show_page === 1) {
+          this.setData({
+            show_list: [],
+            show_nomore: false,
+            show_nodata: true
+          });
+        } else {
+          this.setData({
+            show_nomore: true,
+            show_nodata: false
+          });
+        }
+      } else {
+        for (let i = 0; i < res.length; i++) {
+          res[i].out3 = res[i].pics.length - 3;
+          res[i].pics = res[i].pics.slice(0, 3);
+
+          app.format_img(res[i].pics);
+          res[i].flex_pad = app.null_arr(res[i].pics.length, 3);
+        }
+        app.time_format(res, 'create_time', 'yyyy-MM-dd');
+        this.setData({ show_list: this.data.show_list.concat(res) });
+      }
+      this.data.show_page++;
     }, null, () => {
       if (complete) {
         complete()
@@ -333,6 +387,7 @@ Page({
       this.reset(3);
       this.reset(4);
       this.reset(5);
+      this.reset(6);
 
       wx.showNavigationBarLoading();
       this.home(() => {
@@ -357,6 +412,9 @@ Page({
           break;
         case 3:
           this.biddingList();
+          break;
+        case 6:
+          this.showList();
           break;
       }
       this.goodsList();
@@ -392,6 +450,11 @@ Page({
             break;
           case 5:
             this.goodsList(() => {
+              this._reach_after();
+            });
+            break;
+          case 6:
+            this.showList(() => {
               this._reach_after();
             });
             break;
@@ -452,6 +515,15 @@ Page({
           goods_nodata: false
         });
         break;
+      // 展示作品
+      case 6:
+        this.data.show_page = 1;
+        this.data.show_list = [];
+        this.setData({
+          show_nomore: false,
+          show_nodata: false
+        });
+        break;
     }
   },
   // 跳转详情页
@@ -474,6 +546,9 @@ Page({
           break;
         case 5:  // 商品
           wx.navigateTo({ url: '/pages/shop-detail/shop-detail?id=' + id });
+          break;
+        case 6:  // 展示作品 TODO 要改
+          wx.navigateTo({ url: '/pages/work-detail/work-detail?id=' + id });
           break;
       }
     });

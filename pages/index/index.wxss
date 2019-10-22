@@ -42,45 +42,11 @@
   color: #2d2e31;
 }
 
-.leng-title {
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  position: relative;
-  justify-content: center;
-  font-size: 36rpx;
-}
-
-.leng-title text {
-}
-
-.leng-title .leng {
-  width: 12rpx;
-  height: 12rpx;
-  margin: 0 15rpx;
-  transform: rotate(45deg);
-  background: #000;
-}
-
-.leng-title .more-box {
-  padding: 10rpx 20rpx 5rpx;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.leng-title .more {
-  width: 36rpx;
-  height: 9rpx;
-  right: 0;
-  vertical-align: bottom;
-}
-
 .h-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 64rpx 0;
+  margin: 64rpx 0 50rpx;
 }
 
 .h-title image {

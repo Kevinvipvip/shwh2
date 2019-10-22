@@ -39,7 +39,7 @@
           <view class="value">{{person.bid_num}}</view>
           <view class="label">接单</view>
         </view>
-        <view class="param">
+        <view class="param" wx:if="{{role == 0}}">
           <view class="value">{{person.idea_num}}</view>
           <view class="label">创意</view>
         </view>
@@ -59,8 +59,9 @@
     <view class="tab-list2" wx:if="{{role != 0}}">
       <view bindtap="tab_change" data-tab="{{1}}" class="tab {{type == 1 ? 'active' : ''}}" wx:if="{{role == 1}}">活动</view>
       <view bindtap="tab_change" data-tab="{{2}}" class="tab {{type == 2 ? 'active' : ''}}" wx:if="{{role == 2}}">作品</view>
+      <view bindtap="tab_change" data-tab="{{6}}" class="tab {{type == 6 ? 'active' : ''}}" wx:if="{{role == 2}}">展示作品</view>
       <view bindtap="tab_change" data-tab="{{3}}" class="tab {{type == 3 ? 'active' : ''}}" wx:if="{{role == 3}}">接单</view>
-      <view bindtap="tab_change" data-tab="{{4}}" class="tab {{type == 4 ? 'active' : ''}}">创意</view>
+<!--      <view bindtap="tab_change" data-tab="{{4}}" class="tab {{type == 4 ? 'active' : ''}}">创意</view>-->
       <view bindtap="tab_change" data-tab="{{5}}" class="tab {{type == 5 ? 'active' : ''}}">商品</view>
     </view>
 
@@ -127,6 +128,43 @@
         已经没有更多了哦
       </view>
       <view class="nodata" wx:if="{{work_nodata}}">
+        暂无数据
+      </view>
+    </view>
+
+    <!-- 展示作品 -->
+    <view class="work-box-ta" wx:if="{{type == 6}}">
+      <view class="sort">
+        <view bindtap="order_tap" data-type="{{2}}" data-order="{{1}}" class="sort-item {{show_order == 1 ? 'active' : ''}}">默认排行</view>
+        <view bindtap="order_tap" data-type="{{2}}" data-order="{{2}}" class="sort-item {{show_order == 2 ? 'active' : ''}}">热度排行</view>
+      </view>
+      <view class="work-list-ta">
+        <view bindtap="jump" data-id="{{item.id}}" class="work" wx:for="{{show_list}}" wx:key="id">
+          <view class="title one-line-ellipsis">{{item.title}}</view>
+          <view class="desc">{{item.desc}}</view>
+          <view class="img-list">
+            <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
+              <image src="{{pic_item}}?imageView2/2/w/202" mode="aspectFill" lazy-load></image>
+              <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
+            </view>
+            <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
+
+
+            <!--            <image src="{{pic_item}}" mode="aspectFill" lazy-load wx:for="{{item.pics}}" wx:for-item="pic_item"></image>-->
+            <!--            <image class="vh" wx:for="{{item.flex_pad}}"></image>-->
+          </view>
+          <view class="params-box">
+            <view class="param">{{item.create_time}}</view>
+            <view class="param">接单工厂：{{item.bid_num}}个</view>
+            <view class="param">作品获赞：{{item.vote}}次</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="nomore" wx:if="{{show_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{show_nodata}}">
         暂无数据
       </view>
     </view>

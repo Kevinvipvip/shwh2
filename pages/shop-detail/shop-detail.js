@@ -316,24 +316,24 @@ Page({
         // 绘制人民币符号
         canvas.setFontSize(30);
         canvas.setFillStyle("#ff4141");
-        canvas.fillText('¥', 17, 700, 20);
+        canvas.fillText('¥', 17, 680, 20);
         canvas.draw(true);
 
         // 绘制价格
         canvas.setFontSize(40);
         canvas.setFillStyle("#ff4141");
-        canvas.fillText('56.23', 40, 700, 200);
+        canvas.fillText(this.data.goods.price, 40, 680, 200);
         canvas.draw(true);
 
         // 绘制二维码
-        canvas.drawImage(qrcode, 280, 620, 150, 150);
+        canvas.drawImage(qrcode, 280, 600, 150, 150);
         canvas.draw(true);
 
         // 二维码描述
         canvas.setFontSize(20);
         canvas.setFillStyle("#999999");
         canvas.setTextAlign('center');
-        canvas.fillText('扫描或长按小程序码', 355, 800, 150);
+        canvas.fillText('扫描小程序码', 355, 780, 150);
         canvas.draw(true);
 
         setTimeout(() => {
