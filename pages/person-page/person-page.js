@@ -89,7 +89,8 @@ Page({
         person: res,
         role: res.role_check === 2 ? res.role : 0
       }, () => {
-        this.setData({ type: this.data.role });
+        // this.setData({ type: this.data.role });
+        this.setData({ type: this.data.role === 0 ? 0 : 5 });
         switch (this.data.role) {
           case 0:
             this.setData({ role_text: '普通用户' });

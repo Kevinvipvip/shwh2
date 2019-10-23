@@ -57,12 +57,12 @@
 
   <view class="list-box">
     <view class="tab-list2" wx:if="{{role != 0}}">
+      <view bindtap="tab_change" data-tab="{{5}}" class="tab {{type == 5 ? 'active' : ''}}">商品</view>
       <view bindtap="tab_change" data-tab="{{1}}" class="tab {{type == 1 ? 'active' : ''}}" wx:if="{{role == 1}}">活动</view>
       <view bindtap="tab_change" data-tab="{{2}}" class="tab {{type == 2 ? 'active' : ''}}" wx:if="{{role == 2}}">作品</view>
       <view bindtap="tab_change" data-tab="{{6}}" class="tab {{type == 6 ? 'active' : ''}}" wx:if="{{role == 2}}">展示作品</view>
       <view bindtap="tab_change" data-tab="{{3}}" class="tab {{type == 3 ? 'active' : ''}}" wx:if="{{role == 3}}">接单</view>
 <!--      <view bindtap="tab_change" data-tab="{{4}}" class="tab {{type == 4 ? 'active' : ''}}">创意</view>-->
-      <view bindtap="tab_change" data-tab="{{5}}" class="tab {{type == 5 ? 'active' : ''}}">商品</view>
     </view>
 
     <view class="chuang-title" wx:if="{{role == 0}}">发布过的创意</view>
