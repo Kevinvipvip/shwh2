@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="work">
+    <view class="title">{{work.title}}</view>
+    <view class="desc">{{work.desc}}</view>
+    <view class="idea-line" wx:if="{{work.idea_title}}">
+      <view class="origin one-line-ellipsis">创意来源：{{work.idea_title}}</view>
+      <view class="support">创意支持：{{work.idea_vote}}</view>
+    </view>
+    <view class="user-line">
+      <view bindtap="to_person" class="avatar-box">
+        <image src="{{work.avatar}}" mode="aspectFill" class="avatar"></image>
+        <view class="na">
+          <view class="nickname one-line-ellipsis">{{work.nickname}}</view>
+          <view class="ago">{{work.create_time}}</view>
+        </view>
+      </view>
+      <view bindtap="iFocus" class="follow-btn {{work.ifocus ? 'followed' : ''}}" wx:if="{{uid != work.uid}}">{{work.ifocus ? '已关注' : '关注'}}</view>
+    </view>
+    <view class="img-box">
+      <image bindtap="preview" data-index="{{index}}" src="{{item}}?imageView2/2/w/225" wx:for="{{work.pics}}" mode="aspectFill" lazy-load></image>
+      <image class="vh" wx:for="{{work.flex_pad}}"></image>
+    </view>
+  </view>
+</view>

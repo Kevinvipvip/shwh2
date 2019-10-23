@@ -109,6 +109,15 @@ Page({
       nodata: false
     });
   },
+  // 去作品详情
+  to_detail(e) {
+    let work = e.currentTarget.dataset.work;
+    if (work.status === 1) {
+      app.page_open(() => {
+        wx.navigateTo({ url: '/pages/work-detail/work-detail?id=' + work.id });
+      });
+    }
+  },
   // 去修改作品
   to_modify(e) {
     let work = this.data.work_list[e.currentTarget.dataset.index];

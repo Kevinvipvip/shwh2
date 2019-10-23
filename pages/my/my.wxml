@@ -152,7 +152,7 @@
     <navigator class="menu-item" url="/pages/show-works/show-works" wx:if="{{user.role_check == 2 && user.role == 2}}">
       <view class="left-box">
         <view class="icon-box">
-          <image src="/icons/menu3.png" class="icon-menu3"></image>
+          <image src="/icons/menu16.png" class="icon-menu16"></image>
         </view>
       </view>
       <view class="menu-text">展示作品</view>

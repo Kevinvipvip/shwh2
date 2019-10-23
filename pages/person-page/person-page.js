@@ -28,7 +28,6 @@ Page({
     show_page: 1,
     show_nomore: false,
     show_nodata: false,
-    show_order: 1,  // 1.时间 2.热度
 
     // 接单列表
     bid_list: [],
@@ -136,11 +135,6 @@ Page({
         this.setData({ work_order: order });
         this.worksList();
         break;
-      // 展示作品
-      case 6:
-        this.setData({ show_order: order });
-        this.showList();
-        break;
       // 创意
       case 4:
         this.setData({ idea_order: order });
@@ -228,12 +222,11 @@ Page({
   showList(complete) {
     let post = {
       uid: this.data.uid,
-      order: this.data.show_order,
       page: this.data.show_page,
       perpage: 10
     };
 
-    app.ajax('home/worksList', post, res => {
+    app.ajax('home/showWorksList', post, res => {
       if (res.length === 0) {
         if (this.data.show_page === 1) {
           this.setData({
@@ -548,7 +541,7 @@ Page({
           wx.navigateTo({ url: '/pages/shop-detail/shop-detail?id=' + id });
           break;
         case 6:  // 展示作品 TODO 要改
-          wx.navigateTo({ url: '/pages/work-detail/work-detail?id=' + id });
+          wx.navigateTo({ url: '/pages/show-detail/show-detail?id=' + id });
           break;
       }
     });

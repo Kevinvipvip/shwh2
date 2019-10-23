@@ -15,7 +15,7 @@
   </view>
 
   <view class="my-works-list">
-    <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
+    <view bindtap="to_detail" data-work="{{item}}" class="work" wx:for="{{work_list}}" wx:key="id">
       <view class="status" wx:if="{{status === ''}}">{{item.status_text}}</view>
 
       <view catchtap="to_modify" data-index="{{index}}" class="modi-btn" wx:if="{{item.status == 2}}">修改</view>
@@ -25,7 +25,7 @@
         <view class="title one-line-ellipsis">{{item.title}}</view>
         <view class="desc">{{item.desc}}</view>
       </view>
-    </navigator>
+    </view>
   </view>
 
   <view class="nomore" wx:if="{{nomore}}">

@@ -532,6 +532,11 @@
   height: 40rpx;
 }
 
+.menu .menu-item .left-box .icon-menu16 {
+  width: 38rpx;
+  height: 48rpx;
+}
+
 .menu .menu-item .menu-text {
   flex-grow: 1;
   color: #999;

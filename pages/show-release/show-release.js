@@ -5,16 +5,12 @@ Page({
     id: 0,
     textarea_padding: '15rpx',
 
-    req_id: 0,  // 活动id
     title: '',  // 作品标题
     desc: '',  // 作品描述
     desc_count: 0,
     pics: [],  // 作品图片
     flex_pad: [],
-    reason: '',
-
-    idea_id: 0,  // 创意id（选填）
-    idea: {}
+    reason: ''
   },
   onLoad(options) {
     let phone = wx.getSystemInfoSync();
@@ -22,26 +18,19 @@ Page({
       this.setData({ textarea_padding: '0rpx 5rpx' })
     }
 
-    this.data.req_id = options.req_id;
-
-    if (options.idea_id) {
-      this.setData({idea_id: options.idea_id});
-      this.ideaDetail();
-    }
-
     if (options.id) {
-      this.setData({id: options.id });
-      this.worksDetail();
-      wx.setNavigationBarTitle({ title: '修改作品' });
+      this.setData({ id: options.id });
+      this.showWorksDetail();
+      wx.setNavigationBarTitle({ title: '修改展示作品' });
     } else {
-      wx.setNavigationBarTitle({ title: '发布作品' });
+      wx.setNavigationBarTitle({ title: '发布展示作品' });
     }
 
     app.qiniu_init();
   },
   // 作品详情
-  worksDetail() {
-    app.ajax('api/worksDetail', {id: this.data.id}, res => {
+  showWorksDetail() {
+    app.ajax('home/showWorksDetail', {id: this.data.id}, res => {
       app.format_img(res.pics);
 
       this.setData({
@@ -102,7 +91,7 @@ Page({
     }
   },
   // 上传/编辑作品
-  uploadWorks(e) {
+  uploadShowWorks(e) {
     let data = this.data;
     if (!data.title.trim()) {
       app.toast('请输入作品名称');
@@ -116,7 +105,6 @@ Page({
       app.format_up_img(data.pics);
 
       let post = {
-        req_id: data.req_id,
         title: data.title,
         desc: data.desc,
         pics: data.pics
@@ -125,13 +113,9 @@ Page({
       let cmd;
       if (data.id !== 0) {
         post.work_id = this.data.id;
-        cmd = 'my/myReqWorksMod';
+        cmd = 'my/myShowWorksMod';
       } else {
-        cmd = 'api/uploadWorks';
-      }
-
-      if (data.idea_id !== 0) {
-        post.idea_id = data.idea_id;
+        cmd = 'my/uploadShowWorks';
       }
 
       wx.showLoading({ mask: true });
@@ -139,17 +123,17 @@ Page({
         if (data.id !== 0) {
           // 修改
           app.modal('修改成功', () => {
-            let page = app.get_page('pages/my-works/my-works');
+            let page = app.get_page('pages/show-works/show-works');
             page.reset();
             page.setData({status: 0});
-            page.getMyReqWorks(() => {
+            page.getMyShowWorks(() => {
               wx.navigateBack({ delta: 1 });
             });
           });
         } else {
           // 发布
           app.modal('作品发布成功，请等待审核', () => {
-            wx.redirectTo({ url: '/pages/my-works/my-works?status=0' });
+            wx.redirectTo({ url: '/pages/show-works/show-works?status=0' });
           });
         }
       }, err => {
@@ -158,11 +142,5 @@ Page({
         wx.hideLoading();
       });
     }
-  },
-  // 创意详情
-  ideaDetail() {
-    app.ajax('api/ideaDetail', {idea_id: this.data.idea_id}, res => {
-      this.setData({idea: res});
-    });
   }
 });

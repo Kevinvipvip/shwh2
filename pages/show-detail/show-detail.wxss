@@ -1,0 +1,242 @@
+.page {
+  /*background: #fafafa;*/
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
+  min-height: 100vh;
+  line-height: 1;
+}
+
+.work {
+  padding: 36rpx 24rpx 26rpx;
+}
+
+.work .title {
+  line-height: 1.4;
+  font-size: 32rpx;
+  color: #333;
+  opacity: 0.6;
+  letter-spacing: 1rpx;
+}
+
+.work .desc {
+  margin-top: 12rpx;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: #000;
+  opacity: 0.6;
+  letter-spacing: 1rpx;
+}
+
+.work .idea-line {
+  margin-top: 35rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+  letter-spacing: 1rpx;
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.work .idea-line .origin {
+}
+
+.work .idea-line .support {
+  margin-left: 24rpx;
+}
+
+.work .user-line {
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.work .user-line .avatar-box {
+  width: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.work .user-line .avatar-box .avatar {
+  box-sizing: border-box;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  border: 2rpx solid #333;
+}
+
+.work .user-line .avatar-box .na {
+  margin-left: 17rpx;
+}
+
+.work .user-line .avatar-box .na .nickname {
+  color: #000;
+  font-size: 32rpx;
+  opacity: 0.8;
+}
+
+.work .user-line .avatar-box .na .ago {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #ccc;
+}
+
+.work .user-line .follow-btn {
+  flex-shrink: 0;
+  margin-left: 24rpx;
+  padding: 11rpx 17rpx;
+  background-color: #ffc047;
+  box-shadow: 0 1rpx 35rpx 0 rgba(254, 224, 166, 0.66);
+  border-radius: 23rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.work .user-line .follow-btn.followed {
+  background: #dbdbdb;
+  box-shadow: none;
+}
+
+.work .img-box {
+  margin-top: 34rpx;
+  border-top: 2rpx solid rgba(0, 0, 0, 0.05);
+  padding-top: 24rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.work .img-box image {
+  width: 225rpx;
+  height: 225rpx;
+  margin-bottom: 13.5rpx;
+}
+
+.work .img-box image:nth-last-child(-n + 3) {
+  margin-bottom: 0;
+}
+
+.work .num-line {
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+}
+
+.work .num-line .bid {
+  display: flex;
+  align-items: center;
+}
+
+.work .num-line .bid .label {
+  color: #333;
+}
+
+.work .num-line .bid .value {
+  color: #333;
+  opacity: 0.7;
+  margin-left: 25rpx;
+}
+
+.work .num-line .work-c {
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0 10rpx 10rpx;
+}
+
+.work .num-line .work-c .label {
+  color: #ff7b47;
+}
+
+.work .num-line .work-c image {
+  width: 33rpx;
+  height: 34.5rpx;
+  margin: 0 14rpx 0 11rpx;
+}
+
+.work .num-line .work-c .count {
+  color: #333;
+}
+
+.ac-detail {
+  border-top: 12rpx solid rgba(0, 0, 0, 0.05);
+  border-bottom: 12rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.form1 {
+  margin-top: 20rpx;
+}
+
+.bidding-box2 {
+  margin-top: 40rpx;
+}
+
+.bidding-list {
+  margin-top: 40rpx;
+  background: #fff;
+  padding: 24rpx;
+}
+
+.bidding-list .bidding {
+  margin-bottom: 24rpx;
+  border-bottom: 2rpx solid #ddd;
+  padding-bottom: 24rpx;
+}
+
+.bidding-list .bidding:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.bidding-list .bidding .title {
+}
+
+.bidding-list .bidding .header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  align-items: center;
+}
+
+.bidding-list .bidding .header .left {
+  display: flex;
+  align-items: center;
+}
+
+.bidding-list .bidding .header .left .head-pic {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+}
+
+.bidding-list .bidding .header .left .org {
+}
+
+.bidding-list .bidding .header .choose-btn {
+  margin: 0;
+  padding: 10rpx 20rpx;
+  font-size: 26rpx;
+  line-height: 1;
+  background: #ffcc06;
+  height: auto;
+  border-radius: 4rpx;
+  color: #333;
+}
+
+.bidding-list .bidding .header .choose-btn.choosed {
+  background: red;
+  color: #eee;
+}
+
+.bidding-list .bidding .desc {
+  font-size: 26rpx;
+  margin-top: 15rpx;
+  line-height: 1.4;
+}
+
+.bidding-box2 .nodata {
+  background: #fff;
+}
