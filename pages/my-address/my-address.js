@@ -3,7 +3,8 @@ const app = getApp();
 Page({
   data: {
     type: 0,  // 0.我的地址 1.order-create选择地址 2.cart-order-create选择地址 4.support-options选择地址
-    address_list: []
+    address_list: [],
+    loading: false
   },
   onLoad: function (options) {
     if (options.type) {
@@ -123,5 +124,24 @@ Page({
         complete();
       }
     });
+  },
+  // 删除收货地址
+  addressDel(e) {
+    if (!this.data.loading) {
+      wx.showModal({
+        title: '提示',
+        content: '确定删除？',
+        success: res => {
+          if (res.confirm) {
+            this.data.loading = true;
+            app.ajax('my/addressDel', { id: e.currentTarget.dataset.id }, () => {
+              this.addressList();
+            }, null, () => {
+              this.data.loading = false;
+            });
+          }
+        }
+      });
+    }
   }
-})
+});

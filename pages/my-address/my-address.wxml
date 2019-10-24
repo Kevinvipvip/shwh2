@@ -12,6 +12,7 @@
       </view>
       <view class="edit">
         <navigator url="/pages/address-detail/address-detail?id={{item.id}}"><icon class="iconfont iconiconset0136"/></navigator>
+        <view catchtap="addressDel" data-id="{{item.id}}" class="delete"><icon class="iconfont iconshanchu"/></view>
       </view>
     </view>
   </view>

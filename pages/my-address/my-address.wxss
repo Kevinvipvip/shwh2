@@ -59,6 +59,15 @@
 .address-list .address .edit .iconfont {
     font-size:38rpx;
     color:#222;
+    padding: 0 10rpx;
+}
+
+.address-list .address .edit .iconshanchu {
+  color: #333;
+}
+
+.address-list .address .edit .delete {
+  /* padding: 0 10rpx; */
 }
 
 .add-address {
