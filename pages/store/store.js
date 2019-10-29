@@ -114,5 +114,11 @@ Page({
   // 收集formid
   col_formid(e) {
     app.collectFormid(e.detail.formId);
+  },
+  // 跳页
+  to_page() {
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.req.uid });
+    });
   }
 });

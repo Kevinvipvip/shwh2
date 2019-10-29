@@ -1,4 +1,19 @@
-<view class="page">
-  <canvas canvas-id="card-qrcode" style="width: 350rpx; height: 350rpx;"></canvas>
-  <image src="{{qrcode_img}}" style="width: 100rpx; height: 100rpx;"></image>
+<view class='page_row top'>
+  <image class='goods' src='../../images/dsh.png'></image>
+  <view class='page_clu logistics'>
+    <text>物流公司: {{wuliu.company}}申通快递</text>
+    <text>物流单号: {{wuliu.nu}}4326665981311546542</text>
+    <text>官方电话: {{wuliu.phone}}95533</text>
+  </view>
 </view>
+<view class='br'></view>
+<block wx:for="{{wuliu}}" wx:key="index">
+  <view class='order'>
+    <view class='icon {{0==index?"in":"no_in"}}'></view>
+    <view class='logistics_centent page_clu'>
+      <text>{{item}},发往深圳太远客运中转部</text>
+      <text> {{wuliu.phone}}2017-12-11 23:16:12</text>
+    </view>
+    <view class='on'></view>
+  </view>
+</block>

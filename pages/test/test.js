@@ -3,37 +3,15 @@ const app = getApp();
 
 Page({
   data: {
-    qrcode_img: ''
+    wuliu: ['已接收', '抵达深圳', '抵达广州'],
   },
   onLoad() {
-    drawQrcode({
-      width: 175,
-      height: 175,
-      correctLevel: 1,
-      canvasId: 'card-qrcode',
-      text: 'abcd'
-    });
-
-    setTimeout(() => {
-      wx.canvasToTempFilePath({
-        x: 0,
-        y: 0,
-        width: 175,
-        height: 175,
-        destWidth: 175,
-        destHeight: 175,
-        canvasId: 'card-qrcode',
-        success: res => {
-          this.setData({
-            qrcode_img: res.tempFilePath
-          });
-          wx.hideLoading();
-        },
-        fail: () => {
-          // 生成失败
-          wx.hideLoading();
-        }
-      })
-    }, 2000);
+    app.modal(document.referrer);
+  },
+  img_load(e) {
+    // app.modal(JSON.stringify(e.detail));
+  },
+  errImg(e) {
+    // app.modal(JSON.stringify(e));
   }
 });

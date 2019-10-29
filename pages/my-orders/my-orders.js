@@ -264,5 +264,12 @@ Page({
   // 隐藏退款框
   hide_refund() {
     this.setData({ refund_show: false });
+  },
+  // 去物流页
+  to_logistics(e) {
+    let order_id = e.currentTarget.dataset.id;
+    app.page_open(() => {
+      wx.navigateTo({ url: '/pages/logistics/logistics?id=' + order_id });
+    });
   }
 });

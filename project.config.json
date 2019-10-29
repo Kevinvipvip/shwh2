@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
@@ -125,6 +125,13 @@
 					"name": "收货地址",
 					"pathName": "pages/my-address/my-address",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "物流",
+					"pathName": "pages/logistics/logistics",
+					"query": "id=12",
 					"scene": null
 				}
 			]

@@ -3,6 +3,7 @@
     "pages/auth/auth",
     "pages/test/test",
     "pages/role-vip-open/role-vip-open",
+    "pages/logistics/logistics",
     "pages/my-focus-list/my-focus-list",
     "pages/score-log/score-log",
     "pages/my-bidding/my-bidding",
