@@ -24,7 +24,7 @@
       </view>
     </view>
   </block>
-  <block wx:else>
+  <block wx:if="{{kd_trace.State == 0}}">
     <view class="trace">
       <view class="zuo">
         <view class="icon no_in"></view>
