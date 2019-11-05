@@ -494,20 +494,16 @@ App({
           over_text = Math.floor(maxsize / 1048576) + 'M';
         }
 
-        console.log(res, '图片');
-
         for (let i = 0; i < res.tempFiles.length; i++) {
           if (res.tempFiles[i].size > maxsize) {
-            this.toast('选择的图片不能大于' + over_text);
+            this.modal('选择的图片不能大于' + over_text);
             return callback(false);
           }
 
           res.tempFiles[i].ext = res.tempFiles[i].path.substr(res.tempFiles[i].path.lastIndexOf('.') + 1);
 
-          console.log(ext, res.tempFiles[i].ext, ext.indexOf(res.tempFiles[i].ext));
-
           if (ext.indexOf(res.tempFiles[i].ext) === -1) {
-            this.toast('请上传合法的文件格式');
+            this.modal('请上传合法的文件格式');
             return callback(false);
           }
         }
