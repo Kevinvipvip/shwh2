@@ -58,6 +58,8 @@
     "pages/recharge_res/recharge_res",
     "pages/my-req/my-req",
     "pages/my-req2/my-req2",
+    "pages/needs/needs",
+    "pages/need-detail/need-detail",
     "pages/notes/notes",
     "pages/note-detail/note-detail",
     "pages/note-comment/note-comment",
@@ -95,6 +97,12 @@
         "text": "商城",
         "iconPath": "icons/shop.png",
         "selectedIconPath": "icons/shop-active.png"
+      },
+      {
+        "pagePath": "pages/needs/needs",
+        "text": "需求",
+        "iconPath": "icons/note.png",
+        "selectedIconPath": "icons/note-active.png"
       },
       {
         "pagePath": "pages/notes/notes",

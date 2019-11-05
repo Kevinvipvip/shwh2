@@ -1,0 +1,56 @@
+<view>
+  <view class="top">
+    <view bindtap="to_person" class="left">
+      <image src="{{need.avatar}}" class="header"></image>
+      {{need.nickname}}
+    </view>
+    <button bindtap="iFocus" class="{{focus ? 'focus' : ''}}" wx:if="{{my_uid != need.uid}}">{{focus ? '已关注' : '关注'}}</button>
+  </view>
+  <swiper
+    indicator-dots="{{true}}"
+    indicator-color="{{'#d64c69'}}"
+    indicator-active-color="{{'#fff'}}"
+    duration="{{300}}"
+    class="note-swiper"
+  >
+    <swiper-item wx:for="{{need.pics}}" wx:key="index">
+      <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+  <view class="info">
+    <view class="desc">{{need.content}}</view>
+    <navigator url="/pages/note-comment/note-comment?note_id={{need.id}}&auth_id={{need.uid}}" class="comment">
+      <view class="total">
+        共 {{need.comment_count}} 条评论
+      </view>
+      <view class="item" wx:for="{{need.comment_list}}" wx:key="id">
+        <text class="nickname">{{item.nickname}}：</text>
+        <text class="content">{{item.content}}</text>
+      </view>
+    </navigator>
+    <view bindtap="show_input" class="add-comment">
+      添加评论...
+    </view>
+  </view>
+  <view class="input-box" wx:if="{{release_focus}}" style="bottom: {{input_bottom}}px;">
+    <input bindconfirm="commentAdd" bindinput="bind_input" bindfocus="bind_focus" bindblur="hide_input" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="写评论..." maxlength="100" class="re-input" focus="{{release_focus}}" />
+    <view bindtap="commentAdd" class="com-btn">发送</view>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

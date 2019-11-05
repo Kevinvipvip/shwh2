@@ -1,0 +1,129 @@
+page {
+  background: #fff;
+}
+
+.main {
+  padding-top: 110rpx;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #f6f7f9;
+}
+
+.main .search-box {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20rpx 0;
+  z-index: 1;
+  box-shadow: 0 3rpx 10rpx 0 #eee;
+}
+
+.main .search {
+  background: #f5f5f5;
+  border-radius: 40rpx;
+  height: 70rpx;
+  margin: 0 20rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 15rpx;
+}
+
+.main .search .iconfont {
+  font-size: 40rpx;
+  position: relative;
+  top: -4rpx;
+  margin-left: 5rpx;
+  color: #9c9c9c;
+  flex-shrink: 1;
+}
+
+.main .search input {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  flex-grow: 1;
+}
+
+.list {
+  background: #f6f7f9;
+  display: flex;
+  padding: 17rpx 20rpx 0;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.list > view {
+  width: 48.5%;
+}
+
+.list > view .note {
+  border-radius: 10rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx 2rpx #e2e3e5;
+  margin-top: 22rpx;
+  background: #fff;
+}
+
+.list > view .note:first-child {
+  margin-top: 0;
+}
+
+.list > view .note .img-box {
+  width: 100%;
+  height: 0;
+  position: relative;
+}
+
+.list > view .note .img-box image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.list > view .note .word {
+  font-size: 24rpx;
+  padding: 10rpx 15rpx;
+  line-height: 1.5;
+  font-weight: bold;
+  color: #222;
+  letter-spacing: 2rpx;
+}
+
+.list > view .note .xia {
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 20rpx 20rpx;
+}
+
+.list > view .note .xia .left {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+}
+
+.list > view .note .xia .header {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 9rpx;
+}
+
+.list > view .note .xia .right {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.list > view .note .xia .right .iconfont {
+  margin-right: 6rpx;
+  position: relative;
+  top: -7rpx;
+  font-size: 28rpx;
+}
+
+.list > view .note .xia .right .iconxin1 {
+  color: red;
+}

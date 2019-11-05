@@ -404,5 +404,10 @@ Page({
   // 关闭授权菜单按钮
   hide_set_btn() {
     this.setData({ show_set_btn: false })
+  },
+  // 分享
+  onShareAppMessage() {
+    wx.showShareMenu();
+    return { path: app.share_path() };
   }
 });

@@ -170,5 +170,10 @@ Page({
     app.page_open(() => {
       wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.note.uid });
     });
+  },
+  // 分享
+  onShareAppMessage() {
+    wx.showShareMenu();
+    return { path: app.share_path() };
   }
 });
