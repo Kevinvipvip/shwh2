@@ -42,9 +42,6 @@ Page({
   tab_change(e) {
     this.setData({ active_tab: e.currentTarget.dataset.tab });
   },
-  onShow() {
-    utils.select_tab_bar(this, 1);
-  },
   // 获取我的笔记
   getMyNoteList(complete) {
     let post = {

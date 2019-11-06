@@ -1,4 +1,4 @@
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
@@ -48,15 +48,14 @@ Page({
       wx.showLoading({ mask: true });
 
       let post = {
-        token: app.user_data.token,
         xuqiu_id: this.data.xuqiu_id,
         content: this.data.content
       };
 
-      app.ajax('note/commentAdd', post, () => {
+      app.ajax('xuqiu/commentAdd', post, () => {
         app.toast('评论已发表');
         this.setData({ content: '' });
-        this.getNoteDetail();
+        this.xuqiuDetail();
       });
     }
   },

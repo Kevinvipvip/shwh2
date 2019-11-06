@@ -1,0 +1,30 @@
+.page {
+    padding: 40rpx 25rpx;
+    line-height: 1;
+    position: relative;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.notice {
+    word-break: break-all;
+    margin-bottom: 40rpx;
+    border: solid 2rpx #e5e5e5;
+    border-radius: 4rpx;
+    padding: 12rpx 18rpx;
+    font-size: 24rpx;
+    color: #cccccc;
+    line-height: 1.4;
+}
+
+.notice.warning {
+    border-color: red;
+    color: red;
+}
+
+.line-btn {
+    margin-top: 80rpx;
+    background: #1b1b1b;
+    color: #faf8f8;
+    border-radius: 4rpx;
+}

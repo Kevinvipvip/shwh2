@@ -10,7 +10,7 @@
     </view>
   </view>
 
-  <navigator url="/pages/note-publish/note-publish" class="pub-round-btn" wx:if="{{role != 0}}">
+  <navigator url="/pages/need-publish/need-publish" class="pub-round-btn" wx:if="{{role != 0}}">
     <view>发布</view>
     <view>需求</view>
   </navigator>

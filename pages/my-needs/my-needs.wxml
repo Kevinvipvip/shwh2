@@ -1,0 +1,60 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="main" wx:else>
+  <navigator url="/pages/need-publish/need-publish" class="pub-round-btn">
+    <view>发布</view>
+    <view>需求</view>
+  </navigator>
+  <view class="list">
+    <view class="left">
+      <view bindtap="to_detail" data-need="{{item}}" class="note" wx:for="{{left_need_list}}"
+            wx:key="id">
+
+        <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
+        <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
+        <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
+
+        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+          <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+        </view>
+        <view class="word">
+          {{item.title}}
+        </view>
+        <view class="xia">
+          <view class="left">
+            {{item.nickname}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="right">
+      <view bindtap="to_detail" data-need="{{item}}" class="note" wx:for="{{right_need_list}}"
+            wx:key="id">
+        <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
+        <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
+        <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
+        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
+          <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+        </view>
+        <view class="word">
+          {{item.title}}
+        </view>
+        <view class="xia">
+          <view class="left">
+            {{item.nickname}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无需求
+  </view>
+</view>

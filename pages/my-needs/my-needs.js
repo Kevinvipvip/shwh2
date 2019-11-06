@@ -3,93 +3,63 @@ const utils = require('../../utils/utils.js');
 
 Page({
   data: {
-    role: 0,
-
     auth: false,
     full_loading: true,
 
     left_height: 0,
     right_height: 0,
-    left_note_list: [],
-    right_note_list: [],
-    search: '',
+    left_need_list: [],
+    right_need_list: [],
     page: 1,
     nomore: false,
     nodata: false,
-    loading: false,
-
-    note_list: []
+    loading: false
   },
   onLoad() {
     app.get_auth((res) => {
       this.setData({
         auth: Boolean(res),
-        full_loading: false,
-        role: app.user_data.role
+        full_loading: false
       });
       wx.showNavigationBarLoading();
-      this.getNoteList(() => {
+      this.myXuqiuList(() => {
         wx.hideNavigationBarLoading();
       });
     });
   },
-  bind_input(e) {
-    this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
-  },
-  search_notes() {
-    this.data.left_height = 0;
-    this.data.right_height = 0;
-    this.data.page = 1;
-    this.data.left_note_list = [];
-    this.data.right_note_list = [];
-
-    this.setData({
-      nomore: false,
-      nodata: false
-    });
-
-    this.getNoteList();
-  },
-  getNoteList(complete) {
+  // 获取我的需求
+  myXuqiuList(complete) {
     let post = {
-      token: app.user_data.token,
-      search: this.data.search.trim(),
       page: this.data.page,
-      perpage: 10
+      perPage: 10
     };
 
-    app.ajax('xuqiu/xuqiuList', post, (res) => {
+    app.ajax('my/myXuqiuList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
-            left_note_list: [],
-            right_note_list: [],
+            left_need_list: [],
+            right_need_list: [],
             nodata: true
           });
         } else {
           this.setData({ nomore: true });
         }
       } else {
-        app.avatar_format(res);
-
         for (let i = 0; i < res.length; i++) {
           app.format_img(res[i].pics);
-
-          // 测试用
-          // console.log(res[i].id, res[i].pics[0], res[i].width, res[i].height);
-
           if (this.data.left_height <= this.data.right_height) {
-            this.data.left_note_list.push(res[i]);
+            this.data.left_need_list.push(res[i]);
             this.data.left_height += res[i].height / res[i].width;
           } else {
-            this.data.right_note_list.push(res[i]);
+            this.data.right_need_list.push(res[i]);
             this.data.right_height += res[i].height / res[i].width;
           }
         }
 
         this.setData({
-          left_note_list: this.data.left_note_list,
-          right_note_list: this.data.right_note_list
+          left_need_list: this.data.left_need_list,
+          right_need_list: this.data.right_need_list
         });
       }
 
@@ -107,16 +77,17 @@ Page({
 
       this.data.left_height = 0;
       this.data.right_height = 0;
-      this.data.nomore = false;
-      this.data.nodata = false;
       this.data.page = 1;
-      this.data.left_note_list = [];
-      this.data.right_note_list = [];
+      this.data.left_need_list = [];
+      this.data.right_need_list = [];
+      this.setData({
+        nomore: false,
+        nodata: false
+      });
 
       wx.showNavigationBarLoading();
-      this.getNoteList(() => {
+      this.myXuqiuList(() => {
         this.data.loading = false;
-
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
       });
@@ -128,7 +99,7 @@ Page({
       if (!this.data.loading) {
         this.data.loading = true;
         wx.showNavigationBarLoading();
-        this.getNoteList(() => {
+        this.myXuqiuList(() => {
           wx.hideNavigationBarLoading();
           this.data.loading = false;
         });
@@ -136,19 +107,36 @@ Page({
     }
   },
   // 发布笔记后刷新列表，区别于下拉刷新（不需要loading等操作）
-  refresh() {
+  refresh(callback) {
     this.data.left_height = 0;
     this.data.right_height = 0;
-    this.data.nomore = false;
-    this.data.nodata = false;
     this.data.page = 1;
-    this.data.left_note_list = [];
-    this.data.right_note_list = [];
-    this.getNoteList();
+    this.data.left_need_list = [];
+    this.data.right_need_list = [];
+    this.setData({
+      nomore: false,
+      nodata: false
+    });
+
+    this.myXuqiuList(() => {
+      if (callback) {
+        callback();
+      }
+    });
   },
-  // 分享
   onShareAppMessage() {
     wx.showShareMenu();
     return { path: app.share_path() };
+  },
+  // 跳转编辑
+  to_edit(e) {
+    wx.navigateTo({ url: '/pages/need-publish/need-publish?id=' + e.currentTarget.dataset.id });
+  },
+  // 跳转详情
+  to_detail(e) {
+    let need = e.currentTarget.dataset.need;
+    if (need.status === 1) {
+      wx.navigateTo({ url: '/pages/need-detail/need-detail?id=' + need.id });
+    }
   }
 });

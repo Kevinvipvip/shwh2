@@ -19,7 +19,7 @@
   </swiper>
   <view class="info">
     <view class="desc">{{need.content}}</view>
-    <navigator url="/pages/note-comment/note-comment?note_id={{need.id}}&auth_id={{need.uid}}" class="comment">
+    <navigator url="/pages/need-comment/need-comment?need_id={{need.id}}&auth_id={{need.uid}}" class="comment">
       <view class="total">
         共 {{need.comment_count}} 条评论
       </view>

@@ -4,13 +4,13 @@
   </view>
   <view class="form1">
     <view class="form-item">
-      <view class="title">笔记标题</view>
-      <input bindinput="bind_input" data-name="title" value="{{title}}" placeholder="请输入笔记标题" placeholder-class="input-place" maxlength="50"/>
+      <view class="title">需求标题</view>
+      <input bindinput="bind_input" data-name="title" value="{{title}}" placeholder="请输入需求标题" placeholder-class="input-place" maxlength="50"/>
     </view>
     <view class="form-item">
-      <view class="title">笔记内容</view>
+      <view class="title">需求内容</view>
       <view class="textarea-box">
-        <textarea bindinput="bind_input" data-name="content" value="{{content}}" auto-height maxlength="500" cursor-spacing="50" placeholder="请输入笔记内容..." class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
+        <textarea bindinput="bind_input" data-name="content" value="{{content}}" auto-height maxlength="500" cursor-spacing="50" placeholder="请输入需求内容..." class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
         <view class="count">
           <text>{{content_count}}</text> / 500
         </view>
@@ -40,7 +40,7 @@
       </view>
     </view>
   </view>
-  <form bindsubmit="noteRelease" report-submit>
+  <form bindsubmit="needRelease" report-submit>
     <button form-type="submit" class="line-btn">{{id == 0 ? '发布' : '修改'}}</button>
   </form>
 </view>

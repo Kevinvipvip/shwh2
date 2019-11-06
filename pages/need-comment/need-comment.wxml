@@ -1,0 +1,36 @@
+<view>
+  <view class="comment" wx:for="{{comment_list}}" wx:key="id">
+    <image src="{{item.avatar}}" class="header"></image>
+    <view class="content">
+      <view class="c-info">
+        <view class="nickname">{{item.nickname}}{{auth_id == uid ? '（作者）' : ''}}</view>
+        <view class="date">{{item.created_time}}</view>
+        <view class="text">{{item.content}}</view>
+        <view class="re-comment-box" wx:if="{{item.child.length > 0}}">
+          <view class="re-comment" wx:for="{{item.child}}" wx:key="id" wx:for-item="child_item">
+            <image src="{{child_item.avatar}}" class="re-header"></image>
+            <view class="re-info">
+              <view class="nickname">{{child_item.nickname}}{{auth_id == child_item.uid ? '（作者）' : ''}}</view>
+              <view class="date">{{child_item.created_time}}</view>
+              <view class="re-re-btn" data-re_user="{{child_item}}" bindtap="show_input">回复</view>
+              <view class="re-text">
+                回复 @{{child_item.to_nickname}}：{{child_item.content}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="re-btn" data-re_user="{{item}}" bindtap="show_input">回复</view>
+    </view>
+    <view class="hr" wx:if="{{index != comment_list.length - 1}}"></view>
+  </view>
+
+  <view class="nodata" wx:if="{{comment_list.length == 0}}">
+    暂无评论
+  </view>
+
+  <view class="input-box" wx:if="{{release_focus}}" style="bottom: {{input_bottom}}px;">
+    <input bindconfirm="commentAdd" bindinput="bind_input" bindfocus="bind_focus" bindblur="hide_input" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="回复 {{re_name}}：" maxlength="100" class="re-input" focus="{{release_focus}}" adjust-position="{{false}}" />
+    <view bindtap="commentAdd" class="com-btn">发送</view>
+  </view>
+</view>

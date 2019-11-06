@@ -113,6 +113,15 @@
       <view class="menu-text">我的主页</view>
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
+    <navigator class="menu-item" url="/pages/my-needs/my-needs">
+      <view class="left-box">
+        <view class="icon-box">
+          <image src="/icons/menu1.png" class="icon-menu1"></image>
+        </view>
+      </view>
+      <view class="menu-text">我的需求</view>
+      <image src="/icons/you3.png" class="you"></image>
+    </navigator>
     <navigator class="menu-item" url="/pages/my-chuang/my-chuang">
       <view class="left-box">
         <view class="icon-box">

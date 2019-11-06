@@ -33,9 +33,6 @@ Page({
       });
     });
   },
-  onShow() {
-    // utils.select_tab_bar(this, 1);
-  },
   bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   },

@@ -462,7 +462,7 @@ button::after {
 }
 
 .form1 .form-item .title {
-  font-size: 36rpx;
+  font-size: 32rpx;
   color: #333;
   margin-bottom: 40rpx;
 }
@@ -1401,7 +1401,7 @@ button::after {
   top: 130rpx;
   right: 38rpx;
   font-size: 26rpx;
-  z-index: 1;
+  z-index: 2;
   background: #888;
   border-radius: 50%;
   opacity: 1;
