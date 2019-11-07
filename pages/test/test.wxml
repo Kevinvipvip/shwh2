@@ -1,19 +1,68 @@
-<view class='page_row top'>
-  <image class='goods' src='../../images/dsh.png'></image>
-  <view class='page_clu logistics'>
-    <text>物流公司: {{wuliu.company}}申通快递</text>
-    <text>物流单号: {{wuliu.nu}}4326665981311546542</text>
-    <text>官方电话: {{wuliu.phone}}95533</text>
+<view class="page">
+  <view class="need-list">
+    <view class="need">
+      <view class="auth-line">
+        <image src="/images/t-header.png" class="avatar"></image>
+        <view class="nickname">某某某</view>
+        <view class="role">設計師</view>
+        <view class="shu"></view>
+        <view class="time">11-30 16:40</view>
+      </view>
+      <view class="title one-line-ellipsis">我们是一个热爱设计的团队 我們努力让我们的能力跟上情怀</view>
+      <view class="desc two-line-ellipsis">我们坚信：无生活，不设计。我们提倡：热爱生活，尊重生活，来源于对生活的细腻体验才能更好的设计生活用...
+        因为生活，因为爱，我们设计！
+        行言产品设计分类垃圾桶，内置有双桶，摇盖的设计使用更便携，可分类装垃圾，干湿分离。
+        压圈、摇盖、分类、除臭功能四合一。
+        环保塑料材质制作的可分类垃圾桶；提倡垃圾分类。</view>
+      <view class="img-box three">
+        <image src="/images/t-chou2.png"></image>
+        <image src="/images/t-chou2.png"></image>
+        <image src="/images/t-chou2.png"></image>
+      </view>
+    </view>
+    <view class="need">
+      <view class="auth-line">
+        <image src="/images/t-header.png" class="avatar"></image>
+        <view class="nickname">某某某</view>
+        <view class="role">設計師</view>
+        <view class="shu"></view>
+        <view class="time">11-30 16:40</view>
+      </view>
+      <view class="title one-line-ellipsis">我们是一个热爱设计的团队 我們努力让我们的能力跟上情怀</view>
+      <view class="desc two-line-ellipsis">我们坚信：无生活，不设计。我们提倡：热爱生活，尊重生活，来源于对生活的细腻体验才能更好的设计生活用...
+        因为生活，因为爱，我们设计！
+        行言产品设计分类垃圾桶，内置有双桶，摇盖的设计使用更便携，可分类装垃圾，干湿分离。
+        压圈、摇盖、分类、除臭功能四合一。
+        环保塑料材质制作的可分类垃圾桶；提倡垃圾分类。</view>
+      <view class="img-box two">
+        <image src="/images/t-chou2.png"></image>
+        <image src="/images/t-chou2.png"></image>
+      </view>
+    </view>
+    <view class="need">
+      <view class="auth-line">
+        <image src="/images/t-header.png" class="avatar"></image>
+        <view class="nickname">某某某</view>
+        <view class="role">設計師</view>
+        <view class="shu"></view>
+        <view class="time">11-30 16:40</view>
+      </view>
+      <view class="title one-line-ellipsis">我们是一个热爱设计的团队 我們努力让我们的能力跟上情怀</view>
+      <view class="desc two-line-ellipsis">我们坚信：无生活，不设计。我们提倡：热爱生活，尊重生活，来源于对生活的细腻体验才能更好的设计生活用...
+        因为生活，因为爱，我们设计！
+        行言产品设计分类垃圾桶，内置有双桶，摇盖的设计使用更便携，可分类装垃圾，干湿分离。
+        压圈、摇盖、分类、除臭功能四合一。
+        环保塑料材质制作的可分类垃圾桶；提倡垃圾分类。</view>
+      <view class="img-box one">
+        <image src="/images/t-chou2.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
   </view>
 </view>
-<view class='br'></view>
-<block wx:for="{{wuliu}}" wx:key="index">
-  <view class='order'>
-    <view class='icon {{0==index?"in":"no_in"}}'></view>
-    <view class='logistics_centent page_clu'>
-      <text>{{item}},发往深圳太远客运中转部</text>
-      <text> {{wuliu.phone}}2017-12-11 23:16:12</text>
-    </view>
-    <view class='on'></view>
-  </view>
-</block>

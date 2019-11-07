@@ -47,8 +47,12 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 11,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
@@ -58,24 +62,10 @@
 					"scene": null
 				},
 				{
-					"id": 1,
-					"name": "角色列表",
-					"pathName": "pages/person-list/person-list",
-					"query": "type=1",
-					"scene": null
-				},
-				{
 					"id": -1,
 					"name": "发布创意",
 					"pathName": "pages/chuang-publish/chuang-publish",
 					"query": "type=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "设置",
-					"pathName": "pages/setting/setting",
-					"query": "",
 					"scene": null
 				},
 				{
@@ -132,6 +122,13 @@
 					"name": "物流",
 					"pathName": "pages/logistics/logistics",
 					"query": "id=12",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "测试2",
+					"pathName": "pages/test2/test2",
+					"query": "",
 					"scene": null
 				}
 			]

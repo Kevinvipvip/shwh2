@@ -20,6 +20,20 @@
     </swiper>
   </view>
 
+  <!-- 小喇叭 -->
+  <view class="gong-gao">
+    <view class="icon-box"><image src="/icons/voice.png"></image></view>
+    <image src="/icons/voice-tiao.png" class="tiao"></image>
+    <swiper autoplay="{{true}}"
+            vertical="{{true}}"
+            circular>
+      <swiper-item class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</swiper-item>
+      <swiper-item class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</swiper-item>
+      <swiper-item class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 金刚区 -->
   <view class="kingkong">
     <navigator url="/pages/person-list/person-list?type=1">
       <image src="/icons/musemu.png" class="musemu"></image>
@@ -30,6 +44,19 @@
     <navigator url="/pages/person-list/person-list?type=3">
       <image src="/icons/factory.png" class="factory"></image>
     </navigator>
+  </view>
+
+  <!-- 快单 -->
+  <view class="kuai-dan">
+    <view class="shang">
+      <image src="/images/need.png" class="wk"></image>
+      <view class="more">查看更多</view>
+    </view>
+    <view class="list">
+      <view class="dan"><navigator class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</navigator></view>
+      <view class="dan one-line-ellipsis"><navigator class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</navigator></view>
+      <view class="dan one-line-ellipsis"><navigator class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</navigator></view>
+    </view>
   </view>
 
   <!-- 投石 -->

@@ -2,6 +2,7 @@
   "pages": [
     "pages/auth/auth",
     "pages/test/test",
+    "pages/test2/test2",
     "pages/role-vip-open/role-vip-open",
     "pages/logistics/logistics",
     "pages/my-focus-list/my-focus-list",

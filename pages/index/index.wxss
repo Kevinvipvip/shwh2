@@ -42,6 +42,48 @@
   color: #2d2e31;
 }
 
+.gong-gao {
+  display: flex;
+  margin-top: 30rpx;
+  background: #fff;
+  border-radius: 8rpx;
+}
+
+.gong-gao .icon-box {
+  flex-shrink: 0;
+  width: 86rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 1rpx 20rpx 0 rgba(229, 229, 229, 0.65);
+}
+
+.gong-gao .tiao {
+  flex-shrink: 0;
+  width: 16rpx;
+  height: 60rpx;
+}
+
+.gong-gao .icon-box image {
+  width: 38rpx;
+  height: 32rpx;
+}
+
+.gong-gao swiper {
+  width: 0;
+  flex-grow: 1;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 11rpx;
+}
+
+.gong-gao swiper swiper-item {
+  color: #1a1a1a;
+  font-size: 26rpx;
+}
+
 .h-title {
   display: flex;
   justify-content: space-between;
@@ -63,7 +105,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 47rpx 0 0;
+  margin: 30rpx 0 0;
   background: #f5f5f5;
   padding: 40rpx 0;
   box-shadow: 0 1rpx 60rpx 0 rgba(211, 211, 211, 0.6);
@@ -92,6 +134,61 @@
 .kingkong .factory {
   width: 78rpx;
   height: 109rpx;
+}
+
+.kuai-dan {
+  margin-top: 52rpx;
+}
+
+.kuai-dan .shang {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.kuai-dan .shang .wk {
+  width: 110rpx;
+  height: 30rpx;
+}
+
+.kuai-dan .shang .more {
+  font-size: 26rpx;
+  opacity: 0.6;
+  color: #1a1a1a;
+}
+
+.kuai-dan .list {
+  margin-top: 39rpx;
+}
+
+.kuai-dan .list .dan {
+  margin-bottom: 23rpx;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.kuai-dan .list .dan::before {
+  content: '';
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  margin-right: 17rpx;
+  background: #313131;
+  flex-shrink: 0;
+}
+
+.kuai-dan .list .dan:last-child {
+  margin-bottom: 0;
+}
+
+.kuai-dan .list .dan navigator {
+  opacity: 0.8;
+  color: #lalala;
+  font-size: 26rpx;
+  flex-grow: 1;
 }
 
 .activity-box {

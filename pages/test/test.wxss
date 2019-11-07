@@ -1,53 +1,94 @@
-.goods{
-    margin: 50rpx;
-    height: 150rpx;
-    width: 150rpx;
-    border-radius: 15rpx;
-}
-.logistics{
-    margin-top: 70rpx;
-    font-size: 28rpx;
-}
-.br{
-    width: 95%;
-    margin-left: 2.5%;
-    margin-bottom: 30rpx;
-    background: #d0d0d0;
-    height: 1rpx;
+.page {
+    padding: 25rpx 24rpx 0;
+    box-sizing: border-box;
+    min-height: 100vh;
 }
 
-/* 下部分 */
-.logistics_centent{
-    position: absolute;
-    left: 100rpx;
-    font-size: 28rpx;
-    color: #666
+.need-list {
+    line-height: 1;
 }
-.icon{
-    width: 20rpx;
-    height: 20rpx;
-    background: white;
+
+.need-list .need {
+    padding-bottom: 22rpx;
+    border-bottom: 2rpx solid rgba(0, 0, 0, 0.03);
+    margin-bottom: 23rpx;
+}
+
+.need-list .need:last-child {
+    padding-bottom: 0;
+    bottom: 0;
+    margin-bottom: 0;
+}
+
+.need .auth-line {
+    display: flex;
+    align-items: center;
+}
+
+.need .auth-line .avatar {
+    width: 50rpx;
+    height: 50rpx;
     border-radius: 50%;
-    display: inline-block;
-    margin:0rpx 20rpx 0rpx 40rpx;
-}
-.in{
-    border: 1rpx solid red;
-    animation: my_animation 2s infinite;
-}
-@keyframes my_animation{
-    100% {
-        transform: scale(2);
-        background-color: transparent;
-    }
 }
 
-.no_in{
-    border: 1rpx solid #d0d0d0;
+.need .auth-line .nickname {
+    margin-left: 18rpx;
+    font-size: 26rpx;
+    color: #999;
 }
-.on{
-    background: #d0d0d0;
-    height: 100rpx;
-    width: 1px;
-    margin-left: 50rpx;
+
+.need .auth-line .role {
+    margin-left: 16rpx;
+    color: #f49927;
+    font-size: 22rpx;
+}
+
+.need .auth-line .shu {
+    margin-left: 13rpx;
+    width: 2rpx;
+    height: 18rpx;
+    background: #999;
+}
+
+.need .auth-line .time {
+    margin-left: 10rpx;
+    font-size: 22rpx;
+    color: #999;
+}
+
+.need .title {
+    margin-top: 22rpx;
+    color: #lalala;
+    font-size: 40rpx;
+}
+
+.need .desc {
+    margin-top: 25rpx;
+    font-size: 28rpx;
+    line-height: 42rpx;
+    color: #333;
+}
+
+.need .img-box {
+    margin-top: 15rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.need .img-box image {
+}
+
+.need .img-box.three image {
+    width: 230rpx;
+    height: 153.33rpx;
+}
+
+.need .img-box.two image {
+    width: 348rpx;
+    height: 232rpx;
+}
+
+.need .img-box.one image {
+    width: 100%;
+    height: 468rpx;
 }

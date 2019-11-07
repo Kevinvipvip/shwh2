@@ -129,7 +129,6 @@ button::after {
 /* more-line end */
 
 /* 需求列表（投石） start */
-
 .activity-list {
   margin-top: 24rpx;
 }

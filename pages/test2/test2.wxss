@@ -1,0 +1,112 @@
+.page {
+    padding: 0 24rpx;
+}
+
+.need {
+    padding-top: 26rpx;
+}
+
+.need .title {
+    line-height: 1.5;
+    font-size: 40rpx;
+    color: #lalala;
+}
+
+.need .user-info {
+    margin-top: 14rpx;
+    display: flex;
+    align-items: center;
+}
+
+.need .user-info .avatar {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+
+.need .user-info .you {
+    margin-left: 17rpx;
+}
+
+.need .user-info .you .nr {
+
+}
+
+.need .user-info .you .nr .nickname {
+
+}
+
+.need .user-info .you .nr .role {
+
+}
+
+.need .user-info .you .nr .ling {
+
+}
+
+.need .user-info .you .nr .ling .time {
+
+}
+
+.need .user-info .you .nr .ling .ren {
+}
+
+.need .desc {
+
+}
+
+.need .img-box {
+
+}
+
+.need .img-box image {
+    height: 0;
+}
+
+.message {
+
+}
+
+.message .title {
+
+}
+
+.message .send {
+
+}
+
+.message .send .avatar {
+
+}
+
+.message .send .shuo {
+}
+
+.message .comment-list {
+}
+
+.message .comment-list .comment {
+
+}
+
+.message .comment-list .comment .user-line {
+}
+
+.message .comment-list .comment .user-line .left {
+}
+
+.message .comment-list .comment .user-line .left .avatar {
+
+}
+
+.message .comment-list .comment .user-line .left .nickname {
+}
+
+.message .comment-list .comment .user-line .left .role {
+}
+
+.message .comment-list .comment .user-line .time {
+}
+
+.message .comment-list .comment .desc {
+}
