@@ -104,8 +104,8 @@
       {
         "pagePath": "pages/needs/needs",
         "text": "需求",
-        "iconPath": "icons/note.png",
-        "selectedIconPath": "icons/note-active.png"
+        "iconPath": "icons/need.png",
+        "selectedIconPath": "icons/need-active.png"
       },
       {
         "pagePath": "pages/notes/notes",

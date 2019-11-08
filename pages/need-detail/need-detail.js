@@ -3,29 +3,61 @@ const app = getApp();
 Page({
   data: {
     my_uid: 0,
+    my_avatar: '',
 
     content: '',
     xuqiu_id: 0,
-    note: {},
+    xuqiu: {},
     release_focus: false,
     input_bottom: 0,
+
+    comment_list: [],
 
     focus: false,  // 是否关注
     focus_loading: false
   },
   onLoad(options) {
     this.data.xuqiu_id = options.id;
-    this.setData({ my_uid: app.user_data.uid });
-    this.xuqiuDetail(() => {
-      this.ifFocus();
+    this.setData({
+      my_uid: app.user_data.uid,
+      my_avatar: app.user_data.avatar
     });
-    this.ifCollect();
+    this.xuqiuDetail();
+    this.commentList();
   },
   xuqiuDetail(callback) {
     app.ajax('xuqiu/xuqiuDetail', { xuqiu_id: this.data.xuqiu_id }, (res) => {
       app.avatar_format(res);
+      app.avatar_format(res.comment_list);
       app.format_img(res.pics);
-      this.setData({ need: res });
+      switch (res.role) {
+        case 1:
+          res.role_text = '博物馆';
+          break;
+        case 2:
+          res.role_text = '设计师';
+          break;
+        case 3:
+          res.role_text = '工厂';
+          break;
+      }
+      app.ago_format(res, 'create_time');
+      app.ago_format(res.comment_list, 'create_time');
+      for (let i = 0; i < res.comment_list.length; i++) {
+        switch (res.comment_list[i].role) {
+          case 1:
+            res.comment_list[i].role_text = '博物馆';
+            break;
+          case 2:
+            res.comment_list[i].role_text = '设计师';
+            break;
+          case 3:
+            res.comment_list[i].role_text = '工厂';
+            break;
+        }
+      }
+
+      this.setData({ xuqiu: res });
       if (callback) {
         callback();
       }
@@ -55,47 +87,38 @@ Page({
       app.ajax('xuqiu/commentAdd', post, () => {
         app.toast('评论已发表');
         this.setData({ content: '' });
-        this.xuqiuDetail();
-      });
-    }
-  },
-  // 判断是否关注
-  ifFocus() {
-    let post = {
-      token: app.user_data.token,
-      to_uid: this.data.need.uid
-    };
-
-    app.ajax('note/ifFocus', post, (res) => {
-      this.setData({ focus: res });
-    });
-  },
-  // 关注/取消关注
-  iFocus() {
-    if (!this.data.focus_loading) {
-      this.data.focus_loading = true;
-
-      let post = {
-        token: app.user_data.token,
-        to_uid: this.data.need.uid
-      };
-
-      app.ajax('note/iFocus', post, (res) => {
-        this.setData({ focus: res });
-      }, null, () => {
-        this.data.focus_loading = false;
+        this.commentList();
       });
     }
   },
   // 去他人主页
-  to_person() {
+  to_person(e) {
     app.page_open(() => {
-      wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.need.uid });
+      wx.navigateTo({ url: '/pages/person-page/person-page?tel=1&uid=' + e.currentTarget.dataset.uid });
     });
   },
   // 分享
   onShareAppMessage() {
     wx.showShareMenu();
     return { path: app.share_path() };
+  },
+  // 预览图片
+  preview(e) {
+    wx.previewImage({
+      current: this.data.xuqiu.pics[e.currentTarget.dataset.index],
+      urls: this.data.xuqiu.pics
+    });
+  },
+  // 需求评论列表
+  commentList() {
+    let post = {
+      xuqiu_id: this.data.xuqiu_id
+    };
+
+    app.ajax('xuqiu/commentList', post, res => {
+      app.avatar_format(res);
+      app.ago_format(res, 'create_time');
+      this.setData({ comment_list: res });
+    });
   }
 });

@@ -231,4 +231,4 @@ Page({
       wx.navigateTo({ url: '/pages/note-detail/note-detail?id=' + note.id });
     }
   }
-})
+});

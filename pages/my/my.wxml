@@ -116,7 +116,7 @@
     <navigator class="menu-item" url="/pages/my-needs/my-needs">
       <view class="left-box">
         <view class="icon-box">
-          <image src="/icons/menu1.png" class="icon-menu1"></image>
+          <image src="/icons/menu17.png" class="icon-menu17"></image>
         </view>
       </view>
       <view class="menu-text">我的需求</view>

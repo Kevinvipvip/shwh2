@@ -1,25 +1,41 @@
-page {
-  background: #fff;
-}
-
-.main {
-  padding-top: 110rpx;
-  min-height: 100vh;
+.page {
+  padding: 25rpx 24rpx 0;
   box-sizing: border-box;
-  background: #f6f7f9;
+  min-height: 100vh;
+  padding-top: 127rpx;
 }
 
-.main .search-box {
+.pub-round-btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: #fff;
+   border-radius: 50%;
+   box-shadow: 0 0 4rpx 5rpx #888;
+   bottom: 50rpx;
+   top: auto;
+   box-sizing: border-box;
+   width: 80rpx;
+   height: 80rpx;
+ }
+
+.pub-round-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.search-box {
   background: #fff;
   position: fixed;
+  left: 0;
   top: 0;
   width: 100%;
   padding: 20rpx 0;
   z-index: 1;
-  box-shadow: 0 3rpx 10rpx 0 #eee;
+  border-bottom: 2rpx solid #eee;
 }
 
-.main .search {
+.search {
   background: #f5f5f5;
   border-radius: 40rpx;
   height: 70rpx;
@@ -29,7 +45,7 @@ page {
   padding-left: 15rpx;
 }
 
-.main .search .iconfont {
+.search .iconfont {
   font-size: 40rpx;
   position: relative;
   top: -4rpx;
@@ -38,92 +54,97 @@ page {
   flex-shrink: 1;
 }
 
-.main .search input {
+.search input {
   margin-left: 10rpx;
   font-size: 26rpx;
   flex-grow: 1;
 }
 
-.list {
-  background: #f6f7f9;
-  display: flex;
-  padding: 17rpx 20rpx 0;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.need-list {
+  line-height: 1;
 }
 
-.list > view {
-  width: 48.5%;
+.need-list .need {
+  padding-bottom: 34rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.03);
+  margin-bottom: 23rpx;
 }
 
-.list > view .note {
-  border-radius: 10rpx;
-  overflow: hidden;
-  box-shadow: 0 2rpx 8rpx 2rpx #e2e3e5;
-  margin-top: 22rpx;
-  background: #fff;
+.need-list .need:last-child {
+  padding-bottom: 0;
+  bottom: 0;
+  margin-bottom: 0;
 }
 
-.list > view .note:first-child {
-  margin-top: 0;
-}
-
-.list > view .note .img-box {
-  width: 100%;
-  height: 0;
-  position: relative;
-}
-
-.list > view .note .img-box image {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.list > view .note .word {
-  font-size: 24rpx;
-  padding: 10rpx 15rpx;
-  line-height: 1.5;
-  font-weight: bold;
-  color: #222;
-  letter-spacing: 2rpx;
-}
-
-.list > view .note .xia {
-  display: flex;
-  justify-content: space-between;
-  padding: 10rpx 20rpx 20rpx;
-}
-
-.list > view .note .xia .left {
+.need .auth-line {
   display: flex;
   align-items: center;
-  font-size: 22rpx;
 }
 
-.list > view .note .xia .header {
+.need .auth-line .avatar {
   width: 50rpx;
   height: 50rpx;
   border-radius: 50%;
-  margin-right: 9rpx;
 }
 
-.list > view .note .xia .right {
-  display: flex;
-  align-items: center;
-  font-size: 24rpx;
+.need .auth-line .nickname {
+  margin-left: 18rpx;
+  font-size: 26rpx;
+  color: #999;
 }
 
-.list > view .note .xia .right .iconfont {
-  margin-right: 6rpx;
-  position: relative;
-  top: -7rpx;
+.need .auth-line .role {
+  margin-left: 16rpx;
+  color: #f49927;
+  font-size: 22rpx;
+}
+
+.need .auth-line .shu {
+  margin-left: 13rpx;
+  width: 2rpx;
+  height: 18rpx;
+  background: #999;
+}
+
+.need .auth-line .time {
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.need .title {
+  margin-top: 22rpx;
+  color: #1a1a1a;
+  font-size: 40rpx;
+}
+
+.need .desc {
+  margin-top: 25rpx;
   font-size: 28rpx;
+  line-height: 42rpx;
+  color: #333;
 }
 
-.list > view .note .xia .right .iconxin1 {
-  color: red;
+.need .img-box {
+  margin-top: 15rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.need .img-box image {
+}
+
+.need .img-box.three image {
+  width: 230rpx;
+  height: 153.33rpx;
+}
+
+.need .img-box.two image {
+  width: 348rpx;
+  height: 232rpx;
+}
+
+.need .img-box.one image {
+  width: 100%;
+  height: 468rpx;
 }

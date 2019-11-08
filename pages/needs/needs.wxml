@@ -2,59 +2,41 @@
   <view class="image"></view>
 </view>
 
-<view class="main" wx:else>
+<view class="page">
+  <!-- 搜索框 -->
   <view class="search-box">
     <view class="search">
       <icon bindtap="search_notes" class="iconfont iconsearch"/>
-      <input bindinput="bind_input" bindconfirm="search_notes" data-name="search" placeholder="搜索笔记" maxlength="8"/>
+      <input bindinput="bind_input" bindconfirm="search_notes" data-name="search" placeholder="搜索需求" maxlength="8"/>
     </view>
   </view>
 
   <navigator url="/pages/need-publish/need-publish" class="pub-round-btn" wx:if="{{role != 0}}">
-    <view>发布</view>
-    <view>需求</view>
+    <image src="/icons/big-plus.png"></image>
   </navigator>
 
-  <view class="list">
-    <view class="left">
-      <navigator url="/pages/need-detail/need-detail?id={{item.id}}" class="note" wx:for="{{left_note_list}}" wx:key="id">
-        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.pics[0]}}?imageView2/2/w/344" mode="aspectFill" lazy-load="{{true}}"></image>
-        </view>
-        <view class="word">
-          {{item.title}}
-        </view>
-        <view class="xia">
-          <view class="left">
-            <image src="{{item.avatar}}" class="header"></image>
-            {{item.nickname}}
-          </view>
-        </view>
-      </navigator>
-    </view>
-    <view class="right">
-      <navigator url="/pages/need-detail/need-detail?id={{item.id}}" class="note" wx:for="{{right_note_list}}" wx:key="id">
-        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.pics[0]}}?imageView2/2/w/344" mode="aspectFill" lazy-load="{{true}}"></image>
-        </view>
-        <view class="word">
-          {{item.title}}
-        </view>
-        <view class="xia">
-          <view class="left">
-            <image src="{{item.avatar}}" class="header"></image>
-            {{item.nickname}}
-          </view>
-        </view>
-      </navigator>
-    </view>
+  <!-- 需求列表 -->
+  <view class="need-list">
+    <navigator url="/pages/need-detail/need-detail?id={{item.id}}" wx:for="{{xuqiu_list}}" wx:key="id" class="need">
+      <view class="auth-line">
+        <image src="{{item.avatar}}" class="avatar"></image>
+        <view class="nickname">{{item.nickname}}</view>
+        <view class="role">{{item.role_text}}</view>
+        <view class="shu"></view>
+        <view class="time">{{item.create_time}}</view>
+      </view>
+      <view class="title one-line-ellipsis">{{item.title}}</view>
+      <view class="desc two-line-ellipsis">{{item.content}}</view>
+      <view class="img-box {{item.img_class}}">
+        <image wx:for="{{item.pics}}" wx:for-item="pic" src="{{pic}}"></image>
+      </view>
+    </navigator>
   </view>
 
   <view class="nomore" wx:if="{{nomore}}">
     已经没有更多了哦
   </view>
-
   <view class="nodata" wx:if="{{nodata}}">
-    暂无笔记
+    暂无数据
   </view>
 </view>

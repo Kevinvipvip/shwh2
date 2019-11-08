@@ -8,10 +8,7 @@ Page({
     auth: false,
     full_loading: true,
 
-    left_height: 0,
-    right_height: 0,
-    left_note_list: [],
-    right_note_list: [],
+    xuqiu_list: [],
     search: '',
     page: 1,
     nomore: false,
@@ -28,7 +25,7 @@ Page({
         role: app.user_data.role
       });
       wx.showNavigationBarLoading();
-      this.getNoteList(() => {
+      this.xuqiuList(() => {
         wx.hideNavigationBarLoading();
       });
     });
@@ -37,22 +34,18 @@ Page({
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   },
   search_notes() {
-    this.data.left_height = 0;
-    this.data.right_height = 0;
     this.data.page = 1;
-    this.data.left_note_list = [];
-    this.data.right_note_list = [];
+    this.data.xuqiu_list = [];
 
     this.setData({
       nomore: false,
       nodata: false
     });
 
-    this.getNoteList();
+    this.xuqiuList();
   },
-  getNoteList(complete) {
+  xuqiuList(complete) {
     let post = {
-      token: app.user_data.token,
       search: this.data.search.trim(),
       page: this.data.page,
       perpage: 10
@@ -62,35 +55,47 @@ Page({
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
-            left_note_list: [],
-            right_note_list: [],
-            nodata: true
+            xuqiu_list: [],
+            nodata: true,
+            nomore: false
           });
         } else {
-          this.setData({ nomore: true });
+          this.setData({
+            nodata: false,
+            nomore: true
+          })
         }
       } else {
         app.avatar_format(res);
-
+        app.ago_format(res, 'create_time');
         for (let i = 0; i < res.length; i++) {
           app.format_img(res[i].pics);
-
-          // 测试用
-          // console.log(res[i].id, res[i].pics[0], res[i].width, res[i].height);
-
-          if (this.data.left_height <= this.data.right_height) {
-            this.data.left_note_list.push(res[i]);
-            this.data.left_height += res[i].height / res[i].width;
-          } else {
-            this.data.right_note_list.push(res[i]);
-            this.data.right_height += res[i].height / res[i].width;
+          switch (res[i].role) {
+            case 1:
+              res[i].role_text = '博物馆';
+              break;
+            case 2:
+              res[i].role_text = '设计师';
+              break;
+            case 3:
+              res[i].role_text = '工厂';
+              break;
           }
-        }
 
-        this.setData({
-          left_note_list: this.data.left_note_list,
-          right_note_list: this.data.right_note_list
-        });
+          switch (res[i].pics.length) {
+            case 1:
+              res[i].img_class = 'one';
+              break;
+            case 2:
+              res[i].img_class = 'two';
+              break;
+            default:
+              res[i].img_class = 'three';
+              break;
+          }
+          res[i].pics = res[i].pics.slice(0, 3);
+        }
+        this.setData({ xuqiu_list: this.data.xuqiu_list.concat(res) });
       }
 
       this.data.page++;
@@ -105,16 +110,15 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      this.data.left_height = 0;
-      this.data.right_height = 0;
-      this.data.nomore = false;
-      this.data.nodata = false;
       this.data.page = 1;
-      this.data.left_note_list = [];
-      this.data.right_note_list = [];
+      this.data.xuqiu_list = [];
+      this.setData({
+        nomore: false,
+        nodata: false
+      });
 
       wx.showNavigationBarLoading();
-      this.getNoteList(() => {
+      this.xuqiuList(() => {
         this.data.loading = false;
 
         wx.hideNavigationBarLoading();
@@ -128,23 +132,12 @@ Page({
       if (!this.data.loading) {
         this.data.loading = true;
         wx.showNavigationBarLoading();
-        this.getNoteList(() => {
+        this.xuqiuList(() => {
           wx.hideNavigationBarLoading();
           this.data.loading = false;
         });
       }
     }
-  },
-  // 发布笔记后刷新列表，区别于下拉刷新（不需要loading等操作）
-  refresh() {
-    this.data.left_height = 0;
-    this.data.right_height = 0;
-    this.data.nomore = false;
-    this.data.nodata = false;
-    this.data.page = 1;
-    this.data.left_note_list = [];
-    this.data.right_note_list = [];
-    this.getNoteList();
   },
   // 分享
   onShareAppMessage() {

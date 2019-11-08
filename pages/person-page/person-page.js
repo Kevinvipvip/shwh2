@@ -3,6 +3,7 @@ const app = getApp();
 Page({
   data: {
     full_loading: true,
+    tel_show: false,
     uid: 0,
     role: 0,
     role_text: '',  // 博物馆/设计师/工厂/普通用户
@@ -55,6 +56,7 @@ Page({
   onLoad(options) {
     this.data.uid = options.uid;
     this.setData({
+      tel_show: !!options.tel,
       uid: options.uid,
       my_uid: app.user_data.uid,
       my_role: app.user_data.role

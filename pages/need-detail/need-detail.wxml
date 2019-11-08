@@ -1,37 +1,49 @@
-<view>
-  <view class="top">
-    <view bindtap="to_person" class="left">
-      <image src="{{need.avatar}}" class="header"></image>
-      {{need.nickname}}
+<view class="page">
+  <view class="need">
+    <view class="title">{{xuqiu.title}}</view>
+    <view class="user-info">
+      <image src="{{xuqiu.avatar}}" class="avatar"></image>
+      <view class="you">
+        <view class="nr">
+          <view class="nickname">{{xuqiu.nickname}}</view>
+          <view class="role">{{xuqiu.role_text}}</view>
+        </view>
+        <view class="ling">
+          <view class="time">{{xuqiu.create_time}}</view>
+          <view class="ren">{{xuqiu.comment_count}}人留言</view>
+        </view>
+      </view>
     </view>
-    <button bindtap="iFocus" class="{{focus ? 'focus' : ''}}" wx:if="{{my_uid != need.uid}}">{{focus ? '已关注' : '关注'}}</button>
-  </view>
-  <swiper
-    indicator-dots="{{true}}"
-    indicator-color="{{'#d64c69'}}"
-    indicator-active-color="{{'#fff'}}"
-    duration="{{300}}"
-    class="note-swiper"
-  >
-    <swiper-item wx:for="{{need.pics}}" wx:key="index">
-      <image src="{{item}}" mode="aspectFill"></image>
-    </swiper-item>
-  </swiper>
-  <view class="info">
-    <view class="desc">{{need.content}}</view>
-    <navigator url="/pages/need-comment/need-comment?need_id={{need.id}}&auth_id={{need.uid}}" class="comment">
-      <view class="total">
-        共 {{need.comment_count}} 条评论
-      </view>
-      <view class="item" wx:for="{{need.comment_list}}" wx:key="id">
-        <text class="nickname">{{item.nickname}}：</text>
-        <text class="content">{{item.content}}</text>
-      </view>
-    </navigator>
-    <view bindtap="show_input" class="add-comment">
-      添加评论...
+    <view class="desc">{{xuqiu.content}}</view>
+    <view class="img-box" wx:if="{{xuqiu.pics.length > 0}}">
+      <image bindtap="preview" data-index="{{index}}" wx:for="{{xuqiu.pics}}" wx:key="index" src="{{item}}" mode="widthFix"></image>
     </view>
   </view>
+
+  <view class="message">
+    <view class="title">所有留言（{{xuqiu.comment_count}}）</view>
+    <view bindtap="show_input" class="send">
+      <image src="{{my_avatar}}" class="avatar"></image>
+      <view class="shuo">这个需求我想接  我来说几句</view>
+    </view>
+    <view class="comment-list" wx:if="{{xuqiu.comment_list.length > 0}}">
+      <view class="comment" wx:for="{{comment_list}}">
+        <view class="user-line">
+          <view class="left">
+            <image bindtap="to_person" data-uid="{{item.uid}}" src="{{item.avatar}}" class="avatar"></image>
+            <view class="nickname">{{item.nickname}}</view>
+            <view class="role">{{item.role_text}}</view>
+          </view>
+          <view class="time">{{item.create_time}}</view>
+        </view>
+        <view class="desc">{{item.content}}</view>
+      </view>
+    </view>
+    <view class="no-comm" wx:else>
+      暂无留言
+    </view>
+  </view>
+
   <view class="input-box" wx:if="{{release_focus}}" style="bottom: {{input_bottom}}px;">
     <input bindconfirm="commentAdd" bindinput="bind_input" bindfocus="bind_focus" bindblur="hide_input" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="写评论..." maxlength="100" class="re-input" focus="{{release_focus}}" />
     <view bindtap="commentAdd" class="com-btn">发送</view>

@@ -1,180 +1,152 @@
-page {
-    background: #fff;
-    min-height: 100vh;
+.page {
+  padding: 25rpx 24rpx 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.need-list {
+  line-height: 1;
 }
 
 .pub-round-btn {
-    top: 89rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4rpx 5rpx #888;
+  bottom: 50rpx;
+  top: auto;
+  box-sizing: border-box;
+  width: 80rpx;
+  height: 80rpx;
 }
 
-.main {
-    box-sizing: border-box;
-    background: #f6f7f9;
-    min-height: 100vh;
+.pub-round-btn image {
+  width: 40rpx;
+  height: 40rpx;
 }
 
-.tab {
-    color:#666;
-    display:flex;
-    justify-content:space-around;
-    border-bottom:1rpx solid #eee;
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    width: 100%;
+.need-list .need {
+  padding-bottom: 34rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.03);
+  margin-bottom: 23rpx;
+  position: relative;
 }
 
-.tab .tab-item {
-    font-size:28rpx;
-    line-height:2.6;
-    padding:0 5rpx;
+.need .btn-box {
+  display: flex;
+  position: absolute;
+  right: 15rpx;
+  bottom: 15rpx;
+  z-index: 1;
 }
 
-.tab .tab-item.active {
-    color: #ff9f38;
+.need .btn-box > view {
+  margin-right: 15rpx;
 }
 
-.main .search-box {
-    background: #fff;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding-bottom: 20rpx;
-    z-index: 1;
-    box-shadow:0 3rpx 10rpx 0 #eee;
+.need .btn-box > view:last-child {
+  margin-right: 0;
 }
 
-.main .search {
-    background: #f5f5f5;
-    border-radius: 40rpx;
-    height: 70rpx;
-    margin: 0 20rpx;
-    display: flex;
-    align-items: center;
-    padding-left: 15rpx;
+.need .btn-box .status {
+  padding: 8rpx 18rpx;
+  background: #ddd;
+  border-radius: 5rpx;
 }
 
-.main .search .iconfont {
-    font-size:40rpx;
-    position:relative;
-    top:-4rpx;
-    margin-left:5rpx;
-    color: #9c9c9c;
+.need .btn-box .no {
+  color: red;
 }
 
-.main .search input {
-    margin-left: 10rpx;
-    font-size: 26rpx;
+.need .btn-box .wait {
+  color: #ff7a09;
 }
 
-.list {
-    background: #f6f7f9;
-    display: flex;
-    padding: 17rpx 20rpx 0;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.need .btn-box .edit {
+  padding: 8rpx 18rpx;
+  background: #ddd;
+  border-radius: 5rpx;
+  color: #666;
 }
 
-.list > view {
-    width: 48.5%;
+.need-list .need:last-child {
+  padding-bottom: 0;
+  bottom: 0;
+  margin-bottom: 0;
 }
 
-.list > view .note {
-    border-radius: 10rpx;
-    overflow: hidden;
-    box-shadow:0 2rpx 8rpx 2rpx #e2e3e5;
-    margin-top: 22rpx;
-    background: #fff;
-    position: relative;
-    padding-top: 68rpx;
+.need .auth-line {
+  display: flex;
+  align-items: center;
 }
 
-.list > view .note .status {
-    position: absolute;
-    right: 15rpx;
-    top: 15rpx;
-    padding: 8rpx 18rpx;
-    background: #ddd;
-    border-radius: 5rpx;
-    z-index: 1;
+.need .auth-line .avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
 }
 
-.list > view .note .no {
-    color: red;
+.need .auth-line .nickname {
+  margin-left: 18rpx;
+  font-size: 26rpx;
+  color: #999;
 }
 
-.list > view .note .wait {
-    color: #ff7a09;
+.need .auth-line .role {
+  margin-left: 16rpx;
+  color: #f49927;
+  font-size: 22rpx;
 }
 
-.list > view .note .edit {
-    position: absolute;
-    left: 15rpx;
-    top: 15rpx;
-    padding: 8rpx 18rpx;
-    background: #ddd;
-    border-radius: 5rpx;
-    color: #666;
-    z-index: 1;
+.need .auth-line .shu {
+  margin-left: 13rpx;
+  width: 2rpx;
+  height: 18rpx;
+  background: #999;
 }
 
-.list > view .note:first-child {
-    margin-top: 0;
+.need .auth-line .time {
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  color: #999;
 }
 
-.list > view .note .img-box {
-    width: 100%;
-    height: 0;
-    position: relative;
+.need .title {
+  margin-top: 22rpx;
+  color: #1a1a1a;
+  font-size: 40rpx;
 }
 
-.list > view .note .img-box image {
-    width:100%;
-    height:100%;
-    position:absolute;
-    left:0;
-    top:0;
+.need .desc {
+  margin-top: 25rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #333;
 }
 
-.list > view .note .word {
-    font-size: 24rpx;
-    padding: 10rpx 15rpx;
-    line-height: 1.5;
-    font-weight: bold;
-    color: #222;
-    letter-spacing: 2rpx;
+.need .img-box {
+  margin-top: 15rpx;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 
-.list > view .note .xia {
-    display: flex;
-    justify-content: space-between;
-    padding: 10rpx 20rpx 20rpx;
+.need .img-box image {
 }
 
-.list > view .note .xia .left {
-    display: flex;
-    align-items: center;
-    font-size: 22rpx;
+.need .img-box.three image {
+  width: 230rpx;
+  height: 153.33rpx;
 }
 
-.list > view .note .xia .header {
-    width: 50rpx;
-    height: 50rpx;
-    border-radius: 50%;
-    margin-right: 9rpx;
+.need .img-box.two image {
+  width: 348rpx;
+  height: 232rpx;
 }
 
-.list > view .note .xia .right {
-    display: flex;
-    align-items: center;
-    font-size: 24rpx;
-}
-
-.list > view .note .xia .right .iconfont {
-    margin-right:6rpx;
-    position:relative;
-    top:-7rpx;
-    font-size:28rpx;
+.need .img-box.one image {
+  width: 100%;
+  height: 468rpx;
 }

@@ -11,9 +11,7 @@ Page({
     pics: [],
     reason: '',
 
-    status: 0,  // 0.审核中 1.通过审核 2.未通过 （编辑需求时用）
-
-    flex_pad: []
+    status: 0  // 0.审核中 1.通过审核 2.未通过 （编辑需求时用）
   },
   onLoad(options) {
     this.setData({ full_loading: false });
@@ -40,8 +38,7 @@ Page({
         content_count: res.content.length,
         pics: pics,
         reason: res.reason,
-        status: res.status,
-        flex_pad: app.null_arr(res.pics.length + 1, 3)
+        status: res.status
       });
     });
   },
@@ -51,10 +48,7 @@ Page({
     let index = e.currentTarget.dataset.deindex;
     let pics = this.data.pics;
     pics.splice(index, 1);
-    that.setData({
-      pics: pics,
-      flex_pad: app.null_arr(pics.length + 1, 3)
-    });
+    that.setData({ pics: pics });
   },
   // 上传图片
   up_pics() {
@@ -71,10 +65,7 @@ Page({
           let tname = app.qiniu_tname() + res[i].ext;
           app.qiniu_upload(res[i].path, tname, () => {
             this.data.pics.push({ pic: app.format_img(tname) });
-            this.setData({
-              pics: this.data.pics,
-              flex_pad: app.null_arr(this.data.pics.length + 1, 3)
-            });
+            this.setData({ pics: this.data.pics });
             up_succ++;
 
             if (up_succ === res.length) {
@@ -101,19 +92,22 @@ Page({
       app.toast('请填写需求标题');
     } else if (!data.content.trim()) {
       app.toast('请填写需求内容');
-    } else if (data.pics.length === 0) {
-      app.toast('请至少上传一张图片');
     } else {
       app.collectFormid(e.detail.formId);
+
+      let pics = this.get_img_arr();
 
       let post = {
         title: data.title,
         content: data.content,
-        token: app.user_data.token,
-        pics: this.get_img_arr(),
-        width: data.pics[0].width,
-        height: data.pics[0].height
+        token: app.user_data.token
       };
+
+      if (pics.length > 0) {
+        post.pics = pics;
+        post.width = data.pics[0].width;
+        post.height = data.pics[0].height;
+      }
 
       let cmd;
       if (data.id !== 0) {
@@ -137,9 +131,9 @@ Page({
           });
         } else {
           app.modal('发布成功，将进入审核，请耐心等待', () => {
-            let notes = app.get_page('pages/my-needs/my-needs');
-            if (notes) {
-              notes.refresh();
+            let needs = app.get_page('pages/my-needs/my-needs');
+            if (needs) {
+              needs.refresh();
               wx.navigateBack({ delta: 1 });
             } else {
               wx.redirectTo({ url: '/pages/my-needs/my-needs' });

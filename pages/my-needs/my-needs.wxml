@@ -2,49 +2,30 @@
   <view class="image"></view>
 </view>
 
-<view class="main" wx:else>
-  <navigator url="/pages/need-publish/need-publish" class="pub-round-btn">
-    <view>发布</view>
-    <view>需求</view>
+<view class="page">
+  <navigator url="/pages/need-publish/need-publish" class="pub-round-btn" wx:if="{{role != 0}}">
+    <image src="/icons/big-plus.png"></image>
   </navigator>
-  <view class="list">
-    <view class="left">
-      <view bindtap="to_detail" data-need="{{item}}" class="note" wx:for="{{left_need_list}}"
-            wx:key="id">
 
-        <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
-        <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
-        <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
-
-        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
-        </view>
-        <view class="word">
-          {{item.title}}
-        </view>
-        <view class="xia">
-          <view class="left">
-            {{item.nickname}}
-          </view>
-        </view>
+  <!-- 需求列表 -->
+  <view class="need-list">
+    <view bindtap="to_detail" data-need="{{item}}" wx:for="{{xuqiu_list}}" wx:key="id" class="need">
+      <view class="auth-line">
+        <image src="{{item.avatar}}" class="avatar"></image>
+        <view class="nickname">{{item.nickname}}</view>
+<!--        <view class="role">{{item.role_text}}</view>-->
+        <view class="shu"></view>
+        <view class="time">{{item.create_time}}</view>
       </view>
-    </view>
-    <view class="right">
-      <view bindtap="to_detail" data-need="{{item}}" class="note" wx:for="{{right_need_list}}"
-            wx:key="id">
-        <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
-        <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
-        <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
-        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
-        </view>
-        <view class="word">
-          {{item.title}}
-        </view>
-        <view class="xia">
-          <view class="left">
-            {{item.nickname}}
-          </view>
+      <view class="title one-line-ellipsis">{{item.title}}</view>
+      <view class="desc two-line-ellipsis">{{item.content}}</view>
+      <view class="img-box {{item.img_class}}">
+        <image wx:for="{{item.pics}}" wx:for-item="pic" src="{{pic}}"></image>
+
+        <view class="btn-box">
+          <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
+          <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
+          <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
         </view>
       </view>
     </view>
@@ -53,8 +34,7 @@
   <view class="nomore" wx:if="{{nomore}}">
     已经没有更多了哦
   </view>
-
   <view class="nodata" wx:if="{{nodata}}">
-    暂无需求
+    暂无数据
   </view>
 </view>

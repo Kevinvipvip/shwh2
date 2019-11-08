@@ -27,9 +27,7 @@
     <swiper autoplay="{{true}}"
             vertical="{{true}}"
             circular>
-      <swiper-item class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</swiper-item>
-      <swiper-item class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</swiper-item>
-      <swiper-item class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</swiper-item>
+      <swiper-item wx:for="{{xuqiu_list}}" wx:key="id"><navigator class="one-line-ellipsis" url="/pages/need-detail/need-detail?id={{item.id}}">{{item.title}}</navigator></swiper-item>
     </swiper>
   </view>
 
@@ -50,12 +48,12 @@
   <view class="kuai-dan">
     <view class="shang">
       <image src="/images/need.png" class="wk"></image>
-      <view class="more">查看更多</view>
+      <view class="more">
+        <navigator url="/pages/needs/needs" open-type="switchTab">查看更多</navigator>
+      </view>
     </view>
     <view class="list">
-      <view class="dan"><navigator class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</navigator></view>
-      <view class="dan one-line-ellipsis"><navigator class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</navigator></view>
-      <view class="dan one-line-ellipsis"><navigator class="one-line-ellipsis">館方有單:天津博物館現需生產5000件文創膠帶紙!館方有單:天津博物館現需生產5000件文創膠帶紙!</navigator></view>
+      <view class="dan" wx:for="{{xuqiu_list}}" wx:key="id"><navigator url="/pages/need-detail/need-detail?id={{item.id}}" class="one-line-ellipsis ">{{item.title}}</navigator></view>
     </view>
   </view>
 

@@ -36,7 +36,7 @@
 <!--      </view>-->
 <!--    </view>-->
 
-    <view bindtap="to_person" class="store">
+    <view bindtap="to_person" class="store" wx:if="{{goods.uid}}">
       <view class="title title-redtiao">店铺信息</view>
       <view class="info">
         <view class="zuo">

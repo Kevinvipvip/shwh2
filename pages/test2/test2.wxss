@@ -1,19 +1,20 @@
 .page {
-    padding: 0 24rpx;
+    padding: 0 24rpx 24rpx;
+    line-height: 1;
 }
 
 .need {
-    padding-top: 26rpx;
+    padding-top: 30rpx;
 }
 
 .need .title {
-    line-height: 1.5;
+    line-height: 1.3;
     font-size: 40rpx;
-    color: #lalala;
+    color: #1a1a1a;
 }
 
 .need .user-info {
-    margin-top: 14rpx;
+    margin-top: 18rpx;
     display: flex;
     align-items: center;
 }
@@ -22,91 +23,153 @@
     width: 60rpx;
     height: 60rpx;
     border-radius: 50%;
+    flex-shrink: 0;
 }
 
 .need .user-info .you {
     margin-left: 17rpx;
+    flex-grow: 1;
 }
 
 .need .user-info .you .nr {
-
+    display: flex;
 }
 
 .need .user-info .you .nr .nickname {
-
+    font-size: 26rpx;
+    color: #333;
 }
 
 .need .user-info .you .nr .role {
-
+    margin-left: 16rpx;
+    color: #f49927;
+    font-size: 22rpx;
 }
 
-.need .user-info .you .nr .ling {
-
+.need .user-info .you .ling {
+    margin-top: 5rpx;
+    display: flex;
+    justify-content: space-between;
 }
 
-.need .user-info .you .nr .ling .time {
-
+.need .user-info .you .ling .time {
+    font-size: 22rpx;
+    color: #999;
 }
 
-.need .user-info .you .nr .ling .ren {
+.need .user-info .you .ling .ren {
+    font-size: 22rpx;
+    color: #999;
 }
 
 .need .desc {
-
+    margin-top: 32rpx;
+    white-space: pre-line;
+    font-size: 28rpx;
+    line-height: 42rpx;
+    color: #333;
 }
 
 .need .img-box {
-
+    margin-top: 23rpx;
 }
 
 .need .img-box image {
     height: 0;
+    width: 100%;
+    margin-bottom: 12rpx;
+}
+
+.need .img-box image:last-child {
+    margin-bottom: 0;
 }
 
 .message {
-
+    margin-top: 51rpx;
 }
 
 .message .title {
-
+    font-size: 34rpx;
+    color: #333;
 }
 
 .message .send {
-
+    margin-top: 40rpx;
+    display: flex;
+    justify-content: space-between;
 }
 
 .message .send .avatar {
-
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
 }
 
 .message .send .shuo {
+    flex-grow: 1;
+    margin-left: 16rpx;
+    border-radius: 10rpx;
+    background: #f5f5f5;
+    text-align: center;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    color: #999 ;
 }
 
 .message .comment-list {
+    margin-top: 43rpx;
 }
 
 .message .comment-list .comment {
+    margin-bottom: 41rpx;
+    padding-bottom: 32rpx;
+    border-bottom: 2rpx solid rgba(0, 0, 0, 0.07);
+}
 
+.message .comment-list .comment:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
 }
 
 .message .comment-list .comment .user-line {
+    display: flex;
+    justify-content: space-between;
 }
 
 .message .comment-list .comment .user-line .left {
+    display: flex;
+    align-items: center;
 }
 
 .message .comment-list .comment .user-line .left .avatar {
-
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
 }
 
 .message .comment-list .comment .user-line .left .nickname {
+    margin-left: 18rpx;
+    font-size: 26rpx;
+    color: #999;
 }
 
 .message .comment-list .comment .user-line .left .role {
+    margin-left: 16rpx;
+    color: #f49927;
+    font-size: 22rpx;
 }
 
 .message .comment-list .comment .user-line .time {
+    font-size: 22rpx;
+    color: #999;
 }
 
 .message .comment-list .comment .desc {
+    margin-top: 16rpx;
+    padding-left: 67rpx;
+    font-size: 28rpx;
+    line-height: 42rpx;
+    color: #333;
 }

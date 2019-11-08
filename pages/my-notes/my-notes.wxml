@@ -10,8 +10,7 @@
 
   <block wx:if="{{active_tab == 1}}">
     <navigator url="/pages/note-publish/note-publish" class="pub-round-btn">
-      <view>发布</view>
-      <view>笔记</view>
+      <image src="/icons/big-plus.png"></image>
     </navigator>
     <view class="list">
       <view class="left">

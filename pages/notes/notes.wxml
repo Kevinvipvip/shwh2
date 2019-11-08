@@ -11,8 +11,7 @@
   </view>
 
   <navigator url="/pages/note-publish/note-publish" class="pub-round-btn" wx:if="{{role != 0}}">
-    <view>发布</view>
-    <view>笔记</view>
+    <image src="/icons/big-plus.png"></image>
   </navigator>
 
   <view class="list">

@@ -186,7 +186,7 @@
 
 .kuai-dan .list .dan navigator {
   opacity: 0.8;
-  color: #lalala;
+  color: #1a1a1a;
   font-size: 26rpx;
   flex-grow: 1;
 }

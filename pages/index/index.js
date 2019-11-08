@@ -12,12 +12,16 @@ Page({
     funding_list: [],  // 众筹列表
     active_rank: 1,
 
+    xuqiu_list: [],  // 需求列表
+
     loading: false
   },
   onLoad() {
     this.slideList(() => {
       this.getReqList(() => {
-        this.setData({full_loading: false});
+        this.homeXuqiuList(() => {
+          this.setData({ full_loading: false });
+        });
       });
     });
     this.worksList();
@@ -29,6 +33,17 @@ Page({
     app.ajax('api/slideList', null, (res) => {
       app.format_img(res);
       this.setData({ slide_list: res });
+    }, null, () => {
+      if (complete) {
+        complete();
+      }
+    });
+  },
+  // 首页需求列表
+  homeXuqiuList(complete) {
+    app.ajax('xuqiu/homeXuqiuList', null, res => {
+      app.avatar_format(res);
+      this.setData({ xuqiu_list: res });
     }, null, () => {
       if (complete) {
         complete();
@@ -120,6 +135,7 @@ Page({
         this.worksList();
         this.ideaList();
         this.fundingList();
+        this.homeXuqiuList();
       });
     }
   },

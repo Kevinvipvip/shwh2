@@ -28,3 +28,25 @@
     color: #faf8f8;
     border-radius: 4rpx;
 }
+
+.pic-box {
+    padding-right: 0;
+}
+
+.add-pic {
+    width: 100%;
+    height: auto;
+}
+
+.ap-box {
+    margin-bottom: 24rpx !important;
+}
+
+.add-pic.plus {
+    margin-top: 24rpx;
+    height: 300rpx;
+}
+
+.add-pic:first-child {
+    margin-top: 0;
+}

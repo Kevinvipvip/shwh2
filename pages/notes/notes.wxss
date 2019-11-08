@@ -9,6 +9,25 @@ page {
   background: #f6f7f9;
 }
 
+.pub-round-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4rpx 5rpx #888;
+  bottom: 50rpx;
+  top: auto;
+  box-sizing: border-box;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.pub-round-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
 .main .search-box {
   background: #fff;
   position: fixed;

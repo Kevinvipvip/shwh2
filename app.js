@@ -47,7 +47,8 @@ App({
     username: '',  // 后台账号
     order_email: '',
     role: 0,
-    user_auth: 0 // 0.用户未授权 1.用户已授权
+    user_auth: 0, // 0.用户未授权 1.用户已授权
+    avatar: ''
   },
   mp_update() {
     const updateManager = wx.getUpdateManager();
@@ -247,6 +248,7 @@ App({
       switch (route) {
         case 'pages/index/index':
         case 'pages/shop/shop':
+        case 'pages/needs/needs':
         case 'pages/notes/notes':
         case 'pages/my/my':
           wx.switchTab({ url: '/' + route });
@@ -422,10 +424,6 @@ App({
       }
     }
   },
-  // 将秒数转变成几小时、几天的格式，超过30天显示日期
-  ago_format(s) {
-    // todo
-  },
   // 生成随机字符
   random_string(len) {
     len = len || 30;
@@ -555,16 +553,28 @@ App({
   // 设置全局的 user_data
   set_user_data() {
     this.ajax('my/mydetail', null, res => {
+      this.avatar_format(res);
+
       this.user_data.uid = res.id;
       this.user_data.role = res.role_check === 2 ? res.role : 0;
       this.user_data.user_auth = res.user_auth;
       this.user_data.username = res.username;
       this.user_data.order_email = res.order_email;
+      this.user_data.avatar = res.avatar;
     });
   },
   // 格式化数字，如果没有小数则返回整数，有小数返回小数
   num_zheng(num) {
     return parseInt(num) === parseFloat(num) ? parseInt(num) : parseFloat(num);
+  },
+  ago_format(obj, time_field) {
+    if (obj instanceof  Array) {
+      for (let i = 0; i < obj.length; i++) {
+        obj[i][time_field] = this.ago_text(obj[i][time_field]);
+      }
+    } else {
+      obj[time_field] = this.ago_text(obj[time_field]);
+    }
   },
   // 多久以前的友好式格式化
   ago_text(timestamp) {
@@ -577,7 +587,7 @@ App({
       } else if (diff < 60) {
         return diff + '秒前';
       } else if (diff < 3600) {
-        return parseInt(diff / 60) + '分前';
+        return parseInt(diff / 60) + '分钟前';
       } else if (diff < 86400) {
         return parseInt(diff / 3600) + '小时前';
       } else {

@@ -46,7 +46,7 @@
       <view class="shuo">这个需求我想接  我来说几句</view>
     </view>
     <view class="comment-list">
-      <view class="comment" wx:for="[1, 2, 3, 4, 5]">
+      <view class="comment" wx:for="{{[1, 2, 3, 4, 5]}}">
         <view class="user-line">
           <view class="left">
             <image src="/images/t-header.png" class="avatar"></image>
@@ -57,6 +57,13 @@
         </view>
         <view class="desc">我这里可以帮您做，我们工厂有15年做瓷器杯具的经验，具您的图上我们初步了解到，制作可行性百分之百，效果还原度几乎没有问题，希望我们能够有合作的机会。</view>
       </view>
+    </view>
+
+    <view class="nomore" wx:if="{{nomore}}">
+      已经没有更多了哦
+    </view>
+    <view class="nodata" wx:if="{{nodata}}">
+      暂无数据
     </view>
   </view>
 </view>

@@ -11,7 +11,7 @@
     <view class="bg2"></view>
 
     <view class="nei">
-      <button bindtap="phone_call" class="xuan-btn contact" wx:if="{{my_role != 0 && my_uid != uid}}">联系</button>
+      <button bindtap="phone_call" class="xuan-btn contact" wx:if="{{my_role != 0 && my_uid != uid && tel_show}}">联系</button>
       <button class="xuan-btn follow-btn {{person.if_focus ? 'followed' : ''}}" catchtap="iFocus" data-index="{{index}}" wx:if="{{my_uid != uid}}"> {{person.if_focus ? '已关注' : '关注'}}</button>
 
       <view class="info">
