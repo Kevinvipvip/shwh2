@@ -62,7 +62,9 @@ Page({
       app.time_format(res, 'end_time');
       this.setData({ req_list: res });
     }, null, () => {
-      complete();
+      if (complete) {
+        complete();
+      }
     });
   },
   // 获取参赛作品列表（作品排行）
