@@ -130,6 +130,12 @@
 					"pathName": "pages/test2/test2",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上活动",
+					"pathName": "pages/online-activity/online-activity",
+					"scene": null
 				}
 			]
 		}

@@ -75,6 +75,9 @@ button::after {
 }
 
 /* 富文本 start */
+.content-wrapper view {
+  overflow: auto;
+}
 
 .content-wrapper image {
   max-width: 100%;

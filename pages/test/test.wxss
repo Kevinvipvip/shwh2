@@ -1,94 +1,12 @@
-.page {
-    padding: 25rpx 24rpx 0;
-    box-sizing: border-box;
-    min-height: 100vh;
+.fa {
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: justify;
+    overflow: hidden;
 }
 
-.need-list {
-    line-height: 1;
-}
-
-.need-list .need {
-    padding-bottom: 22rpx;
-    border-bottom: 2rpx solid rgba(0, 0, 0, 0.03);
-    margin-bottom: 23rpx;
-}
-
-.need-list .need:last-child {
-    padding-bottom: 0;
-    bottom: 0;
-    margin-bottom: 0;
-}
-
-.need .auth-line {
-    display: flex;
-    align-items: center;
-}
-
-.need .auth-line .avatar {
-    width: 50rpx;
-    height: 50rpx;
-    border-radius: 50%;
-}
-
-.need .auth-line .nickname {
-    margin-left: 18rpx;
-    font-size: 26rpx;
-    color: #999;
-}
-
-.need .auth-line .role {
-    margin-left: 16rpx;
-    color: #f49927;
-    font-size: 22rpx;
-}
-
-.need .auth-line .shu {
-    margin-left: 13rpx;
-    width: 2rpx;
-    height: 18rpx;
-    background: #999;
-}
-
-.need .auth-line .time {
-    margin-left: 10rpx;
-    font-size: 22rpx;
-    color: #999;
-}
-
-.need .title {
-    margin-top: 22rpx;
-    color: #1a1a1a;
-    font-size: 40rpx;
-}
-
-.need .desc {
-    margin-top: 25rpx;
-    font-size: 28rpx;
-    line-height: 42rpx;
-    color: #333;
-}
-
-.need .img-box {
-    margin-top: 15rpx;
-    display: flex;
-    justify-content: space-between;
-}
-
-.need .img-box image {
-}
-
-.need .img-box.three image {
-    width: 230rpx;
-    height: 153.33rpx;
-}
-
-.need .img-box.two image {
-    width: 348rpx;
-    height: 232rpx;
-}
-
-.need .img-box.one image {
+.fa::after {
+    content: "";
+    display: inline-block;
     width: 100%;
-    height: 468rpx;
 }

@@ -1,0 +1,68 @@
+<view class="page">
+  <!-- 头部 -->
+  <view class="header">
+    <swiper indicator-dots="{{true}}"
+            autoplay="{{true}}"
+            class="top-swiper"
+            wx:if="{{goods.pics.length > 1}}">
+      <swiper-item wx:for="{{goods.pics}}" wx:key="index">
+        <image src="{{item}}" mode="aspectFill"></image>
+      </swiper-item>
+    </swiper>
+    <view class="title">海河锦鲤  蓄势待发 带着您的创意作品一起 </view>
+  </view>
+
+  <!-- 发起信息 -->
+  <view class="info">
+    <view class="pull-title">
+      <view class="title">发起信息</view>
+      <image src="/icons/xia.png" class="down"></image>
+    </view>
+    <view class="list">
+      <view class="list-item">
+        <view class="label">时间</view>
+        <view class="value one-line-ellipsis">2019年10月21日5时</view>
+      </view>
+      <view class="list-item">
+        <view class="label">地点</view>
+        <view class="value one-line-ellipsis">天津市南开区</view>
+      </view>
+      <view class="list-item">
+        <view class="label">主办</view>
+        <view class="value one-line-ellipsis">天津市山海文化有限公司</view>
+      </view>
+      <view class="list-item">
+        <view class="label">协办</view>
+        <view class="value one-line-ellipsis">天津市山海文化有限公司</view>
+      </view>
+      <view class="list-item">
+        <view class="label">联合主办</view>
+        <view class="value one-line-ellipsis">天津市山海文化有限公司</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 活动介绍 -->
+  <view class="intro">
+    <view class="pull-title">
+      <view class="title">发起信息</view>
+      <image src="/icons/xia.png" class="down"></image>
+    </view>
+    <!-- 富文本 -->
+    <view class="content-wrapper">
+      <import src="../../wxParse/wxParse.wxml"/>
+      <template is="wxParse" data="{{wxParseData:rich_text.nodes}}"/>
+    </view>
+  </view>
+
+  <!-- 报名表单 -->
+  <view class="sign-up">
+    <image src="/images/sign-img.png" class="sign-img"></image>
+    <view class="form">
+      <view class="line">
+        <view class="label">姓名</view>
+        <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入法人手机号" placeholder-class="tel-class" maxlength="11"/>
+      </view>
+    </view>
+  </view>
+</view>
