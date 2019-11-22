@@ -75,7 +75,9 @@
     "pages/chou-refund-list/chou-refund-list",
     "pages/my-role-edit/my-role-edit",
     "pages/drumbeating/drumbeating",
-    "pages/store/store"
+    "pages/store/store",
+    "pages/online-activity/online-activity",
+    "pages/sign-res/sign-res"
   ],
   "window": {
     "navigationBarBackgroundColor": "#333333",

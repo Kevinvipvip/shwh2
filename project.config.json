@@ -132,9 +132,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 11,
 					"name": "线上活动",
 					"pathName": "pages/online-activity/online-activity",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "报名成功",
+					"pathName": "pages/sign-res/sign-res",
+					"query": "",
 					"scene": null
 				}
 			]

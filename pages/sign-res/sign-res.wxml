@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="bao">
+    <image src="/images/board.png" class="board"></image>
+    <view class="succ">报名成功</view>
+    <view class="contact">主办方将尽快与您联系，请您保持联系方式畅通哦~</view>
+    <view class="partner">叫上你的伙伴，一起来参加吧！</view>
+  </view>
+
+  <image src="{{poster}}" class="poster"></image>
+  <canvas canvas-id="qrcode" class="qrc"></canvas>
+
+  <button class="save-btn">保存图片</button>
+</view>

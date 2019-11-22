@@ -31,6 +31,17 @@
 
   <!-- 收集formid -->
   <form bindsubmit="col_formid" report-submit>
+    <radio-group class="radio-group" bindchange="radio_handle">
+      <label class="answer">
+        <radio value="1" checked="{{true}}"/>
+        <view class="text">男</view>
+      </label>
+      <label class="answer">
+        <radio value="2"/>
+        <view class="text">女</view>
+      </label>
+    </radio-group>
+
     <button form-type="submit" class="line-btn">修改</button>
   </form>
 </view>

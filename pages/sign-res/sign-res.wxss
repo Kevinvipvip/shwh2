@@ -1,0 +1,65 @@
+.page {
+    line-height: 1;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 88rpx;
+}
+
+.bao {
+    padding: 72rpx 48rpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bao .board {
+    width: 203rpx;
+    height: 173rpx;
+}
+
+.bao .succ {
+    margin-top: 35rpx;
+    font-size: 34rpx;
+    color: #333;
+}
+
+.bao .contact {
+    margin-top: 43rpx;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.bao .partner {
+    margin-top: 48rpx;
+    font-size: 30rpx;
+    color: #ec7a0a;
+}
+
+.poster {
+    display: block;
+    margin: 56rpx auto;
+    width: 654rpx;
+    height: 979rpx;
+}
+
+.qrc {
+    width: 300rpx;
+    height: 300rpx;
+    position: fixed;
+    left: -10000rpx;
+}
+
+.save-btn {
+    display: flex;
+    margin: 115rpx auto 0;
+    width: 600rpx;
+    height: 80rpx;
+    background-image: linear-gradient(90deg, #fb9526 0%, #f75012 100%);
+    border-radius: 40rpx;
+    border: 0;
+    padding: 0;
+    justify-content: center;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    color: #fafafa;
+}

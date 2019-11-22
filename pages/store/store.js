@@ -120,5 +120,9 @@ Page({
     app.page_open(() => {
       wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + this.data.req.uid });
     });
+  },
+  // radio
+  radio_handle(e) {
+    console.log(e.detail.value);
   }
 });
