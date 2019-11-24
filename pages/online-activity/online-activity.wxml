@@ -19,7 +19,7 @@
   <view class="info">
     <view class="pull-title" bindtap="toggle_info" data-no="1">
       <view class="title">发起信息</view>
-      <image src="/icons/xia.png" class="down"></image>
+      <image src="/icons/xia.png" class="down {{info1_visible ? '' : 'off'}}"></image>
     </view>
     <view class="list" wx:if="{{info1_visible}}">
       <view class="list-item">
@@ -49,7 +49,7 @@
   <view class="intro">
     <view class="pull-title" bindtap="toggle_info" data-no="2">
       <view class="title">活动介绍</view>
-      <image src="/icons/xia.png" class="down"></image>
+      <image src="/icons/xia.png" class="down {{info2_visible ? '' : 'off'}}"></image>
     </view>
     <!-- 富文本 -->
     <view class="content-wrapper" wx:if="{{info2_visible}}">
@@ -66,7 +66,7 @@
         <view class="line">
           <view class="label req">姓名</view>
           <view class="you-box">
-            <input bindinput="bind_input" data-name="name" value="{{name}}" type="number" placeholder="请输入姓名" maxlength="20"/>
+            <input bindinput="bind_input" data-name="name" value="{{name}}" placeholder="请输入姓名" maxlength="20"/>
           </view>
         </view>
         <view class="line">
@@ -74,11 +74,11 @@
           <view class="you-box">
             <radio-group class="radio-group" bindchange="sex_choose">
               <label class="sex">
-                <radio value="1" checked="{{true}}"/>
+                <radio value="1" checked="{{sex == 1}}"/>
                 <view class="text">男</view>
               </label>
               <label class="sex">
-                <radio value="2"/>
+                <radio value="0" checked="{{sex == 0}}"/>
                 <view class="text">女</view>
               </label>
             </radio-group>
@@ -87,30 +87,30 @@
         <view class="line">
           <view class="label req">人数</view>
           <view class="you-box">
-            <input bindinput="bind_input" data-name="name" value="{{name}}" type="number" placeholder="请输入参与人数" maxlength="8"/>
+            <input bindinput="bind_input" data-name="num" value="{{num}}" type="number" placeholder="请输入参与人数" maxlength="8"/>
           </view>
         </view>
         <view class="line">
           <view class="label">微信号</view>
           <view class="you-box">
-            <input bindinput="bind_input" data-name="name" value="{{name}}" type="number" placeholder="请输入您的微信号" maxlength="50"/>
+            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" type="number" placeholder="请输入您的微信号" maxlength="50"/>
           </view>
         </view>
         <view class="line">
           <view class="label req">手机号</view>
           <view class="you-box">
-            <input bindinput="bind_input" data-name="name" value="{{name}}" type="number" placeholder="请输入您的微信号" maxlength="11"/>
+            <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入您的手机号" maxlength="11"/>
           </view>
         </view>
         <view class="line">
           <view class="label req">验证码</view>
           <view class="you-box code">
-            <input bindinput="bind_input" data-code="code" type="number" placeholder="输入验证码" maxlength="4"/>
-            <button class="code-btn" disabled="{{code_disabled}}">{{code_text}}</button>
+            <input bindinput="bind_input" data-name="code" value="{{code}}" type="number" placeholder="输入验证码" maxlength="6"/>
+            <button bindtap="sendSms" class="code-btn" disabled="{{code_disabled}}">{{code_text}}</button>
           </view>
         </view>
 
-        <button class="sub-btn">提交报名</button>
+        <button bindtap="joinAc" class="sub-btn">提交报名</button>
       </view>
     </view>
   </view>

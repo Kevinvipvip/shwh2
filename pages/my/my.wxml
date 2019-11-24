@@ -187,15 +187,15 @@
       <image src="/icons/you3.png" class="you"></image>
     </navigator>
 
-<!--    <navigator class="menu-item" url="/pages/my-chou-orders/my-chou-orders">-->
-<!--      <view class="left-box">-->
-<!--        <view class="icon-box">-->
-<!--          <image src="/icons/menu5.png" class="icon-menu5"></image>-->
-<!--        </view>-->
-<!--      </view>-->
-<!--      <view class="menu-text">我的众筹</view>-->
-<!--      <image src="/icons/you3.png" class="you"></image>-->
-<!--    </navigator>-->
+    <navigator class="menu-item" url="/pages/my-chou-orders/my-chou-orders">
+      <view class="left-box">
+        <view class="icon-box">
+          <image src="/icons/menu5.png" class="icon-menu5"></image>
+        </view>
+      </view>
+      <view class="menu-text">我的众筹</view>
+      <image src="/icons/you3.png" class="you"></image>
+    </navigator>
 
 <!--    <navigator class="menu-item" url="/pages/chou-refund-list/chou-refund-list">-->
 <!--      <view class="left-box">-->

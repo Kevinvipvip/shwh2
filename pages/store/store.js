@@ -124,5 +124,68 @@ Page({
   // radio
   radio_handle(e) {
     console.log(e.detail.value);
+  },
+  // 表单提交
+  form_submit(e) {
+    let data = this.data;
+
+    if (!data.title.trim()) {
+      app.toast('请填写笔记标题');
+    } else if (!data.content.trim()) {
+      app.toast('请填写笔记内容');
+    } else if (data.pics.length === 0) {
+      app.toast('请至少上传一张图片');
+    } else {
+      app.collectFormid(e.detail.formId);
+
+      let post = {
+        title: data.title,
+        content: data.content,
+        token: app.user_data.token,
+        pics: this.get_img_arr(),
+        width: data.pics[0].width,
+        height: data.pics[0].height
+      };
+
+      let cmd;
+      if (data.id !== 0) {
+        post.id = this.data.id;
+        cmd = 'my/noteMod';
+      } else {
+        cmd = 'note/noteRelease';
+      }
+
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      });
+      app.ajax(cmd, post, () => {
+        if (data.id !== 0) {
+          app.modal('修改成功', () => {
+            let notes = app.get_page('pages/my-notes/my-notes');
+            if (notes) {
+              notes.refresh();
+              wx.navigateBack({ delta: 1 });
+            } else {
+              wx.redirectTo({ url: '/pages/my-notes/my-notes' });
+            }
+          });
+        } else {
+          app.modal('发布成功，将进入审核，请耐心等待', () => {
+            let notes = app.get_page('pages/my-notes/my-notes');
+            if (notes) {
+              notes.refresh();
+              wx.navigateBack({ delta: 1 });
+            } else {
+              wx.redirectTo({ url: '/pages/my-notes/my-notes' });
+            }
+          });
+        }
+      }, err => {
+        app.modal(err.message);
+      }, () => {
+        wx.hideLoading();
+      });
+    }
   }
 });

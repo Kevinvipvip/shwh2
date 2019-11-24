@@ -143,8 +143,7 @@ Page({
   do_nothing() {
   },
   bind_input(e) {
-    app.bind_input();
-    this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
+    app.bind_input(e, this);
   },
   // 隐藏退款框
   hide_refund() {
