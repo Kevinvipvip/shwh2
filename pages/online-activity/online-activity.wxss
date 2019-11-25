@@ -217,6 +217,11 @@ view {
   background: #f3a202;
 }
 
+.sign-up .form .line .you-box.code .code-btn[disabled] {
+  background: #bbb;
+  color: #fff;
+}
+
 .sign-up .form .sub-btn {
   margin: 66px auto 0;
   width: 345rpx;

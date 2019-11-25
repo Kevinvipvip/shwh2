@@ -1,3 +1,7 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <view class="bao">
     <image src="/images/board.png" class="board"></image>
@@ -7,7 +11,19 @@
   </view>
 
   <image src="{{poster}}" class="poster"></image>
-  <canvas canvas-id="qrcode" class="qrc"></canvas>
 
-  <button class="save-btn">保存图片</button>
+  <canvas canvas-id="qrcode" class="qrc"></canvas>
+  <canvas canvas-id="poster-canvas" class="qrc" style="width: 654px; height: 979px;"></canvas>
+
+  <button bindtap="save_poster" class="save-btn">保存图片</button>
+
+  <!--  -->
+  <view bindtap="hide_set_btn" class="setting-box" wx:if="{{show_set_btn}}">
+    <view class="os-box">
+      <view>
+        请在设置中打开保存图片到相册的权限
+      </view>
+      <button catchtap="hide_set_btn" open-type="openSetting" class="set_btn">打开设置</button>
+    </view>
+  </view>
 </view>

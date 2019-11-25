@@ -93,7 +93,7 @@
         <view class="line">
           <view class="label">微信号</view>
           <view class="you-box">
-            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" type="number" placeholder="请输入您的微信号" maxlength="50"/>
+            <input bindinput="bind_input" data-name="weixin" value="{{weixin}}" placeholder="请输入您的微信号" maxlength="50"/>
           </view>
         </view>
         <view class="line">

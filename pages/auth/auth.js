@@ -70,6 +70,6 @@ Page({
     q = q.replace('http://caves.wcip.net/', '').split('?');
     let page = q[0], search = q[1];
 
-    return  search ? `pages/${page}/${page}?${search}` : `pages/${page}/${page}`;
+    return search ? `pages/${page}/${page}?${search}` : `pages/${page}/${page}`;
   }
 });
