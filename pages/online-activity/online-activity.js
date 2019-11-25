@@ -3,6 +3,8 @@ const app = getApp();
 
 Page({
   data: {
+    user_auth: 0,
+
     full_loading: true,
 
     ac_info: {},
@@ -23,6 +25,8 @@ Page({
     code_flag: 0
   },
   onLoad() {
+    this.setData({ user_auth: app.user_data.user_auth });
+
     this.getAcInfo(() => {
       this.setData({ full_loading: false });
     });
@@ -104,7 +108,7 @@ Page({
       app.toast('手机号格式不正确');
     } else if (!data.code.trim()) {
       app.toast('请填写验证码');
-    }  else {
+    } else {
       let post = {
         tel: data.tel,
         name: data.name,
@@ -126,6 +130,24 @@ Page({
         app.modal(err.message);
       }, () => {
         wx.hideLoading();
+      });
+    }
+  },
+  auth(e) {
+    if (e.detail.userInfo) {
+      wx.showLoading({
+        title: '授权中',
+        mask: true
+      });
+
+      let inviter_id = wx.getStorageSync('inviter_id');
+
+      app.userAuth(inviter_id, res => {
+        wx.hideLoading();
+
+        if (res) {
+          this.joinAc();
+        }
       });
     }
   }

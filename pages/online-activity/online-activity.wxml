@@ -110,7 +110,8 @@
           </view>
         </view>
 
-        <button bindtap="joinAc" class="sub-btn">提交报名</button>
+        <button bindgetuserinfo="auth" open-type="getUserInfo" class="sub-btn" wx:if="{{user_auth == 0}}">提交报名</button>
+        <button bindtap="joinAc" class="sub-btn" wx:else>提交报名</button>
       </view>
     </view>
   </view>

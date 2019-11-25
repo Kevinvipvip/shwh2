@@ -44,35 +44,6 @@ Page({
       })
     });
 
-    // 生成海报二维码
-    let promise2 = new Promise((resolve, reject) => {
-      drawQrcode({
-        width: 100,
-        height: 100,
-        correctLevel: 1,
-        canvasId: 'qrcode',
-        text: 'http://caves.wcip.net/online-activity',
-        callback() {
-          wx.canvasToTempFilePath({
-            x: 0,
-            y: 0,
-            width: 100,
-            height: 100,
-            destWidth: 100,
-            destHeight: 100,
-            canvasId: 'qrcode',
-            success: res => {
-              resolve(res.tempFilePath);
-            },
-            fail: () => {
-              // 生成失败
-              app.toast('生成失败，请重试');
-            }
-          });
-        }
-      });
-    });
-
     // 海报背景
     let promise3 = new Promise((resolve, reject) => {
       wx.getImageInfo({
@@ -87,14 +58,14 @@ Page({
     });
 
     Promise.all([
-      promise1, promise2, promise3
+      promise1, promise3
     ]).then(p_res => {
       this.setData({full_loading: false});
       
       let avatar = p_res[0];
-      let qrcode = p_res[1];
-      let poster_bg = p_res[2];
-      
+      // let qrcode = p_res[1];
+      let poster_bg = p_res[1];
+
       var canvas = wx.createCanvasContext('poster-canvas');
 
       // 绘制背景图片
@@ -117,7 +88,7 @@ Page({
       canvas.draw(true);
 
       // 绘制二维码
-      canvas.drawImage(qrcode, 524, 849, 100, 100);
+      canvas.drawImage('/images/online-active.png', 0, 0, 280, 280, 474, 799, 150, 150);
       canvas.draw(true);
 
       setTimeout(() => {
