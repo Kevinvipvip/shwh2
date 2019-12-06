@@ -1,4 +1,4 @@
-<view class="page">
+<view class="page {{type == 3 ? 'fac' : ''}}">
   <view class="tab-list-box">
     <view class="tab-list">
       <view bindtap="tab_change" data-tab="{{1}}" class="tab {{type == 1 ? 'active' : ''}}">博物馆</view>
@@ -67,6 +67,29 @@
 
     <!-- 工厂 -->
     <view class="museum-box factory-box" wx:if="{{type == 3}}">
+      <view class="factory-filter">
+        <!-- 搜索框 -->
+        <view class="search-box">
+          <view class="search">
+            <icon bindtap="search_factory" class="iconfont iconsearch"/>
+            <input bindinput="bind_input" bindconfirm="search_factory" data-name="search" placeholder="搜索工厂" maxlength="20"/>
+          </view>
+        </view>
+
+        <!-- 省市区选择器 -->
+        <view class="area-box">
+          <picker bindchange="area_change" data-type="1" range="{{province_list}}" range-key="name">
+            <view class="one-line-ellipsis">{{province !== 0 ? province_list[province].name : '选择省'}}</view>
+          </picker>
+          <picker bindchange="area_change" data-type="2" range="{{city_list}}" range-key="name">
+            <view class="one-line-ellipsis">{{city !== 0 ? city_list[city].name : '选择市'}}</view>
+          </picker>
+          <picker bindchange="area_change" data-type="3" range="{{region_list}}" range-key="name">
+            <view class="one-line-ellipsis">{{region !== 0 ? region_list[region].name : '选择区'}}</view>
+          </picker>
+        </view>
+      </view>
+
       <view class="museum-list">
         <view bindtap="to_person_page" data-id="{{item.id}}" class="museum" wx:for="{{factory_list}}" wx:key="id">
           <image src="{{item.cover}}" class="cover" mode="aspectFill" lazy-load></image>

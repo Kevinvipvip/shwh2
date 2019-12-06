@@ -144,6 +144,13 @@
 					"pathName": "pages/sign-res/sign-res",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "工厂列表",
+					"pathName": "pages/person-list/person-list",
+					"query": "type=3",
+					"scene": null
 				}
 			]
 		}

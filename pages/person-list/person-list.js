@@ -23,6 +23,17 @@ Page({
     factory_page: 1,
     factory_nomore: false,
     factory_nodata: false,
+    search: '',
+    nro: {
+      name: '全部',
+      code: false
+    },
+    province: 0,
+    city: 0,
+    region: 0,
+    province_list: [],
+    city_list: [],
+    region_list: [],
 
     uid: 0
   },
@@ -36,6 +47,12 @@ Page({
     this.bwgList();
     this.designerList();
     this.factoryList();
+
+    this.data.province_list.unshift(this.data.nro);
+    this.data.city_list.unshift(this.data.nro);
+    this.data.region_list.unshift(this.data.nro);
+
+    this.getProvinceList();
   },
   // 切换tab
   tab_change(e) {
@@ -129,6 +146,19 @@ Page({
       page: this.data.factory_page,
       perpage: 10
     };
+
+    let search = this.data.search.trim();
+    if (search) {
+      post.search = search;
+    }
+
+    if (this.data.region) {
+      post.region_code = this.data.region_list[this.data.region].code;
+    } else if (this.data.city) {
+      post.city_code = this.data.city_list[this.data.city].code;
+    } else if (this.data.province) {
+      post.province_code = this.data.province_list[this.data.province].code;
+    }
 
     app.ajax('api/factoryList', post, res => {
       if (res.length === 0) {
@@ -275,5 +305,64 @@ Page({
     app.page_open(() => {
       wx.navigateTo({ url: '/pages/person-page/person-page?uid=' + e.currentTarget.dataset.id });
     });
+  },
+
+  bind_input(e) {
+    app.bind_input(e, this);
+  },
+  search_factory() {
+    this.reset(3);
+    this.factoryList();
+  },
+  // 获取省列表
+  getProvinceList() {
+    app.ajax('api/getProvinceList', null, res => {
+      res.unshift(this.data.nro);
+      this.setData({ province_list: res })
+    });
+  },
+  // 获取市列表
+  getCityList() {
+    app.ajax('api/getCityList', {province_code: this.data.province_list[this.data.province].code}, res => {
+      res.unshift(this.data.nro);
+      this.setData({ city_list: res })
+    });
+  },
+  // 获取区列表
+  getRegionList() {
+    app.ajax('api/getRegionList', {city_code: this.data.city_list[this.data.city].code}, res => {
+      res.unshift(this.data.nro);
+      this.setData({ region_list: res })
+    });
+  },
+  // 选择 省/市/区 时
+  area_change(e) {
+    this.reset(3);
+
+    switch (e.currentTarget.dataset.type) {
+      case '1':
+        this.setData({
+          province: parseInt(e.detail.value),
+          city: 0,
+          region: 0,
+          region_list: [this.data.nro]
+        }, () => {
+          this.getCityList();
+        });
+        break;
+      case '2':
+        this.setData({
+          city: parseInt(e.detail.value),
+          region: 0
+        }, () => {
+          this.getRegionList();
+        });
+        break;
+      case '3':
+        this.setData({region: parseInt(e.detail.value)});
+        break;
+    }
+
+    this.factoryList();
   }
 });

@@ -1,3 +1,13 @@
 <view class="page">
-  <view class="fa">快递费开始</view>
+  <view class="area-box">
+    <picker bindchange="area_change" data-type="1" range="{{province_list}}" range-key="name">
+      {{province !== 0 ? province_list[province].name : '选择省'}}
+    </picker>
+    <picker bindchange="area_change" data-type="2" range="{{city_list}}" range-key="name">
+      {{city !== 0 ? city_list[city].name : '选择市'}}
+    </picker>
+    <picker bindchange="area_change" data-type="3" range="{{region_list}}" range-key="name">
+      {{region !== 0 ? region_list[region].name : '选择区'}}
+    </picker>
+  </view>
 </view>

@@ -1,12 +1,22 @@
-.fa {
-    height: 40rpx;
-    line-height: 40rpx;
-    text-align: justify;
-    overflow: hidden;
+.area-box {
+  display: flex;
+  padding: 24rpx;
 }
 
-.fa::after {
-    content: "";
-    display: inline-block;
-    width: 100%;
+.area-box picker {
+  width: 0;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-align: center;
+  border: 2rpx solid #ddd;
+  padding: 10rpx 15rpx;
+  margin-right: 20rpx;
+  border-radius: 4rpx;
+}
+
+.area-box picker:last-child {
+  margin-right: 0;
 }

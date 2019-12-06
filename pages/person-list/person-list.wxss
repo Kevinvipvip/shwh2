@@ -6,6 +6,10 @@
   line-height: 1;
 }
 
+.page.fac {
+  padding-top: 362rpx;
+}
+
 .tab-list-box {
   background: #fafafa;
   padding: 30rpx 24rpx;
@@ -14,7 +18,7 @@
   left: 0;
   top: 0;
   box-sizing: border-box;
-  z-index: 1;
+  z-index: 2;
 }
 
 .tab-list {
@@ -213,3 +217,68 @@
 
 .factory-box {
 }
+
+/* 工厂筛选 start */
+
+.factory-filter {
+  background: #fff;
+  padding: 24rpx;
+  opacity: 1;
+  margin-bottom: 30rpx;
+  position: fixed;
+  width: calc(100% - 48rpx);
+  box-sizing: border-box;
+  left: 0;
+  margin: 0 24rpx;
+  z-index: 3;
+  top: 141rpx;
+}
+
+.search-box {
+}
+
+.search {
+  background: #f5f5f5;
+  border-radius: 40rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 15rpx;
+}
+
+.search .iconfont {
+  font-size: 40rpx;
+  position: relative;
+  top: -4rpx;
+  margin-left: 5rpx;
+  color: #9c9c9c;
+  flex-shrink: 1;
+}
+
+.search input {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  flex-grow: 1;
+}
+
+.area-box {
+  display: flex;
+  padding-top: 26rpx;
+}
+
+.area-box picker {
+  width: 0;
+  flex-grow: 1;
+  text-align: center;
+  border: 2rpx solid #ddd;
+  padding: 15rpx;
+  margin-right: 20rpx;
+  border-radius: 4rpx;
+  background: #fff;
+}
+
+.area-box picker:last-child {
+  margin-right: 0;
+}
+
+/* 工厂筛选 end */
