@@ -122,7 +122,8 @@
   background: #fff;
   padding: 25rpx;
   font-size: 28rpx;
-    position: relative;
+  position: relative;
+  display: none;
 }
 
 .info-box .store .title {
@@ -155,15 +156,15 @@
 .info-box .store .info .jin {
   display: flex;
   align-items: center;
-    position: absolute;
-    right: 24rpx;
-    top: 24rpx;
+  position: absolute;
+  right: 24rpx;
+  top: 24rpx;
 }
 
 .info-box .store .info .jin .text {
   margin-right: 15rpx;
   font-size: 24rpx;
-    color: #666;
+  color: #666;
 }
 
 .info-box .store .info .jin image {
@@ -453,6 +454,7 @@
 }
 
 /* 海报 start */
+
 .qrc {
   width: 300rpx;
   height: 300rpx;
@@ -463,8 +465,8 @@
 .poc {
   position: fixed;
   left: -10000rpx;
-  width:457px;
-  height:817px;
+  width: 457px;
+  height: 817px;
 }
 
 .mask-box {
@@ -517,4 +519,5 @@
   color: #e6e6e6;
   margin-top: 32rpx;
 }
+
 /* 海报 end */
