@@ -44,4 +44,16 @@
 
     <button form-type="submit" class="line-btn">修改</button>
   </form>
+
+  <!-- 轮播 swiper -->
+  <swiper indicator-dots="{{true}}"
+          autoplay="{{true}}"
+          circular="{{true}}"
+          previous-margin="27rpx"
+          next-margin="27rpx"
+          class="banner">
+    <swiper-item wx:for="{{banner}}" wx:key="index">
+      <image src="{{item}}"></image>
+    </swiper-item>
+  </swiper>
 </view>

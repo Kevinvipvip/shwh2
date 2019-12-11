@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "仓库",
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
+  "disableScroll": true,
   "backgroundTextStyle": "dark",
   "backgroundColor": "#f8f8f8",
   "usingComponents": {}

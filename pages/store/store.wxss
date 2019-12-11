@@ -1,1 +1,21 @@
 @import '/wxParse/wxParse.wxss';
+
+/* swiper dot 修改 start */
+.banner .wx-swiper-dots.wx-swiper-dots-horizontal {
+}
+
+.banner .wx-swiper-dots {
+}
+
+.banner .wx-swiper-dot {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  transform: rotate(45deg);
+  width: 15rpx;
+  height: 15rpx;
+}
+
+.banner .wx-swiper-dot-active {
+  background: #4583fb;
+}
+/* swiper dot 修改 end */
