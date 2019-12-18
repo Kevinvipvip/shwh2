@@ -106,7 +106,7 @@ view {
 
 .sign-up {
   border-top: 10rpx solid rgba(0, 0, 0, 0.03);
-  padding: 79rpx 24rpx 100rpx;
+  padding: 18rpx 24rpx 100rpx;
 }
 
 .sign-up .paper-box {

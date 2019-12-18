@@ -3,9 +3,7 @@ const app = getApp();
 
 Page({
   data: {
-    user_auth: 0,
-
-    full_loading: true,
+    full_loading: false,
 
     ac_info: {},
     info1_visible: true,
@@ -14,7 +12,6 @@ Page({
     tel: '',  // 手机号
     name: '',  // 姓名
     sex: 1,  // 1.男 0.女
-    num: '',  // 人数
     weixin: '',  // 微信号
 
     // 验证码相关
@@ -25,11 +22,9 @@ Page({
     code_flag: 0
   },
   onLoad() {
-    this.setData({ user_auth: app.user_data.user_auth });
-
-    this.getAcInfo(() => {
-      this.setData({ full_loading: false });
-    });
+    // this.getAcInfo(() => {
+    //   this.setData({ full_loading: false });
+    // });
   },
   // 获取活动详情
   getAcInfo(complete) {
@@ -100,8 +95,8 @@ Page({
 
     if (!data.name.trim()) {
       app.toast('请填写姓名');
-    } else if (!data.num) {
-      app.toast('请填写参与人数');
+    } else if (!data.weixin.trim()) {
+      app.toast('请填写微信号');
     } else if (!data.tel.trim()) {
       app.toast('请填写手机号');
     } else if (!app.my_config.reg.tel.test(data.tel)) {
@@ -113,7 +108,6 @@ Page({
         tel: data.tel,
         name: data.name,
         sex: data.sex,
-        num: data.num,
         code: data.code,
         weixin: data.weixin
       };
@@ -124,7 +118,8 @@ Page({
       });
       app.ajax('api/joinAc', post, () => {
         app.modal('报名成功', () => {
-          wx.redirectTo({ url: '/pages/sign-res/sign-res' });
+          wx.switchTab({ url: '/pages/index/index' });
+          // wx.redirectTo({ url: '/pages/sign-res/sign-res' });
         });
       }, err => {
         app.modal(err.message);
