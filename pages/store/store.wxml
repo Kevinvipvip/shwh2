@@ -7,7 +7,7 @@
   <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入法人手机号" placeholder-class="tel-class" maxlength="11"/>
 
   <!-- textaera -->
-  <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
+  <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." c1lass="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
 
   <!-- nomore/nodata -->
   <view class="nomore" wx:if="{{nomore}}">
@@ -26,8 +26,9 @@
   <!-- 列表（含下拉刷新上拉加载） -->
   <view wx:for="{{list}}">{{item.id}}</view>
 
-  <!-- 分享 -->
+  <!-- 按钮 -->
   <button open-type="share">分享</button>
+  <button open-type="contact">客服</button>
 
   <!-- 收集formid -->
   <form bindsubmit="col_formid" report-submit>

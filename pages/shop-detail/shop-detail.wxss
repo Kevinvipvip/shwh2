@@ -337,11 +337,11 @@
 }
 
 .param-modal .content .header .cover {
-  width: 230rpx;
-  height: 230rpx;
-  margin-top: -57rpx;
-  margin-left: 39rpx;
-  border-radius: 10rpx;
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: -35rpx;
+  margin-left: 24rpx;
+  border-radius: 4rpx;
 }
 
 .param-modal .content .header .info {
