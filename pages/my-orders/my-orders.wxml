@@ -43,7 +43,7 @@
         <block wx:if="{{item.status == 1}}">
           <view catchtap="refund_click" data-order="{{item}}" class="normal">退款</view>
         </block>
-        <block wx:if="{{item.status > 2}}">
+        <block wx:if="{{item.status == 2 || item.status == 3}}">
           <view catchtap="to_logistics" data-id="{{item.id}}" class="normal">查看物流</view>
         </block>
         <block wx:if="{{item.status == 2}}">
