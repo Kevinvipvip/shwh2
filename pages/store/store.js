@@ -103,6 +103,15 @@ Page({
       }
     }
   },
+  // 重置
+  reset() {
+    this.data.page = 1;
+    this.data.work_list = [];
+    this.setData({
+      nomore: false,
+      nodata: false
+    });
+  },
   // 分享
   onShareAppMessage() {
     wx.showShareMenu();
