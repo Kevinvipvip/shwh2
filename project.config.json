@@ -151,6 +151,13 @@
 					"pathName": "pages/person-list/person-list",
 					"query": "type=3",
 					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "新主页",
+					"pathName": "packageNew/pages/index/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

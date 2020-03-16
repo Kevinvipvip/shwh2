@@ -79,6 +79,14 @@
     "pages/online-activity/online-activity",
     "pages/sign-res/sign-res"
   ],
+  "subpackages": [
+    {
+      "root": "packageNew",
+      "pages": [
+        "pages/index/index"
+      ]
+    }
+  ],
   "window": {
     "navigationBarBackgroundColor": "#333333",
     "navigationBarTextStyle": "white",
@@ -99,21 +107,21 @@
       },
       {
         "pagePath": "pages/shop/shop",
-        "text": "商城",
-        "iconPath": "icons/shop.png",
-        "selectedIconPath": "icons/shop-active.png"
+        "text": "分类",
+        "iconPath": "icons/cate.png",
+        "selectedIconPath": "icons/cate-active.png"
       },
       {
         "pagePath": "pages/needs/needs",
-        "text": "需求",
-        "iconPath": "icons/need.png",
-        "selectedIconPath": "icons/need-active.png"
+        "text": "发现",
+        "iconPath": "icons/find.png",
+        "selectedIconPath": "icons/find-active.png"
       },
       {
         "pagePath": "pages/notes/notes",
-        "text": "笔记",
-        "iconPath": "icons/note.png",
-        "selectedIconPath": "icons/note-active.png"
+        "text": "购物车",
+        "iconPath": "icons/cart.png",
+        "selectedIconPath": "icons/cart-active.png"
       },
       {
         "pagePath": "pages/my/my",

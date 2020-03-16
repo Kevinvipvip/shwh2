@@ -10,4 +10,5 @@
       {{region !== 0 ? region_list[region].name : '选择区'}}
     </picker>
   </view>
+  <navigator url="/packageNew/pages/index3/index3">主页</navigator>
 </view>

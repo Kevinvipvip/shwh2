@@ -3,30 +3,9 @@ const app = getApp();
 Page({
   data: {
     full_loading: true,
-
-    slide_list: [],  // 轮播图
-    req_list: [],  // 需求列表（投石）
-    work_list: [], // 作品排行
-    idea_list: [],  // 创意排行
-    first_funding: {},  // 第一个众筹
-    funding_list: [],  // 众筹列表
-    active_rank: 1,
-
-    xuqiu_list: [],  // 需求列表
-
     loading: false
   },
   onLoad() {
-    this.slideList(() => {
-      this.getReqList(() => {
-        this.homeXuqiuList(() => {
-          this.setData({ full_loading: false });
-        });
-      });
-    });
-    this.worksList();
-    this.ideaList();
-    this.fundingList();
   },
   // 获取首页轮播图
   slideList(complete) {
