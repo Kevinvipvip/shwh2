@@ -1,9 +1,11 @@
 @import 'utils/iconfont.wxss';
 
-page {
+.page {
   font-size: 24rpx;
   min-height: 100vh;
-  font-family: 'Microsoft YaHei';
+  box-sizing: border-box;
+  line-height: 1;
+  background: #fff;
 }
 
 button::after {
