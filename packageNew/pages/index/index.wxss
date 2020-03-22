@@ -74,7 +74,6 @@ scroll-view.tab {
 }
 
 .tab .tab-item.active {
-  color: #ff9f38;
   font-size: 32rpx;
   position: relative;
 }
@@ -87,9 +86,11 @@ scroll-view.tab {
   right: 0;
   width: 28rpx;
   height: 8rpx;
-  border-radius: 29rpx;
+  border-radius: 8rpx;
   background-color: rgba(255, 134, 49, 1);
   border: 2rpx solid rgba(255, 255, 255, 0);
+  margin: auto;
+  box-sizing: border-box;
 }
 
 .kingkong {

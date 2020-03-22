@@ -17,7 +17,7 @@
       <view class="tab-item {{active_tab == -1 ? 'active' : ''}}" bindtap="all_goods" data-index="{{index}}">
         全部
       </view>
-      <view class="tab-item active">推荐</view>
+      <view class="tab-item">推荐</view>
       <view class="tab-item">收藏馈赠</view>
       <view class="tab-item">商品配饰</view>
       <view class="tab-item">居家生活</view>
