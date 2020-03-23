@@ -13,7 +13,7 @@
     </view>
 
     <!-- 商品分类滚动条 -->
-    <scroll-view scroll-x class="tab">
+    <scroll-view scroll-x class="top-tab">
       <view class="tab-item {{active_tab == -1 ? 'active' : ''}}" bindtap="all_goods" data-index="{{index}}">
         全部
       </view>
@@ -31,12 +31,11 @@
 
   <!-- 轮播 -->
   <view class="swiper-box">
-    <image src="../../images/home-bg.png" class="home-bg"></image>
     <swiper indicator-dots="{{true}}"
             autoplay="{{true}}"
             circular="{{true}}"
             class="banner">
-      <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}">
+      <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
         <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
                src="../../images/t-banner.jpg"></image>
       </swiper-item>
@@ -81,6 +80,7 @@
       <image src="../../icons/kk10.png"></image>
       <view class="title">文创大赛</view>
     </view>
+    <view class="vh kitem"></view>
   </view>
 
   <!-- 视频精选 -->
@@ -96,10 +96,8 @@
       <view class="cover-box">
         <image src="../../images/t-video-cover.jpg" class="poster"></image>
         <view class="mask">
-          <view class="time">
-            <image src="../../icons/right-tri.png" class="tri"></image>
-            <view class="time-text">00:30</view>
-          </view>
+          <image src="../../icons/right-tri.png" class="tri"></image>
+          <view class="time-text">00:30</view>
         </view>
       </view>
       <view class="info">
@@ -110,24 +108,18 @@
       </view>
     </view>
     <view class="video-list">
-      <view class="video">
+      <view class="video" wx:for="{{[0, 1]}}">
         <view class="cover-box">
           <image src="../../images/t-video-cover.jpg" class="poster"></image>
           <view class="mask">
-            <view class="time">
-              <image src="../../icons/right-tri.png" class="tri"></image>
-              <view class="time-text">00:30</view>
-            </view>
+            <image src="../../icons/right-tri.png" class="tri"></image>
+            <view class="time-text">00:30</view>
           </view>
         </view>
         <view class="info">
           <view class="title two-line-ellipsis">中国国家博物馆溪山雨意快客杯功夫茶具套装</view>
           <view class="xia">
             <view class="price">299.00</view>
-            <view class="agree-box">
-              <image src="../../icons/agree.png" class="agree"></image>
-              <!--              <image src="../../icons/agree-active.png" class="agree"></image>-->
-            </view>
           </view>
         </view>
       </view>
@@ -136,13 +128,14 @@
 
   <!-- 定制专区 -->
   <view class="custom-zone">
+    <view class="title">定制专区</view>
     <view class="tab">
       <view class="tab-item {{custom_active == 0 ? 'active' : ''}}">免费打样专区</view>
       <view class="tab-item {{custom_active == 1 ? 'active' : ''}}">小批量定制</view>
       <view class="tab-item {{custom_active == 2 ? 'active' : ''}}">免开模费</view>
     </view>
     <view class="custom-list">
-      <view class="goods" wx:for="{{[0, 1, 2, 3, 4]}}">
+      <view class="goods2" wx:for="{{[0, 1, 2, 3, 4]}}">
         <image src="../../images/t-goods.jpg" class="cover"></image>
         <view class="info">
           <view class="title two-line-ellipsis">DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可</view>
@@ -165,7 +158,7 @@
       <view class="title">爆款推荐</view>
     </view>
     <view class="goods-list">
-      <view class="goods">
+      <view class="goods2" wx:for="{{[0, 1, 2, 3, 4]}}">
         <image src="../../images/t-bao-goods.jpg" class="cover"></image>
         <view class="info">
           <view class="title two-line-ellipsis">DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可</view>
