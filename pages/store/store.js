@@ -14,7 +14,7 @@ Page({
     // 列表相关
     page: 1,
     list: [],
-    nomore: false,
+    nomore: true,
     nodata: false,
     loading: false
   },

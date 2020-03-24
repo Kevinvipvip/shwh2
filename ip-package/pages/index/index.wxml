@@ -1,0 +1,55 @@
+<view class="page">
+  <!-- 搜索框 -->
+  <view class="search-wrapper">
+    <view class="search-box">
+      <image src="/icons/zoom.png" class="zoom"></image>
+      <input type="text" placeholder="请输入IP名称" class="search" />
+    </view>
+  </view>
+
+  <!-- swiper -->
+  <view class="swiper-box">
+    <swiper indicator-dots="{{true}}"
+            autoplay="{{true}}"
+            circular="{{true}}"
+            class="banner">
+      <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
+        <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
+               src="/ip-package/images/t-ip-banner.jpg"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 分类 -->
+  <scroll-view scroll-x class="top-tab">
+    <view class="tab-item {{active_tab == -1 ? 'active' : ''}}" bindtap="all_goods" data-index="{{index}}">
+      全部
+    </view>
+    <view class="tab-item">推荐</view>
+    <view class="tab-item">收藏馈赠</view>
+    <view class="tab-item">商品配饰</view>
+    <view class="tab-item">居家生活</view>
+    <view class="tab-item">服饰箱包</view>
+    <view class="tab-item">收藏馈赠</view>
+    <view class="tab-item">商品配饰</view>
+    <view class="tab-item">居家生活</view>
+    <view class="tab-item">服饰箱包</view>
+  </scroll-view>
+
+  <view class="ip-list">
+    <view class="ip" wx:for="{{[0, 1, 2, 3, 4, 5, 6]}}">
+      <image src="/ip-package/images/t-ip.jpg" class="cover"></image>
+      <view class="info">
+        <view class="title one-line-ellipsis">雪姬</view>
+        <view class="cate">[动漫作品]</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
+  </view>
+</view>

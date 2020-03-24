@@ -1,6 +1,4 @@
 {
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark",
-  "backgroundColor": "#f8f8f8",
+  "navigationBarTitleText": "山洞",
   "usingComponents": {}
 }

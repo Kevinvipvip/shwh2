@@ -77,11 +77,12 @@
     "pages/drumbeating/drumbeating",
     "pages/store/store",
     "pages/online-activity/online-activity",
+    "pages/free-sample/free-sample",
     "pages/sign-res/sign-res"
   ],
   "subpackages": [
     {
-      "root": "packageNew",
+      "root": "ip-package",
       "pages": [
         "pages/index/index"
       ]

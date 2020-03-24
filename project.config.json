@@ -55,108 +55,16 @@
 			"current": -1,
 			"list": [
 				{
-					"id": 0,
-					"name": "他人主页",
-					"pathName": "pages/person-page/person-page",
-					"query": "uid=7",
-					"scene": null
-				},
-				{
 					"id": -1,
-					"name": "发布创意",
-					"pathName": "pages/chuang-publish/chuang-publish",
-					"query": "type=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的店铺",
-					"pathName": "pages/my-shop/my-shop",
+					"name": "免费拿样",
+					"pathName": "pages/free-sample/free-sample",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "商城",
-					"pathName": "pages/shop/shop",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "充值会员（角色）",
-					"pathName": "pages/role-vip-open/role-vip-open",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "商品详情",
-					"pathName": "pages/shop-detail/shop-detail",
-					"query": "id=19",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "测试",
-					"pathName": "pages/test/test",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "展示作品",
-					"pathName": "pages/show-works/show-works",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "收货地址",
-					"pathName": "pages/my-address/my-address",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 11,
-					"name": "物流",
-					"pathName": "pages/logistics/logistics",
-					"query": "id=12",
-					"scene": null
-				},
-				{
-					"id": 10,
-					"name": "测试2",
-					"pathName": "pages/test2/test2",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 11,
-					"name": "线上活动",
-					"pathName": "pages/online-activity/online-activity",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "报名成功",
-					"pathName": "pages/sign-res/sign-res",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "工厂列表",
-					"pathName": "pages/person-list/person-list",
-					"query": "type=3",
-					"scene": null
-				},
-				{
-					"id": 14,
-					"name": "新主页",
-					"pathName": "packageNew/pages/index/index",
-					"query": "",
+					"name": "ip授权-主页",
+					"pathName": "ip-package/pages/index/index",
 					"scene": null
 				}
 			]
