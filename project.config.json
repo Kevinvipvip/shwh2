@@ -65,6 +65,13 @@
 					"id": -1,
 					"name": "ip授权-主页",
 					"pathName": "ip-package/pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "ip详情",
+					"pathName": "ip-package/pages/ip-detail/ip-detail",
 					"scene": null
 				}
 			]

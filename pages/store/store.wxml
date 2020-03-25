@@ -57,4 +57,7 @@
       <image src="{{item}}"></image>
     </swiper-item>
   </swiper>
+
+  <!-- 视频 -->
+  <video src="{{video.video_url}}" poster="{{video.poster}}" controls wx:if="{{video.use_video}}" class="u-video" object-fit="cover"></video>
 </view>

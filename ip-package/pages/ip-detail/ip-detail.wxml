@@ -1,0 +1,63 @@
+<view class="page">
+  <!-- 主图区域 -->
+  <view class="main">
+    <view class="info-box">
+      <view class="bg-box">
+        <image src="/ip-package/images/t-ip.jpg" class="bg" mode="aspectFill"></image>
+        <view class="mask"></view>
+      </view>
+      <view class="info">
+        <view class="info-line">
+          <view class="label">权利人</view>
+          <view class="value">美美视界（北京）文化传播有限公司</view>
+        </view>
+        <view class="info-line">
+          <view class="label">IP类别</view>
+          <view class="value">漫画作品</view>
+        </view>
+        <view class="info-line">
+          <view class="label">权利范围</view>
+          <view class="value">小说改编权 衍生品权 ( 首饰 文具 个人护理 玩 具 手办 食品 服装 家庭用品 ) 广告促销 ( 企业广告 宣传 促销 ) 地面娱乐 ( 商场活动 主题公园 演出活动 ) 漫画改 编权 网络授权 ( 应用 表情 ) 影视改编权 ( 网络大电影 网剧 台剧 院线大电影 ) 有声读物改编权 游戏改编权 ( 主机 端游 手游 H5 页游 ) 动画改编权 ( 动画大电影 TV 版动画 )</view>
+        </view>
+        <view class="info-line">
+          <view class="label">权利人身份</view>
+          <view class="value">被授权方</view>
+        </view>
+        <view class="info-line">
+          <view class="label">权利区域</view>
+          <view class="value">中国（含港澳台地区）</view>
+        </view>
+        <view class="info-line">
+          <view class="label">权利期限</view>
+          <view class="value">2015-05-30 到 2024-06-28</view>
+        </view>
+        <view class="info-line">
+          <view class="label">是否独占</view>
+          <view class="value">独占</view>
+        </view>
+      </view>
+    </view>
+    <view class="butt-bar">
+      <view class="title">雪姬</view>
+      <view class="look">
+        <image src="/ip-package/icons/menu.png" class="icon"></image>
+        <view class="text">查看原图</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 简介 -->
+  <view class="intro">
+    <view class="ye-title">版权介绍</view>
+    <view class="text">《雪姬》是韩国著名漫画家姜京玉的得意之作，是热播韩 剧《星你》的源头漫画，讲述长生不老、拥有外星超能力 的神秘少女寻找前世爱人的故事，大女主的设定及一女配 多男的爱情模式满足了女性读者对唯美爱情的想象。雪姬 年轻貌美，看似是不谙世事的“傻白甜”，其实骨子里拥有 与外表不相符的成熟内敛，历经四百年的岁月洗礼，她其 实已经是一个“恶女”，这个人物的设定使雪姬更加有血有 肉、鲜活立体。 而三位男主角：阳光开朗的“高富帅”、 忧郁如谜的摇滚歌手和魅力四射的国际巨星，也完美契合 了女性对各种类型“白马王子”的想象。</view>
+  </view>
+
+  <!-- 详情 -->
+  <view class="rich">
+    <view class="ye-title">图文详情</view>
+    <view class="content-wrapper">
+      <import src="../../../wxParse/wxParse.wxml"/>
+      <template is="wxParse" data="{{wxParseData:rich_text.nodes}}"/>
+    </view>
+  </view>
+</view>

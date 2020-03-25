@@ -1,0 +1,37 @@
+<view class="page">
+  <!-- 头部tab -->
+  <view class="tab">
+    <view class="tab-item active">商品</view>
+    <view class="tab-item">详情</view>
+    <view class="tab-item">评论</view>
+  </view>
+
+  <!-- banner（轮播图/视频） -->
+  <view class="banner" wx:if="{{banner_type == 1}}">
+    <swiper indicator-dots="{{true}}"
+            autoplay="{{true}}"
+            circular="{{true}}"
+            previous-margin="27rpx"
+            next-margin="27rpx"
+            class="banner">
+      <swiper-item wx:for="{{[0, 1, 2, 3]}}" wx:key="index">
+        <image src="/images/t-bao-goods.jpg"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="banner" wx:else>
+    <video src="" poster="" controls class="video" object-fit="cover"></video>
+  </view>
+
+  <!-- 商品各种信息 -->
+  <view class="info">
+    <view class="line1">
+      <view class="title-line">
+        <view class="title">溪山雨意快客杯功夫茶具杯功夫茶具杯功夫茶具杯 功夫茶具杯功夫茶具</view>
+        <view class="share">
+          <image ></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

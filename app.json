@@ -84,7 +84,8 @@
     {
       "root": "ip-package",
       "pages": [
-        "pages/index/index"
+        "pages/index/index",
+        "pages/ip-detail/ip-detail"
       ]
     }
   ],
