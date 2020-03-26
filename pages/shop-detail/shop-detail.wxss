@@ -42,6 +42,48 @@
   margin-top: 20rpx;
 }
 
+.info-box .pt .price .pp::before {
+  content: '￥';
+  font-size: 26rpx;
+}
+
+.info-box .pt .price .join-vip {
+  display: flex;
+  margin-top: 15rpx;
+  align-items: center;
+}
+
+.join-vip .v-price-box {
+  display: flex;
+  font-size: 26rpx;
+  font-weight: normal;
+}
+
+.join-vip .v-price-box .label {
+  color: #333;
+}
+
+.join-vip .v-price-box .v-price::before {
+  font-size: 22rpx;
+  content: '￥';
+}
+
+.join-vip .v-price-box .v-price {
+  color: #ff4400;
+}
+
+.join-vip .vip-btn {
+  margin-left: 15rpx;
+  border-radius: 4rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  padding: 0 30rpx;
+  font-size: 24rpx;
+  font-weight: normal;
+  background: #ff4400;
+  color: #fff;
+}
+
 .info-box .pt .price .origin-price {
   color: #888;
   font-size: 28rpx;
@@ -85,6 +127,24 @@
 .info-box .pt .title .share .text {
   color: #9b9b9b;
   font-size: 24rpx;
+}
+
+.info-box .pt .label-list {
+  margin-top: 15rpx;
+  display: flex;
+}
+
+.info-box .pt .label-list .label {
+  padding: 9rpx 20rpx;
+  border-radius: 4rpx;
+  border: solid 2rpx #ffbe00;
+  font-size: 24rpx;
+  color: #ffbe00;
+  margin-right: 24rpx;
+}
+
+.info-box .pt .label-list .label:last-child {
+  margin-right: 0;
 }
 
 .info-box .stock-carriage {

@@ -4,12 +4,35 @@ Page({
   data: {
     page: 1,
     funding_list: [],
+    filter_status: 0,
+    status_list: [
+      {
+        status: 0,
+        text: '全部'
+      },
+      {
+        status: 1,
+        text: '预热'
+      },
+      {
+        status: 2,
+        text: '众筹中'
+      },
+      {
+        status: 3,
+        text: '已结束'
+      }
+    ],
     nomore: false,
     nodata: false,
     loading: false
   },
   onLoad() {
     this.fundingList();
+  },
+  // 筛选状态改变
+  status_change(e) {
+    this.setData({ filter_status: parseInt(e.detail.value) })
   },
   // 众筹列表
   fundingList(complete) {

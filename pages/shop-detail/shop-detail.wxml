@@ -17,9 +17,24 @@
           <view class="text">分享</view>
         </button>
       </view>
-      <view class="price">
-        ¥{{goods.price}}
-<!--        <text class="origin-price" wx:if="{{goods.price != goods.origin_price}}">¥{{goods.origin_price}}</text>-->
+      <view class="label-list">
+        <view class="label">小批量定制</view>
+        <view class="label">免费拿样</view>
+        <view class="label">免开模费</view>
+      </view>
+      <view class="price" wx:if="{{t_vip}}">
+        <text class="pp">{{goods.price}}</text>
+        <text class="origin-price" wx:if="{{goods.price != goods.origin_price}}">¥{{goods.origin_price}}</text>
+      </view>
+      <view class="price" wx:else>
+        <view class="pp">{{goods.price}}</view>
+        <view class="join-vip">
+          <view class="v-price-box">
+            <view class="label">会员价：</view>
+            <view class="v-price">15.2</view>
+          </view>
+          <button class="vip-btn">立即加入会员</button>
+        </view>
       </view>
     </view>
 

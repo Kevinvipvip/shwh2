@@ -72,6 +72,21 @@
 					"id": -1,
 					"name": "ip详情",
 					"pathName": "ip-package/pages/ip-detail/ip-detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/shop-detail/shop-detail",
+					"query": "id=172",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "众筹列表",
+					"pathName": "pages/chou-list/chou-list",
+					"query": "",
 					"scene": null
 				}
 			]

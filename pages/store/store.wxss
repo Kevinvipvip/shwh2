@@ -1,6 +1,21 @@
 @import '/wxParse/wxParse.wxss';
 
 /* swiper dot 修改 start */
+.banner {
+  width: 100%;
+  height: 400rpx;
+}
+
+.banner .si {
+  width: 100%;
+}
+
+.banner .si image {
+  width: 100%;
+  height: 100%;
+}
+
+
 .banner .wx-swiper-dots.wx-swiper-dots-horizontal {
 }
 

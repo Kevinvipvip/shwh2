@@ -17,7 +17,9 @@ Page({
 
     poster_show: false,  // 是否显示海报
     poster: '',  // 海报图片
-    show_set_btn: false
+    show_set_btn: false,
+
+    t_vip: false  // （临时）是否是会员
   },
   onLoad(options) {
     this.data.id = options.id;
