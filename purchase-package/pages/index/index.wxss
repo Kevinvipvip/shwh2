@@ -1,0 +1,172 @@
+.page {
+}
+
+.banner {
+  width: 100%;
+  height: 400rpx;
+}
+
+.banner .si {
+  width: 100%;
+}
+
+.banner .si image {
+  width: 100%;
+  height: 100%;
+}
+
+.gou-hori {
+  padding: 35rpx 0 25rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.gou-hori .img-btn {
+  width: 702rpx;
+  height: 120rpx;
+  box-shadow: 0 4rpx 20rpx 0 #ffc9c9;
+  border-radius: 60rpx;
+}
+
+.factory-recom {
+  border-top: 8rpx solid #f3f3f3;
+  padding: 40rpx 24rpx;
+}
+
+.factory-recom .title-line {
+  display: flex;
+  align-items: center;
+}
+
+.factory-recom .title-line .icon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.factory-recom .title-line .title {
+  margin-left: 26rpx;
+  font-size: 40rpx;
+  color: #101010;
+}
+
+.factory-list {
+  margin-top: 26rpx;
+  border-top: 2rpx solid #f5f5f5;
+  padding-top: 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.factory-list .factory {
+  width: 30%;
+  flex-grow: 1;
+  box-sizing: border-box;
+  height: 92rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+}
+
+.factory-list .factory .icon {
+  width: 38rpx;
+  height: 38rpx;
+  flex-shrink: 0;
+}
+
+.factory-list .factory .title {
+  margin-left: 16rpx;
+  font-size: 26rpx;
+  color: #101010;
+}
+
+.dan-box {
+  border-top: 8rpx solid #f3f3f3;
+  padding-top: 40rpx;
+}
+
+.dan-box .title-line {
+  display: flex;
+  align-items: center;
+  margin: 0 24rpx;
+  padding-bottom: 26rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+  margin-bottom: 40rpx;
+}
+
+.dan-box .title-line .icon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.dan-box .title-line .title {
+  margin-left: 26rpx;
+  font-size: 40rpx;
+  color: #101010;
+}
+
+.dan-box .dan-list {
+}
+
+.dan-box .dan-list .dan:first-child {
+  margin-top: 0;
+}
+
+.dan-box .dan-list .dan {
+  margin-top: 40rpx;
+  border-bottom: 4rpx solid #f3f3f3;
+  padding: 0 24rpx 40rpx;
+  position: relative;
+}
+
+.dan .title {
+  font-size: 32rpx;
+  color: #101010;
+}
+
+.dan .info {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 34rpx;
+}
+
+.dan .info .info-item:first-child {
+  margin-top: 0;
+}
+
+.dan .info .info-item {
+  margin-top: 26rpx;
+  display: flex;
+}
+
+.dan .info .info-item.desc {
+  line-height: 1.4;
+  margin-top: 23rpx;
+}
+
+.dan .info .info-item .label {
+  flex-shrink: 0;
+}
+
+.dan .info .info-item .value {
+  flex-grow: 1;
+}
+
+.dan .tel-box {
+  position: absolute;
+  right: 34rpx;
+  top: 38rpx;
+  padding: 0;
+  background: transparent;
+  line-height: 1;
+  box-shadow: 0 4rpx 20rpx 0 rgba(255, 105, 68, 0.45);
+  border-radius: 50%;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.dan .tel-box .tel {
+  width: 100%;
+  height: 100%;
+  vertical-align: bottom;
+}

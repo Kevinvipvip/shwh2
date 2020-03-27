@@ -92,7 +92,7 @@
 
 .chou-list .status {
   position: absolute;
-  top: 12rpx;
+  top: 18rpx;
   left: 18rpx;
   width: 120rpx;
   height: 48rpx;

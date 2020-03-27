@@ -43,6 +43,14 @@
       </label>
     </radio-group>
 
+    <view class="line">
+      <view class="label req">验证码</view>
+      <view class="you-box code">
+        <input bindinput="bind_input" data-name="code" value="{{code}}" type="number" placeholder="输入验证码" maxlength="6"/>
+        <button bindtap="sendSms" class="code-btn" disabled="{{code_disabled}}">{{code_text}}</button>
+      </view>
+    </view>
+
     <button form-type="submit" class="line-btn">修改</button>
   </form>
 

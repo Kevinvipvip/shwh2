@@ -399,7 +399,7 @@ button::after {
   height: 351rpx;
 }
 
-.chou-box .chou-line .img-box .status {
+/* .chou-box .chou-line .img-box .status {
   position: absolute;
   background: #ff684f;
   width: 96rpx;
@@ -413,7 +413,7 @@ button::after {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .chou-box .chou-line .info {
   padding: 24rpx;

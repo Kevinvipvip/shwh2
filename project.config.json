@@ -83,9 +83,23 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "众筹列表",
-					"pathName": "pages/chou-list/chou-list",
+					"pathName": "chou-package/pages/chou-list/chou-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "发起众筹（提交表单）",
+					"pathName": "pages/contact-form/contact-form",
+					"query": "type=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "即时采购",
+					"pathName": "purchase-package/pages/index/index",
 					"query": "",
 					"scene": null
 				}

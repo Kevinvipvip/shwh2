@@ -5,13 +5,13 @@
           class="banner">
     <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
       <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
-             src="/images/t-video-cover.jpg"></image>
+             src="../../../images/t-video-cover.jpg"></image>
     </swiper-item>
   </swiper>
 
   <view class="init-chou-box">
     <navigator class="a">
-      <image src="/images/init-chou.png" class="init-img"></image>
+      <image src="../../images/init-chou.png" class="init-img"></image>
     </navigator>
   </view>
 
@@ -26,7 +26,7 @@
                 bindchange="status_change">
           <view class="picker">
             <view class="text">{{status_list[filter_status].text}}</view>
-            <image src="/icons/down-arrow.png" class="down"></image>
+            <image src="../../icons/down-arrow.png" class="down"></image>
           </view>
         </picker>
       </view>
@@ -35,9 +35,9 @@
       <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou-line" wx:for="{{funding_list}}" wx:key="id">
         <view class="img-box">
           <image lazy-load src="{{item.cover}}" mode="aspectFill"></image>
-          <view class="status yure">预热</view>
-          <view class="status while">众筹中</view>
-          <view class="status end">已结束</view>
+          <view class="status yure" wx:if="{{index == 0}}">预热</view>
+          <view class="status while" wx:if="{{index == 1}}">众筹中</view>
+          <view class="status end" wx:if="{{index == 2}}">已结束</view>
         </view>
         <view class="info">
           <view class="title">{{item.title}}</view>

@@ -1,0 +1,12 @@
+.page {
+  padding-bottom: 120rpx;
+}
+
+.top-title {
+  padding: 40rpx 0 24rpx;
+  margin: 0 24rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.05);
+  font-size: 32rpx;
+  text-align: center;
+  color: #333;
+}

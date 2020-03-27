@@ -1,0 +1,44 @@
+<view class="page">
+  <!-- 头部标题 -->
+  <view class="top-title">请填写申请必要信息</view>
+
+  <!-- 表单 -->
+  <view class="form">
+    <view class="form-item">
+      <label for="com_name">公司名称</label>
+      <view class="value-box">
+        <input type="text" id="com_name" placeholder="请输入公司全称"/>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <label for="chou_name">众筹名称</label>
+      <view class="value-box">
+        <input type="text" id="chou_name" placeholder="请输入众筹名称"/>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <label for="tel">联系电话</label>
+      <view class="value-box">
+        <input type="text" id="tel" placeholder="请输入联系电话号码"/>
+      </view>
+    </view>
+
+    <view class="form-item code">
+      <label for="code">验证码</label>
+      <view class="value-box">
+        <input type="text" id="code" placeholder="请输入验证码" maxlength="6" />
+        <button bindtap="sendSms" class="code-btn" disabled="{{code_disabled}}">{{code_text}}</button>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <label for="email">邮箱</label>
+      <view class="value-box">
+        <input type="text" id="email" placeholder="请输入邮箱" />
+      </view>
+    </view>
+  </view>
+    <button class="sub-btn">提交申请</button>
+</view>

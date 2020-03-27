@@ -1,0 +1,14 @@
+<view class="page">
+  <!-- 头部标题 -->
+  <view class="top-title">请填写申请必要信息</view>
+
+  <!-- 表单 -->
+  <view class="form">
+    <view class="form-item">
+      <view class="label">期望单价范围</view>
+      <view class="value-box">
+
+      </view>
+    </view>
+  </view>
+</view>
