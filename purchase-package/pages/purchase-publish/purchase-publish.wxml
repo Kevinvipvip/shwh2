@@ -1,14 +1,100 @@
 <view class="page">
-  <!-- 头部标题 -->
-  <view class="top-title">请填写申请必要信息</view>
-
-  <!-- 表单 -->
   <view class="form">
-    <view class="form-item">
-      <view class="label">期望单价范围</view>
-      <view class="value-box">
+    <!-- 加工意向 -->
+    <view class="form-block">
+      <view class="block-title">请填写您的加工意向</view>
+      <view class="form-item">
+        <view class="label">期望单价范围</view>
+        <view class="value-box">
+          <view class="price-area">
+            <input type="text" class="min" placeholder="最低价" />
+            <view class="to"></view>
+            <input type="text" class="max" placeholder="最高价" />
+          </view>
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="label">期望加工量（50件以上，会有更多工厂接单）</view>
+        <view class="value-box">
+          <input type="number" class="line" placeholder="输入加工数量"/>
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="label">期望加工数量</view>
+        <view class="value-box">
+          <input type="text" class="line" placeholder="输入交货时间"/>
+        </view>
+      </view>
+    </view>
 
+    <!-- 生产偏好 -->
+    <view class="form-block">
+      <view class="block-title">请选择您的生产偏好</view>
+      <view class="pian-box">
+        <view class="pian">
+          <view class="pian-item {{piao_active == 1 ? 'active' : ''}}">需要发票</view>
+          <view class="pian-item {{piao_active == 2 ? 'active' : ''}}">无需发票</view>
+        </view>
+        <view class="pian">
+          <view class="pian-item {{yang_active == 1 ? 'active' : ''}}">有样品</view>
+          <view class="pian-item {{yang_active == 2 ? 'active' : ''}}">无样品</view>
+        </view>
+        <view class="pian">
+          <view class="pian-item {{area_active == 1 ? 'active' : ''}}">全国</view>
+          <view class="pian-item {{area_active == 2 ? 'active' : ''}}">北上广</view>
+          <view class="pian-item {{area_active == 3 ? 'active' : ''}}">天津</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 物品样照 -->
+    <view class="form-block">
+      <view class="block-title">请上传您的物品样照</view>
+      <view class="up-pic">
+        <view class="flex pic-box">
+          <block wx:for="{{pics}}" wx:key="index">
+            <view class="ap-box">
+              <view class="add-pic">
+                <image class="add-pic" src="{{item.pic}}" data-index="{{index}}" bindload="img_load"></image>
+                <view class="img-de" data-index="{{index}}" bindtap="img_delete">
+                  <image class="img" src="/images/close.png"></image>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class="add-pic plus" bindtap="up_pics" wx:if="{{pics.length < 9}}">
+            <icon class="iconfont iconjia"/>
+          </view>
+          <view class="ap-box vh" wx:for="{{flex_pad}}" wx:if="{{pics.length < 9}}">
+            <view class="add-pic"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 联系方式 -->
+    <view class="form-block">
+      <view class="block-title">请填写正确的联系方式</view>
+      <view class="form-item">
+        <view class="label">联系电话</view>
+        <view class="value-box">
+          <input type="number" class="line" placeholder="请输入联系电话" maxlength="11" />
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="label">联系人</view>
+        <view class="value-box">
+          <input type="text" class="line" placeholder="请输入联系人姓名"/>
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="label">其他需求<text>非必填</text></view>
+        <view class="value-box">
+          <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="请填写加工要求等附加信息（如尺码，颜色， 特殊工艺等），让加工厂/供应链专家进一步了 解您的需求！" c1lass="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
+        </view>
       </view>
     </view>
   </view>
+
+  <button class="sub-btn">提交申请</button>
 </view>

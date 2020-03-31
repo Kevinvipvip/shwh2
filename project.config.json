@@ -102,6 +102,13 @@
 					"pathName": "purchase-package/pages/index/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布采购",
+					"pathName": "purchase-package/pages/purchase-publish/purchase-publish",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
