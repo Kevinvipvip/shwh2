@@ -109,6 +109,13 @@
 					"pathName": "purchase-package/pages/purchase-publish/purchase-publish",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "文创大赛",
+					"pathName": "pages/activity-list/activity-list",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

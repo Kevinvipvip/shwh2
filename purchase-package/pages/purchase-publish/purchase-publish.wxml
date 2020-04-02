@@ -90,7 +90,7 @@
       <view class="form-item">
         <view class="label">其他需求<text>非必填</text></view>
         <view class="value-box">
-          <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" cursor-spacing="50" placeholder="请填写加工要求等附加信息（如尺码，颜色， 特殊工艺等），让加工厂/供应链专家进一步了 解您的需求！" c1lass="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
+          <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" auto-height cursor-spacing="50" placeholder="请填写加工要求等附加信息（如尺码，颜色， 特殊工艺等），让加工厂/供应链专家进一步了 解您的需求！" />
         </view>
       </view>
     </view>

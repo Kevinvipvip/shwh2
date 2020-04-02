@@ -8,13 +8,11 @@ Page({
     area_active: 1,  // 1.全国 2.北上广 3.天津
 
     desc: '',
-
-    is_ios: false
+    pics: [],
+    flex_pad: []
   },
   onLoad() {
     this.setData({ full_loading: false });
-
-    this.setData({ is_ios: app.is_ios });
 
     app.qiniu_init();
   },

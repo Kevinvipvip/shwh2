@@ -1,19 +1,67 @@
 <view class="page">
-  <view class="activity-list">
-    <navigator url="/pages/activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{req_list}}" wx:key="id">
-      <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>
-      <view class="title">{{item.title}}</view>
-      <view class="info">
-        <view class="people">
-          <image lazy-load src="/icons/people.png" class="icon"></image>
-          <text>{{item.works_num + item.idea_num}}人</text>
-        </view>
-        <view class="date">
-          <image lazy-load src="/icons/time.png" class="icon"></image>
-          <text>{{item.start_time}}-{{item.end_time}}</text>
+  <!-- 顶部轮播 -->
+  <swiper indicator-dots="{{true}}"
+          autoplay="{{true}}"
+          circular="{{true}}"
+          class="banner">
+    <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
+      <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
+             src="/images/t-banner.jpg"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 发布按钮 -->
+  <navigator>
+    <images src="/images/fasai.png" class="btn"></images>
+  </navigator>
+
+  <!-- 热门赛事 -->
+  <view class="hot-activity">
+    <view class="title">热门赛事</view>
+    <scroll-view scroll-x class="hot-list">
+      <view class="activity" wx:for="{{[0, 1, 2, 3, 4]}}" wx:key="index">
+        <image src="/images/t-banner.jpg" class="cover" mode="aspectFill"></image>
+        <view class="info">
+          <view class="title one-line-ellipsis">文字博物馆文创征集大赛</view>
+          <view class="pd">
+            <view class="people">
+              <image src="/icons/a-people.png"></image>
+              <text>6900人</text>
+            </view>
+            <view class="end">
+              <image src="/icons/a-time.png"></image>
+              <text>截止2020-04-31</text>
+            </view>
+          </view>
         </view>
       </view>
-    </navigator>
+    </scroll-view>
+  </view>
+
+  <view class="tab-list2">
+    <view class="tab active">全部</view>
+    <view class="tab">进行中</view>
+    <view class="tab">已结束</view>
+  </view>
+
+  <view class="activity-list">
+    <view class="activity">
+      <image src="/images/t-banner.jpg" class="cover" mode="aspectFill" lazy-load></image>
+      <view class="info">
+        <view class="title two-line-ellipsis">广东省博物馆文创征集大赛广东省博物馆文创征集大赛广东省博物馆文创征集大赛</view>
+        <view class="pd">
+          <view class="people">
+            <image src="/icons/a-people.png"></image>
+            <text>6900人</text>
+          </view>
+          <view class="end">
+            <image src="/icons/a-time.png"></image>
+            <text>截止2020-04-31</text>
+          </view>
+        </view>
+        <view class="status">进行中</view>
+      </view>
+    </view>
   </view>
 
   <view class="nomore" wx:if="{{nomore}}">

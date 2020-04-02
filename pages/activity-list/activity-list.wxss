@@ -1,21 +1,2 @@
 .page {
-  background: #fafafa;
-  padding: 0 24rpx;
-}
-
-.activity-list .activity {
-  box-shadow: 0 1rpx 62rpx 0 rgba(235, 235, 235, 0.75);
-  border-radius: 4rpx;
-  background: #fff;
-  margin-bottom: 40rpx;
-  padding: 24rpx;
-}
-
-.activity-list .activity:last-child {
-  margin-bottom: 0;
-}
-
-.activity-list .activity .cover {
-  height: 274rpx;
-  border-radius: 4rpx;
 }

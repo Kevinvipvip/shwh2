@@ -7,15 +7,19 @@
 
 .form .block-title {
   padding-bottom: 24rpx;
-  margin: 0 24rpx;
   border-bottom: 4rpx solid rgba(0, 0, 0, 0.05);
   font-size: 32rpx;
   text-align: center;
   color: #101010;
 }
 
+.form .form-block:first-child {
+  margin-top: 0;
+}
+
 .form .form-block {
   padding: 40rpx 24rpx 0;
+  margin-top: 20rpx;
 }
 
 .form-item {
@@ -68,6 +72,11 @@
 }
 
 .form-item .value-box textarea {
+  font-size: 34rpx;
+  margin-top: 40rpx;
+  color: #333;
+  width: 100%;
+  min-height: 150rpx;
 }
 
 .pian-box {
@@ -129,4 +138,5 @@
   font-size: 36rpx;
   color: #333;
   border-radius: 0;
+  z-index: 1;
 }
