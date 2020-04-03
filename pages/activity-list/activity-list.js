@@ -5,11 +5,11 @@ Page({
     page: 1,
     req_list: [],
     nomore: false,
-    nodata: false,
+    nodata: true,
     loading: false
   },
   onLoad() {
-    this.getAllReqList();
+    // this.getAllReqList();
   },
   // 需求列表（投石）
   getAllReqList(complete) {

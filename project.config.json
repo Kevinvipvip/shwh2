@@ -92,7 +92,7 @@
 				{
 					"id": 5,
 					"name": "发起众筹（提交表单）",
-					"pathName": "pages/contact-form/contact-form",
+					"pathName": "pages/chou-start/chou-start",
 					"query": "type=1",
 					"scene": null
 				},

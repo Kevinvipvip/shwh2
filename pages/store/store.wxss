@@ -1,5 +1,21 @@
 @import '/wxParse/wxParse.wxss';
 
+/* swiper start */
+.banner {
+  width: 100%;
+  height: 288rpx;
+}
+
+.banner .si {
+  width: 100%;
+}
+
+.banner .si image {
+  width: 100%;
+  height: 100%;
+}
+/* swiper end */
+
 /* swiper dot 修改 start */
 .banner {
   width: 100%;

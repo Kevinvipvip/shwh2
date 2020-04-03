@@ -6,13 +6,13 @@
           class="banner">
     <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
       <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
-             src="/images/t-banner.jpg"></image>
+             src="/images/t-banner.jpg" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
 
   <!-- 发布按钮 -->
-  <navigator>
-    <images src="/images/fasai.png" class="btn"></images>
+  <navigator class="publish">
+    <image src="/images/fasai.png" class="btn"></image>
   </navigator>
 
   <!-- 热门赛事 -->
@@ -38,14 +38,16 @@
     </scroll-view>
   </view>
 
+  <!-- 大赛列表tab -->
   <view class="tab-list2">
     <view class="tab active">全部</view>
     <view class="tab">进行中</view>
     <view class="tab">已结束</view>
   </view>
 
+  <!-- 大赛列表 -->
   <view class="activity-list">
-    <view class="activity">
+    <view class="activity" wx:for="{{[0, 1, 2]}}" wx:key="index">
       <image src="/images/t-banner.jpg" class="cover" mode="aspectFill" lazy-load></image>
       <view class="info">
         <view class="title two-line-ellipsis">广东省博物馆文创征集大赛广东省博物馆文创征集大赛广东省博物馆文创征集大赛</view>

@@ -20,17 +20,7 @@ Page({
     code_disabled: false,
     code_flag: 0
   },
-  onLoad(options) {
-    this.data.type = parseInt(options.type);
-    switch (this.data.type) {
-      case 1:
-        wx.setNavigationBarTitle({ title: '填写申请信息' });
-        break;
-      case 2:
-        wx.setNavigationBarTitle({ title: '授权申请' });
-        break;
-    }
-
+  onLoad() {
     this.setData({ full_loading: false });
   }
 });

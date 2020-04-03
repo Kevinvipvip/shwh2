@@ -78,7 +78,9 @@
     "pages/online-activity/online-activity",
     "pages/free-sample/free-sample",
     "pages/sign-res/sign-res",
-    "pages/contact-form/contact-form"
+    "pages/chou-start/chou-start",
+    "pages/auth-apply/auth-apply",
+    "pages/activity-publish/activity-publish"
   ],
   "subpackages": [
     {
