@@ -1,0 +1,247 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <!-- 头部 -->
+  <view class="header">
+    <!-- 头部模糊背景 -->
+    <image src="{{person.cover}}" mode="aspectFill" class="bg"></image>
+
+    <view class="bg2"></view>
+
+    <view class="nei">
+      <button bindtap="phone_call" class="xuan-btn contact" wx:if="{{my_role != 0 && my_uid != uid && tel_show}}">联系</button>
+      <button class="xuan-btn follow-btn {{person.if_focus ? 'followed' : ''}}" catchtap="iFocus" data-index="{{index}}" wx:if="{{my_uid != uid}}"> {{person.if_focus ? '已关注' : '关注'}}</button>
+
+      <view class="info">
+        <image src="{{person.avatar}}" class="avatar" mode="aspectFill"></image>
+        <view class="name">{{(role == 0 || role == 2) ? person.nickname : person.org}}</view>
+        <view class="id">ID：{{person.id}}</view>
+        <view class="ral">
+          <view class="role">{{role_text}}</view>
+          <view class="dot"></view>
+          <view class="lv">Lv{{person.level}}</view>
+        </view>
+        <view class="sign" wx:if="{{role != 0}}">{{person.sign || '暂无简介'}}</view>
+      </view>
+
+      <view class="param-box">
+        <view class="param" wx:if="{{role == 1}}">
+          <view class="value">{{person.req_num}}</view>
+          <view class="label">活动</view>
+        </view>
+        <view class="param" wx:if="{{role == 2}}">
+          <view class="value">{{person.works_num}}</view>
+          <view class="label">作品</view>
+        </view>
+        <view class="param" wx:if="{{role == 3}}">
+          <view class="value">{{person.bid_num}}</view>
+          <view class="label">接单</view>
+        </view>
+        <view class="param" wx:if="{{role == 0}}">
+          <view class="value">{{person.idea_num}}</view>
+          <view class="label">创意</view>
+        </view>
+        <view class="param">
+          <view class="value">{{person.ifocus}}</view>
+          <view class="label">关注</view>
+        </view>
+        <view class="param">
+          <view class="value">{{person.focus}}</view>
+          <view class="label">粉丝</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="list-box">
+    <view class="tab-list2" wx:if="{{role != 0}}">
+      <view bindtap="tab_change" data-tab="{{5}}" class="tab {{type == 5 ? 'active' : ''}}">商品</view>
+      <view bindtap="tab_change" data-tab="{{1}}" class="tab {{type == 1 ? 'active' : ''}}" wx:if="{{role == 1}}">活动</view>
+      <view bindtap="tab_change" data-tab="{{2}}" class="tab {{type == 2 ? 'active' : ''}}" wx:if="{{role == 2}}">作品</view>
+      <view bindtap="tab_change" data-tab="{{6}}" class="tab {{type == 6 ? 'active' : ''}}" wx:if="{{role == 2}}">展示作品</view>
+      <view bindtap="tab_change" data-tab="{{3}}" class="tab {{type == 3 ? 'active' : ''}}" wx:if="{{role == 3}}">接单</view>
+<!--      <view bindtap="tab_change" data-tab="{{4}}" class="tab {{type == 4 ? 'active' : ''}}">创意</view>-->
+    </view>
+
+    <view class="chuang-title" wx:if="{{role == 0}}">发布过的创意</view>
+
+    <!-- 活动列表 -->
+    <view class="activity-box" wx:if="{{type == 1}}">
+      <view class="activity-list">
+        <view bindtap="jump" data-id="{{item.id}}" class="activity" wx:for="{{req_list}}" wx:key="id">
+          <image lazy-load src="{{item.cover}}" class="cover" mode="aspectFill"></image>
+          <view class="title">{{item.title}}</view>
+          <view class="info">
+            <view class="people">
+              <image lazy-load src="/icons/people.png" class="icon"></image>
+              <text>{{item.works_num + item.idea_num}}人</text>
+            </view>
+            <view class="date">
+              <image lazy-load src="/icons/time.png" class="icon"></image>
+              <text>{{item.start_time}}-{{item.end_time}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="nomore" wx:if="{{req_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{req_nodata}}">
+        暂无数据
+      </view>
+    </view>
+
+    <!-- 作品列表 -->
+    <view class="work-box-ta" wx:if="{{type == 2}}">
+      <video src="{{video.video_url}}" poster="{{video.poster}}" controls wx:if="{{video.use_video}}" class="u-video" object-fit="cover"></video>
+      <view class="sort">
+        <view bindtap="order_tap" data-type="{{2}}" data-order="{{1}}" class="sort-item {{work_order == 1 ? 'active' : ''}}">默认排行</view>
+        <view bindtap="order_tap" data-type="{{2}}" data-order="{{2}}" class="sort-item {{work_order == 2 ? 'active' : ''}}">热度排行</view>
+      </view>
+      <view class="work-list-ta">
+        <view bindtap="jump" data-id="{{item.id}}" class="work" wx:for="{{work_list}}" wx:key="id">
+          <view class="title one-line-ellipsis">{{item.title}}</view>
+          <view class="desc">{{item.desc}}</view>
+          <view class="img-list">
+            <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
+              <image src="{{pic_item}}?imageView2/2/w/202" mode="aspectFill" lazy-load></image>
+              <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
+            </view>
+            <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
+
+
+<!--            <image src="{{pic_item}}" mode="aspectFill" lazy-load wx:for="{{item.pics}}" wx:for-item="pic_item"></image>-->
+<!--            <image class="vh" wx:for="{{item.flex_pad}}"></image>-->
+          </view>
+          <view class="params-box">
+            <view class="param">{{item.create_time}}</view>
+            <view class="param">接单工厂：{{item.bid_num}}个</view>
+            <view class="param">作品获赞：{{item.vote}}次</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="nomore" wx:if="{{work_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{work_nodata}}">
+        暂无数据
+      </view>
+    </view>
+
+    <!-- 展示作品 -->
+    <view class="work-box-ta" wx:if="{{type == 6}}">
+      <view class="work-list-ta">
+        <view bindtap="jump" data-id="{{item.id}}" class="work" wx:for="{{show_list}}" wx:key="id">
+          <view class="title one-line-ellipsis">{{item.title}}</view>
+          <view class="desc">{{item.desc}}</view>
+          <view class="img-list">
+            <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
+              <image src="{{pic_item}}?imageView2/2/w/202" mode="aspectFill" lazy-load></image>
+              <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
+            </view>
+            <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
+
+
+            <!--            <image src="{{pic_item}}" mode="aspectFill" lazy-load wx:for="{{item.pics}}" wx:for-item="pic_item"></image>-->
+            <!--            <image class="vh" wx:for="{{item.flex_pad}}"></image>-->
+          </view>
+        </view>
+      </view>
+
+      <view class="nomore" wx:if="{{show_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{show_nodata}}">
+        暂无数据
+      </view>
+    </view>
+
+    <!-- 接单列表 -->
+    <view class="jie-box" wx:if="{{type == 3}}">
+      <view class="jie-list">
+        <view bindtap="jump" data-id="{{item.work_id}}" class="jie" wx:for="{{bid_list}}" wx:key="id">
+          <view class="top-line">
+            <view class="title one-line-ellipsis">{{item.work_title}}</view>
+            <view class="date">{{item.create_time}}</view>
+          </view>
+          <view class="desc two-line-ellipsis">{{item.work_detail}}</view>
+          <view class="img-list">
+            <view class="img-item" wx:for-item="pic_item" wx:for-index="pic_index" wx:for="{{item.pics}}">
+              <image src="{{pic_item}}?imageView2/2/w/202" mode="aspectFill" lazy-load></image>
+              <view class="out3" wx:if="{{item.out3 > 0 && pic_index == 2}}">+{{item.out3}}</view>
+            </view>
+            <image class="img-item vh" wx:for="{{item.flex_pad}}"></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="nomore" wx:if="{{bid_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{bid_nodata}}">
+        暂无数据
+      </view>
+    </view>
+
+    <!-- 创意列表 -->
+    <view class="chuang-box" wx:if="{{type == 4 || role == 0}}">
+      <view class="sort">
+        <view bindtap="order_tap" data-type="{{4}}" data-order="{{1}}" class="sort-item {{idea_order == 1 ? 'active' : ''}}">默认排行</view>
+        <view bindtap="order_tap" data-type="{{4}}" data-order="{{2}}" class="sort-item {{idea_order == 2 ? 'active' : ''}}">热度排行</view>
+      </view>
+      <view class="chuang-list">
+        <view bindtap="jump" data-id="{{item.id}}" class="chuang" wx:for="{{idea_list}}" wx:key="id">
+          <view class="title">{{item.title}}</view>
+          <view class="desc">{{item.content}}</view>
+          <view class="tag-line" wx:if="{{item.tags_name.length > 0}}">
+            <view class="tag" wx:for="{{item.tags_name}}" wx:for-item="tag">{{tag}}</view>
+            <view class="tag vh" wx:for="{{item.flex_pad}}"></view>
+          </view>
+          <view class="two-attr">
+            <view class="attr one-line-ellipsis">来源：{{item.req_title}}</view>
+            <view class="attr date">{{item.create_time}}</view>
+          </view>
+          <view class="hr"></view>
+          <view class="two-attr xia">
+            <view class="attr">采纳：{{item.works_num}}次</view>
+            <view class="attr">获赞：{{item.vote}}次</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="nomore" wx:if="{{idea_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{idea_nodata}}">
+        暂无数据
+      </view>
+    </view>
+
+    <!-- 商品列表 -->
+    <view class="goods-box" wx:if="{{type == 5}}">
+      <view class="goods-list">
+        <view bindtap="jump" data-id="{{item.id}}" class="goods" wx:for="{{goods_list}}" wx:key="id">
+          <image src="{{item.pic}}?imageView2/2/w/339" class="cover" mode="aspectFill" lazy-load></image>
+          <view class="info">
+            <view class="title two-line-ellipsis">{{item.name}}</view>
+            <view class="xia">
+              <view class="price">￥{{item.price}}</view>
+              <view class="pay-count">{{item.sales}}人付款</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="nomore" wx:if="{{goods_nomore}}">
+        已经没有更多了哦
+      </view>
+      <view class="nodata" wx:if="{{goods_nodata}}">
+        暂无数据
+      </view>
+    </view>
+  </view>
+</view>

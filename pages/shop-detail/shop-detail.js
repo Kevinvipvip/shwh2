@@ -7,6 +7,7 @@ Page({
   data: {
     id: 0,
     goods: {},
+    tab_active: 0,  // 0.商品详情 1.买家评价
     rich_text: {},
     add_loading: false,  // 加入购物车loading
     attr_show: false,
@@ -14,10 +15,15 @@ Page({
     attr_index: 0,  // 选中的参数索引，默认为第一个
     buy_type: 1, // 1.购买 2.购物车
     amount: 0,  // 购买数量
-
     poster_show: false,  // 是否显示海报
     poster: '',  // 海报图片
     show_set_btn: false,
+
+    page: 1,
+    comment_list: [],  // 评论列表
+    nomore: false,
+    nodata: false,
+    loading: false,
 
     t_vip: false  // （临时）是否是会员
   },
@@ -34,6 +40,7 @@ Page({
     });
 
     this.goodsDetail();
+    // this.goodsCommentList();
   },
   // 商品详情
   goodsDetail() {
@@ -53,6 +60,10 @@ Page({
       rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
       WxParse.wxParse('rich_text', 'html', rich_text, this);
     });
+  },
+  // 切换tab
+  tab_change(e) {
+    this.setData({ tab_active: e.currentTarget.dataset.tab });
   },
   // 点击购买
   buy() {
@@ -411,5 +422,39 @@ Page({
   onShareAppMessage() {
     wx.showShareMenu();
     return { path: app.share_path() };
+  },
+  // 商品评论列表
+  goodsCommentList(complete) {
+    let post = {
+      goods_id: this.data.id,
+      page: this.data.page,
+      perpage: 20
+    };
+
+    app.ajax('shop/goodsCommentList', post, res => {
+      if (res.length === 0) {
+        if (this.data.page === 1) {
+          this.setData({
+            comment_list: [],
+            nodata: true,
+            nomore: false
+          });
+        } else {
+          this.setData({
+            nodata: false,
+            nomore: true
+          });
+        }
+      } else {
+        app.format_img(res, 'avatar');
+        app.format_time(res, 'create_time');
+        this.setData({ comment_list: this.data.comment_list.concat(res) });
+      }
+      this.data.page++;
+    }, null, () => {
+      if (complete) {
+        complete()
+      }
+    });
   }
 });

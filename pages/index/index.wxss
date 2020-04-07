@@ -339,7 +339,6 @@
   margin-top: 28rpx;
   font-size: 32rpx;
   color: #f43530;
-  font-weight: bold;
 }
 
 .baotui {

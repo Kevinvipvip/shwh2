@@ -69,7 +69,7 @@
 }
 
 .join-vip .v-price-box .v-price {
-  color: #ff4400;
+  color: #f40;
 }
 
 .join-vip .vip-btn {
@@ -80,7 +80,7 @@
   padding: 0 30rpx;
   font-size: 24rpx;
   font-weight: normal;
-  background: #ff4400;
+  background: #f40;
   color: #fff;
 }
 
@@ -88,7 +88,7 @@
   color: #888;
   font-size: 28rpx;
   text-decoration: line-through;
-  margin-left: 5rpx;
+  margin-left: 10rpx;
   font-weight: normal;
 }
 
@@ -268,17 +268,95 @@
   margin-left: 25rpx;
 }
 
-.info-box .content {
+.bottom-content {
   background: #fff;
-  margin-top: 20rpx;
-  padding: 25rpx;
+  margin-top: 15rpx;
+  padding: 0 25rpx;
 }
 
-.info-box .content .title {
-  line-height: 1.1;
-  font-weight: bold;
-  font-size: 30rpx;
-  margin-bottom: 25rpx;
+.bottom-content .tab-list2 {
+  display: flex;
+}
+
+.bottom-content .tab-list2 .tab {
+  width: 0;
+  flex-grow: 1;
+  height: 84rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff7e8d;
+  border-bottom: 5rpx solid rgba(60, 120, 245, 0.07);
+  font-size: 32rpx;
+}
+
+.bottom-content .tab-list2 .tab.active {
+  color: #ff2740;
+  border-bottom-color: #ff7e8d;
+}
+
+.bottom-content .content-wrapper {
+  background: #fff;
+}
+
+.comment-box {
+}
+
+.comment-box .comment:first-child {
+}
+
+.comment-box .comment {
+  box-shadow: 0 1rpx 76rpx 0 rgba(241, 238, 238, 0.75);
+  padding: 24rpx 25rpx 31rpx;
+  border-bottom: 2rpx solid #f4f0f0;
+  background: #fff;
+}
+
+.comment-box .comment .user-line {
+  display: flex;
+  align-items: center;
+}
+
+.comment-box .comment .user-line .header {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.comment-box .comment .user-line .info {
+  margin-left: 25rpx;
+  flex-grow: 1;
+}
+
+.comment-box .comment .user-line .info .nickname {
+  font-size: 26rpx;
+  color: #3d3737;
+}
+
+.comment-box .comment .user-line .info .pd {
+  margin-top: 9rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: rgba(61, 55, 55, 0.4);
+}
+
+.comment-box .comment .user-line .info .pd .param {
+  width: 0;
+  flex-grow: 1;
+}
+
+.comment-box .comment .user-line .info .pd .date {
+  flex-shrink: 0;
+  margin-left: 20rpx;
+}
+
+.comment-box .comment .com-content {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 39rpx;
+  color: #3d3737;
 }
 
 .foot {

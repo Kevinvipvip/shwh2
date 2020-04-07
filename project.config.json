@@ -116,6 +116,27 @@
 					"pathName": "pages/activity-list/activity-list",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布文创大赛",
+					"pathName": "pages/activity-publish/activity-publish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动详情",
+					"pathName": "pages/activity-detail/activity-detail",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "个人主页",
+					"pathName": "pages/person-page/person-page",
+					"query": "uid=1",
+					"scene": null
 				}
 			]
 		}

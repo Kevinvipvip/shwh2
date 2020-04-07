@@ -90,11 +90,36 @@
         </view>
       </view>
     </view>
-    <view class="content">
-      <view class="title title-redtiao">商品详情</view>
-      <view class="content-wrapper">
+
+    <view class="bottom-content">
+      <view class="tab-list2">
+        <view class="tab {{tab_active == 0 ? 'active' : ''}}" bindtap="tab_change" data-tab="{{0}}">商品详情</view>
+        <view class="tab {{tab_active == 1 ? 'active' : ''}}" bindtap="tab_change" data-tab="{{1}}">买家评价</view>
+      </view>
+      <view class="content-wrapper" wx:if="{{tab_active == 0}}">
         <import src="../../wxParse/wxParse.wxml"/>
         <template is="wxParse" data="{{wxParseData:rich_text.nodes}}"/>
+      </view>
+      <view class="comment-box" wx:else>
+        <view class="comment" wx:for="{{comment_list}}" wx:key="index">
+          <view class="user-line">
+            <image src="{{item.avatar}}" class="header"></image>
+            <view class="info">
+              <view class="nickname one-line-ellipsis">{{item.nickname}}</view>
+              <view class="pd">
+                <view class="param one-line-ellipsis">{{item.attr}}</view>
+                <view class="date">{{item.create_time}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="com-content">{{item.comment}}</view>
+        </view>
+        <view class="nomore" wx:if="{{nomore}}">
+          已加载全部评论
+        </view>
+        <view class="nodata" wx:if="{{nodata}}">
+          暂无评论
+        </view>
       </view>
     </view>
   </view>
