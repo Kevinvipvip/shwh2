@@ -137,6 +137,27 @@
 					"pathName": "pages/person-page/person-page",
 					"query": "uid=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员特惠",
+					"pathName": "pages/member-tehui/member-tehui",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分类",
+					"pathName": "pages/cate-list/cate-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "定制专区",
+					"pathName": "pages/custom-zone/custom-zone",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

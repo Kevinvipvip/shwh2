@@ -8,7 +8,69 @@
       </view>
     </scroll-view>
     <scroll-view scroll-y class="two-level">
-      <view class="scroll">
+      <!-- 热门推荐 -->
+      <view class="hot-recom" wx:if="{{active_index == 0}}">
+        <!-- 0元授权按钮 -->
+        <navigator url="/ip-package/pages/index/index" class="apply-btn">
+          <image src="/images/0auth.jpg" class="img"></image>
+        </navigator>
+
+        <!-- 热门推荐 -->
+        <view class="hr">
+          <view class="title">热门推荐</view>
+          <view class="menus">
+            <view class="menu">
+              <image src="/icons/kk2.png"></image>
+              <view class="title">创意众筹</view>
+            </view>
+            <view class="menu">
+              <image src="/icons/dz.png"></image>
+              <view class="title">定制专区</view>
+            </view>
+            <view class="menu">
+              <image src="/icons/kk10.png"></image>
+              <view class="title">文创大赛</view>
+            </view>
+            <view class="menu">
+              <image src="/icons/kk3.png"></image>
+              <view class="title">会员特惠</view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 视频推荐 -->
+        <view class="video-reom">
+          <view class="title">视频推荐</view>
+          <view class="video-list">
+            <view class="video" wx:for="{{[0, 1, 2, 3, 4]}}" wx:key="index">
+              <view class="cover-box">
+                <image src="/images/t-video-cover.jpg" class="cover"></image>
+                <view class="modal">
+                  <view class="play"></view>
+                </view>
+              </view>
+              <view class="title two-line-ellipsis">苏州博物馆山水间 文具置物实木收文具置物实木收</view>
+              <view class="price">178.00</view>
+            </view>
+            <view class="video vh"></view>
+          </view>
+        </view>
+      </view>
+
+      <!-- IP授权 -->
+      <view class="ip-box" wx:if="{{active_index == 1}}">
+        <view class="title">IP授权</view>
+        <view class="ip-list">
+          <view class="ip" wx:for="{{[0, 1, 2, 3, 4, 5, 6]}}">
+            <image src="/icons/kk9.png" class="icon"></image>
+            <view class="text">动漫作品</view>
+          </view>
+          <view class="ip vh"></view>
+        </view>
+      </view>
+
+      <!-- 商品分类 -->
+      <view class="scroll" wx:if="{{active_index != 0 && active_index != 1}}">
         <view bindtap="to_cate_shop" data-cate="{{item}}" class="item" wx:for="{{cate_list[active_index].child}}" wx:key="id">
           <image src="{{item.icon}}" lazy-load="{{true}}" mode="aspectFill"></image>
           <view class="title">{{item.cate_name}}</view>

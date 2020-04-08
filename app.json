@@ -26,27 +26,18 @@
     "pages/activity-rich/activity-rich",
     "pages/my/my",
     "pages/apply2/apply2",
-    "pages/chou-order-create/chou-order-create",
     "pages/work-release/work-release",
     "pages/show-release/show-release",
     "pages/support-options/support-options",
-    "pages/chou-detail/chou-detail",
     "pages/chuang-detail/chuang-detail",
     "pages/chuang-publish/chuang-publish",
     "pages/index/index",
     "pages/my-address/my-address",
     "pages/address-detail/address-detail",
-    "pages/nine-card/nine-card",
     "pages/cul-gift/cul-gift",
     "pages/user-qrcode/user-qrcode",
     "pages/invite-list/invite-list",
-    "pages/order-detail/order-detail",
-    "pages/order-chou-detail/order-chou-detail",
-    "pages/my-orders/my-orders",
-    "pages/my-chou-orders/my-chou-orders",
     "pages/shop-car/shop-car",
-    "pages/order-create/order-create",
-    "pages/cart-order-create/cart-order-create",
     "pages/shop-detail/shop-detail",
     "pages/shop/shop",
     "pages/cate-shop/cate-shop",
@@ -71,16 +62,16 @@
     "pages/org-list/org-list",
     "pages/org-detail/org-detail",
     "pages/refund-list/refund-list",
-    "pages/chou-refund-list/chou-refund-list",
     "pages/my-role-edit/my-role-edit",
     "pages/drumbeating/drumbeating",
     "pages/store/store",
     "pages/online-activity/online-activity",
     "pages/free-sample/free-sample",
     "pages/sign-res/sign-res",
-    "pages/chou-start/chou-start",
     "pages/auth-apply/auth-apply",
-    "pages/activity-publish/activity-publish"
+    "pages/activity-publish/activity-publish",
+    "pages/member-tehui/member-tehui",
+    "pages/custom-zone/custom-zone"
   ],
   "subpackages": [
     {
@@ -100,7 +91,22 @@
     {
       "root": "chou-package",
       "pages": [
-        "pages/chou-list/chou-list"
+        "pages/chou-list/chou-list",
+        "pages/chou-detail/chou-detail",
+        "pages/chou-order-create/chou-order-create",
+        "pages/chou-refund-list/chou-refund-list",
+        "pages/order-chou-detail/order-chou-detail",
+        "pages/my-chou-orders/my-chou-orders",
+        "pages/chou-start/chou-start"
+      ]
+    },
+    {
+      "root": "order-package",
+      "pages": [
+        "pages/order-detail/order-detail",
+        "pages/my-orders/my-orders",
+        "pages/order-create/order-create",
+        "pages/cart-order-create/cart-order-create"
       ]
     }
   ],

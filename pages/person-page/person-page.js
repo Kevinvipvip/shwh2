@@ -5,7 +5,7 @@ Page({
     full_loading: true,
 
     t_focus: false,
-    active_index: 2,  // 0.店铺商品 1.所有笔记 2.个人简介
+    active_index: 1,  // 0.店铺商品 1.所有笔记 2.个人简介
 
     // 商品列表
     goods_list: [],

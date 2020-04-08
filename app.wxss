@@ -1351,3 +1351,88 @@ button::after {
   color: white;
 }
 /* 发布圆按钮 end */
+
+/* 为你推荐 start */
+.common-recom {
+  margin-top: 40rpx;
+  padding: 0 24rpx;
+}
+
+.common-recom .titles {
+  text-align: center;
+  padding-bottom: 26rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.common-recom .titles .title {
+  font-size: 40rpx;
+  color: #101010;
+}
+
+.common-recom .titles .sub-title {
+  margin-top: 15rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.common-recom .recom-list {
+  padding-top: 22rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.common-recom .recom-list .recom {
+  width: 340rpx;
+  box-sizing: border-box;
+  margin-top: 24rpx;
+  border: 2rpx solid #eee;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.common-recom .recom-list .recom:nth-child(-n + 2) {
+  margin-top: 0;
+}
+
+.common-recom .recom .cover {
+  width: 100%;
+  height: 336rpx;
+}
+
+.common-recom .recom .info {
+  padding: 15rpx 16rpx 24rpx;
+}
+
+.common-recom .recom .info > .title {
+  line-height: 1.4;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.common-recom .recom .info .price-box {
+  margin-top: 40rpx;
+  display: flex;
+  align-items: flex-end;
+}
+
+.common-recom .recom .info .price-box .member::before {
+  content: '￥';
+}
+
+.common-recom .recom .info .price-box .member {
+  font-size: 32rpx;
+  color: #F43530;
+}
+
+.common-recom .recom .info .price-box .origin::before {
+  content: '￥';
+}
+
+.common-recom .recom .info .price-box .origin {
+  font-size: 24rpx;
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 10rpx;
+}
+/* 为你推荐 end */
