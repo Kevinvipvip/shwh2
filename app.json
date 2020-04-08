@@ -135,13 +135,13 @@
         "selectedIconPath": "icons/cate-active.png"
       },
       {
-        "pagePath": "pages/needs/needs",
-        "text": "发现",
+        "pagePath": "pages/notes/notes",
+        "text": "笔记",
         "iconPath": "icons/find.png",
         "selectedIconPath": "icons/find-active.png"
       },
       {
-        "pagePath": "pages/notes/notes",
+        "pagePath": "pages/shop-car/shop-car",
         "text": "购物车",
         "iconPath": "icons/cart.png",
         "selectedIconPath": "icons/cart-active.png"

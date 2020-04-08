@@ -2,7 +2,7 @@
   <view class="image"></view>
 </view>
 
-<view class="main" wx:else>
+<view class="page">
   <view class="search-box">
     <view class="search">
       <icon bindtap="search_notes" class="iconfont iconsearch"/>
@@ -14,48 +14,6 @@
     <image src="/icons/big-plus.png"></image>
   </navigator>
 
-  <view class="list">
-    <view class="left">
-      <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{left_note_list}}" wx:key="id">
-        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.pics[0]}}?imageView2/2/w/344" mode="aspectFill" lazy-load="{{true}}"></image>
-        </view>
-        <view class="word">
-          {{item.title}}
-        </view>
-        <view class="xia">
-          <view class="left">
-            <image src="{{item.avatar}}" class="header"></image>
-            {{item.nickname}}
-          </view>
-          <div class="right" catchtap="iLike" data-index="{{index}}" data-type="1">
-            <icon class="iconfont {{item.ilike ? 'iconxin1' : 'iconxin2'}}"/>
-            {{item.like}}
-          </div>
-        </view>
-      </navigator>
-    </view>
-    <view class="right">
-      <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{right_note_list}}" wx:key="id">
-        <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-          <image src="{{item.pics[0]}}?imageView2/2/w/344" mode="aspectFill" lazy-load="{{true}}"></image>
-        </view>
-        <view class="word">
-          {{item.title}}
-        </view>
-        <view class="xia">
-          <view class="left">
-            <image src="{{item.avatar}}" class="header"></image>
-            {{item.nickname}}
-          </view>
-          <div class="right" catchtap="iLike" data-index="{{index}}" data-type="2">
-            <icon class="iconfont {{item.ilike ? 'iconxin1' : 'iconxin2'}}"/>
-            {{item.like}}
-          </div>
-        </view>
-      </navigator>
-    </view>
-  </view>
 
   <view class="nomore" wx:if="{{nomore}}">
     已经没有更多了哦

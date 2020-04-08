@@ -6,7 +6,7 @@ Page({
     role: 0,
 
     auth: false,
-    full_loading: true,
+    full_loading: false,
 
     left_height: 0,
     right_height: 0,
@@ -14,24 +14,24 @@ Page({
     right_note_list: [],
     search: '',
     page: 1,
-    nomore: false,
+    nomore: true,
     nodata: false,
     loading: false,
 
     note_list: []
   },
   onLoad() {
-    app.get_auth((res) => {
-      this.setData({
-        auth: Boolean(res),
-        full_loading: false,
-        role: app.user_data.role
-      });
-      wx.showNavigationBarLoading();
-      this.getNoteList(() => {
-        wx.hideNavigationBarLoading();
-      });
-    });
+    // app.get_auth((res) => {
+    //   this.setData({
+    //     auth: Boolean(res),
+    //     full_loading: false,
+    //     role: app.user_data.role
+    //   });
+    //   wx.showNavigationBarLoading();
+    //   this.getNoteList(() => {
+    //     wx.hideNavigationBarLoading();
+    //   });
+    // });
   },
   bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })

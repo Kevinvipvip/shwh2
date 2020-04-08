@@ -158,6 +158,12 @@
 					"pathName": "pages/custom-zone/custom-zone",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "笔记",
+					"pathName": "pages/notes/notes",
+					"scene": null
 				}
 			]
 		}
