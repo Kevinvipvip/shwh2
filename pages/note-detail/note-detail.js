@@ -7,7 +7,6 @@ Page({
     content: '',
     note_id: 0,
     note: {},
-    release_focus: false,
     input_bottom: 0,
 
     // 点赞
@@ -52,14 +51,11 @@ Page({
   bind_focus(e) {
     this.setData({input_bottom: e.detail.height});
   },
+  bind_blur() {
+    this.setData({input_bottom: 0});
+  },
   bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
-  },
-  show_input() {
-    this.setData({release_focus: true});
-  },
-  hide_input() {
-    this.setData({release_focus: false});
   },
   commentAdd() {
     if (this.data.content.trim()) {

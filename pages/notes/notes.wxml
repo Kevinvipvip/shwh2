@@ -3,10 +3,54 @@
 </view>
 
 <view class="page">
-  <view class="search-box">
-    <view class="search">
-      <icon bindtap="search_notes" class="iconfont iconsearch"/>
-      <input bindinput="bind_input" bindconfirm="search_notes" data-name="search" placeholder="搜索笔记" maxlength="8"/>
+  <view class="top-box">
+    <view class="tabs">
+      <view class="tab {{active_index == 0 ? 'active' : ''}}">全部</view>
+      <view class="tab {{active_index == 1 ? 'active' : ''}}">文旅机构</view>
+      <view class="tab {{active_index == 2 ? 'active' : ''}}">工厂</view>
+    </view>
+    <view class="search-box">
+      <view class="search">
+        <icon bindtap="search_notes" class="iconfont iconsearch"/>
+        <input bindinput="bind_input" bindconfirm="search_notes" data-name="search" placeholder="搜索笔记" maxlength="8"/>
+      </view>
+    </view>
+  </view>
+
+  <view class="note-box">
+    <view class="note-list">
+      <view class="note" wx:for="{{note_list}}">
+        <view class="user-line">
+          <image src="/icons/fire.png" class="header"></image>
+          <view class="uinfo">
+            <view class="uname">山洞自营</view>
+            <view class="time-ago">47分钟前</view>
+          </view>
+        </view>
+        <view class="title">山洞文创生态平台全面升级！在未来将会带给大家不一样 的文旅体验。</view>
+        <view class="image-box one" wx:if="{{item.img_list.length == 1}}">
+          <image src="/images/t-goods.jpg" class="img" mode="widthFix" wx:for="{{item.img_list}}" wx:key="index"></image>
+        </view>
+        <view class="image-box four" wx:if="{{item.img_list.length == 4}}">
+          <image src="/images/t-goods.jpg" class="img" wx:for="{{item.img_list}}" wx:key="index"></image>
+        </view>
+        <view class="image-box other" wx:if="{{!(item.img_list.length == 1 || item.img_list.length == 4)}}">
+          <image src="/images/t-goods.jpg" class="img" wx:for="{{item.img_list}}" wx:key="index"></image>
+          <image class="img vh" wx:for="{{item.flex_pad}}" wx:key="index"></image>
+        </view>
+        <view class="info">
+          <view class="left">
+            <view class="comment">175评论</view>
+            <view class="agree">9600赞</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="nomore" wx:if="{{note_nomore}}">
+      已经没有更多了哦
+    </view>
+    <view class="nodata" wx:if="{{note_nodata}}">
+      暂无笔记
     </view>
   </view>
 

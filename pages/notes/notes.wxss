@@ -1,0 +1,213 @@
+.page {
+  padding-top: 192rpx;
+  min-height: 100vh;
+  box-sizing: border-box;
+  /*background: #f6f7f9;*/
+}
+
+.pub-round-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4rpx 5rpx #888;
+  bottom: 50rpx;
+  top: auto;
+  box-sizing: border-box;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.pub-round-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.top-box {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.tabs {
+  padding: 0 24rpx;
+  height: 88rpx;
+  display: flex;
+}
+
+.tabs .tab {
+  width: 0;
+  flex-grow: 1;
+  font-size: 28rpx;
+  color: #101010;
+  text-align: center;
+  line-height: 88rpx;
+}
+
+.tabs .tab.active {
+  font-size: 32rpx;
+  color: #333;
+  position: relative;
+}
+
+.tabs .tab.active::after {
+  content: '';
+  position: absolute;
+  width: 40rpx;
+  height: 8rpx;
+  border-radius: 4rpx;
+  background: #FCD530;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.search-box {
+  margin-top: 14rpx;
+  padding-bottom: 20rpx;
+  z-index: 1;
+  box-shadow: 0 3rpx 10rpx 0 #eee;
+}
+
+.search {
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  height: 70rpx;
+  margin: 0 20rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 15rpx;
+}
+
+.search .iconfont {
+  font-size: 40rpx;
+  position: relative;
+  top: -4rpx;
+  margin-left: 5rpx;
+  color: #9c9c9c;
+  flex-shrink: 1;
+}
+
+.search input {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  flex-grow: 1;
+}
+
+.note-box {
+}
+
+.note-box .note-list {
+}
+
+.note-list .note {
+  padding: 31rpx 24rpx 40rpx;
+  border-bottom: 4rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.note {
+
+}
+
+.note .user-line {
+  display: flex;
+  align-items: flex-start;
+}
+
+.note .user-line .header {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5rpx;
+}
+
+.note .user-line .uinfo {
+  flex-grow: 1;
+  margin-left: 16rpx;
+}
+
+.note .user-line .uinfo .uname {
+  font-size: 32rpx;
+  color: #101010;
+}
+
+.note .user-line .uinfo .time-ago {
+  margin-top: 15rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.note .title {
+  line-height: 1.5;
+  font-size: 28rpx;
+  margin-top: 35rpx;
+  color: #101010;
+}
+
+.note .image-box {
+  margin-top: 33rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.note .image-box .img {
+  margin-top: 18rpx;
+}
+
+.note .image-box.one {
+}
+
+.note .image-box.one .img {
+  width: 100%;
+  margin-top: 0;
+}
+
+.note .image-box.four {
+}
+
+.note .image-box.four .img {
+  border-radius: 8rpx;
+  width: 342rpx;
+  height: 342rpx;
+}
+
+.note .image-box.four .img:nth-child(-n + 2) {
+  margin-top: 0;
+}
+
+.note .image-box.other {
+}
+
+.note .image-box.other .img {
+  border-radius: 8rpx;
+  width: 222rpx;
+  height: 222rpx;
+}
+
+.note .image-box.other .img:nth-child(-n + 3) {
+  margin-top: 0;
+}
+
+.note .info {
+  margin-top: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.note .info .left {
+  display: flex;
+}
+
+.note .info .left .comment {
+}
+
+.note .info .left .agree {
+  margin-left: 58rpx;
+}

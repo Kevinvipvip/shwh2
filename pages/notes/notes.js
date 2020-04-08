@@ -8,17 +8,31 @@ Page({
     auth: false,
     full_loading: false,
 
-    left_height: 0,
-    right_height: 0,
-    left_note_list: [],
-    right_note_list: [],
+    active_index: 0,
+
+    note_list: [
+      {
+        img_list: [0],
+        flex_pad: []
+      },
+      {
+        img_list: [0, 1, 2, 3],
+        flex_pad: []
+      },
+      {
+        img_list: [0, 1, 2],
+        flex_pad: []
+      },
+      {
+        img_list: [0, 1, 2, 3, 4, 5, 6, 7],
+        flex_pad: [null]
+      }
+    ],
     search: '',
     page: 1,
     nomore: true,
     nodata: false,
     loading: false,
-
-    note_list: []
   },
   onLoad() {
     // app.get_auth((res) => {

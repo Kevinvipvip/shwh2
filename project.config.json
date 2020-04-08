@@ -163,6 +163,14 @@
 					"id": -1,
 					"name": "笔记",
 					"pathName": "pages/notes/notes",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "笔记详情",
+					"pathName": "pages/note-detail/note-detail",
+					"query": "id=50",
 					"scene": null
 				}
 			]
