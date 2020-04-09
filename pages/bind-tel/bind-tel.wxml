@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="main">
+    <view class="face-box">
+      <image src="/images/bind-face.png" class="face"></image>
+      <view class="text">我什么也没看见</view>
+    </view>
+    <view class="form">
+      <view class="form-item">
+        <image src="/icons/bind-phone.png" class="tol t1"></image>
+        <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入您的手机号" maxlength="11"/>
+      </view>
+      <view class="form-item">
+        <image src="/icons/bind-dui.png" class="tol t2"></image>
+        <input bindinput="bind_input" data-name="code" value="{{code}}" type="number" placeholder="验证码" maxlength="6"/>
+        <button bindtap="sendSms" class="code-btn" disabled="{{code_disabled}}">{{code_text}}</button>
+      </view>
+    </view>
+    <view class="sub-btn">提交</view>
+  </view>
+</view>

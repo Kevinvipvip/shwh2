@@ -42,7 +42,8 @@
       </view>
     </view>
     <view class="input-item sign">
-      <view class="label">{{role == 0 || role == 2 ? '个人备注' : '公司简介'}}</view>
+<!--      <view class="label">{{role == 0 || role == 2 ? '个人备注' : '公司简介'}}</view>-->
+      <view class="label">个人简介</view>
       <view class="you">
         <view bindtap="to_edit" data-name="sign" class="sign-box">
           <view class="content">{{sign}}</view>
@@ -50,14 +51,14 @@
         </view>
       </view>
     </view>
-    <view class="input-item cover" wx:if="{{role != 0}}">
-      <view class="label">个人主页/列表封面</view>
-      <view class="you">
-        <view bindtap="modCover" class="cover-box">
-          <image src="{{cover}}" mode="aspectFill"></image>
-          <image src="/icons/edit.png" class="icon"></image>
-        </view>
-      </view>
-    </view>
+<!--    <view class="input-item cover" wx:if="{{role != 0}}">-->
+<!--      <view class="label">个人主页/列表封面</view>-->
+<!--      <view class="you">-->
+<!--        <view bindtap="modCover" class="cover-box">-->
+<!--          <image src="{{cover}}" mode="aspectFill"></image>-->
+<!--          <image src="/icons/edit.png" class="icon"></image>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--    </view>-->
   </view>
 </view>

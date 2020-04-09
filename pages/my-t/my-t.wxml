@@ -1,0 +1,106 @@
+<view class="page">
+  <!-- 头部 -->
+  <view class="banner">
+    <view class="head-line">
+      <image src="/icons/kk6.png" class="head"></image>
+      <view class="info">
+        <view class="id">ID:45</view>
+        <view class="nickname">环形山</view>
+      </view>
+    </view>
+    <view class="vip-ad">
+      <image src="/images/my-vip-ad.png" class="bg"></image>
+      <view class="btn">立即开通</view>
+    </view>
+  </view>
+
+  <!-- 个人数据 -->
+  <view class="data-list">
+    <view class="data">
+      <view class="amount">0</view>
+      <view class="title">积分</view>
+    </view>
+    <view class="data">
+      <view class="amount">0</view>
+      <view class="title">关注</view>
+    </view>
+    <view class="data">
+      <view class="amount">0</view>
+      <view class="title">粉丝</view>
+    </view>
+    <view class="data">
+      <view class="amount">0</view>
+      <view class="title">笔记</view>
+    </view>
+  </view>
+
+  <!-- 我的订单 -->
+  <view class="order-box">
+    <view class="title-line">
+      <view class="title">我的订单</view>
+      <view class="all">
+        <view class="text">全部订单</view>
+        <image src="/icons/you3.png" class="you"></image>
+      </view>
+    </view>
+    <view class="status-box">
+      <view class="status">
+        <image src="/icons/os1.png" class="icon i1"></image>
+        <view class="text">待付款</view>
+      </view>
+      <view class="status">
+        <image src="/icons/os2.png" class="icon i2"></image>
+        <view class="text">待发货</view>
+      </view>
+      <view class="status">
+        <image src="/icons/os3.png" class="icon i3"></image>
+        <view class="text">待收货</view>
+      </view>
+      <view class="status">
+        <image src="/icons/os4.png" class="icon i4"></image>
+        <view class="text">已完成</view>
+      </view>
+      <view class="status">
+        <image src="/icons/os5.png" class="icon i5"></image>
+        <view class="text">售后</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的服务 -->
+  <view class="service-box">
+    <view class="title">我的服务</view>
+    <view class="service-list">
+      <view class="service">
+        <image src="/icons/my-chou.png" class="icon i1"></image>
+        <view class="text">我的众筹</view>
+      </view>
+      <view class="service">
+        <image src="/icons/my-shen.png" class="icon i2"></image>
+        <view class="text">申请角色</view>
+      </view>
+      <view class="service">
+        <image src="/icons/my-add.png" class="icon i3"></image>
+        <view class="text">收货地址</view>
+      </view>
+      <view class="service">
+        <image src="/icons/my-kefu.png" class="icon i4"></image>
+        <view class="text">在线客服</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 绑定手机号modal -->
+  <view catchtouchmove class="tel-modal">
+    <view class="content">
+      <image src="/images/phone-round.png" class="round"></image>
+      <view class="text">
+        <view>为了保障您的账号安全</view>
+        <view>请绑定手机号</view>
+      </view>
+      <navigator class="bind-btn">去绑定</navigator>
+
+      <image src="/icons/cha.png" class="cha"></image>
+    </view>
+  </view>
+</view>

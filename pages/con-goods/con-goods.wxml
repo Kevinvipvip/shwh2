@@ -1,0 +1,46 @@
+<view class="page" style="padding-top: {{use_type ? '88rpx' : 0}};">
+  <view class="type-choose" wx:if="{{use_type}}">
+    <picker bindchange="sex_choose" value="{{sex}}" range="{{sex_list}}" range-key="name">
+      <view class="picker">
+        <view class="text" wx:if="{{type == -1}}">{{type == -1 ? '选择类型' : sex_list[sex].name}}</view>
+        <image src="/icons/xia2.png" class="icon"></image>
+      </view>
+    </picker>
+  </view>
+
+  <view class="con-list">
+    <view class="con-item">
+      <view class="radio"></view>
+      <view class="con">
+        <image src="/images/t-bao-goods.jpg" class="cover"></image>
+        <view class="info">
+          <view class="title two-line-ellipsis">唐妞胸针领针可爱卡通高档金属复古中 国风纪念品唐妞胸针领针可爱卡通高档金属复古中</view>
+          <view class="numbers">
+            <view class="price">32.00</view>
+            <view class="sales">销量9600</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <view class="radio active"></view>
+      <view class="con">
+        <image src="/images/t-bao-goods.jpg" class="cover"></image>
+        <view class="info">
+          <view class="title two-line-ellipsis">唐妞胸针领针可爱卡通高档金属复古中 国风纪念品唐妞胸针领针可爱卡通高档金属复古中</view>
+          <view class="numbers">
+            <view class="price">32.00</view>
+            <view class="sales">销量9600</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
+  </view>
+</view>

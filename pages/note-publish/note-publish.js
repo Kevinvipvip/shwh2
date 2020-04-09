@@ -5,13 +5,14 @@ Page({
     id: 0,
     is_ios: false,
 
-    title: '',  // 笔记标题
     content: '',  // 笔记内容
     content_count: 0,
     pics: [],
     reason: '',
 
     status: 0,  // 0.审核中 1.通过审核 2.未通过 （编辑笔记时用）
+
+    c_goods_id: 1,
 
     flex_pad: []
   },
@@ -35,7 +36,6 @@ Page({
       }
 
       this.setData({
-        title: res.title,
         content: res.content,
         content_count: res.content.length,
         pics: pics,
@@ -97,9 +97,7 @@ Page({
   noteRelease(e) {
     let data = this.data;
 
-    if (!data.title.trim()) {
-      app.toast('请填写笔记标题');
-    } else if (!data.content.trim()) {
+    if (!data.content.trim()) {
       app.toast('请填写笔记内容');
     } else if (data.pics.length === 0) {
       app.toast('请至少上传一张图片');
@@ -107,7 +105,6 @@ Page({
       app.collectFormid(e.detail.formId);
 
       let post = {
-        title: data.title,
         content: data.content,
         token: app.user_data.token,
         pics: this.get_img_arr(),

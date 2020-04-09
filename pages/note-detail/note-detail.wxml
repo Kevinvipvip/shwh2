@@ -30,56 +30,68 @@
     <text class="text">某某商品名称</text>
   </navigator>
 
-  <view class="info">
-    <view class="icons">
-      <view class="left">
-        <view class="icon-box" bindtap="iLike">
-          <icon class="iconfont {{like ? 'iconxin1' : 'iconxin2'}}"/>
-          <view class="sub">{{note.like}}</view>
-        </view>
-        <button open-type="share" class="icon-box">
-          <icon class="iconfont iconfenxiang"/>
-<!--          <view class="sub">1</view>-->
-        </button>
-      </view>
-      <view class="right">
-        <view class="icon-box" bindtap="iCollect">
-          <icon class="iconfont {{collect ? 'iconfavorfill' : 'iconfavor'}}"/>
-          <!--<view class="sub">2</view>-->
-        </view>
-      </view>
-    </view>
-  </view>
+<!--  <view class="info">-->
+<!--    <view class="icons">-->
+<!--      <view class="left">-->
+<!--        <view class="icon-box" bindtap="iLike">-->
+<!--          <icon class="iconfont {{like ? 'iconxin1' : 'iconxin2'}}"/>-->
+<!--          <view class="sub">{{note.like}}</view>-->
+<!--        </view>-->
+<!--        <button open-type="share" class="icon-box">-->
+<!--          <icon class="iconfont iconfenxiang"/>-->
+<!--&lt;!&ndash;          <view class="sub">1</view>&ndash;&gt;-->
+<!--        </button>-->
+<!--      </view>-->
+<!--      <view class="right">-->
+<!--        <view class="icon-box" bindtap="iCollect">-->
+<!--          <icon class="iconfont {{collect ? 'iconfavorfill' : 'iconfavor'}}"/>-->
+<!--          &lt;!&ndash;<view class="sub">2</view>&ndash;&gt;-->
+<!--        </view>-->
+<!--      </view>-->
+<!--    </view>-->
+<!--  </view>-->
 
-  <view class="comment" wx:for="{{comment_list}}" wx:key="id">
-    <image src="{{item.avatar}}" class="header"></image>
-    <view class="content">
-      <view class="c-info">
-        <view class="nickname">{{item.nickname}}{{auth_id == uid ? '（作者）' : ''}}</view>
-        <view class="date">{{item.created_time}}</view>
-        <view class="text">{{item.content}}</view>
-        <view class="re-comment-box" wx:if="{{item.child.length > 0}}">
-          <view class="re-comment" wx:for="{{item.child}}" wx:key="id" wx:for-item="child_item">
-            <image src="{{child_item.avatar}}" class="re-header"></image>
-            <view class="re-info">
-              <view class="nickname">{{child_item.nickname}}{{auth_id == child_item.uid ? '（作者）' : ''}}</view>
-              <view class="date">{{child_item.created_time}}</view>
-              <view class="re-re-btn" data-re_user="{{child_item}}" bindtap="show_input">回复</view>
-              <view class="re-text">
-                回复 @{{child_item.to_nickname}}：{{child_item.content}}
+  <view class="comment-box">
+    <view class="title-line">
+      <view class="title">评论</view>
+      <view class="amount">（共436条）</view>
+    </view>
+    <view class="comment" wx:for="{{comment_list}}" wx:key="id">
+      <image src="{{item.avatar}}" class="header"></image>
+      <view class="content">
+        <view class="c-info">
+          <view class="nickname">{{item.nickname}}{{auth_id == uid ? '（作者）' : ''}}</view>
+          <view class="date">{{item.created_time}}</view>
+          <view class="text">{{item.content}}</view>
+          <view class="re-comment-box" wx:if="{{item.child.length > 0}}">
+            <view class="re-comment" wx:for="{{item.child}}" wx:key="id" wx:for-item="child_item">
+              <image src="{{child_item.avatar}}" class="re-header"></image>
+              <view class="re-info">
+                <view class="nickname">{{child_item.nickname}}{{auth_id == child_item.uid ? '（作者）' : ''}}</view>
+                <view class="date">{{child_item.created_time}}</view>
+                <view class="re-re-btn" data-re_user="{{child_item}}" bindtap="show_input">回复</view>
+                <view class="re-text">
+                  回复 @{{child_item.to_nickname}}：{{child_item.content}}
+                </view>
               </view>
             </view>
           </view>
         </view>
+        <view class="re-btn" data-re_user="{{item}}" bindtap="show_input">回复</view>
       </view>
-      <view class="re-btn" data-re_user="{{item}}" bindtap="show_input">回复</view>
+      <view class="hr" wx:if="{{index != comment_list.length - 1}}"></view>
     </view>
-    <view class="hr" wx:if="{{index != comment_list.length - 1}}"></view>
   </view>
 
   <view class="input-box" style="bottom: {{input_bottom}}px;">
-    <input bindconfirm="commentAdd" bindinput="bind_input" bindfocus="bind_focus" bindblur="bind_blur" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="写评论..." maxlength="100" class="re-input" />
-    <view bindtap="commentAdd" class="com-btn">发送</view>
+    <input bindconfirm="commentAdd" bindinput="bind_input" bindfocus="bind_focus" bindblur="bind_blur" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="{{re_name}}" maxlength="100" class="re-input" focus="{{release_focus}}" />
+
+    <view class="icon-box" bindtap="iLike">
+      <image src="/icons/heart-active.png" class="heart" wx:if="{{like}}"></image>
+      <image src="/icons/heart.png" class="heart" wx:else></image>
+      <view class="num">{{note.like}}</view>
+    </view>
+<!--    <view bindtap="commentAdd" class="com-btn">发送</view>-->
   </view>
 </view>
 

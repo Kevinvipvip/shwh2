@@ -24,11 +24,11 @@
   <!-- 编辑个人备注 -->
   <view class="edit-box sign" wx:if="{{field_name == 'sign'}}">
     <view class="shang">
-      <view class="edit-text">编辑个人备注</view>
+      <view class="edit-text">编辑个人简介</view>
       <button bindtap="save" class="save-btn">保存</button>
     </view>
     <view class="input-box">
-      <textarea bindinput="bind_input" data-name="sign" value="{{sign}}" auto-height maxlength="200" cursor-spacing="50" placeholder="备注内容..." />
+      <textarea bindinput="bind_input" data-name="sign" value="{{sign}}" auto-height maxlength="200" cursor-spacing="50" placeholder="个人简介..." />
     </view>
   </view>
 </view>

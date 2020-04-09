@@ -1,30 +1,127 @@
 .page {
-    padding: 40rpx 25rpx;
-    line-height: 1;
-    position: relative;
-    box-sizing: border-box;
-    min-height: 100vh;
+  line-height: 1;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: #f2f2f2;
+}
+
+.main {
+  padding: 40rpx 25rpx;
+  background: #fff;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user .header {
+  width: 80rpx;
+  height: 80rpx;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.user .nickname {
+  flex-grow: 1;
+  margin-left: 16rpx;
+  font-size: 32rpx;
+  color: #101010;
+}
+
+.form1 {
+  margin-top: 40rpx;
+}
+
+.form1 .textarea-box {
+  border: none;
+}
+
+.form1 .textarea-box .count {
+  padding: 0;
+}
+
+.add-pic.plus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-pic.plus .camera {
+  width: 71rpx;
+  height: 64rpx;
+}
+
+.add-pic.plus .text {
+  margin-top: 24rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.con-goods {
+  margin-top: 18rpx;
+  display: flex;
+  background: #fff;
+  padding: 24rpx;
+  align-items: center;
+}
+
+.con-goods .label-icon {
+  flex-shrink: 0;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.con-goods .fen {
+  flex-grow: 1;
+  font-size: 28rpx;
+  color: #101010;
+}
+
+.con-goods .goods-name {
+  flex-grow: 1;
+  font-size: 28rpx;
+  color: #ff9446;
+}
+
+.con-goods .you {
+  flex-shrink: 0;
+  margin-left: 20rpx;
+  width: 13rpx;
+  height: 23rpx;
 }
 
 .notice {
-    word-break: break-all;
-    margin-bottom: 40rpx;
-    border: solid 2rpx #e5e5e5;
-    border-radius: 4rpx;
-    padding: 12rpx 18rpx;
-    font-size: 24rpx;
-    color: #cccccc;
-    line-height: 1.4;
+  word-break: break-all;
+  margin-bottom: 40rpx;
+  border: solid 2rpx #e5e5e5;
+  border-radius: 4rpx;
+  padding: 12rpx 18rpx;
+  font-size: 24rpx;
+  color: #ccc;
+  line-height: 1.4;
 }
 
 .notice.warning {
-    border-color: red;
-    color: red;
+  border-color: red;
+  color: red;
 }
 
-.line-btn {
-    margin-top: 80rpx;
-    background: #1b1b1b;
-    color: #faf8f8;
-    border-radius: 4rpx;
+.sub-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background: #FCD530;
+  color: #333;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 36rpx;
+  text-align: center;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 }

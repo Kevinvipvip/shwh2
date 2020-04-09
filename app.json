@@ -5,7 +5,6 @@
     "pages/test2/test2",
     "pages/role-vip-open/role-vip-open",
     "pages/logistics/logistics",
-    "pages/my-focus-list/my-focus-list",
     "pages/score-log/score-log",
     "pages/my-bidding/my-bidding",
     "pages/person-list/person-list",
@@ -34,9 +33,6 @@
     "pages/index/index",
     "pages/my-address/my-address",
     "pages/address-detail/address-detail",
-    "pages/cul-gift/cul-gift",
-    "pages/user-qrcode/user-qrcode",
-    "pages/invite-list/invite-list",
     "pages/shop-car/shop-car",
     "pages/shop-detail/shop-detail",
     "pages/shop/shop",
@@ -71,7 +67,12 @@
     "pages/auth-apply/auth-apply",
     "pages/activity-publish/activity-publish",
     "pages/member-tehui/member-tehui",
-    "pages/custom-zone/custom-zone"
+    "pages/custom-zone/custom-zone",
+    "pages/my-t/my-t",
+    "pages/bind-tel/bind-tel",
+    "pages/vip-center/vip-center",
+    "pages/focus-fans/focus-fans",
+    "pages/con-goods/con-goods"
   ],
   "subpackages": [
     {

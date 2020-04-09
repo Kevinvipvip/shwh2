@@ -172,6 +172,54 @@
 					"pathName": "pages/note-detail/note-detail",
 					"query": "id=50",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的-临时",
+					"pathName": "pages/my-t/my-t",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "绑定手机号",
+					"pathName": "pages/bind-tel/bind-tel",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人资料",
+					"pathName": "pages/my-edit/my-edit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 20,
+					"name": "会员中心",
+					"pathName": "pages/vip-center/vip-center",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 21,
+					"name": "我的关注/我的粉丝",
+					"pathName": "pages/focus-fans/focus-fans",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布笔记",
+					"pathName": "pages/note-publish/note-publish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品关联笔记",
+					"pathName": "pages/con-goods/con-goods",
+					"scene": null
 				}
 			]
 		}

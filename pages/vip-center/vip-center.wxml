@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="banner">
+    <image src="/images/vip-service.png" class="vip-service"></image>
+    <view class="kai-btn">立即开通￥xxx元/年</view>
+  </view>
+
+  <!-- 为你推荐 -->
+  <view class="common-recom">
+    <view class="titles">
+      <view class="title">为你推荐</view>
+      <view class="sub-title">集你所想，推你所爱</view>
+    </view>
+    <view class="recom-list">
+      <view class="recom" wx:for="{{[0, 1, 2, 3, 4]}}">
+        <image src="/images/t-goods.jpg" class="cover" mode="aspectFill" lazy-load></image>
+        <view class="info">
+          <view class="title two-line-ellipsis">唐妞簪花仕女图丝巾百搭 创意闺蜜生日礼物礼盒创意闺蜜生日礼物礼盒</view>
+          <view class="price-box">
+            <view class="member">64.00</view>
+            <view class="origin">98.00</view>
+          </view>
+        </view>
+      </view>
+      <view class="recom vh"></view>
+    </view>
+    <view class="nomore" wx:if="{{nomore}}">
+      已经没有更多了哦
+    </view>
+    <view class="nodata" wx:if="{{nodata}}">
+      暂无数据
+    </view>
+  </view>
+</view>

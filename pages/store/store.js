@@ -23,7 +23,13 @@ Page({
     code_text: '发送验证码',
     count_down: 60,
     code_disabled: false,
-    code_flag: 0
+    code_flag: 0,
+
+    sex: -1,
+    sex_list: [
+      { name: '男', value: 1 },
+      { name: '女', value: 2 }
+    ]
   },
   onLoad() {
     this.data.role = app.user_data.role;
@@ -236,5 +242,9 @@ Page({
         wx.hideLoading();
       });
     }
+  },
+  // picker选择器
+  sex_choose(e) {
+    this.setData({ sex: parseInt(e.detail.value) });
   }
 });

@@ -1,0 +1,81 @@
+.page {
+}
+
+.list {
+  padding: 40rpx 24rpx 0;
+}
+
+.list .user {
+  display: flex;
+  align-items: center;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx solid #fafafa;
+  margin-top: 40rpx;
+}
+
+.list .user:first-child {
+  margin-top: 0;
+}
+
+.user .header {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.user .info {
+  flex-grow: 1;
+  margin-left: 25rpx;
+}
+
+.user .info .nickname {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.user .info .numbers {
+  margin-top: 19rpx;
+  display: flex;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.user .info .numbers .note-number {
+  width: 175rpx;
+}
+
+.user .info .numbers .fan-number {
+  width: 175rpx;
+}
+
+.list .focus-btn {
+  flex-shrink: 0;
+  border-radius: 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.list.focus .focus-btn {
+  width: 122rpx;
+  height: 40rpx;
+  border: 2rpx solid #999;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.list.fans .focus-btn {
+  width: 138rpx;
+  height: 46rpx;
+  background: #ffc017;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.list.fans .focus-btn.hu {
+  background-color: #fffbf0;
+  border: 2rpx solid #ffc017;
+  color: #ffc017;
+}

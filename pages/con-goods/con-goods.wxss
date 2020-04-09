@@ -1,0 +1,103 @@
+.page {
+}
+
+.type-choose {
+  background: #fafafa;
+  height: 88rpx;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.type-choose picker {
+  width: 100%;
+  height: 100%;
+}
+
+.type-choose .picker {
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.type-choose .picker .text {
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.type-choose .picker .icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+
+.con-list {
+  padding: 40rpx 24rpx 0;
+}
+
+.con-list .con-item {
+  display: flex;
+  align-items: center;
+}
+
+.con-list .con-item .radio {
+  flex-shrink: 0;
+  width: 40rpx;
+  height: 40rpx;
+  box-sizing: border-box;
+  border: 4rpx solid #999;
+  border-radius: 50%;
+}
+
+.con-list .con-item .radio.active {
+  border-color: #fcd530;
+  position: relative;
+}
+
+.con-list .con-item .radio.active::after {
+  content: '';
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 20rpx;
+  height: 20rpx;
+  background: #fcd530;
+  border-radius: 50%;
+}
+
+.con-list .con-item .con {
+  flex-grow: 1;
+  margin-left: 20rpx;
+}
+
+.con .cover {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 8rpx;
+}
+
+.con .info {
+
+}
+
+.con .info .title {
+
+}
+
+.con .info .numbers {
+
+}
+
+.con .info .numbers .price {
+
+}
+
+.con .info .numbers .sales {
+
+}

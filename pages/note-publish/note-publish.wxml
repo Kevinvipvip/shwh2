@@ -1,46 +1,57 @@
 <view class="page">
-  <view class="notice warning" wx:if="{{id != 0 && status == 2}}">
-    驳回原因：{{reason || '未知'}}
-  </view>
-  <view class="form1">
-    <view class="form-item">
-      <view class="title">笔记标题</view>
-      <input bindinput="bind_input" data-name="title" value="{{title}}" placeholder="请输入笔记标题" placeholder-class="input-place" maxlength="50"/>
+  <view class="main">
+    <view class="notice warning" wx:if="{{id != 0 && status == 2}}">
+      驳回原因：{{reason || '未知'}}
     </view>
-    <view class="form-item">
-      <view class="title">笔记内容</view>
-      <view class="textarea-box">
-        <textarea bindinput="bind_input" data-name="content" value="{{content}}" auto-height maxlength="500" cursor-spacing="50" placeholder="请输入笔记内容..." class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
-        <view class="count">
-          <text>{{content_count}}</text> / 500
+    <view class="user">
+      <image src="/images/t-bao-goods.jpg" class="header"></image>
+      <view class="nickname">南骑Display</view>
+    </view>
+    <view class="form1">
+      <view class="form-item">
+        <view class="textarea-box">
+          <textarea bindinput="bind_input" data-name="content" value="{{content}}" auto-height maxlength="500" cursor-spacing="50" placeholder="分享新鲜事物/商品..." />
+          <view class="count">
+            <text>{{content_count}}</text> / 500
+          </view>
         </view>
       </view>
-    </view>
-    <view class="form-item">
-      <view class="title">作品上传（最多9张）</view>
-      <view class="up-pic">
-        <view class="flex pic-box">
-          <block wx:for="{{pics}}" wx:key="index">
-            <view class="ap-box">
-              <view class="add-pic">
-                <image class="add-pic" src="{{item.pic}}" data-index="{{index}}" bindload="img_load"></image>
-                <view class="img-de" data-index="{{index}}" bindtap="img_delete">
-                  <image class="img" src="/images/close.png"></image>
+      <view class="form-item">
+        <view class="up-pic">
+          <view class="flex pic-box">
+            <block wx:for="{{pics}}" wx:key="index">
+              <view class="ap-box">
+                <view class="add-pic">
+                  <image class="add-pic" src="{{item.pic}}" data-index="{{index}}" bindload="img_load"></image>
+                  <view class="img-de" data-index="{{index}}" bindtap="img_delete">
+                    <image class="img" src="/images/close.png"></image>
+                  </view>
                 </view>
               </view>
+            </block>
+            <view class="add-pic plus" bindtap="up_pics" wx:if="{{pics.length < 9}}">
+              <image src="/icons/camera.png" class="camera"></image>
+              <view class="text">上传图片</view>
             </view>
-          </block>
-          <view class="add-pic plus" bindtap="up_pics" wx:if="{{pics.length < 9}}">
-            <icon class="iconfont iconjia"/>
-          </view>
-          <view class="ap-box vh" wx:for="{{flex_pad}}" wx:if="{{pics.length < 9}}">
-            <view class="add-pic"></view>
+            <view class="ap-box vh" wx:for="{{flex_pad}}" wx:if="{{pics.length < 9}}">
+              <view class="add-pic"></view>
+            </view>
           </view>
         </view>
       </view>
     </view>
   </view>
+
+  <view class="con-goods">
+    <image src="/icons/label.png" class="label-icon"></image>
+
+    <view class="fen" wx:if="{{c_goods_id == 0}}">分享商品</view>
+    <view class="goods-name one-line-ellipsis" wx:else>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+
+    <image src="/icons/right-arrow.png" class="you"></image>
+  </view>
+
   <form bindsubmit="noteRelease" report-submit>
-    <button form-type="submit" class="line-btn">{{id == 0 ? '发布' : '修改'}}</button>
+    <button form-type="submit" class="sub-btn">确认{{id == 0 ? '发布' : '修改'}}</button>
   </form>
 </view>
