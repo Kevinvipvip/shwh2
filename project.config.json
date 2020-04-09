@@ -219,6 +219,14 @@
 					"id": -1,
 					"name": "商品关联笔记",
 					"pathName": "pages/con-goods/con-goods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的众筹",
+					"pathName": "chou-package/pages/my-chou/my-chou",
+					"query": "",
 					"scene": null
 				}
 			]

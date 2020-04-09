@@ -98,7 +98,8 @@
         "pages/chou-refund-list/chou-refund-list",
         "pages/order-chou-detail/order-chou-detail",
         "pages/my-chou-orders/my-chou-orders",
-        "pages/chou-start/chou-start"
+        "pages/chou-start/chou-start",
+        "pages/my-chou/my-chou"
       ]
     },
     {

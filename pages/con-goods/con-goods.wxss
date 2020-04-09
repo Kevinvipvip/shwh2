@@ -41,6 +41,11 @@
 .con-list .con-item {
   display: flex;
   align-items: center;
+  margin-top: 24rpx;
+}
+
+.con-list .con-item:first-child {
+  margin-top: 0;
 }
 
 .con-list .con-item .radio {
@@ -74,30 +79,45 @@
 .con-list .con-item .con {
   flex-grow: 1;
   margin-left: 20rpx;
+  display: flex;
 }
 
 .con .cover {
   width: 180rpx;
   height: 180rpx;
   border-radius: 8rpx;
+  flex-shrink: 0;
 }
 
 .con .info {
-
+  flex-grow: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .con .info .title {
-
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.5;
 }
 
 .con .info .numbers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+}
 
+.con .info .numbers .price::before {
+  content: '￥';
 }
 
 .con .info .numbers .price {
-
+  color: #F43530;
 }
 
 .con .info .numbers .sales {
-
+  color: #999;
 }
