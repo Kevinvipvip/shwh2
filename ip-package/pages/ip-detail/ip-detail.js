@@ -5,16 +5,29 @@ Page({
   data: {
     full_loading: true,
 
-    id: 0
+    id: 0,
+    ip: {}
   },
   onLoad(options) {
     this.data.id = options.id;
 
-    let rich_text = '<p>啊啊啊</p>';
-    rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
-    console.log(rich_text, 'fuck');
-    WxParse.wxParse('rich_text', 'html', rich_text, this);
+    this.ipDetail(() => {
+      this.setData({full_loading: false});
+    });
+  },
+  // 版权详情
+  ipDetail(complete) {
+    app.ajax('copyright/ipDetail', {ip_id: this.data.id}, res => {
+      app.format_img(res, 'cover');
+      this.setData({ip: res});
 
-    this.setData({ full_loading: false });
+      let rich_text = res.content;
+      rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
+      WxParse.wxParse('rich_text', 'html', rich_text, this);
+    }, null, () => {
+      if (complete) {
+        complete();
+      }
+    });
   }
 });

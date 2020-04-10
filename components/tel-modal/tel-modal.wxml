@@ -1,0 +1,13 @@
+<!-- 绑定手机号modal -->
+<view catchtouchmove class="tel-modal" wx:if="{{show}}">
+  <view class="content">
+    <image src="/images/phone-round.png" class="round"></image>
+    <view class="text">
+      <view>为了保障您的账号安全</view>
+      <view>请绑定手机号</view>
+    </view>
+    <view bindtap="to_bind" class="bind-btn">去绑定</view>
+
+    <image bindtap="hide_modal" src="/icons/cha.png" class="cha"></image>
+  </view>
+</view>

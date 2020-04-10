@@ -27,7 +27,7 @@ Page({
       page: this.data.page
     };
 
-    app.ajax('shop/goodsList', post, (res) => {
+    app.ajax('api/goodsList', post, (res) => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({
@@ -42,7 +42,7 @@ Page({
           });
         }
       } else {
-        app.format_img(res, 'cover');
+        app.format_img(res, 'poster');
 
         this.setData({ goods_list: this.data.goods_list.concat(res) });
       }

@@ -27,7 +27,6 @@
     "pages/apply2/apply2",
     "pages/work-release/work-release",
     "pages/show-release/show-release",
-    "pages/support-options/support-options",
     "pages/chuang-detail/chuang-detail",
     "pages/chuang-publish/chuang-publish",
     "pages/index/index",
@@ -64,22 +63,23 @@
     "pages/online-activity/online-activity",
     "pages/free-sample/free-sample",
     "pages/sign-res/sign-res",
-    "pages/auth-apply/auth-apply",
     "pages/activity-publish/activity-publish",
     "pages/member-tehui/member-tehui",
     "pages/custom-zone/custom-zone",
-    "pages/my-t/my-t",
+    "pages/my-back/my-back",
     "pages/bind-tel/bind-tel",
     "pages/vip-center/vip-center",
     "pages/focus-fans/focus-fans",
-    "pages/con-goods/con-goods"
+    "pages/con-goods/con-goods",
+    "pages/search/search"
   ],
   "subpackages": [
     {
       "root": "ip-package",
       "pages": [
         "pages/index/index",
-        "pages/ip-detail/ip-detail"
+        "pages/ip-detail/ip-detail",
+        "pages/auth-apply/auth-apply"
       ]
     },
     {
@@ -99,6 +99,7 @@
         "pages/order-chou-detail/order-chou-detail",
         "pages/my-chou-orders/my-chou-orders",
         "pages/chou-start/chou-start",
+        "pages/support-options/support-options",
         "pages/my-chou/my-chou"
       ]
     },
@@ -112,6 +113,9 @@
       ]
     }
   ],
+  "usingComponents": {
+    "tel-modal": "/components/tel-modal/tel-modal"
+  },
   "window": {
     "navigationBarBackgroundColor": "#333333",
     "navigationBarTextStyle": "white",
@@ -131,7 +135,7 @@
         "selectedIconPath": "icons/home-active.png"
       },
       {
-        "pagePath": "pages/shop/shop",
+        "pagePath": "pages/cate-list/cate-list",
         "text": "分类",
         "iconPath": "icons/cate.png",
         "selectedIconPath": "icons/cate-active.png"

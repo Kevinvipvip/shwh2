@@ -1,287 +1,92 @@
-<view class="full-loading" wx:if="{{full_loading}}">
-  <view class="image"></view>
-</view>
-
 <view class="page">
-  <view class="header">
-    <image src="/images/my-bg.jpg" class="avatar-bg"></image>
-    <view class="inner">
-      <view class="header-box">
-        <view class="tou">
-          <navigator url="/pages/my-edit/my-edit" wx:if="{{user.user_auth == 1}}">
-            <image src="{{user.avatar}}" mode="aspectFill" class="hdp" ></image>
-          </navigator>
-          <image src="/images/default.png" class="tou" wx:else></image>
-
-<!--          <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>-->
-<!--          <image wx:else src="/icons/zuan-active.png" class="vip"></image>-->
-              <image src="/icons/role-meal{{user.role_level}}.png" wx:if="{{user.role_level != -1}}" class="vip"></image>
-        </view>
-        <view class="you">
-          <view class="nickname" wx:if="{{user.user_auth == 1}}">{{user.nickname}}</view>
-          <view class="nickname" wx:else><button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{2}}">授权登陆</button></view>
-          <view class="role-text active" wx:if="{{user.role_check == 2}}">{{user.role_text}}</view>
-          <view class="role-text" wx:else>普通用户</view>
-<!--          <view class="quan">-->
-<!--            <image wx:if="{{user.vip != 1}}" src="/icons/zuan.png" class="vip"></image>-->
-<!--            <image wx:else src="/icons/zuan-active.png" class="vip"></image>-->
-
-<!--            <navigator url="/pages/recharge/recharge" wx:if="{{user.vip != 1}}" class="vip-btn">我要成为会员</navigator>-->
-<!--          </view>-->
-        </view>
-<!--        <view class="mess-box">-->
-<!--          <image src="/icons/bell.png"></image>-->
-<!--        </view>-->
+  <!-- 头部 -->
+  <view class="banner">
+    <view class="head-line">
+      <image src="/icons/kk6.png" class="head"></image>
+      <view class="info">
+        <view class="id">ID:45</view>
+        <view class="nickname">环形山</view>
       </view>
-      <view class="sign-box">
-        <view class="sign-progress">
-          <view class="sign {{item.sign ? 'active' : ''}} {{index == sign_day - 1 ? 'last-active' : ''}}" wx:for="{{sign_list}}">
-            <view class="number">{{index + 1}}</view>
-            <view class="today">{{item.score >= 0 ? '+' : '-'}}{{item.score}}</view>
-          </view>
-        </view>
-        <button bindtap="userSign" class="sign-btn" disabled="{{sign_today}}">签到</button>
-      </view>
+    </view>
+    <view class="vip-ad">
+      <image src="/images/my-vip-ad.png" class="bg"></image>
+      <view class="btn">立即开通</view>
     </view>
   </view>
 
-  <view class="tran-bg">
-    <view class="count-box">
-      <navigator url="/pages/my-focus-list/my-focus-list" class="count-item">
-<!--      <navigator class="count-item">-->
-        <view class="number">{{user.ifocus}}</view>
-        <view class="desc">我的关注</view>
-      </navigator>
-      <view class="shu"></view>
-      <navigator url="/pages/my-notes/my-notes" class="count-item">
-        <view class="number">{{user.note_num}}</view>
-        <view class="desc">我的笔记</view>
-      </navigator>
-      <view class="shu"></view>
-      <navigator url="/pages/score-log/score-log" class="count-item">
-        <view class="number">{{user.score}}</view>
-        <view class="desc">获得积分</view>
-      </navigator>
+  <!-- 个人数据 -->
+  <view class="data-list">
+    <view class="data">
+      <view class="amount">0</view>
+      <view class="title">积分</view>
     </view>
+    <view class="data">
+      <view class="amount">0</view>
+      <view class="title">关注</view>
+    </view>
+    <view class="data">
+      <view class="amount">0</view>
+      <view class="title">粉丝</view>
+    </view>
+    <view class="data">
+      <view class="amount">0</view>
+      <view class="title">笔记</view>
+    </view>
+  </view>
 
-    <view class="order-box">
+  <!-- 我的订单 -->
+  <view class="order-box">
+    <view class="title-line">
       <view class="title">我的订单</view>
-      <navigator url="/pages/my-orders/my-orders" class="all">
-        <view class="zi">全部</view>
-        <image src="/icons/you3.png"></image>
+      <view class="all">
+        <view class="text">全部订单</view>
+        <image src="/icons/you3.png" class="you"></image>
+      </view>
+    </view>
+    <view class="status-box">
+      <view class="status">
+        <image src="/icons/os1.png" class="icon i1"></image>
+        <view class="text">待付款</view>
+      </view>
+      <view class="status">
+        <image src="/icons/os2.png" class="icon i2"></image>
+        <view class="text">待发货</view>
+      </view>
+      <view class="status">
+        <image src="/icons/os3.png" class="icon i3"></image>
+        <view class="text">待收货</view>
+      </view>
+      <view class="status">
+        <image src="/icons/os4.png" class="icon i4"></image>
+        <view class="text">已完成</view>
+      </view>
+      <view class="status">
+        <image src="/icons/os5.png" class="icon i5"></image>
+        <view class="text">售后</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的服务 -->
+  <view class="service-box">
+    <view class="title">我的服务</view>
+    <view class="service-list">
+      <navigator url="/chou-package/pages/my-chou-orders/my-chou-orders" class="service">
+        <image src="/icons/my-chou.png" class="icon i1"></image>
+        <view class="text">我的众筹</view>
       </navigator>
-      <view class="o-menus">
-        <navigator url="/pages/my-orders/my-orders?status=0" class="o-menu">
-          <image src="/icons/os1.png" class="icon"></image>
-          <view class="explain">待付款</view>
-        </navigator>
-        <navigator url="/pages/my-orders/my-orders?status=1" class="o-menu">
-          <image src="/icons/os2.png" class="icon"></image>
-          <view class="explain">待发货</view>
-        </navigator>
-        <navigator url="/pages/my-orders/my-orders?status=2" class="o-menu">
-          <image src="/icons/os3.png" class="icon"></image>
-          <view class="explain">待收货</view>
-        </navigator>
-        <navigator url="/pages/my-orders/my-orders?status=3" class="o-menu">
-          <image src="/icons/os4.png" class="icon"></image>
-          <view class="explain">已完成</view>
-        </navigator>
-        <navigator url="/pages/refund-list/refund-list" class="o-menu">
-          <image src="/icons/os5.png" class="icon"></image>
-          <view class="explain">售后</view>
-        </navigator>
+      <view class="service">
+        <image src="/icons/my-shen.png" class="icon i2"></image>
+        <view class="text">申请角色</view>
+      </view>
+      <view class="service">
+        <image src="/icons/my-add.png" class="icon i3"></image>
+        <view class="text">收货地址</view>
+      </view>
+      <view class="service">
+        <image src="/icons/my-kefu.png" class="icon i4"></image>
+        <view class="text">在线客服</view>
       </view>
     </view>
-<!--    <navigator url="/pages/recharge/recharge" class="vip-box">-->
-<!--      <image src="/images/vip-bg.jpg" class="vip-bg"></image>-->
-<!--      <view class="text">{{user.vip != 1 ? '立即开通' : '立即续费'}}</view>-->
-<!--    </navigator>-->
-
-    <navigator url="/pages/role-vip-open/role-vip-open" class="vip-role-box">
-      <image src="/images/role-vip.jpg" class="vip-img"></image>
-    </navigator>
   </view>
-
-  <view class="menu">
-    <navigator class="menu-item" url="/pages/person-page/person-page?uid={{user.id}}" wx:if="{{user.role_check == 2 && user.role != 0}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu15.png" class="icon-menu15"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的主页</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-    <navigator class="menu-item" url="/pages/my-needs/my-needs">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu17.png" class="icon-menu17"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的需求</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-    <navigator class="menu-item" url="/pages/my-chuang/my-chuang">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu1.png" class="icon-menu1"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的创意</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-    <navigator class="menu-item" url="/pages/my-req/my-req" wx:if="{{user.role_check == 2 && user.role == 1}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu2.png" class="icon-menu2"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的活动</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-    <navigator class="menu-item" url="/pages/activity-work-list/activity-work-list" wx:if="{{user.role_check == 2 && user.role == 1}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu12.png" class="icon-menu12"></image>
-        </view>
-      </view>
-      <view class="menu-text">活动接单</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-    <navigator class="menu-item" url="/pages/my-works/my-works" wx:if="{{user.role_check == 2 && user.role == 2}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu3.png" class="icon-menu3"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的投稿</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-    <navigator class="menu-item" url="/pages/show-works/show-works" wx:if="{{user.role_check == 2 && user.role == 2}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu16.png" class="icon-menu16"></image>
-        </view>
-      </view>
-      <view class="menu-text">展示作品</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-    <navigator class="menu-item" url="/pages/my-bidding/my-bidding" wx:if="{{user.role_check == 2 && user.role == 3}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu4.png" class="icon-menu4"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的接单</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-
-    <navigator class="menu-item" url="/pages/my-shop/my-shop" wx:if="{{user.role_check == 2 && user.role != 0}}">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu14.png" class="icon-menu14"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的店铺</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-
-    <navigator class="menu-item" url="/pages/my-chou-orders/my-chou-orders">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu5.png" class="icon-menu5"></image>
-        </view>
-      </view>
-      <view class="menu-text">我的众筹</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-
-<!--    <navigator class="menu-item" url="/pages/chou-refund-list/chou-refund-list">-->
-<!--      <view class="left-box">-->
-<!--        <view class="icon-box">-->
-<!--          <image src="/icons/menu11.png" class="icon-menu11"></image>-->
-<!--        </view>-->
-<!--      </view>-->
-<!--      <view class="menu-text">众筹售后</view>-->
-<!--      <image src="/icons/you3.png" class="you"></image>-->
-<!--    </navigator>-->
-
-    <button bindgetuserinfo="auth" open-type="getUserInfo" data-type="{{1}}" wx:if="{{user.role_check != 2 && user.user_auth == 0}}" class="menu-item">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu6.png" class="icon-menu6"></image>
-        </view>
-      </view>
-      <view class="menu-text">申请角色</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </button>
-    <view bindtap="before_apply" wx:if="{{user.role_check != 2 && user.user_auth == 1}}" class="menu-item">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu6.png" class="icon-menu6"></image>
-        </view>
-      </view>
-      <view class="menu-text">申请角色</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </view>
-
-<!--    <navigator class="menu-item" url="/pages/my-edit/my-edit">-->
-<!--      <view class="left-box">-->
-<!--        <view class="icon-box">-->
-<!--          <image src="/icons/menu7.png" class="icon-menu7"></image>-->
-<!--        </view>-->
-<!--      </view>-->
-<!--      <view class="menu-text">个人资料</view>-->
-<!--      <image src="/icons/you3.png" class="you"></image>-->
-<!--    </navigator>-->
-
-    <navigator class="menu-item" url="/pages/my-address/my-address">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu8.png" class="icon-menu8"></image>
-        </view>
-      </view>
-      <view class="menu-text">收货地址</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </navigator>
-
-<!--    <navigator class="menu-item" url="/pages/drumbeating/drumbeating">-->
-<!--      <view class="left-box">-->
-<!--        <view class="icon-box">-->
-<!--          <image src="/icons/menu9.png" class="icon-menu9"></image>-->
-<!--        </view>-->
-<!--      </view>-->
-<!--      <view class="menu-text">文创代言</view>-->
-<!--      <image src="/icons/you3.png" class="you"></image>-->
-<!--    </navigator>-->
-
-    <button open-type="contact" show-message-card="true" class="menu-item" url="/pages/my-notes/my-notes">
-      <view class="left-box">
-        <view class="icon-box">
-          <image src="/icons/menu10.png" class="icon-menu10"></image>
-        </view>
-      </view>
-      <view class="menu-text">在线客服</view>
-      <image src="/icons/you3.png" class="you"></image>
-    </button>
-
-<!--    <navigator class="menu-item" url="/pages/setting/setting" wx:if="{{user.role_check == 2 && user.role != 0}}">-->
-<!--      <view class="left-box">-->
-<!--        <view class="icon-box">-->
-<!--          <image src="/icons/menu13.png" class="icon-menu13"></image>-->
-<!--        </view>-->
-<!--      </view>-->
-<!--      <view class="menu-text">设置</view>-->
-<!--      <image src="/icons/you3.png" class="you"></image>-->
-<!--    </navigator>-->
-  </view>
-
-<!--  <view class="menu menu3">-->
-<!--    <navigator class="menu-item" url="/pages/recharge/recharge">-->
-<!--      <icon class="iconfont iconhuiyuan left"/>-->
-<!--      <text>会员充值</text>-->
-<!--      <icon class="iconfont iconyou"></icon>-->
-<!--    </navigator>-->
-<!--  </view>-->
 </view>

@@ -29,7 +29,9 @@ Page({
     sex_list: [
       { name: '男', value: 1 },
       { name: '女', value: 2 }
-    ]
+    ],
+
+    bind_tel_show: false  // 绑定手机号弹窗
   },
   onLoad() {
     this.data.role = app.user_data.role;
@@ -52,6 +54,34 @@ Page({
 
     // 设置标题
     wx.setNavigationBarTitle({ title: '这个是标题' });
+
+    // 页面初始化
+    this.init(() => {
+      this.setData({ full_loading: false });
+    });
+  },
+  init(complete) {
+    // 轮播
+    let promise1 = new Promise(resolve => {
+      this.slideList(() => {
+        resolve();
+      });
+    });
+
+    // 视频精选
+    let promise2 = new Promise(resolve => {
+      this.videoList(() => {
+        resolve();
+      });
+    });
+
+    Promise.all([
+      promise1, promise2
+    ]).then(() => {
+      if (complete) {
+        complete();
+      }
+    });
   },
   // 获取列表
   get_list(complete) {
@@ -83,20 +113,23 @@ Page({
       }
     });
   },
+  // 重置
+  reset() {
+    this.data.page = 1;
+    this.data.work_list = [];
+    this.setData({
+      nomore: false,
+      nodata: false
+    });
+  },
   // 下拉刷新
   onPullDownRefresh() {
     if (!this.data.loading) {
       this.data.loading = true;
 
-      this.data.page = 1;
-      this.data.list = [];
-      this.setData({
-        nomore: false,
-        nodata: false
-      });
-
       wx.showNavigationBarLoading();
-      this.get_list(() => {
+
+      this.init(() => {
         this.data.loading = false;
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
@@ -115,15 +148,6 @@ Page({
         });
       }
     }
-  },
-  // 重置
-  reset() {
-    this.data.page = 1;
-    this.data.work_list = [];
-    this.setData({
-      nomore: false,
-      nodata: false
-    });
   },
   // 分享
   onShareAppMessage() {
@@ -246,5 +270,19 @@ Page({
   // picker选择器
   sex_choose(e) {
     this.setData({ sex: parseInt(e.detail.value) });
+  },
+  // 轮播跳页
+  jump(e) {
+    if (e.currentTarget.dataset.url) {
+      app.jump(e);
+    }
+  },
+  // 绑定手机号弹窗
+  chou_start() {
+    if (!app.user_data.uid) {
+      this.setData({bind_tel_show: true});
+    } else {
+      wx.navigateTo({url: '/chou-package/pages/chou-start/chou-start'});
+    }
   }
 });

@@ -5,7 +5,7 @@ Page({
   data: {
     id: 0,
     funding: {},
-    flex_pad: []
+    bind_tel_show: false  // 绑定手机号弹窗
   },
   onLoad(options) {
     this.data.id = options.id;
@@ -13,28 +13,19 @@ Page({
   },
   // 众筹详情
   fundingDetail() {
-    app.ajax('api/fundingDetail', {id: this.data.id}, res => {
+    app.ajax('funding/fundingDetail', {funding_id: this.data.id}, res => {
       app.time_format(res, 'start_time');
       app.time_format(res, 'end_time');
       app.format_img(res, 'cover');
+      app.format_img(res, 'avatar');
 
       res.percent = Number(res.curr_money / res.need_money * 100).toFixed(1);
       app.qian_format(res, 'curr_money');
       app.qian_format(res, 'need_money');
 
-      app.avatar_format(res, 'avatar');
-      res.out3 = res.works_pics.length - 3;
-      res.works_pics = res.works_pics.slice(0, 3);
-
-      app.format_img(res.works_pics);
-      let flex_pad = app.null_arr(res.works_pics.length, 3);
-
       res.ago_text = res.time_count > 0 ? Math.ceil(res.time_count / 86400) + '天' : '已结束';
 
-      this.setData({
-        funding: res,
-        flex_pad: flex_pad
-      });
+      this.setData({ funding: res });
 
       let rich_text = res.content;
       rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
@@ -43,7 +34,11 @@ Page({
   },
   // 去重置商品页
   to_support() {
-    wx.navigateTo({ url: '/pages/support-options/support-options?funding_id=' + this.data.id });
+    if (!app.user_data.uid) {
+      this.setData({bind_tel_show: true});
+    } else {
+      wx.navigateTo({ url: '../support-options/support-options?funding_id=' + this.data.id });
+    }
   },
   // 分享
   onShareAppMessage() {

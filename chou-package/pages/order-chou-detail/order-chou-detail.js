@@ -67,7 +67,7 @@ Page({
   // 去众筹页
   to_chou_detail() {
     app.page_open(() => {
-      wx.navigateTo({ url: '/pages/chou-detail/chou-detail?id=' + this.data.order.funding_id });
+      wx.navigateTo({ url: '../chou-detail/chou-detail?id=' + this.data.order.funding_id });
     });
   },
   // 取消订单
@@ -127,7 +127,7 @@ Page({
         order_id: this.data.id,
         reason: this.data.reason
       };
-      app.ajax('my/fundingRefundApply', post, () => {
+      app.ajax('funding/fundingRefundApply', post, () => {
         this.setData({
           reason: '',
           refund_show: false
@@ -160,7 +160,7 @@ Page({
             title: '加载中',
             mask: true
           });
-          app.ajax('my/fundingOrderConfirm', {order_id: this.data.id}, () => {
+          app.ajax('funding/fundingOrderConfirm', {order_id: this.data.id}, () => {
             this.fundingOrderDetail();
           }, null, () => {
             wx.hideLoading();

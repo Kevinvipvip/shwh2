@@ -51,7 +51,7 @@ Page({
       perpage: 100
     };
 
-    app.ajax('api/fundingGoodsList', post, res => {
+    app.ajax('funding/fundingGoodsList', post, res => {
       for (let i = 0; i < res.length; i++) {
         if (res[i].id === this.data.goods_id) {
           this.setData({ goods: res[i] });
@@ -129,13 +129,13 @@ Page({
 
       if (valid) {
         this.setData({ sub_loading: true });
-        app.ajax('api/fundingPurchase', post, pay_order_sn => {
+        app.ajax('funding/fundingPurchase', post, pay_order_sn => {
           this.fundingPay(pay_order_sn, res => {
             if (res) {
-              wx.redirectTo({ url: '/pages/my-chou-orders/my-chou-orders?status=1' });
+              wx.redirectTo({ url: '../my-chou-orders/my-chou-orders?status=1' });
             } else {
               app.modal('支付未完成，可以在我的订单中进行后续的付款操作', () => {
-                wx.redirectTo({ url: '/pages/my-chou-orders/my-chou-orders?status=0' });
+                wx.redirectTo({ url: '../my-chou-orders/my-chou-orders?status=0' });
               })
             }
           });

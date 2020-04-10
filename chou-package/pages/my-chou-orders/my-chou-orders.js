@@ -56,7 +56,6 @@ Page({
   // 订单列表
   fundingOrderList(complete) {
     let post = {
-      token: app.user_data.token,
       page: this.data.page
     };
 
@@ -189,7 +188,7 @@ Page({
         signType: 'MD5',
         paySign: res.paySign,
         success: () => {
-          wx.navigateTo({ url: '/pages/order-chou-detail/order-chou-detail?id=' + goods.id });
+          wx.navigateTo({ url: '../order-chou-detail/order-chou-detail?id=' + goods.id });
           this.refresh();
         },
         fail(err) {
@@ -254,7 +253,7 @@ Page({
           reason: '',
           refund_show: false
         });
-        wx.navigateTo({ url: '/pages/chou-refund-list/chou-refund-list' });
+        wx.navigateTo({ url: '../chou-refund-list/chou-refund-list' });
         this.refresh();
       }, err => {
         app.modal(err.message);
@@ -275,11 +274,11 @@ Page({
   // 去众筹页
   to_chou_detail(e) {
     app.page_open(() => {
-      wx.navigateTo({ url: '/pages/chou-detail/chou-detail?id=' + e.currentTarget.dataset.funding_id });
+      wx.navigateTo({ url: '../chou-detail/chou-detail?id=' + e.currentTarget.dataset.funding_id });
     });
   },
   // 去订单详情页
   to_order_detail(e) {
-    wx.navigateTo({ url: '/pages/order-chou-detail/order-chou-detail?id=' + e.currentTarget.dataset.id });
+    wx.navigateTo({ url: '../order-chou-detail/order-chou-detail?id=' + e.currentTarget.dataset.id });
   }
 });

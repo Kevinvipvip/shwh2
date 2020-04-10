@@ -59,9 +59,8 @@
           autoplay="{{true}}"
           circular="{{true}}"
           class="banner">
-    <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
-      <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
-             src="/images/t-banner.jpg"></image>
+    <swiper-item wx:for="{{slide_list}}" wx:key="id" class="si">
+      <image bindtap="jump" data-url="{{item.url}}" src="{{item.pic}}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
 
@@ -100,4 +99,7 @@
     <view class="placeholder" wx:if="{{sex == -1}}">请选择</view>
     <view class="text" wx:else>{{sex_list[sex].name}}</view>
   </picker>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

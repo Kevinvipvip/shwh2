@@ -55,60 +55,11 @@
 <!--    </view>-->
   </view>
 
-  <!-- 来源活动 -->
-  <view class="ac-detail">
-    <view class="title-line">
-      <view class="title">来源活动</view>
-      <navigator url="/pages/activity-detail/activity-detail?id={{funding.req_id}}" class="more">
-        <text>查看活动</text>
-        <image src="/icons/you2.png"></image>
-      </navigator>
-    </view>
-    <view class="desc">{{funding.req_title || ''}}</view>
-  </view>
-
-  <!-- 来源创意 -->
-  <view class="ac-detail" wx:if="{{funding.idea_id}}">
-    <view class="title-line">
-      <view class="title">来源创意</view>
-      <navigator url="/pages/chuang-detail/chuang-detail?idea_id={{funding.idea_id}}" class="more">
-        <text>查看创意</text>
-        <image src="/icons/you2.png"></image>
-      </navigator>
-    </view>
-    <view class="desc">{{funding.idea_title || ''}}</view>
-  </view>
-
-  <!-- 来源作品 -->
-  <view class="work-box">
-    <view class="title">来源作品</view>
-    <navigator url="/pages/work-detail/work-detail?id={{funding.work_id}}" class="work">
-      <view class="line1">
-<!--        <view class="zuo">-->
-<!--          <image src="{{funding.avatar}}" class="header"></image>-->
-<!--          <view class="nickname">{{funding.nickname}}</view>-->
-<!--        </view>-->
-<!--        <view class="agree">-->
-<!--          <image lazy-load src="/icons/zan.png"></image>-->
-<!--          <text>{{item.vote}}</text>-->
-<!--        </view>-->
-      </view>
-      <view class="under">
-        <view class="title">{{funding.work_title}}</view>
-        <view class="desc">{{funding.work_detail}}</view>
-        <view class="img-box">
-          <view class="img-item" wx:for="{{funding.works_pics}}">
-            <image src="{{item}}" mode="aspectFill" lazy-load></image>
-            <view class="out3" wx:if="{{funding.out3 > 0 && index == 2}}">+{{funding.out3}}</view>
-          </view>
-          <image class="img-item vh" wx:for="{{flex_pad}}"></image>
-        </view>
-      </view>
-    </navigator>
-  </view>
-
   <view class="bottom-btn-box">
     <button open-type="share" class="share">分享</button>
     <button bindtap="to_support" class="chou">参与众筹</button>
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

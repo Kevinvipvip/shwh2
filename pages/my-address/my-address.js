@@ -19,16 +19,16 @@ Page({
       let choose_page;
       switch (this.data.type) {
         case 1:
-          choose_page = app.get_page('pages/order-create/order-create');
+          choose_page = app.get_page('order-package/pages/order-create/order-create');
           break;
         case 2:
-          choose_page = app.get_page('pages/cart-order-create/cart-order-create');
+          choose_page = app.get_page('order-package/pages/cart-order-create/cart-order-create');
           break;
         case 3:
           choose_page = app.get_page('pages/recharge/recharge');
           break;
         case 4:
-          choose_page = app.get_page('pages/chou-order-create/chou-order-create');
+          choose_page = app.get_page('chou-package/pages/chou-order-create/chou-order-create');
           break;
       }
       choose_page.choose_address(address.username, address.tel, address.provincename + ' ' + address.cityname + ' ' + address.countyname + ' ' + address.detail, () => {

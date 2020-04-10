@@ -6,12 +6,12 @@
   <view class="goods-box">
     <view class="goods-list">
       <view bindtap="to_detail" data-id="{{item.id}}" class="goods" wx:for="{{goods_list}}" wx:key="id">
-        <image src="{{item.cover}}" class="cover" mode="aspectFill" lazy-load></image>
+        <image src="{{item.poster}}" class="cover" mode="aspectFill" lazy-load></image>
         <view class="info">
           <view class="title two-line-ellipsis">{{item.name}}</view>
           <view class="xia">
             <view class="price">￥{{item.price}}</view>
-            <view class="pay-count">{{item.sales}}人付款</view>
+<!--            <view class="pay-count">{{item.sales}}人付款</view>-->
           </view>
         </view>
       </view>

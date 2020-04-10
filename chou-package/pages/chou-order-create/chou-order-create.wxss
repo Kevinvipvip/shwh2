@@ -62,6 +62,7 @@
   color: #333;
   text-align: center;
   width: 100rpx;
+  min-height: 0;
 }
 
 .form-item .content .counter .plus {

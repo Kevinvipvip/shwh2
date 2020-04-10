@@ -15,6 +15,6 @@
         <button bindtap="sendSms" class="code-btn" disabled="{{code_disabled}}">{{code_text}}</button>
       </view>
     </view>
-    <view class="sub-btn">提交</view>
+    <view bindtap="bindUser" class="sub-btn">提交</view>
   </view>
 </view>

@@ -44,15 +44,7 @@ Page({
   },
   // 商品详情
   goodsDetail() {
-    let post = {
-      id: this.data.id,
-      token: app.user_data.token
-    };
-
-    app.ajax('shop/goodsDetail', post, (res) => {
-      // for (let i = 0; i < res.pics.length; i++) {
-      //   res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
-      // }
+    app.ajax('shop/goodsDetail', { goods_id: this.data.id }, (res) => {
       app.format_img(res.pics);
       app.avatar_format(res);
       this.setData({ goods: res });

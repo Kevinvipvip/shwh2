@@ -4,6 +4,8 @@ Page({
   data: {
     full_loading: true,
 
+    tel: '',  // 手机号
+
     // 验证码相关
     code: '',
     code_text: '发送验证码',
@@ -24,7 +26,7 @@ Page({
       } else {
         this.setData({ code_disabled: true });
 
-        app.ajax('api/joinAcSendSms', { tel: this.data.tel }, () => {
+        app.ajax('login/sendSms', { tel: this.data.tel }, () => {
           app.toast('已发送');
           this.setData({ code_text: this.data.count_down + 's' });
           this.data.code_flag = setInterval(() => {
@@ -46,5 +48,38 @@ Page({
         });
       }
     }
+  },
+  // 绑定手机号
+  bindUser() {
+    let data = this.data;
+
+    if (!this.data.tel.trim()) {
+      app.toast('请填写手机号');
+    } else if (!app.my_config.reg.tel.test(this.data.tel)) {
+      app.toast('手机号格式不正确');
+    }  else if (!data.code.trim()) {
+      app.toast('请填写验证码');
+    }  else {
+      let post = {
+        tel: data.tel,
+        code: data.code
+      };
+
+      wx.showLoading({
+        title: '提交中',
+        mask: true
+      });
+      app.ajax('login/bindUser', post, () => {
+        app.set_user_data();
+        app.modal('手机号绑定成功', () => {
+          wx.navigateBack();
+        });
+      }, null, () => {
+        wx.hideLoading();
+      });
+    }
+  },
+  bind_input(e) {
+    app.bind_input(e, this);
   }
 });

@@ -20,7 +20,7 @@ Page({
       perpage: 100
     };
 
-    app.ajax('api/fundingGoodsList', post, res => {
+    app.ajax('funding/fundingGoodsList', post, res => {
       for (let i = 0; i < res.length; i++) {
         app.format_img(res[i].pics);
         res[i].flex_pad = app.null_arr(res[i].pics.length, 3);
@@ -44,9 +44,9 @@ Page({
     this.setData({ active_index: index });
 
     if (index !== -1) {
-      wx.redirectTo({ url: '/pages/chou-order-create/chou-order-create?funding_id=' + this.data.funding_id + '&goods_id=' + this.data.goods_list[index].id });
+      wx.redirectTo({ url: '../chou-order-create/chou-order-create?funding_id=' + this.data.funding_id + '&goods_id=' + this.data.goods_list[index].id });
     } else {
-      wx.redirectTo({ url: '/pages/chou-order-create/chou-order-create?funding_id=' + this.data.funding_id });
+      wx.redirectTo({ url: '../chou-order-create/chou-order-create?funding_id=' + this.data.funding_id });
     }
   }
 });

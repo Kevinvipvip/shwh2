@@ -1,32 +1,24 @@
 <view class="page">
-  <view class="welcome">
-    <view class="title">欢迎来到洞主！</view>
-    <view class="sub-title">请选择您的身份，开启个性化定制</view>
-  </view>
-  <view class="role-box">
-    <navigator url="/pages/apply2/apply2?role=1" class="role role1">
-      <view class="text">博物馆</view>
-      <view class="icon-box">
-        <image src="/icons/home-tab1.png" class="icon" mode="widthFix"></image>
+  <view class="role-list">
+    <navigator url="/pages/apply2/apply2?role=1" class="role">
+      <view class="logo-box">
+        <image src="/icons/role1.png" class="logo l1"></image>
       </view>
+      <view class="info">
+        <view class="title">文旅机构</view>
+        <view class="desc">地方博物馆、私人博物馆、旅游 景区等文旅机构均可</view>
+      </view>
+      <image src="/icons/apply-you.png" class="you"></image>
     </navigator>
-<!--    <navigator url="/pages/apply2/apply2?role=2" class="role role1">-->
-<!--      <view class="text">文创机构</view>-->
-<!--      <view class="icon-box">-->
-<!--        <image src="/icons/home-tab2.png" class="icon" mode="widthFix"></image>-->
-<!--      </view>-->
-<!--    </navigator>-->
-    <navigator url="/pages/apply2/apply2?role=2" class="role role1">
-      <view class="text">设计师</view>
-      <view class="icon-box">
-        <image src="/icons/home-tab3.png" class="icon" mode="widthFix"></image>
+    <navigator url="/pages/apply2/apply2?role=2" class="role">
+      <view class="logo-box">
+        <image src="/icons/role2.png" class="logo l2"></image>
       </view>
-    </navigator>
-    <navigator url="/pages/apply2/apply2?role=3" class="role role1">
-      <view class="text">工厂</view>
-      <view class="icon-box">
-        <image src="/icons/home-tab4.png" class="icon" mode="widthFix"></image>
+      <view class="info">
+        <view class="title">工厂厂家</view>
+        <view class="desc">布艺、珠宝、包装、品牌、工艺 等生产厂家</view>
       </view>
+      <image src="/icons/apply-you.png" class="you"></image>
     </navigator>
   </view>
 </view>

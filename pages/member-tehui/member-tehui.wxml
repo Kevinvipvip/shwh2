@@ -1,7 +1,7 @@
 <view class="page">
-  <view class="banner">
+  <navigator url="/pages/vip-center/vip-center" class="banner">
     <image src="/images/memh-banner.jpg" class="img"></image>
-  </view>
+  </navigator>
 
   <!-- 特惠精选 -->
   <view class="tj-box">

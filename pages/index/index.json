@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "山洞",
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

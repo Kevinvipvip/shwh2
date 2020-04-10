@@ -21,7 +21,7 @@ Page({
       order: 2  // 按投票
     };
 
-    app.ajax('api/fundingList', post, res => {
+    app.ajax('funding/fundingList', post, res => {
       if (res.length === 0) {
         if (this.data.page === 1) {
           this.setData({

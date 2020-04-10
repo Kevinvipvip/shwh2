@@ -69,10 +69,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "ip详情",
 					"pathName": "ip-package/pages/ip-detail/ip-detail",
-					"query": "",
+					"query": "id=16",
 					"scene": null
 				},
 				{
@@ -91,8 +91,8 @@
 				},
 				{
 					"id": 5,
-					"name": "发起众筹（提交表单）",
-					"pathName": "pages/chou-start/chou-start",
+					"name": "发起众筹",
+					"pathName": "chou-package/pages/chou-start/chou-start",
 					"query": "type=1",
 					"scene": null
 				},
@@ -226,6 +226,41 @@
 					"id": -1,
 					"name": "我的众筹",
 					"pathName": "chou-package/pages/my-chou/my-chou",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "申请角色",
+					"pathName": "pages/apply/apply",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "搜索商品",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "临时-活动列表",
+					"pathName": "pages/activity-list/activity-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "众筹详情",
+					"pathName": "chou-package/pages/chou-detail/chou-detail",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "众筹订单",
+					"pathName": "chou-package/pages/my-chou-orders/my-chou-orders",
 					"query": "",
 					"scene": null
 				}

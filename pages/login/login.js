@@ -11,8 +11,9 @@ Page({
 
       switch (route) {
         case 'pages/index/index':
-        case 'pages/shop/shop':
+        case 'pages/cate-list/cate-list':
         case 'pages/notes/notes':
+        case 'pages/shop-car/shop-car':
         case 'pages/my/my':
           wx.switchTab({ url: '/' + route });
           break;
@@ -22,4 +23,4 @@ Page({
       }
     });
   }
-})
+});

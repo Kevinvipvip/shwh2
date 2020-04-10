@@ -1,18 +1,21 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <swiper indicator-dots="{{true}}"
           autoplay="{{true}}"
           circular="{{true}}"
           class="banner">
-    <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
-      <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
-             src="../../../images/t-video-cover.jpg"></image>
+    <swiper-item wx:for="{{slide_list}}" wx:key="id" class="si">
+      <image bindtap="jump" data-url="{{item.url}}" src="{{item.pic}}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
 
   <view class="init-chou-box">
-    <navigator class="a">
+    <view bindtap="chou_start" class="a">
       <image src="../../images/init-chou.png" class="init-img"></image>
-    </navigator>
+    </view>
   </view>
 
   <view class="chou-box">
@@ -32,12 +35,12 @@
       </view>
     </view>
     <view class="chou-list">
-      <navigator url="/pages/chou-detail/chou-detail?id={{item.id}}" class="chou-line" wx:for="{{funding_list}}" wx:key="id">
+      <navigator url="../chou-detail/chou-detail?id={{item.id}}" class="chou-line" wx:for="{{funding_list}}" wx:key="id">
         <view class="img-box">
           <image lazy-load src="{{item.cover}}" mode="aspectFill"></image>
-          <view class="status yure" wx:if="{{index == 0}}">预热</view>
-          <view class="status while" wx:if="{{index == 1}}">众筹中</view>
-          <view class="status end" wx:if="{{index == 2}}">已结束</view>
+          <view class="status yure" wx:if="{{item.status == 0}}">预热</view>
+          <view class="status while" wx:if="{{item.status == 1}}">众筹中</view>
+          <view class="status end" wx:if="{{item.status == 2}}">已结束</view>
         </view>
         <view class="info">
           <view class="title">{{item.title}}</view>
@@ -61,4 +64,7 @@
   <view class="nodata" wx:if="{{nodata}}">
     暂无数据
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

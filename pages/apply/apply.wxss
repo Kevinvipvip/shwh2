@@ -1,92 +1,65 @@
 .page {
-    padding: 50rpx;
 }
 
-.welcome {
-    text-align: center;
+.role-list {
+  padding: 40rpx 24rpx 0;
 }
 
-.welcome .title {
-    font-size: 46rpx;
+.role-list .role:first-child {
+  margin-top: 0;
 }
 
-.welcome .sub-title {
-    color:#888;
-    margin-top:20rpx;
-    font-size:26rpx;
-    margin-left:-24rpx;
+.role-list .role {
+  box-sizing: border-box;
+  border: 2rpx solid #f6f6f6;
+  padding: 26rpx 20rpx 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 40rpx;
 }
 
-.role-box {
-    /* display: flex; */
-    margin-top: 100rpx;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.role-list .role .logo-box {
+  width: 120rpx;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.role-box .role {
-    /* width: 47%; */
-    height: 167rpx;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 38rpx;
-    border-radius: 15rpx;
-    box-sizing: border-box;
-    color: #fff;
-    padding: 0 30rpx;
+.role-list .role .logo {
 }
 
-.role-box .role .text {
-    font-size: 30rpx;
+.role-list .role .logo.l1 {
+  width: 84rpx;
+  height: 79rpx;
 }
 
-.role-box .icon-box {
-    width: 95rpx;
-    height: 95rpx;
-    background: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.role-list .role .logo.l2 {
+  width: 73rpx;
+  height: 79rpx;
 }
 
-.role-box .icon-box image {
-    vertical-align: bottom;
+.role-list .role .info {
+  flex-grow: 1;
+  margin-left: 40rpx;
+  margin-right: 32rpx;
 }
 
-.role-box .role1 {
-    background: linear-gradient(to bottom right, #6b8fef, #769ef6);
+.role-list .role .info .title {
+  font-size: 36rpx;
+  color: #101010;
 }
 
-.role-box .role1 .icon {
-    width: 48.6rpx;
-    height: 48rpx;
+.role-list .role .info .desc {
+  margin-top: 13rpx;
+  color: #bbb;
+  font-size: 28rpx;
+  line-height: 1.5;
 }
 
-.role-box .role2 {
-    background: linear-gradient(to bottom right, #7cb3f7, #7fbcfd);
-}
-
-.role-box .role2 .icon {
-    width: 44.6rpx;
-    height: 48rpx;
-}
-
-.role-box .role3 {
-    background: linear-gradient(to bottom right, #818ef7, #919ff9);
-}
-
-.role-box .role3 .icon {
-    width: 49.3rpx;
-    height: 48rpx;
-}
-
-.role-box .role4 {
-    background: linear-gradient(to bottom right, #6990f0, #779dfa);
-}
-
-.role-box .role4 .icon {
-    width: 47.3rpx;
-    height: 48rpx;
+.role-list .role .you {
+  width: 35rpx;
+  height: 35rpx;
+  flex-shrink: 0;
 }

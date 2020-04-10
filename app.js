@@ -23,12 +23,9 @@ App({
   },
   is_ios: '',
   my_config: {
-    // base_url: 'https://www.caves.vip',  // 正式（原）
-    // api: 'https://www.caves.vip/api/',  // 正式（原）
-    base_url: 'https://caves.wcip.net', // 正式
-    api: 'https://caves.wcip.net/api/', // 正式
-    qiniu_base: 'https://qiniu.wcip.net',
-    // qiniu_base: 'http://pwu6oxfmm.bkt.clouddn.com/',
+    base_url: 'https://sd.wcip.net', // 正式
+    api: 'https://sd.wcip.net/api/', // 正式
+    qiniu_base: 'https://qiniu.sd.wcip.net',
     default_img: '/images/default.png',
     reg: {
       tel: /^1\d{10}$/,
@@ -44,8 +41,6 @@ App({
   user_data: {
     token: '',
     uid: 0,
-    username: '',  // 后台账号
-    order_email: '',
     role: 0,
     user_auth: 0, // 0.用户未授权 1.用户已授权
     avatar: ''
@@ -118,8 +113,8 @@ App({
             err(res.data);
           } else {
             switch (res.data.code) {
-              case -3: // token失效
-              case -5: // token未传
+              case -3:  // token失效
+              case -6:  // token为空
                 let current_pages = getCurrentPages();
                 let current_page = current_pages[current_pages.length - 1];
                 wx.redirectTo({
@@ -247,9 +242,9 @@ App({
     } else {
       switch (route) {
         case 'pages/index/index':
-        case 'pages/shop/shop':
-        case 'pages/needs/needs':
+        case 'pages/cate-list/cate-list':
         case 'pages/notes/notes':
+        case 'pages/shop-car/shop-car':
         case 'pages/my/my':
           wx.switchTab({ url: '/' + route });
           break;
@@ -398,26 +393,35 @@ App({
   },
   // 公共跳页方法
   jump(e) {
-    let page = e.currentTarget.dataset.page;
+    let page = e.currentTarget.dataset.url;
     if (page) {
       switch (page) {
         case 'index':
-        case 'shop':
+        case 'cate-list':
         case 'notes':
+        case 'shop-car':
         case 'my':
           wx.switchTab({
             url: `/pages/${page}/${page}`
           });
           break;
         default:
+          let pack = page.split('/');
+          if (pack.length === 2) {
+            page = pack[1];
+            pack = pack[0] + '/';
+          } else {
+            pack = '';
+          }
+
           page = page.split('?');
           if (page[1]) {
             wx.navigateTo({
-              url: `/pages/${page[0]}/${page[0]}?${page[1]}`
+              url: `/${pack}pages/${page[0]}/${page[0]}?${page[1]}`
             });
           } else {
             wx.navigateTo({
-              url: `/pages/${page[0]}/${page[0]}`
+              url: `/${pack}pages/${page[0]}/${page[0]}`
             });
           }
           break;
@@ -513,11 +517,16 @@ App({
   // 获取默认收货地址
   get_default_address(callback) {
     this.ajax('my/getDefaultAddress', null, res => {
-      let address = {
-        receiver: res.username,
-        tel: res.tel,
-        address: res.provincename + ' ' + res.cityname + ' ' + res.countyname + ' ' + res.detail
-      };
+      let address;
+      if (res) {
+        address = {
+          receiver: res.username,
+          tel: res.tel,
+          address: res.provincename + ' ' + res.cityname + ' ' + res.countyname + ' ' + res.detail
+        };
+      } else {
+        address = null;
+      }
       callback(address);
     });
   },
@@ -552,14 +561,11 @@ App({
   },
   // 设置全局的 user_data
   set_user_data() {
-    this.ajax('my/mydetail', null, res => {
+    this.ajax('my/myDetail', null, res => {
       this.avatar_format(res);
 
-      this.user_data.uid = res.id;
-      this.user_data.role = res.role_check === 2 ? res.role : 0;
-      this.user_data.user_auth = res.user_auth;
-      this.user_data.username = res.username;
-      this.user_data.order_email = res.order_email;
+      this.user_data.uid = res.uid;
+      this.user_data.role = res.role;
       this.user_data.avatar = res.avatar;
     });
   },
