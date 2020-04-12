@@ -5,9 +5,9 @@
 <view class="page">
   <view class="top-box">
     <view class="tabs">
-      <view class="tab {{active_index == 0 ? 'active' : ''}}">全部</view>
-      <view class="tab {{active_index == 1 ? 'active' : ''}}">文旅机构</view>
-      <view class="tab {{active_index == 2 ? 'active' : ''}}">工厂</view>
+      <view bindtap="type_change" data-type="{{0}}" class="tab {{type == 0 ? 'active' : ''}}">全部</view>
+      <view bindtap="type_change" data-type="{{1}}" class="tab {{type == 1 ? 'active' : ''}}">文旅机构</view>
+      <view bindtap="type_change" data-type="{{2}}" class="tab {{type == 2 ? 'active' : ''}}">工厂</view>
     </view>
     <view class="search-box">
       <view class="search">
@@ -19,32 +19,32 @@
 
   <view class="note-box">
     <view class="note-list">
-      <view class="note" wx:for="{{note_list}}">
+      <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{note_list}}" wx:key="id">
         <view class="user-line">
-          <image src="/icons/fire.png" class="header"></image>
+          <image src="{{item.avatar}}" class="header"></image>
           <view class="uinfo">
-            <view class="uname">山洞自营</view>
-            <view class="time-ago">47分钟前</view>
+            <view class="uname">{{item.nickname}}</view>
+            <view class="time-ago">{{item.create_time}}</view>
           </view>
         </view>
-        <view class="title">山洞文创生态平台全面升级！在未来将会带给大家不一样 的文旅体验。</view>
-        <view class="image-box one" wx:if="{{item.img_list.length == 1}}">
-          <image src="/images/t-goods.jpg" class="img" mode="widthFix" wx:for="{{item.img_list}}" wx:key="index"></image>
+        <view class="title">{{item.content}}</view>
+        <view class="image-box one" wx:if="{{item.pics.length == 1}}">
+          <image src="{{pic}}" lazy-load class="img" mode="widthFix" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
         </view>
-        <view class="image-box four" wx:if="{{item.img_list.length == 4}}">
-          <image src="/images/t-goods.jpg" class="img" wx:for="{{item.img_list}}" wx:key="index"></image>
+        <view class="image-box four" wx:if="{{item.pics.length == 4}}">
+          <image src="{{pic}}" lazy-load mode="aspectFill" class="img" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
         </view>
-        <view class="image-box other" wx:if="{{!(item.img_list.length == 1 || item.img_list.length == 4)}}">
-          <image src="/images/t-goods.jpg" class="img" wx:for="{{item.img_list}}" wx:key="index"></image>
+        <view class="image-box other" wx:if="{{!(item.pics.length == 1 || item.pics.length == 4)}}">
+          <image src="{{pic}}" lazy-load mode="aspectFill" class="img" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
           <image class="img vh" wx:for="{{item.flex_pad}}" wx:key="index"></image>
         </view>
         <view class="info">
           <view class="left">
-            <view class="comment">175评论</view>
-            <view class="agree">9600赞</view>
+            <view class="comment">{{item.comment_num}}评论</view>
+            <view class="agree">{{item.like}}赞</view>
           </view>
         </view>
-      </view>
+      </navigator>
     </view>
     <view class="nomore" wx:if="{{note_nomore}}">
       已经没有更多了哦
@@ -54,9 +54,9 @@
     </view>
   </view>
 
-  <navigator url="/pages/note-publish/note-publish" class="pub-round-btn" wx:if="{{role != 0}}">
+  <view bindtap="go_publish" class="pub-round-btn">
     <image src="/icons/big-plus.png"></image>
-  </navigator>
+  </view>
 
 
   <view class="nomore" wx:if="{{nomore}}">
@@ -66,4 +66,7 @@
   <view class="nodata" wx:if="{{nodata}}">
     暂无笔记
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

@@ -1,17 +1,20 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <!-- swiper -->
   <swiper indicator-dots="{{true}}"
           autoplay="{{true}}"
           circular="{{true}}"
           class="banner">
-    <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
-      <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
-             src="../../images/banner.jpg"></image>
+    <swiper-item wx:for="{{slide_list}}" wx:key="id" class="si">
+      <image bindtap="jump" data-url="{{item.url}}" src="{{item.pic}}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
 
   <!-- 采购大按钮 -->
-  <view class="gou-hori">
+  <view bindtap="to_caigou" class="gou-hori">
     <image src="../../images/gou-hori.png" class="img-btn"></image>
   </view>
 
@@ -22,10 +25,11 @@
       <view class="title">优质工厂采购推荐</view>
     </view>
     <view class="factory-list">
-      <view class="factory" wx:for="{{[0, 1, 2, 3, 4, 5, 6, 7, 8]}}">
-        <image src="../../icons/t-factory.png" class="icon"></image>
-        <view class="title one-line-ellipsis">工厂名称</view>
-      </view>
+      <navigator url="/pages/person-page/person-page?uid={{item.id}}" class="factory" wx:for="{{factory_list}}" wx:key="id">
+        <image src="{{item.logo}}" class="icon"></image>
+        <view class="title one-line-ellipsis">{{item.org}}</view>
+      </navigator>
+      <view class="factory vh" wx:for="{{factory_flex}}" wx:key="index"></view>
     </view>
   </view>
 
@@ -36,23 +40,23 @@
       <view class="title">采购市场</view>
     </view>
     <view class="dan-list">
-      <view class="dan" wx:for="{{[0, 1, 2, 3, 4]}}">
-        <view class="title">弥勒佛檀木摆件</view>
+      <view class="dan" wx:for="{{xuqiu_list}}" wx:key="id">
+        <view class="title">{{item.title}}</view>
         <view class="info">
           <view class="info-item">
             <view class="label">采购数量：</view>
-            <view class="value">89件</view>
+            <view class="value">{{item.num}}件</view>
           </view>
           <view class="info-item">
             <view class="label">截止时间：</view>
-            <view class="value">2020-03-18</view>
+            <view class="value">{{item.deadline}}</view>
           </view>
           <view class="info-item desc">
             <view class="label">商品描述：</view>
-            <view class="value">棕红色/高度24cm/价格60每件棕红色/高度24cm/价格60每件棕红色/高度24cm</view>
+            <view class="value">{{item.desc}}</view>
           </view>
         </view>
-        <button class="tel-box">
+        <button bindtap="phone_call" data-tel="{{item.tel}}" class="tel-box" wx:if="{{role}}">
           <image src="../../icons/tel.png" class="tel"></image>
         </button>
       </view>
@@ -64,4 +68,7 @@
       暂无数据
     </view>
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

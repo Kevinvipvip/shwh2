@@ -1,5 +1,8 @@
 @import 'utils/iconfont.wxss';
 
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+
 .page {
   font-size: 24rpx;
   min-height: 100vh;
@@ -1436,3 +1439,66 @@ button::after {
   margin-left: 10rpx;
 }
 /* 为你推荐 end */
+
+/* 退款/评论框 start */
+.rmodal {
+  width: 560rpx;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+  padding: 58rpx 50rpx 0;
+}
+
+.rmodal .title {
+  text-align: center;
+  font-size: 36rpx;
+}
+
+.rmodal .form {
+  margin-top: 40rpx;
+  border: 2rpx solid #e6e6e6;
+}
+
+.rmodal .form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  min-height: 150rpx;
+  text-align: left;
+}
+
+.rmodal .form .count {
+  font-size: 26rpx;
+  color: #666;
+  padding: 0 15rpx 15rpx;
+  text-align: right;
+}
+
+.rmodal .btn-box {
+  display: flex;
+}
+
+.rmodal .btn-box button {
+  width: 0;
+  flex-grow: 1;
+  border-radius: 0;
+  padding: 32rpx 0 33rpx;
+  margin: 0;
+  font-size: 36rpx;
+  min-height: auto;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+}
+
+.rmodal .btn-box button.button-hover {
+  background-color: transparent;
+}
+
+.rmodal .btn-box .cancel {
+  color: #333;
+}
+
+.rmodal .btn-box .confirm {
+  color: #ffbe00;
+}
+/* 退款/评论框 end */

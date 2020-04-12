@@ -128,7 +128,7 @@
 
 .car-box .car .info .amount-box .amount {
     position: relative;
-    top: 4rpx;
+    top: 6rpx;
     width: 50rpx;
     text-align: center;
     color: #000;

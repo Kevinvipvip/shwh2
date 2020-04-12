@@ -5,6 +5,7 @@ view {
 }
 
 .page {
+  padding-bottom: 98rpx;
 }
 
 .main {
@@ -157,4 +158,48 @@ view {
 .rich .content-wrapper {
   margin-top: 40rpx;
   padding: 0 24rpx 40rpx;
+}
+
+.fixed-bottom {
+  display: flex;
+  height: 98rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 4rpx 12rpx 0 rgba(217, 217, 217, 1);
+}
+
+.fixed-bottom .share {
+  width: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 32rpx;
+  margin: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 0;
+}
+
+.fixed-bottom .share .icon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.fixed-bottom .share .text {
+  margin-left: 18rpx;
+  color: #101010;
+  font-size: 28rpx;
+}
+
+.fixed-bottom .go {
+  width: 0;
+  flex-grow: 1;
+  line-height: 98rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 36rpx;
+  background: #34a8ae;
 }

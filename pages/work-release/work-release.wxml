@@ -1,7 +1,4 @@
 <view class="page">
-  <view class="notice" wx:if="{{idea_id != 0}}">
-    提示：创意来自“{{idea.nickname}}”的“{{idea.title}}”
-  </view>
   <view class="notice warning" wx:if="{{id != 0}}">
     驳回原因：{{reason || '未知'}}
   </view>

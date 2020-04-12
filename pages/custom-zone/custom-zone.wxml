@@ -1,31 +1,34 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <!-- 顶部轮播 -->
   <swiper indicator-dots="{{true}}"
           autoplay="{{true}}"
           circular="{{true}}"
           class="banner">
-    <swiper-item wx:for="{{[0, 1, 2, 3, 4]}}" class="si">
-      <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}"
-             src="/images/t-banner.jpg" mode="aspectFill"></image>
+    <swiper-item wx:for="{{slide_list}}" wx:key="id" class="si">
+      <image bindtap="jump" data-url="{{item.url}}" src="{{item.pic}}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
 
   <!-- 分类tab -->
   <view class="tabs">
-    <view class="tab {{active_index == 0 ? 'active' : ''}}">小批量定制</view>
-    <view class="tab {{active_index == 1 ? 'active' : ''}}">免费拿样</view>
-    <view class="tab {{active_index == 2 ? 'active' : ''}}">免开模费</view>
+    <view bindtap="tab_change" data-tab="{{2}}" class="tab {{active_index == 2 ? 'active' : ''}}">免费打样</view>
+    <view bindtap="tab_change" data-tab="{{1}}" class="tab {{active_index == 1 ? 'active' : ''}}">小批量定制</view>
+    <view bindtap="tab_change" data-tab="{{3}}" class="tab {{active_index == 3 ? 'active' : ''}}">免开模费</view>
   </view>
 
   <!-- 商品列表 -->
-  <view class="goods-box" wx:if="{{active_index == 0}}">
+  <view class="goods-box">
     <view class="goods-list">
-      <view class="goods2" wx:for="{{[0, 1, 2, 3, 4]}}">
-        <image src="/images/t-bao-goods.jpg" class="cover" mode="aspectFill" lazy-load></image>
+      <view class="goods2" wx:for="{{goods_list}}" wx:key="id">
+        <image src="{{item.poster}}" class="cover" mode="aspectFill" lazy-load></image>
         <view class="info">
-          <view class="title two-line-ellipsis">DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可</view>
-          <view class="shop one-line-ellipsis">叁拾叁物语笔记本定制</view>
-          <view class="price">14.8</view>
+          <view class="title two-line-ellipsis">{{item.name}}</view>
+          <view class="shop one-line-ellipsis">{{item.org}}</view>
+          <view class="price">{{item.price}}</view>
         </view>
       </view>
     </view>

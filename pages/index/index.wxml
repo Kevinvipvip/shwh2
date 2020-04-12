@@ -49,7 +49,7 @@
       <image src="/icons/kk9.png"></image>
       <view class="title">即时采购</view>
     </navigator>
-    <navigator url="/pages/activity-list/activity-list" class="kitem">
+    <navigator url="/activity-package/pages/activity-list/activity-list" class="kitem">
       <image src="/icons/kk10.png"></image>
       <view class="title">文创大赛</view>
     </navigator>
@@ -129,7 +129,7 @@
     </view>
     <view class="goods-list">
       <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="goods2" wx:for="{{bao_list}}" wx:key="id">
-        <image src="{{item.poster}}" class="cover"></image>
+        <image src="{{item.poster}}" mode="aspectFill" lazy-load class="cover"></image>
         <view class="info">
           <view class="title two-line-ellipsis">{{item.name}}</view>
           <view class="shop one-line-ellipsis">{{item.org}}</view>

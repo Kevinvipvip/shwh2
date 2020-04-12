@@ -1,21 +1,25 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <!-- 搜索框 -->
   <view class="search-box">
     <view class="search">
-      <icon bindtap="search_notes" class="iconfont iconsearch"/>
-      <input bindinput="bind_input" bindconfirm="search_notes" data-name="search" placeholder="搜索需求" maxlength="8"/>
+      <icon bindtap="search_goods" class="iconfont iconsearch"/>
+      <input bindinput="bind_input" bindconfirm="search_goods" data-name="search" placeholder="搜索商品" maxlength="8"/>
     </view>
   </view>
 
   <!-- 商品列表 -->
   <view class="goods-box">
     <view class="goods-list">
-      <view class="goods2" wx:for="{{[0, 1, 2, 3, 4]}}">
-        <image src="/images/t-bao-goods.jpg" class="cover" mode="aspectFill" lazy-load></image>
+      <view class="goods2" wx:for="{{goods_list}}" wx:key="id" wx:if="{{item.visible}}">
+        <image src="{{item.poster}}" class="cover" mode="aspectFill" lazy-load></image>
         <view class="info">
-          <view class="title two-line-ellipsis">DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可</view>
-          <view class="shop one-line-ellipsis">叁拾叁物语笔记本定制</view>
-          <view class="price">14.8</view>
+          <view class="title two-line-ellipsis">{{item.name}}</view>
+          <view class="shop one-line-ellipsis">{{item.org}}</view>
+          <view class="price">{{item.price}}</view>
         </view>
       </view>
     </view>

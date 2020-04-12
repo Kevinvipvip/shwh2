@@ -45,7 +45,7 @@
       <view class="title">{{ip.title}}</view>
       <view class="look">
         <image src="/ip-package/icons/menu.png" class="icon"></image>
-        <view class="text">查看原图</view>
+        <view bindtap="preview_pic" class="text">查看原图</view>
       </view>
     </view>
   </view>
@@ -63,5 +63,13 @@
       <import src="../../../wxParse/wxParse.wxml"/>
       <template is="wxParse" data="{{wxParseData:rich_text.nodes}}"/>
     </view>
+  </view>
+
+  <view class="fixed-bottom">
+    <button open-type="share" class="share">
+      <image src="/ip-package/icons/share.png" class="icon"></image>
+      <view class="text">分享</view>
+    </button>
+    <navigator url="../auth-apply/auth-apply?id={{id}}" class="go">申请授权合作</navigator>
   </view>
 </view>

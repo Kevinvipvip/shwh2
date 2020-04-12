@@ -9,6 +9,7 @@ Page({
     slide_list: [],  // 轮播图
     ip_cate_list: [],  // 版权分类
 
+    page_cate: 0,  // 外面进来的cateid
     active_tab: -1,
 
     page: 1,
@@ -17,8 +18,24 @@ Page({
     nodata: false,
     loading: false
   },
-  onLoad() {
+  onLoad(options) {
+    if (options.cate) {
+      this.data.page_cate = parseInt(options.cate);
+    }
+
     this.init(() => {
+      if (this.data.page_cate) {
+        for (let i = 0; i < this.data.ip_cate_list.length; i++) {
+          if (this.data.ip_cate_list[i].id === this.data.page_cate) {
+            this.setData({ active_tab: i }, () => {
+              this.reset();
+              this.ipList();
+            });
+            break;
+          }
+        }
+      }
+
       this.setData({ full_loading: false });
     });
   },

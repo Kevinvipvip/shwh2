@@ -19,6 +19,8 @@ Page({
     focus: false,  // 是否关注
     focus_loading: false,
 
+    comment_num: 0,  // 评论条数
+
     auth_id: 0,  // 作者id
     comment_list: [],  // 评论列表
     re_name: '我要评论...',  // 回复人昵称
@@ -57,6 +59,7 @@ Page({
   },
   bind_focus(e) {
     this.setData({ input_bottom: e.detail.height });
+    console.log('fuck');
   },
   bind_blur() {
     this.setData({ input_bottom: 0 });
@@ -70,9 +73,12 @@ Page({
 
       let post = {
         note_id: this.data.note_id,
-        to_cid: this.data.to_cid,
         content: this.data.content
       };
+
+      if (this.data.to_cid) {
+        post.to_cid = this.data.to_cid;
+      }
 
       app.ajax('note/commentAdd', post, () => {
         this.setData({content: ''});
@@ -154,20 +160,20 @@ Page({
   },
   // 关注/取消关注
   iFocus() {
-    if (!this.data.focus_loading) {
-      this.data.focus_loading = true;
-
-      let post = {
-        token: app.user_data.token,
-        to_uid: this.data.note.uid
-      };
-
-      app.ajax('note/iFocus', post, (res) => {
-        this.setData({ focus: res });
-      }, null, () => {
-        this.data.focus_loading = false;
-      });
-    }
+    // if (!this.data.focus_loading) {
+    //   this.data.focus_loading = true;
+    //
+    //   let post = {
+    //     token: app.user_data.token,
+    //     to_uid: this.data.note.uid
+    //   };
+    //
+    //   app.ajax('note/iFocus', post, (res) => {
+    //     this.setData({ focus: res });
+    //   }, null, () => {
+    //     this.data.focus_loading = false;
+    //   });
+    // }
   },
   // 去他人主页
   to_person() {
@@ -183,18 +189,36 @@ Page({
   commentList() {
     app.ajax('note/commentList', { note_id: this.data.note_id }, (res) => {
       app.avatar_format(res);
+      app.ago_format(res, 'create_time');
       for (let i = 0; i < res.length; i++) {
         app.avatar_format(res[i].child);
+        app.ago_format(res[i].child, 'create_time');
       }
-      this.setData({ comment_list: res });
+      this.setData({ comment_list: res }, () => {
+        this.count_comment();
+      });
     });
+  },
+  // 计算评论条数
+  count_comment() {
+    let count = 0;
+    for (let i = 0; i < this.data.comment_list.length; i++) {
+      count += this.data.comment_list[i].child.length;
+    }
+    count += this.data.comment_list.length;
+    this.setData({comment_num: count});
   },
   show_input(e) {
     let re_user = e.currentTarget.dataset.re_user;
     this.data.to_cid = re_user.id;
     this.setData({
-      re_name: re_user.nickname,
+      re_name: '回复：' + re_user.nickname,
       release_focus: true
     });
+  },
+  // 第一层评论
+  commet_note() {
+    this.data.to_cid = 0;
+    this.setData({ re_name: '我要评论...' });
   }
 });

@@ -185,5 +185,10 @@ Page({
     if (e.currentTarget.dataset.url) {
       app.jump(e);
     }
+  },
+  // 分享
+  onShareAppMessage() {
+    wx.showShareMenu();
+    return { path: app.share_path() };
   }
 });

@@ -25,9 +25,9 @@
     </swiper-item>
   </swiper>
 
-  <navigator url="/pages/" class="goods-link">
+  <navigator url="/pages/shop-detail/shop-detail?id=note.goods_id" class="goods-link" wx:if="{{note.goods_id}}">
     <image src="/icons/link.png" class="icon"></image>
-    <text class="text">某某商品名称</text>
+    <text class="text">{{note.goods_name}}</text>
   </navigator>
 
 <!--  <view class="info">-->
@@ -54,14 +54,14 @@
   <view class="comment-box">
     <view class="title-line">
       <view class="title">评论</view>
-      <view class="amount">（共436条）</view>
+      <view class="amount">（共{{comment_num}}条）</view>
     </view>
     <view class="comment" wx:for="{{comment_list}}" wx:key="id">
       <image src="{{item.avatar}}" class="header"></image>
       <view class="content">
         <view class="c-info">
           <view class="nickname">{{item.nickname}}{{auth_id == uid ? '（作者）' : ''}}</view>
-          <view class="date">{{item.created_time}}</view>
+          <view class="date">{{item.create_time}}</view>
           <view class="text">{{item.content}}</view>
           <view class="re-comment-box" wx:if="{{item.child.length > 0}}">
             <view class="re-comment" wx:for="{{item.child}}" wx:key="id" wx:for-item="child_item">
@@ -84,7 +84,7 @@
   </view>
 
   <view class="input-box" style="bottom: {{input_bottom}}px;">
-    <input bindconfirm="commentAdd" bindinput="bind_input" bindfocus="bind_focus" bindblur="bind_blur" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="{{re_name}}" maxlength="100" class="re-input" focus="{{release_focus}}" />
+    <input bindconfirm="commentAdd" bindtap="commet_note" bindinput="bind_input" bindfocus="bind_focus" bindblur="bind_blur" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="{{re_name}}" maxlength="100" class="re-input" focus="{{release_focus}}" />
 
     <view class="icon-box" bindtap="iLike">
       <image src="/icons/heart-active.png" class="heart" wx:if="{{like}}"></image>

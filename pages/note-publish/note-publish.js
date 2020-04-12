@@ -12,7 +12,7 @@ Page({
 
     status: 0,  // 0.审核中 1.通过审核 2.未通过 （编辑笔记时用）
 
-    c_goods_id: 1,
+    c_goods: {},
 
     flex_pad: []
   },

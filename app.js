@@ -43,7 +43,8 @@ App({
     uid: 0,
     role: 0,
     user_auth: 0, // 0.用户未授权 1.用户已授权
-    avatar: ''
+    avatar: '',
+    vip: 0  // 0.不是vip 1.是vip
   },
   mp_update() {
     const updateManager = wx.getUpdateManager();
@@ -323,10 +324,9 @@ App({
       }
     } else {
       if (!obj[field]) {
-        obj[field] = '';
+        obj[field] = this.my_config.default_img;
       } else {
         obj[field] = obj[field].indexOf('https') === 0 ? obj[field] : this.my_config.qiniu_base + '/' + obj[field];
-        // [field]
       }
     }
   },
@@ -450,7 +450,7 @@ App({
       var options = {
         region: 'NCN', // 华北区
         uptoken: res.token,
-        domain: 'qiniu.wcip.net',
+        domain: 'qiniu.sd.wcip.net',
         shouldUseQiniuFileName: false
       };
       qiniuUploader.init(options);
@@ -567,6 +567,7 @@ App({
       this.user_data.uid = res.uid;
       this.user_data.role = res.role;
       this.user_data.avatar = res.avatar;
+      this.user_data.vip = res.vip;
     });
   },
   // 格式化数字，如果没有小数则返回整数，有小数返回小数
@@ -608,6 +609,24 @@ App({
         // 不在今年之内
         console.log(timestamp);
         return utils.date_format(timestamp, 'yyyy-MM-dd hh:mm');
+      }
+    }
+  },
+  // 时间格式化
+  format_time(obj, field, fmt) {
+    if (obj instanceof Array) {
+      for (let i = 0; i < obj.length; i++) {
+        if (fmt) {
+          obj[i][field] = utils.date_format(obj[i][field], fmt);
+        } else {
+          obj[i][field] = utils.date_format(obj[i][field]);
+        }
+      }
+    } else {
+      if (fmt) {
+        obj[field] = utils.date_format(obj[field], fmt);
+      } else {
+        obj[field] = utils.date_format(obj[field]);
       }
     }
   }

@@ -76,4 +76,5 @@
   font-size: 36rpx;
   color: #333;
   border-radius: 0;
+  z-index: 2;
 }

@@ -31,7 +31,7 @@
               <image src="/icons/dz.png"></image>
               <view class="title">定制专区</view>
             </navigator>
-            <navigator url="/pages/activity-list/activity-list" class="menu">
+            <navigator url="/activity-package/pages/activity-list/activity-list" class="menu">
               <image src="/icons/kk10.png"></image>
               <view class="title">文创大赛</view>
             </navigator>
@@ -65,10 +65,10 @@
       <view class="ip-box" wx:if="{{active_index == 1}}">
         <view class="title">IP授权</view>
         <view class="ip-list">
-          <view class="ip" wx:for="{{ip_cate_list}}" wx:key="id">
+          <navigator url="/ip-package/pages/index/index?cate={{item.id}}" class="ip" wx:for="{{ip_cate_list}}" wx:key="id">
             <image src="{{item.icon}}" class="icon"></image>
             <view class="text">{{item.cate_name}}</view>
-          </view>
+          </navigator>
           <view class="ip vh" wx:for="{{ip_pad}}" wx:key="index"></view>
         </view>
       </view>

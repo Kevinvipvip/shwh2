@@ -256,7 +256,7 @@
 <!--      <image src="/icons/you3.png" class="you"></image>-->
 <!--    </navigator>-->
 
-    <button open-type="contact" show-message-card="true" class="menu-item" url="/pages/my-notes/my-notes">
+    <button open-type="contact" show-message-card="true" class="menu-item">
       <view class="left-box">
         <view class="icon-box">
           <image src="/icons/menu10.png" class="icon-menu10"></image>

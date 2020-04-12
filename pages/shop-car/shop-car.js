@@ -99,7 +99,7 @@ Page({
       app.toast('请选择要结算的商品');
     } else {
       console.log(ids);
-      wx.navigateTo({ url: '/pages/cart-order-create/cart-order-create?ids=' + encodeURIComponent(ids.toString()) });
+      wx.navigateTo({ url: '/order-package/pages/cart-order-create/cart-order-create?ids=' + encodeURIComponent(ids.toString()) });
     }
   },
   // 数量增加

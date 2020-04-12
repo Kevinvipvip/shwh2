@@ -96,12 +96,12 @@ Page({
             list: [],
             nodata: true,
             nomore: false
-          })
+          });
         } else {
           this.setData({
             nodata: false,
             nomore: true
-          })
+          });
         }
       } else {
         this.setData({ list: this.data.list.concat(res) });
@@ -113,15 +113,6 @@ Page({
       }
     });
   },
-  // 重置
-  reset() {
-    this.data.page = 1;
-    this.data.work_list = [];
-    this.setData({
-      nomore: false,
-      nodata: false
-    });
-  },
   // 下拉刷新
   onPullDownRefresh() {
     if (!this.data.loading) {
@@ -129,6 +120,7 @@ Page({
 
       wx.showNavigationBarLoading();
 
+      this.reset();
       this.init(() => {
         this.data.loading = false;
         wx.hideNavigationBarLoading();
@@ -148,6 +140,15 @@ Page({
         });
       }
     }
+  },
+  // 重置
+  reset() {
+    this.data.page = 1;
+    this.data.work_list = [];
+    this.setData({
+      nomore: false,
+      nodata: false
+    });
   },
   // 分享
   onShareAppMessage() {

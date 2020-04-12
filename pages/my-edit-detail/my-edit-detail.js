@@ -5,7 +5,7 @@ Page({
     is_ios: false,
     nickname: '',
     realname: '',
-    sign: '',
+    desc: '',
 
     field_name: ''
   },
@@ -22,7 +22,7 @@ Page({
       case 'realname':
         wx.setNavigationBarTitle({ title: '编辑姓名' });
         break;
-      case 'sign':
+      case 'desc':
         wx.setNavigationBarTitle({ title: '编辑个人备注' });
         break;
     }
@@ -52,9 +52,9 @@ Page({
           valid = true;
         }
         break;
-      case 'sign':
+      case 'desc':
         cmd = 'my/modDesc';
-        post.sign = this.data.sign;
+        post.desc = this.data.desc;
         valid = true;
         break;
     }

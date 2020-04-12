@@ -37,17 +37,38 @@
     </view>
   </view>
   <view class="goods-list">
-    <view class="pro" wx:for="{{order.child}}">
-      <image src="{{item.cover}}" class="pic" mode="aspectFill"></image>
-      <view class="info">
-        <view class="shang">
-          <view class="title">{{item.goods_name}}</view>
-          <view class="attr">规格：{{item.attr}}</view>
+    <view class="pro-box" wx:for="{{order.child}}" wx:key="order_detail_id">
+      <view class="pro">
+        <image src="{{item.cover}}" class="pic" mode="aspectFill"></image>
+        <view class="info">
+          <view class="shang">
+            <view class="title">{{item.goods_name}}</view>
+            <view class="attr">规格：{{item.attr}}</view>
+          </view>
+          <view class="xia">
+            <view class="price">¥{{item.unit_price}}</view>
+            <view class="amount">x{{item.num}}</view>
+          </view>
         </view>
-        <view class="xia">
-          <view class="price">¥{{item.unit_price}}</view>
-          <view class="amount">x{{item.num}}</view>
-        </view>
+      </view>
+      <view class="btn-box" wx:if="{{order.status == 3 && item.evaluate == 0}}">
+        <button bindtap="show_comment" data-active_odi="{{item.order_detail_id}}" class="com-btn">评论</button>
+      </view>
+      <view class="comment" wx:if="{{order.status == 3 && item.evaluate == 1}}">{{item.comment}}</view>
+    </view>
+  </view>
+
+  <!-- 评论modal -->
+  <view bindtap="hide_comment" catchtouchmove class="cu-modal {{show_comment_box ? 'show' : ''}}" wx:if="{{show_comment_box}}">
+    <view catchtap class="cu-dialog rmodal">
+      <view class="title">清输入评论</view>
+      <view class="form">
+        <textarea fixed bindinput="bind_input" data-name="comment" value="{{comment}}" auto-height maxlength="100" cursor-spacing="50" placeholder="评论内容..." class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
+        <view class="count">{{comment.length}} / 100</view>
+      </view>
+      <view class="btn-box">
+        <button bindtap="hide_comment" class="cancel">取消</button>
+        <button bindtap="orderEvaluate" class="confirm">确定</button>
       </view>
     </view>
   </view>

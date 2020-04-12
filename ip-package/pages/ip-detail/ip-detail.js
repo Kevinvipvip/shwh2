@@ -9,17 +9,17 @@ Page({
     ip: {}
   },
   onLoad(options) {
-    this.data.id = options.id;
+    this.setData({ id: options.id});
 
     this.ipDetail(() => {
-      this.setData({full_loading: false});
+      this.setData({ full_loading: false });
     });
   },
   // 版权详情
   ipDetail(complete) {
-    app.ajax('copyright/ipDetail', {ip_id: this.data.id}, res => {
+    app.ajax('copyright/ipDetail', { ip_id: this.data.id }, res => {
       app.format_img(res, 'cover');
-      this.setData({ip: res});
+      this.setData({ ip: res });
 
       let rich_text = res.content;
       rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');
@@ -29,5 +29,16 @@ Page({
         complete();
       }
     });
+  },
+  // 全屏查看版权图片
+  preview_pic() {
+    wx.previewImage({
+      urls: [this.data.ip.cover]
+    });
+  },
+  // 分享
+  onShareAppMessage() {
+    wx.showShareMenu();
+    return { path: app.share_path() };
   }
 });

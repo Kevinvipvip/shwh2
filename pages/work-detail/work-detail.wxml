@@ -2,10 +2,6 @@
   <view class="work">
     <view class="title">{{work.title}}</view>
     <view class="desc">{{work.desc}}</view>
-    <view class="idea-line" wx:if="{{work.idea_title}}">
-      <view class="origin one-line-ellipsis">创意来源：{{work.idea_title}}</view>
-      <view class="support">创意支持：{{work.idea_vote}}</view>
-    </view>
     <view class="user-line">
       <view bindtap="to_person" class="avatar-box">
         <image src="{{work.avatar}}" mode="aspectFill" class="avatar"></image>
@@ -21,65 +17,10 @@
       <image class="vh" wx:for="{{work.flex_pad}}"></image>
     </view>
     <view class="num-line">
-      <view class="bid">
-        <view class="label">工厂接单</view>
-        <view class="value">[数量：{{work.bid_num}}]</view>
-      </view>
       <view bindtap="worksVote" class="work-c">
         <image src="/icons/zan-active.png" wx:if="{{work.if_vote}}"></image>
         <image src="/icons/zan.png" wx:else></image>
         <view class="count">{{work.vote}}</view>
-      </view>
-    </view>
-  </view>
-
-  <!-- 来源活动 -->
-  <view class="ac-detail">
-    <view class="title-line">
-      <view class="title">来源活动</view>
-      <navigator url="/pages/activity-detail/activity-detail?id={{work.req_id}}" class="more">
-        <text>查看活动</text>
-        <image src="/icons/you2.png"></image>
-      </navigator>
-    </view>
-    <view class="desc">{{work.req_title || ''}}</view>
-  </view>
-
-  <view class="work-box">
-    <!-- 接单（工厂角色） -->
-    <form bindsubmit="bidding" report-submit class="bidding-box" wx:if="{{role == 3}}">
-      <button form-type="submit" class="line-btn" disabled="{{!work.bidding_btn}}" wx:if="{{role == 3}}">接单</button>
-      <view class="form1" wx:if="{{work.bidding_btn}}">
-        <view class="form-item">
-          <view class="textarea-box">
-            <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="100" cursor-spacing="50" placeholder="接单备注（选填）" class="{{is_ios ? 'text-plat-ios' : 'text-plat'}}" />
-            <view class="count">
-              <text>{{desc_count}}</text>
-              / 100
-            </view>
-          </view>
-        </view>
-      </view>
-    </form>
-
-    <!-- 接单列表（博物馆） -->
-    <view class="bidding-box2">
-      <view class="title">接单工厂</view>
-      <view class="bidding-list" wx:if="{{bidding_list.length != 0}}">
-        <view class="bidding" wx:for="{{bidding_list}}" wx:key="id">
-          <view class="header">
-            <view bindtap="to_person" data-uid="{{item.uid}}" class="left">
-              <image src="{{item.avatar}}" class="head-pic"></image>
-              <view class="org">{{item.org}}</view>
-            </view>
-            <button bindtap="chooseFactory" data-id="{{item.id}}" class="choose-btn" wx:if="{{choose_bindex == -1 && work.req_uid == uid}}">选定</button>
-            <button class="choose-btn choosed" wx:if="{{choose_bindex != -1 && item.choose == 1}}">已中标</button>
-          </view>
-          <view class="desc">{{item.desc}}</view>
-        </view>
-      </view>
-      <view class="nodata" wx:if="{{bidding_list.length == 0}}">
-        暂无接单
       </view>
     </view>
   </view>

@@ -1,13 +1,15 @@
 <view class="page">
+  <!-- 顶部视频/轮播图 -->
+  <video src="{{goods.video_url}}" poster="{{goods.poster}}" controls class="u-video" object-fit="cover" wx:if="{{goods.use_video}}" class="top-video"></video>
   <swiper indicator-dots="{{true}}"
           autoplay="{{true}}"
           class="top-swiper"
-          wx:if="{{goods.pics.length > 1}}">
+          wx:else>
     <swiper-item wx:for="{{goods.pics}}" wx:key="index">
       <image src="{{item}}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
-  <image src="{{goods.pics[0]}}" class="top-swiper" mode="aspectFit" wx:else></image>
+
   <view class="info-box">
     <view class="pt">
       <view class="title">
@@ -18,20 +20,20 @@
         </button>
       </view>
       <view class="label-list">
-        <view class="label">小批量定制</view>
-        <view class="label">免费拿样</view>
-        <view class="label">免开模费</view>
+        <view class="label" wx:if="{{goods.batch == 1}}">小批量定制</view>
+        <view class="label" wx:if="{{goods.sample == 1}}">免费拿样</view>
+        <view class="label" wx:if="{{goods.mold == 1}}">免开模费</view>
       </view>
-      <view class="price" wx:if="{{t_vip}}">
-        <text class="pp">{{goods.price}}</text>
-        <text class="origin-price" wx:if="{{goods.price != goods.origin_price}}">¥{{goods.origin_price}}</text>
+      <view class="price" wx:if="{{vip == 1}}">
+        <text class="pp">{{goods.use_vip_price == 1 ? goods.vip_price : goods.price}}</text>
+        <text class="origin-price" wx:if="{{goods.use_vip_price == 1}}">¥{{goods.price}}</text>
       </view>
       <view class="price" wx:else>
         <view class="pp">{{goods.price}}</view>
-        <view class="join-vip">
+        <view class="join-vip" wx:if="{{goods.use_vip_price}}">
           <view class="v-price-box">
             <view class="label">会员价：</view>
-            <view class="v-price">15.2</view>
+            <view class="v-price">{{goods.vip_price}}</view>
           </view>
           <button class="vip-btn">立即加入会员</button>
         </view>

@@ -7,7 +7,7 @@
     <view class="form-item">
       <label for="company">公司名称</label>
       <view class="value-box">
-        <input bindinput="bind_input" data-name="company" value="{{company}}" type="text" id="company" placeholder="请输入公司全称" maxlength="50" />
+        <input bindinput="bind_input" data-name="company" value="{{company}}" type="text" id="company" placeholder="请输入公司名称" maxlength="50" />
       </view>
     </view>
 
@@ -28,14 +28,14 @@
     <view class="form-item">
       <label for="tel">联系电话</label>
       <view class="value-box">
-        <input  bindinput="bind_input" data-name="tel" value="{{tel}}" type="text" id="tel" placeholder="请输入联系电话号码" maxlength="11" />
+        <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" id="tel" placeholder="请输入联系电话号码" maxlength="11" />
       </view>
     </view>
 
     <view class="form-item code">
       <label for="code">验证码</label>
       <view class="value-box">
-        <input bindinput="bind_input" data-name="code" value="{{code}}" type="text" id="code" placeholder="请输入验证码" maxlength="6" />
+        <input bindinput="bind_input" data-name="code" value="{{code}}" type="number" id="code" placeholder="请输入验证码" maxlength="6" />
         <button bindtap="sendSms" class="code-btn" disabled="{{code_disabled}}">{{code_text}}</button>
       </view>
     </view>

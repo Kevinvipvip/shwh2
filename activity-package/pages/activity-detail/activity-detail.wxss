@@ -1,0 +1,275 @@
+.page {
+}
+
+.top-banner {
+  width: 100%;
+  display: block;
+  height: 392rpx;
+}
+
+.info {
+  padding: 16rpx 24rpx 40rpx;
+}
+
+.info .title {
+  font-size: 32rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.info .user-line {
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info .user-line .zhu {
+  display: flex;
+  align-items: center;
+}
+
+.info .user-line .zhu .header {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.info .user-line .zhu .nickname {
+  margin-left: 16rpx;
+  color: #101010;
+  font-size: 28rpx;
+}
+
+.info .user-line .works-num {
+  font-size: 28rpx;
+  display: flex;
+}
+
+.info .user-line .works-num .num {
+  color: #333;
+}
+
+.info .user-line .works-num .text {
+  color: #999;
+  margin-left: 5rpx;
+}
+
+.times {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 40rpx 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.times .time {
+}
+
+.times .time .text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.times .time .date {
+  font-size: 28rpx;
+  margin-top: 24rpx;
+  color: #101010;
+}
+
+.aac-detail {
+  padding: 40rpx 24rpx 33rpx;
+}
+
+.aac-detail .title-line {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.aac-detail .title-line .title {
+  font-size: 40rpx;
+  color: #101010;
+}
+
+.aac-detail .title-line .more {
+  display: flex;
+  align-items: center;
+}
+
+.aac-detail .title-line .more .text {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.aac-detail .title-line .more .you {
+  width: 13rpx;
+  height: 23rpx;
+  margin-left: 10rpx;
+  position: relative;
+  top: -3rpx;
+}
+
+.aac-detail .desc {
+  margin-top: 17rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #666;
+}
+
+.tou-box {
+  border-top: 8rpx solid rgba(0, 0, 0, 0.05);
+  padding: 24rpx 0;
+  display: flex;
+  justify-content: center;
+}
+
+.tou-box .btn {
+  vertical-align: bottom;
+  width: 702rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  box-shadow: 0 4rpx 20rpx 0 rgba(255, 220, 163, 1);
+}
+
+.work-box {
+  border-top: 8rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.work-box .search-box {
+  display: flex;
+  align-items: center;
+}
+
+.work-box .search-box .zuo {
+  flex-grow: 1;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 64rpx;
+  padding: 0 24rpx;
+  border-radius: 8rpx;
+}
+
+.work-box .search-box .zuo .search-icon {
+  width: 32rpx;
+  height: 32rpx;
+  flex-shrink: 0;
+}
+
+.work-box .search-box .zuo .search {
+  font-size: 28rpx;
+  flex-grow: 1;
+  margin: 0 15rpx;
+}
+
+.work-box .search-box .zuo .cha {
+  width: 38rpx;
+  height: 38rpx;
+  flex-shrink: 0;
+}
+
+.work-box .search-box .search-btn {
+  flex-shrink: 0;
+  margin-left: 24rpx;
+  font-size: 32rpx;
+}
+
+.work-box .title-line {
+  margin-top: 52rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.work-box .title-line .title {
+  color: #101010;
+  font-size: 40rpx;
+  margin-bottom: 0;
+}
+
+.work-box .title-line .work-num {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.work-list {
+  margin-top: 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.work-list .work2 {
+  margin-top: 24rpx;
+  width: 340rpx;
+  box-sizing: border-box;
+}
+
+.work-list .work2:nth-child(-n + 2) {
+  margin-top: 0;
+}
+
+.work2 .cover-box {
+  position: relative;
+}
+
+.work2 .cover-box .cover {
+  width: 100%;
+  height: 340rpx;
+  vertical-align: bottom;
+}
+
+.work2 .cover-box .title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 48rpx;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  line-height: 48rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.work2 .info {
+  border-style: solid;
+  border-color: #eee;
+  border-width: 0 2rpx 2rpx 2rpx;
+  border-radius: 0 0 8rpx 8rpx;
+  padding: 24rpx 16rpx;
+}
+
+.work2 .name-line {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.work2 .name-line .nickname {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.work2 .name-line .vote {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.work2 .vote-btn {
+  margin-top: 40rpx;
+  width: 100%;
+  height: 64rpx;
+  background: #ff9446;
+  line-height: 64rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+}

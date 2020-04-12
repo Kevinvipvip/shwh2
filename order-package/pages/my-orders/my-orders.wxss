@@ -92,6 +92,7 @@
 .pro .info .shang .title {
   font-size: 26rpx;
   width: 300rpx;
+  line-height: 1.4;
 }
 
 .pro .info .shang .title .attr {

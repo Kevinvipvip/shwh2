@@ -1,0 +1,100 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <!-- 头图/视频 -->
+    <video src="{{activity.video_url}}" poster="{{activity.poster}}" controls class="u-video" object-fit="cover" wx:if="{{activity.use_video}}" class="top-banner"></video>
+  <image src="{{activity.cover}}" class="top-banner" mode="aspectFill" wx:else></image>
+
+  <!-- 大赛名等信息 -->
+  <view class="info">
+    <view class="title">{{activity.title}}</view>
+    <view class="user-line">
+      <view class="zhu">
+<!--        <image src="{{activity.avatar}}" mode="aspectFill" class="header"></image>-->
+        <view class="nickname">{{activity.linkman}}</view>
+      </view>
+      <view class="works-num">
+        <view class="num">{{activity.works_num}}</view>
+        <view class="text">参与数量</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 各种时间 -->
+  <view class="times">
+    <view class="time">
+      <view class="text">活动开始时间</view>
+      <view class="date">{{activity.start_time}}</view>
+    </view>
+    <view class="time">
+      <view class="text">投稿截止时间</view>
+      <view class="date">{{activity.deadline}}</view>
+    </view>
+    <view class="time">
+      <view class="text">活动结束时间</view>
+      <view class="date">{{activity.end_time}}</view>
+    </view>
+  </view>
+
+  <!-- 活动详情 -->
+  <view class="aac-detail">
+    <view class="title-line">
+      <view class="title">活动详情</view>
+      <navigator url="../activity-rich/activity-rich?id={{id}}" class="more">
+        <view class="text">查看更多</view>
+        <image src="/icons/right-arrow.png" class="you"></image>
+      </navigator>
+    </view>
+    <view class="desc">{{activity.desc}}</view>
+  </view>
+
+  <!-- 作品投稿按钮 -->
+  <view bindtap="to_up_work" class="tou-box">
+    <image src="../../images/work-btn.png" class="btn"></image>
+  </view>
+
+  <!-- 作品列表 -->
+  <view class="work-box">
+    <view class="search-box">
+      <view class="zuo">
+        <image src="../../icons/search.png" class="search-icon"></image>
+        <input bindconfirm="search_works" bindinput="bind_input" data-name="search" value="{{search}}" type="text" maxlength="20" class="search" placeholder="查找投稿作品" />
+        <image bindtap="clear_search" src="../../icons/cha.png" class="cha" wx:if="{{search}}"></image>
+      </view>
+      <view bindtap="search_works" class="search-btn">搜索</view>
+    </view>
+
+    <view class="title-line">
+      <view class="title">全部作品</view>
+      <view class="work-num">共{{activity.works_num}}幅作品</view>
+    </view>
+
+    <view class="work-list">
+      <navigator url="/pages/work-detail/work-detail?id={{item.id}}" class="work2" wx:for="{{works_list}}" wx:key="id">
+        <view class="cover-box">
+          <image src="{{item.pics[0]}}" class="cover"></image>
+          <view class="title one-line-ellipsis">{{item.title}}</view>
+        </view>
+        <view class="info">
+          <view class="name-line">
+            <view class="nickname">{{item.nickname}}</view>
+            <view class="vote">{{item.vote}}票</view>
+          </view>
+          <view catchtap="worksVote" data-index="{{index}}" class="vote-btn">投TA一票</view>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="nomore" wx:if="{{nomore}}">
+      已经没有更多了哦
+    </view>
+    <view class="nodata" wx:if="{{nodata}}">
+      暂无作品
+    </view>
+  </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
+</view>

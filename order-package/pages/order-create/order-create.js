@@ -26,12 +26,7 @@ Page({
   },
   // 商品详情
   goodsDetail(complete) {
-    let post = {
-      id: this.data.id,
-      token: app.user_data.token
-    };
-
-    app.ajax('shop/goodsDetail', post, (res) => {
+    app.ajax('shop/goodsDetail', {goods_id: this.data.id}, res => {
       app.format_img(res.pics);
       res.carriage = Number(res.carriage);
       res.price = Number(res.price);
@@ -118,10 +113,10 @@ Page({
         app.ajax('shop/purchase', post, (pay_order_sn) => {
           this.orderSnPay(pay_order_sn, (res) => {
             if (res) {
-              wx.redirectTo({ url: '/pages/my-orders/my-orders?status=1' });
+              wx.redirectTo({ url: '../my-orders/my-orders?status=1' });
             } else {
               app.modal('支付未完成，可以在我的订单中进行后续的付款操作', () => {
-                wx.redirectTo({ url: '/pages/my-orders/my-orders?status=0' });
+                wx.redirectTo({ url: '../my-orders/my-orders?status=0' });
               })
             }
           });

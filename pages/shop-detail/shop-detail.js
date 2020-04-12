@@ -25,7 +25,7 @@ Page({
     nodata: false,
     loading: false,
 
-    t_vip: false  // （临时）是否是会员
+    vip: 0  // 0.不是vip 1.是vip
   },
   onLoad(options) {
     this.data.id = options.id;
@@ -39,13 +39,17 @@ Page({
       text: 'http://caves.wcip.net/shop-detail?id=' + options.id
     });
 
+    this.setData({ vip: app.user_data.vip });
+
     this.goodsDetail();
-    // this.goodsCommentList();
+    this.goodsCommentList();
   },
   // 商品详情
   goodsDetail() {
     app.ajax('shop/goodsDetail', { goods_id: this.data.id }, (res) => {
       app.format_img(res.pics);
+      app.format_img(res, 'poster');
+      app.format_img(res, 'video_url');
       app.avatar_format(res);
       this.setData({ goods: res });
       let rich_text = res.detail;
@@ -124,7 +128,7 @@ Page({
         } else {
           attr_id = 1;
         }
-        wx.redirectTo({ url: '/pages/order-create/order-create?id=' + data.id + '&num=' + data.amount + '&attr_id=' + attr_id })
+        wx.redirectTo({ url: '/order-package/pages/order-create/order-create?id=' + data.id + '&num=' + data.amount + '&attr_id=' + attr_id })
       }
     } else {
       if (this.data.amount === 0) {
@@ -175,7 +179,7 @@ Page({
   },
   // 去我的购物车
   to_shop_car() {
-    wx.navigateTo({ url: '/pages/shop-car/shop-car' });
+    wx.switchTab({ url: '/pages/shop-car/shop-car' });
   },
   // 隐藏参数框
   hide() {
@@ -448,5 +452,38 @@ Page({
         complete()
       }
     });
+  },
+  // 下拉刷新
+  onPullDownRefresh() {
+    if (!this.data.loading) {
+      this.data.loading = true;
+
+      this.data.page = 1;
+      this.data.comment_list = [];
+      this.setData({
+        nomore: false,
+        nodata: false
+      });
+
+      wx.showNavigationBarLoading();
+      this.goodsCommentList(() => {
+        this.data.loading = false;
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+      });
+    }
+  },
+  // 上拉加载
+  onReachBottom() {
+    if (!this.data.nomore && !this.data.nodata) {
+      if (!this.data.loading) {
+        this.data.loading = true;
+        wx.showNavigationBarLoading();
+        this.goodsCommentList(() => {
+          wx.hideNavigationBarLoading();
+          this.data.loading = false;
+        });
+      }
+    }
   }
 });

@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "即时采购",
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

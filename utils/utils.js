@@ -11,7 +11,7 @@ const select_tab_bar = (page, selected) => {
 const date_format = (date, fmt = 'yyyy.MM.dd') => {
   if (date) {
     // 如果是数字类型
-    if (date % 1 === 0) {
+    if (typeof date === 'number') {
       date = new Date(date * 1000);
     }
 

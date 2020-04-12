@@ -49,7 +49,7 @@
 <!--    </view>-->
 <!--    <view class="desc">-->
       <view class="content-wrapper">
-        <import src="../../wxParse/wxParse.wxml"/>
+        <import src="../../../wxParse/wxParse.wxml"/>
         <template is="wxParse" data="{{wxParseData:rich_text.nodes}}"/>
       </view>
 <!--    </view>-->

@@ -5,16 +5,13 @@ Page({
     id: 0,
     textarea_padding: '15rpx',
 
-    req_id: 0,  // 活动id
+    activity_id: 0,  // 活动id
     title: '',  // 作品标题
     desc: '',  // 作品描述
     desc_count: 0,
     pics: [],  // 作品图片
     flex_pad: [],
-    reason: '',
-
-    idea_id: 0,  // 创意id（选填）
-    idea: {}
+    reason: ''
   },
   onLoad(options) {
     let phone = wx.getSystemInfoSync();
@@ -22,12 +19,7 @@ Page({
       this.setData({ textarea_padding: '0rpx 5rpx' })
     }
 
-    this.data.req_id = options.req_id;
-
-    if (options.idea_id) {
-      this.setData({idea_id: options.idea_id});
-      this.ideaDetail();
-    }
+    this.data.activity_id = options.activity_id;
 
     if (options.id) {
       this.setData({id: options.id });
@@ -116,7 +108,7 @@ Page({
       app.format_up_img(data.pics);
 
       let post = {
-        req_id: data.req_id,
+        activity_id: data.activity_id,
         title: data.title,
         desc: data.desc,
         pics: data.pics
@@ -127,11 +119,7 @@ Page({
         post.work_id = this.data.id;
         cmd = 'my/myReqWorksMod';
       } else {
-        cmd = 'api/uploadWorks';
-      }
-
-      if (data.idea_id !== 0) {
-        post.idea_id = data.idea_id;
+        cmd = 'activity/uploadWorks';
       }
 
       wx.showLoading({ mask: true });
@@ -149,7 +137,8 @@ Page({
         } else {
           // 发布
           app.modal('作品发布成功，请等待审核', () => {
-            wx.redirectTo({ url: '/pages/my-works/my-works?status=0' });
+            wx.navigateBack();
+            // wx.redirectTo({ url: '/pages/my-works/my-works?status=0' });
           });
         }
       }, err => {
@@ -158,11 +147,5 @@ Page({
         wx.hideLoading();
       });
     }
-  },
-  // 创意详情
-  ideaDetail() {
-    app.ajax('api/ideaDetail', {idea_id: this.data.idea_id}, res => {
-      this.setData({idea: res});
-    });
   }
 });

@@ -4,7 +4,7 @@ Page({
   data: {
     full_loading: true,
     order_list: [],
-    status: '',
+    status: '',  // ''.全部 0.待付款 1.待发货 2.待收货 3.已完成
     page: 1,
     nomore: false,
     nodata: false,
@@ -158,12 +158,8 @@ Page({
             mask: true
           });
           let order = e.currentTarget.dataset.order;
-          let post = {
-            token: app.user_data.token,
-            pay_order_sn: order.pay_order_sn
-          };
-          app.ajax('my/orderConfirm', post, () => {
-            wx.navigateTo({ url: '/pages/order-detail/order-detail?id=' + order.id });
+          app.ajax('my/orderConfirm', {order_id: order.id}, () => {
+            wx.navigateTo({ url: '../order-detail/order-detail?id=' + order.id });
             that.refresh();
           }, null, () => {
             wx.hideLoading();
@@ -186,7 +182,7 @@ Page({
         signType: 'MD5',
         paySign: res.paySign,
         success: () => {
-          wx.navigateTo({ url: '/pages/order-detail/order-detail?id=' + order.id });
+          wx.navigateTo({ url: '../order-detail/order-detail?id=' + order.id });
           this.refresh();
         },
         fail: err => {
@@ -247,7 +243,7 @@ Page({
           reason: '',
           refund_show: false
         });
-        wx.navigateTo({ url: '/pages/refund-list/refund-list' });
+        wx.navigateTo({ url: '../refund-list/refund-list' });
         that.refresh();
       }, err => {
         app.modal(err.message);
@@ -269,7 +265,7 @@ Page({
   to_logistics(e) {
     let order_id = e.currentTarget.dataset.id;
     app.page_open(() => {
-      wx.navigateTo({ url: '/pages/logistics/logistics?id=' + order_id });
+      wx.navigateTo({ url: '../logistics/logistics?id=' + order_id });
     });
   }
 });

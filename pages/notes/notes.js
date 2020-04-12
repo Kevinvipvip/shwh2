@@ -6,121 +6,83 @@ Page({
     role: 0,
 
     auth: false,
-    full_loading: false,
+    full_loading: true,
 
-    active_index: 0,
+    type: 0,  // 0.全部 1.文旅机构 2.工厂
 
-    note_list: [
-      {
-        img_list: [0],
-        flex_pad: []
-      },
-      {
-        img_list: [0, 1, 2, 3],
-        flex_pad: []
-      },
-      {
-        img_list: [0, 1, 2],
-        flex_pad: []
-      },
-      {
-        img_list: [0, 1, 2, 3, 4, 5, 6, 7],
-        flex_pad: [null]
-      }
-    ],
+    note_list: [],
     search: '',
     page: 1,
     nomore: true,
     nodata: false,
     loading: false,
+
+    bind_tel_show: false  // 绑定手机号弹窗
   },
   onLoad() {
-    // app.get_auth((res) => {
-    //   this.setData({
-    //     auth: Boolean(res),
-    //     full_loading: false,
-    //     role: app.user_data.role
-    //   });
-    //   wx.showNavigationBarLoading();
-    //   this.getNoteList(() => {
-    //     wx.hideNavigationBarLoading();
-    //   });
-    // });
+    this.getNoteList(() => {
+      this.setData({ full_loading: false });
+    });
   },
   bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   },
   search_notes() {
-    this.data.left_height = 0;
-    this.data.right_height = 0;
-    this.data.page = 1;
-    this.data.left_note_list = [];
-    this.data.right_note_list = [];
-
-    this.setData({
-      nomore: false,
-      nodata: false
-    });
-
+    this.reset();
     this.getNoteList();
+  },
+  type_change(e) {
+    this.setData({type: e.currentTarget.dataset.type}, () => {
+      this.reset();
+      this.getNoteList();
+    });
   },
   getNoteList(complete) {
     let post = {
-      token: app.user_data.token,
       search: this.data.search.trim(),
-      page: this.data.page,
-      perpage: 30
+      type: this.data.type,
+      page: this.data.page
     };
 
     app.ajax('note/getNoteList', post, (res) => {
       if (res.list.length === 0) {
         if (this.data.page === 1) {
           this.setData({
-            left_note_list: [],
-            right_note_list: [],
-            nodata: true
+            note_list: [],
+            nodata: true,
+            nomore: false
           });
         } else {
-          this.setData({ nomore: true });
+          this.setData({
+            nodata: false,
+            nomore: true
+          })
         }
       } else {
         app.avatar_format(res.list);
-
-        // 排序（测试用）
-        // res.list.sort((a, b) => {
-        //   if (a.width < b.width) {
-        //     return 1;
-        //   } else {
-        //     return -1;
-        //   }
-        // });
-
+        app.ago_format(res.list, 'create_time');
         for (let i = 0; i < res.list.length; i++) {
           app.format_img(res.list[i].pics);
-
-          // 测试用
-          // console.log(res.list[i].id, res.list[i].pics[0], res.list[i].width, res.list[i].height);
-
-          if (this.data.left_height <= this.data.right_height) {
-            this.data.left_note_list.push(res.list[i]);
-            this.data.left_height += res.list[i].height / res.list[i].width;
-          } else {
-            this.data.right_note_list.push(res.list[i]);
-            this.data.right_height += res.list[i].height / res.list[i].width;
+          if ([1, 4].indexOf(res.list[i].pics.length) === -1) {
+            res.list[i].flex_pad = app.null_arr(res.list[i].pics.length, 3);
           }
         }
 
-        this.setData({
-          left_note_list: this.data.left_note_list,
-          right_note_list: this.data.right_note_list
-        });
+        this.setData({ note_list: this.data.note_list.concat(res.list) });
       }
-
       this.data.page++;
     }, null, () => {
       if (complete) {
         complete();
       }
+    });
+  },
+  reset() {
+    this.data.page = 1;
+    this.data.note_list = [];
+    this.setData({
+      nomore: false,
+      nodata: false
     });
   },
   // 下拉刷新
@@ -208,6 +170,14 @@ Page({
       }, null, () => {
         this.data.loading = false;
       });
+    }
+  },
+  // 绑定手机号弹窗
+  go_publish() {
+    if (!app.user_data.uid) {
+      this.setData({bind_tel_show: true});
+    } else {
+      wx.navigateTo({url: '/pages/note-publish/note-publish'});
     }
   }
 });

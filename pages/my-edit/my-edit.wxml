@@ -45,8 +45,8 @@
 <!--      <view class="label">{{role == 0 || role == 2 ? '个人备注' : '公司简介'}}</view>-->
       <view class="label">个人简介</view>
       <view class="you">
-        <view bindtap="to_edit" data-name="sign" class="sign-box">
-          <view class="content">{{sign}}</view>
+        <view bindtap="to_edit" data-name="desc" class="sign-box">
+          <view class="content">{{desc}}</view>
           <image src="/icons/edit.png" class="icon"></image>
         </view>
       </view>

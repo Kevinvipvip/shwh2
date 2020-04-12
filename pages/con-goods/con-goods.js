@@ -8,8 +8,8 @@ Page({
 
     type: -1,
     sex_list: [
-      { name: '我购买的', value: 1 },
-      { name: '我售卖的', value: 2 }
+      { name: '我买过的', value: 1 },
+      { name: '我正在卖的', value: 2 }
     ],
 
     nomore: true,

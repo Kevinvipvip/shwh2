@@ -113,22 +113,22 @@
 				{
 					"id": 8,
 					"name": "文创大赛",
-					"pathName": "pages/activity-list/activity-list",
+					"pathName": "activity-package/pages/activity-list/activity-list",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "发布文创大赛",
-					"pathName": "pages/activity-publish/activity-publish",
+					"pathName": "activity-package/pages/activity-publish/activity-publish",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 10,
 					"name": "活动详情",
-					"pathName": "pages/activity-detail/activity-detail",
-					"query": "id=5",
+					"pathName": "activity-package/pages/activity-detail/activity-detail",
+					"query": "id=1",
 					"scene": null
 				},
 				{
@@ -167,17 +167,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 16,
 					"name": "笔记详情",
 					"pathName": "pages/note-detail/note-detail",
-					"query": "id=50",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的-临时",
-					"pathName": "pages/my-t/my-t",
-					"query": "",
+					"query": "id=194",
 					"scene": null
 				},
 				{
@@ -261,6 +254,34 @@
 					"id": -1,
 					"name": "众筹订单",
 					"pathName": "chou-package/pages/my-chou-orders/my-chou-orders",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/shop-detail/shop-detail",
+					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": 31,
+					"name": "订单详情",
+					"pathName": "order-package/pages/order-detail/order-detail",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "大赛详情",
+					"pathName": "activity-package/pages/activity-detail/activity-detail",
 					"query": "",
 					"scene": null
 				}

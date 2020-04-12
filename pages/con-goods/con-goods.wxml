@@ -41,6 +41,6 @@
     已经没有更多了哦
   </view>
   <view class="nodata" wx:if="{{nodata}}">
-    暂无数据
+    {{type}}
   </view>
 </view>

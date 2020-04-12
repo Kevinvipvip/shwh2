@@ -45,7 +45,7 @@
   <view class="con-goods">
     <image src="/icons/label.png" class="label-icon"></image>
 
-    <view class="fen" wx:if="{{c_goods_id == 0}}">分享商品</view>
+    <view class="fen" wx:if="{{c_goods.id == 0}}">分享商品</view>
     <view class="goods-name one-line-ellipsis" wx:else>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
 
     <image src="/icons/right-arrow.png" class="you"></image>

@@ -14,7 +14,7 @@ Page({
     ],
     // age: 0,
     tel: '',
-    sign: '',
+    desc: '',
     avatar: '',
     cover: '',
     role: 0,
@@ -51,7 +51,7 @@ Page({
         sex: res.sex - 1,
         // age: res.age,
         tel: res.tel || '',
-        sign: res.sign || '',
+        desc: res.desc || '',
         avatar: res.avatar,
         cover: res.cover,
         role: res.role_check === 2 ? res.role : 0
@@ -120,6 +120,6 @@ Page({
   },
   to_edit(e) {
     let field_name = e.currentTarget.dataset.name;
-    wx.navigateTo({ url: '/pages/my-edit-detail/my-edit-detail?field_name=' + field_name + '&value=' + encodeURIComponent(this.data[field_name]) });
+    wx.navigateTo({ url: '/pages/my-edit-detail/my-edit-detail?field_name=' + field_name + '&value=' + encodeURIComponent(this.data[field_name] || '') });
   }
 });

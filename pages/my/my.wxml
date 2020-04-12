@@ -2,34 +2,34 @@
   <!-- 头部 -->
   <view class="banner">
     <view class="head-line">
-      <image src="/icons/kk6.png" class="head"></image>
+      <image bindtap="to_my_edit" src="{{user.avatar}}" mode="aspectFill" class="head"></image>
       <view class="info">
         <view class="id">ID:45</view>
-        <view class="nickname">环形山</view>
+        <view class="nickname">{{user.nickname}}</view>
       </view>
     </view>
     <view class="vip-ad">
       <image src="/images/my-vip-ad.png" class="bg"></image>
-      <view class="btn">立即开通</view>
+      <view class="btn">{{user.vip == 0 ? '立即开通' : '已开通'}}</view>
     </view>
   </view>
 
   <!-- 个人数据 -->
   <view class="data-list">
     <view class="data">
-      <view class="amount">0</view>
+      <view class="amount">{{user.score}}</view>
       <view class="title">积分</view>
     </view>
     <view class="data">
-      <view class="amount">0</view>
+      <view class="amount">{{user.subscribe}}</view>
       <view class="title">关注</view>
     </view>
     <view class="data">
-      <view class="amount">0</view>
+      <view class="amount">{{user.focus}}</view>
       <view class="title">粉丝</view>
     </view>
     <view class="data">
-      <view class="amount">0</view>
+      <view class="amount">{{user.note_num}}</view>
       <view class="title">笔记</view>
     </view>
   </view>
@@ -38,32 +38,32 @@
   <view class="order-box">
     <view class="title-line">
       <view class="title">我的订单</view>
-      <view class="all">
+      <navigator url="/order-package/pages/my-orders/my-orders" class="all">
         <view class="text">全部订单</view>
         <image src="/icons/you3.png" class="you"></image>
-      </view>
+      </navigator>
     </view>
     <view class="status-box">
-      <view class="status">
+      <navigator url="/order-package/pages/my-orders/my-orders?status=0" class="status">
         <image src="/icons/os1.png" class="icon i1"></image>
         <view class="text">待付款</view>
-      </view>
-      <view class="status">
+      </navigator>
+      <navigator url="/order-package/pages/my-orders/my-orders?status=1" class="status">
         <image src="/icons/os2.png" class="icon i2"></image>
         <view class="text">待发货</view>
-      </view>
-      <view class="status">
+      </navigator>
+      <navigator url="/order-package/pages/my-orders/my-orders?status=2" class="status">
         <image src="/icons/os3.png" class="icon i3"></image>
         <view class="text">待收货</view>
-      </view>
-      <view class="status">
+      </navigator>
+      <navigator url="/order-package/pages/my-orders/my-orders?status=3" class="status">
         <image src="/icons/os4.png" class="icon i4"></image>
         <view class="text">已完成</view>
-      </view>
-      <view class="status">
+      </navigator>
+      <navigator url="/order-package/pages/refund-list/refund-list" class="status">
         <image src="/icons/os5.png" class="icon i5"></image>
         <view class="text">售后</view>
-      </view>
+      </navigator>
     </view>
   </view>
 
@@ -75,18 +75,19 @@
         <image src="/icons/my-chou.png" class="icon i1"></image>
         <view class="text">我的众筹</view>
       </navigator>
-      <view class="service">
+      <view bindtap="before_apply" url="/pages/apply/apply" class="service" wx:if="{{role == 0}}">
         <image src="/icons/my-shen.png" class="icon i2"></image>
         <view class="text">申请角色</view>
       </view>
-      <view class="service">
+      <navigator url="/pages/my-address/my-address" class="service">
         <image src="/icons/my-add.png" class="icon i3"></image>
         <view class="text">收货地址</view>
-      </view>
-      <view class="service">
+      </navigator>
+      <button open-type="contact" show-message-card="true" class="service">
         <image src="/icons/my-kefu.png" class="icon i4"></image>
         <view class="text">在线客服</view>
-      </view>
+      </button>
+      <view class="service vh" wx:if="{{role != 0}}"></view>
     </view>
   </view>
 </view>

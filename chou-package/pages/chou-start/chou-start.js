@@ -2,10 +2,6 @@ const app = getApp();
 
 Page({
   data: {
-    full_loading: true,
-
-    type: 1,  // 1.发起众筹 2.IP申请详情页
-
     company: '',  // 公司名称
     title: '',  // 众筹名称
     name: '',  // 联系人
@@ -20,13 +16,12 @@ Page({
     code_flag: 0
   },
   onLoad() {
-    this.setData({ full_loading: false });
   },
   // 发送验证码
   sendSms() {
     if (!this.data.code_disabled) {
       if (!this.data.tel.trim()) {
-        app.toast('请填写手机号');
+        app.toast('请填写联系电话');
       } else if (!app.my_config.reg.tel.test(this.data.tel)) {
         app.toast('手机号格式不正确');
       } else {
@@ -66,9 +61,9 @@ Page({
     } else if (!data.name.trim()) {
       app.toast('请填写联系人');
     } else if (!data.tel.trim()) {
-      app.toast('请填写电话号码');
+      app.toast('请填写联系电话');
     } else if (!app.my_config.reg.tel.test(data.tel)) {
-      app.toast('请填写正确的电话号码');
+      app.toast('请填写正确的联系电话');
     } else if (!data.code.trim()) {
       app.toast('请填写验证码');
     } else if (!data.email.trim()) {

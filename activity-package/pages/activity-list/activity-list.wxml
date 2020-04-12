@@ -1,0 +1,85 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+
+<view class="page">
+  <!-- 顶部轮播 -->
+  <swiper indicator-dots="{{true}}"
+          autoplay="{{true}}"
+          circular="{{true}}"
+          class="banner">
+    <swiper-item wx:for="{{slide_list}}" wx:key="id" class="si">
+      <image bindtap="jump" data-url="{{item.url}}" src="{{item.pic}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 发布按钮 -->
+  <view bindtap="to_publish" class="publish">
+    <image src="../../images/fasai.png" class="btn"></image>
+  </view>
+
+  <!-- 热门赛事 -->
+  <view class="hot-activity">
+    <view class="title">热门赛事</view>
+    <scroll-view scroll-x class="hot-list">
+      <navigator url="../activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{hot_list}}" wx:key="id">
+        <image src="{{item.cover}}" class="cover" mode="aspectFill"></image>
+        <view class="info">
+          <view class="title one-line-ellipsis">{{item.title}}</view>
+          <view class="pd">
+            <view class="people">
+              <image src="/icons/a-people.png"></image>
+              <text>{{item.works_num}}人</text>
+            </view>
+            <view class="end">
+              <image src="/icons/a-time.png"></image>
+              <text>截止{{item.end_time}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </scroll-view>
+  </view>
+
+  <!-- 大赛列表tab -->
+  <view class="tab-list2">
+    <view bindtap="tab_change" data-status="{{-1}}" class="tab {{status == -1 ? 'active' : ''}}">全部</view>
+    <view bindtap="tab_change" data-status="{{0}}" class="tab {{status == 0 ? 'active' : ''}}">未开始</view>
+    <view bindtap="tab_change" data-status="{{1}}" class="tab {{status == 1 ? 'active' : ''}}">进行中</view>
+    <view bindtap="tab_change" data-status="{{2}}" class="tab {{status == 2 ? 'active' : ''}}">已结束</view>
+  </view>
+
+  <!-- 大赛列表 -->
+  <view class="activity-list">
+    <navigator url="../activity-detail/activity-detail?id={{item.id}}" class="activity" wx:for="{{ac_list}}" wx:key="id">
+      <image src="{{item.cover}}" class="cover" mode="aspectFill" lazy-load></image>
+      <view class="info">
+        <view class="title two-line-ellipsis">{{item.title}}</view>
+        <view class="pd">
+          <view class="people">
+            <image src="/icons/a-people.png"></image>
+            <text>{{item.works_num}}人</text>
+          </view>
+          <view class="end">
+            <image src="/icons/a-time.png"></image>
+            <text>截止{{item.end_time}}</text>
+          </view>
+        </view>
+        <view class="status" wx:if="{{item.status == 0}}">未开始</view>
+        <view class="status" wx:if="{{item.status == 1}}">进行中</view>
+        <view class="status" wx:if="{{item.status == 2}}">已结束</view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无赛事
+  </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
+</view>

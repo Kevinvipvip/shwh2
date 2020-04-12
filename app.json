@@ -4,7 +4,6 @@
     "pages/test/test",
     "pages/test2/test2",
     "pages/role-vip-open/role-vip-open",
-    "pages/logistics/logistics",
     "pages/score-log/score-log",
     "pages/my-bidding/my-bidding",
     "pages/person-list/person-list",
@@ -15,14 +14,10 @@
     "pages/my-edit/my-edit",
     "pages/my-works/my-works",
     "pages/show-works/show-works",
-    "pages/activity-list/activity-list",
     "pages/my-chuang/my-chuang",
     "pages/chuang-ranking/chuang-ranking",
     "pages/work-ranking/work-ranking",
     "pages/work-detail/work-detail",
-    "pages/activity-work-list/activity-work-list",
-    "pages/activity-detail/activity-detail",
-    "pages/activity-rich/activity-rich",
     "pages/my/my",
     "pages/apply2/apply2",
     "pages/work-release/work-release",
@@ -56,14 +51,11 @@
     "pages/login/login",
     "pages/org-list/org-list",
     "pages/org-detail/org-detail",
-    "pages/refund-list/refund-list",
     "pages/my-role-edit/my-role-edit",
     "pages/drumbeating/drumbeating",
     "pages/store/store",
-    "pages/online-activity/online-activity",
     "pages/free-sample/free-sample",
     "pages/sign-res/sign-res",
-    "pages/activity-publish/activity-publish",
     "pages/member-tehui/member-tehui",
     "pages/custom-zone/custom-zone",
     "pages/my-back/my-back",
@@ -109,7 +101,19 @@
         "pages/order-detail/order-detail",
         "pages/my-orders/my-orders",
         "pages/order-create/order-create",
-        "pages/cart-order-create/cart-order-create"
+        "pages/cart-order-create/cart-order-create",
+        "pages/refund-list/refund-list",
+        "pages/logistics/logistics"
+      ]
+    },
+    {
+      "root": "activity-package",
+      "pages": [
+        "pages/activity-list/activity-list",
+        "pages/activity-work-list/activity-work-list",
+        "pages/activity-detail/activity-detail",
+        "pages/activity-rich/activity-rich",
+        "pages/activity-publish/activity-publish"
       ]
     }
   ],

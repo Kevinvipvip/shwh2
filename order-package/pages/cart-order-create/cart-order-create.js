@@ -121,10 +121,10 @@ Page({
             }
 
             if (res) {
-              wx.redirectTo({ url: '/pages/my-orders/my-orders?status=1' });
+              wx.redirectTo({ url: '../my-orders/my-orders?status=1' });
             } else {
               app.modal('支付未完成，可以在我的订单中进行后续的付款操作', () => {
-                wx.redirectTo({ url: '/pages/my-orders/my-orders?status=0' });
+                wx.redirectTo({ url: '../my-orders/my-orders?status=0' });
               });
             }
           });
