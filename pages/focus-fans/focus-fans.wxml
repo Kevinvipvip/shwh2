@@ -1,42 +1,43 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <!-- 我的关注 -->
   <view class="list focus" wx:if="{{type == 1}}">
-    <view class="user" wx:for="{{[0, 1, 2, 3, 4, 5, 6]}}" wx:key="index">
-      <image src="/images/t-bao-goods.jpg" class="header"></image>
+    <view class="user" wx:for="{{list}}" wx:key="id">
+      <image src="{{item.avatar}}" class="header"></image>
       <view class="info">
-        <view class="nickname">南骑Display</view>
-        <view class="numbers">
-          <view class="note-number">笔记数：462</view>
-          <view class="fan-number">粉丝量：4870</view>
-        </view>
+        <view class="nickname one-line-ellipsis">{{item.nickname}}</view>
+<!--        <view class="numbers">-->
+<!--          <view class="note-number">笔记数：462</view>-->
+<!--          <view class="fan-number">粉丝量：4870</view>-->
+<!--        </view>-->
       </view>
-      <view class="focus-btn">{{index % 2 == 0 ? '已关注' : '互相关注'}}</view>
+      <view bindtap="iFocus" data-index="{{index}}" class="focus-btn">{{item.each ? '互相关注' : '已关注'}}</view>
     </view>
   </view>
 
   <!-- 我的粉丝 -->
   <view class="list fans" wx:if="{{type == 2}}">
-    <view class="user">
-      <image src="/images/t-bao-goods.jpg" class="header"></image>
+    <view class="user" wx:for="{{list}}" wx:key="id">
+      <image src="{{item.avatar}}" class="header"></image>
       <view class="info">
-        <view class="nickname">南骑Display</view>
-        <view class="numbers">
-          <view class="note-number">笔记数：462</view>
-          <view class="fan-number">粉丝量：4870</view>
-        </view>
+        <view class="nickname one-line-ellipsis">{{item.nickname}}</view>
+<!--        <view class="numbers">-->
+<!--          <view class="note-number">笔记数：462</view>-->
+<!--          <view class="fan-number">粉丝量：4870</view>-->
+<!--        </view>-->
       </view>
-      <view class="focus-btn">关注</view>
+      <view bindtap="iFocus" data-index="{{index}}" class="focus-btn hu" wx:if="{{item.each}}">互相关注</view>
+      <view bindtap="iFocus" data-index="{{index}}" class="focus-btn" wx:else>关注</view>
     </view>
-    <view class="user">
-      <image src="/images/t-bao-goods.jpg" class="header"></image>
-      <view class="info">
-        <view class="nickname">南骑Display</view>
-        <view class="numbers">
-          <view class="note-number">笔记数：462</view>
-          <view class="fan-number">粉丝量：4870</view>
-        </view>
-      </view>
-      <view class="focus-btn hu">互相关注</view>
-    </view>
+  </view>
+
+  <view class="nomore" wx:if="{{nomore}}">
+    已经没有更多了哦
+  </view>
+  <view class="nodata" wx:if="{{nodata}}">
+    暂无数据
   </view>
 </view>

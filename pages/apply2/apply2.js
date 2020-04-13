@@ -44,18 +44,9 @@ Page({
       });
     }
 
-    // this.applyStatus(() => {
-    //   if (this.data.role_check === 3) {
-    //     this.applyInfo(() => {
-    //       this.setData({ loading: false });
-    //     });
-    //   } else {
-    //     this.setData({ loading: false });
-    //   }
-    // });
-
     app.qiniu_init();
   },
+  // 申请角色
   apply(e) {
     if (!this.data.apply_loading) {
       let data = this.data, post = {};
@@ -75,26 +66,33 @@ Page({
       } else if (!data.busine.trim()) {
         app.toast('请填写经营范围');
       } else {
-        app.collectFormid(e.detail.formId);
+        wx.showModal({
+          title: '提示',
+          content: '确定提交吗？',
+          success: res => {
+            if (res.confirm) {
+              app.collectFormid(e.detail.formId);
 
-        this.setData({ apply_loading: true });
+              this.setData({ apply_loading: true });
 
-        post.role = data.role;
-        post.org = data.org;
-        post.name = data.name;
-        post.identity = data.identity;
-        post.identity = data.identity;
-        post.busine = this.format_up_img(data.busine);
-        post.id_front = this.format_up_img(data.id_front);
-        post.id_back = this.format_up_img(data.id_back);
-        post.license = this.format_up_img(data.license);
+              post.role = data.role;
+              post.org = data.org;
+              post.name = data.name;
+              post.identity = data.identity;
+              post.busine = this.format_up_img(data.busine);
+              post.id_front = this.format_up_img(data.id_front);
+              post.id_back = this.format_up_img(data.id_back);
+              post.license = this.format_up_img(data.license);
 
-        app.ajax('my/roleApply', post, () => {
-          // this.applyInfo(() => {
-            this.setData({ apply_loading: false });
-          // });
-        }, null, () => {
-          this.setData({ apply_loading: false });
+              app.ajax('my/roleApply', post, () => {
+                this.applyInfo(() => {
+                  this.setData({ apply_loading: false });
+                });
+              }, null, () => {
+                this.setData({ apply_loading: false });
+              });
+            }
+          }
         });
       }
     }
@@ -130,36 +128,37 @@ Page({
   // 获取申请信息
   applyInfo(complete) {
     app.ajax('my/applyInfo', null, res => {
-      app.format_img(res, 'id_front');
-      app.format_img(res, 'id_back');
-      app.format_img(res, 'license');
+      if (!(res instanceof Array)) {
+        app.format_img(res, 'id_front');
+        app.format_img(res, 'id_back');
+        app.format_img(res, 'license');
 
-      let data = {
-        role: res.role + '',
-        org: res.org || '',
-        name: res.name,
-        identity: res.identity,
-        busine: res.busine || '',
-        reason: res.reason,
-        id_front: res.id_front,
-        id_back: res.id_back,
-        license: res.license,
+        let data = {
+          role: res.role + '',
+          org: res.org || '',
+          name: res.name,
+          identity: res.identity,
+          busine: res.busine || '',
+          reason: res.reason,
+          id_front: res.id_front,
+          id_back: res.id_back,
+          license: res.license,
 
-        role_check: res.role_check
-      };
+          role_check: res.role_check
+        };
 
-      switch (res.role) {
-        case 1:
-          data.role_text = '文旅机构';
-          break;
-        case 2:
-          data.role_text = '工厂';
-          break;
+        switch (res.role) {
+          case 1:
+            data.role_text = '文旅机构';
+            break;
+          case 2:
+            data.role_text = '工厂';
+            break;
+        }
+
+        wx.setNavigationBarTitle({ title: '申请成为' + data.role_text });
+        this.setData(data);
       }
-
-      wx.setNavigationBarTitle({ title: '申请成为' + data.role_text });
-
-      this.setData(data);
     }, null, () => {
       if (complete) {
         complete();

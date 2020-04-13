@@ -13,7 +13,7 @@ Page({
     note_list: [],
     search: '',
     page: 1,
-    nomore: true,
+    nomore: false,
     nodata: false,
     loading: false,
 
@@ -90,13 +90,7 @@ Page({
     if (!this.data.loading) {
       this.data.loading = true;
 
-      this.data.left_height = 0;
-      this.data.right_height = 0;
-      this.data.nomore = false;
-      this.data.nodata = false;
-      this.data.page = 1;
-      this.data.left_note_list = [];
-      this.data.right_note_list = [];
+      this.reset();
 
       wx.showNavigationBarLoading();
       this.getNoteList(() => {
@@ -122,13 +116,7 @@ Page({
   },
   // 发布笔记后刷新列表，区别于下拉刷新（不需要loading等操作）
   refresh() {
-    this.data.left_height = 0;
-    this.data.right_height = 0;
-    this.data.nomore = false;
-    this.data.nodata = false;
-    this.data.page = 1;
-    this.data.left_note_list = [];
-    this.data.right_note_list = [];
+    this.reset();
     this.getNoteList();
   },
   onShareAppMessage() {

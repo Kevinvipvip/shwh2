@@ -1,7 +1,15 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <view class="banner">
     <image src="/images/vip-service.png" class="vip-service"></image>
-    <view class="kai-btn">立即开通￥xxx元/年</view>
+
+    <view bindtap="recharge" class="kai-btn" wx:if="{{vip == 0}}">立即开通￥{{vip_price}} / 年</view>
+    <view bindtap="recharge" class="kai-btn" wx:else>续费vip￥{{vip_price}} / 年</view>
+
+    <view class="expire" wx:if="{{vip == 1}}">会员到期时间：{{vip_time}}</view>
   </view>
 
   <!-- 为你推荐 -->

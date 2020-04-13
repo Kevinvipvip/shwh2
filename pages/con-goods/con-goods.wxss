@@ -35,7 +35,7 @@
 }
 
 .con-list {
-  padding: 40rpx 24rpx 0;
+  padding: 40rpx 24rpx;
 }
 
 .con-list .con-item {
@@ -120,4 +120,8 @@
 
 .con .info .numbers .sales {
   color: #999;
+}
+
+.con .info .numbers .sales .text {
+  margin-right: 5rpx;
 }

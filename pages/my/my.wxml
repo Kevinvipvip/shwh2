@@ -3,14 +3,17 @@
   <view class="banner">
     <view class="head-line">
       <image bindtap="to_my_edit" src="{{user.avatar}}" mode="aspectFill" class="head"></image>
-      <view class="info">
-        <view class="id">ID:45</view>
+      <view class="info" wx:if="{{user.uid}}">
+        <view class="id">ID:{{user.uid}}</view>
         <view class="nickname">{{user.nickname}}</view>
+      </view>
+      <view class="info" wx:else>
+        <view bindtap="bind_tel" class="btn">绑定手机号</view>
       </view>
     </view>
     <view class="vip-ad">
       <image src="/images/my-vip-ad.png" class="bg"></image>
-      <view class="btn">{{user.vip == 0 ? '立即开通' : '已开通'}}</view>
+      <view bindtap="to_vip" class="btn">{{user.vip == 0 ? '立即开通' : '立即查看'}}</view>
     </view>
   </view>
 
@@ -20,18 +23,18 @@
       <view class="amount">{{user.score}}</view>
       <view class="title">积分</view>
     </view>
-    <view class="data">
+    <navigator url="/pages/focus-fans/focus-fans?type=1" class="data">
       <view class="amount">{{user.subscribe}}</view>
       <view class="title">关注</view>
-    </view>
-    <view class="data">
+    </navigator>
+    <navigator url="/pages/focus-fans/focus-fans?type=2" class="data">
       <view class="amount">{{user.focus}}</view>
       <view class="title">粉丝</view>
-    </view>
-    <view class="data">
+    </navigator>
+    <navigator url="/pages/my-notes/my-notes" class="data">
       <view class="amount">{{user.note_num}}</view>
       <view class="title">笔记</view>
-    </view>
+    </navigator>
   </view>
 
   <!-- 我的订单 -->
@@ -75,7 +78,7 @@
         <image src="/icons/my-chou.png" class="icon i1"></image>
         <view class="text">我的众筹</view>
       </navigator>
-      <view bindtap="before_apply" url="/pages/apply/apply" class="service" wx:if="{{role == 0}}">
+      <view bindtap="before_apply" url="/pages/apply/apply" class="service" wx:if="{{!user.role}}">
         <image src="/icons/my-shen.png" class="icon i2"></image>
         <view class="text">申请角色</view>
       </view>
@@ -87,7 +90,10 @@
         <image src="/icons/my-kefu.png" class="icon i4"></image>
         <view class="text">在线客服</view>
       </button>
-      <view class="service vh" wx:if="{{role != 0}}"></view>
+      <view class="service vh" wx:if="{{user.role}}"></view>
     </view>
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

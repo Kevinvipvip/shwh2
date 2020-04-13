@@ -1,13 +1,9 @@
-<view class="full-loading" wx:if="{{full_loading}}">
-  <view class="image"></view>
-</view>
-
 <view class="page">
   <!-- 搜索框 -->
   <view class="search-box">
     <view class="search">
       <icon bindtap="search_goods" class="iconfont iconsearch"/>
-      <input bindinput="bind_input" bindconfirm="search_goods" data-name="search" placeholder="搜索商品" maxlength="8"/>
+      <input bindinput="bind_input" bindconfirm="search_goods" data-name="search" placeholder="搜索商品" maxlength="30"/>
     </view>
   </view>
 

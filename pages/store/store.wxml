@@ -100,6 +100,9 @@
     <view class="text" wx:else>{{sex_list[sex].name}}</view>
   </picker>
 
+  <!-- 七牛压缩图写法 -->
+  <image src="{{item.poster}}?imageView2/2/w/340" mode="aspectFill" lazy-load class="cover"></image>
+
   <!-- 绑定手机号弹窗 -->
   <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

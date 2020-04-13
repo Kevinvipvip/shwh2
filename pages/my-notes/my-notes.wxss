@@ -1,195 +1,219 @@
 page {
-    background: #fff;
-    padding-top: 74rpx;
-    min-height: calc(100vh - 74rpx);
+  background: #fff;
+  padding-top: 74rpx;
+  min-height: calc(100vh - 74rpx);
 }
 
 .pub-round-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 4rpx 5rpx #888;
-    bottom: 50rpx;
-    top: auto;
-    box-sizing: border-box;
-    width: 80rpx;
-    height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4rpx 5rpx #888;
+  bottom: 50rpx;
+  top: auto;
+  box-sizing: border-box;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .pub-round-btn image {
-    width: 40rpx;
-    height: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .main {
-    box-sizing:border-box;
-    background:#f6f7f9;
-    min-height: calc(100vh - 74rpx);
+  box-sizing: border-box;
+  min-height: calc(100vh - 74rpx);
 }
 
 .tab {
-    color:#666;
-    display:flex;
-    justify-content:space-around;
-    border-bottom:1rpx solid #eee;
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    width: 100%;
+  color: #666;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #eee;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 }
 
 .tab .tab-item {
-    font-size:28rpx;
-    line-height:2.6;
-    padding:0 5rpx;
+  font-size: 28rpx;
+  line-height: 2.6;
+  padding: 0 5rpx;
 }
 
 .tab .tab-item.active {
-    color: #ff9f38;
+  color: #ff9f38;
 }
 
 .main .search-box {
-    background: #fff;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding-bottom: 20rpx;
-    z-index: 1;
-    box-shadow:0 3rpx 10rpx 0 #eee;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-bottom: 20rpx;
+  z-index: 1;
+  box-shadow: 0 3rpx 10rpx 0 #eee;
 }
 
 .main .search {
-    background: #f5f5f5;
-    border-radius: 40rpx;
-    height: 70rpx;
-    margin: 0 20rpx;
-    display: flex;
-    align-items: center;
-    padding-left: 15rpx;
+  background: #f5f5f5;
+  border-radius: 40rpx;
+  height: 70rpx;
+  margin: 0 20rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 15rpx;
 }
 
 .main .search .iconfont {
-    font-size:40rpx;
-    position:relative;
-    top:-4rpx;
-    margin-left:5rpx;
-    color: #9c9c9c;
+  font-size: 40rpx;
+  position: relative;
+  top: -4rpx;
+  margin-left: 5rpx;
+  color: #9c9c9c;
 }
 
 .main .search input {
-    margin-left: 10rpx;
-    font-size: 26rpx;
+  margin-left: 10rpx;
+  font-size: 26rpx;
 }
 
-.list {
-    background: #f6f7f9;
-    display: flex;
-    padding: 17rpx 20rpx 0;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.note-list .note {
+  padding: 31rpx 24rpx 40rpx;
+  border-bottom: 4rpx solid rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
-.list > view {
-    width: 48.5%;
+.note-list .note .status {
+  position: absolute;
+  right: 15rpx;
+  top: 15rpx;
+  padding: 8rpx 18rpx;
+  background: #ddd;
+  border-radius: 5rpx;
+  z-index: 1;
 }
 
-.list > view .note {
-    border-radius: 10rpx;
-    overflow: hidden;
-    box-shadow:0 2rpx 8rpx 2rpx #e2e3e5;
-    margin-top: 22rpx;
-    background: #fff;
-    position: relative;
+.note-list .note .no {
+  color: red;
 }
 
-.list > view .note .status {
-    position: absolute;
-    right: 15rpx;
-    top: 15rpx;
-    padding: 8rpx 18rpx;
-    background: #ddd;
-    border-radius: 5rpx;
-    z-index: 1;
+.note-list .note .wait {
+  color: #ff7a09;
 }
 
-.list > view .note .no {
-    color: red;
+.note-list .note .edit {
+  position: absolute;
+  right: 150rpx;
+  top: 15rpx;
+  padding: 8rpx 18rpx;
+  background: #ddd;
+  border-radius: 5rpx;
+  color: #666;
+  z-index: 1;
 }
 
-.list > view .note .wait {
-    color: #ff7a09;
+.note .user-line {
+  display: flex;
+  align-items: flex-start;
 }
 
-.list > view .note .edit {
-    position: absolute;
-    left: 15rpx;
-    top: 15rpx;
-    padding: 8rpx 18rpx;
-    background: #ddd;
-    border-radius: 5rpx;
-    color: #666;
-    z-index: 1;
+.note .user-line .header {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5rpx;
 }
 
-.list > view .note:first-child {
-    margin-top: 0;
+.note .user-line .uinfo {
+  flex-grow: 1;
+  margin-left: 16rpx;
 }
 
-.list > view .note .img-box {
-    width: 100%;
-    height: 0;
-    position: relative;
+.note .user-line .uinfo .uname {
+  font-size: 32rpx;
+  color: #101010;
 }
 
-.list > view .note .img-box image {
-    width:100%;
-    height:100%;
-    position:absolute;
-    left:0;
-    top:0;
+.note .user-line .uinfo .time-ago {
+  margin-top: 15rpx;
+  color: #999;
+  font-size: 24rpx;
 }
 
-.list > view .note .word {
-    font-size: 24rpx;
-    padding: 10rpx 15rpx;
-    line-height: 1.5;
-    font-weight: bold;
-    color: #222;
-    letter-spacing: 2rpx;
+.note .title {
+  line-height: 1.5;
+  font-size: 28rpx;
+  margin-top: 35rpx;
+  color: #101010;
 }
 
-.list > view .note .xia {
-    display: flex;
-    justify-content: space-between;
-    padding: 10rpx 20rpx 20rpx;
+.note .image-box {
+  margin-top: 33rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.list > view .note .xia .left {
-    display: flex;
-    align-items: center;
-    font-size: 22rpx;
+.note .image-box .img {
+  margin-top: 18rpx;
 }
 
-.list > view .note .xia .header {
-    width: 50rpx;
-    height: 50rpx;
-    border-radius: 50%;
-    margin-right: 9rpx;
+.note .image-box.one {
 }
 
-.list > view .note .xia .right {
-    display: flex;
-    align-items: center;
-    font-size: 24rpx;
+.note .image-box.one .img {
+  width: 100%;
+  margin-top: 0;
 }
 
-.list > view .note .xia .right .iconfont {
-    margin-right:6rpx;
-    position:relative;
-    top:-7rpx;
-    font-size:28rpx;
+.note .image-box.four {
+}
+
+.note .image-box.four .img {
+  border-radius: 8rpx;
+  width: 342rpx;
+  height: 342rpx;
+}
+
+.note .image-box.four .img:nth-child(-n + 2) {
+  margin-top: 0;
+}
+
+.note .image-box.other {
+}
+
+.note .image-box.other .img {
+  border-radius: 8rpx;
+  width: 222rpx;
+  height: 222rpx;
+}
+
+.note .image-box.other .img:nth-child(-n + 3) {
+  margin-top: 0;
+}
+
+.note .info {
+  margin-top: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.note .info .left {
+  display: flex;
+}
+
+.note .info .left .comment {
+}
+
+.note .info .left .agree {
+  margin-left: 58rpx;
 }

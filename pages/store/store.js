@@ -285,5 +285,55 @@ Page({
     } else {
       wx.navigateTo({url: '/chou-package/pages/chou-start/chou-start'});
     }
+  },
+  // 确定框
+  confirm() {
+    wx.showModal({
+      title: '提示',
+      content: '确定投票？',
+      success: res => {
+        if (res.confirm) {
+          // do something
+        }
+      }
+    })
+  },
+  // 支付下单
+  role3Recharge() {
+    wx.showLoading({
+      title: '充值中...',
+      mask: true
+    });
+
+    app.ajax('api/role3Recharge', { level_id: this.data.level.id }, res => {
+      this.role3Pay(res, pay_res => {
+        wx.hideLoading();
+
+        if (pay_res) {
+          app.modal('开通成功', () => {
+            wx.switchTab({ url: '/pages/my/my' });
+          });
+        }
+      });
+    });
+  },
+  // 支付
+  role3Pay(pay_order_sn, complete) {
+    app.ajax('pay/role3Pay', { pay_order_sn }, (res) => {
+      wx.requestPayment({
+        timeStamp: res.timeStamp,
+        nonceStr: res.nonceStr,
+        package: res.package,
+        signType: 'MD5',
+        paySign: res.paySign,
+        success() {
+          complete(true);
+        },
+        fail() {
+          app.toast('支付失败');
+          complete(false);
+        }
+      })
+    });
   }
 });

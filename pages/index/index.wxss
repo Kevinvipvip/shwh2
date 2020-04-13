@@ -6,7 +6,8 @@
 
 .search-box {
   padding: 14rpx 24rpx;
-  background: #ffcc01;
+  background: #f0f0f1;
+  /* background: #ffcc01; */
   display: flex;
 }
 
@@ -90,7 +91,7 @@
 }
 
 .kingkong .kitem:nth-child(5) {
-  margin-top: 0;
+  margin-right: 0;
 }
 
 .kingkong .kitem:nth-child(-n + 5) {
@@ -328,6 +329,7 @@
   font-size: 28rpx;
   line-height: 1.4;
   color: #333;
+  height: 72rpx;
 }
 
 .goods2 .info .shop {

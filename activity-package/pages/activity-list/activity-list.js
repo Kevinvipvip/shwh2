@@ -160,7 +160,7 @@ Page({
   },
   reset() {
     this.data.page = 1;
-    this.data.activity_list = [];
+    this.data.ac_list = [];
     this.setData({
       nomore: false,
       nodata: false

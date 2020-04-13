@@ -37,8 +37,6 @@
       <view class="label">手机号</view>
       <view class="you">
         <view class="value">{{tel}}</view>
-        <button bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber" class="auth-btn" wx:if="{{!tel}}">授权获取手机号</button>
-        <image src="/icons/you3.png" class="arrow-you vh" wx:else></image>
       </view>
     </view>
     <view class="input-item sign">

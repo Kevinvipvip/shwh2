@@ -36,6 +36,15 @@
   margin-top: 10rpx;
 }
 
+.banner .head-line .info .btn {
+  border: 2rpx solid #ddd;
+  padding: 12rpx 24rpx;
+  border-radius: 8rpx;
+  color: #333;
+  font-size: 26rpx;
+  background: #fffbed;
+}
+
 .banner .vip-ad {
   width: 702rpx;
   height: 95rpx;

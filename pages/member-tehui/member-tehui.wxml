@@ -1,7 +1,13 @@
 <view class="page">
-  <navigator url="/pages/vip-center/vip-center" class="banner">
-    <image src="/images/memh-banner.jpg" class="img"></image>
-  </navigator>
+  <!-- 轮播 swiper -->
+  <swiper indicator-dots="{{true}}"
+          autoplay="{{true}}"
+          circular="{{true}}"
+          class="banner">
+    <swiper-item wx:for="{{slide_list}}" wx:key="id" class="si">
+      <image bindtap="jump" data-url="{{item.url}}" src="{{item.pic}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
 
   <!-- 特惠精选 -->
   <view class="tj-box">
@@ -10,18 +16,17 @@
       <view class="sub-title">超值好物，限时折扣</view>
     </view>
     <view class="tj-list">
-      <view class="tj" wx:for="{{[0, 1, 2, 3, 4, 5, 6]}}">
-        <image src="/images/t-goods.jpg" class="cover"></image>
+      <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="tj" wx:for="{{jing_list}}" wx:key="id">
+        <image src="{{item.poster}}" class="cover"></image>
         <view class="info">
-          <view class="title one-line-ellipsis">高昌智慧树脂摆高昌智慧树脂摆</view>
+          <view class="title one-line-ellipsis">{{item.name}}</view>
           <view class="price-box one-line-ellipsis">
-            <text class="member">98.00</text>
-            <text class="origin">100.00</text>
+            <text class="member">{{item.vip_price}}</text>
+            <text class="origin">{{item.price}}</text>
           </view>
         </view>
-      </view>
-      <view class="tj vh"></view>
-      <view class="tj vh"></view>
+      </navigator>
+      <view class="tj vh" wx:for="{{jing_flex}}" wx:key="index"></view>
     </view>
   </view>
 
@@ -32,17 +37,16 @@
       <view class="sub-title">集你所想，推你所爱</view>
     </view>
     <view class="recom-list">
-      <view class="recom" wx:for="{{[0, 1, 2, 3, 4]}}">
-        <image src="/images/t-goods.jpg" class="cover" mode="aspectFill" lazy-load></image>
+      <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="recom" wx:for="{{xia_list}}" wx:key="id">
+        <image src="{{item.poster}}" class="cover" mode="aspectFill" lazy-load></image>
         <view class="info">
-          <view class="title two-line-ellipsis">唐妞簪花仕女图丝巾百搭 创意闺蜜生日礼物礼盒创意闺蜜生日礼物礼盒</view>
+          <view class="title two-line-ellipsis">{{item.name}}</view>
           <view class="price-box">
-            <view class="member">64.00</view>
-            <view class="origin">98.00</view>
+            <view class="member">{{item.vip_price}}</view>
+            <view class="origin">{{item.price}}</view>
           </view>
         </view>
-      </view>
-      <view class="recom vh"></view>
+      </navigator>
     </view>
     <view class="nomore" wx:if="{{nomore}}">
       已经没有更多了哦

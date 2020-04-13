@@ -5,21 +5,15 @@ Page({
   data: {
     auth: false,
     full_loading: true,
-    active_tab: 1,
+    active_tab: 1,  // 1.我的笔记 2.收藏笔记
 
-    left_height: 0,
-    right_height: 0,
-    left_note_list: [],
-    right_note_list: [],
+    note_list: [],
     page: 1,
     nomore: false,
     nodata: false,
     loading: false,
 
-    c_left_height: 0,
-    c_right_height: 0,
-    c_left_note_list: [],
-    c_right_note_list: [],
+    c_note_list: [],
     c_page: 1,
     c_nomore: false,
     c_nodata: false,
@@ -45,40 +39,36 @@ Page({
   // 获取我的笔记
   getMyNoteList(complete) {
     let post = {
-      token: app.user_data.token,
       page: this.data.page,
       perPage: 10
     };
 
-    app.ajax('my/getMyNoteList', post, (res) => {
+    app.ajax('my/getMyNoteList', post, res => {
       if (res.list.length === 0) {
         if (this.data.page === 1) {
           this.setData({
-            left_note_list: [],
-            right_note_list: [],
-            nodata: true
+            note_list: [],
+            nodata: true,
+            nomore: false
           });
         } else {
-          this.setData({ nomore: true });
+          this.setData({
+            nodata: false,
+            nomore: true
+          })
         }
       } else {
+        app.avatar_format(res.list);
+        app.ago_format(res.list, 'create_time');
         for (let i = 0; i < res.list.length; i++) {
           app.format_img(res.list[i].pics);
-          if (this.data.left_height <= this.data.right_height) {
-            this.data.left_note_list.push(res.list[i]);
-            this.data.left_height += res.list[i].height / res.list[i].width;
-          } else {
-            this.data.right_note_list.push(res.list[i]);
-            this.data.right_height += res.list[i].height / res.list[i].width;
+          if ([1, 4].indexOf(res.list[i].pics.length) === -1) {
+            res.list[i].flex_pad = app.null_arr(res.list[i].pics.length, 3);
           }
         }
 
-        this.setData({
-          left_note_list: this.data.left_note_list,
-          right_note_list: this.data.right_note_list
-        });
+        this.setData({ note_list: this.data.note_list.concat(res.list) });
       }
-
       this.data.page++;
     }, null, () => {
       if (complete) {
@@ -89,40 +79,36 @@ Page({
   // 我收藏的笔记
   getMyCollectedNoteList(complete) {
     let post = {
-      token: app.user_data.token,
       page: this.data.c_page,
       perPage: 10
     };
 
     app.ajax('my/getMyCollectedNoteList', post, (res) => {
       if (res.list.length === 0) {
-        if (this.data.c_page === 1) {
-          this.setData({ c_nodata: true });
+        if (this.data.page === 1) {
+          this.setData({
+            c_note_list: [],
+            c_nodata: true,
+            c_nomore: false
+          });
         } else {
-          this.setData({ c_nomore: true });
+          this.setData({
+            c_nodata: false,
+            c_nomore: true
+          })
         }
       } else {
+        app.avatar_format(res.list);
+        app.ago_format(res.list, 'create_time');
         for (let i = 0; i < res.list.length; i++) {
           app.format_img(res.list[i].pics);
-          res.list[i].avatar = res.list[i].avatar.indexOf('https') === 0 ? res.list[i].avatar : app.my_config.base_url + '/' + res.list[i].avatar;
-
-          if (this.data.c_left_height <= this.data.c_right_height) {
-            this.data.c_left_note_list.push(res.list[i]);
-            this.data.c_left_height += res.list[i].height / res.list[i].width;
-          } else {
-            this.data.c_right_note_list.push(res.list[i]);
-            this.data.c_right_height += res.list[i].height / res.list[i].width;
+          if ([1, 4].indexOf(res.list[i].pics.length) === -1) {
+            res.list[i].flex_pad = app.null_arr(res.list[i].pics.length, 3);
           }
-
-          app.avatar_format(res.list[i]);
         }
 
-        this.setData({
-          c_left_note_list: this.data.c_left_note_list,
-          c_right_note_list: this.data.c_right_note_list
-        });
+        this.setData({ c_note_list: this.data.c_note_list.concat(res.list) });
       }
-
       this.data.c_page++;
     }, null, () => {
       if (complete) {
@@ -136,14 +122,7 @@ Page({
       if (!this.data.loading) {
         this.data.loading = true;
 
-        this.data.left_height = 0;
-        this.data.right_height = 0;
-        this.data.nomore = false;
-        this.data.nodata = false;
-        this.data.page = 1;
-        this.data.left_note_list = [];
-        this.data.right_note_list = [];
-
+        this.reset(1);
         wx.showNavigationBarLoading();
         this.getMyNoteList(() => {
           this.data.loading = false;
@@ -155,14 +134,7 @@ Page({
       if (!this.data.c_loading) {
         this.data.c_loading = true;
 
-        this.data.c_left_height = 0;
-        this.data.c_right_height = 0;
-        this.data.c_nomore = false;
-        this.data.c_nodata = false;
-        this.data.c_page = 1;
-        this.data.c_left_note_list = [];
-        this.data.c_right_note_list = [];
-
+        this.reset(2);
         wx.showNavigationBarLoading();
         this.getMyCollectedNoteList(() => {
           this.data.c_loading = false;
@@ -200,18 +172,29 @@ Page({
   },
   // 发布笔记后刷新列表，区别于下拉刷新（不需要loading等操作）
   refresh(callback) {
-    this.data.left_height = 0;
-    this.data.right_height = 0;
-    this.data.nomore = false;
-    this.data.nodata = false;
-    this.data.page = 1;
-    this.data.left_note_list = [];
-    this.data.right_note_list = [];
+    this.reset(1);
     this.getMyNoteList(() => {
       if (callback) {
         callback();
       }
     });
+  },
+  reset(type) {
+    if (type === 1) {
+      this.data.page = 1;
+      this.data.note_list = [];
+      this.setData({
+        nomore: false,
+        nodata: false
+      });
+    } else {
+      this.data.c_page = 1;
+      this.data.c_note_list = [];
+      this.setData({
+        c_nomore: false,
+        c_nodata: false
+      });
+    }
   },
   onShareAppMessage(e) {
     wx.showShareMenu({

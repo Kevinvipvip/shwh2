@@ -81,7 +81,7 @@ button::after {
 
 /* 富文本 start */
 .content-wrapper view {
-  overflow: auto;
+  overflow: visible;
 }
 
 .content-wrapper image {

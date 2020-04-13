@@ -5,6 +5,10 @@
   padding-bottom: 100rpx;
 }
 
+view {
+  overflow: visible;
+}
+
 .top-swiper {
   height: 600rpx;
   background: #fff;
@@ -43,8 +47,11 @@
 .info-box .pt .price {
   color: #fe2043;
   font-weight: bold;
-  font-size: 35rpx;
   margin-top: 20rpx;
+}
+
+.info-box .pt .price .pp {
+  font-size: 35rpx;
 }
 
 .info-box .pt .price .pp::before {
@@ -303,6 +310,7 @@
 .bottom-content .content-wrapper {
   background: #fff;
   margin-top: 15rpx;
+  overflow: visible;
 }
 
 .comment-box {
@@ -646,6 +654,7 @@
   width: 48rpx;
   height: 48rpx;
   position: absolute;
+  box-sizing: content-box;
 }
 
 .mask-box .save-btn {

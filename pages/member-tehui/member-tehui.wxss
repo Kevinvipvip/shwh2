@@ -2,11 +2,15 @@
 }
 
 .banner {
+  width: 100%;
   height: 400rpx;
 }
 
-.banner .img {
-  vertical-align: bottom;
+.banner .si {
+  width: 100%;
+}
+
+.banner .si image {
   width: 100%;
   height: 100%;
 }

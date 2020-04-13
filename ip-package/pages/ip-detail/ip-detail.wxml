@@ -17,7 +17,7 @@
         </view>
         <view class="info-line">
           <view class="label">IP类别</view>
-          <view class="value">漫画作品</view>
+          <view class="value">{{ip.cate_name}}</view>
         </view>
         <view class="info-line">
           <view class="label">权利范围</view>
@@ -33,7 +33,8 @@
         </view>
         <view class="info-line">
           <view class="label">权利期限</view>
-          <view class="value">{{ip.start_time}} 到 {{ip.end_time}}</view>
+          <view class="value" wx:if="{{ip.forever != 1}}">{{ip.start_time}} 到 {{ip.end_time}}</view>
+          <view class="value" wx:else>永久</view>
         </view>
         <view class="info-line">
           <view class="label">是否独占</view>

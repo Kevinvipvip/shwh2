@@ -42,7 +42,7 @@ Page({
   },
   // 获取轮播图
   slideList(complete) {
-    app.ajax('api/slideList', null, res => {
+    app.ajax('api/slideList2', null, res => {
       app.format_img(res);
       this.setData({ slide_list: res });
     }, null, () => {

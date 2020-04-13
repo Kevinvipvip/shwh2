@@ -32,14 +32,10 @@
       <view class="title">创意众筹</view>
     </navigator>
 
-    <navigator class="kitem">
+    <navigator url="/pages/member-tehui/member-tehui" class="kitem">
       <image src="/icons/kk3.png"></image>
       <view class="title">会员特惠</view>
     </navigator>
-<!--    <navigator url="/pages/member-tehui/member-tehui" class="kitem">-->
-<!--      <image src="/icons/kk3.png"></image>-->
-<!--      <view class="title">会员特惠</view>-->
-<!--    </navigator>-->
 
     <navigator url="/ip-package/pages/index/index" class="kitem">
       <image src="/icons/kk6.png"></image>
@@ -111,7 +107,7 @@
     </view>
     <view class="custom-list">
       <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="goods2" wx:for="{{ding_list}}" wx:key="id">
-        <image src="{{item.poster}}" class="cover" mode="aspectFill" lazy-load></image>
+        <image src="{{item.poster}}?imageView2/2/w/340" class="cover" mode="aspectFill" lazy-load></image>
         <view class="info">
           <view class="title two-line-ellipsis">{{item.name}}</view>
           <view class="shop one-line-ellipsis">{{item.org}}</view>
@@ -129,7 +125,7 @@
     </view>
     <view class="goods-list">
       <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="goods2" wx:for="{{bao_list}}" wx:key="id">
-        <image src="{{item.poster}}" mode="aspectFill" lazy-load class="cover"></image>
+        <image src="{{item.poster}}?imageView2/2/w/340" mode="aspectFill" lazy-load class="cover"></image>
         <view class="info">
           <view class="title two-line-ellipsis">{{item.name}}</view>
           <view class="shop one-line-ellipsis">{{item.org}}</view>

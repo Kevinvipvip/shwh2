@@ -90,38 +90,30 @@
 .pian-box .pian {
   margin-top: 40rpx;
   display: flex;
-  border: 2rpx solid rgba(0, 0, 0, 0.05);
-  border-radius: 8rpx;
   height: 98rpx;
   box-sizing: border-box;
 }
 
-.pian-box .pian .pian-item:first-child {
-  border-radius: 8rpx 0 0 8rpx;
-}
-
-.pian-box .pian .pian-item {
-  width: 0;
-  flex-grow: 1;
+.pian-box .la {
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-right: 30rpx;
+}
+
+.pian-box .la:last-child {
+  margin-right: 0;
+}
+
+.pian-box .la .icon {
+  width: 44rpx;
+  height: 28rpx;
+}
+.pian-box .la .text {
   font-size: 34rpx;
   color: #333;
-  box-sizing: border-box;
-  border-right: 2rpx solid rgba(0, 0, 0, 0.05);
+  margin-left: 28rpx;
 }
 
-.pian-box .pian .pian-item:last-child {
-  border-radius: 0 8rpx 8rpx 0;
-  border-right: none;
-}
-
-.pian-box .pian .pian-item.active {
-  background: #ffb246;
-  border-color: #ffb246;
-  margin: -2rpx;
-}
 
 .up-pic {
 }
@@ -138,5 +130,5 @@
   font-size: 36rpx;
   color: #333;
   border-radius: 0;
-  z-index: 1;
+  z-index: 2;
 }

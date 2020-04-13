@@ -2,8 +2,6 @@ const app = getApp();
 
 Page({
   data: {
-    full_loading: true,
-
     search: '',
     page: 1,
     goods_list: [],  // 爆款推荐
@@ -12,31 +10,20 @@ Page({
     loading: false
   },
   onLoad() {
-    this.goodsList(() => {
-      this.setData({ full_loading: false });
-    });
   },
   bind_input(e) {
     app.bind_input(e, this);
   },
   // 搜索商品
   search_goods() {
-    let search = this.data.search.trim();
-    if (search) {
-      for (let i = 0; i < this.data.goods_list.length; i++) {
-        this.data.goods_list[i].visible = this.data.goods_list[i].name.indexOf(search) !== -1;
-      }
-    } else {
-      for (let i = 0; i < this.data.goods_list.length; i++) {
-        this.data.goods_list[i].visible = true;
-      }
-    }
-    this.setData({ goods_list: this.data.goods_list });
+    this.reset();
+    this.goodsList();
   },
   // 获取列表
   goodsList(complete) {
     let post = {
-      page: this.data.page
+      page: this.data.page,
+      search: this.data.search
     };
 
     app.ajax('api/goodsList', post, res => {

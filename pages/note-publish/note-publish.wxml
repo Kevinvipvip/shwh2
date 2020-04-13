@@ -1,11 +1,15 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <view class="main">
     <view class="notice warning" wx:if="{{id != 0 && status == 2}}">
       驳回原因：{{reason || '未知'}}
     </view>
     <view class="user">
-      <image src="/images/t-bao-goods.jpg" class="header"></image>
-      <view class="nickname">南骑Display</view>
+      <image src="{{avatar}}" class="header"></image>
+      <view class="nickname">{{nickname}}</view>
     </view>
     <view class="form1">
       <view class="form-item">
@@ -45,8 +49,9 @@
   <view class="con-goods">
     <image src="/icons/label.png" class="label-icon"></image>
 
-    <view class="fen" wx:if="{{c_goods.id == 0}}">分享商品</view>
-    <view class="goods-name one-line-ellipsis" wx:else>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+
+    <view bindtap="to_choose" class="fen" wx:if="{{!c_goods.goods_id}}">分享商品</view>
+    <view bindtap="to_choose" class="goods-name one-line-ellipsis" wx:else>{{c_goods.goods_name}}</view>
 
     <image src="/icons/right-arrow.png" class="you"></image>
   </view>

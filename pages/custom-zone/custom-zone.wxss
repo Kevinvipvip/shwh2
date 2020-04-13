@@ -86,6 +86,7 @@
 .goods2 .info .title {
   font-size: 28rpx;
   line-height: 1.4;
+  height: 72rpx;
 }
 
 .goods2 .info .shop {

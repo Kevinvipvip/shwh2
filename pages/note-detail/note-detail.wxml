@@ -86,28 +86,17 @@
   <view class="input-box" style="bottom: {{input_bottom}}px;">
     <input bindconfirm="commentAdd" bindtap="commet_note" bindinput="bind_input" bindfocus="bind_focus" bindblur="bind_blur" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="{{re_name}}" maxlength="100" class="re-input" focus="{{release_focus}}" />
 
-    <view class="icon-box" bindtap="iLike">
+    <view class="icon-box" bindtap="iLike" wx:if="{{!release_focus}}">
       <image src="/icons/heart-active.png" class="heart" wx:if="{{like}}"></image>
       <image src="/icons/heart.png" class="heart" wx:else></image>
       <view class="num">{{note.like}}</view>
     </view>
-<!--    <view bindtap="commentAdd" class="com-btn">发送</view>-->
+
+    <view class="icon-box collect" bindtap="iCollect" wx:if="{{!release_focus}}">
+      <image src="/icons/collect-active.png" class="heart" wx:if="{{collect}}"></image>
+      <image src="/icons/collect.png" class="heart" wx:else></image>
+    </view>
+
+    <view bindtap="commentAdd" class="com-btn" wx:if="{{release_focus}}">发送</view>
   </view>
 </view>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

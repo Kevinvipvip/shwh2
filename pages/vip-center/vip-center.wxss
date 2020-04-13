@@ -16,7 +16,7 @@
 }
 
 .banner .kai-btn {
-  margin: 60rpx 24rpx 0;
+  margin: 50rpx 24rpx 0;
   height: 98rpx;
   line-height: 98rpx;
   background-image: linear-gradient(135deg, #f8d696 0%, #e3c46e 100%);
@@ -24,6 +24,14 @@
   text-align: center;
   font-size: 32rpx;
   color: #333;
+}
+
+.banner .expire {
+  padding: 0 24rpx;
+  margin-top: 22rpx;
+  color: #fff;
+  text-align: right;
+  font-size: 26rpx;
 }
 
 .common-recom {

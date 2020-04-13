@@ -2,7 +2,7 @@
   <view class="image"></view>
 </view>
 
-<view class="main" wx:else>
+<view class="main">
   <view class="tab">
     <view class="tab-item {{active_tab == 1 ? 'active' : ''}}" data-tab="{{1}}" bindtap="tab_change">我的笔记</view>
     <view class="tab-item {{active_tab == 2 ? 'active' : ''}}" data-tab="{{2}}" bindtap="tab_change">收藏笔记</view>
@@ -12,55 +12,38 @@
     <navigator url="/pages/note-publish/note-publish" class="pub-round-btn">
       <image src="/icons/big-plus.png"></image>
     </navigator>
-    <view class="list">
-      <view class="left">
-        <view bindtap="to_detail" data-note="{{item}}" class="note" wx:for="{{left_note_list}}"
-                   wx:key="id">
+    <view class="note-list">
+      <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{note_list}}" wx:key="id">
 
-          <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
-          <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
-          <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
+        <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
+        <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
+        <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
 
-          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
-          </view>
-          <view class="word">
-            {{item.title}}
-          </view>
-          <view class="xia">
-            <view class="left">
-              {{item.nickname}}
-            </view>
-            <div class="right">
-              <icon class="iconfont iconxin2"/>
-              {{item.like}}
-            </div>
+        <view class="user-line">
+          <image src="{{item.avatar}}" class="header"></image>
+          <view class="uinfo">
+            <view class="uname">{{item.nickname}}</view>
+            <view class="time-ago">{{item.create_time}}</view>
           </view>
         </view>
-      </view>
-      <view class="right">
-        <view bindtap="to_detail" data-note="{{item}}" class="note" wx:for="{{right_note_list}}"
-                   wx:key="id">
-          <view class="status no" wx:if="{{item.status == 2}}">未通过</view>
-          <view class="status wait" wx:if="{{item.status == 0}}">审核中</view>
-          <view catchtap="to_edit" data-id="{{item.id}}" class="edit" wx:if="{{item.status == 2}}">编辑</view>
-          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
-          </view>
-          <view class="word">
-            {{item.title}}
-          </view>
-          <view class="xia">
-            <view class="left">
-              {{item.nickname}}
-            </view>
-            <div class="right">
-              <icon class="iconfont iconxin2"/>
-              {{item.like}}
-            </div>
+        <view class="title">{{item.content}}</view>
+        <view class="image-box one" wx:if="{{item.pics.length == 1}}">
+          <image src="{{pic}}" lazy-load class="img" mode="widthFix" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
+        </view>
+        <view class="image-box four" wx:if="{{item.pics.length == 4}}">
+          <image src="{{pic}}" lazy-load mode="aspectFill" class="img" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
+        </view>
+        <view class="image-box other" wx:if="{{!(item.pics.length == 1 || item.pics.length == 4)}}">
+          <image src="{{pic}}" lazy-load mode="aspectFill" class="img" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
+          <image class="img vh" wx:for="{{item.flex_pad}}" wx:key="index"></image>
+        </view>
+        <view class="info">
+          <view class="left">
+            <view class="comment">{{item.comment_num}}评论</view>
+            <view class="agree">{{item.like}}赞</view>
           </view>
         </view>
-      </view>
+      </navigator>
     </view>
 
     <view class="nomore" wx:if="{{nomore}}">
@@ -73,49 +56,33 @@
   </block>
 
   <block wx:if="{{active_tab == 2}}">
-    <view class="list">
-      <view class="left">
-        <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{c_left_note_list}}"
-                   wx:key="id">
-          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
+    <view class="note-list">
+      <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{c_note_list}}" wx:key="id">
+        <view class="user-line">
+          <image src="{{item.avatar}}" class="header"></image>
+          <view class="uinfo">
+            <view class="uname">{{item.nickname}}</view>
+            <view class="time-ago">{{item.create_time}}</view>
           </view>
-          <view class="word">
-            {{item.title}}
+        </view>
+        <view class="title">{{item.content}}</view>
+        <view class="image-box one" wx:if="{{item.pics.length == 1}}">
+          <image src="{{pic}}" lazy-load class="img" mode="widthFix" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
+        </view>
+        <view class="image-box four" wx:if="{{item.pics.length == 4}}">
+          <image src="{{pic}}" lazy-load mode="aspectFill" class="img" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
+        </view>
+        <view class="image-box other" wx:if="{{!(item.pics.length == 1 || item.pics.length == 4)}}">
+          <image src="{{pic}}" lazy-load mode="aspectFill" class="img" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
+          <image class="img vh" wx:for="{{item.flex_pad}}" wx:key="index"></image>
+        </view>
+        <view class="info">
+          <view class="left">
+            <view class="comment">{{item.comment_num}}评论</view>
+            <view class="agree">{{item.like}}赞</view>
           </view>
-          <view class="xia">
-            <view class="left">
-              <image src="{{item.avatar}}" class="header"></image>
-              {{item.nickname}}
-            </view>
-            <div class="right">
-              <icon class="iconfont iconxin2"/>
-              {{item.like}}
-            </div>
-          </view>
-        </navigator>
-      </view>
-      <view class="right">
-        <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{c_right_note_list}}"
-                   wx:key="id">
-          <view class="img-box" style="padding-bottom: {{(item.height / item.width) * 100}}%;">
-            <image src="{{item.pics[0]}}" lazy-load="{{true}}"></image>
-          </view>
-          <view class="word">
-            {{item.title}}
-          </view>
-          <view class="xia">
-            <view class="left">
-              <image src="{{item.avatar}}" class="header"></image>
-              {{item.nickname}}
-            </view>
-            <div class="right">
-              <icon class="iconfont iconxin2"/>
-              {{item.like}}
-            </div>
-          </view>
-        </navigator>
-      </view>
+        </view>
+      </navigator>
     </view>
 
     <view class="nomore" wx:if="{{c_nomore}}">

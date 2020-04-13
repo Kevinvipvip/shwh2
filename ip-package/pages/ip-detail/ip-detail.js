@@ -9,7 +9,7 @@ Page({
     ip: {}
   },
   onLoad(options) {
-    this.setData({ id: options.id});
+    this.setData({ id: options.id });
 
     this.ipDetail(() => {
       this.setData({ full_loading: false });
@@ -20,6 +20,7 @@ Page({
     app.ajax('copyright/ipDetail', { ip_id: this.data.id }, res => {
       app.format_img(res, 'cover');
       this.setData({ ip: res });
+      wx.setNavigationBarTitle({ title: res.title });
 
       let rich_text = res.content;
       rich_text = rich_text.replace(/\/ueditor\/php\/upload\//g, app.my_config.base_url + '/ueditor/php/upload/');

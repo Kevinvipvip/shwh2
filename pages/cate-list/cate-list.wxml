@@ -15,7 +15,7 @@
       <!-- 热门推荐 -->
       <view class="hot-recom" wx:if="{{active_index == 0}}">
         <!-- 0元授权按钮 -->
-        <navigator url="/ip-package/pages/index/index" class="apply-btn">
+        <navigator url="/ip-package/pages/auth-apply/auth-apply" class="apply-btn">
           <image src="/images/0auth.jpg" class="img"></image>
         </navigator>
 

@@ -43,6 +43,7 @@ App({
     uid: 0,
     role: 0,
     user_auth: 0, // 0.用户未授权 1.用户已授权
+    nickname: '',
     avatar: '',
     vip: 0  // 0.不是vip 1.是vip
   },
@@ -170,6 +171,11 @@ App({
       }
     }
     return false;
+  },
+  // 获取前一页
+  get_prev_page() {
+    let pages = getCurrentPages();
+    return pages[pages.length - 2];
   },
   // 用户是否授权获取用户信息
   get_auth(callback) {
@@ -317,7 +323,7 @@ App({
     if (obj instanceof Array) {
       for (let i = 0; i < obj.length; i++) {
         if (!obj[i][field]) {
-          obj[i][field] = '';
+          obj[i][field] = this.my_config.default_img;
         } else {
           obj[i][field] = obj[i][field].indexOf('https') === 0 ? obj[i][field] : this.my_config.qiniu_base + '/' + obj[i][field];
         }
@@ -566,6 +572,7 @@ App({
 
       this.user_data.uid = res.uid;
       this.user_data.role = res.role;
+      this.user_data.nickname = res.nickname;
       this.user_data.avatar = res.avatar;
       this.user_data.vip = res.vip;
     });

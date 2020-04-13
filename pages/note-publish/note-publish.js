@@ -2,8 +2,14 @@ const app = getApp();
 
 Page({
   data: {
+    full_loading: true,
+
     id: 0,
     is_ios: false,
+
+    // 用户头像，昵称
+    avatar: '',
+    nickname: '',
 
     content: '',  // 笔记内容
     content_count: 0,
@@ -17,17 +23,24 @@ Page({
     flex_pad: []
   },
   onLoad(options) {
-    this.setData({ full_loading: false });
+    this.setData({
+      nickname: app.user_data.nickname,
+      avatar: app.user_data.avatar
+    });
 
     if (options.id) {
       this.setData({ id: options.id });
-      this.getNoteDetail();
+      this.getNoteDetail(() => {
+        this.setData({ full_loading: false });
+      });
+    } else {
+      this.setData({ full_loading: false });
     }
 
     app.qiniu_init();
   },
   // 笔记详情
-  getNoteDetail() {
+  getNoteDetail(complete) {
     app.ajax('note/getNoteDetail', { note_id: this.data.id }, res => {
       app.format_img(res.pics);
       let pics = [];
@@ -41,8 +54,16 @@ Page({
         pics: pics,
         reason: res.reason,
         status: res.status,
-        flex_pad: app.null_arr(res.pics.length + 1, 3)
+        flex_pad: app.null_arr(res.pics.length + 1, 3),
+        c_goods: {
+          goods_id: res.goods_id,
+          goods_name: res.goods_name
+        }
       });
+    }, null, () => {
+      if (complete) {
+        complete();
+      }
     });
   },
   // 删除图片
@@ -101,15 +122,17 @@ Page({
       app.toast('请填写笔记内容');
     } else if (data.pics.length === 0) {
       app.toast('请至少上传一张图片');
+    } else if (!data.c_goods.goods_id) {
+      app.toast('请选择关联商品');
     } else {
       app.collectFormid(e.detail.formId);
 
       let post = {
         content: data.content,
-        token: app.user_data.token,
-        pics: this.get_img_arr(),
         width: data.pics[0].width,
-        height: data.pics[0].height
+        height: data.pics[0].height,
+        pics: this.get_img_arr(),
+        goods_id: data.c_goods.goods_id
       };
 
       let cmd;
@@ -163,5 +186,17 @@ Page({
     if (e.currentTarget.dataset.name === 'content') {
       this.setData({ content_count: this.data.content.length });
     }
+  },
+  // 去选择商品
+  to_choose() {
+    if (this.data.c_goods.goods_id) {
+      wx.navigateTo({url: '/pages/con-goods/con-goods?goods_id=' + this.data.c_goods.goods_id});
+    } else {
+      wx.navigateTo({url: '/pages/con-goods/con-goods'});
+    }
+  },
+  // 设置商品（选择商品页调用）
+  set_goods(goods) {
+    this.setData({ c_goods: goods });
   }
 });

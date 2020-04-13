@@ -58,11 +58,16 @@ Page({
     });
   },
   bind_focus(e) {
-    this.setData({ input_bottom: e.detail.height });
-    console.log('fuck');
+    this.setData({
+      input_bottom: e.detail.height,
+      release_focus: true
+    });
   },
   bind_blur() {
-    this.setData({ input_bottom: 0 });
+    this.setData({
+      input_bottom: 0,
+      release_focus: false
+    });
   },
   bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
@@ -81,9 +86,11 @@ Page({
       }
 
       app.ajax('note/commentAdd', post, () => {
-        this.setData({content: ''});
+        this.setData({ content: '' });
         this.commentList();
-      }, null, () => {
+      }, err => {
+        app.modal(err.message);
+      }, () => {
         wx.hideLoading();
       });
     }
@@ -160,20 +167,20 @@ Page({
   },
   // 关注/取消关注
   iFocus() {
-    // if (!this.data.focus_loading) {
-    //   this.data.focus_loading = true;
-    //
-    //   let post = {
-    //     token: app.user_data.token,
-    //     to_uid: this.data.note.uid
-    //   };
-    //
-    //   app.ajax('note/iFocus', post, (res) => {
-    //     this.setData({ focus: res });
-    //   }, null, () => {
-    //     this.data.focus_loading = false;
-    //   });
-    // }
+    if (!this.data.focus_loading) {
+      this.data.focus_loading = true;
+
+      let post = {
+        token: app.user_data.token,
+        to_uid: this.data.note.uid
+      };
+
+      app.ajax('note/iFocus', post, (res) => {
+        this.setData({ focus: res });
+      }, null, () => {
+        this.data.focus_loading = false;
+      });
+    }
   },
   // 去他人主页
   to_person() {
@@ -206,7 +213,7 @@ Page({
       count += this.data.comment_list[i].child.length;
     }
     count += this.data.comment_list.length;
-    this.setData({comment_num: count});
+    this.setData({ comment_num: count });
   },
   show_input(e) {
     let re_user = e.currentTarget.dataset.re_user;
@@ -219,6 +226,9 @@ Page({
   // 第一层评论
   commet_note() {
     this.data.to_cid = 0;
-    this.setData({ re_name: '我要评论...' });
+    this.setData({
+      re_name: '我要评论...',
+      release_focus: true
+    });
   }
 });

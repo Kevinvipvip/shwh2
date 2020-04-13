@@ -33,7 +33,7 @@
 
   <view class="ip-list">
     <navigator url="../ip-detail/ip-detail?id={{item.id}}" class="ip" wx:for="{{ip_list}}" wx:key="id">
-      <image src="{{item.cover}}" class="cover" mode="aspectFill" lazy-load></image>
+      <image src="{{item.cover}}?imageView2/2/w/340" class="cover" mode="aspectFill" lazy-load></image>
       <view class="info">
         <view class="title one-line-ellipsis">{{item.title}}</view>
         <view class="cate">[{{item.cate_name}}]</view>

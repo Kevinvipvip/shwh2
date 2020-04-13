@@ -20,6 +20,9 @@ Page({
   onLoad(options) {
     if (options.id) {
       this.setData({ip_id: parseInt(options.id)});
+      wx.setNavigationBarTitle({title: 'IP授权'});
+    } else {
+      wx.setNavigationBarTitle({title: '0元申请IP'});
     }
   },
   // 发送验证码

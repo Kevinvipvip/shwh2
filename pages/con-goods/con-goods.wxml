@@ -1,46 +1,37 @@
-<view class="page" style="padding-top: {{use_type ? '88rpx' : 0}};">
-  <view class="type-choose" wx:if="{{use_type}}">
-    <picker bindchange="sex_choose" value="{{sex}}" range="{{sex_list}}" range-key="name">
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page" style="padding-top: {{role != 0 ? '88rpx' : 0}};">
+  <view class="type-choose" wx:if="{{role != 0}}">
+    <picker bindchange="type_choose" value="{{type}}" range="{{type_list}}" range-key="name">
       <view class="picker">
-        <view class="text" wx:if="{{type == -1}}">{{type == -1 ? '选择类型' : sex_list[sex].name}}</view>
+        <view class="text">{{type_list[type].name}}</view>
         <image src="/icons/xia2.png" class="icon"></image>
       </view>
     </picker>
   </view>
 
-  <view class="con-list">
-    <view class="con-item">
-      <view class="radio"></view>
+  <view class="con-list" wx:if="{{goods_list.length > 0}}">
+    <view bindtap="choose_goods" data-goods="{{item}}" class="con-item" wx:for="{{goods_list}}" wx:key="goods_id">
+      <view class="radio {{item.goods_id == goods_id ? 'active' : ''}}"></view>
       <view class="con">
-        <image src="/images/t-bao-goods.jpg" class="cover"></image>
+        <image src="{{item.poster}}" class="cover"></image>
         <view class="info">
-          <view class="title two-line-ellipsis">唐妞胸针领针可爱卡通高档金属复古中 国风纪念品唐妞胸针领针可爱卡通高档金属复古中</view>
+          <view class="title two-line-ellipsis">{{item.goods_name}}</view>
           <view class="numbers">
-            <view class="price">32.00</view>
-            <view class="sales">销量9600</view>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="con-item">
-      <view class="radio active"></view>
-      <view class="con">
-        <image src="/images/t-bao-goods.jpg" class="cover"></image>
-        <view class="info">
-          <view class="title two-line-ellipsis">唐妞胸针领针可爱卡通高档金属复古中 国风纪念品唐妞胸针领针可爱卡通高档金属复古中</view>
-          <view class="numbers">
-            <view class="price">32.00</view>
-            <view class="sales">销量9600</view>
+            <view class="price">{{item.price}}</view>
+            <view class="sales">
+              <text class="text">销量</text>
+              <text class="num">{{item.sales}}</text>
+            </view>
           </view>
         </view>
       </view>
     </view>
   </view>
 
-  <view class="nomore" wx:if="{{nomore}}">
-    已经没有更多了哦
-  </view>
   <view class="nodata" wx:if="{{nodata}}">
-    {{type}}
+    暂无商品
   </view>
 </view>

@@ -145,6 +145,11 @@
   margin-left: 20rpx;
 }
 
+.input-box .icon-box.collect {
+  width: 50rpx;
+  margin-left: 0;
+}
+
 .input-box .icon-box .heart {
   width: 38rpx;
   height: 38rpx;
@@ -155,6 +160,12 @@
   margin-left: 8rpx;
 }
 
+.input-box .com-btn {
+  color: #7085d4;
+  flex-shrink: 0;
+  font-size: 28rpx;
+  padding: 10rpx 20rpx;
+}
 /* 评论列表 start */
 
 .comment-box {
