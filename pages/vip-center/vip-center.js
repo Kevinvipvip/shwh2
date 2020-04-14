@@ -27,8 +27,15 @@ Page({
       });
     });
 
+    // 精选特惠
+    let promise2 = new Promise(resolve => {
+      this.tehuiList(() => {
+        resolve();
+      });
+    });
+
     Promise.all([
-      promise1
+      promise1, promise2
     ]).then(() => {
       if (complete) {
         complete();
@@ -120,6 +127,43 @@ Page({
       if (complete) {
         complete();
       }
+    });
+  },
+  // 下拉刷新
+  onPullDownRefresh() {
+    if (!this.data.loading) {
+      this.data.loading = true;
+
+      wx.showNavigationBarLoading();
+
+      this.reset();
+      this.init(() => {
+        this.data.loading = false;
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+      });
+    }
+  },
+  // 上拉加载
+  onReachBottom() {
+    if (!this.data.nomore && !this.data.nodata) {
+      if (!this.data.loading) {
+        this.data.loading = true;
+        wx.showNavigationBarLoading();
+        this.tehuiList(() => {
+          wx.hideNavigationBarLoading();
+          this.data.loading = false;
+        });
+      }
+    }
+  },
+  // 重置
+  reset() {
+    this.data.page = 1;
+    this.data.tehui_list = [];
+    this.setData({
+      nomore: false,
+      nodata: false
     });
   }
 });

@@ -25,7 +25,7 @@
               <view class="attr">规格：{{order.attr}}</view>
             </view>
             <view class="right">
-              <view class="price">¥{{order.unit_price}}</view>
+              <view class="price">¥{{order.use_vip_price == 1 ? order.vip_price : order.unit_price}}</view>
               <view class="amount">x{{order.num}}</view>
             </view>
           </view>

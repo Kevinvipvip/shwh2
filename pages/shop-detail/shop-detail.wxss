@@ -507,6 +507,18 @@ view {
 .param-modal .header .info .price {
   color: #fe2043;
   font-size: 34rpx;
+  display: flex;
+  align-items: flex-end;
+}
+
+.param-modal .price .price-now {
+}
+
+.param-modal .price .price-origin {
+  color: #888;
+  font-size: 28rpx;
+  text-decoration: line-through;
+  margin-left: 10rpx;
 }
 
 .param-modal .header .info .choose-text {

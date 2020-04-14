@@ -139,6 +139,7 @@
     </view>
   </view>
 
+  <!-- 立即购买/加入购物车弹窗 -->
   <view catchtap="hide" catchtouchmove class="param-modal {{attr_active ? 'active' : ''}}" wx:if="{{attr_show}}">
     <view catchtap class="content">
       <view bindtap="hide" class="close">
@@ -147,7 +148,16 @@
       <view class="header">
         <image src="{{goods.pics[0]}}" class="cover" mode="aspectFill"></image>
         <view class="info">
-          <view class="price">¥{{goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price}}</view>
+
+          <!-- 价格显示 -->
+          <view class="price" wx:if="{{goods.use_vip_price == 1 && vip == 1}}">
+            <view class="price-now">￥{{goods.use_attr == 1 ? goods.attr_list[attr_index].vip_price : goods.vip_price}}</view>
+            <view class="price-origin">￥{{goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price}}</view>
+          </view>
+          <view class="price" wx:else>
+            <view class="price-now">￥{{goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price}}</view>
+          </view>
+
           <view class="choose-text" wx:if="{{goods.use_attr == 1}}">已选：{{goods.attr_list[attr_index].value}}</view>
           <view class="stock" wx:if="{{goods.use_attr == 1}}">库存：{{goods.attr_list[attr_index].stock}}</view>
         </view>

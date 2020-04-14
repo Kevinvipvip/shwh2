@@ -19,17 +19,16 @@
       <view class="sub-title">集你所想，推你所爱</view>
     </view>
     <view class="recom-list">
-      <view class="recom" wx:for="{{[0, 1, 2, 3, 4]}}">
-        <image src="/images/t-goods.jpg" class="cover" mode="aspectFill" lazy-load></image>
+      <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="recom" wx:for="{{tehui_list}}" wx:key="id">
+        <image src="{{item.poster}}" class="cover" mode="aspectFill" lazy-load></image>
         <view class="info">
-          <view class="title two-line-ellipsis">唐妞簪花仕女图丝巾百搭 创意闺蜜生日礼物礼盒创意闺蜜生日礼物礼盒</view>
+          <view class="title two-line-ellipsis">{{item.name}}</view>
           <view class="price-box">
-            <view class="member">64.00</view>
-            <view class="origin">98.00</view>
+            <view class="member">{{item.vip_price}}</view>
+            <view class="origin">{{item.price}}</view>
           </view>
         </view>
-      </view>
-      <view class="recom vh"></view>
+      </navigator>
     </view>
     <view class="nomore" wx:if="{{nomore}}">
       已经没有更多了哦

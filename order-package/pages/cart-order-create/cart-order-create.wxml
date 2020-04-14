@@ -27,7 +27,7 @@
       <view class="info">
         <view class="title">{{item.name}}</view>
         <view class="price">
-          <view>¥{{item.price}}
+          <view>¥{{item.real_price}}
             <text>x {{item.num}}</text>
           </view>
           <view class="carriage">运费：¥{{item.carriage}}</view>

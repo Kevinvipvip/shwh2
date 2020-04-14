@@ -145,5 +145,5 @@ Page({
       nomore: false,
       nodata: false
     });
-  },
+  }
 });

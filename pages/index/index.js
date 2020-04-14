@@ -115,9 +115,7 @@ Page({
     };
     this.goodsList(ding_post, res => {
       this.setData({ding_list: res});
-    }, () => {
-      complete();
-    });
+    }, complete);
   },
   // 爆款推荐
   baoList(complete) {

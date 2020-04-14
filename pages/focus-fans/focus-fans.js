@@ -14,6 +14,7 @@ Page({
   },
   onLoad(options) {
     this.setData({ type: parseInt(options.type) }, () => {
+      wx.setNavigationBarTitle({ title: this.data.type === 1 ? '我的关注' : '我的粉丝' });
       let func = this.data.type === 1 ? this.mySubscribeList : this.myFansList;
       func(() => {
         this.setData({ full_loading: false });

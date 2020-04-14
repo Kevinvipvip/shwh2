@@ -34,7 +34,10 @@
           <view class="attr">规格：{{goods.use_attr == 1 ? goods.attr_list[attr_index].value : '默认'}}</view>
         </view>
         <view class="price">
-          <view>¥{{goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price}}
+          <view wx:if="{{goods.use_vip_price == 1 && vip == 1}}">¥{{goods.use_attr == 1 ? goods.attr_list[attr_index].vip_price : goods.vip_price}}
+            <text>x {{num}}</text>
+          </view>
+          <view wx:else>¥{{goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price}}
             <text>x {{num}}</text>
           </view>
           <view class="carriage">运费：¥{{goods.carriage}}</view>
@@ -45,7 +48,7 @@
   <view class="foot">
     <view class="left">
       总计：
-      <text>¥{{(goods.use_attr == 1 ? goods.attr_list[attr_index].price : goods.price) * num + goods.carriage}}</text>
+      <text>¥{{total}}</text>
     </view>
     <form bindsubmit="purchase" class="pay-btn" report-submit>
       <button form-type="submit" loading="{{purchase_loading}}">支付</button>

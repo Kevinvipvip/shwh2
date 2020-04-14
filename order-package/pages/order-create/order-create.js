@@ -12,12 +12,18 @@ Page({
     receiver: '',  // 收货人
     tel: '',  // 电话
     address: '',  // 地址
-    purchase_loading: false
+    purchase_loading: false,
+
+    vip: 0,  // 0.不是vip 1.是vip
+    total: 0  // 总价
   },
   onLoad(options) {
     this.data.id = parseInt(options.id);
     this.data.attr_id = parseInt(options.attr_id);
-    this.setData({ num: options.num });
+    this.setData({
+      num: options.num,
+      vip: app.user_data.vip
+    });
 
     this.goodsDetail(() => {
       this.setData({ full_loading: false });
@@ -26,7 +32,7 @@ Page({
   },
   // 商品详情
   goodsDetail(complete) {
-    app.ajax('shop/goodsDetail', {goods_id: this.data.id}, res => {
+    app.ajax('shop/goodsDetail', { goods_id: this.data.id }, res => {
       app.format_img(res.pics);
       res.carriage = Number(res.carriage);
       res.price = Number(res.price);
@@ -39,12 +45,27 @@ Page({
           }
         }
       }
-      this.setData({ goods: res });
+      this.setData({ goods: res }, () => {
+        this.count_total();
+      });
     }, null, () => {
       if (complete) {
         complete();
       }
     });
+  },
+  // 计算总价
+  count_total() {
+    let data = this.data;
+    let goods = data.goods;
+    let total;
+    
+    if (goods.use_vip_price === 1 && data.vip === 1) {
+      total = ((goods.use_attr === 1 ? goods.attr_list[data.attr_index].vip_price : goods.vip_price) * data.num + goods.carriage).toFixed(2);
+    } else {
+      total = ((goods.use_attr === 1 ? goods.attr_list[data.attr_index].price : goods.price) * data.num + goods.carriage).toFixed(2);
+    }
+    this.setData({ total });
   },
   bind_input(e) {
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })

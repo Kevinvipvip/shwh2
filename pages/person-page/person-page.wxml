@@ -5,24 +5,26 @@
 <view class="page">
   <!-- 头部 -->
   <view class="top">
-    <image src="/images/close.png" class="logo"></image>
+    <image src="{{user.avatar}}" class="logo"></image>
     <view class="info">
       <view class="title-line">
-        <view class="title">上海博物馆(ID: 15)</view>
-        <view class="btn focus" wx:if="{{t_focus}}">已关注</view>
-        <view class="btn" wx:else>关注</view>
+        <view class="title">{{user.nickname}}(ID: {{user.uid}})</view>
+        <block wx:if="{{user.uid != my_uid}}">
+          <view bindtap="iFocus" class="btn" wx:if="{{user.ifocus}}">已关注</view>
+          <view bindtap="iFocus" class="btn focus" wx:else>关注</view>
+        </block>
       </view>
       <view class="numbers">
         <view class="num">
-          <view class="amount">6300</view>
+          <view class="amount">{{user.subscribe}}</view>
           <view class="text">关注</view>
         </view>
         <view class="num">
-          <view class="amount">4587</view>
+          <view class="amount">{{user.focus}}</view>
           <view class="text">粉丝</view>
         </view>
         <view class="num">
-          <view class="amount">5820</view>
+          <view class="amount">{{user.note_num}}</view>
           <view class="text">笔记</view>
         </view>
       </view>
@@ -31,22 +33,21 @@
 
   <!-- 店铺商品/所有笔记/个人简介 -->
   <view class="tabs">
-    <view class="tab {{active_index == 0 ? 'active' : ''}}">店铺商品</view>
-    <view class="tab {{active_index == 1 ? 'active' : ''}}">所有笔记</view>
-    <view class="tab {{active_index == 2 ? 'active' : ''}}">个人简介</view>
+    <view bindtap="tab_change" data-tab="{{0}}" class="tab {{active_index == 0 ? 'active' : ''}}" wx:if="{{user.role}}">店铺商品</view>
+    <view bindtap="tab_change" data-tab="{{1}}" class="tab {{active_index == 1 ? 'active' : ''}}">所有笔记</view>
+    <view bindtap="tab_change" data-tab="{{2}}" class="tab {{active_index == 2 ? 'active' : ''}}">个人简介</view>
   </view>
 
   <!-- 店铺商品 -->
-  <view class="goods-box" wx:if="{{active_index == 0}}">
+  <view class="goods-box" wx:if="{{active_index == 0 && user.role}}">
     <view class="goods-list">
-      <view class="goods2" wx:for="{{[0, 1, 2, 3, 4]}}">
-        <image src="/images/t-bao-goods.jpg" class="cover" mode="aspectFill" lazy-load></image>
+      <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="goods2" wx:for="{{goods_list}}" wx:key="id">
+        <image src="{{item.poster}}" class="cover" mode="aspectFill" lazy-load></image>
         <view class="info">
-          <view class="title two-line-ellipsis">DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可DIY免费刻字笔记本定制可</view>
-          <view class="shop one-line-ellipsis">叁拾叁物语笔记本定制</view>
-          <view class="price">14.8</view>
+          <view class="title two-line-ellipsis">{{item.name}}</view>
+          <view class="price">{{item.price}}</view>
         </view>
-      </view>
+      </navigator>
     </view>
     <view class="nomore" wx:if="{{goods_nomore}}">
       已经没有更多了哦
@@ -59,26 +60,26 @@
   <!-- 所有笔记 -->
   <view class="note-box" wx:if="{{active_index == 1}}">
     <view class="note-list">
-      <view class="note" wx:for="{{note_list}}">
-        <view class="title">山洞文创生态平台全面升级！在未来将会带给大家不一样 的文旅体验。</view>
-        <view class="image-box one" wx:if="{{item.img_list.length == 1}}">
-          <image src="/images/t-goods.jpg" class="img" mode="widthFix" wx:for="{{item.img_list}}" wx:key="index"></image>
+      <navigator url="/pages/note-detail/note-detail?id={{item.id}}" class="note" wx:for="{{note_list}}" wx:key="id">
+        <view class="title">{{item.content}}</view>
+        <view class="image-box one" wx:if="{{item.pics.length == 1}}">
+          <image src="{{pic}}" lazy-load class="img" mode="widthFix" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
         </view>
-        <view class="image-box four" wx:if="{{item.img_list.length == 4}}">
-          <image src="/images/t-goods.jpg" class="img" wx:for="{{item.img_list}}" wx:key="index"></image>
+        <view class="image-box four" wx:if="{{item.pics.length == 4}}">
+          <image src="{{pic}}" lazy-load mode="aspectFill" class="img" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
         </view>
-        <view class="image-box other" wx:if="{{!(item.img_list.length == 1 || item.img_list.length == 4)}}">
-          <image src="/images/t-goods.jpg" class="img" wx:for="{{item.img_list}}" wx:key="index"></image>
+        <view class="image-box other" wx:if="{{!(item.pics.length == 1 || item.pics.length == 4)}}">
+          <image src="{{pic}}" lazy-load mode="aspectFill" class="img" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
           <image class="img vh" wx:for="{{item.flex_pad}}" wx:key="index"></image>
         </view>
         <view class="info">
           <view class="left">
-            <view class="comment">175评论</view>
-            <view class="agree">9600赞</view>
+            <view class="comment">{{item.comment_num}}评论</view>
+            <view class="agree">{{item.like}}赞</view>
           </view>
-          <view class="time-ago">47分钟前</view>
+          <view class="time-ago">{{item.create_time}}</view>
         </view>
-      </view>
+      </navigator>
     </view>
     <view class="nomore" wx:if="{{note_nomore}}">
       已经没有更多了哦
@@ -90,6 +91,6 @@
 
   <!-- 个人简介 -->
   <view class="intro-box" wx:if="{{active_index == 2}}">
-    <view class="intro">《雪姬》是韩国著名漫画家姜京玉的得意之作，是热播韩 剧《星你》的源头漫画，讲述长生不老、拥有外星超能力 的神秘少女寻找前世爱人的故事，大女主的设定及一女配 多男的爱情模式满足了女性读者对唯美爱情的想象。雪姬 年轻貌美，看似是不谙世事的“傻白甜”，其实骨子里拥有 与外表不相符的成熟内敛，历经四百年的岁月洗礼，她其 实已经是一个“恶女”，这个人物的设定使雪姬更加有血有 肉、鲜活立体。 而三位男主角：阳光开朗的“高富帅”、 忧郁如谜的摇滚歌手和魅力四射的国际巨星，也完美契合 了女性对各种类型“白马王子”的想象。</view>
+    <view class="intro">{{user.desc || '暂无简介'}}</view>
   </view>
 </view>

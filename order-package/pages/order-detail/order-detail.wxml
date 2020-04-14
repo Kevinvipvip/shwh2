@@ -46,7 +46,7 @@
             <view class="attr">规格：{{item.attr}}</view>
           </view>
           <view class="xia">
-            <view class="price">¥{{item.unit_price}}</view>
+            <view class="price">¥{{item.use_vip_price == 1 ? item.vip_price : item.unit_price}}</view>
             <view class="amount">x{{item.num}}</view>
           </view>
         </view>

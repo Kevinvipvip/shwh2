@@ -76,10 +76,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "商品详情",
 					"pathName": "pages/shop-detail/shop-detail",
-					"query": "id=172",
+					"query": "id=169",
 					"scene": null
 				},
 				{
@@ -135,7 +135,7 @@
 					"id": 11,
 					"name": "个人主页",
 					"pathName": "pages/person-page/person-page",
-					"query": "uid=1",
+					"query": "uid=5",
 					"scene": null
 				},
 				{
