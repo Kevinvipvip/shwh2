@@ -7,7 +7,8 @@
     <view class="form">
       <view class="form-item">
         <image src="/icons/bind-phone.png" class="tol t1"></image>
-        <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入您的手机号" maxlength="11"/>
+        <input bindinput="bind_input" data-name="tel" value="{{tel}}" type="number" placeholder="请输入您的手机号"
+               maxlength="11"/>
       </view>
       <view class="form-item">
         <image src="/icons/bind-dui.png" class="tol t2"></image>
@@ -15,6 +16,6 @@
         <button bindtap="sendSms" class="code-btn" disabled="{{code_disabled}}">{{code_text}}</button>
       </view>
     </view>
-    <view bindtap="bindUser" class="sub-btn">提交</view>
+    <cover-view bindtap="bindUser" class="sub-btn">提交</cover-view>
   </view>
 </view>

@@ -134,5 +134,5 @@
     </view>
   </view>
 
-  <button bindtap="xuqiurelease" class="sub-btn">提交申请</button>
+  <cover-view bindtap="xuqiurelease" class="sub-btn">提交申请</cover-view>
 </view>
