@@ -35,7 +35,7 @@
             <view class="label">会员价：</view>
             <view class="v-price">{{goods.vip_price}}</view>
           </view>
-          <button class="vip-btn">立即加入会员</button>
+          <button bindtap="to_vip" class="vip-btn">立即加入会员</button>
         </view>
       </view>
     </view>
@@ -201,4 +201,7 @@
       <button catchtap="hide_set_btn" open-type="openSetting" class="set_btn">打开设置</button>
     </view>
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

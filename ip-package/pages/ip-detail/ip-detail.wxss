@@ -32,7 +32,7 @@ view {
 }
 
 .main .info-box .bg-box .bg {
-  filter:blur(4rpx);
+  filter: blur(4rpx);
   width: 100%;
   height: 100%;
   transform: scale(1.1);
@@ -90,8 +90,10 @@ view {
   background: #333;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  padding: 40rpx 24rpx;
+  align-items: center;
+  padding: 0 24rpx;
+  height: 98rpx;
+  z-index: 1;
 }
 
 .main .butt-bar .title {
@@ -114,7 +116,7 @@ view {
 }
 
 .butt-bar .look .text {
-  color: #51D07C;
+  color: #51d07c;
   font-size: 28rpx;
 }
 
@@ -136,7 +138,7 @@ view {
   width: 40rpx;
   height: 8rpx;
   border-radius: 10rpx;
-  background: #FCD530;
+  background: #fcd530;
   position: absolute;
   left: 0;
   right: 0;
@@ -152,8 +154,8 @@ view {
 }
 
 .rich {
-   margin-top: 44rpx;
- }
+  margin-top: 44rpx;
+}
 
 .rich .content-wrapper {
   margin-top: 40rpx;
@@ -168,6 +170,7 @@ view {
   bottom: 0;
   width: 100%;
   box-shadow: 0 4rpx 12rpx 0 rgba(217, 217, 217, 1);
+  z-index: 2;
 }
 
 .fixed-bottom .share {

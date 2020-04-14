@@ -72,6 +72,7 @@ Page({
         if (pay_res) {
           app.modal(this.data.vip === 0 ? '开通成功' : '续费成功', () => {
             this.mydetail();
+            app.set_user_data();
           });
         }
       });

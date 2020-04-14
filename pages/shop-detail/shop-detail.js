@@ -485,5 +485,13 @@ Page({
         });
       }
     }
+  },
+  // 去会员中心页
+  to_vip() {
+    if (!app.user_data.uid) {
+      this.setData({ bind_tel_show: true });
+    } else {
+      wx.navigateTo({ url: '/pages/vip-center/vip-center' });
+    }
   }
 });
