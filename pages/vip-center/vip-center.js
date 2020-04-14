@@ -73,6 +73,11 @@ Page({
           app.modal(this.data.vip === 0 ? '开通成功' : '续费成功', () => {
             this.mydetail();
             app.set_user_data();
+
+            let goods_page = app.get_page('pages/shop-detail/shop-detail');
+            if (goods_page) {
+              goods_page.vip_refresh();
+            }
           });
         }
       });

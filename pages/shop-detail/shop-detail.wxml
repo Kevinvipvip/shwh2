@@ -25,8 +25,13 @@
         <view class="label" wx:if="{{goods.mold == 1}}">免开模费</view>
       </view>
       <view class="price" wx:if="{{vip == 1}}">
-        <text class="pp">{{goods.use_vip_price == 1 ? goods.vip_price : goods.price}}</text>
-        <text class="origin-price" wx:if="{{goods.use_vip_price == 1}}">¥{{goods.price}}</text>
+        <block wx:if="{{goods.use_vip_price == 1}}">
+          <text class="pp">{{goods.vip_price}}</text>
+          <text class="origin-price">¥{{goods.price}}</text>
+        </block>
+        <block wx:else>
+          <text class="pp">{{goods.price}}</text>
+        </block>
       </view>
       <view class="price" wx:else>
         <view class="pp">{{goods.price}}</view>

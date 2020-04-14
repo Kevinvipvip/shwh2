@@ -493,5 +493,9 @@ Page({
     } else {
       wx.navigateTo({ url: '/pages/vip-center/vip-center' });
     }
+  },
+  // 开通vip后刷新vip状态
+  vip_refresh() {
+    this.setData({ vip: app.user_data.vip });
   }
 });
