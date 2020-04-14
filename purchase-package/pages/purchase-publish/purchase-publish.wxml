@@ -6,7 +6,7 @@
       <view class="form-item">
         <view class="label">采购标题</view>
         <view class="value-box">
-          <input bindinput="bind_input" data-name="title" value="{{title}}" type="text" class="line" placeholder="输入采购数量" maxlength="50" />
+          <input bindinput="bind_input" data-name="title" value="{{title}}" type="text" class="line" placeholder="输入采购标题" maxlength="50" />
         </view>
       </view>
       <view class="form-item">
