@@ -195,19 +195,12 @@ view {
   padding: 25rpx;
   font-size: 28rpx;
   position: relative;
-  display: none;
-}
-
-.info-box .store .title {
-  font-size: 30rpx;
-  line-height: 1.1;
-  font-weight: bold;
 }
 
 .info-box .store .info {
   display: flex;
   justify-content: space-between;
-  margin-top: 24rpx;
+  align-items: center;
 }
 
 .info-box .store .info .zuo {
@@ -226,17 +219,14 @@ view {
 }
 
 .info-box .store .info .jin {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 24rpx;
-  top: 24rpx;
-}
-
-.info-box .store .info .jin .text {
-  margin-right: 15rpx;
   font-size: 24rpx;
-  color: #666;
+  background: #ff6944;
+  color: #fff;
+  padding: 0 20rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 25rpx;
 }
 
 .info-box .store .info .jin image {

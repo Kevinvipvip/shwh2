@@ -5,29 +5,39 @@
 <view class="page">
   <!-- 头部 -->
   <view class="top">
-    <image src="{{user.avatar}}" class="logo"></image>
+    <view class="logo-box">
+      <image src="{{user.avatar}}" class="logo"></image>
+      <view class="id">ID: {{user.uid}}</view>
+    </view>
     <view class="info">
       <view class="title-line">
-        <view class="title">{{user.nickname}}(ID: {{user.uid}})</view>
+        <view class="title">{{user.nickname}}</view>
         <block wx:if="{{user.uid != my_uid}}">
           <view bindtap="iFocus" class="btn" wx:if="{{user.ifocus}}">已关注</view>
           <view bindtap="iFocus" class="btn focus" wx:else>关注</view>
         </block>
       </view>
-      <view class="numbers">
-        <view class="num">
-          <view class="amount">{{user.subscribe}}</view>
-          <view class="text">关注</view>
+      <view class="o-box">
+        <view class="numbers">
+          <view class="num">
+            <view class="amount">{{user.subscribe}}</view>
+            <view class="text">关注</view>
+          </view>
+          <view class="num">
+            <view class="amount">{{user.focus}}</view>
+            <view class="text">粉丝</view>
+          </view>
+          <view class="num">
+            <view class="amount">{{user.note_num}}</view>
+            <view class="text">笔记</view>
+          </view>
         </view>
-        <view class="num">
-          <view class="amount">{{user.focus}}</view>
-          <view class="text">粉丝</view>
-        </view>
-        <view class="num">
-          <view class="amount">{{user.note_num}}</view>
-          <view class="text">笔记</view>
+        <view class="role" wx:if="{{user.role != 0}}">
+          <block wx:if="{{user.role == 1}}">文创机构</block>
+          <block wx:if="{{user.role == 2}}">工厂</block>
         </view>
       </view>
+
     </view>
   </view>
 

@@ -2,15 +2,31 @@
 }
 
 .top {
-  padding: 24rpx 24rpx 44rpx;
+  padding: 24rpx;
   display: flex;
+  align-items: center;
 }
 
-.top .logo {
+.top .logo-box {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top .logo-box .logo {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
-  flex-shrink: 0;
+}
+
+.top .logo-box .id {
+  margin-top: 15rpx;
+  font-size: 24rpx;
+  color: #999;
+  background: #eee;
+  padding: 6rpx 16rpx;
+  border-radius: 4rpx;
 }
 
 .top .info {
@@ -48,10 +64,16 @@
   background: #fcaf30;
 }
 
-.info .numbers {
+.info .o-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 24rpx;
   border-top: 2rpx solid #f5f5f5;
-  padding-top: 14rpx;
+  padding-top: 24rpx;
+}
+
+.info .numbers {
   display: flex;
 }
 
@@ -74,6 +96,17 @@
   font-size: 22rpx;
   margin-left: 8rpx;
   color: #999;
+}
+
+.info .o-box .role {
+  color: #fff;
+  font-size: 24rpx;
+  background: #ff6944;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  padding: 0 15rpx;
+  border-radius: 8rpx;
 }
 
 .tabs {
@@ -109,7 +142,7 @@
   width: 40rpx;
   height: 8rpx;
   border-radius: 4rpx;
-  background: #FCD530;
+  background: #fcd530;
 }
 
 .goods-box {
@@ -163,7 +196,7 @@
 .goods2 .info .price {
   margin-top: 30rpx;
   font-size: 32rpx;
-  color: #F43530;
+  color: #f43530;
 }
 
 .note-box {

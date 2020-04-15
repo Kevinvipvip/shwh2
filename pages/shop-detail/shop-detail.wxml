@@ -58,16 +58,15 @@
 <!--      </view>-->
 <!--    </view>-->
 
-    <view bindtap="to_person" class="store" wx:if="{{goods.uid}}">
-      <view class="title title-redtiao">店铺信息</view>
+    <view bindtap="to_person" class="store" wx:if="{{goods.shop_id}}">
       <view class="info">
         <view class="zuo">
           <image src="{{goods.avatar}}" class="avatar"></image>
           <view class="org">{{goods.org}}</view>
         </view>
         <view class="jin">
-          <view class="text">查看主页</view>
-          <image src="/icons/you3.png"></image>
+          <view class="text">进店逛逛</view>
+<!--          <image src="/icons/you3.png"></image>-->
         </view>
       </view>
     </view>
