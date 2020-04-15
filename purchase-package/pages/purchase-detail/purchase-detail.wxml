@@ -1,0 +1,56 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="title-box">
+    <view class="title">{{xuqiu.title}}</view>
+    <view class="price">￥{{xuqiu.min_price}} - ￥{{xuqiu.max_price}}</view>
+  </view>
+  <view class="ask-box">
+    <view class="title">加工要求</view>
+    <view class="info">
+      <view class="item">
+        <view class="label">加工数量</view>
+        <view class="value">{{xuqiu.num}}件</view>
+      </view>
+      <view class="item">
+        <view class="label">交货时间</view>
+        <view class="value">{{xuqiu.deadline}}</view>
+      </view>
+      <view class="item">
+        <view class="label">所在地</view>
+        <view class="value" wx:if="{{xuqiu.area == 0}}">全国</view>
+        <view class="value" wx:if="{{xuqiu.area == 1}}">江浙沪</view>
+        <view class="value" wx:if="{{xuqiu.area == 2}}">天津</view>
+      </view>
+      <view class="item">
+        <view class="label">发票要求</view>
+        <view class="value" wx:if="{{xuqiu.invoice == 0}}">无需发票</view>
+        <view class="value" wx:if="{{xuqiu.invoice == 1}}">需要发票</view>
+      </view>
+      <view class="item">
+        <view class="label">样品要求</view>
+        <view class="value" wx:if="{{xuqiu.sample == 0}}">无样品</view>
+        <view class="value" wx:if="{{xuqiu.sample == 1}}">有样品</view>
+      </view>
+      <view class="pics" wx:if="{{xuqiu.pics.length > 0}}">
+        <view class="label">物品样照</view>
+        <view class="ppic-box">
+          <image bindtap="zoom" data-index="{{index}}" src="{{item}}" class="pic" mode="aspectFill" wx:for="{{xuqiu.pics}}" wx:key="index"></image>
+          <view class="pic vh" wx:for="{{xuqiu.flex_pad}}" wx:key="index"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="ex-box">
+    <view class="title">需求说明</view>
+    <view class="desc">{{xuqiu.desc}}</view>
+  </view>
+
+  <!-- 联系用户 -->
+  <view bindtap="phone_call" class="contact-btn" wx:if="{{role == 2}}">
+    <image src="../../icons/tel2.png" class="icon"></image>
+    <view class="text">联系需求方 {{xuqiu.linkman}}</view>
+  </view>
+</view>

@@ -25,9 +25,8 @@
       <view class="title">优质工厂采购推荐</view>
     </view>
     <view class="factory-list">
-      <navigator url="/pages/person-page/person-page?uid={{item.id}}" class="factory" wx:for="{{factory_list}}" wx:key="id">
-        <image src="{{item.logo}}" class="icon"></image>
-        <view class="title one-line-ellipsis">{{item.org}}</view>
+      <navigator url="/pages/person-page/person-page?uid={{item.uid}}" class="factory" wx:for="{{factory_list}}" wx:key="id">
+        <image src="{{item.logo}}" mode="aspectFill" class="logo"></image>
       </navigator>
       <view class="factory vh" wx:for="{{factory_flex}}" wx:key="index"></view>
     </view>
@@ -40,7 +39,7 @@
       <view class="title">采购市场</view>
     </view>
     <view class="dan-list">
-      <view class="dan" wx:for="{{xuqiu_list}}" wx:key="id">
+      <navigator url="../purchase-detail/purchase-detail?id={{item.id}}" class="dan" wx:for="{{xuqiu_list}}" wx:key="id">
         <view class="title">{{item.title}}</view>
         <view class="info">
           <view class="info-item">
@@ -52,14 +51,14 @@
             <view class="value">{{item.deadline}}</view>
           </view>
           <view class="info-item desc">
-            <view class="label">商品描述：</view>
-            <view class="value">{{item.desc}}</view>
+            <view class="label">需求说明：</view>
+            <view class="value">{{item.desc || '无需求说明'}}</view>
           </view>
         </view>
-        <button bindtap="phone_call" data-tel="{{item.tel}}" class="tel-box" wx:if="{{role}}">
+        <button bindtap="phone_call" data-tel="{{item.tel}}" class="tel-box" wx:if="{{role == 2}}">
           <image src="../../icons/tel.png" class="tel"></image>
         </button>
-      </view>
+      </navigator>
     </view>
     <view class="nomore" wx:if="{{nomore}}">
       已经没有更多了哦

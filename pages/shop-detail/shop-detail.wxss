@@ -10,7 +10,7 @@ view {
 }
 
 .top-swiper {
-  height: 600rpx;
+  height: 750rpx;
   background: #fff;
   width: 100%;
 }

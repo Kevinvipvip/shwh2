@@ -53,6 +53,10 @@
   text-align: center;
 }
 
+.price-area input .input-placeholder {
+  color: #ff6137;
+}
+
 .price-area .min {
 }
 
@@ -71,6 +75,10 @@
   font-size: 34rpx;
 }
 
+.form-item .value-box .line .input-placeholder {
+  color: #ff6137;
+}
+
 .form-item .value-box textarea {
   font-size: 34rpx;
   margin-top: 40rpx;
@@ -79,41 +87,50 @@
   min-height: 150rpx;
 }
 
-.pian-box {
-  margin-top: 40rpx;
+.form-item .value-box textarea .textarea-placeholder {
+  color: #ff6137;
 }
 
-.pian-box .pian:first-child {
-  margin-top: 0;
+.pian-box {
+  margin-top: 40rpx;
 }
 
 .pian-box .pian {
   margin-top: 40rpx;
   display: flex;
+  border: 2rpx solid rgba(0, 0, 0, 0.05);
+  border-radius: 8rpx;
   height: 98rpx;
   box-sizing: border-box;
 }
 
-.pian-box .la {
+.pian-box .pian .pian-item:first-child {
+  border-radius: 8rpx 0 0 8rpx;
+}
+
+.pian-box .pian .pian-item {
+  width: 0;
+  flex-grow: 1;
   display: flex;
   align-items: center;
-  margin-right: 30rpx;
-}
-
-.pian-box .la:last-child {
-  margin-right: 0;
-}
-
-.pian-box .la .icon {
-  width: 44rpx;
-  height: 28rpx;
-}
-.pian-box .la .text {
+  justify-content: center;
   font-size: 34rpx;
   color: #333;
-  margin-left: 28rpx;
+  box-sizing: border-box;
+  border-right: 2rpx solid rgba(0, 0, 0, 0.05);
 }
 
+.pian-box .pian .pian-item:last-child {
+  border-radius: 0 8rpx 8rpx 0;
+  border-right: none;
+}
+
+.pian-box .pian .pian-item.active {
+  background: #333;
+  border-color: #333;
+  margin: -2rpx;
+  color: #fff;
+}
 
 .up-pic {
 }
@@ -126,9 +143,9 @@
   height: 98rpx;
   line-height: 98rpx;
   text-align: center;
-  background: #fcd530;
+  background: #333;
+  color: #fff;
   font-size: 36rpx;
-  color: #333;
   border-radius: 0;
   z-index: 2;
 }

@@ -13,8 +13,8 @@ Page({
     num: '',  // 期望加工量
     deadline: '',  // 交货日期
 
-    invoice: 0,  // 0.需要发票 1.无需发票
-    sample: 0,  // 0.有样品 1.无样品
+    invoice: 0,  // 0.无需发票 1.需要发票
+    sample: 0,  // 0.无样品 1.有样品
     area: 0,  // 1.全国 2.江浙沪 3.天津
 
     tel: '',  // 联系方式
@@ -25,8 +25,6 @@ Page({
     flex_pad: []
   },
   onLoad() {
-    console.log(utils.date_format(new Date(), 'yyyy-MM-dd'));
-
     this.setData({now_date: utils.date_format(new Date(), 'yyyy-MM-dd')}, () => {
       this.setData({deadline: this.data.now_date})
     });
@@ -103,8 +101,6 @@ Page({
       app.toast('最高价不能低于最低价');
     } else if (!data.num) {
       app.toast('请填写采购数量');
-    } else if (data.pics.length === 0) {
-      app.toast('请上传物品样照');
     } else if (!data.tel) {
       app.toast('请填写联系方式');
     } else if (!app.my_config.reg.tel.test(data.tel)) {
@@ -123,9 +119,12 @@ Page({
         area: data.area,
         tel: data.tel,
         linkman: data.linkman,
-        pics: this.get_img_arr(),
-        desc: data.desc,
+        desc: data.desc
       };
+
+      if (data.pics.length > 0) {
+        post.pics = this.get_img_arr();
+      }
 
       wx.showLoading({
         title: '提交中',

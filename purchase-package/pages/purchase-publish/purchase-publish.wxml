@@ -41,51 +41,24 @@
     <view class="form-block">
       <view class="block-title">请选择您的生产偏好</view>
       <view class="pian-box">
+
         <view class="pian">
-          <view bindtap="invoice_change" data-invoice="{{1}}" class="la">
-            <image src="../../icons/pur-active.png" class="icon" wx:if="{{invoice == 1}}"></image>
-            <image src="../../icons/pur.png" class="icon" wx:if="{{invoice != 1}}"></image>
-            <view class="text">需要发票</view>
-          </view>
-          <view bindtap="invoice_change" data-invoice="{{0}}" class="la">
-            <image src="../../icons/pur-active.png" class="icon" wx:if="{{invoice == 0}}"></image>
-            <image src="../../icons/pur.png" class="icon" wx:if="{{invoice != 0}}"></image>
-            <view class="text">无需发票</view>
-          </view>
+          <view bindtap="invoice_change" data-invoice="0" class="pian-item {{invoice == 0 ? 'active' : ''}}">无需发票</view>
+          <view bindtap="invoice_change" data-invoice="1" class="pian-item {{invoice == 1 ? 'active' : ''}}">需要发票</view>
         </view>
         <view class="pian">
-          <view bindtap="sample_change" data-sample="{{1}}" class="la">
-            <image src="../../icons/pur-active.png" class="icon" wx:if="{{sample == 1}}"></image>
-            <image src="../../icons/pur.png" class="icon" wx:if="{{sample != 1}}"></image>
-            <view class="text">有样品</view>
-          </view>
-          <view bindtap="sample_change" data-sample="{{0}}" class="la">
-            <image src="../../icons/pur-active.png" class="icon" wx:if="{{sample == 0}}"></image>
-            <image src="../../icons/pur.png" class="icon" wx:if="{{sample != 0}}"></image>
-            <view class="text">无样品</view>
-          </view>
+          <view bindtap="sample_change" data-sample="0" class="pian-item {{sample == 0 ? 'active' : ''}}">无样品</view>
+          <view bindtap="sample_change" data-sample="1" class="pian-item {{sample == 1 ? 'active' : ''}}">有样品</view>
         </view>
         <view class="pian">
-          <view bindtap="area_change" data-area="{{0}}" class="la">
-            <image src="../../icons/pur-active.png" class="icon" wx:if="{{area == 0}}"></image>
-            <image src="../../icons/pur.png" class="icon" wx:if="{{area != 0}}"></image>
-            <view class="text">全国</view>
-          </view>
-          <view bindtap="area_change" data-area="{{1}}" class="la">
-            <image src="../../icons/pur-active.png" class="icon" wx:if="{{area == 1}}"></image>
-            <image src="../../icons/pur.png" class="icon" wx:if="{{area != 1}}"></image>
-            <view class="text">江浙沪</view>
-          </view>
-          <view bindtap="area_change" data-area="{{2}}" class="la">
-            <image src="../../icons/pur-active.png" class="icon" wx:if="{{area == 2}}"></image>
-            <image src="../../icons/pur.png" class="icon" wx:if="{{area != 2}}"></image>
-            <view class="text">天津</view>
-          </view>
+          <view bindtap="area_change" data-area="0" class="pian-item {{area == 0 ? 'active' : ''}}">全国</view>
+          <view bindtap="area_change" data-area="1" class="pian-item {{area == 1 ? 'active' : ''}}">江浙沪</view>
+          <view bindtap="area_change" data-area="2" class="pian-item {{area == 2 ? 'active' : ''}}">天津</view>
         </view>
       </view>
     </view>
 
-    <!-- 物品样照 -->
+      <!-- 物品样照 -->
     <view class="form-block">
       <view class="block-title">请上传您的物品样照</view>
       <view class="up-pic">
@@ -126,7 +99,7 @@
         </view>
       </view>
       <view class="form-item">
-        <view class="label">其他需求<text>非必填</text></view>
+        <view class="label">需求说明<text>非必填</text></view>
         <view class="value-box">
           <textarea bindinput="bind_input" data-name="desc" value="{{desc}}" auto-height maxlength="200" auto-height cursor-spacing="50" placeholder="请填写加工要求等附加信息（如尺码，颜色， 特殊工艺等），让加工厂/供应链专家进一步了 解您的需求！" />
         </view>

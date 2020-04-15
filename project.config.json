@@ -284,6 +284,13 @@
 					"pathName": "activity-package/pages/activity-detail/activity-detail",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 33,
+					"name": "采购详情",
+					"pathName": "purchase-package/pages/purchase-detail/purchase-detail",
+					"query": "id=1",
+					"scene": null
 				}
 			]
 		}

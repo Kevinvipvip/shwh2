@@ -71,7 +71,8 @@
       "root": "purchase-package",
       "pages": [
         "pages/index/index",
-        "pages/purchase-publish/purchase-publish"
+        "pages/purchase-publish/purchase-publish",
+        "pages/purchase-detail/purchase-detail"
       ]
     },
     {

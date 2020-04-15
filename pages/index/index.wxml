@@ -59,7 +59,7 @@
   <!-- 视频精选 -->
   <view class="video-box">
     <view class="title-line">
-      <view class="title">视频精选</view>
+      <view class="title">好货精选</view>
 <!--      <view class="more">-->
 <!--        <view class="text">更多</view>-->
 <!--        <image src="/icons/right-arrow.png" class="you"></image>-->
@@ -68,12 +68,12 @@
     <navigator url="/pages/shop-detail/shop-detail?id={{video_top.id}}" class="video big-video">
       <view class="cover-box">
         <image src="{{video_top.poster}}" class="poster" mode="aspectFill"></image>
-        <view class="mask">
-          <view class="play"></view>
-        </view>
+<!--        <view class="mask">-->
+<!--          <view class="play"></view>-->
+<!--        </view>-->
       </view>
       <view class="info">
-        <view class="title">{{video_top.title}}</view>
+        <view class="title">{{video_top.name}}</view>
         <view class="xia">
           <view class="price">{{video_top.price}}</view>
         </view>
@@ -83,12 +83,12 @@
       <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="video" wx:for="{{video_list}}" wx:key="id">
         <view class="cover-box">
           <image src="{{item.poster}}" class="poster"></image>
-          <view class="mask">
-            <view class="play"></view>
-          </view>
+<!--          <view class="mask">-->
+<!--            <view class="play"></view>-->
+<!--          </view>-->
         </view>
         <view class="info">
-          <view class="title two-line-ellipsis">{{item.title}}</view>
+          <view class="title two-line-ellipsis">{{item.name}}</view>
           <view class="xia">
             <view class="price">{{item.price}}</view>
           </view>

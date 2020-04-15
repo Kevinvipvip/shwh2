@@ -44,14 +44,14 @@
 
         <!-- 视频推荐 -->
         <view class="video-reom">
-          <view class="title">视频推荐</view>
+          <view class="title">好货精选</view>
           <view class="video-list">
             <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="video" wx:for="{{video_list}}" wx:key="id">
               <view class="cover-box">
                 <image src="{{item.poster}}" class="cover" mode="aspectFill"></image>
-                <view class="modal">
-                  <view class="play"></view>
-                </view>
+<!--                <view class="modal">-->
+<!--                  <view class="play"></view>-->
+<!--                </view>-->
               </view>
               <view class="title two-line-ellipsis">{{item.name}}</view>
               <view class="price">{{item.price}}</view>
