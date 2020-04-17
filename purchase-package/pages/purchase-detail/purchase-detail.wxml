@@ -51,6 +51,6 @@
   <!-- 联系用户 -->
   <view bindtap="phone_call" class="contact-btn" wx:if="{{role == 2}}">
     <image src="../../icons/tel2.png" class="icon"></image>
-    <view class="text">联系需求方 {{xuqiu.linkman}}</view>
+    <view class="text">联系需求方 {{xuqiu.linkman_sb}}</view>
   </view>
 </view>
