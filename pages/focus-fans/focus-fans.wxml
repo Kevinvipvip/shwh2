@@ -14,7 +14,7 @@
 <!--          <view class="fan-number">粉丝量：4870</view>-->
 <!--        </view>-->
       </view>
-      <view bindtap="iFocus" data-index="{{index}}" class="focus-btn">{{item.each ? '互相关注' : '已关注'}}</view>
+      <view catchtap="iFocus" data-index="{{index}}" class="focus-btn">{{item.each ? '互相关注' : '已关注'}}</view>
     </navigator>
   </view>
 
@@ -29,8 +29,8 @@
 <!--          <view class="fan-number">粉丝量：4870</view>-->
 <!--        </view>-->
       </view>
-      <view bindtap="iFocus" data-index="{{index}}" class="focus-btn hu" wx:if="{{item.each}}">互相关注</view>
-      <view bindtap="iFocus" data-index="{{index}}" class="focus-btn" wx:else>关注</view>
+      <view catchtap="iFocus" data-index="{{index}}" class="focus-btn hu" wx:if="{{item.each}}">互相关注</view>
+      <view catchtap="iFocus" data-index="{{index}}" class="focus-btn" wx:else>关注</view>
     </navigator>
   </view>
 
