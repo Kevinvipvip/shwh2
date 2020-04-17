@@ -55,7 +55,7 @@
             <view class="value">{{item.desc || '无需求说明'}}</view>
           </view>
         </view>
-        <button bindtap="phone_call" data-tel="{{item.tel}}" class="tel-box" wx:if="{{role == 2}}">
+        <button catchtap="phone_call" data-tel="{{item.tel}}" class="tel-box" wx:if="{{role == 2}}">
           <image src="../../icons/tel.png" class="tel"></image>
         </button>
       </navigator>
