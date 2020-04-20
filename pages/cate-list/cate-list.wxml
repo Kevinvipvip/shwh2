@@ -15,9 +15,9 @@
       <!-- 热门推荐 -->
       <view class="hot-recom" wx:if="{{active_index == 0}}">
         <!-- 0元授权按钮 -->
-        <navigator url="/ip-package/pages/auth-apply/auth-apply" class="apply-btn">
+        <view bindtap="jump" data-url="/ip-package/pages/auth-apply/auth-apply" class="apply-btn">
           <image src="/images/0auth.jpg" class="img"></image>
-        </navigator>
+        </view>
 
         <!-- 热门推荐 -->
         <view class="hr">
@@ -85,4 +85,7 @@
       </view>
     </scroll-view>
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

@@ -24,7 +24,9 @@ Page({
     note_nodata: false,
     note_loading: false,
 
-    my_uid: 0  // 我的uid
+    my_uid: 0,  // 我的uid
+
+    bind_tel_show: false  // 绑定手机号弹窗
   },
   onLoad(options) {
     this.data.uid = options.uid;
@@ -208,14 +210,16 @@ Page({
   },
   // 关注/取消关注
   iFocus() {
-    if (!this.data.focus_loading) {
-      this.data.focus_loading = true;
+    app.check_bind(() => {
+      if (!this.data.focus_loading) {
+        this.data.focus_loading = true;
 
-      app.ajax('note/iFocus', { to_uid: this.data.uid }, res => {
-        this.setData({ ['user.ifocus']: res });
-      }, null, () => {
-        this.data.focus_loading = false;
-      });
-    }
+        app.ajax('note/iFocus', { to_uid: this.data.uid }, res => {
+          this.setData({ ['user.ifocus']: res });
+        }, null, () => {
+          this.data.focus_loading = false;
+        });
+      }
+    });
   }
 });

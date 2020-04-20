@@ -123,6 +123,8 @@ App({
                   url: '/pages/login/login?route=' + encodeURIComponent(current_page.route + this.obj2query(current_page.options))
                 });
                 break;
+              case -7:  // 用户未绑定手机号
+                break;
               case 49:
                 this.toast(res.data.data);
                 break;
@@ -139,7 +141,7 @@ App({
                 break;
               default:
                 if (res.data.message) {
-                  this.toast(res.data.message);
+                  this.modal(res.data.message);
                 } else {
                   this.toast('网络异常');
                 }
@@ -225,14 +227,15 @@ App({
       }
     });
   },
-  // 用户是否授权（后端）
-  checkUserAuth(callback) {
-    let post = {
-      token: this.user_data.token
-    };
-    this.ajax('login/checkUserAuth', post, (res) => {
-      callback(res);
-    });
+  // 检查绑定手机号
+  check_bind(callback) {
+    if (!this.user_data.uid) {
+      let current_pages = getCurrentPages();
+      let current_page = current_pages[current_pages.length - 1];
+      current_page.setData({bind_tel_show: true});
+    } else {
+      callback();
+    }
   },
   // 返回处理过的分享路径
   share_path() {

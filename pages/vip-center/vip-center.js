@@ -12,7 +12,9 @@ Page({
     tehui_list: [],
     nomore: false,
     nodata: false,
-    loading: false
+    loading: false,
+
+    bind_tel_show: false  // 绑定手机号弹窗
   },
   onLoad() {
     this.init(() => {
@@ -60,26 +62,28 @@ Page({
   },
   // vip下单
   recharge() {
-    wx.showLoading({
-      title: '支付中...',
-      mask: true
-    });
+    app.check_bind(() => {
+      wx.showLoading({
+        title: '支付中...',
+        mask: true
+      });
 
-    app.ajax('my/recharge', null, res => {
-      this.vipPay(res.order_sn, pay_res => {
-        wx.hideLoading();
+      app.ajax('my/recharge', null, res => {
+        this.vipPay(res.order_sn, pay_res => {
+          wx.hideLoading();
 
-        if (pay_res) {
-          app.modal(this.data.vip === 0 ? '开通成功' : '续费成功', () => {
-            this.mydetail();
-            app.set_user_data();
+          if (pay_res) {
+            app.modal(this.data.vip === 0 ? '开通成功' : '续费成功', () => {
+              this.mydetail();
+              app.set_user_data();
 
-            let goods_page = app.get_page('pages/shop-detail/shop-detail');
-            if (goods_page) {
-              goods_page.vip_refresh();
-            }
-          });
-        }
+              let goods_page = app.get_page('pages/shop-detail/shop-detail');
+              if (goods_page) {
+                goods_page.vip_refresh();
+              }
+            });
+          }
+        });
       });
     });
   },

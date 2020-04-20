@@ -9,7 +9,9 @@ Page({
     video_list: [],  // 视频列表
 
     ip_cate_list: [],  // 版权分类
-    ip_pad: []
+    ip_pad: [],
+
+    bind_tel_show: false  // 绑定手机号弹窗
   },
   onLoad() {
     this.init(() => {
@@ -108,5 +110,12 @@ Page({
   to_cate_shop(e) {
     let cate = e.currentTarget.dataset.cate;
     wx.navigateTo({ url: '/pages/cate-shop/cate-shop?id=' + cate.id + '&cate_name=' + encodeURI(cate.cate_name) });
+  },
+  // 跳页
+  jump(e) {
+    app.check_bind(() => {
+      let url = e.currentTarget.dataset.url;
+      wx.navigateTo({ url });
+    });
   }
 });

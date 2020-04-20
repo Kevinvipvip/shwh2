@@ -59,11 +59,13 @@ Page({
   },
   // 跳转申请页，判断用户是否申请过角色
   before_apply() {
-    if (this.data.apply.role_check) {
-      wx.navigateTo({ url: '/pages/apply2/apply2' });
-    } else {
-      wx.navigateTo({ url: '/pages/apply/apply' });
-    }
+    app.check_bind(() => {
+      if (this.data.apply.role_check) {
+        wx.navigateTo({ url: '/pages/apply2/apply2' });
+      } else {
+        wx.navigateTo({ url: '/pages/apply/apply' });
+      }
+    });
   },
   myDetail(complete) {
     app.ajax('my/myDetail', null, (res) => {
@@ -103,13 +105,20 @@ Page({
   // 去会员中心页
   to_vip() {
     if (!app.user_data.uid) {
-      this.setData({bind_tel_show: true});
+      this.setData({ bind_tel_show: true });
     } else {
-      wx.navigateTo({url: '/pages/vip-center/vip-center'});
+      wx.navigateTo({ url: '/pages/vip-center/vip-center' });
     }
   },
   // 绑定手机号弹窗
   bind_tel() {
     this.setData({ bind_tel_show: true });
+  },
+  // 跳页
+  jump(e) {
+    app.check_bind(() => {
+      let url = e.currentTarget.dataset.url;
+      wx.navigateTo({ url });
+    });
   }
 });

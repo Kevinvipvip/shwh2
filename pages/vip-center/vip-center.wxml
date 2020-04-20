@@ -37,4 +37,7 @@
       暂无数据
     </view>
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>

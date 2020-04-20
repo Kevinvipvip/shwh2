@@ -40,7 +40,7 @@
             <view class="label">会员价：</view>
             <view class="v-price">{{goods.vip_price}}</view>
           </view>
-          <button bindtap="to_vip" class="vip-btn">立即加入会员</button>
+          <button bindtap="jump" data-url="/pages/vip-center/vip-center" class="vip-btn">立即加入会员</button>
         </view>
       </view>
     </view>

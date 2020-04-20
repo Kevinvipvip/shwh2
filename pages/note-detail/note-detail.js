@@ -26,16 +26,16 @@ Page({
     re_name: '我要评论...',  // 回复人昵称
     to_cid: 0,  // 回复评论id
     content: '',
-    release_focus: false
+    release_focus: false,
+
+    bind_tel_show: false  // 绑定手机号弹窗
   },
   onLoad(options) {
     this.data.note_id = options.id;
+  },
+  onShow() {
     this.setData({ my_uid: app.user_data.uid });
-    this.getNoteDetail(() => {
-      this.ifFocus();
-    });
-    this.ifLike();
-    this.ifCollect();
+    this.getNoteDetail();
     this.commentList();
   },
   getNoteDetail(callback) {
@@ -47,11 +47,12 @@ Page({
     app.ajax('note/getNoteDetail', post, (res) => {
       app.avatar_format(res);
       app.format_img(res.pics);
-      // res.avatar = res.avatar.indexOf('https') === 0 ? res.avatar : app.my_config.base_url + '/' + res.avatar;
-      // for (let i = 0; i < res.pics.length; i++) {
-      //   res.pics[i] = app.my_config.base_url + '/' + res.pics[i];
-      // }
-      this.setData({ note: res });
+      this.setData({
+        like: res.ilike,
+        focus: res.ifocus,
+        collect: res.icollect,
+        note: res
+      });
       if (callback) {
         callback();
       }
@@ -73,114 +74,89 @@ Page({
     this.setData({ [e.currentTarget.dataset['name']]: e.detail.value || '' })
   },
   commentAdd() {
-    if (this.data.content.trim()) {
-      wx.showLoading({ mask: true });
+    app.check_bind(() => {
+      if (this.data.content.trim()) {
+        wx.showLoading({ mask: true });
 
-      let post = {
-        note_id: this.data.note_id,
-        content: this.data.content
-      };
+        let post = {
+          note_id: this.data.note_id,
+          content: this.data.content
+        };
 
-      if (this.data.to_cid) {
-        post.to_cid = this.data.to_cid;
+        if (this.data.to_cid) {
+          post.to_cid = this.data.to_cid;
+        }
+
+        app.ajax('note/commentAdd', post, () => {
+          this.setData({ content: '' });
+          this.commentList();
+        }, err => {
+          app.modal(err.message);
+        }, () => {
+          wx.hideLoading();
+        });
       }
-
-      app.ajax('note/commentAdd', post, () => {
-        this.setData({ content: '' });
-        this.commentList();
-      }, err => {
-        app.modal(err.message);
-      }, () => {
-        wx.hideLoading();
-      });
-    }
-  },
-  // 判断是否点赞
-  ifLike() {
-    let post = {
-      note_id: this.data.note_id,
-      token: app.user_data.token
-    };
-
-    app.ajax('note/ifLike', post, (res) => {
-      this.setData({ like: res });
     });
   },
   // 点赞/取消
   iLike() {
-    if (!this.data.like_loading) {
-      this.data.like_loading = true;
+    app.check_bind(() => {
+      if (!this.data.like_loading) {
+        this.data.like_loading = true;
 
-      let post = {
-        note_id: this.data.note_id,
-        token: app.user_data.token
-      };
+        let post = {
+          note_id: this.data.note_id,
+          token: app.user_data.token
+        };
 
-      app.ajax('note/iLike', post, (res) => {
-        this.setData({
-          like: res,
-          'note.like': this.data.note.like + (res ? 1 : -1)
+        app.ajax('note/iLike', post, (res) => {
+          this.setData({
+            like: res,
+            'note.like': this.data.note.like + (res ? 1 : -1)
+          });
+        }, null, () => {
+          this.data.like_loading = false;
         });
-      }, null, () => {
-        this.data.like_loading = false;
-      });
-    }
-  },
-  // 判断是否收藏
-  ifCollect() {
-    let post = {
-      note_id: this.data.note_id,
-      token: app.user_data.token
-    };
-
-    app.ajax('note/ifCollect', post, (res) => {
-      this.setData({ collect: res });
+      }
     });
   },
   // 收藏/取消
   iCollect() {
-    if (!this.data.collect_loading) {
-      this.data.collect_loading = true;
+    app.check_bind(() => {
+      if (!this.data.collect_loading) {
+        this.data.collect_loading = true;
 
-      let post = {
-        note_id: this.data.note_id,
-        token: app.user_data.token
-      };
+        let post = {
+          note_id: this.data.note_id,
+          token: app.user_data.token
+        };
 
-      app.ajax('note/iCollect', post, (res) => {
-        this.setData({ collect: res });
-      }, null, () => {
-        this.data.collect_loading = false;
-      });
-    }
-  },
-  // 判断是否关注
-  ifFocus() {
-    let post = {
-      token: app.user_data.token,
-      to_uid: this.data.note.uid
-    };
-
-    app.ajax('note/ifFocus', post, (res) => {
-      this.setData({ focus: res });
+        app.ajax('note/iCollect', post, (res) => {
+          this.setData({ collect: res });
+        }, null, () => {
+          this.data.collect_loading = false;
+        });
+      }
     });
   },
   // 关注/取消关注
   iFocus() {
-    if (!this.data.focus_loading) {
-      this.data.focus_loading = true;
+    app.check_bind(() => {
+      if (!this.data.focus_loading) {
+        this.data.focus_loading = true;
 
-      let post = {
-        token: app.user_data.token,
-        to_uid: this.data.note.uid
-      };
+        let post = {
+          token: app.user_data.token,
+          to_uid: this.data.note.uid
+        };
 
-      app.ajax('note/iFocus', post, (res) => {
-        this.setData({ focus: res });
-      }, null, () => {
-        this.data.focus_loading = false;
-      });
-    }
+        app.ajax('note/iFocus', post, (res) => {
+          this.setData({ focus: res });
+        }, null, () => {
+          this.data.focus_loading = false;
+        });
+      }
+    });
   },
   // 去他人主页
   to_person() {
@@ -216,19 +192,23 @@ Page({
     this.setData({ comment_num: count });
   },
   show_input(e) {
-    let re_user = e.currentTarget.dataset.re_user;
-    this.data.to_cid = re_user.id;
-    this.setData({
-      re_name: '回复：' + re_user.nickname,
-      release_focus: true
+    app.check_bind(() => {
+      let re_user = e.currentTarget.dataset.re_user;
+      this.data.to_cid = re_user.id;
+      this.setData({
+        re_name: '回复：' + re_user.nickname,
+        release_focus: true
+      });
     });
   },
   // 第一层评论
   commet_note() {
-    this.data.to_cid = 0;
-    this.setData({
-      re_name: '我要评论...',
-      release_focus: true
+    app.check_bind(() => {
+      this.data.to_cid = 0;
+      this.setData({
+        re_name: '我要评论...',
+        release_focus: true
+      });
     });
   }
 });

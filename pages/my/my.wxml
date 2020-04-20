@@ -2,71 +2,71 @@
   <!-- 头部 -->
   <view class="banner">
     <view class="head-line">
-      <image bindtap="to_my_edit" src="{{user.avatar}}" mode="aspectFill" class="head"></image>
+      <image bindtap="jump" data-url="/pages/my-edit/my-edit" src="{{user.avatar}}" mode="aspectFill" class="head"></image>
       <view class="info" wx:if="{{user.uid}}">
         <view class="id">ID:{{user.uid}}</view>
         <view class="nickname">{{user.nickname}}</view>
       </view>
       <view class="info" wx:else>
-        <view bindtap="bind_tel" class="btn">绑定手机号</view>
+        <navigator url="/pages/bind-tel/bind-tel" class="btn">绑定手机号</navigator>
       </view>
     </view>
     <view class="vip-ad">
       <image src="/images/my-vip-ad.png" class="bg"></image>
-      <view bindtap="to_vip" class="btn">{{user.vip == 0 ? '立即开通' : '立即查看'}}</view>
+      <view bindtap="jump" data-url="/pages/vip-center/vip-center" class="btn">{{user.vip == 0 ? '立即开通' : '立即查看'}}</view>
     </view>
   </view>
 
   <!-- 个人数据 -->
   <view class="data-list">
-    <view class="data">
-      <view class="amount">{{user.score}}</view>
+    <view bindtap="jump" class="data">
+      <view data-url="" class="amount">{{user.score}}</view>
       <view class="title">积分</view>
     </view>
-    <navigator url="/pages/focus-fans/focus-fans?type=1" class="data">
+    <view bindtap="jump" data-url="/pages/focus-fans/focus-fans?type=1" class="data">
       <view class="amount">{{user.subscribe}}</view>
       <view class="title">关注</view>
-    </navigator>
-    <navigator url="/pages/focus-fans/focus-fans?type=2" class="data">
+    </view>
+    <view bindtap="jump" data-url="/pages/focus-fans/focus-fans?type=2" class="data">
       <view class="amount">{{user.focus}}</view>
       <view class="title">粉丝</view>
-    </navigator>
-    <navigator url="/pages/my-notes/my-notes" class="data">
+    </view>
+    <view bindtap="jump" data-url="/pages/my-notes/my-notes" class="data">
       <view class="amount">{{user.note_num}}</view>
       <view class="title">笔记</view>
-    </navigator>
+    </view>
   </view>
 
   <!-- 我的订单 -->
   <view class="order-box">
     <view class="title-line">
       <view class="title">我的订单</view>
-      <navigator url="/order-package/pages/my-orders/my-orders" class="all">
+      <view bindtap="jump" data-url="/order-package/pages/my-orders/my-orders" class="all">
         <view class="text">全部订单</view>
         <image src="/icons/you3.png" class="you"></image>
-      </navigator>
+      </view>
     </view>
     <view class="status-box">
-      <navigator url="/order-package/pages/my-orders/my-orders?status=0" class="status">
+      <view bindtap="jump" data-url="/order-package/pages/my-orders/my-orders?status=0" class="status">
         <image src="/icons/os1.png" class="icon i1"></image>
         <view class="text">待付款</view>
-      </navigator>
-      <navigator url="/order-package/pages/my-orders/my-orders?status=1" class="status">
+      </view>
+      <view bindtap="jump" data-url="/order-package/pages/my-orders/my-orders?status=1" class="status">
         <image src="/icons/os2.png" class="icon i2"></image>
         <view class="text">待发货</view>
-      </navigator>
-      <navigator url="/order-package/pages/my-orders/my-orders?status=2" class="status">
+      </view>
+      <view bindtap="jump" data-url="/order-package/pages/my-orders/my-orders?status=2" class="status">
         <image src="/icons/os3.png" class="icon i3"></image>
         <view class="text">待收货</view>
-      </navigator>
-      <navigator url="/order-package/pages/my-orders/my-orders?status=3" class="status">
+      </view>
+      <view bindtap="jump" data-url="/order-package/pages/my-orders/my-orders?status=3" class="status">
         <image src="/icons/os4.png" class="icon i4"></image>
         <view class="text">已完成</view>
-      </navigator>
-      <navigator url="/order-package/pages/refund-list/refund-list" class="status">
+      </view>
+      <view bindtap="jump" data-url="/order-package/pages/refund-list/refund-list" class="status">
         <image src="/icons/os5.png" class="icon i5"></image>
         <view class="text">售后</view>
-      </navigator>
+      </view>
     </view>
   </view>
 
@@ -74,18 +74,18 @@
   <view class="service-box">
     <view class="title">我的服务</view>
     <view class="service-list">
-      <navigator url="/chou-package/pages/my-chou-orders/my-chou-orders" class="service">
+      <view bindtap="jump" data-url="/chou-package/pages/my-chou-orders/my-chou-orders" class="service">
         <image src="/icons/my-chou.png" class="icon i1"></image>
         <view class="text">我的众筹</view>
-      </navigator>
+      </view>
       <view bindtap="before_apply" url="/pages/apply/apply" class="service" wx:if="{{!user.role}}">
         <image src="/icons/my-shen.png" class="icon i2"></image>
         <view class="text">申请角色</view>
       </view>
-      <navigator url="/pages/my-address/my-address" class="service">
+      <view bindtap="jump" data-url="/pages/my-address/my-address" class="service">
         <image src="/icons/my-add.png" class="icon i3"></image>
         <view class="text">收货地址</view>
-      </navigator>
+      </view>
       <button open-type="contact" show-message-card="true" class="service">
         <image src="/icons/my-kefu.png" class="icon i4"></image>
         <view class="text">在线客服</view>

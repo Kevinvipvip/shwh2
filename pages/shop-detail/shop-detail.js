@@ -25,7 +25,9 @@ Page({
     nodata: false,
     loading: false,
 
-    vip: 0  // 0.不是vip 1.是vip
+    vip: 0,  // 0.不是vip 1.是vip
+
+    bind_tel_show: false  // 绑定手机号弹窗
   },
   onLoad(options) {
     this.data.id = options.id;
@@ -63,57 +65,61 @@ Page({
   },
   // 点击购买
   buy() {
-    let data = this.data;
+    app.check_bind(() => {
+      let data = this.data;
 
-    if (data.goods.stock === 0) {
-      app.toast('该商品已告罄！');
-    } else {
-      let amount;
-      if (data.goods.use_attr === 1) {
-        if (data.amount === 0) {
-          amount = data.goods.attr_list[data.attr_index].stock !== 0 ? 1 : 0;
-        } else {
-          amount = data.amount;
-        }
+      if (data.goods.stock === 0) {
+        app.toast('该商品已告罄！');
       } else {
-        amount = data.amount || 1;
-      }
+        let amount;
+        if (data.goods.use_attr === 1) {
+          if (data.amount === 0) {
+            amount = data.goods.attr_list[data.attr_index].stock !== 0 ? 1 : 0;
+          } else {
+            amount = data.amount;
+          }
+        } else {
+          amount = data.amount || 1;
+        }
 
-      this.setData({
-        attr_show: true,
-        buy_type: 1,
-        amount: amount
-      }, () => {
-        this.setData({ attr_active: true });
-      });
-    }
+        this.setData({
+          attr_show: true,
+          buy_type: 1,
+          amount: amount
+        }, () => {
+          this.setData({ attr_active: true });
+        });
+      }
+    });
   },
   // 点击加入购物车
   cartAdd() {
-    let data = this.data;
+    app.check_bind(() => {
+      let data = this.data;
 
-    if (this.data.goods.stock === 0) {
-      app.toast('该商品已告罄！');
-    } else {
-      let amount;
-      if (data.goods.use_attr === 1) {
-        if (this.data.amount === 0) {
-          amount = data.goods.attr_list[data.attr_index].stock !== 0 ? 1 : 0;
-        } else {
-          amount = data.amount;
-        }
+      if (this.data.goods.stock === 0) {
+        app.toast('该商品已告罄！');
       } else {
-        amount = data.amount || 1;
-      }
+        let amount;
+        if (data.goods.use_attr === 1) {
+          if (this.data.amount === 0) {
+            amount = data.goods.attr_list[data.attr_index].stock !== 0 ? 1 : 0;
+          } else {
+            amount = data.amount;
+          }
+        } else {
+          amount = data.amount || 1;
+        }
 
-      this.setData({
-        attr_show: true,
-        buy_type: 2,
-        amount: amount
-      }, () => {
-        this.setData({ attr_active: true });
-      });
-    }
+        this.setData({
+          attr_show: true,
+          buy_type: 2,
+          amount: amount
+        }, () => {
+          this.setData({ attr_active: true });
+        });
+      }
+    });
   },
   // 购买或加入购物车，取决于buy_type的值
   buy_btn() {
@@ -486,16 +492,15 @@ Page({
       }
     }
   },
-  // 去会员中心页
-  to_vip() {
-    if (!app.user_data.uid) {
-      this.setData({ bind_tel_show: true });
-    } else {
-      wx.navigateTo({ url: '/pages/vip-center/vip-center' });
-    }
-  },
   // 开通vip后刷新vip状态
   vip_refresh() {
     this.setData({ vip: app.user_data.vip });
+  },
+  // 跳页
+  jump(e) {
+    app.check_bind(() => {
+      let url = e.currentTarget.dataset.url;
+      wx.navigateTo({ url });
+    });
   }
 });

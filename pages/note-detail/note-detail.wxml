@@ -30,27 +30,6 @@
     <text class="text">{{note.goods_name}}</text>
   </navigator>
 
-<!--  <view class="info">-->
-<!--    <view class="icons">-->
-<!--      <view class="left">-->
-<!--        <view class="icon-box" bindtap="iLike">-->
-<!--          <icon class="iconfont {{like ? 'iconxin1' : 'iconxin2'}}"/>-->
-<!--          <view class="sub">{{note.like}}</view>-->
-<!--        </view>-->
-<!--        <button open-type="share" class="icon-box">-->
-<!--          <icon class="iconfont iconfenxiang"/>-->
-<!--&lt;!&ndash;          <view class="sub">1</view>&ndash;&gt;-->
-<!--        </button>-->
-<!--      </view>-->
-<!--      <view class="right">-->
-<!--        <view class="icon-box" bindtap="iCollect">-->
-<!--          <icon class="iconfont {{collect ? 'iconfavorfill' : 'iconfavor'}}"/>-->
-<!--          &lt;!&ndash;<view class="sub">2</view>&ndash;&gt;-->
-<!--        </view>-->
-<!--      </view>-->
-<!--    </view>-->
-<!--  </view>-->
-
   <view class="comment-box">
     <view class="title-line">
       <view class="title">评论</view>
@@ -84,7 +63,7 @@
   </view>
 
   <view class="input-box" style="bottom: {{input_bottom}}px;">
-    <input bindconfirm="commentAdd" bindtap="commet_note" bindinput="bind_input" bindfocus="bind_focus" bindblur="bind_blur" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="{{re_name}}" maxlength="100" class="re-input" focus="{{release_focus}}" />
+    <input bindconfirm="commentAdd" bindtap="commet_note" bindinput="bind_input" bindfocus="bind_focus" bindblur="bind_blur" adjust-position="{{false}}" data-name="content" value="{{content}}" placeholder="{{re_name}}" maxlength="100" class="re-input" focus="{{release_focus}}" disabled="{{!my_uid}}" />
 
     <view class="icon-box" bindtap="iLike" wx:if="{{!release_focus}}">
       <image src="/icons/heart-active.png" class="heart" wx:if="{{like}}"></image>
@@ -99,4 +78,7 @@
 
     <view bindtap="commentAdd" class="com-btn" wx:if="{{release_focus}}">发送</view>
   </view>
+
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
 </view>
