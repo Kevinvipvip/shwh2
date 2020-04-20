@@ -118,6 +118,14 @@ Page({
       }
     });
   },
+  reset() {
+    this.data.page = 1;
+    this.data.xuqiu_list = [];
+    this.setData({
+      nomore: false,
+      nodata: false
+    });
+  },
   // 打电话
   phone_call(e) {
     let tel = e.currentTarget.dataset.tel;
@@ -130,6 +138,7 @@ Page({
 
       wx.showNavigationBarLoading();
 
+      this.reset();
       this.init(() => {
         this.data.loading = false;
         wx.hideNavigationBarLoading();
