@@ -14,14 +14,14 @@ Page({
 
     goods: {},
 
-    textarea_padding: '15rpx',
+    textarea_padding: '20rpx',
     sub_loading: false,
   },
   onLoad(options) {
     // textarea
     let phone = wx.getSystemInfoSync();
     if (phone.platform === 'ios') {
-      this.setData({ textarea_padding: '0rpx 5rpx' })
+      this.setData({ textarea_padding: '5rpx 10rpx' })
     }
 
     this.data.funding_id = options.funding_id;

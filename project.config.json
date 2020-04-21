@@ -291,6 +291,13 @@
 					"pathName": "purchase-package/pages/purchase-detail/purchase-detail",
 					"query": "id=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "众筹-无偿支持",
+					"pathName": "chou-package/pages/chou-order-create/chou-order-create",
+					"query": "funding_id=1",
+					"scene": null
 				}
 			]
 		}

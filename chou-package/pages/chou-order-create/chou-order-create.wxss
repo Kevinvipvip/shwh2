@@ -1,12 +1,14 @@
 .page {
   min-height: 100vh;
   box-sizing: border-box;
-  padding-bottom: 100rpx;
 }
 
 .form2 {
-  margin-top: 41rpx;
-  padding: 0 24rpx;
+  padding: 40rpx 24rpx;
+}
+
+.form2 .form-item:first-child {
+  margin-top: 0;
 }
 
 .form2 .form-item {
@@ -15,14 +17,16 @@
   justify-content: space-between;
   font-size: 34rpx;
   color: #333;
-  margin-bottom: 70rpx;
+  padding-bottom: 40rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+  margin-top: 40rpx;
 }
 
 .form2 .form-item:last-child {
-  margin-bottom: 0;
 }
 
 .form-item .label {
+  color: #999;
 }
 
 .form-item .content {
@@ -81,36 +85,39 @@
 }
 
 .form-item .content .bi-box .bi {
-  font-size: 30rpx;
+  font-size: 34rpx;
   color: #333;
   margin-right: 15rpx;
 }
 
 .form-item .content .bi-box input {
   border-radius: 4rpx;
-  border: solid 2rpx #ffa55a;
-  width: 150rpx;
-  font-size: 24rpx;
-  padding: 5rpx 10rpx;
+  width: 200rpx;
+  font-size: 34rpx;
+  padding: 22rpx 30rpx;
+  background: #f5f5f5;
+  height: auto;
 }
 
 .form-item2 {
   position: relative;
+  margin-top: 40rpx;
 }
 
 .form-item2 .label {
   font-size: 34rpx;
-  color: #333;
+  color: #999;
 }
 
 .form-item2 textarea {
-  background: #e6e6e6;
   border-radius: 4rpx;
-  margin-top: 30rpx;
+  margin-top: 40rpx;
   width: 100%;
   box-sizing: border-box;
-  min-height: 150rpx;
+  min-height: 300rpx;
   line-height: 1.5;
+  border: solid 2rpx #f5f5f5;
+  font-size: 34rpx;
 }
 
 .bottom-btns {
@@ -123,7 +130,8 @@
 .bottom-btns button {
   width: 0;
   flex-grow: 1;
-  height: 78rpx;
+  height: 98rpx;
+  line-height: 98rpx;
   text-align: center;
   font-size: 32rpx;
   color: #333;
@@ -134,6 +142,10 @@
 .bottom-btns .amount {
   background-color: #fff;
   box-shadow: 0 1rpx 60rpx 0 rgba(230, 230, 230, 0.65);
+}
+
+.bottom-btns .amount .price {
+  color: #ff4646;
 }
 
 .bottom-btns .confirm {

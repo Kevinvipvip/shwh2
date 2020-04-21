@@ -45,7 +45,7 @@
       <view class="label">支持金额</view>
       <view class="content">
         <view class="bi-box">
-          <view class="bi">¥</view>
+          <view class="bi">￥</view>
           <input bindinput="bind_input" data-name="pay_price" type="digit" value="{{pay_price}}"/>
         </view>
       </view>
@@ -63,8 +63,8 @@
 
   <form bindsubmit="fundingPurchase" report-submit>
     <view class="bottom-btns">
-      <button class="amount" wx:if="{{goods_id == 0}}">支付金额：¥{{pay_price}}</button>
-      <button class="amount" wx:else>支付金额：¥{{visible_price}}</button>
+      <button class="amount" wx:if="{{goods_id == 0}}">支付金额：<text class="price" wx:if="{{pay_price}}">￥{{pay_price}}</text></button>
+      <button class="amount" wx:else>支付金额：<text class="price">￥{{visible_price}}</text></button>
       <button form-type="submit" loading="{{sub_loading}}" class="confirm">确认支付</button>
     </view>
   </form>
