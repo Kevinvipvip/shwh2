@@ -4,7 +4,12 @@
     <view class="head-line">
       <image bindtap="jump" data-url="/pages/my-edit/my-edit" src="{{user.avatar}}" mode="aspectFill" class="head"></image>
       <view class="info" wx:if="{{user.uid}}">
-        <view class="id">ID:{{user.uid}}</view>
+        <view class="shang">
+          <image bindtap="jump" data-url="/pages/role-vip-open/role-vip-open" src="/icons/role-icon1.png" class="role" wx:if="{{user.role == 1}}"></image>
+          <image bindtap="jump" data-url="/pages/role-vip-open/role-vip-open" src="/icons/role-icon2.png" class="role" wx:if="{{user.role == 2}}"></image>
+          <view class="id">ID:{{user.uid}}</view>
+          <view class="role-vip" wx:if="{{user.role_vip}}">VIP{{user.role_vip}}</view>
+        </view>
         <view class="nickname">{{user.nickname}}</view>
       </view>
       <view class="info" wx:else>

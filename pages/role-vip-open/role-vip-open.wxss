@@ -1,6 +1,6 @@
 .page {
   line-height: 1;
-  padding-bottom: 52rpx;
+  padding-bottom: 24rpx;
   box-sizing: border-box;
 }
 
@@ -21,6 +21,12 @@
 .meal-box .title {
   font-size: 34rpx;
   color: #333;
+}
+
+.meal-box .expires {
+  font-size: 28rpx;
+  color: #eb8d21;
+  margin-top: 24rpx;
 }
 
 .meal-box .meal-list {
@@ -96,7 +102,7 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding-left: 44rpx;
+  padding-left: 29rpx;
   padding-right: 40rpx;
   border: 2rpx solid #d2d2d2;
   border-radius: 40rpx;
@@ -175,125 +181,8 @@
   color: #333;
 }
 
-.qy .table {
-  margin-top: 40rpx;
-  border-radius: 10rpx;
-  overflow: hidden;
-}
-
-.qy .table .head {
-  display: flex;
-  height: 100rpx;
-  align-items: center;
-  font-size: 30rpx;
-  background: #ffd8ae;
-}
-
-.qy .table .head .or-block {
-  width: 100rpx;
-  background: #ffc68d;
-  flex-shrink: 0;
-  align-self: stretch;
-}
-
-.qy .table .head .h1 {
-  width: 350rpx;
-  flex-shrink: 0;
-  text-align: center;
-}
-
-.qy .table .head .h2 {
-  flex-grow: 1;
-  text-align: center;
-}
-
-.qy .table .db {
-  display: flex;
-}
-
-.qy .table .db:last-child {
-  margin-bottom: 0;
-}
-
-.qy .table .db > view {
-  padding: 40rpx 0;
-  background: #fff5e5;
-}
-
-.qy .table .db:nth-child(2) > view {
-  padding-top: 60rpx;
-}
-
-.qy .table .db:last-child > view {
-  padding-bottom: 60rpx;
-}
-
-.qy .table .db .label {
-  padding: 40rpx 24rpx;
-  line-height: 36rpx;
-  font-size: 24rpx;
-  color: #333;
-  align-items: center;
-  width: 100rpx;
-  box-sizing: border-box;
-  background: #ffd8ae;
-  display: flex;
-}
-
-.qy .table .db .te-list {
-  font-size: 24rpx;
-  color: #333;
-  width: 350rpx;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 60rpx;
-  justify-content: center;
-}
-
-.qy .table .db .te-list > view {
-  margin-bottom: 24rpx;
-  height: 24rpx;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-.qy .table .db .te-list > view:last-child {
-  margin-bottom: 0;
-}
-
-.qy .table .db .pin-list {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.qy .table .db .pin-list > view {
-  text-align: center;
-  font-size: 24rpx;
-  color: #ffac5b;
-  height: 24rpx;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 24rpx;
-}
-
-.qy .table .db .pin-list > view:last-child {
-  margin-bottom: 0;
-}
-
-.qy .table .db .pin-list > view image {
-  width: 24rpx;
-  height: 24rpx;
-}
-
-.qy .bottom {
-  margin-top: 52rpx;
-  text-align: center;
-  font-size: 24rpx;
-  color: #ccc;
+.qy image {
+  width: 100%;
+  vertical-align: bottom;
+  margin-top: 24rpx;
 }

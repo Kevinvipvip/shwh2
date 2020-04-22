@@ -46,6 +46,7 @@ Page({
 
     app.ajax('note/getNoteDetail', post, (res) => {
       app.avatar_format(res);
+      app.ago_format(res, 'create_time');
       app.format_img(res.pics);
       this.setData({
         like: res.ilike,

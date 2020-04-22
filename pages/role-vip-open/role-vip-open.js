@@ -2,68 +2,74 @@ const app = getApp();
 
 Page({
   data: {
+    full_loading: true,
+    role_vip: 0,
+    role_vip_time: 0,
+
     role: 0,
-    ban: 0,  // -1.未选择 0.标准版 1.乐享版 2.智慧版
-    long: 0,  // -1.未选择 0.一年 1.三年
-    level: {},
+    level: 0,  // 0.普通会员 1.VIP会员 2.超级会员
     level_list: [],
     long_list: []
   },
   onLoad() {
-    this.setData({ role: app.user_data.role });
-    this.getRole3LevelList();
+    this.setData({
+      role: app.user_data.role,
+      role_vip: app.user_data.role_vip,
+      role_vip_time: app.user_data.role_vip_time
+    });
+    this.roleVipList(() => {
+      this.setData({ full_loading: false });
+    });
   },
   // 选择
   choose(e) {
-    let ban = e.currentTarget.dataset.ban;
-    let long = e.currentTarget.dataset.long;
-
-    if (ban !== undefined) {
-      this.setData({ ban }, () => {
-        this.setData({ long_list: this.data.level_list.slice(ban * 2, ban * 2 + 2) });
-      });
-    } else {
-      this.setData({ long });
-    }
-
-    this.setData({ level: this.data.level_list[this.data.ban * 2 + this.data.long] });
+    let index = e.currentTarget.dataset.index;
+    this.setData({ level: index });
   },
-  // 工厂购买套餐列表
-  getRole3LevelList() {
-    app.ajax('api/getRole3LevelList', null, res => {
-      for (let i = 0; i < res.length; i++) {
-        res[i].price = app.num_zheng(res[i].price);
-      }
-      this.setData({ level_list: res }, () => {
-        this.setData({
-          long_list: this.data.level_list.slice(0, 2),
-          level: this.data.level_list[0]
-        });
-      });
-    });
+  // 会员种类
+  roleVipList(complete) {
+    app.ajax('my/roleVipList', null, res => {
+      app.format_img(res);
+      this.setData({ level_list: res });
+    }, null, complete);
   },
-  // 工厂购买套餐下单
-  role3Recharge() {
+  // 会员充值下单
+  roleVipRecharge() {
     wx.showLoading({
       title: '充值中...',
       mask: true
     });
 
-    app.ajax('api/role3Recharge', { level_id: this.data.level.id }, res => {
-      this.role3Pay(res, pay_res => {
-        wx.hideLoading();
+    let vip_id = this.data.level_list[this.data.level].id;
+    let vip_price = this.data.level_list[this.data.level].price;
 
-        if (pay_res) {
-          app.modal('开通成功', () => {
+    app.ajax('my/roleVipRecharge', { vip_id: vip_id }, res => {
+      if (vip_price === '0.00') {
+        app.set_user_data(() => {
+          app.modal('充值成功', () => {
             wx.switchTab({ url: '/pages/my/my' });
           });
-        }
-      });
+        });
+      } else {
+        this.roleVipPay(res.order_sn, pay_res => {
+          if (pay_res) {
+            app.set_user_data(() => {
+              app.modal('充值成功', () => {
+                wx.switchTab({ url: '/pages/my/my' });
+              });
+            });
+          }
+        }, null, () => {
+          wx.hideLoading();
+        });
+      }
+    }, null, () => {
+      wx.hideLoading();
     });
   },
-  // 工厂购买套餐支付
-  role3Pay(pay_order_sn, complete) {
-    app.ajax('pay/role3Pay', { pay_order_sn }, (res) => {
+  // 会员支付
+  roleVipPay(order_sn, complete) {
+    app.ajax('pay/roleVipPay', { order_sn }, (res) => {
       wx.requestPayment({
         timeStamp: res.timeStamp,
         nonceStr: res.nonceStr,

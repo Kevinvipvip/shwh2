@@ -45,7 +45,10 @@ App({
     user_auth: 0, // 0.用户未授权 1.用户已授权
     nickname: '',
     avatar: '',
-    vip: 0  // 0.不是vip 1.是vip
+    vip: 0,  // 0.不是vip 1.是vip
+
+    role_vip: 0,
+    role_vip_time: 0
   },
   mp_update() {
     const updateManager = wx.getUpdateManager();
@@ -569,16 +572,20 @@ App({
     })
   },
   // 设置全局的 user_data
-  set_user_data() {
+  set_user_data(complete) {
     this.ajax('my/myDetail', null, res => {
       this.avatar_format(res);
+      this.format_time(res, 'role_vip_time', 'yyyy-MM-dd');
 
       this.user_data.uid = res.uid;
       this.user_data.role = res.role;
       this.user_data.nickname = res.nickname;
       this.user_data.avatar = res.avatar;
       this.user_data.vip = res.vip;
-    });
+
+      this.user_data.role_vip = res.role_vip;
+      this.user_data.role_vip_time = res.role_vip_time;
+    }, null, complete);
   },
   // 格式化数字，如果没有小数则返回整数，有小数返回小数
   num_zheng(num) {

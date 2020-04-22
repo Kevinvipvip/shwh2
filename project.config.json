@@ -298,6 +298,12 @@
 					"pathName": "chou-package/pages/chou-order-create/chou-order-create",
 					"query": "funding_id=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员充值",
+					"pathName": "pages/role-vip-open/role-vip-open",
+					"scene": null
 				}
 			]
 		}

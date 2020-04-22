@@ -5,7 +5,7 @@
         <image src="{{note.avatar}}" class="header"></image>
         <view class="uinfo">
           <view class="nickname">{{note.nickname}}</view>
-          <view class="time-ago">47分钟前</view>
+          <view class="time-ago">{{note.create_time}}</view>
         </view>
       </view>
       <button bindtap="iFocus" class="{{focus ? 'focus' : ''}}" wx:if="{{my_uid != note.uid}}">{{focus ? '已关注' : '关注'}}</button>

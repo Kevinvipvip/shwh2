@@ -1,3 +1,7 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
 <view class="page">
   <!-- banner图 -->
   <view class="banner">
@@ -7,175 +11,37 @@
   <!-- 套餐 -->
   <view class="meal-box">
     <view class="title">选择VIP会员套餐</view>
+    <view class="expires" wx:if="{{role_vip}}">会员到期时间：{{role_vip_time}}</view>
     <view class="meal-list">
-      <view bindtap="choose" data-ban="{{0}}" class="meal {{ban == 0 ? 'active' : ''}}">
-        <image src="/icons/role-meal1.png" class="mark"></image>
-        <view class="sm">标准版</view>
-        <image src="/images/meal-bg.png" class="bg"></image>
-      </view>
-      <view bindtap="choose" data-ban="{{1}}" class="meal {{ban == 1 ? 'active' : ''}}">
-        <image src="/icons/role-meal2.png" class="mark"></image>
-        <view class="sm">乐享版</view>
-        <image src="/images/meal-bg.png" class="bg"></image>
-      </view>
-      <view bindtap="choose" data-ban="{{2}}" class="meal {{ban == 2 ? 'active' : ''}}">
-        <image src="/icons/role-meal3.png" class="mark"></image>
-        <view class="sm">智慧版</view>
+      <view bindtap="choose" data-index="{{index}}" class="meal {{level == index ? 'active' : ''}}" wx:for="{{level_list}}" wx:key="id">
+        <image src="/icons/role-meal{{index + 1}}.png" class="mark"></image>
+        <view class="sm">{{item.title}}</view>
         <image src="/images/meal-bg.png" class="bg"></image>
       </view>
     </view>
   </view>
 
   <!-- 有效期 -->
-  <view class="validate-box" wx:if="{{ban != -1}}">
-    <view class="title">会员有效期</view>
+  <view class="validate-box">
+<!--    <view class="title">会员有效期</view>-->
+    <view class="title">价格</view>
     <view class="vali-list">
-      <view bindtap="choose" data-long="{{0}}" class="vali {{long == 0 ? 'active' : ''}}">
+<!--      <view class="vali active">-->
+      <view class="vali">
         <view class="zuo">
-          <view class="date">1年（{{long_list[0].days}}天）</view>
-          <view class="shu"></view>
-          <view class="price">￥{{long_list[0].price}}</view>
-        </view>
-        <image src="/icons/dui1.png" class="choose"></image>
-      </view>
-      <view bindtap="choose" data-long="{{1}}" class="vali {{long == 1 ? 'active' : ''}}">
-        <view class="zuo">
-          <view class="date">3年（{{long_list[1].days}}天）</view>
-          <view class="shu"></view>
-          <view class="price">￥{{long_list[1].price}}</view>
+<!--          <view class="date">1年（{{long_list[0].days}}天）</view>-->
+<!--          <view class="shu"></view>-->
+          <view class="price">￥{{level_list[level].price}}</view>
         </view>
         <image src="/icons/dui1.png" class="choose"></image>
       </view>
     </view>
-    <button bindtap="role3Recharge" class="buy-btn" disabled="{{ban == -1 || long == -1}}">立即购买</button>
+    <button bindtap="roleVipRecharge" class="buy-btn">{{role_vip ? '续费充值' : '立即购买'}}</button>
   </view>
 
   <!-- 权益详情 -->
-  <view class="qy" wx:if="{{ban != -1 && long != -1}}">
-    <view class="title"><block wx:if="{{ban == 0}}">标准版</block><block wx:if="{{ban == 1}}">乐享版</block><block wx:if="{{ban == 2}}">智慧版</block>会员特权</view>
-    <view class="table">
-      <view class="head">
-        <view class="or-block"></view>
-        <view class="h1">会员特权</view>
-        <view class="h2">频次</view>
-      </view>
-      <view class="db">
-        <view class="label">平台服务</view>
-        <view class="te-list">
-          <view>厂家主页图文展示</view>
-          <view>厂家主页视频展示</view>
-          <view>厂家专属商城</view>
-          <view>在线接单</view>
-          <view>发起众筹</view>
-          <view>笔记分享</view>
-          <view>平台首页广告</view>
-        </view>
-        <view class="pin-list">
-          <view>
-            <image src="/icons/r-dui.png" wx:if="{{level.service_1 == 1}}"></image>
-            <image src="/icons/r-cuo.png" wx:else></image>
-          </view>
-          <view>
-            <image src="/icons/r-dui.png" wx:if="{{level.service_2 == 1}}"></image>
-            <image src="/icons/r-cuo.png" wx:else></image>
-          </view>
-          <view>
-            <image src="/icons/r-dui.png" wx:if="{{level.service_3 == 1}}"></image>
-            <image src="/icons/r-cuo.png" wx:else></image>
-          </view>
-          <view>
-            <block wx:if="{{level.service_4 == -1}}">不限次数</block>
-            <block wx:if="{{level.service_4 != -1}}">{{level.service_4}}次/{{long == 0 ? '年' : '3年'}}</block>
-          </view>
-          <view>
-            <image src="/icons/r-dui.png" wx:if="{{level.service_5 == 1}}"></image>
-            <image src="/icons/r-cuo.png" wx:else></image>
-          </view>
-          <view>
-            <image src="/icons/r-dui.png" wx:if="{{level.service_6 == 1}}"></image>
-            <image src="/icons/r-cuo.png" wx:else></image>
-          </view>
-          <view>
-            <image src="/icons/r-cuo.png" wx:if="{{level.service_7 == 0}}"></image>
-            <block wx:else>{{level.service_7}}周/{{long == 0 ? '年' : '3年'}}</block>
-          </view>
-        </view>
-      </view>
-
-      <view class="db">
-        <view class="label">品牌服务</view>
-        <view class="te-list">
-          <view>形象拍照一组</view>
-          <view>专属视频拍摄制作(3min)</view>
-          <view>标识设计3稿</view>
-        </view>
-        <view class="pin-list">
-          <view>
-            <image src="/icons/r-dui.png" wx:if="{{level.service_8 == 1}}"></image>
-            <image src="/icons/r-cuo.png" wx:else></image>
-          </view>
-          <view>
-            <image src="/icons/r-dui.png" wx:if="{{level.service_9 == 1}}"></image>
-            <image src="/icons/r-cuo.png" wx:else></image>
-          </view>
-          <view>
-            <image src="/icons/r-dui.png" wx:if="{{level.service_10 == 1}}"></image>
-            <image src="/icons/r-cuo.png" wx:else></image>
-          </view>
-        </view>
-      </view>
-
-      <view class="db">
-        <view class="label">媒体矩阵服务</view>
-        <view class="te-list">
-          <view>山洞官微企业展播头条</view>
-          <view>山洞官微企业展播非头条</view>
-          <view>博物馆商店头条</view>
-          <view>博物馆商店非头条</view>
-          <view>山洞官方微博</view>
-          <view>山洞官方抖音号</view>
-        </view>
-        <view class="pin-list">
-          <view>
-            <image src="/icons/r-cuo.png" wx:if="{{level.service_11 == 0}}"></image>
-            <block wx:else>{{level.service_11}}次</block>
-          </view>
-          <view>
-            <image src="/icons/r-cuo.png" wx:if="{{level.service_12 == 0}}"></image>
-            <block wx:else>{{level.service_12}}次</block>
-          </view>
-          <view>
-            <image src="/icons/r-cuo.png" wx:if="{{level.service_13 == 0}}"></image>
-            <block wx:else>{{level.service_13}}次</block>
-          </view>
-          <view>
-            <image src="/icons/r-cuo.png" wx:if="{{level.service_14 == 0}}"></image>
-            <block wx:else>{{level.service_14}}次</block>
-          </view>
-          <view>
-            <image src="/icons/r-cuo.png" wx:if="{{level.service_15 == 0}}"></image>
-            <block wx:else>{{level.service_15}}次</block>
-          </view>
-          <view>
-            <image src="/icons/r-cuo.png" wx:if="{{level.service_16 == 0}}"></image>
-            <block wx:else>{{level.service_16}}次</block>
-          </view>
-        </view>
-      </view>
-
-      <view class="db">
-        <view class="label">线下馆方对接服务</view>
-        <view class="te-list">
-          <view>馆方需求线下接洽会</view>
-        </view>
-        <view class="pin-list">
-          <view>
-            <image src="/icons/r-cuo.png" wx:if="{{level.service_17 == 0}}"></image>
-            <block wx:else>{{level.service_17}}次</block>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="bottom">山洞文创生态平台</view>
+  <view class="qy">
+    <view class="title">会员特权</view>
+    <image src="{{level_list[level].pic}}" mode="widthFix"></image>
   </view>
 </view>
