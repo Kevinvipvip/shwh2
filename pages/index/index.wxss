@@ -129,13 +129,14 @@
 
 .video-box .title-line {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
 }
 
 .video-box .title-line .title {
   font-size: 40rpx;
-  color: #101010;
+  color: #333;
+  font-weight: bold;
 }
 
 .video-box .title-line .more {
@@ -256,9 +257,10 @@
 }
 
 .custom-zone > .title {
-  color: #101010;
+  color: #333;
   font-size: 40rpx;
   text-align: center;
+  font-weight: bold;
 }
 
 .custom-zone .tab {
@@ -369,6 +371,7 @@
 .baotui .title-line .title {
   font-size: 40rpx;
   color: #f43530;
+  font-weight: bold;
 }
 
 .baotui .goods-list {
