@@ -10,33 +10,25 @@
 
   <!-- 套餐 -->
   <view class="meal-box">
-    <view class="title">选择VIP会员套餐</view>
     <view class="expires" wx:if="{{role_vip}}">会员到期时间：{{role_vip_time}}</view>
+
     <view class="meal-list">
       <view bindtap="choose" data-index="{{index}}" class="meal {{level == index ? 'active' : ''}}" wx:for="{{level_list}}" wx:key="id">
-        <image src="/icons/role-meal{{index + 1}}.png" class="mark"></image>
-        <view class="sm">{{item.title}}</view>
-        <image src="/images/meal-bg.png" class="bg"></image>
+        <image src="/images/role-vip-bg{{index + 1}}.png" class="bg"></image>
+        <view class="texts">
+          <view class="r-title">{{item.title}}</view>
+          <view class="price-wrap">
+            <view class="price">￥{{item.price}}</view>
+            <view class="unit">/ 年</view>
+          </view>
+        </view>
       </view>
     </view>
+    <view class="tiao"></view>
   </view>
 
-  <!-- 有效期 -->
   <view class="validate-box">
-<!--    <view class="title">会员有效期</view>-->
-    <view class="title">价格</view>
-    <view class="vali-list">
-<!--      <view class="vali active">-->
-      <view class="vali">
-        <view class="zuo">
-<!--          <view class="date">1年（{{long_list[0].days}}天）</view>-->
-<!--          <view class="shu"></view>-->
-          <view class="price">￥{{level_list[level].price}}</view>
-        </view>
-        <image src="/icons/dui1.png" class="choose"></image>
-      </view>
-    </view>
-    <button bindtap="roleVipRecharge" class="buy-btn">{{role_vip ? '续费充值' : '立即购买'}}</button>
+    <button bindtap="roleVipRecharge" class="buy-btn">{{role_vip ? '续费充值' : '立即开通'}}</button>
   </view>
 
   <!-- 权益详情 -->
