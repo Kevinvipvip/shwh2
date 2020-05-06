@@ -28,6 +28,7 @@
 }
 
 .banner .head-line .info .shang {
+  margin-top: 15rpx;
   display: flex;
   align-items: center;
 }
@@ -54,7 +55,7 @@
 
 .banner .head-line .info .nickname {
   font-size: 34rpx;
-  margin-top: 15rpx;
+  /*margin-top: 15rpx;*/
 }
 
 .banner .head-line .info .btn {

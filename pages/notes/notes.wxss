@@ -1,5 +1,5 @@
 .page {
-  padding-top: 192rpx;
+  padding-top: 110rpx;
   min-height: 100vh;
   box-sizing: border-box;
   /*background: #f6f7f9;*/
@@ -67,7 +67,8 @@
 }
 
 .search-box {
-  margin-top: 14rpx;
+  /* margin-top: 14rpx; */
+  padding-top: 20rpx;
   padding-bottom: 20rpx;
   z-index: 1;
   box-shadow: 0 3rpx 10rpx 0 #eee;

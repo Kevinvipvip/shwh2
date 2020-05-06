@@ -4,11 +4,11 @@
 
 <view class="page">
   <view class="top-box">
-    <view class="tabs">
-      <view bindtap="type_change" data-type="{{0}}" class="tab {{type == 0 ? 'active' : ''}}">全部</view>
-      <view bindtap="type_change" data-type="{{1}}" class="tab {{type == 1 ? 'active' : ''}}">文旅机构</view>
-      <view bindtap="type_change" data-type="{{2}}" class="tab {{type == 2 ? 'active' : ''}}">工厂</view>
-    </view>
+<!--    <view class="tabs">-->
+<!--      <view bindtap="type_change" data-type="{{0}}" class="tab {{type == 0 ? 'active' : ''}}">全部</view>-->
+<!--      <view bindtap="type_change" data-type="{{1}}" class="tab {{type == 1 ? 'active' : ''}}">文旅机构</view>-->
+<!--      <view bindtap="type_change" data-type="{{2}}" class="tab {{type == 2 ? 'active' : ''}}">工厂</view>-->
+<!--    </view>-->
     <view class="search-box">
       <view class="search">
         <icon bindtap="search_notes" class="iconfont iconsearch"/>

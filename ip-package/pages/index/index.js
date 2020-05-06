@@ -181,5 +181,10 @@ Page({
         });
       }
     }
+  },
+  // 分享
+  onShareAppMessage() {
+    wx.showShareMenu();
+    return { path: app.share_path() };
   }
 });
