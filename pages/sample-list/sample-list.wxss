@@ -1,0 +1,105 @@
+.mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 999;
+}
+
+.mask .mask-box {
+	width: 60vw;
+	background-color: #fff;
+	border-radius: 20rpx;
+	height: 40vw;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+}
+
+.mask .mask-box .mask-cont {
+	flex-grow: 1;
+	margin: 15px;
+	display: flex;
+	font-size: 28rpx;
+	line-height: 35rpx;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.mask .mask-box .btn-box {
+	flex-shrink: 0;
+	height: 70rpx;
+	display: flex;
+	border-top: 2rpx solid #999;
+}
+
+.mask .mask-box .btn-box text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 50%;
+	font-size: 28rpx;
+	border-right: 2rpx solid #999;
+}
+
+.mask .mask-box .btn-box text:last-child {
+	border-right: none;
+}
+
+
+.custom-list {
+	padding: 24rpx 24rpx;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.goods2 {
+	width: 340rpx;
+	margin-top: 40rpx;
+}
+
+.goods2:nth-child(-n + 2) {
+	margin-top: 0;
+}
+
+.goods2 .cover {
+	width: 340rpx;
+	height: 340rpx;
+	border-radius: 8rpx;
+}
+
+.goods2 .info {
+	padding-top: 14.4rpx;
+}
+
+.goods2 .info .title {
+	font-size: 28rpx;
+	line-height: 1.4;
+	color: #333;
+	height: 72rpx;
+}
+
+.goods2 .info .shop {
+	margin-top: 17rpx;
+	color: #666;
+	font-size: 24rpx;
+}
+
+.goods2 .info .price::before {
+	content: '￥';
+}
+
+.goods2 .info .price {
+	margin-top: 28rpx;
+	font-size: 32rpx;
+	color: #f43530;
+}

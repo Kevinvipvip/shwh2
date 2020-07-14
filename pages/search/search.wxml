@@ -3,7 +3,7 @@
   <view class="search-box">
     <view class="search">
       <icon bindtap="search_goods" class="iconfont iconsearch"/>
-      <input bindinput="bind_input" bindconfirm="search_goods" data-name="search" placeholder="搜索商品" maxlength="30"/>
+      <input bindinput="bind_input" type="text" bindconfirm="search_goods" data-name="search" focus placeholder="搜索商品" confirm-type='search' maxlength="30"/>
     </view>
   </view>
 
@@ -11,7 +11,7 @@
   <view class="goods-box">
     <view class="goods-list">
       <view class="goods2" wx:for="{{goods_list}}" wx:key="id" wx:if="{{item.visible}}">
-        <image src="{{item.poster}}" class="cover" mode="aspectFill" lazy-load></image>
+        <image src="{{item.poster}}" bindtap="to_detail" data-id="{{item.id}}" class="cover" mode="aspectFill" lazy-load></image>
         <view class="info">
           <view class="title two-line-ellipsis">{{item.name}}</view>
           <view class="shop one-line-ellipsis">{{item.org}}</view>

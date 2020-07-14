@@ -87,6 +87,10 @@
         <image src="/icons/my-shen.png" class="icon i2"></image>
         <view class="text">申请角色</view>
       </view>
+      <view bindtap="jump" data-url="/pages/sample-record/sample-record" class="service" wx:if="{{user.role === 1}}">
+        <image src="/icons/my-sample.png" class="icon i2"></image>
+        <view class="text">我的样品</view>
+      </view>
       <view bindtap="jump" data-url="/pages/my-address/my-address" class="service">
         <image src="/icons/my-add.png" class="icon i3"></image>
         <view class="text">收货地址</view>

@@ -1,0 +1,136 @@
+<view class="page">
+	<!-- 顶部视频/轮播图 -->
+	<video src="{{sample.video_url}}" poster="{{sample.poster}}" controls class="u-video" object-fit="cover" wx:if="{{sample.use_video}}" class="top-video"></video>
+	<swiper indicator-dots="{{true}}" autoplay="{{true}}" class="top-swiper" wx:else>
+		<swiper-item wx:for="{{sample.pics}}" wx:key="index">
+			<image src="{{item}}" mode="aspectFill"></image>
+		</swiper-item>
+	</swiper>
+
+	<view class="info-box">
+		<view class="pt">
+			<view class="title">
+				<view class="goods-name">{{sample.name}}</view>
+				<button open-type="share" class="share">
+					<image src="/icons/share.png"></image>
+					<view class="text">分享</view>
+				</button>
+			</view>
+			<view class="label-list">
+				<!-- <view class="label" wx:if="{{sample.batch == 1}}">小批量定制</view> -->
+				<view class="label">免费拿样</view>
+				<!-- <view class="label" wx:if="{{sample.mold == 1}}">免开模费</view> -->
+			</view>
+			<!-- <view class="price" wx:if="{{vip == 1}}">
+				<block wx:if="{{sample.use_vip_price == 1}}">
+					<text class="pp">{{sample.vip_price}}</text>
+					<text class="origin-price">¥{{sample.price}}</text>
+				</block>
+				<block wx:else>
+					<text class="pp">{{sample.price}}</text>
+				</block>
+			</view>
+			<view class="price" wx:else>
+				<view class="pp">{{sample.price}}</view>
+				<view class="join-vip" wx:if="{{sample.use_vip_price}}">
+					<view class="v-price-box">
+						<view class="label">会员价：</view>
+						<view class="v-price">{{sample.vip_price}}</view>
+					</view>
+					<button bindtap="jump" data-url="/pages/vip-center/vip-center" class="vip-btn">立即加入会员</button>
+				</view>
+			</view> -->
+		</view>
+
+		<view class="stock-carriage">
+			<!-- <view>运费：¥{{sample.carriage}}</view> -->
+			<!-- <view>售出：{{sample.sales}}</view> -->
+			<view>剩余样品数量：{{sample.stock}}</view>
+		</view>
+
+		<!--    <view class="desc">-->
+		<!--      <view class="title title-redtiao">商品描述</view>-->
+		<!--      <view>-->
+		<!--        {{sample.desc || '暂无描述'}}-->
+		<!--      </view>-->
+		<!--    </view>-->
+
+		<view bindtap="to_person" class="store" wx:if="{{sample.shop_id}}">
+			<view class="info">
+				<view class="zuo">
+					<image src="{{sample.avatar}}" class="avatar"></image>
+					<view class="org">{{sample.org}}</view>
+				</view>
+				<view class="jin">
+					<view class="text">进店逛逛</view>
+					<!--          <image src="/icons/you3.png"></image>-->
+				</view>
+			</view>
+		</view>
+
+		<!-- <view class="params">
+			<view class="title title-redtiao">规格参数</view>
+			<view class="params-wrapper">
+				<view class="line">
+					<view class="name">商品名称</view>
+					<view class="value">啥啥翡翠亮肤乳</view>
+				</view>
+				<view class="line">
+					<view class="name">容量</view>
+					<view class="value">100ml</view>
+				</view>
+				<view class="line">
+					<view class="name">版本</view>
+					<view class="value">清爽型 日本版</view>
+				</view>
+				<view class="line">
+					<view class="name">是否为特殊用途化妆品</view>
+					<view class="value">否</view>
+				</view>
+				<view class="line">
+					<view class="name">功效</view>
+					<view class="value">提亮肤色</view>
+				</view>
+			</view>
+		</view> -->
+
+		<view class="bottom-content">
+			<!-- <view class="tab-list2">
+				<view class="tab {{tab_active == 0 ? 'active' : ''}}" bindtap="tab_change" data-tab="{{0}}">商品详情</view>
+				<view class="tab {{tab_active == 1 ? 'active' : ''}}" bindtap="tab_change" data-tab="{{1}}">买家评价</view>
+			</view> -->
+			<view class="content-wrapper">
+				<import src="../../wxParse/wxParse.wxml" />
+				<template is="wxParse" data="{{wxParseData:rich_text.nodes}}" />
+			</view>
+		</view>
+	</view>
+
+	<view class="foot" bindtap="sample_now"> 立即拿样 </view>
+
+	<!-- <canvas canvas-id="qrcode" class="qrc"></canvas>
+	<canvas canvas-id="poster-canvas" class="poc"></canvas>
+
+	<view class="mask-box" wx:if="{{poster_show}}">
+		<view class="img-box">
+			<image src="{{poster}}" class="poster"></image>
+			<image bindtap="hide_poser" src="/icons/poster-x.png" class="cancel"></image>
+		</view>
+		<button catchtap="save_poster" class="save-btn">保存</button>
+	</view>
+
+	<view bindtap="hide_set_btn" class="setting-box" wx:if="{{show_set_btn}}">
+		<view class="os-box">
+			<view>
+				请在设置中打开保存图片到相册的权限
+			</view>
+			<button catchtap="hide_set_btn" open-type="openSetting" class="set_btn">打开设置</button>
+		</view>
+	</view> -->
+
+	<!-- 绑定手机号弹窗
+	<tel-modal show="{{bind_tel_show}}"></tel-modal> -->
+	
+  <!-- 绑定手机号弹窗 -->
+  <tel-modal show="{{bind_tel_show}}"></tel-modal>
+</view>

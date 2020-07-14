@@ -4,13 +4,12 @@ Page({
   data: {
     search: '',
     page: 1,
-    goods_list: [],  // 爆款推荐
+    goods_list: [], // 爆款推荐
     nomore: false,
     nodata: false,
     loading: false
   },
-  onLoad() {
-  },
+  onLoad() {},
   bind_input(e) {
     app.bind_input(e, this);
   },
@@ -19,6 +18,14 @@ Page({
     this.reset();
     this.goodsList();
   },
+  // 点击前往商品详情
+  to_detail(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/shop-detail/shop-detail?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   // 获取列表
   goodsList(complete) {
     let post = {
@@ -45,7 +52,9 @@ Page({
         for (let i = 0; i < res.length; i++) {
           res[i].visible = true;
         }
-        this.setData({ goods_list: this.data.goods_list.concat(res) });
+        this.setData({
+          goods_list: this.data.goods_list.concat(res)
+        });
       }
       this.data.page++;
     }, null, () => {

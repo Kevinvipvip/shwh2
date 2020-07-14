@@ -45,7 +45,7 @@ App({
     user_auth: 0, // 0.用户未授权 1.用户已授权
     nickname: '',
     avatar: '',
-    vip: 0,  // 0.不是vip 1.是vip
+    vip: 0, // 0.不是vip 1.是vip
 
     role_vip: 0,
     role_vip_time: 0
@@ -118,15 +118,16 @@ App({
             err(res.data);
           } else {
             switch (res.data.code) {
-              case -3:  // token失效
-              case -6:  // token为空
+              case -3: // token失效
+              case -6: // token为空
                 let current_pages = getCurrentPages();
                 let current_page = current_pages[current_pages.length - 1];
                 wx.redirectTo({
                   url: '/pages/login/login?route=' + encodeURIComponent(current_page.route + this.obj2query(current_page.options))
                 });
                 break;
-              case -7:  // 用户未绑定手机号
+              case -7: // 用户未绑定手机号
+                // this.toast(res.data.data);
                 break;
               case 49:
                 this.toast(res.data.data);
@@ -135,11 +136,13 @@ App({
               case 64:
                 this.modal(res.data.message);
                 break;
-              case 87:  // 活动已删除
-              case 88:  // 创意已删除
-              case 89:  // 作品已删除
+              case 87: // 活动已删除
+              case 88: // 创意已删除
+              case 89: // 作品已删除
                 this.modal(res.data.message, () => {
-                  wx.navigateBack({ delta: 1 });
+                  wx.navigateBack({
+                    delta: 1
+                  });
                 });
                 break;
               default:
@@ -235,7 +238,9 @@ App({
     if (!this.user_data.uid) {
       let current_pages = getCurrentPages();
       let current_page = current_pages[current_pages.length - 1];
-      current_page.setData({bind_tel_show: true});
+      current_page.setData({
+        bind_tel_show: true
+      });
     } else {
       callback();
     }
@@ -259,10 +264,14 @@ App({
         case 'pages/notes/notes':
         case 'pages/shop-car/shop-car':
         case 'pages/my/my':
-          wx.switchTab({ url: '/' + route });
+          wx.switchTab({
+            url: '/' + route
+          });
           break;
         default:
-          wx.redirectTo({ url: '/' + route });
+          wx.redirectTo({
+            url: '/' + route
+          });
           break;
       }
     }
@@ -544,13 +553,13 @@ App({
   },
   // 收集formid-collectFormid
   collectFormid(formid) {
-    if (formid !== 'the formId is a mock one') {
-      this.ajax('api/collectFormid', {
-        formid: formid
-      }, null, () => {
-        // 啥都不干
-      });
-    }
+    // if (formid !== 'the formId is a mock one') {
+    //   this.ajax('api/collectFormid', {
+    //     formid: formid
+    //   }, null, () => {
+    //     // 啥都不干
+    //   });
+    // }
   },
   // 打开新页面检查，如果已经打开10个页面则提示用户关闭几个页面
   page_open(callback) {
@@ -592,7 +601,7 @@ App({
     return parseInt(num) === parseFloat(num) ? parseInt(num) : parseFloat(num);
   },
   ago_format(obj, time_field) {
-    if (obj instanceof  Array) {
+    if (obj instanceof Array) {
       for (let i = 0; i < obj.length; i++) {
         obj[i][time_field] = this.ago_text(obj[i][time_field]);
       }

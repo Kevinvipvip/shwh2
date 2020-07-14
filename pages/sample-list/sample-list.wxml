@@ -1,0 +1,19 @@
+<view class="page">
+	<!-- <view class="mask" wx:if="{{role !== 1 }}">
+		<view class="mask-box">
+			<view class='mask-cont'>{{mask_title}}</view>
+			<view class='btn-box'><text>取消</text><text>{{btn_text}}</text></view>
+		</view>
+	</view> -->
+
+	<view class="custom-list">
+		<navigator url="/pages/sample-detail/sample-detail?id={{item.sample_id}}" class="goods2" wx:for="{{sample_list}}" wx:key="id">
+			<image src="{{item.poster}}?imageView2/2/w/340" class="cover" mode="aspectFill" lazy-load></image>
+			<view class="info">
+				<view class="title two-line-ellipsis">{{item.name}}</view>
+				<view class="shop one-line-ellipsis">{{item.org}}</view>
+				<!-- <view class="price">{{item.price}}</view> -->
+			</view>
+		</navigator>
+	</view>
+</view>

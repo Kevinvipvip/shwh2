@@ -1,0 +1,90 @@
+.sample-cont {
+	padding-top: 30rpx;
+}
+
+.sample-cont .sample-list-item {
+	position: relative;
+	border-bottom: 2rpx solid #eeeeee;
+	padding-bottom: 25rpx;
+	margin: 0 30rpx 30rpx;
+}
+
+.sample-cont .sample-list-item .sample-shop {
+	display: flex;
+}
+
+.sample-cont .sample-list-item .sample-shop image {
+	flex-shrink: 0;
+	width: 221rpx;
+	height: 176rpx;
+	border-radius: 12rpx;
+	margin-right: 20rpx;
+}
+
+.sample-cont .sample-list-item .sample-shop .shop-cont {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-around;
+}
+
+.sample-cont .sample-list-item .sample-shop .shop-cont .shop-title {
+	font-size: 28rpx;
+	color: #333333;
+	text-align: justify;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
+.sample-cont .sample-list-item .sample-shop .shop-cont .date {
+	font-size: 24rpx;
+	color: #666666;
+}
+
+.sample-cont .sample-list-item .sample-shop .shop-cont .sample-num {
+	font-size: 26rpx;
+	line-height: 42rpx;
+	color: #666666;
+	margin-bottom: 10rpx;
+}
+
+.sample-cont .sample-list-item .common {
+	position: absolute;
+}
+
+.sample-cont .sample-list-item .btn-to-use {
+	bottom: 25rpx;
+	right: 0;
+	height: 36rpx;
+	padding: 0 20rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #0ec4ed;
+	border-radius: 18rpx;
+	color: #ffffff;
+	font-size: 24rpx;
+}
+
+.sample-cont .sample-list-item .write-off {
+	bottom: 30rpx;
+	width: 115rpx;
+	height: 115rpx;
+	border-radius: 50%;
+	background-color: #999999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 0;
+	font-size: 28rpx;
+	color: #ffffff;
+	transform: rotate(-30deg);
+}
+
+.sample-cont .none-data-tip {
+	text-align: center;
+	font-size: 30rpx;
+	margin: 20rpx;
+	color: #aaaaaa;
+}

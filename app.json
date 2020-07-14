@@ -56,7 +56,10 @@
     "pages/vip-center/vip-center",
     "pages/focus-fans/focus-fans",
     "pages/con-goods/con-goods",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/sample-list/sample-list",
+    "pages/sample-detail/sample-detail",
+    "pages/sample-record/sample-record"
   ],
   "subpackages": [
     {

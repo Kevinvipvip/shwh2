@@ -1,0 +1,38 @@
+<view class="page">
+	<view class="sample-cont">
+		<block wx:for="{{sample_list}}" wx:key="index">
+			<view class="sample-list-item">
+				<view class="sample-shop">
+					<image src="{{item.poster}}" mode="aspectFill"></image>
+					<view class="shop-cont">
+						<view class="shop-title">{{item.name}}</view>
+						<view class="date">拿样时间：{{item.create_time}}</view>
+						<view class="sample-num">拿样机构：{{item.org}}</view>
+
+						<!-- <view class="integral">
+              <image src="{{item.status === 1?'/icons/icon-integral.png':'/icons/icon-integral-999999.png'}}"
+                     mode="aspectFill"></image>
+              <text style="{{item.status === 1?'color: #3fd3f3;':'color: #999999'}}">{{item.pay_price}}</text>
+            </view> -->
+					</view>
+				</view>
+				<!-- <view class="common btn-to-use" wx:if="{{item.status === 1}}" data-id="{{item.id}}" bindtap="to_use">去使用</view>
+        <view class="common write-off" wx:elif="{{item.status === 2}}">已核销</view> -->
+			</view>
+		</block>
+	</view>
+	<!-- <view class="mask" wx:if="{{mask_show}}" bindtap="close_mask">
+    <view class="mask-code-box" catchtap="none_mask">
+      <view class="mask-title">请核销人员进行扫码核销</view>
+      <image src="{{code_img}}" mode="widthFix"></image>
+      <text>{{time}}秒后，需重新生成二维码给核销人员扫码</text>
+    </view>
+  </view> -->
+	<view class="nomore" wx:if="{{nomore}}">
+		已经没有更多了
+	</view>
+
+	<view class="nodata" wx:if="{{nodata}}">
+		暂无数据
+	</view>
+</view>
