@@ -1,9 +1,5 @@
 const app = getApp();
 Page({
-
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
 		loading: false,
 		sample_list: [],
@@ -13,27 +9,10 @@ Page({
 		nodata: false,
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
 	onLoad: function (options) {
 		this.get_sample_record();
 	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
+	//获取样品记录列表
 	get_sample_record(complete) {
 		app.ajax('my/sampleRecord', {
 			page: this.data.page,
@@ -68,9 +47,7 @@ Page({
 		});
 	},
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
+	//下拉刷新
 	onPullDownRefresh: function () {
 		if (!this.data.loading) {
 			this.data.loading = true;
@@ -82,23 +59,18 @@ Page({
 				sample_list: []
 			});
 			wx.showNavigationBarLoading();
-			// wx.showLoading({
-			// 	title: '加载中',
-			// 	mask: true
-			// });
+
 			this.get_sample_record(() => {
 				this.data.loading = false;
-				// this.refreshView.stopPullRefresh();
+
 				wx.hideNavigationBarLoading();
-				// wx.hideLoading();
+
 				wx.stopPullDownRefresh();
 			});
 		}
 	},
 
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
+	//上拉加载更多
 	onReachBottom: function () {
 		if (!this.data.nomore && !this.data.nodata) {
 			if (!this.data.loading) {

@@ -1,4 +1,4 @@
-.mask {
+/* .mask {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -52,7 +52,7 @@
 
 .mask .mask-box .btn-box text:last-child {
 	border-right: none;
-}
+} */
 
 
 .custom-list {

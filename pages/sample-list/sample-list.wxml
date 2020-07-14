@@ -16,4 +16,11 @@
 			</view>
 		</navigator>
 	</view>
+		<view class="nomore" wx:if="{{nomore}}">
+		已经没有更多了
+	</view>
+
+	<view class="nodata" wx:if="{{nodata}}">
+		暂无数据
+	</view>
 </view>
